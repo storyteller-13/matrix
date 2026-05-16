@@ -84,30 +84,38 @@ class MusicPlayerStorage {
                     id: '2026 peaceful builder dreamer',
                     name: '2026 peaceful builder dreamer',
                     songs: [
-                        { id: '0tiuAKQjRpg', title: 'rose garden (afloat in time)' },
+                        { id: 'eqo0TpDBsZc', title: 'violet night... (james malikey)' },
                         { id: 'N0snMcR6aaA', title: 'emma\'s surrender (lofi girl)' },
+                        { id: '0tiuAKQjRpg', title: 'rose garden (afloat in time)' },
                         { id: 'N-BAlJ-2xro', title: 'every breath (brooklyn duo)' },
                         { id: 'rSzKm3hqhs8', title: 'perpetual (tommy guerrero)' },
                         { id: 'YBioStgspO8', title: 'happy moments (essential)' },
+                        { id: 'p88iGCFH7vQ', title: 'sunny days (halidonmusic)' },
                         { id: 'NH8uI4EJ0bo', title: 'romantic jazz (lofi girl)' },
                         { id: 'b9WKC5sT9Z4', title: 'gymnopedies (erik satie)' },
                         { id: 'aA4Kub9flag', title: 'dreamer (luke faulkner)' },
                         { id: 'b44-5M4e9nI', title: 'the swan (saint-saens)' },
                         { id: 'y9Yc46rVgRQ', title: 'saturn (james malikey)' },
+                        { id: 'PFofOcuNNBk', title: 'hoppípolla (sigur rós)' },
                         { id: 'bTvOEXAuIEU', title: 'frailed (flea)' }
                     ]
                 },
                 {
-                    id: '2026 when jupiter enters my 7th',
-                    name: '2026 when jupiter enters my 7th',
+                    id: '2026 chez moi w/ mah pretty gals',
+                    name: '2026 chez moi w/ mah pretty gals',
                     songs: [
-                        { id: 'n2MtEsrcTTs', title: 'harvest moon (neil young)' },
-                        { id: 'G2dR2DV-eGc', title: 'hard to concentrate (rhcp)' },
-                        { id: 'ux2P_nU8aD0', title: 'bridge to my heart (powfu)' },
-                        { id: 'x11NA63gLDM', title: 'change the world (eric clapton)' },
-                        { id: 'ozXZnwYTMbs', title: 'nothing else matters (metallica)' },
-                        { id: 'fF8GARU44iY', title: 'wild mountain honey (steve miller)' },
-                        { id: 'pGNDncTbJRU', title: 'a place to call home (world of warcraft)' }                    
+                        { id: 'R3gpbT-JZMk', title: 'killah (lady gaga)' },
+                        { id: 'bECMcp4AdOs', title: 'wide awake (kate perry)' },
+                        { id: 'YDTazIuuDPY', title: 'i feel so free (madonna)' },
+                        { id: 'G7KNmW9a75Y', title: 'flowers (miley cyrus)' },
+                        { id: 'e_aT9pAGQo8', title: 'alien superstar (beyoncé)' },
+                        { id: 'DagMrm6p2dA', title: 'a woman\'s worth (alicia keys)' },
+                        { id: 'WqbJT_vC0rs', title: 'elizabeth taylor (taylor swift)' },
+                        { id: 'xhXUdIekqDk', title: 'kraken (florence + the machine)' },
+                        { id: '9WbCfHutDSE', title: 'dangerous woman (ariana grande)' },
+                        { id: 'ak4Ti54Y6rY', title: 'who will you follow (evanescence)' },
+                        { id: 'ZWmrfgj0MZI', title: 'unfinished sympathy (massive attack)' },
+                        { id: 'JCKBaJDRMw4', title: 'chill music for work (lofi girl)' }
                     ]
                 },
                 {
@@ -119,10 +127,12 @@ class MusicPlayerStorage {
                         { id: 'XXIX2WnfbpE', title: 'runway (lady gaga && doechii)' },
                         { id: 'PhlbZFdlHC0', title: 'bones for the crows (nickelback)' },
                         { id: 'X-KyrJRhYUw', title: 'seconds before the sunrise (dean lewis)' },
+                        { id: 'iGTN1xz0f84', title: 'personal apocalypse (unlike pluto)' }, 
                         { id: 'OZ-ywVT052U', title: 'window (foo fighters)' },
                         { id: 'o5i3l8-hRHg', title: 'burn (zhu && joyia)' },
                         { id: 'X2959NkomEc', title: 'up all night (meltt)' },
                         { id: 'wpWOQSgsetk', title: 'butterfly (anees)' },
+                        { id: 'vnIOFl_jt1M', title: '22 (ok godnight)' },
                         { id: '5H19y7B-Dzk', title: 'who feels love? (oasis)' },
                         { id: 'fhOAsDVg8pY', title: 'round && round (bob moses)' },
                         { id: 'CevxZvSJLk8', title: 'roar (kate perry)' },
@@ -131,7 +141,7 @@ class MusicPlayerStorage {
                         { id: 'HBMy-y2wb4I', title: 'father (ye and travis scott)' },
                         { id: 'vRQb_-mRcAc', title: 'unwritten (natasha bedingfield)' },
                         { id: 'UVpcupE1xEo', title: 'seven (david bowie)' },
-                        { id: 'iGTN1xz0f84', title: 'old dog (j. cole)' },
+                        { id: 'iGTN1xz0f84', title: 'old dog (j. cole)' }, 
                         { id: 'y9S38QLwCUM', title: 'joy (dogstar)' },
                         { id: '94UmYrW5oto', title: 'what up gangsta (50 cent)' },
                         { id: 'hT_nvWreIhg', title: 'counting stars (onerepublic)' },
@@ -143,6 +153,7 @@ class MusicPlayerStorage {
                         { id: 'fA82c4YkAZ4', title: 'first light (lana del rey)' },
                         { id: 'yB9_ImBoazY', title: 'leviticus ($uicideboy$)' },
                         { id: 'yB9_ImBoazY', title: 'reward the scars (koRn)' },
+                        { id: 'Pj5u8OagODo', title: 'it\'s for the kids (anthrax)' },
                         { id: '8r-bTAvYkZw', title: 'ave maria (alanis morissette)' },
                         { id: 'SL8JuRgEajs', title: 'picking dragon\'s pockets (modest mouse)' },
                         { id: 'cfjDrutsfRQ', title: 'sympathy magic (florence + the machine)' },
@@ -153,6 +164,27 @@ class MusicPlayerStorage {
                         { id: '1lyu1KKwC74', title: 'bitter sweet symphony (the verve)' },
                         { id: '7jMlFXouPk8', title: 'high hopes (pink floyd)' },
                         { id: 'TFjmvfRvjTc', title: 'hey you (pink floyd)' }
+                    ]
+                },
+                {
+                    id: '2026 in another reincarnation',
+                    name: '2026 in another reincarnation',
+                    songs: [
+                        { id: 'n2MtEsrcTTs', title: 'harvest moon (neil young)' },
+                        { id: 'G2dR2DV-eGc', title: 'hard to concentrate (rhcp)' },
+                        { id: 'ux2P_nU8aD0', title: 'bridge to my heart (powfu)' },
+                        { id: 'u2ah9tWTkmk', title: 'ordinary (alex warren)' },
+                        { id: 'x11NA63gLDM', title: 'change the world (eric clapton)' },
+                        { id: 'ozXZnwYTMbs', title: 'nothing else matters (metallica)' },
+                        { id: 'fF8GARU44iY', title: 'wild mountain honey (steve miller)' },
+                        { id: 'pGNDncTbJRU', title: 'a place to call home (world of warcraft)' }
+                    ]
+                },
+                {
+                    id: '2026 when they invade the privacy of an engineer and scientist for many years with no concern for her dignity, and they try to frame her with every crazy label imaginable, and nobody goes to jail, and she survives stronger than ever',
+                    name: '2026 when they invade the privacy of an engineer && scientist for many years with no concern for her dignity, and they try to frame her with every crazy label imaginable, and nobody goes to jail, and she survives stronger than ever and builds something amazing and becomes happy forever with good real friends (justice is final; each one of them is cursed by G\'d; payday will come threefold; not her concern anymore; so it is)',
+                    songs: [
+                        { id: 'pkcJEvMcnEg', title: 'lithium (nirvana)' }
                     ]
                 }
             ],

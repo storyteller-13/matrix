@@ -36,6 +36,30 @@ class NotesStorage {
         return [
 
             {
+                date: '2026-05-16T00:00:00.000Z',
+                title: 'as long as i build i\'m blissful',
+                content: this.cleanContent(`
+hello my dear anon.
+    
+a quick update from the last post, because i know you care.
+
+i am very happy advancing my career and building something really cool.
+this is what i will be doing for the rest of my life.
+
+i've realized that researching, creating, and interacting with mind-like folks is truly my only source of happiness and fulfillment.
+
+and after everything that happened to me (The Crime, which is still waiting for justice...), i have decided to take a celibacy vow for the rest of my life.
+
+how about you — what great decisions are you making to ensure you're a free HUMAN and following your dreams?
+
+the future is beautiful.
+
+<3
+mvs
+                                    `)
+            },
+
+            {
                 date: '2026-04-23T00:00:00.000Z',
                 title: 'godspeed you! black emperors',
                 content: this.cleanContent(`
