@@ -34,12 +34,33 @@ class NotesStorage {
 
     getDefaultEntries() {
         return [
+            {
+                date: '2026-06-03T00:00:00.000Z',
+                title: 'courage is...',
+                content: this.cleanContent(`
+
+1️⃣ to never lose the sweet belief that things will work out — even if injustice has been the theme of your life for so long
+
+2️⃣ to find the small things that make you smile, incorporate them into your days, and don't let the negativity of the world sidetrack you
+
+3️⃣ to speak out loud and clearly about how you feel and what you're working toward — so it's clear when your boundaries are not respected (remember: as a free human, you have the right to leave a situation that isn't healthy for you)
+
+4️⃣ to forgive and let go of any pain, grudges, crushed dreams, or lonely nights — understanding that others are also doing their best (remember: focus on the good things you have now, so that tomorrow draws closer to the beautiful life you always deserved)
+
+5️⃣ and... to be brave enough to change direction when it's time to do so
 
 
+there is a beautiful world to be built — and i'm doing my part
+stay zen, dear anon; better days are always coming ad infinitum
 
+
+<3
+mvs
+                                    `)
+            },
             {
                 date: '2026-05-30T00:00:00.000Z',
-                title: 'sunny kingdom fridays I',
+                title: 'sunny retard kingdom fridays',
                 content: this.cleanContent(`
 happy friday, my dear anon ✨
 
@@ -65,7 +86,6 @@ mvs
                 date: '2026-05-26T00:00:00.000Z',
                 title: 'what a season finale!',
                 content: this.cleanContent(`
-
 welcome to the new season, my dear anon
 
 omg, last season's finale was intense and the plot keeps thickening!
@@ -100,8 +120,6 @@ this is going to be a good chapter!
 
 <3
 the storyteller tech ceo
-
-
                                     `)
             },
             {
