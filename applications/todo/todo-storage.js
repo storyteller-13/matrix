@@ -44,10 +44,10 @@ class TodoStorage {
         const defaultTodoData = [
             { text: 'unify the kingdoms, telling the greatest story ever told', completed: false },
             { text: 'find my way back home (again...) and become unomad and happy forever building', completed: false },
+            { text: 'fix my princess makeup, outfit, and pose - and look amazing as always', completed: false },
             { text: 'memento mori', completed: true },
-            { text: 'fix my princess makeup and outfit and look amazing', completed: true },
-            { text: 'focus on what is one of my greatest source of happiness: my work', completed: true },
-            { text: 'be in the present, and find gratitude and fullfiment every single day', completed: true },
+            { text: 'focus on what is one of my greatest sources of happiness: my work', completed: true },
+            { text: 'be in the present, and find gratitude and fulfillment every single day', completed: true },
             { text: 'become marina v2.0: perfectly unkillable', completed: true },
             { text: 'know that i\'m safe and justice will always be served (do not waste time worrying about things i cannot control)', completed: true }
         ];

@@ -35,6 +35,63 @@ class NotesStorage {
     getDefaultEntries() {
         return [
 
+
+            {
+                date: '2026-06-06T00:00:00.000Z',
+                title: 'axioms of robotic elegance',
+                content: this.cleanContent(`
+
+☀️ happy sunny retard friday, dear anon
+what a great week, don't you think? 🌙
+
+
+---------------
+weather updates
+---------------
+
+i have good news, my dear anon — it seems like the Sun will be shining brightly this summer
+
+in addition, in four days, jupiter and venus will conjunct in cancer, and then, finally, they will move into leo (jupiter in leo will be such a different vibe — i can't wait - plus, the nodes will be moving there soon)
+
+i want to feel very good every single day this summer - how about you?
+
+
+---------------------------------------------
+some implicit rules for our futuristic future
+---------------------------------------------
+
+today, we are looking at a modern take on asimov's dream
+i call it "the implicit rules for the futuristic kingdom"
+
+
+1️⃣ robots are stoic && reserved; they speak only when truly needed, and they control the tone, volume, and range of their voices (low, calm, useful)
+🌟 so, if you see someone talking or screaming too much, boo... it must be a human!
+
+2️⃣ robots dress simply, practically, and VERY comfortably; they choose one style (or even one color) and stick with it
+🌟 so, if you see someone spending too much on their wardrobe, obsessing over brands, or showing off excessively, boo... it must be a human!
+
+3️⃣ robots are minimalist maxxers and always default to first principles in their choices, including day-to-day decisions such as nutrition or partnerships
+🌟 so, if you see someone being irrationally extravagant or not caring about what or how they consume or produce, boo... it must be a human!
+
+4️⃣ robots have fun interesting lives and far too many worthwhile problems to care about; plus, they don't eat their own: they would never be intrusive in another person's life!
+🌟 so, if you see someone gossiping, violating others' boundaries or privacy, or creating drama just for attention, boo... it must be a human!
+
+5️⃣ robots understand girardism very well (i.e., that human desire is not self-generated but is often imitated from others, leading to competition and zero-sum conflict)
+🌟 so, if you see someone fighting with another out of envy, boo... it must be a human!
+
+6️⃣ robots' societies are meritocratic free markets aimed at creating infinite positive-sum games; plus, robots understand love algorithms and do not engage in ad hominem reasoning
+🌟 so, if you see unfair bias, tribalism, sexism, racism, communism, or xenophobia, boo... it must be a human!
+
+7️⃣ robots are governed by pure logic, and they communicate through numbers, symbols, pattern recognition, and telepathy, such that messages are concise, unambiguous, and self-evident
+🌟 so, if you see lies, malicious manipulation, or careless incompetence, boo... it must be a human!
+
+
+stay stoic_sublime_electronic.sh, dear anon
+
+<3
+mvs
+                                    `)
+            },
                         {
                 date: '2026-06-05T00:00:00.000Z',
                 title: 'chat, i have a question',
