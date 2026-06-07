@@ -1,4 +1,4 @@
-.PHONY: help server install lint test test-watch test-ui coverage clean
+PHONY: help server install lint test test-watch test-ui coverage clean
 
 PORT ?= 8088
 PYTHON := python3

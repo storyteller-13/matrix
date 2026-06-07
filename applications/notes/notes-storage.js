@@ -36,6 +36,28 @@ class NotesStorage {
         return [
 
 
+                        {
+                date: '2026-06-08T00:00:00.000Z',
+                title: 'welcome to nullstar games',
+                content: this.cleanContent(`
+
+a quick note on this beautiful spring sunday
+to tell my friends about some thrilling news
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+|                                                             |
+|                                                             |
+|   https://marina.vonsteinkirch.com/pages/post.html?post=5   |
+|                                                             |
+|                                                             |
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+stay excited, my dear anon 👾
+
+<3
+mvs
+                                    `)
+            },
             {
                 date: '2026-06-06T00:00:00.000Z',
                 title: 'axioms of robotic elegance',
@@ -94,17 +116,11 @@ mvs
             },
                         {
                 date: '2026-06-05T00:00:00.000Z',
-                title: 'chat, i have a question',
+                title: 'no meio do caminho',
                 content: this.cleanContent(`
 
-is it allowed by the rules of the infinite aether that the cto of your future mega uber first-good-for-humanity-monopoly-ever-straight-outta-the-agentic-era also be your forever sweetheart?
 
-asking for a friend...
-
-🤔🫠
-mvs
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+«i»"be so good they can't ignore you."«/i» — steve martin
 
 «i»
 no meio do caminho tinha uma pedra
@@ -122,7 +138,6 @@ no meio do caminho tinha uma pedra.
 - carlos drummond de andrade
 «/i»
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
                                     `)
             },
@@ -154,7 +169,7 @@ mvs
             },
             {
                 date: '2026-05-30T00:00:00.000Z',
-                title: 'sunny retard kingdom fridays',
+                title: 'sunny kingdom fridays',
                 content: this.cleanContent(`
 happy friday, my dear anon ✨
 
@@ -163,12 +178,7 @@ a beautiful full moon in sagittarius this weekend — according to one of the op
 
 i'm celebrating that every single day has been better than the ones before (peaceful, blissful, focusful), and every single day i'm getting closer to achieving the very specific list of beautiful dreams i've been working so hard for, for so many years now
 
-i'm also celebrating that everyone i love is stronger than they were yesterday, 💜 shining more and more beautifully 💜 — and i love watching it
-
-also i'm celebrating the beginning of two weekly+friday recap traditions that should be here until the end:
-
-1️⃣ the sunny kingdom fridays: fractally introduced right now → for the storyteller side of the storyteller tech ceo
-2️⃣ the retard kingdom fridays: at marina.vonsteinkirch.com/pages/blog.html → for the tech side of the storyteller tech ceo
+i'm also celebrating that everyone i love is stronger than they were yesterday, 💜 shining more beautifully 💜 — and i love watching it
 
 shall we continue to tell the greatest story ever told?
 
