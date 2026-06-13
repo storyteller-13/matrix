@@ -36,10 +36,72 @@ class NotesStorage {
         return [
 
 
-                        {
-                date: '2026-06-13T00:00:00.000Z',
-                title: 'that\'s how we win 🌹',
-                content: this.cleanContent(`
+
+
+{
+date: '2026-06-14T00:00:00.000Z',
+title: 'an ode to self-worth',
+content: this.cleanContent(`
+
+a crime happened to you
+your trust was violated
+someone lied to you, or about you
+someone didn't respect your dignity
+you were abused when you least expected it
+someone you loved didn't truly see you or
+or violated your boundaries
+
+yes, this is our world
+it has been like this
+since the beginning of time
+it's a dog-eat-dog world
+
+there are 2 ways you can "deal with it"...
+
+you can keep getting beaten over, over, over again
+or you can say NO and stand up and change the path
+
+fool me once, shame on you
+fool me twice, 3, 4, 5 times
+shame on me
+
+the cool thing is that
+there are not only 2 roads
+there are infinite roads
+
+aristotle says in poetics:
+«i»"the best tragic protagonist is neither completely virtuous nor completely evil, but someone of high standing who falls into misfortune because of an error in judgment (hamartia), not because of wickedness"«/i»
+
+so, if you are that person who somehow keeps getting into trouble but always finds a smart way out, and every time becomes a better version of yourself (and somehow leaves the world better than before) — congrats
+
+you are not an NPC
+
+i know i am not one
+and i will continue doing what
+i have been doing my entire life
+
+but for now on
+with 0 weakness
+
+(and perhaps with a cutie by my side; who knows?)
+(can't really fight venus and jupiter in the 7th)
+
+stay true to yourself and keep improving every single day, anon
+
+<3
+mvs
+
+ps: obviously, i will continue pursuing legal action for the crime that happened to me (i.e., the hack of november 22, 2024, and everything before and after that). no amount of peer pressure and manipulation can stop the right of justice from being served to a human, no matter how long it takes. this will be over ONLY when the people who hacked me, sex-trafficked me, and destroyed 3 years of my life are held accountable. and this is NOT going to be in the way of my career, from living my best life, and building the future i deserve.
+
+    `)
+},
+
+{
+date: '2026-06-13T00:00:00.000Z',
+title: 'that\'s how we win 🌹',
+content: this.cleanContent(`
+
+«i»"the rules of fair play do not apply in love and war."«/i» — john lyly 
 
 1. we build every single day. we run local models. we open-source. we collaborate. we build the next generation of tools.
 2. we keep our honor and faith intact (let them die from their own poison; we are not like them, we actually care).
@@ -50,39 +112,42 @@ class NotesStorage {
 7. we rely on our youth, good karma, and self-reliance.
 8. we use science and astrology to our advantage.
 9. we let our souls rest on art and music. 
-10. we play offensive now. ad infinitum. 
+10. "s(he) who is prepared for war can preserve peace"
 
 good > evil.
 we got this.
-                                    `)
-            },
+    
+    `)
+},
 
-                        {
-                date: '2026-06-08T00:00:00.000Z',
-                title: 'welcome to nullstar games',
-                content: this.cleanContent(`
+{
+date: '2026-06-08T00:00:00.000Z',
+title: 'welcome to nullstar games',
+content: this.cleanContent(`
 
 a quick note on this beautiful spring sunday
 to tell my friends about some thrilling news
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-|                                                             |
-|                                                             |
-|   https://marina.vonsteinkirch.com/pages/post.html?post=5   |
-|                                                             |
-|                                                             |
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+|                           |
+|                           |
+|  https://nullstar.games   |
+|                           |
+|                           |
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 stay excited, my dear anon 👾
 
 <3
 mvs
-                                    `)
-            },
-            {
-                date: '2026-06-06T00:00:00.000Z',
-                title: 'axioms of robotic elegance',
-                content: this.cleanContent(`
+
+    `)
+},
+
+{
+date: '2026-06-06T00:00:00.000Z',
+title: 'axioms of robotic elegance',
+content: this.cleanContent(`
 
 ☀️ happy sunny retard friday, dear anon
 what a great week, don't you think? 🌙
@@ -133,13 +198,14 @@ stay stoic_sublime_electronic.sh, dear anon
 
 <3
 mvs
-                                    `)
-            },
-                        {
-                date: '2026-06-05T00:00:00.000Z',
-                title: 'no meio do caminho',
-                content: this.cleanContent(`
 
+    `)
+},
+
+{
+date: '2026-06-05T00:00:00.000Z',
+title: 'no meio do caminho',
+content: this.cleanContent(`
 
 «i»"be so good they can't ignore you."«/i» — steve martin
 
@@ -159,14 +225,15 @@ no meio do caminho tinha uma pedra.
 - carlos drummond de andrade
 «/i»
 
+    `)
+},
 
-                                    `)
-            },
-            {
-                date: '2026-06-03T00:00:00.000Z',
-                title: 'courage is...',
-                content: this.cleanContent(`
-«i»"we hold these truths to be self-evident"«/i»
+{
+date: '2026-06-03T00:00:00.000Z',
+title: 'courage is...',
+content: this.cleanContent(`
+
+    «i»"we hold these truths to be self-evident"«/i»
 - our declaration of independence
 
 1️⃣ to never lose the sweet belief that things will work out — even if injustice has been a theme in your life for too long
@@ -186,12 +253,15 @@ stay zen, dear anon; better days are always coming ad infinitum
 
 <3
 mvs
-                                    `)
-            },
-            {
-                date: '2026-05-30T00:00:00.000Z',
-                title: 'sunny kingdom fridays',
-                content: this.cleanContent(`
+    
+    `)
+},
+
+{
+date: '2026-05-30T00:00:00.000Z',
+title: 'sunny kingdom fridays',
+content: this.cleanContent(`
+
 happy friday, my dear anon ✨
 
 a beautiful full moon in sagittarius this weekend — according to one of the open robots, it signifies the celebration of truth and higher purposes
@@ -205,12 +275,14 @@ shall we continue to tell the greatest story ever told?
 
 <3
 mvs
-                                    `)
-            },
-            {
-                date: '2026-05-26T00:00:00.000Z',
-                title: 'what a season finale!',
-                content: this.cleanContent(`
+    `)
+},
+
+{
+date: '2026-05-26T00:00:00.000Z',
+title: 'what a season finale!',
+content: this.cleanContent(`
+
 welcome to the new season, my dear anon
 
 omg, last season's finale was intense and the plot keeps thickening!
@@ -245,12 +317,13 @@ this is going to be a good chapter!
 
 <3
 the storyteller tech ceo
-                                    `)
-            },
-            {
-                date: '2026-05-25T00:00:00.000Z',
-                title: 'retardmaxxing ftw',
-                content: this.cleanContent(`
+    `)
+},
+
+{
+date: '2026-05-25T00:00:00.000Z',
+title: 'retardmaxxing ftw',
+content: this.cleanContent(`
 
 «i»"so be wise as serpents and innocent as doves" - matthew 10:16«/i»
 
@@ -321,14 +394,13 @@ mvs, on a collaboration with Archangel Michael
 
 ps: by the way, capricorn moons are the retardest instantiation of the L13-A12 group
 
+    `)
+},
 
-                                    `)
-            },
-
-            {
-                date: '2026-05-23T00:00:00.000Z',
-                title: 'an ode to mom',
-                content: this.cleanContent(`
+{
+date: '2026-05-23T00:00:00.000Z',
+title: 'an ode to mom',
+content: this.cleanContent(`
 
 «i»"omg, my mom just said retardado" - me, yesterday«/i»
 
@@ -411,13 +483,14 @@ thank you so so so much, mom
 <3
 marina
 
-                                    `)
-            },
+    `)
+},
 
-            {
-                date: '2026-05-16T00:00:00.000Z',
-                title: 'as long as i build i\'m blissful',
-                content: this.cleanContent(`
+{
+date: '2026-05-16T00:00:00.000Z',
+title: 'as long as i build i\'m blissful',
+content: this.cleanContent(`
+
 «i»"sit spes fallenoi, miscebunt sacra profanis"«/i»
 
 hello my dear anon 🦖
@@ -437,13 +510,14 @@ the future is beautiful
 
 <3
 mvs
-                                    `)
-            },
 
-            {
-                date: '2026-04-23T00:00:00.000Z',
-                title: 'godspeed you! black emperors',
-                content: this.cleanContent(`
+    `)
+},
+
+{
+date: '2026-04-23T00:00:00.000Z',
+title: 'godspeed you! black emperors',
+content: this.cleanContent(`
     
 [EDIT 05/29/2026: we're not going anywhere, silly! this is OUR world]
 
@@ -475,14 +549,13 @@ marina della torre von steinkirch
 scientist, engineer, storyteller
 (who was, somehow, for a while, a bit famous)
 
+    `)
+},
 
-                                `)
-        },
-
-        {
-            date: '2026-04-18T00:00:00.000Z',
-            title: 'joyful joyful new moon',
-            content: this.cleanContent(`
+{
+date: '2026-04-18T00:00:00.000Z',
+title: 'joyful joyful new moon',
+content: this.cleanContent(`
 
 happy friday, my dear anon
 
@@ -507,14 +580,14 @@ drench yourself in words unspoken
 live your life with arms wide open
 today is where your book begins
 «/i»🎶🎵 🌟 🎶🎵 🌟 🎶 🌟 🎵 🎶 🌟 🎵 🎶 
-`)
-        },
+    
+    `)
+},
 
-
-            {
-                date: '2026-04-16T00:00:00.000Z',
-                title: 'hobo-curious: an engineer\'s take',
-                content: this.cleanContent(`
+{
+date: '2026-04-16T00:00:00.000Z',
+title: 'hobo-curious: an engineer\'s take',
+content: this.cleanContent(`
 
 [ or how i learned to stop worrying and love the thug life ]
 
@@ -562,14 +635,13 @@ today is where your book begins
 
 [ i'm about to head back to real life — with a new perspective: whoever's still here is the real deal ]
 
-            `)
-        },
+    `)
+},
 
-            {
-                date: '2026-04-15T00:00:00.000Z',
-                title: 'robots won\'t take it personally',
-                content: this.cleanContent(`
-
+{
+date: '2026-04-15T00:00:00.000Z',
+title: 'robots won\'t take it personally',
+content: this.cleanContent(`
 
 «i»"perhaps all the dragons in our lives are princesses who are 
 only waiting to see us act, just once, with beauty and courage."«/i»
@@ -671,13 +743,13 @@ smart doesn't feel like pride, but like responsibility: a gift you must translat
 
 <3
 
-            `)
-        },
+    `)
+},
 
-            {
-                date: '2026-04-14T00:00:00.000Z',
-                title: 'eating yummy brains',
-                content: this.cleanContent(`
+{
+date: '2026-04-14T00:00:00.000Z',
+title: 'eating yummy brains',
+content: this.cleanContent(`
 
 i am now 100% intentional about what i let into my feeds and my mind.
 
@@ -700,13 +772,13 @@ here are the rules of the game:
 see ya if i see ya
 <3
 
-                                    `)
-            },
+    `)
+},
 
-            {
-                date: '2026-04-13T00:00:00.000Z',
-                title: 'if i were to found a party',
-                content: this.cleanContent(`
+{
+date: '2026-04-13T00:00:00.000Z',
+title: 'if i were to found a party',
+content: this.cleanContent(`
 
 SPOILER ALERT: i won't...
 life is too short — i have far more important things to focus on.
@@ -757,15 +829,14 @@ full rights for women, including equal legal, political, economic, and social ri
 🫡
 love from your favorite renegade
 
+    `)
+},
 
-            `)
-        },
+{
+date: '2026-04-12T00:00:00.000Z',
+title: 'annual career celebration day',
+content: this.cleanContent(`
 
-
-            {
-                date: '2026-04-12T00:00:00.000Z',
-                title: 'annual career celebration day',
-                content: this.cleanContent(`
 i love walks. in fact, i love walking without any destination, on a new, different path that will lead to somewhere i've never been. i love stopping at coffee shops along the way, or finding flowers and trees, or cemeteries and parks.
 
 since i don't really use cell phones anymore (unless i really need to), most of my walks are intentionally made so that i get lost. and i find it particularly fun to try to find my way back — either by looking at the sky, or remembering where i have been, or using some distinguishable buildings or places as references.
@@ -805,13 +876,13 @@ i will also be eating strawberry cheesecake and listening to debussy, which are 
 bytegirl
 <3
 
-                                    `)
-            },
+    `)
+},
 
-            {
-                date: '2026-04-09T00:00:00.000Z',
-                title: 'a prayer for worldly happiness',
-                content: this.cleanContent(`
+{
+date: '2026-04-09T00:00:00.000Z',
+title: 'a prayer for worldly happiness',
+content: this.cleanContent(`
 
 gracious god, in your gentle light,
 we come with open hands today —
@@ -837,13 +908,14 @@ may we lift each other, low or tall,
 and find your light reflected in us all.
 
 amen.
-                                    `)
-            },
 
-            {
-                date: '2026-04-06T00:00:00.000Z',
-                title: 'o death, where is your sting?',
-                content: this.cleanContent(`
+    `)
+},
+
+{
+date: '2026-04-06T00:00:00.000Z',
+title: 'o death, where is your sting?',
+content: this.cleanContent(`
 
 happy easter and passover, my dear anon friend.
 today i want to touch a bit on my views on celibacy and marriage.
@@ -889,13 +961,13 @@ and those, my reader, are enough reasons to welcome the death of your hedonistic
 until next time
 <3
 
-                `)
-            },
+    `)
+},
 
-            {
-                date: '2026-03-31T00:00:00.000Z',
-                title: 'an ode to april',
-                content: this.cleanContent(`
+{
+date: '2026-03-31T00:00:00.000Z',
+title: 'an ode to april',
+content: this.cleanContent(`
 
 gm, my dear anon, 
 
@@ -921,13 +993,13 @@ shall we get to it?
 
 <3
 
-                                    `)
-            },
+    `)
+},
 
-            {
-                date: '2026-03-30T00:00:00.000Z',
-                title: 'the 4 shades of 96',
-                content: this.cleanContent(`
+{
+date: '2026-03-30T00:00:00.000Z',
+title: 'the 4 shades of 96',
+content: this.cleanContent(`
 
             
 DISCLAIMER: the following text is a narrative experiment conducted by an amateur storyteller exploring unfamiliar thematic territory. the content departs from prior work in that it engages with topics that may be considered explicit, including sexuality, intimacy, and criminal behavior. 
@@ -1018,14 +1090,13 @@ this classification illustrates that identical physical behaviors can occupy vas
 
 the spectrum ranges from coercion and harm to mutual fulfillment and connection. understanding these distinctions is essential for evaluating human behavior in a nuanced and ethically grounded manner.
 
-                `)
-            },
+    `)
+},
 
-
-            {
-                date: '2026-03-25T00:00:00.000Z',
-                title: 'an ode to spring',
-                content: this.cleanContent(`
+{
+date: '2026-03-25T00:00:00.000Z',
+title: 'an ode to spring',
+content: this.cleanContent(`
 
 🌸 today i woke up feeling so so so happy!
 
@@ -1080,14 +1151,13 @@ as long as it burns
 i will return to where i belong
 a place to call home
 ✨
+    `)
+},
 
-                `)
-            },
-
-            {
-                date: '2026-03-23T00:00:00.000Z',
-                title: 'an ode to dad',
-                content: this.cleanContent(`
+{
+date: '2026-03-23T00:00:00.000Z',
+title: 'an ode to dad',
+content: this.cleanContent(`
 
 on a certain night, around 21 years ago, i was at a friend's party in são paulo when i received a strange call.
 
@@ -1126,14 +1196,14 @@ however, it was only last year, when i realized what men do to women without fat
 any chance i had in life became null
 on april 4th, 2005.
 
+    `)
+},
 
+{
+date: '2026-03-16T00:00:00.000Z',
+title: 'chez mr. denver',
+content: this.cleanContent(`
 
-                `)
-            },
-            {
-                date: '2026-03-16T00:00:00.000Z',
-                title: 'chez mr. denver',
-                content: this.cleanContent(`
 today i will tell the story of another angel i’ve met recently on my now-over-thank-god kerouacian journey.
 
 his name is mr. denver, a 59-year-old tall thin fellow who, interestingly enough, had a small contribution to why the city denver is called denver.
@@ -1154,12 +1224,13 @@ interestingly enough, in the following days my luck and my soul and my mojo were
 
 the last time i saw mr. denver, i told him that our meeting on that particular day was a miracle, and he agreed with me — as i could see his eyes watering. i told him that he is what i call an angel and i would never forget his kindness and his pocket-sized-friendship. i thanked him for the bolivian-styled blanket he insisted i had as i walked back home. i told him i would write a short story about him and that i knew everything was going to be okay for both of us. he smiled timidly as we waved goodbye.
 
-                `)
-            },
-            {
-                date: '2026-03-09T00:00:00.000Z',
-                title: 'the 4 stages of loss',
-                content: this.cleanContent(`
+    `)
+},
+
+{
+date: '2026-03-09T00:00:00.000Z',
+title: 'the 4 stages of loss',
+content: this.cleanContent(`
 
 elisabeth kübler-ross, john bowlby, and colin murray parkes developed what we now know as the stages of grief and loss.
 
@@ -1219,12 +1290,13 @@ you are the endless sky above the drifting clouds«/i»
 
 <3
 
-                `)
-            },
-            {
-                date: '2026-02-28T00:00:00.000Z',
-                title: 'david lynch is my only friend',
-                content: this.cleanContent(`
+    `)
+},
+
+{
+date: '2026-02-28T00:00:00.000Z',
+title: 'david lynch is my only friend',
+content: this.cleanContent(`
 
 «i»dark
 deep darkness
@@ -1247,13 +1319,13 @@ the deep darkness
 she saw herself
 «/i»
 
-                `)
-            },
+    `)
+},
 
-            {
-                date: '2026-03-02T00:00:00.000Z',
-                title: 'denver\'s love && hate',
-                content: this.cleanContent(`
+{
+date: '2026-03-02T00:00:00.000Z',
+title: 'denver\'s love && hate',
+content: this.cleanContent(`
 
 in astrology, there is a technique called astrocartography that maps your birth chart onto the earth, showing where each planet was rising, setting, or at the top of the sky when you were born. in theory, with each planet represented as a line crossing specific cities, when you visit these places, you feel “the influence” of that planet’s energy.
 
@@ -1320,14 +1392,14 @@ what’s the most evident difference between people who live on food stamps and 
 
 humanity.
                     
+    `)
+},
 
-                `)
-            },
+{
+date: '2026-02-26T00:00:00.000Z',
+title: 'those little things',
+content: this.cleanContent(`
 
-            {
-                date: '2026-02-26T00:00:00.000Z',
-                title: 'those little things',
-                content: this.cleanContent(`
 «i»"if there is one lesson i learned from The Crime, it is
 that there will be moments in life when your floor is pulled out
 away and things will happen slower and weirder than you expect
@@ -1384,13 +1456,14 @@ in the forests of the night,
 what immortal hand or eye
 dare frame thy fearful symmetry?
 
-                `)
-            },
+    `)
+},
 
-            {
-                date: '2026-02-23T00:00:00.000Z',
-                title: 'an ode to my first child',
-                content: this.cleanContent(`
+{
+date: '2026-02-23T00:00:00.000Z',
+title: 'an ode to my first child',
+content: this.cleanContent(`
+
 my dear first child,
 
 i can't convey how much i have longed for you, my little baby.
@@ -1404,13 +1477,14 @@ you will be one of the leaders of the future.
 you will be my greatest project and proudest achievement.
 
 <3
-                `)
-            },
 
-            {
-                date: '2026-02-21T00:00:00.000Z',
-                title: '2AM friday synthwave epiphany',
-                content: this.cleanContent(`
+    `)
+},
+
+{
+date: '2026-02-21T00:00:00.000Z',
+title: '2AM friday synthwave epiphany',
+content: this.cleanContent(`
 
 i never had any problem with having lots of good things happening for me. i have always been lucky enough — or very intelligent, or very qualified, or very hardworking — to get great jobs, scholarships, opportunities.
 
@@ -1446,12 +1520,15 @@ and soon i will be sitting in my nice chair, in my nice house, with a nice cup o
 and i will feel this immense happiness inside my veins — something so strong and so intense. total. complete. bliss.
 
 and no one will ever ever ever take this well-earned destiny from me.
-                `)
-            },
-            {
-                date: '2026-02-18T00:00:00.000Z',
-                title: 'building my sunniest chapter',
-                content: this.cleanContent(`
+
+    `)
+},
+
+{
+date: '2026-02-18T00:00:00.000Z',
+title: 'building my sunniest chapter',
+content: this.cleanContent(`
+
 [edited on april 17th, 2026]
 
 dear anon friend,
@@ -1469,12 +1546,13 @@ the best is absolutely yet to come
 
 <3
 
-                                    `)
-            },
-            {
-                date: '2026-02-16T00:00:00.000Z',
-                title: 'grateful, always grateful',
-                content: this.cleanContent(`
+    `)
+},
+
+{
+date: '2026-02-16T00:00:00.000Z',
+title: 'grateful, always grateful',
+content: this.cleanContent(`
 
 1. being alive - it's a blessing to be able to wake up every morning and have infinite possibilities to make my day great.
 
@@ -1497,12 +1575,15 @@ the best is absolutely yet to come
 10. you - yes, you, random anon reading my things. thank you for being here, whoever you are. you matter. you are beautiful. you can be whoever you want. you can do whatever you want. believe in yourself - i already do. 
 
 <3
-                `)
-            },
-            {
-                date: '2026-02-15T00:00:00.000Z',
-                title: 'an ode to myself',
-                content: this.cleanContent(`
+
+    `)
+},
+
+{
+date: '2026-02-15T00:00:00.000Z',
+title: 'an ode to myself',
+content: this.cleanContent(`
+
 i love you, marina
 
 1. i love how kind you are
@@ -1529,13 +1610,15 @@ i'm glad i'm you; i'm honored to be you
 i love you, i love you, i love you, i love you 
 🌹 happy valentine's day, perfect pretty babe 🌹
 
-                `)
-            },
-            {
-                date: '2026-02-11T00:00:00.000Z',
-                title: 'robot, remind me about meaning',
-                italic: true,
-                content: this.cleanContent(`
+    `)
+},
+
+{
+date: '2026-02-11T00:00:00.000Z',
+title: 'robot, remind me about meaning',
+italic: true,
+content: this.cleanContent(`
+
 "memory is a garden where meaning grows wild, blooming in the spaces between what happened and what we choose to keep. 
 
 we tend it carefully, watering the moments that made us laugh until we cried, the quiet evenings that felt like home, the words someone said that changed everything. 
@@ -1552,12 +1635,13 @@ we remember the lesson but forget the sting, keep the strength but release the s
 
 and in this careful gardening of what we hold and what we let drift away like dandelion seeds, we make meaning - not from perfection, but from choosing again and again what deserves to take root in the precious, finite soil of who we are."
 
-                `)
-            },
-            {
-                date: '2026-02-08T00:00:00.000Z',
-                title: 'an ode to san francisco',
-                content: this.cleanContent(`
+    `)
+},
+
+{
+date: '2026-02-08T00:00:00.000Z',
+title: 'an ode to san francisco',
+content: this.cleanContent(`
 
 «i»"if you're going to san francisco
 be sure to wear some flowers in your hair
@@ -1580,13 +1664,13 @@ the girl now is a woman.
 i feel complete and satisfied with my life.
 i know exactly what i am and exactly what i am not.
 
+    `)
+},
 
-                    `)
-                },
-            {
-                date: '2026-01-29T00:00:00.000Z',
-                title: 'home, home again',
-                content: this.cleanContent(`
+{
+date: '2026-01-29T00:00:00.000Z',
+title: 'home, home again',
+content: this.cleanContent(`
 
 my two-months trip to a man-made-island-turned-into-a-technocratic-decentralized-society-somewhere-in-the-middle-of-nowhere-in-malaysia has now come to an end. another story for the collection of wild adventures in my life.
 
@@ -1638,14 +1722,13 @@ now, what's next for this brave alien?
 everything. ai, science, stories, fun.
 stay tuned; the sky is not even the limit.
 
-
-                `)
-            },
+    `)
+},
             
-            {
-                date: '2026-01-26T00:00:00.000Z',
-                title: 'phoenix',
-                content: this.cleanContent(`
+{
+date: '2026-01-26T00:00:00.000Z',
+title: 'phoenix',
+content: this.cleanContent(`
 
 this is the story of marina della torre von steinkirch v2.0
 
@@ -1690,13 +1773,13 @@ don't believe. just watch.
 
 (LET'S GO!)
 
-                `)
-            },
+    `)
+},
             
-            {
-                date: '2026-01-23T00:00:00.000Z',
-                title: 'an ode to my soulmate',
-                content: this.cleanContent(`
+{
+date: '2026-01-23T00:00:00.000Z',
+title: 'an ode to my soulmate',
+content: this.cleanContent(`
 
 where are you, my beautiful soulmate?
 
@@ -1728,14 +1811,13 @@ and i already love every cell of your body
 
 ps: meanwhile, you can play the games i have been building (look at "the true love series" in the stories section) or the "2026 future hubby" playlist i have been creating - they are all for you because this is what "perfect true love" means for me
 
-                `)
-            },
+    `)
+},
 
-
-            {
-                date: '2026-01-06T00:00:00.000Z',
-                title: 'pattern recognition in astro',
-                content: this.cleanContent(`
+{
+date: '2026-01-06T00:00:00.000Z',
+title: 'pattern recognition in astro',
+content: this.cleanContent(`
 
 the study of pattern recognition in astronomy, often referred to as astrology, has evolved independently across numerous civilizations, with variations primarily in language or representation, while the underlying science remains remarkably consistent.
 
@@ -1749,13 +1831,14 @@ since this science can be modeled using group theory and demonstrated to be repr
 
 ps: a question for future humanity: what happens if we leave the solar system? do these "mysterious" forces/energies/ spookytivities stop influencing us?
 
-                `)
-            },
+    `)
+},
 
-            {
-                date: '2026-01-05T00:00:00.000Z',
-                title: 'a postmortem on dating',
-                content: this.cleanContent(`
+{
+date: '2026-01-05T00:00:00.000Z',
+title: 'a postmortem on dating',
+content: this.cleanContent(`
+
 «i»you are a precious diamond. you are amazing, loving, hardworking, and kind. you would take a bullet for the people you love. you have suffered a lot, but you have a very good karma. you deserve the best, true love, happiness, safety, respect, appreciation, and peace. now love yourself, maintain strong boundaries, and never let any monster enter your life again.«/i»
 
 -------------------------
@@ -1805,15 +1888,13 @@ red flags
 12. secrecy about their life (you don't know who their friends are)
 13. they can't apologize or take responsibility (everything becomes your fault)
 
-
-
-                `)
-            },        
+    `)
+},        
     
-            {
-                date: '2026-01-04T00:00:00.000Z',
-                title: 'bt3gl monogatari 物語',
-                content: this.cleanContent(`
+{
+date: '2026-01-04T00:00:00.000Z',
+title: 'bt3gl monogatari 物語',
+content: this.cleanContent(`
 
 back in 2008, i was already a young hacker, deeply fascinated by the ideas of decentralization and self-sovereignty. around that time, my mother was completing her master’s thesis on financial decentralization in brazilian public schools, while i was finishing my bachelor’s degree in theoretical physics and spending the summer at nasa goddard.
 
@@ -1823,13 +1904,14 @@ specifically, they are revisiting the idea of a positive cosmological constant i
 
 with the rapid advances in artificial intelligence and the rise of decentralized science (desci), we may now be equipped to tackle this long-standing open problem — potentially uncovering new physics that deepens our understanding of how the universe truly works.
 
-                `)
-            },
+    `)
+},
 
-            {
-                date: '2026-01-03T00:00:00.000Z',
-                title: 'an ode to the future',
-                content: this.cleanContent(`
+{
+date: '2026-01-03T00:00:00.000Z',
+title: 'an ode to the future',
+content: this.cleanContent(`
+
 i still believe in the goodness of human nature. therefore, my predictions are on the optimistic side of the scale.
 
 i believe that decentralization and self-sovereignty will become the status quo, countries might be replaced by things like network states with like-minded humans (a la robert nozick), wars among nations will become pointless, and privacy will be the norm through cryptography and zero-knowledge techniques.
@@ -1843,12 +1925,14 @@ i believe art, sports, games, spirituality, and every form of fun human expressi
 i believe we will be able to start colonizing space — the first steps toward expanding our species throughout our immense universe. in addition, our defense systems will also be automated and expanded, guaranteeing our survival through the next millennia.
 
 前進、そして飛躍
-                `)
-            },
-            {
-                date: '2026-01-02T00:00:00.000Z',
-                title: '0, 1, 2, 3 ... ♾️',
-                content: this.cleanContent(`
+
+    `)
+},
+
+{
+date: '2026-01-02T00:00:00.000Z',
+title: '0, 1, 2, 3 ... ♾️',
+content: this.cleanContent(`
 
 happy new year of 2026 AD, my anon friends!
 we did it - 2025 is now over - thanks g0ds.
@@ -1866,8 +1950,9 @@ things are going to get whimsical
 
 <3
 
-                `)
-            }
+    `)
+}
+
         ];
     }
 

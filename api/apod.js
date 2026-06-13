@@ -26,7 +26,7 @@ export default async function handler(req, res) {
 
     const response = await fetch(apiUrl, {
       headers: {
-        'User-Agent': 'vonsteinkirch.com/1.0',
+        'User-Agent': 'matrix.nullstar.fun/1.0',
       },
     });
 

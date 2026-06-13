@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-vonsteinkirch.com — a personal website styled as a desktop operating system. Vanilla JS (no frameworks), single `index.html` page with modular application scripts. Deployed on Vercel.
+A personal website styled as a desktop operating system. Vanilla JS (no frameworks), single `index.html` page with modular application scripts. Deployed on Vercel.
 
 ## Installation
 

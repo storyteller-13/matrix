@@ -2,7 +2,7 @@
 (function() {
     // Constants
     const HOME_DIR = '~';
-    const PROMPT_PREFIX = 'anon@vonsteinkirch.com:';
+    const PROMPT_PREFIX = 'anon@nullstar:';
     const MODAL_ID = 'terminal-image-modal';
     const HOME_ALLOWED_ENTRIES = ['.secrets', 'artwork'];
     const LS_DETAILED_DATE = 'Dec 15 14:30';
@@ -38,7 +38,7 @@
                 'artwork': 'directory'
             },
             '/etc': {
-                'os-release': 'name="vonsteinkirch.com"\nversion="2024.12"\nid=vonsteinkirch\npretty_name="vonsteinkirch.com 2024.12"\nansi_color="0;34"'
+                'os-release': 'name="nullstar"\nversion="2024.12"\nid=nullstar\npretty_name="nullstar 2024.12"\nansi_color="0;34"'
             },
             '/artwork': {
                 'you_met_me_at_a_very_strange_time_in_my_life.png': 'file',

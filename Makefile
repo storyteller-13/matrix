@@ -1,18 +1,7 @@
-PHONY: help server install lint test test-watch test-ui coverage clean
+PHONY: server install lint test test-watch test-ui coverage clean
 
 PORT ?= 8088
 PYTHON := python3
-
-help:
-	@echo "vonsteinkirch.com — make targets:"
-	@echo "  make install      — npm install (and pre-commit hook)"
-	@echo "  make server      — dev server at http://localhost:$(PORT)"
-	@echo "  make lint        — run ESLint"
-	@echo "  make test        — run tests once"
-	@echo "  make test-watch  — vitest watch"
-	@echo "  make test-ui     — vitest UI"
-	@echo "  make test-coverage — vitest with coverage"
-	@echo "  make clean       — remove node_modules, coverage, caches"
 
 server:
 	@echo "⭐️ starting development server on http://localhost:$(PORT)"

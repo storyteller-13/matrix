@@ -63,7 +63,7 @@ window.QUOTES = [
 
     // Miyamoto Musashi
     { text: 'to become the enemy, see yourself as the enemy of the enemy.', author: 'miyamoto musashi' },
-  { text: 'there is nothing outside of yourself that can ever enable you to get better, stronger, richer, or smarter. everything is within. seek nothing outside of yourself.', author: 'miyamoto musashi' },
+    { text: 'there is nothing outside of yourself that can ever enable you to get better, stronger, richer, or smarter. everything is within. seek nothing outside of yourself.', author: 'miyamoto musashi' },
     { text: 'do nothing that is of no use.', author: 'miyamoto musashi' },
     { text: 'if you wish to control others you must first control yourself.', author: 'miyamoto musashi' },
     { text: 'you must understand that there is more than one path to the top of the mountain.', author: 'miyamoto musashi' },
@@ -73,7 +73,6 @@ window.QUOTES = [
     { text: 'to win any battle, you must fight as if you are already dead.', author: 'miyamoto musashi' },
     { text: 'today is victory over yourself of yesterday; tomorrow is your victory over lesser men.', author: 'miyamoto musashi' },
     { text: 'think lightly of yourself and deeply of the world.', author: 'miyamoto musashi' },
-    { text: 'the ultimate aim of martial arts is not having to use them.', author: 'miyamoto musashi' },
     { text: 'no fear, no hesitation, no surprise, no doubt.', author: 'miyamoto musashi' },
     { text: 'it is difficult to understand the universe if you only study one planet.', author: 'miyamoto musashi' },
     { text: 'truth is not what you want it to be; it is what it is, and you must bend to its power or live a lie.', author: 'miyamoto musashi' },

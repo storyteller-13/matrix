@@ -24,7 +24,7 @@ export default async function handler(req, res) {
       : 'https://api.chess.com/pub/puzzle';
 
     const response = await fetch(apiUrl, {
-      headers: { 'User-Agent': 'vonsteinkirch.com/1.0' },
+      headers: { 'User-Agent': 'matrix.nullstar.fun.com/1.0' },
     });
 
     if (!response.ok) {
