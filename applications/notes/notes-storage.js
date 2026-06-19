@@ -35,8 +35,35 @@ class NotesStorage {
     getDefaultEntries() {
         return [
 
+{
+date: '2026-06-20T00:00:00.000Z',
+title: 'yet another friday',
+content: this.cleanContent(`
 
+hello there, my dear anon
 
+how are you holding up?
+whatever the answer is, i am formally wishing you a great, sunny, hopeful weekend
+
+with the new moon in gemini that just happened and venus in leo, i used this week to rest, sleep, cleanse, reorganize, and focus on my goals
+
+building nullstar as my north star (pun definitely intended) — this is currently my only real source of happiness, to be honest — and i have been working really hard every day for many months now, and i plan to continue doing so for many years to come — what i am creating is amazing, and i am the right person to do it — and nothing is going to make me forget that
+
+things are calm and steady, and this is great 
+
+this weekend i'll be checking out a brazilian event called "festa junina" — i haven't been to one since i was a little kid, so it's going to be a fun walk down memory lane
+
+feeling a bit lonely, but i'll keep pushing; i have my entire life ahead of me, and i'm excited about jupiter soon entering leo, chiron entering taurus, and mars entering gemini: the vibe shift we all need... 
+
+<3
+mvs
+
+ps: just invited my crush out for a sunny coffee ☀️ will he say yes? wish me luck, anon!
+
+ps2: vaaaaaaaaaaaaai braaaaaaaaaaaaasil 🎀
+
+    `)
+},   
 
 {
 date: '2026-06-14T00:00:00.000Z',
