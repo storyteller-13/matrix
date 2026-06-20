@@ -36,6 +36,86 @@ class NotesStorage {
         return [
 
 {
+date: '2026-06-21T00:00:00.000Z',
+title: 'on being soft 4 life',
+content: this.cleanContent(`
+
+i love saturday mornings, not only because they are shabbat, and i'm "allowed to not work today" 
+
+but there's also a psychological feeling to it — a feeling of "it's okay to take it slow today" or "you can slack off a little bit today" 
+
+it's also when i meditate about the previous week and think about how my next week or month or year or life will be
+
+
+----------------
+✅ career legacy
+----------------
+
+i am pretty happy with the fact that i have "figured out" the story of my career
+
+building NULLSTAR GAMES is a very natural choice to be set as the long-run plan
+
+because it's research and i just need my computer and my fleet of agents for it
+
+because it's super flexible and i can work from anywhere and the hours i want
+
+and because it's fun, it doesn't feel like work and there is so much to be built in the next years
+
+this is a perfect choice, this is the cherry on top of so much work during my entire life
+
+so i don't need to worry about BIG LIFE DECISIONS on this sector of my life anymore
+
+i will simply continue doing what i have always been doing, and success, money, and customers will come on their own, from the quality of putting in the work every day on something i am so qualified for and passionate about
+
+
+------------------
+🟥 personal legacy
+------------------
+
+so now, this gives me the space i need to figure out the second half of my human life, which definitely needs some attention right now: my future husband and the children i want to raise
+
+the first thing i need to fix is how i will be choosing my husband
+
+i watched a podcast a few days ago that made me think a lot about my choices over the years: the person you want to be with is a mirror of how you value yourself
+
+i never thought about it that way before, but it felt like such an epiphany! 
+
+i've spent the last many years investing in emotionally unavailable men, and waiting for them to make the move, to come to me, to love and help me, to build a family and be happy forever
+
+is it their fault that they never came? that's the wrong question
+
+their choices are not my concern, but the fact that i allowed this situation is a clear reflection of how i was seeing myself
+
+(to be fair, i was fighting a few heinous crimes, and violations of my trust, and systematic bullying — so obviously i was forgetting who i am for a while and not really taking care of myself properly)
+
+i won't feel bad for being so fragile and lost for the last few years
+
+what i am going to do is damage control, once and for all
+(and remember what my bff says, "if the cost is your mental health, it's not worth it")
+
+so, in summary: my career is very well defined and fixed — therefore, so that i can have it all (because i deserve it), i need to fix the following in this moment of my life:
+
+1️⃣ i need a good and mature man who has already found himself and really sees and loves me for who i am, who will choose me over anything else and will be there for me forever (just like i will be as well), who wants to marry me and have me as the mother of his children, and who will be able to PROVIDE for our family
+
+2️⃣ i need to educate myself and prepare myself and my body for motherhood (i want to have at least one child in the next couple of years, and perhaps even a couple more if my body allows — luckily i am very healthy and my body is younger than its age, so i might have a chance)
+
+3️⃣ i need to remain zen, happy, hopeful, and sweet, as a good maiden i am and have always been (the past needs to stay in the past, or the monsters will keep winning)
+
+4️⃣ i need to cut out everything that is misaligned with my goals (this is not really that hard at this point, but i am adding here to make it even more self-evident)
+
+
+come on — i did a phd in physics, worked at the biggest tech companies in the world, was part of the biggest financial revolution in history, all along looking so good =p
+
+i can do the one thing i was designed for as a human: become a very good wife and a very good mom 
+
+wish me luck, my friend anon — life is getting serious now 😅
+
+<3
+mvs
+    `)
+},   
+
+{
 date: '2026-06-20T00:00:00.000Z',
 title: 'yet another friday',
 content: this.cleanContent(`
@@ -125,7 +205,7 @@ ps: obviously, i will continue pursuing legal action for the crime that happened
 
 {
 date: '2026-06-13T00:00:00.000Z',
-title: 'that\'s how we win 🌹',
+title: 'that\'s how we win',
 content: this.cleanContent(`
 
 «i»"the rules of fair play do not apply in love and war."«/i» — john lyly 

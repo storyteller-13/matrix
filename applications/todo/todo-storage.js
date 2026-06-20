@@ -42,10 +42,8 @@ class TodoStorage {
 
     getDefaultTodos() {
         const defaultTodoData = [
-            { text: 'build NULLSTAR GAMES for the kingdoms', completed: false },
-            { text: 'tell the great story of LOGIC 13', completed: false },
-            { text: 'find the way home and be happy forever', completed: false },
-            { text: 'fix my princess\'s makeup and outfit', completed: false },
+            { text: 'find my soulmate and build a home, a beautiful family, and be happy forever', completed: false },
+            { text: 'build NULLSTAR GAMES and tell the great story of LOGIC 13', completed: false },
             { text: 'memento mori', completed: true },
             { text: 'focus on what is one of my greatest sources of happiness: my work', completed: true },
             { text: 'be in the present, and find gratitude and fulfillment every single day', completed: true },
