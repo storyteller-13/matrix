@@ -61,6 +61,29 @@ class MusicPlayerStorage {
         return {
             playlists: [
                 {
+                    id:   'infinite forever with my babes',
+                    name: 'infinite forever with my babes',
+                    songs: [
+                            { id: 'mq28D0-0W1g', title: 'walking on sunshine (katrina & the waves)' }
+                    ]
+                },
+                {
+                    id:   'the celibate princess\'s destiny',
+                    name: 'the celibate princess\'s destiny',
+                    songs: [
+                            { id: 'pGNDncTbJRU', title: 'a place to call home (world of warcraft)' },
+                            { id: 'hDU4GB1PTxc', title: 'i knew it, i knew you (taylor swift)' },
+                            { id: 'fF8GARU44iY', title: 'wild mountain honey (steve miller)' },
+                            { id: 'F-F_oHOvBsM', title: 'in the stars (the rolling stones)' },
+                            { id: 'ozXZnwYTMbs', title: 'nothing else matters (metallica)' },
+                            { id: 'x11NA63gLDM', title: 'change the world (eric clapton)' },
+                            { id: 'G2dR2DV-eGc', title: 'hard to concentrate (rhcp)' },
+                            { id: 'n2MtEsrcTTs', title: 'harvest moon (neil young)' },
+                            { id: 'bG0QEvaIGfQ', title: 'ghost of a chance (rush)' },
+                            { id: 'djV11Xbc914', title: 'take on me (a-ha)' }
+                    ]
+                },
+                {
                     id:   'the behemothy hero\'s journey',
                     name: 'the behemothy hero\'s journey',
                     songs: [
@@ -98,22 +121,6 @@ class MusicPlayerStorage {
                         { id: 'y9Yc46rVgRQ', title: 'saturn (james malikey)' },
                         { id: 'PFofOcuNNBk', title: 'hoppípolla (sigur rós)' },
                         { id: 'bTvOEXAuIEU', title: 'frailed (flea)' }
-                    ]
-                },
-                {
-                    id:   'the celibate princess\'s destiny',
-                    name: 'the celibate princess\'s destiny',
-                    songs: [
-                            { id: 'pGNDncTbJRU', title: 'a place to call home (world of warcraft)' },
-                            { id: 'hDU4GB1PTxc', title: 'i knew it, i knew you (taylor swift)' },
-                            { id: 'fF8GARU44iY', title: 'wild mountain honey (steve miller)' },
-                            { id: 'F-F_oHOvBsM', title: 'in the stars (the rolling stones)' },
-                            { id: 'ozXZnwYTMbs', title: 'nothing else matters (metallica)' },
-                            { id: 'x11NA63gLDM', title: 'change the world (eric clapton)' },
-                            { id: 'G2dR2DV-eGc', title: 'hard to concentrate (rhcp)' },
-                            { id: 'n2MtEsrcTTs', title: 'harvest moon (neil young)' },
-                            { id: 'bG0QEvaIGfQ', title: 'ghost of a chance (rush)' },
-                            { id: 'djV11Xbc914', title: 'take on me (a-ha)' },
                     ]
                 },
                 {

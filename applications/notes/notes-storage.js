@@ -36,11 +36,60 @@ class NotesStorage {
         return [
 
 {
+date: '2026-06-22T00:00:00.000Z',
+title: 'happy father\'s day, babe',
+content: this.cleanContent(`
+
+to the father of my future children,
+
+babe, celebrate!
+this is the last father's day you will be childless
+
+you are so close to having it all
+you are so close to being the happiest man in the world
+
+you are so close to having a little minion who is made of you
+who will love you so much and follow you everywhere
+who will give your life meaning
+who will see you as a superhero
+who will always be there for you
+
+you are so close to being able to teach your little and most precious follower everything you learned in your life and all the adventures you had the chance to live
+
+you are so close to having a stable, infinite, comfy, colorful home with smiley protein pancakes in the morning and camping while watching the stars in the evening
+
+you are so close to finally feeling the meaning of life in your veins
+you are so close to finally having it all
+
+all those days you felt lost and lonely, wandering around without a deeper purpose, will vanish from your memory when you finally become the best father in the world
+(and the best husband in the world with the best wife in the world)
+
+you are so close
+you will find me soon
+and i will be here
+waiting for you
+writing my code
+reading my books
+telling my stories
+daydreaming about you
+and our future children
+
+this is the last father's day without your family
+celebrate, babe, life is about to take its turn
+
+love you, forever
+m
+
+
+    `)
+},
+
+{
 date: '2026-06-21T00:00:00.000Z',
 title: 'on being soft 4 life',
 content: this.cleanContent(`
 
-i love saturday mornings, not only because they are shabbat, and i'm "allowed to not work today" 
+i love saturday mornings, not only because they are shabbat, and "i'm allowed to not work today"
 
 but there's also a psychological feeling to it — a feeling of "it's okay to take it slow today" or "you can slack off a little bit today" 
 
@@ -74,7 +123,7 @@ i will simply continue doing what i have always been doing, and success, money, 
 
 so now, this gives me the space i need to figure out the second half of my human life, which definitely needs some attention right now: my future husband and the children i want to raise
 
-the first thing i need to fix is how i will be choosing my husband
+the first thing i need to fix is how i will be choosing my partner
 
 i watched a podcast a few days ago that made me think a lot about my choices over the years: the person you want to be with is a mirror of how you value yourself
 
@@ -140,7 +189,7 @@ mvs
 
 ps: just invited my crush out for a sunny coffee ☀️ will he say yes? wish me luck, anon!
 
-ps2: vaaaaaaaaaaaaai braaaaaaaaaaaaasil 🎀
+ps2: vaaaaaaaaaaaaai braaaaaaaaaaaaasil 🎀 ⚽️
 
     `)
 },   
@@ -327,10 +376,9 @@ na minha vida de retinas tao fatigadas.
 nunca me esquecerei que no meio do caminho
 tinha uma pedra
 tinha uma pedra no meio do caminho
-no meio do caminho tinha uma pedra.
+no meio do caminho tinha uma pedra.«/i»
 
 - carlos drummond de andrade
-«/i»
 
     `)
 },
