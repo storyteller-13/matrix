@@ -64,28 +64,49 @@ class MusicPlayerStorage {
                     id:   'infinite forever with my babes',
                     name: 'infinite forever with my babes',
                     songs: [
-                            { id: 'mq28D0-0W1g', title: 'walking on sunshine (katrina & the waves)' }
+                        { id: 'ABfQuZqq8wg', title: 'ain\'t no mountain high enough (marvin + tammi)' },
+                        { id: 'V1bFr2SWP1I', title: 'somewhere over the rainbow (iz kamakawiwoʻole)' },
+                        { id: 'mq28D0-0W1g', title: 'walking on sunshine (katrina + the waves)' },
+                        { id: 'pGNDncTbJRU', title: 'a place to call home (world of warcraft)' },
+                        { id: '1MPZRcyTrcU', title: 'you\'ve got a friend in me (toy story)' },
+                        { id: 'vRQb_-mRcAc', title: 'unwritten (natasha bedingfield)' },
+                        { id: 'j_JaDDcyIIU', title: 'yellow submarine (the beatles)' },
+                        { id: 'kaOIxll4LCA', title: 'hakuna matata (the lion king)' },
+                        { id: 'HNBCVM4KbUM', title: '3 little birds (bob marley)' },
+                        { id: 'ZbZSe6N_BXs', title: 'happy (pharrell williams)' },
+                        { id: 'Ni85wmDuNfc', title: 'stand by me (ben e. king)' },
+                        { id: 'djV11Xbc914', title: 'take on me (a-ha)' }
                     ]
                 },
                 {
-                    id:   'the celibate princess\'s destiny',
-                    name: 'the celibate princess\'s destiny',
+                    id:   'chez the celibate robot princess',
+                    name: 'chez the celibate robot princess',
                     songs: [
-                            { id: 'pGNDncTbJRU', title: 'a place to call home (world of warcraft)' },
-                            { id: 'hDU4GB1PTxc', title: 'i knew it, i knew you (taylor swift)' },
-                            { id: 'fF8GARU44iY', title: 'wild mountain honey (steve miller)' },
-                            { id: 'F-F_oHOvBsM', title: 'in the stars (the rolling stones)' },
-                            { id: 'ozXZnwYTMbs', title: 'nothing else matters (metallica)' },
-                            { id: 'x11NA63gLDM', title: 'change the world (eric clapton)' },
-                            { id: 'G2dR2DV-eGc', title: 'hard to concentrate (rhcp)' },
-                            { id: 'n2MtEsrcTTs', title: 'harvest moon (neil young)' },
-                            { id: 'bG0QEvaIGfQ', title: 'ghost of a chance (rush)' },
-                            { id: 'djV11Xbc914', title: 'take on me (a-ha)' }
+                        
+                        { id: 'hDU4GB1PTxc', title: 'i knew it, i knew you (taylor swift)' },
+                        { id: 'fF8GARU44iY', title: 'wild mountain honey (steve miller)' },
+                        { id: 'F-F_oHOvBsM', title: 'in the stars (the rolling stones)' },
+                        { id: 'ozXZnwYTMbs', title: 'nothing else matters (metallica)' },
+                        { id: 'x11NA63gLDM', title: 'change the world (eric clapton)' },
+                        { id: 'G2dR2DV-eGc', title: 'hard to concentrate (rhcp)' },
+                        { id: 'n2MtEsrcTTs', title: 'harvest moon (neil young)' },
+                        { id: 'bG0QEvaIGfQ', title: 'ghost of a chance (rush)' }
                     ]
                 },
                 {
-                    id:   'the behemothy hero\'s journey',
-                    name: 'the behemothy hero\'s journey',
+                    id:   'twinkle twinkle magical nullstar',
+                    name: 'twinkle twinkle magical nullstar',
+                    songs: [
+                        { id: 'bTvOEXAuIEU', title: 'frailed (flea)' },
+                        { id: 'rSzKm3hqhs8', title: 'perpetual (tommy guerrero)' },
+                        { id: 'SPMu4HsQ7BE', title: 'skynet opera (gramatik + luxas)' },
+                        { id: 'JCKBaJDRMw4', title: 'chill music for work (lofi girl)' },
+                        { id: 'L0bcRCCg01I', title: 'welcome to the future, droid (moebius fm)' }
+                    ]
+                },
+                {
+                    id:   'such a behemothy hero\'s journey',
+                    name: 'such a behemothy hero\'s journey',
                     songs: [
                         { id: 'GXFSK0ogeg4', title: 'carmina burana (carl orff)' },
                         { id: 'kLp_Hh6DKWc', title: 'hall of the mountain king (grieg)' },
@@ -99,37 +120,25 @@ class MusicPlayerStorage {
                         { id: 'S8m4fm_cF6o', title: 'requiem, confutatis (mozart)' },
                         { id: 'ho9rZjlsyYY', title: 'tocatta and fugue in D minor (bach)' },
                         { id: 'iCEDfZgDPS8', title: 'night on bald mountain (mussorgsky)' },
-                        { id: 'L0bcRCCg01I', title: 'mars, the bringer of the last war (holst)' },
-                        { id: 'L0bcRCCg01I', title: 'welcome to the future, droid (moebius fm)' }
-                    ]
-                },
-                {
-                    id:   'the poet builder dreamer\'s tale',
-                    name: 'the poet builder dreamer\'s tale',
-                    songs: [
+                        { id: 'L0bcRCCg01I', title: 'mars, the bringer of the war (holst)' },
                         { id: 'eqo0TpDBsZc', title: 'violet night... (james malikey)' },
                         { id: 'N0snMcR6aaA', title: 'emma\'s surrender (lofi girl)' },
                         { id: '0tiuAKQjRpg', title: 'rose garden (afloat in time)' },
-                        { id: 'N-BAlJ-2xro', title: 'every breath (brooklyn duo)' },
-                        { id: 'rSzKm3hqhs8', title: 'perpetual (tommy guerrero)' },
                         { id: 'YBioStgspO8', title: 'happy moments (essential)' },
                         { id: 'p88iGCFH7vQ', title: 'sunny days (halidonmusic)' },
-                        { id: 'NH8uI4EJ0bo', title: 'romantic jazz (lofi girl)' },
                         { id: 'b9WKC5sT9Z4', title: 'gymnopedies (erik satie)' },
                         { id: 'aA4Kub9flag', title: 'dreamer (luke faulkner)' },
                         { id: 'b44-5M4e9nI', title: 'the swan (saint-saens)' },
-                        { id: 'y9Yc46rVgRQ', title: 'saturn (james malikey)' },
-                        { id: 'PFofOcuNNBk', title: 'hoppípolla (sigur rós)' },
-                        { id: 'bTvOEXAuIEU', title: 'frailed (flea)' }
+                        { id: 'y9Yc46rVgRQ', title: 'saturn (james malikey)' }
                     ]
                 },
                 {
-                    id:   'the afterlife\'s zeitgeist lore',
-                    name: 'the afterlife\'s zeitgeist lore',
-                    songs: [
+                id:   'the afterlife\'s zeitgeist lore',
+                name: 'the afterlife\'s zeitgeist lore',
+                songs: [
                         { id: '1lyu1KKwC74', title: 'bitter sweet symphony (the verve)' },
                         { id: 'MO0LdXqwDP0', title: 'afterlife (evanescence)' },
-                        { id: 'XXIX2WnfbpE', title: 'runway (lady gaga && doechii)' },
+                        { id: 'XXIX2WnfbpE', title: 'runway (lady gaga + doechii)' },
                         { id: 'yjWtkQSF8dA', title: 'exit wound (marilyn manson)' },
                         { id: 'QB15JltRf-M', title: 'can you feel it (polyphia)' },
                         { id: 'Z4RpBEg5uis', title: 'diablo (deep purple)' },
@@ -166,45 +175,32 @@ class MusicPlayerStorage {
                         { id: 'X-KyrJRhYUw', title: 'seconds before the sunrise (dean lewis)' },
                         { id: '4gLVqjIvokc', title: 'don\'t you forget about me (simple minds)' },
                         { id: 'K0siYUjV9UM', title: 'mama, i\'m coming home (ozzy)' },
-                        { id: 'ZbZSe6N_BXs', title: 'happy (pharrell williams)' },
-                        { id: 'UVpcupE1xEo', title: 'seven (david bowie)' }
-                ]
-            },
-            {
-                id:   'chez moi w/ the charming royals',
-                name: 'chez moi w/ the charming royals',
-                songs: [
-                    { id: 'R3gpbT-JZMk', title: 'killah (lady gaga)' },
-                    { id: 'G7KNmW9a75Y', title: 'flowers (miley cyrus)' },
-                    { id: '4qQyUi4zfDs', title: 'glory box (portishead)' },
-                    { id: 'bECMcp4AdOs', title: 'wide awake (kate perry)' },
-                    { id: 'YDTazIuuDPY', title: 'i feel so free (madonna)' },
-                    { id: 'e_aT9pAGQo8', title: 'alien superstar (beyoncé)' },
-                    { id: 'Z4A9ZZo_rAE', title: 'shake it off (taylor swift)' },
-                    { id: 'DagMrm6p2dA', title: 'a woman\'s worth (alicia keys)' },
-                    { id: 'xhXUdIekqDk', title: 'kraken (florence + the machine)' },
-                    { id: '9WbCfHutDSE', title: 'dangerous woman (ariana grande)' },
-                    { id: 'vRQb_-mRcAc', title: 'unwritten (natasha bedingfield)' },
-                    { id: 'JCKBaJDRMw4', title: 'chill music for work (lofi girl)' },
-                    { id: 'ak4Ti54Y6rY', title: 'who will you follow (evanescence)' },
-                    { id: 'ZWmrfgj0MZI', title: 'unfinished sympathy (massive attack)' }
-                ]
-            },
-            {
-                id:   'welcome to our brave new world',
-                name: 'welcome to our brave new world',
-                songs: [
+                        { id: 'UVpcupE1xEo', title: 'seven (david bowie)' },
                         { id: 'MAmqJjyDH48', title: 'a song for our fathers (explosion in the sky)' },    
                         { id: 'ya7L3A1DOlg', title: 'all is violent, bright (god is an astronaut)' },
                         { id: 'HzWYcZg3Dvw', title: 'the sound of silence (gamazda cover)' },
                         { id: 'SlaSbwxG46Y', title: 'like a stone (band of echoes cover)' },
+                        { id: 'N-BAlJ-2xro', title: 'every breath (brooklyn duo)' },
+                        { id: 'PFofOcuNNBk', title: 'hoppípolla (sigur rós)' },
                         { id: '7jMlFXouPk8', title: 'high hopes (pink floyd)' },
                         { id: 'TFjmvfRvjTc', title: 'hey you (pink floyd)' },
-                        { id: 'pkcJEvMcnEg', title: 'lithium (nirvana)' }
+                        { id: 'pkcJEvMcnEg', title: 'lithium (nirvana)' },
+                        { id: 'R3gpbT-JZMk', title: 'killah (lady gaga)' },
+                        { id: 'G7KNmW9a75Y', title: 'flowers (miley cyrus)' },
+                        { id: '4qQyUi4zfDs', title: 'glory box (portishead)' },
+                        { id: 'bECMcp4AdOs', title: 'wide awake (kate perry)' },
+                        { id: 'YDTazIuuDPY', title: 'i feel so free (madonna)' },
+                        { id: 'e_aT9pAGQo8', title: 'alien superstar (beyoncé)' },
+                        { id: 'Z4A9ZZo_rAE', title: 'shake it off (taylor swift)' },
+                        { id: 'DagMrm6p2dA', title: 'a woman\'s worth (alicia keys)' },
+                        { id: 'xhXUdIekqDk', title: 'kraken (florence + the machine)' },
+                        { id: '9WbCfHutDSE', title: 'dangerous woman (ariana grande)' },
+                        { id: 'ak4Ti54Y6rY', title: 'who will you follow (evanescence)' },
+                        { id: 'ZWmrfgj0MZI', title: 'unfinished sympathy (massive attack)' }
                 ]
             }
             ],
-            currentPlaylistId: '2026 peaceful builder dreamer'
+            currentPlaylistId: 'infinite forever with my babes'
         };
     }
 

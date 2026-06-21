@@ -36,6 +36,77 @@ class NotesStorage {
         return [
 
 {
+date: '2026-06-23T00:00:00.000Z',
+title: 'let us enjoy this summer',
+content: this.cleanContent(`
+
+my dear anon, time is going way too fast, isn't it?
+
+this first half of 2026 was really tough for me
+i was recovering from a lot... a lot... a lot...
+i felt so sad for long
+it was really hardcore
+
+i consider myself a happy person
+i have lived so much, i have seen so much
+i achieved so many dreams, i experienced so much
+i would say that 80% of my life, i was truly happy
+
+i still don't fully understand why anyone would do
+what was done to me these last few years
+the amount of cruelty and craziness
+
+i tried to understand
+i tried several approaches
+but it's beyond rationalization
+it's beyond logic
+
+the only way to make peace with it is remembering
+other atrocities that happened throughout history
+and luckily enough i have studied a lot
+of history throughout my life
+
+so yes, that's it
+that's how i will heal
+not by forgiving, but by forgetting
+by going back again and again to what i do:
+
+1️⃣ creating and building amazing things
+2️⃣ loving, loving, loving, and loving 💜
+
+this is who i am and always have been
+and i'm really tired of needing to prove myself
+my work, my art, my thoughts — they are self-evident
+
+so let summer begin and let the sun shine brightly
+let us all move toward our highest selves
+let us take care of our families
+let us do our best work yet
+let love find us
+
+let us let others live their lives the way they need and want
+let us allow others to have their free will untouched
+and enjoy their abundance the way they choose
+
+let meritocracy be honest && just
+not by screaming at others
+but by proving our value
+in an honorable way
+
+let us be free
+let others be free
+let the world finally become
+something it has never been before
+let us enjoy this summer, for god's sake
+
+<3
+mvs
+
+
+    `)
+},
+
+{
 date: '2026-06-22T00:00:00.000Z',
 title: 'happy father\'s day, babe',
 content: this.cleanContent(`
@@ -1963,9 +2034,6 @@ i know i will see you soon
 and i already love every cell of your body
 
 <3
-
-ps: meanwhile, you can play the games i have been building (look at "the true love series" in the stories section) or the "2026 future hubby" playlist i have been creating - they are all for you because this is what "perfect true love" means for me
-
     `)
 },
 
