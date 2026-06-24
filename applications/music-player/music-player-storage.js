@@ -98,10 +98,13 @@ class MusicPlayerStorage {
                     name: 'twinkle twinkle magical nullstar',
                     songs: [
                         { id: 'bTvOEXAuIEU', title: 'frailed (flea)' },
+                        { id: 'a-NEGjpChco', title: 'black sands (bonobo)' },
                         { id: 'rSzKm3hqhs8', title: 'perpetual (tommy guerrero)' },
                         { id: 'SPMu4HsQ7BE', title: 'skynet opera (gramatik + luxas)' },
+                        { id: '7nHyrY5LGwk', title: 'summer 1983 (zenity synthwave)' },
                         { id: 'JCKBaJDRMw4', title: 'chill music for work (lofi girl)' },
-                        { id: 'L0bcRCCg01I', title: 'welcome to the future, droid (moebius fm)' }
+                        { id: 'nfW6f2gf4g8', title: '90\'s lofi hip hop (japanese town)' },
+                        { id: 'L0bcRCCg01I', title: 'welcome to the future (moebius fm)' }
                     ]
                 },
                 {
@@ -123,12 +126,14 @@ class MusicPlayerStorage {
                         { id: 'L0bcRCCg01I', title: 'mars, the bringer of the war (holst)' },
                         { id: 'eqo0TpDBsZc', title: 'violet night... (james malikey)' },
                         { id: 'N0snMcR6aaA', title: 'emma\'s surrender (lofi girl)' },
+                        { id: '072fuCoffOc', title: 'rose romance (garden classics)' },
                         { id: '0tiuAKQjRpg', title: 'rose garden (afloat in time)' },
                         { id: 'YBioStgspO8', title: 'happy moments (essential)' },
                         { id: 'p88iGCFH7vQ', title: 'sunny days (halidonmusic)' },
                         { id: 'b9WKC5sT9Z4', title: 'gymnopedies (erik satie)' },
                         { id: 'aA4Kub9flag', title: 'dreamer (luke faulkner)' },
                         { id: 'b44-5M4e9nI', title: 'the swan (saint-saens)' },
+                        { id: 'bh-pIctiTsw', title: 'life is art (morunas)' },
                         { id: 'y9Yc46rVgRQ', title: 'saturn (james malikey)' }
                     ]
                 },

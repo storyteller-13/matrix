@@ -36,9 +36,114 @@ class NotesStorage {
         return [
 
 {
+date: '2026-06-25T00:00:00.000Z',
+title: 'someone in the interwebs',
+content: this.cleanContent(`
+
+hapy not friday, dear anon
+here's an anecdote for you
+
+«i»
+once upon a time, i was chilling, living my lalala life
+
+you know, the things you do when you have a good spirit
+and you are a go-getter used to getting everything you want
+and a solid sense of self-reliance BUT with a lil touch of
+a slightly dangerous excess of optimism and confidence
+
+a very good time when i used to have no concerns whatsoever
+beyond solving cute technical problems, learning esotericism,
+wandering across earth, mastering a perfect daily routine,
+building weird stuff, saying out loud whatever was on my mind,
+and being ultra-sexy without even realizing i was doing it
+
+then, just as life goes, reality started turning very eerie
+my world turned down upside down and became odd... surreal
+and that was at the same time i was having strange visions
+and i am pretty sure i was performing a series of miracles
+
+and talking to animals
+and bending our reality
+and changing the weather
+and reading people's minds
+and predicting the future
+and traveling across time
+and transcending timespace
+
+and expressing my feelings through music
+and downloading all knowledge into my head
+and seeing numerical patterns everywhere
+and talking to angels, god, and the devil
+
+in my dreams
+
+you know, the things you do when you are
+a bored goethian bacheloretty nerd robot
+
+but the really, really craziest byte of
+that time of my life was that somehow
+all the most famous people on the planet
+were suddenly communicating with me...
+
+i swear, anon, they were!
+
+the computer geeks i learned everything from
+the musicians i held as semi-gods on earth
+the guy from my favorite comic for 2 decades
+the sites i check for the news in the morning
+
+the writers i've been reading since i was a lil girl in brazil
+the entrepreneurs whom i studied to become like when i grow up
+the politicians and philosophers from whom i learned worldviews
+even the actors, dude — the big-shot holy royal hollywood actors
+
+they were talking to me, they were!
+i swear by the name of all the gods
+and... and... they call me the sun
+
+i swear, my friend anon, i am not crazy
+they were talking to me, using numbers!
+no, i am not high, you gotta believe me
+no, absolutely no one ever talked to me
+directly, but you must believe me, anon
+no, this fame or whatever has not been
+fun at all, more like a never-ending hell
+no, nobody wants to hire or work with me
+but something good is coming, i know it
+
+after pondering for quite a lot, i am
+of the opinion that the most plausible
+explanation for this black-swan-like
+anomalous affair is that absentmindedly
+i have become someone in the interwebs
+
+and i'm guessing this is a good thing
+
+(all it took to get used to the new
+brave new world was redefining what
+creepiness and belonging mean now)
+«/i»
+
+ps: "they" might say these events are an evident result of having a south node plus jupiter conjunct uranus in my 11th while my north node is conjunct my lot of fortune in my 5th; but i say it's the aquarian martyr complex magnified by my virgo retrograde in the 8th taking forever to manifest, or the inexorable humanitarian duties of my saturn conjunct pluto in libra at 29 degrees in my 9th
+
+    `)
+},
+
+{
 date: '2026-06-23T00:00:00.000Z',
 title: 'let us enjoy this summer',
 content: this.cleanContent(`
+«i»
+the young man watched the 
+snow through the windows
+he wanted to stay in that cafe forever
+the curious feeling swarm through him
+that everything was beautiful there, 
+that it would always stay beautiful there«/i» 
+— nirvana by a dirty old magickian man
+
+«i»«/i»
+
 
 my dear anon, time is going way too fast, isn't it?
 
@@ -102,7 +207,6 @@ let us enjoy this summer, for god's sake
 <3
 mvs
 
-
     `)
 },
 
@@ -150,7 +254,6 @@ celebrate, babe, life is about to take its turn
 
 love you, forever
 m
-
 
     `)
 },
@@ -247,7 +350,7 @@ whatever the answer is, i am formally wishing you a great, sunny, hopeful weeken
 
 with the new moon in gemini that just happened and venus in leo, i used this week to rest, sleep, cleanse, reorganize, and focus on my goals
 
-building nullstar as my north star (pun definitely intended) — this is currently my only real source of happiness, to be honest — and i have been working really hard every day for many months now, and i plan to continue doing so for many years to come — what i am creating is amazing, and i am the right person to do it — and nothing is going to make me forget that
+building NULLSTAR as my north star (pun definitely intended) — this is currently my only real source of happiness, to be honest — and i have been working really hard every day for many months now, and i plan to continue doing so for many years to come — what i am creating is amazing, and i am the right person to do it — and nothing is going to make me forget that
 
 things are calm and steady, and this is great 
 
@@ -257,10 +360,6 @@ feeling a bit lonely, but i'll keep pushing; i have my entire life ahead of me, 
 
 <3
 mvs
-
-ps: just invited my crush out for a sunny coffee ☀️ will he say yes? wish me luck, anon!
-
-ps2: vaaaaaaaaaaaaai braaaaaaaaaaaaasil 🎀 ⚽️
 
     `)
 },   
@@ -355,13 +454,13 @@ content: this.cleanContent(`
 a quick note on this beautiful spring sunday
 to tell my friends about some thrilling news
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-|                           |
-|                           |
-|  https://nullstar.games   |
-|                           |
-|                           |
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+|                         |
+|                         |
+| https://NULLSTAR.GAMES  |
+|                         |
+|                         |
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 stay excited, my dear anon 👾
 
@@ -501,6 +600,7 @@ shall we continue to tell the greatest story ever told?
 
 <3
 mvs
+
     `)
 },
 
@@ -543,6 +643,7 @@ this is going to be a good chapter!
 
 <3
 the storyteller tech ceo
+
     `)
 },
 
