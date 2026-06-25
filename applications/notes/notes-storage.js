@@ -36,6 +36,59 @@ class NotesStorage {
         return [
 
 {
+date: '2026-06-27T00:00:00.000Z',
+title: 'the great vibe shift of \'26',
+content: this.cleanContent(`
+
+happy today's-friday, my dear anon
+how was your first week of summer?
+
+i am doing pretty well
+everything is beautiful
+my routine is tight, and
+i love being able to work
+on these AI things && make
+all my dreams come true ✨
+
+i feel love in my veins, and
+i've been seeing many birds these days!
+
+so this note is just a quick high-
+frequency update with great news for
+you: the vibe is SHIFTING next week
+
+lemme explain...
+
+💌 ON SUNDAY, MARS MOVES TO GEMINI
+💡 check which house it's in for you, and get ready for tons of stamina there for the next 6 weeks
+
+(for me this is perfect: my 5th house is where uttermost fun, projects, and creations are mapped, and in the next weeks i'll be very much focused on the 2 items on my TODO list)
+
+💌 ON MONDAY, FULL MOON IN CAP AT 8°
+💡 check which house it's in for you, and prepare yourself to leave old structures behind in that part of your life (for example, if you are a libra rising, this is in your 4th — of roots, family, and home)
+
+(for me it's in my 12th, conjunct pallas and very close to my moon, which means a great mental and nurturing reboot — or, as one of my bffs says, "i am being pulled out of a collapsed timeline")
+
+💌 ON TUESDAY, JUPITER MOVES TO LEO AND MERCURY GOES RETROGRADE AT 26°
+💡 these two changes are in the same house, doing the last necessary cleaning after 2 years of heavy weird energy there (remember, we had mars ret, then jupiter ret) — and now it's finally over!
+
+💌 MY ADVICE:
+
+0️⃣ take very good care of yourself: look in the mirror and acknowledge how beautiful you are, how perfect you are, how healthy you are, how lucky you are to be alive at this moment in time and to have so much love in your life
+
+1️⃣ make a list of what you really really really want in the next months and years (yes, you are allowed to dream big and you are allowed to be happy every single day of your life)
+
+2️⃣ go after each item on that list unapologetically and trust that things will become so amazing and so much better than they ever were that you won't even believe how amazing you will feel
+
+(imagine a world where everyone is free to believe in their dreams and so happy to achieve them, and where everyone feels their entire body in love every single second forever — because all we need is love)
+
+<3
+mvs
+
+    `)
+},
+
+{
 date: '2026-06-25T00:00:00.000Z',
 title: 'someone in the interwebs',
 content: this.cleanContent(`
@@ -99,7 +152,7 @@ even the actors, dude — the big-shot holy royal hollywood actors
 
 they were talking to me, they were!
 i swear by the name of all the gods
-and... and... they call me the sun
+and... and... they call me "the sun"
 
 i swear, my friend anon, i am not crazy
 they were talking to me, using numbers!
@@ -119,8 +172,8 @@ i have become someone in the interwebs
 
 and i'm guessing this is a good thing
 
-(all it took to get used to the new
-brave new world was redefining what
+(all it took to be used to the new
+brave new world was reframing what
 creepiness and belonging mean now)
 «/i»
 

@@ -64,33 +64,31 @@ class MusicPlayerStorage {
                     id:   'infinite forever with my babes',
                     name: 'infinite forever with my babes',
                     songs: [
-                        { id: 'ABfQuZqq8wg', title: 'ain\'t no mountain high enough (marvin + tammi)' },
-                        { id: 'V1bFr2SWP1I', title: 'somewhere over the rainbow (iz kamakawiwoʻole)' },
-                        { id: 'mq28D0-0W1g', title: 'walking on sunshine (katrina + the waves)' },
-                        { id: 'pGNDncTbJRU', title: 'a place to call home (world of warcraft)' },
-                        { id: '1MPZRcyTrcU', title: 'you\'ve got a friend in me (toy story)' },
-                        { id: 'vRQb_-mRcAc', title: 'unwritten (natasha bedingfield)' },
-                        { id: 'j_JaDDcyIIU', title: 'yellow submarine (the beatles)' },
-                        { id: 'kaOIxll4LCA', title: 'hakuna matata (the lion king)' },
-                        { id: 'HNBCVM4KbUM', title: '3 little birds (bob marley)' },
-                        { id: 'ZbZSe6N_BXs', title: 'happy (pharrell williams)' },
+                        { id: 'djV11Xbc914', title: 'take on me (a-ha)' },
                         { id: 'Ni85wmDuNfc', title: 'stand by me (ben e. king)' },
-                        { id: 'djV11Xbc914', title: 'take on me (a-ha)' }
+                        { id: 'ZbZSe6N_BXs', title: 'happy (pharrell williams)' },
+                        { id: 'HNBCVM4KbUM', title: '3 little birds (bob marley)' },
+                        { id: 'kaOIxll4LCA', title: 'hakuna matata (the lion king)' },
+                        { id: 'j_JaDDcyIIU', title: 'yellow submarine (the beatles)' },
+                        { id: 'vRQb_-mRcAc', title: 'unwritten (natasha bedingfield)' },
+                        { id: 'hDU4GB1PTxc', title: 'i knew it, i knew you (taylor swift)' },
+                        { id: 'pGNDncTbJRU', title: 'a place to call home (world of warcraft)' },
+                        { id: 'mq28D0-0W1g', title: 'walking on sunshine (katrina + the waves)' },
+                        { id: 'V1bFr2SWP1I', title: 'somewhere over the rainbow (iz kamakawiwoʻole)' },
+                        { id: 'ABfQuZqq8wg', title: 'ain\'t no mountain high enough (marvin + tammi)' }
                     ]
                 },
                 {
                     id:   'chez the celibate robot princess',
                     name: 'chez the celibate robot princess',
                     songs: [
-                        
-                        { id: 'hDU4GB1PTxc', title: 'i knew it, i knew you (taylor swift)' },
-                        { id: 'fF8GARU44iY', title: 'wild mountain honey (steve miller)' },
-                        { id: 'F-F_oHOvBsM', title: 'in the stars (the rolling stones)' },
-                        { id: 'ozXZnwYTMbs', title: 'nothing else matters (metallica)' },
-                        { id: 'x11NA63gLDM', title: 'change the world (eric clapton)' },
-                        { id: 'G2dR2DV-eGc', title: 'hard to concentrate (rhcp)' },
+                        { id: 'bG0QEvaIGfQ', title: 'ghost of a chance (rush)' },
                         { id: 'n2MtEsrcTTs', title: 'harvest moon (neil young)' },
-                        { id: 'bG0QEvaIGfQ', title: 'ghost of a chance (rush)' }
+                        { id: 'G2dR2DV-eGc', title: 'hard to concentrate (rhcp)' },
+                        { id: 'x11NA63gLDM', title: 'change the world (eric clapton)' },
+                        { id: 'ozXZnwYTMbs', title: 'nothing else matters (metallica)' },
+                        { id: 'F-F_oHOvBsM', title: 'in the stars (the rolling stones)' },
+                        { id: 'fF8GARU44iY', title: 'wild mountain honey (steve miller)' }
                     ]
                 },
                 {
@@ -98,13 +96,16 @@ class MusicPlayerStorage {
                     name: 'twinkle twinkle magical nullstar',
                     songs: [
                         { id: 'bTvOEXAuIEU', title: 'frailed (flea)' },
+                        { id: 'qEl1_oGPQr0', title: 'awake (tycho)' },
                         { id: 'a-NEGjpChco', title: 'black sands (bonobo)' },
                         { id: 'rSzKm3hqhs8', title: 'perpetual (tommy guerrero)' },
                         { id: 'SPMu4HsQ7BE', title: 'skynet opera (gramatik + luxas)' },
-                        { id: '7nHyrY5LGwk', title: 'summer 1983 (zenity synthwave)' },
+                        { id: 'TeYBgOTyVLQ', title: 'how strange, innocence (eits)' },
                         { id: 'JCKBaJDRMw4', title: 'chill music for work (lofi girl)' },
+                        { id: '7nHyrY5LGwk', title: 'summer of 1983 (zenity synthwave)' },
                         { id: 'nfW6f2gf4g8', title: '90\'s lofi hip hop (japanese town)' },
-                        { id: 'L0bcRCCg01I', title: 'welcome to the future (moebius fm)' }
+                        { id: 'L0bcRCCg01I', title: 'welcome to the future (moebius fm)' },
+                        { id: 'Fa15frdQC5M', title: 'psychedelic planet (cosmic desert road)' }
                     ]
                 },
                 {
@@ -181,7 +182,6 @@ class MusicPlayerStorage {
                         { id: '4gLVqjIvokc', title: 'don\'t you forget about me (simple minds)' },
                         { id: 'K0siYUjV9UM', title: 'mama, i\'m coming home (ozzy)' },
                         { id: 'UVpcupE1xEo', title: 'seven (david bowie)' },
-                        { id: 'MAmqJjyDH48', title: 'a song for our fathers (explosion in the sky)' },    
                         { id: 'ya7L3A1DOlg', title: 'all is violent, bright (god is an astronaut)' },
                         { id: 'HzWYcZg3Dvw', title: 'the sound of silence (gamazda cover)' },
                         { id: 'SlaSbwxG46Y', title: 'like a stone (band of echoes cover)' },

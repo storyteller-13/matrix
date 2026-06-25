@@ -207,7 +207,14 @@ window.QUOTES = [
     { text: 'there is nothing sadder than someone who chooses fame over building a family, and online influence over true love. life is so short, and illusions are so dangerous.', author: 'dr. steinkirch' },
     { text: 'your energy is a sacred currency. spend it wisely.', author: 'dr. steinkirch' },
     { text: "rock bottom has a way of clarifying ambition. when you must rebuild from nothing, settling feels as hard as going further than you've ever gone — so you go further than you've ever gone. further than you ever thought possible. further than anyone expected.", author: 'dr. steinkirch' },
-    
+    { text: "sometimes you need to induce and force complete and total failure of a certain way or approach; that's how you can remove it completely from your system and move on to what's really next.", author: 'dr. steinkirch' },
+    { text: "if your life is not the way you want, this is ultimately your fault; you failed to cut the problem from the root; find the problem; cut it from the root.", author: 'dr. steinkirch' },
+    { text: "you should be in the business of raising the morale to the skies.", author: 'dr. steinkirch' },
+    { text: "after you found who you are, make a list of the non-negotiables; make it tight and clear; say no to everything else, ad infinitum.", author: 'dr. steinkirch' },
+    { text: "until you are not ready to jump into the unknown abyss, you are not ready to gold.", author: 'dr. steinkirch' },
+    { text: "why would you have to fight for freedom, if there wasn't a contending force?", author: 'dr. steinkirch' },
+    { text: "when you create a cathartic artwork, you lose a piece of yourself that can never be replaced; and once you complete the work, you will never want to look at it again.", author: 'dr. steinkirch' },
+
     // robert greene
     { text: 'no calling is superior to another. what matters is that it be tied to a personal need and inclination, and that your energy moves you toward improvement and continuous learning from experience.', author: 'robert greene' },
     { text: 'see the person, not the myth. imagine him or her as a child, as someone riddled with insecurities. cutting the other person down to size will help your keep your mental balance.', author: 'robert greene' },
