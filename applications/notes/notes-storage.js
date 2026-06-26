@@ -36,6 +36,121 @@ class NotesStorage {
         return [
 
 {
+date: '2026-06-28T00:00:00.000Z',
+title: 'oração de são joão',
+content: this.cleanContent(`
+«i»
+do not be conformed to this world, but be 
+transformed by the renewal of your mind.«/i»
+- st. paul
+
+«i»«/i»
+
+so i told you about this big traditional
+festival in brazil called "festa junina"
+
+
+but what i omitted is that these parties
+are actually a very religious thing — 
+they happen not only in schools, but
+also in churches, and they honor st. 
+john the baptist and other saints 
+— a legit regional solemnity!
+
+
+families gather to play and watch games
+such as the maypole dance, ring toss, a 
+special fishing game, a huge bonfire where
+brave folks are supposed to jump over the
+flames without getting burned, and a special
+reenactment of a semi-bucolic wedding, where
+everyone dresses in patched vintage rural clothes
+
+
+(kids look so cute in those costumes 
+— i know i used to love dressing up)
+
+
+in addition, there are also all kinds 
+of delicious food made of corn, peanuts,
+coconut, and other local delicacies,
+plus hot beverages with ginger and herbs
+
+
+ah, and also this huge cake tradition
+where if you find a little st. anthony
+pendant inside your slice, your luck
+in getting married supposedly increases
+
+
+(fun fact: my mom bought 8 different
+slices — each had a different flavor —
+and i found 4 of these little saints —
+not even kidding — i literally only had
+a few bites of each and every single time, 
+to everyone's surprise, i would find one 
+and now i am carrying around these 4 
+little souvenirs hanging on my necklace 😀)
+
+
+the party we went to last weekend was at
+an ukrainian presbyterian church nearby,
+and everything was in russian, and we had
+delicious pierogi, which is one of my
+mom's favorite dishes of all time
+
+
+(fun fact: my hometown is known not only
+for being the home of capybaras and for
+being the coldest and greenest capital in
+brazil, but also because it was founded
+by european immigrants — around 75% of the
+population today — such as germans, italians,
+poles, and ukrainians — so yes, that's where
+the "della torre von steinkirch" comes from,
+in case you ever wondered)
+
+
+anyway, to conclude this tale, my mom came
+to me a few days ago with this prayer, and
+i will share it with you here because it's
+cute and i think it works...
+
+
+«i»
+oração de são joão (st. john's prayer)
+(to become invisible to the eyes of the enemy
+— for protection against evil and envy)
+
+são joão passou por aqui
+com Deus se escondeu
+com Deus me escondo eu
+me escondo de tudo que for ruim
+dos olhos maus, da língua ferina
+do olhar do inimigo
+são joão foi quem me cobriu
+com o manto de Jesus me vestiu
+assim como ninguém viu são joão
+que ninguém me veja com intenção
+de mal ou traição
+que eu passe despercebido aos
+olhos do mal
+invisível à inveja
+intocável pela injustiça
+amém
+«/i»
+
+have a great weekend and
+stay high in love && life
+my dear anon friend
+
+<3
+mvs
+
+    `)
+},
+        
+{
 date: '2026-06-27T00:00:00.000Z',
 title: 'the great vibe shift of \'26',
 content: this.cleanContent(`
