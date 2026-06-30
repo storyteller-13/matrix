@@ -1,0 +1,47 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+.vite/
+
+# Testing
+coverage/
+.nyc_output/
+vitest.results.json
+*.lcov
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Git hooks (local only)
+.husky/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+.vitest/
+
+# macOS
+.DS_Store

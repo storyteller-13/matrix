@@ -1,0 +1,75 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'Courier New', monospace;
+    overflow: hidden;
+    background: #000;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    -webkit-overflow-scrolling: touch;
+}
+
+.desktop {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    background: #000;
+    overflow: hidden;
+    max-width: 100vw;
+}
+
+/* Neon Heart Wallpaper */
+.wallpaper-heart {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.6;
+    animation: heart-pulse 2s ease-in-out infinite;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wallpaper-heart svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 0 8px rgba(231, 106, 242, 0.8)) 
+            drop-shadow(0 0 16px rgba(247, 99, 232, 0.6))
+            drop-shadow(0 0 24px rgba(240, 158, 241, 0.4));
+    animation: heart-glow 3s ease-in-out infinite;
+}
+
+@keyframes heart-pulse {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.6;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.12);
+        opacity: 0.95;
+    }
+}
+
+@keyframes heart-glow {
+    0%, 100% {
+        filter: drop-shadow(0 0 8px rgba(231, 106, 242, 0.8)) 
+                drop-shadow(0 0 16px rgba(232, 79, 216, 0.6))
+                drop-shadow(0 0 24px rgba(240, 158, 241, 0.4));
+    }
+    50% {
+        filter: drop-shadow(0 0 8px rgba(184, 34, 197, 0.8)) 
+                drop-shadow(0 0 16px rgba(237, 118, 225, 0.6))
+                drop-shadow(0 0 24px rgba(235, 65, 238, 0.4));
+    }
+}
+

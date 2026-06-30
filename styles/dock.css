@@ -1,0 +1,121 @@
+/* Bottom Dock */
+.bottom-dock {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(20, 10, 30, 0.95);
+    backdrop-filter: blur(20px);
+    padding: 8px 16px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), 0 0 30px rgba(186, 34, 197, 0.4);
+    border: 1px solid rgba(189, 34, 197, 0.5);
+    z-index: 1000;
+}
+
+.dock-item {
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+}
+
+a.dock-item {
+    text-decoration: none;
+    color: inherit;
+}
+
+.dock-item:hover {
+    transform: translateY(-8px) scale(1.1);
+    background: rgba(165, 34, 197, 0.3);
+    box-shadow: 0 0 20px rgba(181, 34, 197, 0.6);
+}
+
+.dock-item.active {
+    background: rgba(34, 197, 94, 0.4);
+    box-shadow: 0 0 25px rgba(34, 197, 94, 0.8);
+}
+
+.dock-item.active::before {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    background: #22c55e;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(34, 197, 94, 1);
+}
+
+.dock-icon {
+    font-size: 28px;
+}
+
+/* Slightly larger icons for email and heart (Sunday Chats) */
+.dock-item--icon-lg .dock-icon svg {
+    width: 38px;
+    height: 38px;
+}
+
+.email-count-badge,
+.todo-count-badge,
+.notes-count-badge,
+.artwork-count-badge {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background: #c9c1ca;
+    color: #000;
+    border-radius: 10px;
+    min-width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 0 4px;
+    box-shadow: 0 0 10px rgba(244, 114, 182, 0.8);
+    border: 2px solid rgba(20, 10, 30, 0.95);
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+}
+
+.dock-separator {
+    width: 1px;
+    height: 32px;
+    background: rgba(34, 197, 94, 0.4);
+    margin: 0 4px;
+    box-shadow: 0 0 5px rgba(34, 197, 94, 0.6);
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(10, 5, 15, 0.8);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(34, 197, 94, 0.4);
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(34, 197, 94, 0.6);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(34, 197, 94, 0.6);
+    box-shadow: 0 0 15px rgba(34, 197, 94, 0.8);
+}
+

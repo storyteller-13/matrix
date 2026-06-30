@@ -1,0 +1,1032 @@
+/* Responsive – mobile-first improvements */
+@media (max-width: 768px) {
+    /* Use dynamic viewport height so layout doesn't jump when mobile browser chrome shows/hides */
+    html {
+        min-height: 100%;
+        min-height: 100dvh;
+    }
+    body {
+        min-height: 100%;
+        min-height: 100dvh;
+        overflow-x: hidden;
+        width: 100%;
+        max-width: 100%;
+        -webkit-overflow-scrolling: touch;
+    }
+    .desktop {
+        min-height: 100%;
+        min-height: 100dvh;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* Desktop container padding for fixed top panel + safe area (notch/home indicator) */
+    .desktop {
+        padding-top: calc(48px + env(safe-area-inset-top, 0px));
+        padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px));
+    }
+
+    /* Top Panel – respect safe area on notched devices */
+    .top-panel {
+        min-height: 48px;
+        padding: 0 8px;
+        padding-top: env(safe-area-inset-top, 0px);
+        padding-left: calc(8px + env(safe-area-inset-left, 0px));
+        padding-right: calc(8px + env(safe-area-inset-right, 0px));
+        padding-bottom: 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        box-sizing: border-box;
+        z-index: 20000;
+    }
+
+    .panel-left {
+        flex-shrink: 0;
+    }
+
+    .panel-center {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .panel-right {
+        flex-shrink: 0;
+    }
+
+    .menu-button {
+        padding: 6px 10px;
+        font-size: 11px;
+    }
+
+    .menu-button.cherry-icon {
+        padding: 6px 8px;
+    }
+
+    .menu-button.cherry-icon svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    .clock {
+        font-size: 11px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .system-tray {
+        gap: 8px;
+    }
+
+    .tray-icon {
+        width: 24px;
+        height: 24px;
+        min-width: 24px;
+        min-height: 24px;
+    }
+
+    .menu-dropdown {
+        max-width: calc(100vw - 32px - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px));
+        left: 0;
+        right: auto;
+    }
+
+    /* Prevent horizontal scrolling – target containers and media, not every element (avoids breaking flex) */
+    .desktop,
+    .window {
+        max-width: 100vw;
+    }
+    img, iframe {
+        max-width: 100%;
+        height: auto;
+    }
+    .bottom-dock .dock-item {
+        max-width: none;
+    }
+
+    .quotes-box {
+        width: calc(100% - 40px);
+        max-width: 360px;
+        max-height: 75vh;
+        bottom: auto;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        display: none; /* Hidden by default on mobile; shown when icon is clicked */
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+    .quotes-box[style*="display: block"] {
+        display: flex !important;
+    }
+
+    .quotes-box-content {
+        display: flex;
+        flex-direction: column;
+        min-height: 0;
+        flex: 1;
+    }
+
+    .quotes-box:hover {
+        transform: translate(-50%, -50%) translateY(-4px) scale(1.02);
+    }
+
+    .quotes-quote-container {
+        flex: 1;
+        min-height: 180px;
+        max-height: 55vh;
+        height: auto;
+        font-size: 14px;
+        padding: 14px 14px 14px 24px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+
+    .xkcd-box {
+        width: calc(100% - 40px);
+        max-width: 360px;
+        bottom: 90px; /* Above bottom dock */
+        left: 20px;
+    }
+
+    .xkcd-box-image-container {
+        height: 195px;
+    }
+
+    .xkcd-box-close {
+        width: 28px;
+        height: 28px;
+        font-size: 20px;
+        min-width: 28px;
+        flex-shrink: 0;
+    }
+
+    .apod-box {
+        width: calc(100% - 40px);
+        max-width: 360px;
+        bottom: 90px; /* Above bottom dock */
+        right: 20px;
+    }
+
+    .apod-box-image-container {
+        height: 195px;
+    }
+
+    .apod-box-close {
+        width: 28px;
+        height: 28px;
+        font-size: 20px;
+        min-width: 28px;
+        flex-shrink: 0;
+    }
+
+    .chess-box {
+        width: calc(100% - 40px);
+        max-width: 420px;
+        bottom: 130px;
+    }
+
+    .chess-box-puzzle-container {
+        height: 320px;
+    }
+
+    .chess-box-close {
+        width: 28px;
+        height: 28px;
+        font-size: 20px;
+        min-width: 28px;
+        flex-shrink: 0;
+    }
+
+    .xkcd-popup-content {
+        max-width: 95%;
+        max-height: 85vh;
+    }
+
+    .xkcd-popup-image-container {
+        max-height: 50vh;
+    }
+
+    .xkcd-popup-image {
+        max-height: 50vh;
+    }
+
+    .xkcd-title {
+        font-size: 16px;
+    }
+
+    .xkcd-popup-alt {
+        font-size: 13px;
+        padding: 16px;
+        max-height: 150px;
+    }
+
+    .apod-popup-content {
+        max-width: 95%;
+        max-height: 85vh;
+    }
+
+    .apod-popup-image-container {
+        max-height: 50vh;
+    }
+
+    .apod-popup-image {
+        max-height: 50vh;
+    }
+
+    .apod-title {
+        font-size: 16px;
+    }
+
+    .apod-popup-explanation {
+        font-size: 13px;
+        padding: 16px;
+        max-height: 150px;
+    }
+
+    /* Music Player */
+    .music-player {
+        width: calc(100% - 40px);
+        max-width: 360px;
+        top: 20px;
+        right: 20px;
+        max-height: calc(100vh - 44px);
+        max-height: calc(100dvh - 44px);
+    }
+
+    .music-player-header {
+        gap: 8px;
+    }
+
+    .music-close {
+        width: 28px;
+        height: 28px;
+        font-size: 20px;
+        min-width: 28px;
+        flex-shrink: 0;
+    }
+
+    .music-toggle {
+        width: 28px;
+        height: 28px;
+        min-width: 28px;
+    }
+
+    /* Windows */
+    .window {
+        max-width: 100vw;
+        max-height: calc(100vh - 48px - 80px);
+        max-height: calc(100dvh - 48px - 80px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+    }
+
+    .terminal-window {
+        width: 95%;
+        height: calc(100vh - 48px - 80px);
+        height: calc(100dvh - 48px - 80px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+        max-height: calc(100vh - 48px - 80px);
+        max-height: calc(100dvh - 48px - 80px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+        top: calc(48px + env(safe-area-inset-top, 0px));
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .todo-window {
+        width: 95%;
+        height: calc(100vh - 48px - 80px);
+        height: calc(100dvh - 48px - 80px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+        max-height: calc(100vh - 48px - 80px);
+        max-height: calc(100dvh - 48px - 80px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+        top: calc(48px + env(safe-area-inset-top, 0px));
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .notes-window {
+        width: 95%;
+        height: calc(100vh - 48px - 80px);
+        height: calc(100dvh - 48px - 80px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+        max-height: calc(100vh - 48px - 80px);
+        max-height: calc(100dvh - 48px - 80px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+        top: calc(48px + env(safe-area-inset-top, 0px));
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .notes-letter-window {
+        width: 95%;
+        height: calc(100vh - 48px - 80px);
+        height: calc(100dvh - 48px - 80px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+        max-height: calc(100vh - 48px - 80px);
+        max-height: calc(100dvh - 48px - 80px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+        top: calc(48px + env(safe-area-inset-top, 0px));
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .home-window,
+    .artwork-window {
+        width: 95%;
+        height: calc(100vh - 48px - 80px);
+        height: calc(100dvh - 48px - 80px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+        max-height: calc(100vh - 48px - 80px);
+        max-height: calc(100dvh - 48px - 80px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+        top: calc(48px + env(safe-area-inset-top, 0px));
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    /* Window Header */
+    .window-header {
+        height: 40px;
+        padding: 0 8px;
+    }
+
+    .window-content {
+        height: calc(100% - 40px);
+    }
+
+    .window-title {
+        font-size: 10px;
+    }
+
+    .control {
+        width: 16px;
+        height: 16px;
+    }
+
+    /* Bottom Dock – safe area above home indicator / gesture bar */
+    .bottom-dock {
+        bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 8px 12px;
+        padding-left: calc(12px + env(safe-area-inset-left, 0px));
+        padding-right: calc(12px + env(safe-area-inset-right, 0px));
+        gap: 6px;
+        max-width: calc(100% - 20px - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px));
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        position: fixed;
+        z-index: 1000;
+    }
+
+    .bottom-dock::-webkit-scrollbar {
+        height: 4px;
+    }
+
+    .bottom-dock::-webkit-scrollbar-thumb {
+        background: rgba(34, 197, 94, 0.5);
+        border-radius: 2px;
+    }
+
+    .dock-item {
+        width: 48px;
+        height: 48px;
+        min-width: 48px;
+        min-height: 48px;
+        flex-shrink: 0;
+    }
+
+    .dock-icon {
+        font-size: 22px;
+    }
+
+    .dock-icon svg {
+        width: 100%;
+        height: 100%;
+    }
+
+    /* Desktop Icons */
+    .desktop-icons {
+        display: none;
+    }
+
+    /* Terminal */
+    .terminal {
+        padding: 12px;
+        font-size: 12px;
+    }
+
+    .prompt {
+        font-size: 12px;
+    }
+
+    .terminal-input-main {
+        font-size: 16px; /* avoids iOS zoom-on-focus */
+    }
+
+    /* File Manager */
+    .file-list {
+        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+        gap: 12px;
+        padding: 12px;
+    }
+
+    .file-icon-large {
+        font-size: 36px;
+    }
+
+    .file-name {
+        font-size: 10px;
+    }
+
+    /* Todo */
+    .todo-input-container {
+        padding: 12px;
+    }
+
+    .todo-input {
+        font-size: 16px; /* avoids iOS zoom-on-focus */
+        padding: 8px 10px;
+    }
+
+    .todo-add-btn {
+        padding: 8px 16px;
+        font-size: 16px;
+        min-width: 40px;
+    }
+
+    .todo-item {
+        padding: 10px;
+    }
+
+    .todo-text {
+        font-size: 14px;
+    }
+
+    /* Notes */
+    .notes-entries-list {
+        padding: 12px;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .notes-date-item {
+        padding: 14px 14px;
+        gap: 12px;
+        font-size: 16px;
+        align-items: flex-start;
+        min-height: 44px; /* easy tap target */
+    }
+
+    .notes-date-text {
+        flex: 1;
+        min-width: 0;
+        overflow-wrap: anywhere;
+    }
+
+    .notes-date-title {
+        margin-left: auto;
+        max-width: 50%;
+        min-width: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        opacity: 0.9;
+    }
+
+    .notes-entry {
+        padding: 12px;
+    }
+
+    .notes-entry-title {
+        font-size: 14px;
+    }
+
+    .notes-entry-content {
+        font-size: 12px;
+    }
+
+}
+
+/* Extra Small Mobile Devices */
+@media (max-width: 480px) {
+    /* Desktop container padding for fixed top panel + safe area */
+    .desktop {
+        padding-top: calc(52px + env(safe-area-inset-top, 0px));
+        padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px));
+    }
+
+    .top-panel {
+        min-height: 52px;
+        padding: 0 6px;
+        padding-top: env(safe-area-inset-top, 0px);
+        padding-left: calc(6px + env(safe-area-inset-left, 0px));
+        padding-right: calc(6px + env(safe-area-inset-right, 0px));
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        box-sizing: border-box;
+        z-index: 20000;
+    }
+
+    .panel-left {
+        flex-shrink: 0;
+    }
+
+    .panel-center {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .panel-right {
+        flex-shrink: 0;
+    }
+
+    .menu-button {
+        padding: 8px 6px;
+        font-size: 10px;
+    }
+
+    .menu-button.cherry-icon {
+        padding: 6px 6px;
+    }
+
+    .menu-button.cherry-icon svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .clock {
+        font-size: 10px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .system-tray {
+        gap: 6px;
+    }
+
+    .tray-icon {
+        width: 22px;
+        height: 22px;
+        min-width: 22px;
+        min-height: 22px;
+    }
+
+    .music-player {
+        width: calc(100% - 12px);
+        max-width: none;
+        top: 60px;
+        right: 6px;
+        max-height: calc(100vh - 76px);
+        max-height: calc(100dvh - 76px);
+    }
+
+    .quotes-box {
+        width: calc(100% - 24px);
+        max-width: 360px;
+        max-height: 75vh;
+        bottom: auto;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        display: none;
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+    .quotes-box[style*="display: block"] {
+        display: flex !important;
+    }
+
+    .quotes-box-content {
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        min-height: 0;
+        flex: 1;
+    }
+
+    .quotes-quote-container {
+        flex: 1;
+        min-height: 160px;
+        max-height: 50vh;
+        height: auto;
+        font-size: 14px;
+        line-height: 1.6;
+        padding: 12px 12px 12px 20px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+
+    .quotes-quote-container::before,
+    .quotes-quote-container::after {
+        font-size: 32px;
+    }
+
+    .quotes-quote-container::before {
+        left: 8px;
+        top: 4px;
+    }
+
+    .quotes-quote-container::after {
+        right: 8px;
+        bottom: 4px;
+    }
+
+    .quotes-quote-author {
+        font-size: 12px;
+        margin-top: 8px;
+    }
+
+    .quotes-box:hover {
+        transform: translate(-50%, -50%) translateY(-4px) scale(1.02);
+    }
+
+    .xkcd-box {
+        width: calc(100% - 12px);
+        max-width: 240px;
+        bottom: 90px; /* Above bottom dock */
+        left: 6px;
+    }
+
+    .xkcd-box-content {
+        padding: 10px;
+    }
+
+    .xkcd-box-image-container {
+        height: 100px;
+    }
+
+    .xkcd-box-close {
+        width: 28px;
+        height: 28px;
+        font-size: 20px;
+    }
+
+    .apod-box {
+        width: calc(100% - 12px);
+        max-width: 240px;
+        bottom: 90px; /* Above bottom dock */
+        right: 6px;
+    }
+
+    .apod-box-content {
+        padding: 10px;
+    }
+
+    .apod-box-image-container {
+        height: 100px;
+    }
+
+    .apod-box-close {
+        width: 28px;
+        height: 28px;
+        font-size: 20px;
+    }
+
+    .chess-box {
+        width: calc(100% - 12px);
+        max-width: 360px;
+        bottom: 130px;
+    }
+
+    .chess-box-content {
+        padding: 10px;
+    }
+
+    .chess-box-puzzle-container {
+        height: 260px;
+    }
+
+    .chess-box-close {
+        width: 28px;
+        height: 28px;
+        font-size: 20px;
+    }
+
+    .music-player-content {
+        padding: 10px;
+    }
+
+    .music-title {
+        font-size: 10px;
+    }
+
+    .music-toggle {
+        width: 28px;
+        height: 28px;
+        font-size: 9px;
+    }
+
+    .terminal-window,
+    .todo-window,
+    .notes-window,
+    .home-window,
+    .artwork-window {
+        width: 100%;
+        height: calc(100vh - 52px - 80px);
+        height: calc(100dvh - 52px - 80px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+        top: calc(52px + env(safe-area-inset-top, 0px));
+        left: 0;
+        transform: none;
+        border-radius: 0;
+        max-height: calc(100vh - 52px - 80px);
+        max-height: calc(100dvh - 52px - 80px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+    }
+
+    .notes-letter-window {
+        width: 100% !important;
+        height: calc(100vh - 52px - 80px) !important;
+        height: calc(100dvh - 52px - 80px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px)) !important;
+        max-height: calc(100vh - 52px - 80px) !important;
+        max-height: calc(100dvh - 52px - 80px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px)) !important;
+        top: calc(52px + env(safe-area-inset-top, 0px)) !important;
+        left: 0 !important;
+        transform: none !important;
+        border-radius: 0;
+    }
+
+    .letter-container {
+        padding: 10px;
+    }
+
+    .letter-paper {
+        padding: 12px 16px;
+    }
+
+    .letter-title {
+        font-size: 15px;
+        margin-bottom: 14px;
+    }
+
+    .letter-text {
+        font-size: 12px;
+    }
+
+    .window-header {
+        height: 52px;
+        padding: 0 6px;
+    }
+
+    .window-content {
+        height: calc(100% - 52px);
+    }
+
+    .control {
+        width: 18px;
+        height: 18px;
+    }
+
+    .bottom-dock {
+        bottom: calc(8px + env(safe-area-inset-bottom, 0px));
+        padding: 8px 10px;
+        padding-left: calc(10px + env(safe-area-inset-left, 0px));
+        padding-right: calc(10px + env(safe-area-inset-right, 0px));
+        gap: 4px;
+        max-width: calc(100% - 16px - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px));
+        position: fixed;
+        z-index: 1000;
+    }
+
+    .dock-item {
+        width: 44px;
+        height: 44px;
+        min-width: 44px;
+        min-height: 44px;
+    }
+
+    .dock-icon {
+        font-size: 20px;
+    }
+
+    .dock-icon svg {
+        width: 100%;
+        height: 100%;
+    }
+
+    .todo-input-container {
+        padding: 10px;
+    }
+
+    .notes-entries-list {
+        padding: 10px;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .notes-date-item {
+        padding: 12px 12px;
+        gap: 10px;
+        font-size: 15px;
+    }
+
+    .notes-read-indicator {
+        font-size: 18px;
+        min-width: 22px;
+    }
+
+    .message-content {
+        max-width: 90%;
+        padding: 6px 10px;
+    }
+}
+
+/* Landscape Mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+    /* Desktop container padding for fixed top panel */
+    .desktop {
+        padding-top: 44px;
+        padding-bottom: 70px; /* Space for bottom dock in landscape */
+    }
+
+    .top-panel {
+        height: 44px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        z-index: 20000;
+    }
+
+    .window-content {
+        height: calc(100% - 40px);
+    }
+
+    .panel-left {
+        flex-shrink: 0;
+    }
+
+    .panel-center {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .panel-right {
+        flex-shrink: 0;
+    }
+
+    .music-player {
+        top: 52px;
+        width: 200px;
+        max-height: calc(100vh - 68px);
+        max-height: calc(100dvh - 68px);
+    }
+
+    .quotes-box {
+        bottom: auto;
+        left: 50%;
+        top: 50%;
+        width: 220px;
+        max-height: 70vh;
+        transform: translate(-50%, -50%);
+        display: none;
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+    .quotes-box[style*="display: block"] {
+        display: flex !important;
+    }
+
+    .quotes-box-content {
+        display: flex;
+        flex-direction: column;
+        min-height: 0;
+        flex: 1;
+    }
+
+    .quotes-box:hover {
+        transform: translate(-50%, -50%) translateY(-4px) scale(1.02);
+    }
+
+    .quotes-quote-container {
+        flex: 1;
+        min-height: 140px;
+        max-height: 45vh;
+        height: auto;
+        overflow-y: auto;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+
+    .xkcd-box {
+        bottom: 70px; /* Above bottom dock */
+        left: 8px;
+        width: 220px;
+    }
+
+    .xkcd-box-image-container {
+        height: 120px;
+    }
+
+    .xkcd-box-close {
+        width: 28px;
+        height: 28px;
+        font-size: 20px;
+    }
+
+    .apod-box {
+        bottom: 70px; /* Above bottom dock */
+        right: 8px;
+        width: 220px;
+    }
+
+    .apod-box-image-container {
+        height: 120px;
+    }
+
+    .apod-box-close {
+        width: 28px;
+        height: 28px;
+        font-size: 20px;
+    }
+
+    .chess-box {
+        bottom: 100px;
+        width: calc(100% - 16px);
+        max-width: 280px;
+    }
+
+    .chess-box-puzzle-container {
+        height: 220px;
+    }
+
+    .chess-box-close {
+        width: 28px;
+        height: 28px;
+        font-size: 20px;
+    }
+
+    .terminal-window,
+    .todo-window,
+    .notes-window,
+    .home-window,
+    .artwork-window,
+    .notes-letter-window {
+        width: 95%;
+        height: calc(100dvh - 44px - 70px);
+        max-height: calc(100dvh - 44px - 70px);
+        top: 44px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .bottom-dock {
+        bottom: 8px;
+        padding: 6px 10px;
+        position: fixed;
+        z-index: 1000;
+    }
+
+    .dock-item {
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
+        min-height: 40px;
+    }
+
+    .dock-icon {
+        font-size: 18px;
+    }
+}
+
+/* Touch Target Improvements */
+@media (max-width: 768px) {
+    /* Ensure minimum touch target size of 44x44px */
+    .menu-button,
+    .tray-icon,
+    .apod-box-close,
+    .control,
+    .toolbar-btn,
+    .todo-add-btn,
+    .todo-checkbox,
+    .todo-delete-btn,
+    .notes-date-item,
+    .back-btn {
+        min-width: 44px;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Prevent text selection on interactive elements */
+    .menu-button,
+    .dock-item,
+    .desktop-icon,
+    .file-item,
+    .todo-item,
+    .notes-entry {
+        -webkit-tap-highlight-color: rgba(34, 197, 94, 0.3);
+        -webkit-touch-callout: none;
+        user-select: none;
+    }
+}
+

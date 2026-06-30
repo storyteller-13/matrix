@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#0a0515">
+    <title>welcome to the matrix</title>
+    <meta name="description" content="welcome to the matrix">
+    <meta name="keywords" content="operating system, AI, matrix, interactive website">
+    <meta name="author" content="mvs">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://marina.nullstar.fun">
+    <meta property="og:title" content="nullstar.fun - welcome to the matrix">
+    <meta property="og:description" content="welcome to the matrix">
+    <meta property="og:site_name" content="matrix.nullstar.fun">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://matrix.nullstar.fun">
+    <meta name="twitter:title" content="matrix.nullstar.fun - welcome to the matrix">
+    <meta name="twitter:description" content="welcome to the matrix">
+
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/panel.css">
+    <link rel="stylesheet" href="styles/tray-boxes.css">
+    <link rel="stylesheet" href="styles/music.css">
+    <link rel="stylesheet" href="styles/desktop-icons.css">
+    <link rel="stylesheet" href="styles/windows.css">
+    <link rel="stylesheet" href="styles/dock.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+</head>
+<body>
+    <div class="desktop">
+        <!-- Top Panel (like GNOME/KDE) -->
+        <div class="top-panel">
+            <div class="panel-left">
+                <div class="menu-container">
+                    <a href="javascript:void(0)" class="menu-button cherry-icon" id="applications-menu-button" style="text-decoration: none;">
+                        <svg width="38" height="38" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <radialGradient id="saturn-globe" cx="35%" cy="35%" r="65%">
+                                    <stop offset="0%" stop-color="rgba(57, 255, 20, 0.85)"/>
+                                    <stop offset="70%" stop-color="rgba(57, 255, 20, 0.55)"/>
+                                    <stop offset="100%" stop-color="rgba(57, 255, 20, 0.35)"/>
+                                </radialGradient>
+                                <linearGradient id="saturn-belt" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" stop-color="#39ff14" stop-opacity="0.2"/>
+                                    <stop offset="50%" stop-color="#39ff14" stop-opacity="0.4"/>
+                                    <stop offset="100%" stop-color="#39ff14" stop-opacity="0.2"/>
+                                </linearGradient>
+                            </defs>
+                            <g transform="translate(16, 16)">
+                                <!-- Saturn rings (tilted, soft ends) -->
+                                <g transform="rotate(-25)" stroke="#39ff14" stroke-linecap="round" fill="none">
+                                    <ellipse cx="0" cy="0" rx="12" ry="4.5" stroke-width="1.1" opacity="0.92"/>
+                                    <ellipse cx="0" cy="0" rx="10" ry="3.8" stroke-width="0.95" opacity="0.78"/>
+                                    <ellipse cx="0" cy="0" rx="8" ry="3" stroke-width="0.75" opacity="0.64"/>
+                                    <ellipse cx="0" cy="0" rx="6.5" ry="2.4" stroke-width="0.6" opacity="0.5"/>
+                                </g>
+                                <!-- Saturn globe -->
+                                <ellipse cx="0" cy="0" rx="5.5" ry="6" fill="url(#saturn-globe)" stroke="#39ff14" stroke-width="1.8" stroke-opacity="0.9"/>
+                                <ellipse cx="0" cy="0" rx="5.5" ry="6" fill="none" stroke="#39ff14" stroke-width="1.8" opacity="0.85"/>
+                                <!-- Belt -->
+                                <ellipse cx="0" cy="0.3" rx="4" ry="0.6" fill="url(#saturn-belt)"/>
+                            </g>
+                        </svg>
+                    </a>
+                    <div class="menu-dropdown" id="applications-dropdown">
+                        <div class="menu-item menu-item-has-submenu" tabindex="0">
+                            <span class="menu-item-text">applications</span>
+                            <span class="menu-submenu-arrow" aria-hidden="true">›</span>
+                            <div class="menu-submenu">
+                                <a href="javascript:void(0)" class="menu-item" onclick="window.openHomeWindow(); return false;">
+                                    <span class="menu-item-icon">
+                                        <svg width="18" height="18" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                            <rect x="2" y="5" width="12" height="9" rx="1.5" fill="none" stroke="#a855f7" stroke-width="1.2"/>
+                                            <rect x="2" y="5" width="12" height="9" rx="1.5" fill="rgba(168, 85, 247, 0.15)"/>
+                                            <path d="M2 5 L6 5 L7.5 3.5 L12 3.5 L12 5" fill="#a855f7" opacity="0.8" stroke="#a855f7" stroke-width="1.2" stroke-linejoin="round"/>
+                                        </svg>
+                                    </span>
+                                    <span class="menu-item-text">home</span>
+                                </a>
+                                <a href="javascript:void(0)" class="menu-item" onclick="window.openTerminalWindow(); return false;">
+                                    <span class="menu-item-icon">
+                                        <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                            <rect x="1" y="1" width="14" height="14" rx="1" fill="#1a1a2e" stroke="#a855f7" stroke-width="1.5"/>
+                                            <rect x="2" y="2.5" width="12" height="1.5" fill="#a855f7" opacity="0.3"/>
+                                            <text x="2.5" y="6" font-family="monospace" font-size="3" fill="#00ff00">$</text>
+                                            <rect x="4.5" y="5.2" width="1" height="1.5" fill="#00ff00" opacity="0.8"/>
+                                            <text x="2.5" y="9" font-family="monospace" font-size="2.5" fill="#888" opacity="0.7">~</text>
+                                        </svg>
+                                    </span>
+                                    <span class="menu-item-text">terminal</span>
+                                </a>
+                                <a href="javascript:void(0)" class="menu-item" onclick="window.openArtworkWindow(); return false;">
+                                    <span class="menu-item-icon">
+                                        <svg width="20" height="20" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                            <rect x="3" y="5" width="10" height="8" rx="1" fill="#1a1a2e" stroke="#a855f7" stroke-width="1.2"/>
+                                            <rect x="5" y="3" width="6" height="2" rx="0.5" fill="#1a1a2e" stroke="#a855f7" stroke-width="1.2"/>
+                                            <circle cx="8" cy="9" r="2.5" fill="#0a0a0f" stroke="#a855f7" stroke-width="1.2"/>
+                                            <circle cx="8" cy="9" r="1.5" fill="#1a1a2e" stroke="#a855f7" stroke-width="0.8"/>
+                                            <circle cx="8" cy="9" r="0.8" fill="#a855f7" opacity="0.3"/>
+                                            <rect x="6" y="11.5" width="4" height="1" rx="0.3" fill="#1a1a2e" stroke="#a855f7" stroke-width="0.8"/>
+                                        </svg>
+                                    </span>
+                                    <span class="menu-item-text">artwork</span>
+                                    <span class="menu-item-count" id="artwork-menu-count" style="display: none;">0</span>
+                                </a>
+                                <a href="javascript:void(0)" class="menu-item" onclick="window.openNotesWindow(); return false;">
+                                    <span class="menu-item-icon">
+                                        <svg width="18" height="18" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M4 2 L12 2 L8 7 Z" fill="rgba(168, 85, 247, 0.15)" stroke="#a855f7" stroke-width="1.2" stroke-linejoin="round"/>
+                                            <path d="M8 9 L4 14 L12 14 Z" fill="rgba(168, 85, 247, 0.15)" stroke="#a855f7" stroke-width="1.2" stroke-linejoin="round"/>
+                                            <line x1="8" y1="7" x2="8" y2="9" stroke="#a855f7" stroke-width="1.2" stroke-linecap="round"/>
+                                            <circle cx="8" cy="4" r="0.8" fill="#a855f7" opacity="0.6"/>
+                                            <circle cx="8" cy="12" r="0.8" fill="#a855f7" opacity="0.6"/>
+                                        </svg>
+                                    </span>
+                                    <span class="menu-item-text">ramblings</span>
+                                    <span class="menu-item-count" id="notes-menu-count" style="display: none;">0</span>
+                                </a>
+                                <a href="javascript:void(0)" class="menu-item" onclick="window.openTodoWindow(); return false;">
+                                    <span class="menu-item-icon">
+                                        <svg width="18" height="18" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                            <rect x="3" y="2" width="10" height="12" rx="1.5" fill="none" stroke="#a855f7" stroke-width="1.2"/>
+                                            <rect x="3.5" y="2.5" width="9" height="11" rx="1" fill="rgba(168, 85, 247, 0.15)"/>
+                                            <rect x="3" y="2" width="2.5" height="3" rx="0.5" fill="#a855f7" opacity="0.3"/>
+                                            <circle cx="5.5" cy="6.5" r="0.6" fill="none" stroke="#a855f7" stroke-width="0.8"/>
+                                            <path d="M5.2 6.5 L5.4 6.7 L5.8 6.3" stroke="#a855f7" stroke-width="0.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <circle cx="5.5" cy="9" r="0.6" fill="none" stroke="#a855f7" stroke-width="0.8"/>
+                                            <path d="M5.2 9 L5.4 9.2 L5.8 8.8" stroke="#a855f7" stroke-width="0.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <circle cx="5.5" cy="11.5" r="0.6" fill="none" stroke="#a855f7" stroke-width="0.8" opacity="0.5"/>
+                                            <path d="M8 6.5 L11 6.5" stroke="#a855f7" stroke-width="0.6" stroke-linecap="round"/>
+                                            <path d="M8 9 L10 9" stroke="#a855f7" stroke-width="0.6" stroke-linecap="round"/>
+                                            <path d="M8 11.5 L10.5 11.5" stroke="#a855f7" stroke-width="0.6" stroke-linecap="round" opacity="0.5"/>
+                                        </svg>
+                                    </span>
+                                    <span class="menu-item-text">todo list</span>
+                                    <span class="menu-item-count" id="todo-menu-count" style="display: none;">0</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="menu-separator"></div>
+                        <div class="menu-item menu-item-has-submenu" tabindex="0">
+                            <span class="menu-item-text">other stories</span>
+                            <span class="menu-submenu-arrow" aria-hidden="true">›</span>
+                            <div class="menu-submenu">
+
+                                <a href="https://luna.nullstar.fun/" target="_blank" rel="noopener noreferrer" class="menu-item">
+                                    <span class="menu-item-icon">
+                                        <svg width="18" height="18" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" d="M8 2 A6 6 0 0 1 8 14 A6 6 0 0 1 8 2 Z M6.5 8 A3.5 3.5 0 0 1 13.5 8 A3.5 3.5 0 0 1 6.5 8 Z" fill="rgba(168, 85, 247, 0.15)" stroke="#a855f7" stroke-width="1.2"/>
+                                        </svg>
+                                    </span>
+                                    <span class="menu-item-text">luna capra</span>
+                                </a>
+                                <a href="https://soulmate.nullstar.fun/" target="_blank" rel="noopener noreferrer" class="menu-item">
+                                    <span class="menu-item-icon">
+                                        <svg width="18" height="18" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                            <rect x="2" y="6" width="4" height="4" rx="0.5" fill="rgba(168, 85, 247, 0.15)" stroke="#a855f7" stroke-width="1.2"/>
+                                            <rect x="10" y="6" width="4" height="4" rx="0.5" fill="rgba(168, 85, 247, 0.15)" stroke="#a855f7" stroke-width="1.2"/>
+                                            <path d="M8 4 L8 6 M6 5 L10 5" stroke="#a855f7" stroke-width="1" stroke-linecap="round"/>
+                                            <circle cx="8" cy="8" r="1.5" fill="none" stroke="#a855f7" stroke-width="1" opacity="0.7"/>
+                                        </svg>
+                                    </span>
+                                    <span class="menu-item-text">true love</span>
+                                </a>
+                                <a href="https://thecrime.nullstar.fun/" target="_blank" rel="noopener noreferrer" class="menu-item">
+                                    <span class="menu-item-icon">
+                                        <svg width="18" height="18" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M2 2.5 L6 2.5 L6 14 L2 13 Z" fill="rgba(168, 85, 247, 0.15)" stroke="#a855f7" stroke-width="1.2" stroke-linejoin="round"/>
+                                            <path d="M14 2.5 L10 2.5 L10 14 L14 13 Z" fill="rgba(168, 85, 247, 0.15)" stroke="#a855f7" stroke-width="1.2" stroke-linejoin="round"/>
+                                            <path d="M6 2.5 L10 2.5 L10 14 L6 14 Z" fill="rgba(168, 85, 247, 0.08)" stroke="#a855f7" stroke-width="1.2" stroke-linejoin="round"/>
+                                            <line x1="6" y1="5" x2="10" y2="5" stroke="#a855f7" stroke-width="0.8" opacity="0.7"/>
+                                            <line x1="6" y1="8" x2="10" y2="8" stroke="#a855f7" stroke-width="0.8" opacity="0.7"/>
+                                            <line x1="6" y1="11" x2="9" y2="11" stroke="#a855f7" stroke-width="0.8" opacity="0.5"/>
+                                        </svg>
+                                    </span>
+                                    <span class="menu-item-text">the crime</span>
+                                </a>
+                                <a href="https://choices.vonsteinkirch.com/" target="_blank" rel="noopener noreferrer" class="menu-item">
+                                    <span class="menu-item-icon">
+                                        <svg width="18" height="18" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="8" cy="8" r="3.2" fill="rgba(168, 85, 247, 0.2)" stroke="#a855f7" stroke-width="1.2"/>
+                                            <path d="M8 1.8 L8 3.2 M8 12.8 L8 14.2 M1.8 8 L3.2 8 M12.8 8 L14.2 8 M3.6 3.6 L4.6 4.6 M11.4 11.4 L12.4 12.4 M12.4 3.6 L11.4 4.6 M4.6 11.4 L3.6 12.4" stroke="#a855f7" stroke-width="1" stroke-linecap="round"/>
+                                            <circle cx="8" cy="8" r="1.1" fill="#a855f7" opacity="0.35"/>
+                                        </svg>
+                                    </span>
+                                    <span class="menu-item-text">$choices</span>
+                                </a>
+                                <a href="https://future.nullstar.fun/" target="_blank" rel="noopener noreferrer" class="menu-item">
+                                    <span class="menu-item-icon">
+                                        <svg width="18" height="18" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8 2 L5 6 L8 5 L11 6 Z" fill="rgba(168, 85, 247, 0.15)" stroke="#a855f7" stroke-width="1.2" stroke-linejoin="round"/>
+                                            <path d="M4 10 L8 7 L12 10 L8 14 Z" fill="rgba(168, 85, 247, 0.1)" stroke="#a855f7" stroke-width="1.2" stroke-linejoin="round"/>
+                                        </svg>
+                                    </span>
+                                    <span class="menu-item-text">future app</span>
+                                </a>
+                                <a href="https://demons.nullstar.fun/" target="_blank" rel="noopener noreferrer" class="menu-item">
+                                    <span class="menu-item-icon">
+                                        <svg width="18" height="18" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M2 2.5 L6 2.5 L6 14 L2 13 Z" fill="rgba(168, 85, 247, 0.15)" stroke="#a855f7" stroke-width="1.2" stroke-linejoin="round"/>
+                                            <path d="M14 2.5 L10 2.5 L10 14 L14 13 Z" fill="rgba(168, 85, 247, 0.15)" stroke="#a855f7" stroke-width="1.2" stroke-linejoin="round"/>
+                                            <path d="M6 2.5 L10 2.5 L10 14 L6 14 Z" fill="rgba(168, 85, 247, 0.08)" stroke="#a855f7" stroke-width="1.2" stroke-linejoin="round"/>
+                                            <line x1="6" y1="5" x2="10" y2="5" stroke="#a855f7" stroke-width="0.8" opacity="0.7"/>
+                                            <line x1="6" y1="8" x2="10" y2="8" stroke="#a855f7" stroke-width="0.8" opacity="0.7"/>
+                                            <line x1="6" y1="11" x2="9" y2="11" stroke="#a855f7" stroke-width="0.8" opacity="0.5"/>
+                                        </svg>
+                                    </span>
+                                    <span class="menu-item-text">the 5th wall</span>
+                                </a>
+                                <a href="https://samhain.nullstar.fun/" target="_blank" rel="noopener noreferrer" class="menu-item">
+                                    <span class="menu-item-icon">
+                                        <svg width="18" height="18" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                            <ellipse cx="8" cy="9.5" rx="5" ry="4.2" fill="rgba(168, 85, 247, 0.15)" stroke="#a855f7" stroke-width="1.2"/>
+                                            <path d="M7 3.2 Q8 1.8 9 3.2" fill="none" stroke="#a855f7" stroke-width="1" stroke-linecap="round"/>
+                                            <path d="M5.2 8.5 L6.3 9.5 L5.2 10.5 M10.8 8.5 L9.7 9.5 L10.8 10.5" fill="none" stroke="#a855f7" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M7 12 Q8 11.2 9 12" fill="none" stroke="#a855f7" stroke-width="0.85" stroke-linecap="round"/>
+                                        </svg>
+                                    </span>
+                                    <span class="menu-item-text">samhain '25</span>
+                                </a>
+                                <a href="https://lore.nullstar.fun/" target="_blank" rel="noopener noreferrer" class="menu-item">
+                                    <span class="menu-item-icon">
+                                        <svg width="18" height="18" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                            <ellipse cx="4.5" cy="8" rx="1.4" ry="4.5" fill="rgba(168, 85, 247, 0.12)" stroke="#a855f7" stroke-width="1.1"/>
+                                            <rect x="4.5" y="3.5" width="7.5" height="9" rx="0.6" fill="rgba(168, 85, 247, 0.15)" stroke="#a855f7" stroke-width="1.2"/>
+                                            <ellipse cx="12.5" cy="8" rx="1.4" ry="4.5" fill="rgba(168, 85, 247, 0.12)" stroke="#a855f7" stroke-width="1.1"/>
+                                            <path d="M6.5 6 L10.5 6 M6.5 8 L10 8 M6.5 10 L9.5 10" stroke="#a855f7" stroke-width="0.7" stroke-linecap="round" opacity="0.85"/>
+                                        </svg>
+                                    </span>
+                                    <span class="menu-item-text">lo lo lore</span>
+                                </a>
+                                <a href="https://tv.vonsteinkirch.com/" target="_blank" rel="noopener noreferrer" class="menu-item">
+                                    <span class="menu-item-icon">
+                                        <svg width="18" height="18" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                            <rect x="2" y="4" width="12" height="8" rx="1.2" fill="rgba(168, 85, 247, 0.15)" stroke="#a855f7" stroke-width="1.2"/>
+                                            <rect x="3.8" y="5.5" width="8.4" height="5" rx="0.4" fill="rgba(10, 10, 20, 0.5)" stroke="#a855f7" stroke-width="0.7"/>
+                                            <path d="M5.5 7 L6.5 9.5 L7.5 7 M8.2 9.5 L9.2 7 L10.2 9.5" fill="none" stroke="#a855f7" stroke-width="0.55" stroke-linecap="round" opacity="0.9"/>
+                                            <path d="M8 2.2 L8 3.8 M5.2 2.8 L8 3.8 L10.8 2.8" fill="none" stroke="#a855f7" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M6.5 13.2 L8 14.5 L9.5 13.2" fill="none" stroke="#a855f7" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </span>
+                                    <span class="menu-item-text">television</span>
+                                </a>
+                                <a href="https://coven.vonsteinkirch.com/" target="_blank" rel="noopener noreferrer" class="menu-item">
+                                    <span class="menu-item-icon">
+                                        <svg width="18" height="18" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="8" cy="8" r="3.2" fill="rgba(168, 85, 247, 0.2)" stroke="#a855f7" stroke-width="1.2"/>
+                                            <path d="M8 1.8 L8 3.2 M8 12.8 L8 14.2 M1.8 8 L3.2 8 M12.8 8 L14.2 8 M3.6 3.6 L4.6 4.6 M11.4 11.4 L12.4 12.4 M12.4 3.6 L11.4 4.6 M4.6 11.4 L3.6 12.4" stroke="#a855f7" stroke-width="1" stroke-linecap="round"/>
+                                            <circle cx="8" cy="8" r="1.1" fill="#a855f7" opacity="0.35"/>
+                                        </svg>
+                                    </span>
+                                    <span class="menu-item-text">midsumm3r</span>
+                                </a>
+                                <a href="https://urani.nullstar.fun/" target="_blank" rel="noopener noreferrer" class="menu-item">
+                                    <span class="menu-item-icon">
+                                        <svg width="18" height="18" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                            <rect x="2" y="6" width="4" height="4" rx="0.5" fill="rgba(168, 85, 247, 0.15)" stroke="#a855f7" stroke-width="1.2"/>
+                                            <rect x="10" y="6" width="4" height="4" rx="0.5" fill="rgba(168, 85, 247, 0.15)" stroke="#a855f7" stroke-width="1.2"/>
+                                            <path d="M8 4 L8 6 M6 5 L10 5" stroke="#a855f7" stroke-width="1" stroke-linecap="round"/>
+                                            <circle cx="8" cy="8" r="1.5" fill="none" stroke="#a855f7" stroke-width="1" opacity="0.7"/>
+                                        </svg>
+                                    </span>
+                                    <span class="menu-item-text">urani trade</span>
+                                </a>
+
+                                <a href="https://etherscan.io/address/0x9213256fe89fa0428e8546910a8d78180dbbdc38#code" target="_blank" rel="noopener noreferrer" class="menu-item">
+                                    <span class="menu-item-icon">
+                                        <svg width="18" height="18" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8 2 L5 6 L8 5 L11 6 Z" fill="rgba(168, 85, 247, 0.15)" stroke="#a855f7" stroke-width="1.2" stroke-linejoin="round"/>
+                                            <path d="M4 10 L8 7 L12 10 L8 14 Z" fill="rgba(168, 85, 247, 0.1)" stroke="#a855f7" stroke-width="1.2" stroke-linejoin="round"/>
+                                        </svg>
+                                    </span>
+                                    <span class="menu-item-text">filmmaker dao</span>
+                                </a>
+                                <a href="https://vimeo.com/285146753?turnstile=1.YNKi1UsEOcSsyraz_-FQfOt-yzUjVhCw6xmL5kFoIQlFMztr0I8ScMTc_wB3mYVNdaZIUwDT8LE-eC5QzcVbS-dgr1qfDrZvsxLxPtL39EgEQSMTGVQyQG3IKKlQ1mBHr-hM-M3DsIznZGynBCvMPQokZOCHfRFy-ZOLO_ccOHtbRNVKzvt1MzvqSRAyejullL1dLi4Xvz7AYq6ekt-ixmG4Ghzbiw18YGdQr1FU53KXuMzdkZn1mRW3wozqa_PieBXrwO9V7DrAXqn9k6w5GAvMLnfgWa6_G-ZoiEL5dSCiG2xpgJCI14BTrf0wNmueMi-LmdGiyivVqNMWamSHrGsugC8tljI9Y-rikeWVLAYziw1L-LCOwk3KomPwg7CVf5Bjz9mizt1hx3qIAaCUGNpKuVbZW50NXtONEp2Amj83tgt5yan6YaB1X6MY3qwH4k6nio7F8C2-tPUFyKPXjFmctCeB1yTMAdh7q8a3XKD1eeiOC6iMXC72EZNQRKn1dbNdr0-pDP29ynaAzy4IAEIWYZlw2a6ycuFkU5u4qWa6lTzfNI_5Mi2z_RJta7MCAtnUvp9deZM-OXu9jX8uOC6-xU6nh1Py4RI2nLWP1itPnYOdka9gFKSsR7RftzN14BJ3PTWRQQC8Je7ZgoUgYQ.uA-QCuAcLoU3ITRBecqFEg.ebf9907b9741a33f25e36bf8c3264885b20ad860a5233b7202b07fb63c642878" target="_blank" rel="noopener noreferrer" class="menu-item">
+                                    <span class="menu-item-icon">
+                                        <svg width="18" height="18" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                            <ellipse cx="8" cy="9.5" rx="5" ry="4.2" fill="rgba(168, 85, 247, 0.15)" stroke="#a855f7" stroke-width="1.2"/>
+                                            <path d="M7 3.2 Q8 1.8 9 3.2" fill="none" stroke="#a855f7" stroke-width="1" stroke-linecap="round"/>
+                                            <path d="M5.2 8.5 L6.3 9.5 L5.2 10.5 M10.8 8.5 L9.7 9.5 L10.8 10.5" fill="none" stroke="#a855f7" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M7 12 Q8 11.2 9 12" fill="none" stroke="#a855f7" stroke-width="0.85" stroke-linecap="round"/>
+                                        </svg>
+                                    </span>
+                                    <span class="menu-item-text">time traveler</span>
+                                </a>
+                                <a href="https://web.archive.org/web/20200426052315/http://curiee.com/" target="_blank" rel="noopener noreferrer" class="menu-item">
+                                    <span class="menu-item-icon">
+                                        <svg width="18" height="18" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                            <ellipse cx="4.5" cy="8" rx="1.4" ry="4.5" fill="rgba(168, 85, 247, 0.12)" stroke="#a855f7" stroke-width="1.1"/>
+                                            <rect x="4.5" y="3.5" width="7.5" height="9" rx="0.6" fill="rgba(168, 85, 247, 0.15)" stroke="#a855f7" stroke-width="1.2"/>
+                                            <ellipse cx="12.5" cy="8" rx="1.4" ry="4.5" fill="rgba(168, 85, 247, 0.12)" stroke="#a855f7" stroke-width="1.1"/>
+                                            <path d="M6.5 6 L10.5 6 M6.5 8 L10 8 M6.5 10 L9.5 10" stroke="#a855f7" stroke-width="0.7" stroke-linecap="round" opacity="0.85"/>
+                                        </svg>
+                                    </span>
+                                    <span class="menu-item-text">quantum curiee</span>
+                                </a>
+                                <a href="https://singularity.nullstar.fun/" target="_blank" rel="noopener noreferrer" class="menu-item">
+                                    <span class="menu-item-icon">
+                                        <svg width="18" height="18" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" d="M8 2 A6 6 0 0 1 8 14 A6 6 0 0 1 8 2 Z M6.5 8 A3.5 3.5 0 0 1 13.5 8 A3.5 3.5 0 0 1 6.5 8 Z" fill="rgba(168, 85, 247, 0.15)" stroke="#a855f7" stroke-width="1.2"/>
+                                        </svg>
+                                    </span>
+                                    <span class="menu-item-text">singularity.sh</span>
+                                </a>
+                                <a href="https://www.astro.sunysb.edu/steinkirch/" target="_blank" rel="noopener noreferrer" class="menu-item">
+                                    <span class="menu-item-icon">
+                                        <svg width="18" height="18" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                            <rect x="2" y="6" width="4" height="4" rx="0.5" fill="rgba(168, 85, 247, 0.15)" stroke="#a855f7" stroke-width="1.2"/>
+                                            <rect x="10" y="6" width="4" height="4" rx="0.5" fill="rgba(168, 85, 247, 0.15)" stroke="#a855f7" stroke-width="1.2"/>
+                                            <path d="M8 4 L8 6 M6 5 L10 5" stroke="#a855f7" stroke-width="1" stroke-linecap="round"/>
+                                            <circle cx="8" cy="8" r="1.5" fill="none" stroke="#a855f7" stroke-width="1" opacity="0.7"/>
+                                        </svg>
+                                    </span>
+                                    <span class="menu-item-text">doctor bt3gl</span>
+                                </a>
+                                <a href="https://vimeo.com/user32415653" target="_blank" rel="noopener noreferrer" class="menu-item">
+                                    <span class="menu-item-icon">
+                                        <svg width="18" height="18" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M8 2 L5 6 L8 5 L11 6 Z" fill="rgba(168, 85, 247, 0.15)" stroke="#a855f7" stroke-width="1.2" stroke-linejoin="round"/>
+                                            <path d="M4 10 L8 7 L12 10 L8 14 Z" fill="rgba(168, 85, 247, 0.1)" stroke="#a855f7" stroke-width="1.2" stroke-linejoin="round"/>
+                                        </svg>
+                                    </span>
+                                    <span class="menu-item-text">robots bt3gl</span>
+                                </a>
+                                <a href="https://web.archive.org/web/20090621224724/http://saturn.steinkirch.org/" target="_blank" rel="noopener noreferrer" class="menu-item">
+                                    <span class="menu-item-icon">
+                                        <svg width="18" height="18" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="8" cy="8" r="3.2" fill="rgba(168, 85, 247, 0.2)" stroke="#a855f7" stroke-width="1.2"/>
+                                            <path d="M8 1.8 L8 3.2 M8 12.8 L8 14.2 M1.8 8 L3.2 8 M12.8 8 L14.2 8 M3.6 3.6 L4.6 4.6 M11.4 11.4 L12.4 12.4 M12.4 3.6 L11.4 4.6 M4.6 11.4 L3.6 12.4" stroke="#a855f7" stroke-width="1" stroke-linecap="round"/>
+                                            <circle cx="8" cy="8" r="1.1" fill="#a855f7" opacity="0.35"/>
+                                        </svg>
+                                    </span>
+                                    <span class="menu-item-text">strings bt3gl</span>
+                                </a>
+                                <a href="https://web.archive.org/web/20090620090344/http://www.steinkirch.org/" target="_blank" rel="noopener noreferrer" class="menu-item">
+                                    <span class="menu-item-icon">
+                                        <svg width="18" height="18" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                            <rect x="2" y="4" width="12" height="8" rx="1.2" fill="rgba(168, 85, 247, 0.15)" stroke="#a855f7" stroke-width="1.2"/>
+                                            <rect x="3.8" y="5.5" width="8.4" height="5" rx="0.4" fill="rgba(10, 10, 20, 0.5)" stroke="#a855f7" stroke-width="0.7"/>
+                                            <path d="M5.5 7 L6.5 9.5 L7.5 7 M8.2 9.5 L9.2 7 L10.2 9.5" fill="none" stroke="#a855f7" stroke-width="0.55" stroke-linecap="round" opacity="0.9"/>
+                                            <path d="M8 2.2 L8 3.8 M5.2 2.8 L8 3.8 L10.8 2.8" fill="none" stroke="#a855f7" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M6.5 13.2 L8 14.5 L9.5 13.2" fill="none" stroke="#a855f7" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </span>
+                                    <span class="menu-item-text">physicist</span>
+                                </a>
+                                <a href="https://web.archive.org/web/20110410001836/http://en.wikipedia.org/wiki/User:Steinkirch" target="_blank" rel="noopener noreferrer" class="menu-item">
+                                    <span class="menu-item-icon">
+                                        <svg width="18" height="18" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                            <ellipse cx="8" cy="9.5" rx="5" ry="4.2" fill="rgba(168, 85, 247, 0.15)" stroke="#a855f7" stroke-width="1.2"/>
+                                            <path d="M7 3.2 Q8 1.8 9 3.2" fill="none" stroke="#a855f7" stroke-width="1" stroke-linecap="round"/>
+                                            <path d="M5.2 8.5 L6.3 9.5 L5.2 10.5 M10.8 8.5 L9.7 9.5 L10.8 10.5" fill="none" stroke="#a855f7" stroke-width="0.85" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M7 12 Q8 11.2 9 12" fill="none" stroke="#a855f7" stroke-width="0.85" stroke-linecap="round"/>
+                                        </svg>
+                                    </span>
+                                    <span class="menu-item-text">cypherpunk</span>
+                                </a>
+                                <a href="https://web.archive.org/web/20070322015644/http://fly.to/bytegirl" target="_blank" rel="noopener noreferrer" class="menu-item">
+                                    <span class="menu-item-icon">
+                                        <svg width="18" height="18" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd" d="M8 2 A6 6 0 0 1 8 14 A6 6 0 0 1 8 2 Z M6.5 8 A3.5 3.5 0 0 1 13.5 8 A3.5 3.5 0 0 1 6.5 8 Z" fill="rgba(168, 85, 247, 0.15)" stroke="#a855f7" stroke-width="1.2"/>
+                                        </svg>
+                                    </span>
+                                    <span class="menu-item-text">bytegirl</span>
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-center">
+                <div class="clock">14:32:45</div>
+            </div>
+            <div class="panel-right">
+                <div class="system-tray">
+                    <a href="javascript:void(0)" id="quotes-icon-tray" onclick="window.openQuotesWindow(); return false;" style="text-decoration: none; cursor: pointer;">
+                        <span class="tray-icon tray-icon-wisdom">
+                            <svg width="24" height="24" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Classic lamp bulb: glass, neck, screw base -->
+                                <circle cx="8" cy="5.5" r="4" fill="rgba(168, 85, 247, 0.18)" stroke="#a855f7" stroke-width="1.2"/>
+                                <ellipse cx="8" cy="5.2" rx="1.5" ry="1.8" fill="rgba(168, 85, 247, 0.4)" stroke="none"/>
+                                <path d="M6.5 9.2 L6.5 11 L9.5 11 L9.5 9.2 Z" fill="rgba(168, 85, 247, 0.15)" stroke="#a855f7" stroke-width="1.1" stroke-linejoin="round"/>
+                                <path d="M6 11 L6 14 L10 14 L10 11 Z" fill="rgba(168, 85, 247, 0.12)" stroke="#a855f7" stroke-width="1.1" stroke-linejoin="round"/>
+                                <path d="M6.5 12.2 L9.5 12.2 M7 13 L9 13" stroke="#a855f7" stroke-width="0.5" opacity="0.5" stroke-linecap="round"/>
+                            </svg>
+                        </span>
+                    </a>
+                    <a href="javascript:void(0)" id="xkcd-icon-tray" onclick="window.openXkcdWindow(); return false;" style="text-decoration: none; cursor: pointer;">
+                        <span class="tray-icon">
+                            <svg width="24" height="24" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Smile Face -->
+                                <circle cx="8" cy="8" r="6" fill="rgba(168, 85, 247, 0.15)" stroke="#a855f7" stroke-width="1.2"/>
+                                <circle cx="6" cy="6.5" r="1" fill="#a855f7" opacity="0.8"/>
+                                <circle cx="10" cy="6.5" r="1" fill="#a855f7" opacity="0.8"/>
+                                <path d="M 5 10 Q 8 12.5 11 10" fill="none" stroke="#a855f7" stroke-width="1.2" stroke-linecap="round"/>
+                            </svg>
+                        </span>
+                    </a>
+                    <a href="javascript:void(0)" id="apod-icon-tray" onclick="window.openApodWindow(); return false;" style="text-decoration: none; cursor: pointer;">
+                        <span class="tray-icon">
+                            <svg width="24" height="24" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Star -->
+                                <path d="M8 2 L9.5 6 L14 6.5 L10.5 9.5 L11.5 14 L8 11.5 L4.5 14 L5.5 9.5 L2 6.5 L6.5 6 Z" fill="rgba(168, 85, 247, 0.15)" stroke="#a855f7" stroke-width="1.2" stroke-linejoin="round"/>
+                                <path d="M8 2 L9.5 6 L14 6.5 L10.5 9.5 L11.5 14 L8 11.5 L4.5 14 L5.5 9.5 L2 6.5 L6.5 6 Z" fill="none" stroke="#a855f7" stroke-width="1.2" stroke-linejoin="round"/>
+                                <circle cx="8" cy="8" r="1" fill="#a855f7" opacity="0.6"/>
+                            </svg>
+                        </span>
+                    </a>
+                    <a href="javascript:void(0)" id="chess-icon-tray" onclick="window.openChessWindow(); return false;" style="text-decoration: none; cursor: pointer;">
+                        <span class="tray-icon tray-icon-chess">♔</span>
+                    </a>
+                    <a href="javascript:void(0)" id="sound-icon-toggle" style="text-decoration: none; cursor: pointer;">
+                        <span class="tray-icon">
+                            <svg width="24" height="24" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="3" y="5" width="5" height="6" rx="1" fill="none" stroke="#a855f7" stroke-width="1.6"/>
+                                <rect x="3" y="5" width="5" height="6" rx="1" fill="rgba(168, 85, 247, 0.15)"/>
+                                <path d="M8 6 L11 4 L11 12 L8 10 Z" fill="none" stroke="#a855f7" stroke-width="1.6" stroke-linejoin="round"/>
+                                <path d="M8 6 L11 4 L11 12 L8 10 Z" fill="rgba(168, 85, 247, 0.15)"/>
+                                <path d="M11.5 6.5 Q12.5 6.5 13 7 Q13.5 7.5 13.5 8 Q13.5 8.5 13 9 Q12.5 9.5 11.5 9.5" fill="none" stroke="#a855f7" stroke-width="1.6" stroke-linecap="round"/>
+                                <path d="M11.5 5.5 Q13 5.5 14 6.5 Q15 7.5 15 8 Q15 8.5 14 9.5 Q13 10.5 11.5 10.5" fill="none" stroke="#a855f7" stroke-width="1.6" stroke-linecap="round" opacity="0.7"/>
+                            </svg>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quotes Box (stacked above XKCD) -->
+        <div class="quotes-box" id="quotes-box">
+            <div class="quotes-box-glow"></div>
+            <div class="quotes-box-content">
+                <div class="quotes-box-header">
+                    <div class="quotes-icon-wrapper">
+                        <span class="quotes-icon">💡</span>
+                    </div>
+                    <span class="quotes-box-title">TODAY'S WISDOM</span>
+                    <button class="quotes-box-close" id="quotes-box-close" title="Close">
+                        <span class="close-icon">×</span>
+                    </button>
+                </div>
+                <div class="quotes-quote-container" id="quotes-quote-container"></div>
+                <div class="quotes-quote-author" id="quotes-quote-author"></div>
+            </div>
+        </div>
+
+        <!-- XKCD Box -->
+        <div class="xkcd-box" id="xkcd-box">
+            <div class="xkcd-box-glow"></div>
+            <div class="xkcd-box-content">
+                <div class="xkcd-box-header">
+                    <div class="xkcd-icon-wrapper">
+                        <span class="xkcd-icon">📰</span>
+                    </div>
+                    <span class="xkcd-box-title" id="xkcd-box-title">TODAY'S XKCD</span>
+                    <button class="xkcd-box-close" id="xkcd-box-close" title="Close">
+                        <span class="close-icon">×</span>
+                    </button>
+                </div>
+                <div class="xkcd-box-image-container" id="xkcd-box-image-container">
+                    <div class="xkcd-loading">loading...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- APOD Box -->
+        <div class="apod-box" id="apod-box">
+            <div class="apod-box-glow"></div>
+            <div class="apod-box-content">
+                <div class="apod-box-header">
+                    <div class="apod-icon-wrapper">
+                        <span class="apod-icon">🌌</span>
+                    </div>
+                    <span class="apod-box-title" id="apod-box-title">TODAY'S APOD</span>
+                    <button class="apod-box-close" id="apod-box-close" title="Close">
+                        <span class="close-icon">×</span>
+                    </button>
+                </div>
+                <div class="apod-box-image-container" id="apod-box-image-container">
+                    <div class="apod-loading">loading...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chess.com Daily Box (centered above dock) -->
+        <div class="chess-box" id="chess-box">
+            <div class="chess-box-glow"></div>
+            <div class="chess-box-content">
+                <div class="chess-box-header">
+                    <div class="chess-icon-wrapper">
+                        <span class="chess-icon">♔</span>
+                    </div>
+                    <span class="chess-box-title">TODAY'S CHESS</span>
+                    <button class="chess-box-close" id="chess-box-close" title="Close">
+                        <span class="close-icon">×</span>
+                    </button>
+                </div>
+                <div class="chess-box-puzzle-container" id="chess-box-puzzle-container">
+                    <div class="chess-loading" id="chess-loading">loading…</div>
+                    <div class="chess-puzzle-content" id="chess-puzzle-content" style="display: none;">
+                        <div class="chess-board-wrap" id="chess-board-wrap"></div>
+                        <a href="https://www.chess.com/daily" target="_blank" rel="noopener noreferrer" class="chess-play-link">go play →</a>
+                    </div>
+                    <div class="chess-error" id="chess-error" style="display: none;">(puzzle unavailable)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- XKCD Popup -->
+        <div class="xkcd-popup" id="xkcd-popup" style="display: none;">
+            <div class="xkcd-popup-content">
+                <div class="xkcd-popup-header">
+                    <span class="xkcd-title" id="xkcd-title"></span>
+                    <button class="xkcd-close" id="xkcd-close">×</button>
+                </div>
+                <div class="xkcd-popup-image-container">
+                    <img class="xkcd-popup-image" id="xkcd-popup-image" alt="XKCD Comic">
+                </div>
+                <div class="xkcd-popup-alt" id="xkcd-alt"></div>
+            </div>
+        </div>
+
+        <!-- APOD Popup -->
+        <div class="apod-popup" id="apod-popup" style="display: none;">
+            <div class="apod-popup-content">
+                <div class="apod-popup-header">
+                    <span class="apod-title" id="apod-title"></span>
+                    <button class="apod-close" id="apod-close">×</button>
+                </div>
+                <div class="apod-popup-image-container">
+                    <img class="apod-popup-image" id="apod-popup-image" alt="Astronomical Picture of the Day">
+                </div>
+                <div class="apod-popup-explanation" id="apod-explanation"></div>
+                <div class="apod-popup-date" id="apod-date"></div>
+            </div>
+        </div>
+
+        <!-- Music Player -->
+        <div class="music-player" id="music-player">
+            <div class="music-player-glow"></div>
+            <div class="music-player-content">
+                <div class="music-player-header">
+                    <div class="music-icon-wrapper">
+                        <span class="music-icon">🎵</span>
+                        <div class="music-waves" id="music-waves">
+                            <span class="wave"></span>
+                            <span class="wave"></span>
+                            <span class="wave"></span>
+                            <span class="wave"></span>
+                        </div>
+                    </div>
+                    <button class="music-nav" id="music-prev" title="Previous">‹</button>
+                    <span class="music-title" id="music-title">change the world (eric clapton)</span>
+                    <button class="music-nav" id="music-next" title="Next">›</button>
+                    <button class="music-toggle" id="music-toggle" title="Play/Pause">
+                        <span class="play-icon">▶</span>
+                        <span class="pause-icon">⏸</span>
+                    </button>
+                    <button class="music-close" id="music-close" title="Close">
+                        <span class="close-icon">×</span>
+                    </button>
+                </div>
+                <div class="music-visualizer" id="music-visualizer">
+                    <div class="visualizer-bar"></div>
+                    <div class="visualizer-bar"></div>
+                    <div class="visualizer-bar"></div>
+                    <div class="visualizer-bar"></div>
+                    <div class="visualizer-bar"></div>
+                    <div class="visualizer-bar"></div>
+                    <div class="visualizer-bar"></div>
+                    <div class="visualizer-bar"></div>
+                </div>
+                <div class="music-song-list" id="music-song-list"></div>
+            </div>
+            <iframe id="music-youtube" style="display: none;" src="https://www.youtube.com/embed/IXdNnw99-Ic?enablejsapi=1&autoplay=0&loop=1&playlist=IXdNnw99-Ic&controls=0&modestbranding=1" frameborder="0" allow="encrypted-media"></iframe>
+        </div>
+
+        <!-- Desktop Icons -->
+        <div class="desktop-icons">
+            <a href="javascript:void(0)" class="desktop-icon" id="home-desktop-icon" style="text-decoration: none; cursor: pointer;">
+                <div class="icon-image">
+                    <svg width="48" height="48" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="2" y="5" width="12" height="9" rx="1.5" fill="none" stroke="#a855f7" stroke-width="1.2"/>
+                        <rect x="2" y="5" width="12" height="9" rx="1.5" fill="rgba(168, 85, 247, 0.15)"/>
+                        <path d="M2 5 L6 5 L7.5 3.5 L12 3.5 L12 5" fill="#a855f7" opacity="0.8" stroke="#a855f7" stroke-width="1.2" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="icon-label">home</div>
+            </a>
+        </div>
+
+        <!-- Neon Heart Wallpaper -->
+        <div class="wallpaper-heart">
+            <svg width="40" height="40" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" 
+                      fill="none" 
+                      stroke="#22c55e" 
+                      stroke-width="1.5" 
+                      stroke-linejoin="round"/>
+            </svg>
+        </div>
+
+        <!-- Terminal Window -->
+        <div class="window terminal-window" id="terminal-window" style="display: none;">
+            <div class="window-header">
+                <div class="window-controls">
+                    <span class="control close"></span>
+                    <span class="control minimize"></span>
+                </div>
+                <div class="window-title">
+                    <span class="terminal-icon">
+                        <svg width="14" height="14" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="1" y="1" width="14" height="14" rx="1" fill="#1a1a2e" stroke="#a855f7" stroke-width="1.5"/>
+                            <rect x="2" y="2.5" width="12" height="1.5" fill="#a855f7" opacity="0.3"/>
+                            <text x="2.5" y="6" font-family="monospace" font-size="3" fill="#00ff00">$</text>
+                            <rect x="4.5" y="5.2" width="1" height="1.5" fill="#00ff00" opacity="0.8"/>
+                            <text x="2.5" y="9" font-family="monospace" font-size="2.5" fill="#888" opacity="0.7">~</text>
+                        </svg>
+                    </span>
+                    anon@nullstar: ~
+                </div>
+            </div>
+            <div class="window-content">
+                <div class="terminal" id="main-terminal">
+                    <div class="terminal-output-container" id="terminal-output-container">
+                    </div>
+                    <div class="terminal-line">
+                        <span class="prompt">anon@nullstar:~$ </span>
+                        <input type="text" class="terminal-input-main" id="terminal-input-main" autocomplete="off" spellcheck="false" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Todo List Window -->
+        <div class="window todo-window" id="todo-window" style="display: none;">
+            <div class="window-header">
+                <div class="window-controls">
+                    <span class="control close"></span>
+                    <span class="control minimize"></span>
+                </div>
+                <div class="window-title">
+                    <span class="todo-icon">
+                        <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="3" y="2" width="10" height="12" rx="1.5" fill="none" stroke="#a855f7" stroke-width="1.2"/>
+                            <rect x="3.5" y="2.5" width="9" height="11" rx="1" fill="rgba(168, 85, 247, 0.15)"/>
+                            <rect x="3" y="2" width="2.5" height="3" rx="0.5" fill="#a855f7" opacity="0.3"/>
+                            <circle cx="5.5" cy="6.5" r="0.6" fill="none" stroke="#a855f7" stroke-width="0.8"/>
+                            <path d="M5.2 6.5 L5.4 6.7 L5.8 6.3" stroke="#a855f7" stroke-width="0.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="5.5" cy="9" r="0.6" fill="none" stroke="#a855f7" stroke-width="0.8"/>
+                            <path d="M5.2 9 L5.4 9.2 L5.8 8.8" stroke="#a855f7" stroke-width="0.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="5.5" cy="11.5" r="0.6" fill="none" stroke="#a855f7" stroke-width="0.8" opacity="0.5"/>
+                            <path d="M8 6.5 L11 6.5" stroke="#a855f7" stroke-width="0.6" stroke-linecap="round"/>
+                            <path d="M8 9 L10 9" stroke="#a855f7" stroke-width="0.6" stroke-linecap="round"/>
+                            <path d="M8 11.5 L10.5 11.5" stroke="#a855f7" stroke-width="0.6" stroke-linecap="round" opacity="0.5"/>
+                        </svg>
+                    </span>
+                    TODO LIST
+                </div>
+            </div>
+            <div class="window-content">
+                <div class="todo-app">
+                    <div class="todo-list" id="todo-list">
+                        <div class="todo-empty">
+                            <div class="empty-icon">📋</div>
+                            <div class="empty-text">no tasks yet</div>
+                            <div class="empty-subtext">add a task to get started</div>
+                        </div>
+                    </div>
+                    <div class="todo-footer" id="todo-footer" style="display: none;">
+                        <div class="todo-count" id="todo-count">0 items left</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notes Window -->
+        <div class="window notes-window" id="notes-window" style="display: none;">
+            <div class="window-header">
+                <div class="window-controls">
+                    <span class="control close"></span>
+                    <span class="control minimize"></span>
+                </div>
+                <div class="window-title">
+                    <span class="notes-icon">
+                        <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 2 L12 2 L8 7 Z" fill="rgba(168, 85, 247, 0.15)" stroke="#a855f7" stroke-width="1.2" stroke-linejoin="round"/>
+                            <path d="M8 9 L4 14 L12 14 Z" fill="rgba(168, 85, 247, 0.15)" stroke="#a855f7" stroke-width="1.2" stroke-linejoin="round"/>
+                            <line x1="8" y1="7" x2="8" y2="9" stroke="#a855f7" stroke-width="1.2" stroke-linecap="round"/>
+                            <circle cx="8" cy="4" r="0.8" fill="#a855f7" opacity="0.6"/>
+                            <circle cx="8" cy="12" r="0.8" fill="#a855f7" opacity="0.6"/>
+                        </svg>
+                    </span>
+                    MY JOURNEY THROUGH REALITY
+                </div>
+            </div>
+            <div class="window-content">
+                <div class="notes-app">
+                    <div class="notes-entries-list" id="notes-entries-list">
+                        <div class="notes-empty">
+                            <div class="empty-icon">📔</div>
+                            <div class="empty-text">no entries yet</div>
+                            <div class="empty-subtext">click "new entry" to start writing</div>
+                        </div>
+                    </div>
+                    <div class="notes-footer" id="notes-footer" style="display: none;">
+                        <div class="notes-count" id="notes-count">0 entries</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notes Letter Window -->
+        <div class="window notes-letter-window" id="notes-letter-window" style="display: none;">
+            <div class="window-header">
+                <div class="window-controls">
+                    <span class="control close"></span>
+                    <span class="control minimize"></span>
+                </div>
+                <div class="window-title">
+                </div>
+            </div>
+            <div class="window-content">
+                <div class="letter-container">
+                    <div class="letter-paper">
+                        <div class="letter-header">
+                            <div class="letter-date">
+                                <span id="letter-date"></span>
+                            </div>
+                        </div>
+                        <div class="letter-body">
+                            <div class="letter-title" id="letter-title"></div>
+                            <div class="letter-text" id="letter-content"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Home Window -->
+        <div class="window home-window" id="home-window" style="display: none;">
+            <div class="window-header">
+                <div class="window-controls">
+                    <span class="control close"></span>
+                    <span class="control minimize"></span>
+                </div>
+                <div class="window-title">
+                    <span class="home-icon">
+                        <svg width="12" height="12" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="2" y="5" width="12" height="9" rx="1.5" fill="none" stroke="#a855f7" stroke-width="1.2"/>
+                            <rect x="2" y="5" width="12" height="9" rx="1.5" fill="rgba(168, 85, 247, 0.15)"/>
+                            <path d="M2 5 L6 5 L7.5 3.5 L12 3.5 L12 5" fill="#a855f7" opacity="0.8" stroke="#a855f7" stroke-width="1.2" stroke-linejoin="round"/>
+                        </svg>
+                    </span>
+                    home
+                </div>
+            </div>
+            <div class="window-content">
+                <div class="home-container">
+                    <iframe
+                        id="home-iframe"
+                        width="100%"
+                        height="100%"
+                        src="https://marina.nullstar.fun/"
+                        frameborder="0"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- Artwork Window (Empty Folder) -->
+        <div class="window artwork-window" id="artwork-window" style="display: none;">
+            <div class="window-header">
+                <div class="window-controls">
+                    <span class="control close"></span>
+                    <span class="control minimize"></span>
+                </div>
+                <div class="window-title">
+                    <span class="artwork-icon">
+                        <svg width="18" height="18" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="3" y="5" width="10" height="8" rx="1" fill="#1a1a2e" stroke="#a855f7" stroke-width="1.2"/>
+                            <rect x="5" y="3" width="6" height="2" rx="0.5" fill="#1a1a2e" stroke="#a855f7" stroke-width="1.2"/>
+                            <circle cx="8" cy="9" r="2.5" fill="#0a0a0f" stroke="#a855f7" stroke-width="1.2"/>
+                            <circle cx="8" cy="9" r="1.5" fill="#1a1a2e" stroke="#a855f7" stroke-width="0.8"/>
+                            <circle cx="8" cy="9" r="0.8" fill="#a855f7" opacity="0.3"/>
+                            <rect x="6" y="11.5" width="4" height="1" rx="0.3" fill="#1a1a2e" stroke="#a855f7" stroke-width="0.8"/>
+                        </svg>
+                    </span>
+                    POETIC ARTWORK
+                </div>
+            </div>
+            <div class="window-content">
+                <div class="file-manager">
+                    <div class="file-list">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Dock/Taskbar -->
+        <div class="bottom-dock">
+            <a href="javascript:void(0)" class="dock-item" id="terminal-dock-item" style="text-decoration: none; cursor: pointer;">
+                <div class="dock-icon">
+                    <svg width="32" height="32" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="1" y="1" width="14" height="14" rx="1" fill="#1a1a2e" stroke="#a855f7" stroke-width="1.5"/>
+                        <rect x="2" y="2.5" width="12" height="1.5" fill="#a855f7" opacity="0.3"/>
+                        <text x="2.5" y="6" font-family="monospace" font-size="3" fill="#00ff00">$</text>
+                        <rect x="4.5" y="5.2" width="1" height="1.5" fill="#00ff00" opacity="0.8"/>
+                        <text x="2.5" y="9" font-family="monospace" font-size="2.5" fill="#888" opacity="0.7">~</text>
+                    </svg>
+                </div>
+            </a>
+            <a href="javascript:void(0)" class="dock-item" id="artwork-dock-item" onclick="window.openArtworkWindow(); return false;" style="text-decoration: none; cursor: pointer;">
+                <div class="dock-icon">
+                    <svg width="44" height="44" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="3" y="5" width="10" height="8" rx="1" fill="#1a1a2e" stroke="#a855f7" stroke-width="1.2"/>
+                        <rect x="5" y="3" width="6" height="2" rx="0.5" fill="#1a1a2e" stroke="#a855f7" stroke-width="1.2"/>
+                        <circle cx="8" cy="9" r="2.5" fill="#0a0a0f" stroke="#a855f7" stroke-width="1.2"/>
+                        <circle cx="8" cy="9" r="1.5" fill="#1a1a2e" stroke="#a855f7" stroke-width="0.8"/>
+                        <circle cx="8" cy="9" r="0.8" fill="#a855f7" opacity="0.3"/>
+                        <rect x="6" y="11.5" width="4" height="1" rx="0.3" fill="#1a1a2e" stroke="#a855f7" stroke-width="0.8"/>
+                    </svg>
+                </div>
+                <span class="artwork-count-badge" id="artwork-count-badge" style="display: none;">0</span>
+            </a>
+            <a href="javascript:void(0)" class="dock-item" id="notes-dock-item" onclick="window.openNotesWindow(); return false;" style="text-decoration: none; cursor: pointer;">
+                <div class="dock-icon">
+                    <svg width="32" height="32" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Sandglass frame: top and bottom bars -->
+                        <rect x="3" y="1.5" width="10" height="1.2" rx="0.4" fill="none" stroke="#a855f7" stroke-width="1.2"/>
+                        <rect x="3" y="13.3" width="10" height="1.2" rx="0.4" fill="none" stroke="#a855f7" stroke-width="1.2"/>
+                        <!-- Upper glass (triangle pointing down) -->
+                        <path d="M5 2.7 L11 2.7 L8 7.5 Z" fill="rgba(168, 85, 247, 0.12)" stroke="#a855f7" stroke-width="1.2" stroke-linejoin="round"/>
+                        <!-- Lower glass (triangle pointing up) -->
+                        <path d="M8 8.5 L5 13.3 L11 13.3 Z" fill="rgba(168, 85, 247, 0.12)" stroke="#a855f7" stroke-width="1.2" stroke-linejoin="round"/>
+                        <!-- Sand in bottom bulb -->
+                        <path d="M8 8.5 L6.2 12 L9.8 12 Z" fill="#a855f7" opacity="0.35"/>
+                    </svg>
+                </div>
+                <span class="notes-count-badge" id="notes-count-badge" style="display: none;">0</span>
+            </a>
+            <a href="javascript:void(0)" class="dock-item" id="todo-dock-item" onclick="window.openTodoWindow(); return false;" style="text-decoration: none; cursor: pointer;">
+                <div class="dock-icon">
+                    <svg width="32" height="32" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="3" y="2" width="10" height="12" rx="1.5" fill="none" stroke="#a855f7" stroke-width="1.2"/>
+                        <rect x="3.5" y="2.5" width="9" height="11" rx="1" fill="rgba(168, 85, 247, 0.15)"/>
+                        <rect x="3" y="2" width="2.5" height="3" rx="0.5" fill="#a855f7" opacity="0.3"/>
+                        <circle cx="5.5" cy="6.5" r="0.6" fill="none" stroke="#a855f7" stroke-width="0.8"/>
+                        <path d="M5.2 6.5 L5.4 6.7 L5.8 6.3" stroke="#a855f7" stroke-width="0.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="5.5" cy="9" r="0.6" fill="none" stroke="#a855f7" stroke-width="0.8"/>
+                        <path d="M5.2 9 L5.4 9.2 L5.8 8.8" stroke="#a855f7" stroke-width="0.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="5.5" cy="11.5" r="0.6" fill="none" stroke="#a855f7" stroke-width="0.8" opacity="0.5"/>
+                        <path d="M8 6.5 L11 6.5" stroke="#a855f7" stroke-width="0.6" stroke-linecap="round"/>
+                        <path d="M8 9 L10 9" stroke="#a855f7" stroke-width="0.6" stroke-linecap="round"/>
+                        <path d="M8 11.5 L10.5 11.5" stroke="#a855f7" stroke-width="0.6" stroke-linecap="round" opacity="0.5"/>
+                    </svg>
+                </div>
+                <span class="todo-count-badge" id="todo-count-badge" style="display: none;">0</span>
+            </a>
+            <a href="javascript:void(0)" class="dock-item" id="home-dock-item" onclick="window.openHomeWindow(); return false;" style="text-decoration: none; cursor: pointer;">
+                <div class="dock-icon">
+                    <svg width="36" height="36" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="2" y="5" width="12" height="9" rx="1.5" fill="none" stroke="#a855f7" stroke-width="1.2"/>
+                        <rect x="2" y="5" width="12" height="9" rx="1.5" fill="rgba(168, 85, 247, 0.15)"/>
+                        <path d="M2 5 L6 5 L7.5 3.5 L12 3.5 L12 5" fill="#a855f7" opacity="0.8" stroke="#a855f7" stroke-width="1.2" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src="core/protection.js"></script>
+    <script src="core/env.js"></script>
+    <script src="core/base-app.js"></script>
+
+    <!-- Core System Modules -->
+    <script src="core/window-manager.js"></script>
+    <script src="core/panel.js"></script>
+    <script src="applications/music-player/music-player-storage.js"></script>
+    <script src="applications/music-player/music-player.js"></script>
+
+    <!-- Application Modules -->
+    <!-- Todo App -->
+    <script src="applications/todo/todo-storage.js"></script>
+    <script src="applications/todo/todo.js"></script>
+
+    <!-- Notes App -->
+    <script src="applications/notes/notes-storage.js"></script>
+    <script src="applications/notes/notes.js"></script>
+
+
+    <!-- Quotes Panel (data first, then panel) -->
+    <script src="applications/quotes/quotes-data.js"></script>
+    <script src="applications/quotes/quotes.js"></script>
+
+    <!-- XKCD Panel -->
+    <script src="applications/xkcd/xkcd.js"></script>
+
+    <!-- APOD Panel -->
+    <script src="applications/apod/apod.js"></script>
+
+    <!-- Chess Panel -->
+    <script src="applications/chess/chess.js"></script>
+
+    <!-- Home App -->
+    <script src="applications/home/home.js"></script>
+
+    <!-- Artwork App -->
+    <script src="applications/artwork/artwork.js"></script>
+
+    <!-- Terminal App -->
+    <script src="applications/terminal/terminal-app.js"></script>
+    <script src="applications/terminal/terminal.js"></script>
+
+</body>
+</html>
