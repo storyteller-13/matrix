@@ -39,12 +39,11 @@ class NotesStorage {
             date: '2026-07-05T00:00:00.000Z',
             title: 'happy 250th, america',
             content: this.cleanContent(`
-
-            i miss you, my beautiful home
+            «i»i miss you, my beautiful home
             and i know i will be back soon
             and every next 4th of july i'll
-            be celebrating at my home, with
-            my family
+            be celebrating at my home, 
+            with my family
 
             for now, i cherish the sweet memories,
             celebrate being in love with someone
@@ -59,13 +58,13 @@ class NotesStorage {
             thank you, United States of America
             for being the best country in the world
             and for still being the Land of the Free
+            «/i»
 
-            ------------------------------------
+
             🇺🇸 MY TOP 4TH OF JULY OF ALL TIMES 🇺🇸
-            ------------------------------------
 
-            1️⃣ Port Jefferson, NY, 2013
-            🎆🎆🎆🎆🎆🎆🎆🎆🎆🎆🎆🎆🎆🎆🎆🎆
+
+            ✨ I. Port Jefferson, NY, 2013 ✨
 
             That was a great year for me. I was finally loosening up a little bit and enjoying living on Long Island and in New York.
 
@@ -74,8 +73,7 @@ class NotesStorage {
             Anyway, that particular year I had a great crowd of friends. We dressed up super cute, and after living in the USA for over four years, I was finally feeling like a real American.
 
 
-            2️⃣ Los Angeles, CA, 2020
-            🎆🎆🎆🎆🎆🎆🎆🎆🎆🎆🎆🎆🎆🎆
+            ✨ II. Los Angeles, CA, 2020 ✨
 
             That first year of the pandemic was very tough. LA was chaos, and morale was below freezing. But I did get to have a great celebration.
 
@@ -84,8 +82,7 @@ class NotesStorage {
             We had a great party, and the fireworks were absolutely some of the best of my life!
 
 
-            3️⃣ San Francisco, CA, 2015
-            🎆🎆🎆🎆🎆🎆🎆🎆🎆🎆🎆🎆🎆🎆🎆
+            ✨ III. San Francisco, CA, 2015 ✨
 
             My first year in California. My first year as a software engineer. The first time in my life I had a six-figure salary.
 
@@ -96,8 +93,7 @@ class NotesStorage {
             Bliss.
 
 
-            4️⃣ New York City, NY, 2010
-            🎆🎆🎆🎆🎆🎆🎆🎆🎆🎆🎆🎆🎆🎆🎆
+            ✨ IV. New York City, NY, 2010 ✨
 
             That year I was officially an American resident, living in New York!
 
@@ -108,18 +104,16 @@ class NotesStorage {
             PS: The following year I spent 4th of July in Montauk, and it was every bit as good as this one. In fact, perhaps every 4th of July during those graduate school years was simply fantastic.
 
 
-            5️⃣ Washington, DC, 2008
-            🎆🎆🎆🎆🎆🎆🎆🎆🎆🎆🎆🎆🎆
+            ✨ V. Washington, DC, 2008 ✨
 
             My first 4th of July ever, right in the heart of the celebrations!
 
-            I was working with CUA and NASA Goddard Space Flight Center on Active Galactic Nuclei, and I was having the best summer of my life up to that point. I could not believe I was working at NASA — I even had a little desk in one of the buildings!
+            I was working with CUA and NASA Goddard Space Flight Center on Active Galactic Nuclei, and I was having the best summer of my life up to that point. I could not believe I was at NASA — I even had a little desk in one of the buildings!
 
             I was feeling invincible!
 
 
-            0️⃣ (Honorable Mention) Curitiba, Brazil, 1996
-            🎆🎆🎆🎆🎆🎆🎆🎆🎆🎆🎆🎆🎆🎆🎆🎆🎆🎆🎆🎆🎆🎆🎆🎆🎆🎆
+            ✨ VI. (Honorable Mention) Curitiba, Brazil, 1996 ✨
 
             I watched Independence Day, with Will Smith and Bill Pullman, when it came out, and it was sooo cool! 
             
@@ -132,23 +126,21 @@ class NotesStorage {
 
             {
             date: '2026-07-02T00:00:00.000Z',
-            title: '🦋 hello world 🦋',
+            title: 'hello world',
             content: this.cleanContent(`
             hello there
             anon friend
 
             i am marina, a hacker girl
             a scientist and an engineer
-            always building the sublime
+            always creating the sublime
 
             in the next years of my life
-            i will be full-time creating
-            NULLSTAR GAMES and MY FAMILY
+            i will be full-time building
+            NULLSTAR + MY FAMILY
 
             and registering
             my journey here
-
-            m
                 `)
             },
 

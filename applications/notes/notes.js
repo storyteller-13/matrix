@@ -105,7 +105,7 @@ class NotesApp extends BaseApp {
     }
 
     renderDateItems(sortedDates) {
-        return sortedDates.map((dateKey, index) => {
+        return sortedDates.map((dateKey) => {
             const dateEntries = this.entriesByDate[dateKey];
             const firstEntry = dateEntries[0];
             const date = this.storage.formatDate(firstEntry.createdAt);

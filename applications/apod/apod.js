@@ -91,7 +91,7 @@ class APODPanel {
                 this.cacheAPOD(data);
                 this.displayAPOD(data);
             } else {
-                this.showError('unable to load APOD; rate limit may be active.');
+                this.showError('(unable to load APOD)');
             }
         } catch (_) {
             const stale = this.getCachedAPOD(true);
@@ -223,9 +223,9 @@ class APODPanel {
         const imageContainer = document.getElementById('apod-box-image-container');
         if (imageContainer) {
             if (message) {
-                imageContainer.innerHTML = `<div class="apod-error">🌌<br><small>${message}</small></div>`;
+                imageContainer.innerHTML = `<div class="apod-error"><br><small>${message}</small></div>`;
             } else {
-                imageContainer.innerHTML = '<div class="apod-error">🌌</div>';
+                imageContainer.innerHTML = '<div class="apod-error"></div>';
             }
         }
     }

@@ -10,3 +10,5 @@
 - my experiments with drugs
 - dates, dates, dates
 - how i read minds / download information
+- everything is memory (and attention)
+

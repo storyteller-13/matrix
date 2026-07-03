@@ -1,17 +1,16 @@
 /* Top Panel */
 .top-panel {
     height: 48px;
-    background: rgba(20, 10, 30, 0.95);
+    background: rgba(255, 255, 255, 0.88);
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(34, 197, 94, 0.5);
-    box-shadow: 0 0 20px rgba(34, 197, 94, 0.3);
+    border-bottom: 1px solid rgba(255, 133, 162, 0.35);
+    box-shadow: 0 2px 10px rgba(180, 100, 130, 0.08);
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 16px;
     position: relative;
     z-index: 20000;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3), 0 0 20px rgba(34, 197, 94, 0.3);
 }
 
 .panel-left {
@@ -21,21 +20,20 @@
 
 .menu-button {
     padding: 6px 14px;
-    color: #c084fc;
+    color: #D946A6;
     font-size: 16px;
     font-weight: 900;
     cursor: pointer;
     border-radius: 4px;
     transition: all 0.2s;
-    text-shadow: 0 0 10px rgba(168, 85, 247, 0.8);
+    text-shadow: none;
     display: inline-block;
-    -webkit-text-stroke: 0.3px rgba(168, 85, 247, 0.5);
 }
 
 .menu-button:hover {
-    background: rgba(168, 85, 247, 0.2);
-    box-shadow: 0 0 15px rgba(168, 85, 247, 0.5);
-    text-shadow: 0 0 15px rgba(168, 85, 247, 1);
+    background: rgba(216, 70, 166, 0.2);
+    box-shadow: var(--shadow-soft);
+    text-shadow: none;
 }
 
 a.menu-button {
@@ -53,29 +51,9 @@ a.menu-button {
 }
 
 .menu-button.cherry-icon svg {
-    filter: drop-shadow(0 0 4px rgba(57, 255, 20, 0.8)) drop-shadow(0 0 8px rgba(57, 255, 20, 0.4));
-    animation: star-rotate 12s linear infinite, star-pulse 3s ease-in-out infinite;
+    filter: none;
+    animation: star-rotate 20s linear infinite;
     transform-origin: center;
-}
-
-.menu-button.cherry-icon svg ellipse,
-.menu-button.cherry-icon svg circle {
-    animation: saturn-color-shift 4s ease-in-out infinite;
-}
-
-.menu-button.cherry-icon::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(247, 94, 247, 0.3) 0%, transparent 70%);
-    animation: star-glow-pulse 2s ease-in-out infinite;
-    pointer-events: none;
-    z-index: -1;
 }
 
 .menu-button.cherry-icon:hover,
@@ -96,8 +74,8 @@ a.menu-button {
 }
 
 .menu-button.cherry-icon:hover svg {
-    filter: drop-shadow(0 0 8px rgba(57, 255, 20, 1)) drop-shadow(0 0 16px rgba(57, 255, 20, 0.8)) drop-shadow(0 0 24px rgba(57, 255, 20, 0.6));
-    animation: star-rotate 6s linear infinite, star-pulse 1.2s ease-in-out infinite;
+    filter: none;
+    animation: star-rotate 20s linear infinite;
 }
 
 .menu-container {
@@ -110,10 +88,10 @@ a.menu-button {
     top: 100%;
     left: 0;
     margin-top: 4px;
-    background: rgba(30, 30, 46, 0.95);
-    border: 1px solid rgba(34, 197, 94, 0.3);
+    background: rgba(255, 250, 252, 0.95);
+    border: 1px solid rgba(255, 133, 162, 0.3);
     border-radius: 6px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 20px rgba(34, 197, 94, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     min-width: 200px;
     max-width: calc(100vw - 32px);
     display: none;
@@ -133,20 +111,20 @@ a.menu-button {
 
 .menu-group-label {
     padding: 8px 18px 6px 18px;
-    color: #4ade80;
+    color: #F9A8C9;
     font-size: 12px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     opacity: 0.7;
-    text-shadow: 0 0 8px rgba(34, 197, 94, 0.5);
+    text-shadow: none;
 }
 
 .menu-item {
     display: flex;
     align-items: center;
     padding: 6px 18px;
-    color: #bbf7d0;
+    color: var(--text);
     font-size: 14px;
     text-decoration: none;
     cursor: pointer;
@@ -155,9 +133,9 @@ a.menu-button {
 }
 
 .menu-item:hover {
-    background: rgba(34, 197, 94, 0.2);
-    color: #dcfce7;
-    text-shadow: 0 0 10px rgba(34, 197, 94, 0.8);
+    background: rgba(255, 133, 162, 0.2);
+    color: var(--secondary);
+    text-shadow: none;
 }
 
 .menu-item-icon {
@@ -166,18 +144,18 @@ a.menu-button {
     display: flex;
     align-items: center;
     justify-content: center;
-    filter: drop-shadow(0 0 4px rgba(34, 197, 94, 0.6));
+    filter: none;
     transition: transform 0.2s;
 }
 
 .menu-item:hover .menu-item-icon {
     transform: scale(1.1);
-    filter: drop-shadow(0 0 8px rgba(34, 197, 94, 0.9));
+    filter: none;
 }
 
 .menu-item-text {
     flex: 1;
-    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-family: inherit;
 }
 
 .menu-item-count {
@@ -188,7 +166,7 @@ a.menu-button {
     padding: 0 5px;
     border-radius: 9px;
     background: #c9c1ca;
-    color: #000;
+    color: var(--text);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -197,9 +175,9 @@ a.menu-button {
 
 .menu-separator {
     height: 1px;
-    background: rgba(34, 197, 94, 0.2);
+    background: rgba(255, 133, 162, 0.2);
     margin: 6px 12px;
-    box-shadow: 0 0 4px rgba(34, 197, 94, 0.3);
+    box-shadow: var(--shadow-soft);
 }
 
 /* Submenu: parent row and flyout to the right */
@@ -208,7 +186,7 @@ a.menu-button {
     display: flex;
     align-items: center;
     padding: 6px 18px;
-    color: #bbf7d0;
+    color: var(--text);
     font-size: 14px;
     cursor: pointer;
     transition: all 0.2s;
@@ -218,9 +196,9 @@ a.menu-button {
 
 .menu-item-has-submenu:hover,
 .menu-item-has-submenu:focus {
-    background: rgba(34, 197, 94, 0.2);
-    color: #dcfce7;
-    text-shadow: 0 0 10px rgba(34, 197, 94, 0.8);
+    background: rgba(255, 133, 162, 0.2);
+    color: var(--secondary);
+    text-shadow: none;
 }
 
 .menu-item-has-submenu .menu-item-text {
@@ -239,10 +217,10 @@ a.menu-button {
     top: 0;
     margin-left: -2px;
     min-width: 200px;
-    background: rgba(30, 30, 46, 0.95);
-    border: 1px solid rgba(34, 197, 94, 0.3);
+    background: rgba(255, 250, 252, 0.95);
+    border: 1px solid rgba(255, 133, 162, 0.3);
     border-radius: 6px;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.6), 0 0 24px rgba(34, 197, 94, 0.25);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.6);
     padding: 8px 0;
     visibility: hidden;
     opacity: 0;
@@ -266,10 +244,10 @@ a.menu-button {
 /* Terminal Context Menu */
 .terminal-context-menu {
     position: fixed;
-    background: rgba(30, 30, 46, 0.95);
-    border: 1px solid rgba(34, 197, 94, 0.3);
+    background: rgba(255, 250, 252, 0.95);
+    border: 1px solid rgba(255, 133, 162, 0.3);
     border-radius: 6px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 20px rgba(34, 197, 94, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     min-width: 180px;
     backdrop-filter: blur(10px);
     padding: 8px 0;
@@ -282,28 +260,28 @@ a.menu-button {
 
 .context-menu-label {
     padding: 6px 16px 4px 16px;
-    color: #4ade80;
+    color: #F9A8C9;
     font-size: 10px;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     opacity: 0.7;
-    text-shadow: 0 0 8px rgba(34, 197, 94, 0.5);
+    text-shadow: none;
 }
 
 .context-menu-item {
     padding: 8px 16px;
-    color: #bbf7d0;
+    color: var(--text);
     font-size: 12px;
     cursor: pointer;
     transition: all 0.2s;
-    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-family: inherit;
 }
 
 .context-menu-item:hover {
-    background: rgba(34, 197, 94, 0.2);
-    color: #dcfce7;
-    text-shadow: 0 0 10px rgba(34, 197, 94, 0.8);
+    background: rgba(255, 133, 162, 0.2);
+    color: var(--secondary);
+    text-shadow: none;
 }
 
 .context-menu-item-text {
@@ -317,11 +295,10 @@ a.menu-button {
 }
 
 .clock {
-    color: #c084fc;
+    color: #D946A6;
     font-size: 16px;
     font-weight: 900;
-    text-shadow: 0 0 10px rgba(168, 85, 247, 0.8), 0 0 20px rgba(139, 92, 246, 0.5);
-    -webkit-text-stroke: 0.3px rgba(168, 85, 247, 0.5);
+    text-shadow: none;
 }
 
 .panel-right {
@@ -348,15 +325,15 @@ a.menu-button {
 
 .tray-icon svg {
     display: block;
-    filter: drop-shadow(0 0 4px rgba(34, 197, 94, 0.6));
+    filter: none;
     transition: transform 0.2s;
 }
 
 .tray-icon-chess {
     font-size: 36px;
     line-height: 1;
-    color: #a855f7;
-    filter: drop-shadow(0 0 4px rgba(34, 197, 94, 0.6));
+    color: #E879A9;
+    filter: none;
     transform: translateY(-2px);
 }
 
@@ -366,13 +343,13 @@ a.menu-button {
 
 .tray-icon:hover svg {
     transform: scale(1.1);
-    filter: drop-shadow(0 0 8px rgba(34, 197, 94, 0.9));
+    filter: none;
 }
 
 .tray-icon-wisdom svg {
-    filter: drop-shadow(0 0 4px rgba(168, 85, 247, 0.5));
+    filter: none;
 }
 .tray-icon-wisdom:hover svg {
-    filter: drop-shadow(0 0 8px rgba(168, 85, 247, 0.8));
+    filter: none;
 }
 

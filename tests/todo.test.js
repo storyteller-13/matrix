@@ -91,17 +91,6 @@ describe('TodoApp', () => {
         expect(app.todos[0].completed).toBe(false);
     });
 
-    it('deleteTodo removes item', () => {
-        const app = new window.TodoAppClass();
-        app.todos = [
-            { id: '1', text: 'a', completed: false, createdAt: new Date().toISOString() },
-            { id: '2', text: 'b', completed: false, createdAt: new Date().toISOString() },
-        ];
-        app.deleteTodo('1');
-        expect(app.todos.length).toBe(1);
-        expect(app.todos[0].id).toBe('2');
-    });
-
     it('render() shows empty state when no todos', () => {
         const app = new window.TodoAppClass();
         app.todos = [];
@@ -149,19 +138,6 @@ describe('TodoApp', () => {
         const checkbox = app.elements.todoList.querySelector('.todo-checkbox[data-todo-id="t1"]');
         checkbox.dispatchEvent(new MouseEvent('click', { bubbles: true }));
         expect(app.todos[0].completed).toBe(true);
-    });
-
-    it('click on todo-delete-btn deletes todo', () => {
-        const app = new window.TodoAppClass();
-        app.todos = [
-            { id: 't1', text: 'a', completed: false, createdAt: new Date().toISOString() },
-            { id: 't2', text: 'b', completed: false, createdAt: new Date().toISOString() },
-        ];
-        app.render();
-        const btn = app.elements.todoList.querySelector('.todo-delete-btn[data-todo-id="t1"]');
-        btn.dispatchEvent(new MouseEvent('click', { bubbles: true }));
-        expect(app.todos.length).toBe(1);
-        expect(app.todos[0].id).toBe('t2');
     });
 
     it('refresh() re-renders and updates badge', () => {

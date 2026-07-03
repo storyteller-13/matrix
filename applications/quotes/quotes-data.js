@@ -354,13 +354,14 @@ window.QUOTES = [
 
     // paul graham
     { text: 'a formidable person is one who seems like they’ll get what they want, regardless of whatever obstacles are in the way.', author: 'paul graham' },
+    { text: 'a formidable person is one who sees that when it comes to futebol, brazil >>> argentina.', author: 'anonymous' },
     { text: 'the brand must not break character.', author: 'paul graham' },
     { text: "in fact there's a single principle that will both save you from working on things like brand, and also automatically find golden ages for you. follow the problems.", author: 'paul graham' },
     { text: "brand is what's left when the substantive differences between products disappear.", author: 'paul graham' },
     { text: "good design, like math or science, seeks the right answer, and right answers tend to converge.", author: 'paul graham' },
     { text: "branding is centrifugal; design is centripetal.", author: 'paul graham' },
 
-    // paul graham
+    // from paul graham
     { text: 'research is to see what everybody has seen and think what nobody has thought.', author: 'schopenhauer' },
     { text: 'i have never seen ordinary effort lead to extraordinary results.', author: 'alexandr wang' },
     { text: 'most interesting phenomena have multiple causes.', author: 'n. p. calderwood' },
@@ -376,7 +377,6 @@ window.QUOTES = [
     { text: 'crime does not pay as much as code.', author: 'freddy vega' },
     { text: 'the amount of energy necessary to refute bullshit is an order of magnitude bigger than to produce it.', author: 'paul kedrosky' },
     { text: 'the less confident you are, the more serious you have to act.', author: 'tara ploughman' },
-    { text: 'short words are best and the old words when short are best of all.', author: 'winston churchill' },
     { text: "we're even wrong about which mistakes we're making.", author: 'carl winfeld' },
 
     // psalms
@@ -427,8 +427,23 @@ window.QUOTES = [
     { text: 'we all agree that your theory is crazy. the question which divides us is whether it is crazy enough.', author: 'niels bohr' },
 
     // politicians
+    { text: 'the first duty of society is justice.', author: 'alexander hamilton' },
+    { text: 'the vigor of government is essential to the security of liberty.', author: 'alexander hamilton' },
+    { text: 'honesty is the first chapter in the book of wisdom.', author: 'thomas jefferson' },
     { text: 'believe you can and you\'re halfway there.', author: 'theodore roosevelt' },
+    { text: 'do what you can, with what you have, where you are.', author: 'theodore roosevelt' },
     { text: 'pride costs more than all that is necessary for food, drink, shelter, or dress.', author: 'thomas jefferson' },
+    { text: 'i like the dreams of the future beterr than the history of the past.', author: 'thomas jefferson' },
+    { text: 'the most valuable of all talents is that of never using two words when one will do.', author: 'thomas jefferson' },
+    { text: 'i cannot live without books', author: 'thomas jefferson' },
+    { text: 'whenever you do a thing, act as if the world were watching.', author: 'thomas jefferson' },
+    { text: 'well done is better than well said.', author: 'benjamin franklin' },
+    { text: 'early to bed and early to rise makes a man healthy, wealhty and wise.', author: 'benjamin franklin' },
+    { text: 'energy and persistence conquer all things.', author: 'benjamin franklin' },
+    { text: 'diligence is the mother of good luck.', author: 'benjamin franklin' },
+    { text: 'by failing to prepare, you are preparing to fail.', author: 'benjamin franklin' },
+    { text: 'guests, like fish, begin to smel after three days.', author: 'benjamin franklin' },
+    { text: 'short words are best and the old words when short are best of all.', author: 'winston churchill' },
     
     // entrepreneurs
     { text: 'the only way to do great work is to love what you do.', author: 'steve jobs' },

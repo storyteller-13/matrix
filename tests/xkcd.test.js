@@ -111,7 +111,7 @@ describe('XKCDPanel', () => {
         panel.showError();
         const container = document.getElementById('xkcd-box-image-container');
         expect(container.innerHTML).toContain('xkcd-error');
-        expect(container.innerHTML).toContain('failed to load');
+        expect(container.innerHTML).toContain('(failed to load)');
     });
 
     it('showPopup shows popup and sets body overflow hidden', () => {

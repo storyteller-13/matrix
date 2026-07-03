@@ -42,7 +42,7 @@ class TodoStorage {
 
     getDefaultTodos() {
         const defaultTodoData = [
-            { text: 'love my beautiful soulmate forever', completed: false },
+            { text: 'love my so handsome soulmate forever', completed: false },
             { text: 'build my perfect and sublime home', completed: false },
             { text: 'grow my cute and so loved family', completed: false },
             { text: 'have a lot of fun creating NULLSTAR ', completed: false },

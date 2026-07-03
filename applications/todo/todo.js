@@ -53,9 +53,6 @@ class TodoApp extends BaseApp {
                 if (e.target.classList.contains('todo-checkbox')) {
                     e.stopPropagation();
                     this.toggleTodo(todoId);
-                } else if (e.target.classList.contains('todo-delete-btn')) {
-                    e.stopPropagation();
-                    this.deleteTodo(todoId);
                 }
             });
         }
@@ -88,11 +85,6 @@ class TodoApp extends BaseApp {
         const todo = this.todos.find(t => t.id === id);
         if (!todo) return;
         todo.completed = !todo.completed;
-        this.persistAndUpdate();
-    }
-
-    deleteTodo(id) {
-        this.todos = this.todos.filter(t => t.id !== id);
         this.persistAndUpdate();
     }
 
@@ -136,7 +128,6 @@ class TodoApp extends BaseApp {
             <div class="todo-item ${todo.completed ? 'completed' : ''}" data-todo-id="${todo.id}">
                 <div class="todo-checkbox ${todo.completed ? 'checked' : ''}" data-todo-id="${todo.id}"></div>
                 <div class="todo-text">${this.escapeHtml(todo.text)}</div>
-                <button class="todo-delete-btn" data-todo-id="${todo.id}">delete</button>
             </div>
         `).join('');
     }

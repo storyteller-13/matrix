@@ -18,15 +18,7 @@ function makeFakeStorage() {
 describe('Application modules (coverage)', () => {
     beforeAll(async () => {
         document.body.innerHTML = '<div id="app"></div>';
-    });
-
-    it('email-data loads and exposes EmailData', async () => {
-        await import('../applications/email/email-data.js');
-        expect(window.EmailData).toBeDefined();
-        const data = new window.EmailData();
-        expect(data.data).toBeDefined();
-        expect(data.data.inbox).toEqual([]);
-    });
+    });g
 
     it('quotes-data loads and exposes QUOTES', async () => {
         await import('../applications/quotes/quotes-data.js');
@@ -79,25 +71,6 @@ describe('Application modules (coverage)', () => {
         expect(window.NotesApp).toBeDefined();
         expect(typeof window.openNotesWindow).toBe('function');
         expect(typeof window.addNotesEntry).toBe('function');
-    });
-
-    it('email.js loads and exposes EmailAppClass and openEmailWindow', async () => {
-        document.body.innerHTML = `
-            <div id="email-window" class="window">
-                <div id="email-list"></div><div id="email-view"><div id="email-view-content"></div></div>
-                <span id="email-count-badge"></span>
-                <button id="back-to-list"></button>
-                <div class="email-folder" data-folder="inbox"></div>
-                <div class="email-toolbar"><button class="email-btn" data-folder="inbox"></button></div>
-            </div>
-            <div id="email-dock-item" class="dock-item"></div>
-        `;
-        await import('../core/base-app.js');
-        await import('../applications/email/email-data.js');
-        await import('../applications/email/email.js');
-        expect(window.EmailAppClass).toBeDefined();
-        expect(window.EmailApp).toBeDefined();
-        expect(typeof window.openEmailWindow).toBe('function');
     });
 
     it('apod.js loads and exposes APODPanelClass and buildApiUrl', async () => {

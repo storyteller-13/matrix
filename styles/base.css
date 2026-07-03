@@ -1,3 +1,28 @@
+:root {
+    --bg-solid: #FFF0F5;
+    --bg-gradient: linear-gradient(160deg, #FFF5F7 0%, #FFE4EC 50%, #FDF2F8 100%);
+    --surface: rgba(255, 255, 255, 0.88);
+    --surface-elevated: rgba(255, 250, 252, 0.95);
+    --surface-header: rgba(255, 245, 249, 0.95);
+    --surface-dark: rgba(255, 240, 245, 0.8);
+    --accent: #FF85A2;
+    --accent-light: #F9A8C9;
+    --accent-deep: #F472B6;
+    --accent-soft: rgba(255, 133, 162, 0.2);
+    --accent-border: rgba(255, 133, 162, 0.35);
+    --secondary: #D946A6;
+    --secondary-light: #E879A9;
+    --secondary-soft: rgba(216, 70, 166, 0.2);
+    --lavender: #C4B5FD;
+    --text: #6B4F5B;
+    --text-muted: #A8919C;
+    --text-on-accent: #FFF1F5;
+    --text-bright: #FCE7F3;
+    --shadow-soft: 0 4px 24px rgba(180, 100, 130, 0.12);
+    --shadow-medium: 0 8px 32px rgba(180, 100, 130, 0.18);
+    --shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -5,9 +30,10 @@
 }
 
 body {
-    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'Courier New', monospace;
+    font-family: 'Nunito', 'Quicksand', system-ui, -apple-system, sans-serif;
     overflow: hidden;
-    background: #000;
+    background: var(--bg-solid);
+    color: var(--text);
     height: 100vh;
     width: 100vw;
     position: fixed;
@@ -18,12 +44,12 @@ body {
     width: 100vw;
     height: 100vh;
     position: relative;
-    background: #000;
+    background: var(--bg-gradient);
     overflow: hidden;
     max-width: 100vw;
 }
 
-/* Neon Heart Wallpaper */
+/* Soft heart wallpaper */
 .wallpaper-heart {
     position: fixed;
     top: 50%;
@@ -31,8 +57,8 @@ body {
     transform: translate(-50%, -50%);
     z-index: 0;
     pointer-events: none;
-    opacity: 0.6;
-    animation: heart-pulse 2s ease-in-out infinite;
+    opacity: 0.45;
+    animation: heart-pulse 3s ease-in-out infinite;
     width: 40px;
     height: 40px;
     display: flex;
@@ -43,33 +69,16 @@ body {
 .wallpaper-heart svg {
     width: 100%;
     height: 100%;
-    filter: drop-shadow(0 0 8px rgba(231, 106, 242, 0.8)) 
-            drop-shadow(0 0 16px rgba(247, 99, 232, 0.6))
-            drop-shadow(0 0 24px rgba(240, 158, 241, 0.4));
-    animation: heart-glow 3s ease-in-out infinite;
+    filter: drop-shadow(0 2px 8px rgba(255, 133, 162, 0.25));
 }
 
 @keyframes heart-pulse {
     0%, 100% {
         transform: translate(-50%, -50%) scale(1);
-        opacity: 0.6;
+        opacity: 0.4;
     }
     50% {
-        transform: translate(-50%, -50%) scale(1.12);
-        opacity: 0.95;
+        transform: translate(-50%, -50%) scale(1.08);
+        opacity: 0.65;
     }
 }
-
-@keyframes heart-glow {
-    0%, 100% {
-        filter: drop-shadow(0 0 8px rgba(231, 106, 242, 0.8)) 
-                drop-shadow(0 0 16px rgba(232, 79, 216, 0.6))
-                drop-shadow(0 0 24px rgba(240, 158, 241, 0.4));
-    }
-    50% {
-        filter: drop-shadow(0 0 8px rgba(184, 34, 197, 0.8)) 
-                drop-shadow(0 0 16px rgba(237, 118, 225, 0.6))
-                drop-shadow(0 0 24px rgba(235, 65, 238, 0.4));
-    }
-}
-

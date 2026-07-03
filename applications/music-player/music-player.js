@@ -440,7 +440,7 @@ class MusicPlayer {
                 this.isLoadingSong = false;
             }
         } catch (error) {
-            console.error('Failed to load song:', error);
+            console.error('failed to load song:', error);
             this.isLoadingSong = false;
         }
     }
