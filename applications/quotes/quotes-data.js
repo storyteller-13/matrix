@@ -198,7 +198,7 @@ window.QUOTES = [
     { text: 'you are supposed to be free.', author: 'dr. steinkirch' },
     { text: 'the difference between the successful and the rest isn\'t just talent — it\'s the ability to sacrifice the moment, plan for what\'s coming, and imagine what hasn\'t happened yet.', author: 'dr. steinkirch' },
     { text: 'a man who won\'t defend his woman\'s honor is truly lacking in character.', author: 'dr. steinkirch' },
-    { text: 'never understimate (or mess with) someone who has lost everything and has nothing else to lose.', author: 'dr. steinkirch' },
+    { text: 'never underestimate (or mess with) someone who has lost everything and has nothing else to lose.', author: 'dr. steinkirch' },
     { text: 'whatever i do now is going to be my best work ever. and whoever i make my family now will be the most loved people ever.', author: 'dr. steinkirch' },
     { text: 'i\'ve spent my entire life building myself into the best mother i could be.', author: 'dr. steinkirch' },
     { text: 'soon i will be sitting in my nice chair, in my nice house, with a nice cup of tea, looking at everything i have and how i overcame so much. and i will feel this immense happiness inside my veins — something so strong and so intense. total. complete. bliss.', author: 'dr. steinkirch' },
@@ -210,10 +210,12 @@ window.QUOTES = [
     { text: "sometimes you need to induce and force complete and total failure of a certain way or approach; that's how you can remove it completely from your system and move on to what's really next.", author: 'dr. steinkirch' },
     { text: "if your life is not the way you want, this is ultimately your fault; you failed to cut the problem from the root; find the problem; cut it from the root.", author: 'dr. steinkirch' },
     { text: "you should be in the business of raising the morale to the skies.", author: 'dr. steinkirch' },
-    { text: "after you found who you are, make a list of the non-negotiables; make it tight and clear; say no to everything else, ad infinitum.", author: 'dr. steinkirch' },
+    { text: "once you found who you are, make a list of the non-negotiables; make it tight and clear; say no to everything else, ad infinitum.", author: 'dr. steinkirch' },
     { text: "until you are not ready to jump into the unknown abyss, you are not ready to gold.", author: 'dr. steinkirch' },
     { text: "why would you have to fight for freedom, if there wasn't a contending force?", author: 'dr. steinkirch' },
     { text: "when you create a cathartic artwork, you lose a piece of yourself that can never be replaced; and once you complete the work, you will never want to look at it again.", author: 'dr. steinkirch' },
+    { text: "time is your ultimate ally, it always heal wounds and always shows the truth.", author: 'dr. steinkirch' },
+    { text: "remember when we used to assume good intentions and live according to that kind of nash equilibrium?", author: 'dr. steinkirch' },
 
     // robert greene
     { text: 'no calling is superior to another. what matters is that it be tied to a personal need and inclination, and that your energy moves you toward improvement and continuous learning from experience.', author: 'robert greene' },

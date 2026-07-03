@@ -111,10 +111,9 @@ class NotesApp extends BaseApp {
             const date = this.storage.formatDate(firstEntry.createdAt);
             const title = firstEntry.title || '';
             const isRead = dateEntries.some(entry => entry.read === true);
-            const isNewest = index === 0; // First entry is the newest (sorted newest first)
 
             // Show '✓' if read, otherwise show '🆕' if newest
-            const indicator = isRead ? '✓' : (isNewest ? '💌' : '');
+            const indicator = isRead ? '✓' : '💌';
 
             return `
                 <div class="notes-date-item ${isRead ? 'read' : ''}" data-date-key="${dateKey}">
