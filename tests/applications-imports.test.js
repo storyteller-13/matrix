@@ -18,7 +18,7 @@ function makeFakeStorage() {
 describe('Application modules (coverage)', () => {
     beforeAll(async () => {
         document.body.innerHTML = '<div id="app"></div>';
-    });g
+    });
 
     it('quotes-data loads and exposes QUOTES', async () => {
         await import('../applications/quotes/quotes-data.js');

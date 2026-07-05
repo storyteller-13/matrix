@@ -216,6 +216,7 @@ window.QUOTES = [
     { text: "when you create a cathartic artwork, you lose a piece of yourself that can never be replaced; and once you complete the work, you will never want to look at it again.", author: 'dr. steinkirch' },
     { text: "time is your ultimate ally, it always heal wounds and always shows the truth.", author: 'dr. steinkirch' },
     { text: "remember when we used to assume good intentions and live according to that kind of nash equilibrium?", author: 'dr. steinkirch' },
+    { text: "wisdom in its purest form is realizing that you don't need to react to 99% of the things that are happening around you.", author: 'dr. steinkirch' },
 
     // robert greene
     { text: 'no calling is superior to another. what matters is that it be tied to a personal need and inclination, and that your energy moves you toward improvement and continuous learning from experience.', author: 'robert greene' },

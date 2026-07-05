@@ -36,6 +36,37 @@ class NotesStorage {
         return [
 
             {
+            date: '2026-07-06T00:00:00.000Z',
+            title: 'this week we celebrate love',
+            content: this.cleanContent(`
+            good morning my dear anon,
+
+            «i»if you are an american friend, how was your 4th of july celebration?
+            if you are a non-american friend from the north, how has your summer been?
+            if you are a non-american friend from the south, how has your winter been?
+            else, please take me to your planet!
+            «/i»
+
+            i have been doing great, every single day feeling more and more complete, and more integrated with this beautiful universe of ours; it's really hard to be unhappy when you see so much beauty in every single thing in this reality
+
+            so many miracles, every day; you are a miracle yourself, my dear anon; if nobody has told you this recently, here it is, directly from the sun: look how complex your body and your existence are; they are so, so, so beautiful
+
+            therefore, this week, keep these things in mind: you are loved and lovable, and you have the right to be happy every single day ahead
+
+            now, as for the news, first, i'd like to send my special congratulations to one of my beautiful bffs on her dreamy wedding! live the dream, my dear; you deserve every bit of it 💜
+
+            second, i would like to say that i have never been so excited about my work; (ok, maybe i have always been VERY excited about my work...); i know i haven't shared much about what i have been building at NULLSTAR and about LOGIC 13, but this is by design, for now; there are several surprises waiting, and you will have to be patient, my dear anon friend; all i can say is... it's gonna be... what's the word the cutie said? ah, amazing!!!
+
+            finally, yeah, everything is a little weird; we are all feeling it; but... i would like to invite you to marina's rose-colored-soul experiment: what if, this week, we decide to pretend that everything is beautiful, that evil is just an annoying clown, that peace and fraternity are possible, and that love... love will save us all... love will help us see beyond our tired human eyes... love will make us feel invincible and whole
+
+            how about, for one week, each of us tries our very best to remember goodness, remember that our enemies are beautiful in their own way, remember that the goal of pain and suffering is to alchemize them into wisdom and strength, remember that our children can inherit a much better world and all we need to do is keeping building it today, remember that we have infinite power to change our lives... and to forgive
+
+            this week we celebrate love
+            in all its shapes and forms
+                `)
+            },
+
+            {
             date: '2026-07-05T00:00:00.000Z',
             title: 'happy 250th, america',
             content: this.cleanContent(`
