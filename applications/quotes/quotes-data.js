@@ -1,5 +1,5 @@
 /**
- * Quotes – curated list for the quotes panel.
+ * Quotes –  my personal curated list for the quotes panel.
  * Add or edit entries; each is { text: string, author: string }.
  */
 window.QUOTES = [
@@ -54,7 +54,8 @@ window.QUOTES = [
 
     // carl young
     { text: 'even a happy life cannot be without a measure of darkness.', author: 'carl jung' },
-    
+    { text: 'freedom of will is the ability to do gladly that which i must do.', author: 'carl jung' },
+
     // jp sartre
     { text: 'man is condemned to be free.', author: 'jean-paul sartre' },
 
@@ -104,34 +105,13 @@ window.QUOTES = [
     // socrates
     { text: 'the only true wisdom is in knowing you know nothing.', author: 'socrates' },
     { text: 'the unexamined life is not worth living.', author: 'socrates' },
-        {
-          text: 'the most important personal virtue, of course, is justice, which he conceives of as each part of the soul doing its own work: reason, not appetite or spirit, governs the just soul',
-          author: 'socrates'
-        },
-        {
-          text: 'hope cherishes the soul of him who lives in justice and holiness, and is the nurse of his age and the companion of his journey;– hope which is mightiest to sway the restless soul of man.',
-          author: 'socrates'
-        },
-        {
-          text: 'i know not what justice is, and therefore i am not likely to know whether it is or is not a virtue, nor can i say whether the just man is happy or unhappy.',
-          author: 'socrates'
-        },
-        {
-          text: 'we divide the soul into three parts; and distinguished the several natures of justice, temperance, courage, and wisdom',
-          author: 'socrates'
-        },
-        {
-          text: 'and they see only their own shadows, or the shadows of one another, which the fire throws on the opposite wall of the cave?',
-          author: 'plato'
-        },
-        {
-          text: 'freedom is the glory of the state',
-          author: 'socrates'
-        },
-        {
-          text: 'those then who know not wisdom and virtue, and are always busy with gluttony and sensuality, go down and up again as far as the mean; and in this region they move at random throughout life, but they never pass into the true upper world',
-          author: 'socrates'
-        },
+    { text: 'the most important personal virtue, of course, is justice, which he conceives of as each part of the soul doing its own work: reason, not appetite or spirit, governs the just soul', author: 'socrates' },
+    { text: 'hope cherishes the soul of him who lives in justice and holiness, and is the nurse of his age and the companion of his journey;– hope which is mightiest to sway the restless soul of man.', author: 'socrates' },
+    { text: 'i know not what justice is, and therefore i am not likely to know whether it is or is not a virtue, nor can i say whether the just man is happy or unhappy.', author: 'socrates' },
+    { text: 'we divide the soul into three parts; and distinguished the several natures of justice, temperance, courage, and wisdom', author: 'socrates' },
+    { text: 'and they see only their own shadows, or the shadows of one another, which the fire throws on the opposite wall of the cave?', author: 'plato' },
+    { text: 'freedom is the glory of the state', author: 'socrates' },
+    { text: 'those then who know not wisdom and virtue, and are always busy with gluttony and sensuality, go down and up again as far as the mean; and in this region they move at random throughout life, but they never pass into the true upper world', author: 'socrates' },
 
     // seneca
     { text: 'we suffer more often in imagination than in reality.', author: 'seneca' },
@@ -176,7 +156,9 @@ window.QUOTES = [
     { text: 'the best answer to anger is silence.', author: 'marcus aurelius' },
     { text: 'confine yourself to the present.', author: 'marcus aurelius' },
     { text: 'remember that very little is needed to make a happy life.', author: 'marcus aurelius' },
-    { text: 'you have to assemble your life yourself — action by action', author: 'marcus aurelius' },
+
+    // saint francis of assisi
+    { text: 'what you are looking for is who is looking.', author: 'saint francis of assisi' },
 
     // st. paul
     { text: 'for i am convinced that neither death nor life, nor angels nor rulers, nor things present nor things to come, nor powers, nor height nor depth, nor anything else in all creation, will be able to separate us from the love of god.', author: 'st. paul' },
@@ -217,6 +199,10 @@ window.QUOTES = [
     { text: "time is your ultimate ally, it always heal wounds and always shows the truth.", author: 'dr. steinkirch' },
     { text: "remember when we used to assume good intentions and live according to that kind of nash equilibrium?", author: 'dr. steinkirch' },
     { text: "wisdom in its purest form is realizing that you don't need to react to 99% of the things that are happening around you.", author: 'dr. steinkirch' },
+    { text: "evil is just an annoying clown — master shielding, and remember: clowns are clueless about shields and boundaries.", author: 'dr. steinkirch' },
+    { text: "i spent my life questioning whether G'd was real, and i only found the undeniable answer when i personally met evil. ", author: 'dr. steinkirch' },
+    { text: "in war, when every other weapon has already been tried, the final battle is forgiveness.", author: 'dr. steinkirch' },
+    { text: "the role of the storyteller is to create the universe; the role of the audience is to comprehend it.", author: 'dr. steinkirch' },
 
     // robert greene
     { text: 'no calling is superior to another. what matters is that it be tied to a personal need and inclination, and that your energy moves you toward improvement and continuous learning from experience.', author: 'robert greene' },
@@ -227,6 +213,41 @@ window.QUOTES = [
     // ryan holiday
     { text: 'humble. humble even if you have achieved an impressive amount, even if you have done many impressive things.', author: 'ryan holiday' },
     { text: 'we must live while we can, live while we are dying, take the present before it becomes the past.', author: 'ryan holiday' },
+    { text: "the impediment to action advances action. what stands in the way becomes the way.", author: "ryan holiday" },
+    { text: "act with a 'reverse clause,' so there is always a way out or another route to get where you need to go. expect setbacks and problems — they are never permanent. what impedes us can empower us.", author: "ryan holiday" },
+    { text: "whatever we face, we have a choice: will we be blocked by obstacles, or will we advance through and over them?", author: "ryan holiday" },
+    { text: "great individuals, like great companies, find a way to transform weakness into strength.", author: "ryan holiday" },
+    { text: "like oxygen to a fire, obstacles became fuel for ambition. every impediment only made the fire within burn more fiercely.", author: "ryan holiday" },
+    { text: "it is not enough to think, 'this isn't so bad.' learn to see every obstacle as something that must be good — an opportunity to gain a foothold, move forward, or find a better direction.", author: "ryan holiday" },
+    { text: "don't merely be positive; be endlessly creative and opportunistic.", author: "ryan holiday" },
+    { text: "every great victory — in politics, business, art, or seduction — came from solving difficult problems with creativity, focus, and courage. obstacles teach us how to reach our goals.", author: "ryan holiday" },
+    { text: "you will encounter fair and unfair obstacles throughout life. what matters is not the obstacle itself, but how you perceive it, respond to it, and maintain your composure.", author: "ryan holiday" },
+    { text: "others may imprison us, label us, or take away our possessions, but they can never control our thoughts, beliefs, or reactions.", author: "ryan holiday" },
+    { text: "defiance and acceptance belong together. there is always a countermove, another path, or a way through. there is no reason to panic. the way exists for those willing to find it.", author: "ryan holiday" },
+    { text: "if your nerve holds, then nothing of real consequence has happened. your perception determines its significance.", author: "ryan holiday" },
+    { text: "panic causes mistakes. people override systems, ignore procedures, abandon plans, and lose the ability to think clearly.", author: "ryan holiday" },
+    { text: "life is no different. obstacles stir emotion, but we overcome them only by keeping those emotions under control. the greeks called this apatheia.", author: "ryan holiday" },
+    { text: "remind yourself: 'i am in control, not my emotions. i see what is really happening. i will not become excited or upset.'", author: "ryan holiday" },
+    { text: "we cannot change the obstacles themselves, but we can change our perspective. perspective changes how obstacles appear.", author: "ryan holiday" },
+    { text: "the struggle against an obstacle inevitably raises us to a higher level. the greater the struggle, the greater the growth. the obstacle is an advantage, not adversity.", author: "ryan holiday" },
+    { text: "the true enemy is any perception that prevents us from seeing this.", author: "ryan holiday" },
+    { text: "focus on the poorly wrapped, seemingly undesirable present you have been given. beneath the packaging often lies exactly what you need — a gift of great value.", author: "ryan holiday" },
+    { text: "life is not about what happens to you or where you came from. it is about what you do with what happens and what you've been given.", author: "ryan holiday" },
+    { text: "extraordinary achievements come from using everything to your advantage.", author: "ryan holiday" },
+    { text: "we do not have the luxury of running away or hiding. we must lean into the obstacle and transform it.", author: "ryan holiday" },
+    { text: "it is supposed to be difficult. your first attempts will not succeed. it will demand much of you—but energy is renewable. you can always find more.", author: "ryan holiday" },
+    { text: "right action — unselfish, dedicated, masterful, and creative — is one answer to the meaning of life. it is how every obstacle becomes an opportunity.", author: "ryan holiday" },
+    { text: "adversity can harden you, or it can soften and improve you—if you allow it.", author: "ryan holiday" },
+    { text: "do not waste a crisis feeling sorry for yourself, exhausted, or disappointed. life rewards boldness and favors courage.", author: "ryan holiday" },
+    { text: "leadership demands determination and energy. sometimes a leader's greatest responsibility is simply to endure and provide strength during difficult times.", author: "ryan holiday" },
+    { text: "personal struggles prepare us to lead others through theirs.", author: "ryan holiday" },
+    { text: "after losing their homeland and temples, the jewish people rebuilt inwardly. their temple became one of the mind — available wherever they went, despite hardship or persecution. inner strength became their sanctuary.", author: "ryan holiday" },
+    { text: "your obstacle may not be as severe, but it is still real and outside your control. it deserves only one response: a smile.", author: "ryan holiday" },
+    { text: "remember that life is a marathon, not a sprint. conserve your energy. every battle prepares you for the next. keep every challenge in perspective.", author: "ryan holiday" },
+    { text: "nature never stops. just as one obstacle is overcome, another appears. that is what makes life interesting — and what creates opportunity. life is a continual process of breaking through obstacles.", author: "ryan holiday" },
+    { text: "if even mortality can be turned into something meaningful, then every obstacle contains value waiting to be discovered.", author: "ryan holiday" },
+    { text: "we cannot choose what happens to us, but we can choose our response. why choose anything but the best? amor fati — love of fate — is the proper answer.", author: "ryan holiday" },
+    { text: "see things as they are. do what you can. endure what you must. what once blocked the path becomes the path. what impeded action now advances action. the obstacle is the way.", author: "ryan holiday" },
 
     // terrence deacon
     { text: 'the attraction of discovering the most elegant way of dividing up the mind into two major complementary cognitive systems is almost irresistible.', author: 'terrence w. deacon' },
@@ -239,6 +260,7 @@ window.QUOTES = [
 
     // kant
     { text: 'as we bring up our children, we have to remember that we are caretakers of the future. by improving their education, we improve the future of mankind, the future of this world.', author: 'immanuel kant' },
+    { text: 'science is organized knowledge. wisdom is organized life.', author: 'immanuel kant' },
 
     // goethe
     { text: 'when an idea is wanting, a word can always be found to take its place.', author: 'goethe' },
@@ -246,9 +268,14 @@ window.QUOTES = [
     // oscar wilde
     { text: 'nothing that is worth knowing can be taught.', author: 'oscar wilde' },
 
+    // arthur c clarke
+    { text: 'if a scientist says that something is possible she is almost certainly right, but if she says that it is impossible, she is very probably wrong.', author: 'arthur c. clarke' },
+
     // schopenhauer
     { text: 'a constant flow of thoughts expressed by other people can stop and deaden your own thought and your own initiative.', author: 'arthur schopenhauer' },
     { text: 'you have to respect every person, no matter how miserable or ridiculous he or she may be. you should remember that in every person lives the same spirit which lives in us.', author: 'arthur schopenhauer' },
+    { text: 'everyone takes the limits of his own vision for the limits of the world.', author: 'arthur schopenhauer' },
+    { text: 'research is to see what everybody has seen and think what nobody has thought.', author: 'schopenhauer' },
 
     // epictetus
     { text: 'for a wise man, the wealth, the glory, and the rewards of this world are like sweets or empty shells on a road.', author: 'epictetus' },
@@ -296,49 +323,48 @@ window.QUOTES = [
     { text: 'no matter how many times you aim to achieve victory over your passions, do not give up. every effort weakens the power of passion and makes it easier to gain victory over it.', author: 'leo tolstoy' },
 
     // yamamoto tsunetomo
-      { text: 'the word hagakure literally translates as hidden beneath the leaves and also fallen leaves.', author: 'yamamoto tsunetomo' },
-      { text: 'to say that dying without reaching one’s aim is to die a dog’s death is the frivolous way of sophisticates.', author: 'yamamoto tsunetomo' },
-      { text: 'but not having attained our aim and continuing to live is cowardice.', author: 'yamamoto tsunetomo' },
-      { text: 'if one is able to live as though his body were already dead, he gains freedom in the way.', author: 'yamamoto tsunetomo' },
-      { text: 'purity is something that cannot be attained except by piling effort upon effort.', author: 'yamamoto tsunetomo' },
-      { text: 'he who sees from the side has eight eyes.', author: 'yamamoto tsunetomo' },
-      { text: 'thought by thought we see our own mistakes.', author: 'yamamoto tsunetomo' },
-      { text: 'i do not know the way to defeat others, but the way to defeat myself.', author: 'yagyu munenori' },
-      { text: 'throughout your life advance daily, becoming more skillful than yesterday, more skillful than today. this is never-ending.', author: 'yamamoto tsunetomo' },
-      { text: 'the way of revenge lies in simply forcing one’s way into a place and being cut down. there is no shame in this.', author: 'yamamoto tsunetomo' },
-      { text: 'above all, the way of the samurai should be in being aware that you do not know what is going to happen next.', author: 'yamamoto tsunetomo' },
-      { text: 'the way of avoiding shame is different. it is simply in death.', author: 'yamamoto tsunetomo' },
-      { text: 'a real man does not think of victory or defeat. he plunges recklessly towards an irrational death.', author: 'yamamoto tsunetomo' },
-      { text: 'by inconsistency and frivolity we stray from the way and show ourselves to be beginners.', author: 'yamamoto tsunetomo' },
-      { text: 'he was probably a man who always spoke big words but acted differently when facing the real thing.', author: 'yamamoto tsunetomo' },
-      { text: 'you should never in your whole life be negligent toward someone from whom you have received a favor.', author: 'yamamoto tsunetomo' },
-      { text: 'the way of the samurai is in desperateness.', author: 'yamamoto tsunetomo' },
-      { text: 'common sense will not accomplish great things. simply become insane and desperate.', author: 'yamamoto tsunetomo' },
-      { text: 'loyalty and devotion are of themselves within desperation.', author: 'yamamoto tsunetomo' },
-      { text: 'when meeting difficult situations, one should dash forward bravely and with joy.', author: 'yamamoto tsunetomo' },
-      { text: 'the more the water, the higher the boat.', author: 'yamamoto tsunetomo' },
-      { text: 'there is nothing that cannot be done. if one manifests the determination, he can move heaven and earth as he pleases.', author: 'yamamoto tsunetomo' },
-      { text: 'moving heaven and earth without putting forth effort is simply a matter of concentration.', author: 'yamamoto tsunetomo' },
-      { text: 'be true to the thought of the moment and avoid distraction.', author: 'yamamoto tsunetomo' },
-      { text: 'living single thought by single thought.', author: 'yamamoto tsunetomo' },
-      { text: 'the way of the samurai is, morning after morning, the practice of death.', author: 'yamamoto tsunetomo' },
-      { text: 'at times of great trouble or disaster, one word will suffice.', author: 'yamamoto tsunetomo' },
-      { text: 'one should think well and then speak.', author: 'yamamoto tsunetomo' },
-      { text: 'a person rises from the humble to the higher classes because he has value.', author: 'yamamoto tsunetomo' },
-      { text: 'one should be careful and not say things that are likely to cause trouble at the time.', author: 'yamamoto tsunetomo' },
-      { text: 'to talk about other people’s affairs is a great mistake.', author: 'yamamoto tsunetomo' },
-      { text: 'it is best to know your own ability well, to put forth effort in your endeavors, and to be discreet in speech.', author: 'yamamoto tsunetomo' },
-      { text: 'it is a good viewpoint to see the world as a dream.', author: 'yamamoto tsunetomo' },
-      { text: 'nothing you do will have effect if you do not use truth.', author: 'yamamoto tsunetomo' },
-      { text: 'death is the only sincerity.', author: 'yamamoto tsunetomo' },
-      { text: 'becoming as a dead man in one’s daily living is the following of the path of sincerity.', author: 'yamamoto tsunetomo' },
-      { text: 'when a man attaches discrimination to his true mind, he becomes a coward.', author: 'yamamoto tsunetomo' },
-      { text: 'meditation on inevitable death should be performed daily.', author: 'yamamoto tsunetomo' },
-      { text: 'every day without fail one should consider himself as dead.', author: 'yamamoto tsunetomo' },
-      { text: 'people will become your enemies if you become eminent too quickly in life.', author: 'yamamoto tsunetomo' },
-      { text: 'rising slowly in the world, people will be your allies and your happiness will be assured.', author: 'yamamoto tsunetomo' },
-      { text: 'one must edge forward like the inchworm, bit by bit.', author: 'yamamoto tsunetomo' },
-      { text: 'the gods and buddhas, too, first started with a vow.', author: 'yamamoto tsunetomo' },
+    { text: 'the word hagakure literally translates as hidden beneath the leaves and also fallen leaves.', author: 'yamamoto tsunetomo' },
+    { text: 'to say that dying without reaching one’s aim is to die a dog’s death is the frivolous way of sophisticates.', author: 'yamamoto tsunetomo' },
+    { text: 'but not having attained our aim and continuing to live is cowardice.', author: 'yamamoto tsunetomo' },
+    { text: 'if one is able to live as though his body were already dead, he gains freedom in the way.', author: 'yamamoto tsunetomo' },
+    { text: 'purity is something that cannot be attained except by piling effort upon effort.', author: 'yamamoto tsunetomo' },
+    { text: 'he who sees from the side has eight eyes.', author: 'yamamoto tsunetomo' },
+    { text: 'thought by thought we see our own mistakes.', author: 'yamamoto tsunetomo' },
+    { text: 'i do not know the way to defeat others, but the way to defeat myself.', author: 'yagyu munenori' },
+    { text: 'throughout your life advance daily, becoming more skillful than yesterday, more skillful than today. this is never-ending.', author: 'yamamoto tsunetomo' },
+    { text: 'the way of revenge lies in simply forcing one’s way into a place and being cut down. there is no shame in this.', author: 'yamamoto tsunetomo' },
+    { text: 'above all, the way of the samurai should be in being aware that you do not know what is going to happen next.', author: 'yamamoto tsunetomo' },
+    { text: 'the way of avoiding shame is different. it is simply in death.', author: 'yamamoto tsunetomo' },
+    { text: 'a real man does not think of victory or defeat. he plunges recklessly towards an irrational death.', author: 'yamamoto tsunetomo' },
+    { text: 'by inconsistency and frivolity we stray from the way and show ourselves to be beginners.', author: 'yamamoto tsunetomo' },
+    { text: 'he was probably a man who always spoke big words but acted differently when facing the real thing.', author: 'yamamoto tsunetomo' },
+    { text: 'you should never in your whole life be negligent toward someone from whom you have received a favor.', author: 'yamamoto tsunetomo' },
+    { text: 'the way of the samurai is in desperateness.', author: 'yamamoto tsunetomo' },
+    { text: 'common sense will not accomplish great things. simply become insane and desperate.', author: 'yamamoto tsunetomo' },
+    { text: 'loyalty and devotion are of themselves within desperation.', author: 'yamamoto tsunetomo' },
+    { text: 'when meeting difficult situations, one should dash forward bravely and with joy.', author: 'yamamoto tsunetomo' },
+    { text: 'the more the water, the higher the boat.', author: 'yamamoto tsunetomo' },
+    { text: 'there is nothing that cannot be done. if one manifests the determination, he can move heaven and earth as he pleases.', author: 'yamamoto tsunetomo' },
+    { text: 'moving heaven and earth without putting forth effort is simply a matter of concentration.', author: 'yamamoto tsunetomo' },
+    { text: 'living single thought by single thought.', author: 'yamamoto tsunetomo' },
+    { text: 'the way of the samurai is, morning after morning, the practice of death.', author: 'yamamoto tsunetomo' },
+    { text: 'at times of great trouble or disaster, one word will suffice.', author: 'yamamoto tsunetomo' },
+    { text: 'one should think well and then speak.', author: 'yamamoto tsunetomo' },
+    { text: 'a person rises from the humble to the higher classes because he has value.', author: 'yamamoto tsunetomo' },
+    { text: 'one should be careful and not say things that are likely to cause trouble at the time.', author: 'yamamoto tsunetomo' },
+    { text: 'to talk about other people’s affairs is a great mistake.', author: 'yamamoto tsunetomo' },
+    { text: 'it is best to know your own ability well, to put forth effort in your endeavors, and to be discreet in speech.', author: 'yamamoto tsunetomo' },
+    { text: 'it is a good viewpoint to see the world as a dream.', author: 'yamamoto tsunetomo' },
+    { text: 'nothing you do will have effect if you do not use truth.', author: 'yamamoto tsunetomo' },
+    { text: 'death is the only sincerity.', author: 'yamamoto tsunetomo' },
+    { text: 'becoming as a dead man in one’s daily living is the following of the path of sincerity.', author: 'yamamoto tsunetomo' },
+    { text: 'when a man attaches discrimination to his true mind, he becomes a coward.', author: 'yamamoto tsunetomo' },
+    { text: 'meditation on inevitable death should be performed daily.', author: 'yamamoto tsunetomo' },
+    { text: 'every day without fail one should consider himself as dead.', author: 'yamamoto tsunetomo' },
+    { text: 'people will become your enemies if you become eminent too quickly in life.', author: 'yamamoto tsunetomo' },
+    { text: 'rising slowly in the world, people will be your allies and your happiness will be assured.', author: 'yamamoto tsunetomo' },
+    { text: 'one must edge forward like the inchworm, bit by bit.', author: 'yamamoto tsunetomo' },
+    { text: 'the gods and buddhas, too, first started with a vow.', author: 'yamamoto tsunetomo' },
 
     // alan kay
     { text: 'a change in perspective is worth 80 iq points.', author: 'alan kay' },
@@ -349,36 +375,36 @@ window.QUOTES = [
     { text: 'art is anything you can get away with.', author: 'alan kay' },
     { text: 'the computer is the most remarkable tool we’ve ever come up with. it’s the equivalent of a bicycle for our minds.', author: 'alan kay' },
     
+    // ray kurzweil
+    { text: 'the power of patterns to endure goes beyond explicitly self-replicating systems, such as organisms and self-replicating technology.', author: 'ray kurzweil' },
+    { text: 'knowledge is precious in all its forms: music, art, science, and technology, as well as the embedded knowledge in our bodies and brains. any loss of this knowledge is tragic.', author: 'ray kurzweil' },
+    { text: 'information lasts only so long as someone cares about it.', author: 'ray kurzweil' },
+
+    // niels bohr
+    { text: 'we all agree that your theory is crazy. the question which divides us is whether it is crazy enough.', author: 'niels bohr' },
+    { text: 'an expert is a man who has made all the mistakes which can be made in a very narrow field.', author: 'niels bohr' },
+
     // blaise pascal
     { text: 'belief is a wise wager; granted that faith cannot be proved, what harm will come to you if you gamble on its truth and it proves false?', author: 'blaise pascal' },
     { text: 'one of the key questions we face is whether our lives end after death.', author: 'blaise pascal' },
 
+    // carl sagan
+    { text: "i didn't make a decision to pursue astronomy. rather, it just grabbed me, and i had no thought of escaping.", author: 'carl sagan' },
+
+    // hannah arendt
+    { text: 'the ideal subject of totalitarian rule is not the convinced nazi or the convinced communist, but people for whom the distinction between fact and fiction and the distinction between true and false', author: 'hannah arendt' },
+    { text: 'lies are often much more plausible, more appealing to reason, than reality, since the liar has the great advantage of knowing beforehand what the audience wishes or expects to hear.', author: 'hannah arendt' },
+
+    // steve jobs
+    { text: 'the only way to do great work is to love what you do.', author: 'steve jobs' },
+
     // paul graham
     { text: 'a formidable person is one who seems like they’ll get what they want, regardless of whatever obstacles are in the way.', author: 'paul graham' },
-    { text: 'a formidable person is one who sees that when it comes to futebol, brazil >>> argentina.', author: 'anonymous' },
     { text: 'the brand must not break character.', author: 'paul graham' },
     { text: "in fact there's a single principle that will both save you from working on things like brand, and also automatically find golden ages for you. follow the problems.", author: 'paul graham' },
     { text: "brand is what's left when the substantive differences between products disappear.", author: 'paul graham' },
     { text: "good design, like math or science, seeks the right answer, and right answers tend to converge.", author: 'paul graham' },
     { text: "branding is centrifugal; design is centripetal.", author: 'paul graham' },
-
-    // from paul graham
-    { text: 'research is to see what everybody has seen and think what nobody has thought.', author: 'schopenhauer' },
-    { text: 'i have never seen ordinary effort lead to extraordinary results.', author: 'alexandr wang' },
-    { text: 'most interesting phenomena have multiple causes.', author: 'n. p. calderwood' },
-    { text: "the best way to do something 'lean' is to gather a tight group of people, give them very little money, and very little time.", author: 'bob klein' },
-    { text: 'when the enemy is making a false movement we must take good care not to interrupt him.', author: 'napoleon' },
-    { text: 'an expert is a man who has made all the mistakes which can be made in a very narrow field.', author: 'niels bohr' },
-    { text: 'i think a life properly lived is just learn, learn, learn all the time.', author: 'charlie munger' },
-    { text: 'the population is made up of 4 types of people: a small number hunt witches. a large number go along with the hunt. a larger number are silent. a tiny number oppose it. the final group — as if by magic — become witches.', author: 'bret weinstein' },
-    { text: 'lies are often much more plausible, more appealing to reason, than reality, since the liar has the great advantage of knowing beforehand what the audience wishes or expects to hear.', author: 'hannah arendt' },
-    { text: "i didn't make a decision to pursue astronomy. rather, it just grabbed me, and i had no thought of escaping.", author: 'carl sagan' },
-    { text: 'sometimes, magic is just someone spending more time on something than anyone else might reasonably expect.', author: 'teller' },
-    { text: 'i never understand anything until i have written about it.', author: 'horace walpole' },
-    { text: 'crime does not pay as much as code.', author: 'freddy vega' },
-    { text: 'the amount of energy necessary to refute bullshit is an order of magnitude bigger than to produce it.', author: 'paul kedrosky' },
-    { text: 'the less confident you are, the more serious you have to act.', author: 'tara ploughman' },
-    { text: "we're even wrong about which mistakes we're making.", author: 'carl winfeld' },
 
     // psalms
     { text: 'he makes me lie down in green pastures. he leads me beside still waters.', author: 'psalm 23' },
@@ -394,10 +420,47 @@ window.QUOTES = [
     { text: 'search me, o god, and know my heart; try me and know my thoughts.', author: 'psalm 139' },
     { text: 'i said, i will take heed to my ways, that i sin not with my tongue.', author: 'psalms 39:1' },
 
-    // athletes
+    // allen iverson
     { text: 'i had to use the jail situation as something positive. someone sees weakness in you, they\'ll exploit it. i never showed any weakness, i just kept going strong until i came out.', author: 'allen iverson' },
 
-    // philosophers
+    // albert einstein
+    { text: 'in the middle of every difficulty lies opportunity.', author: 'albert einstein' },
+
+    // mario puzo
+    { text: 'if our brains were simple, we would be too simple to understand them.', author: 'mario puzo' },
+
+    // alexander hamilton
+    { text: 'the first duty of society is justice.', author: 'alexander hamilton' },
+    { text: 'the vigor of government is essential to the security of liberty.', author: 'alexander hamilton' },
+
+    // thomas jefferson
+    { text: 'honesty is the first chapter in the book of wisdom.', author: 'thomas jefferson' },
+    { text: 'pride costs more than all that is necessary for food, drink, shelter, or dress.', author: 'thomas jefferson' },
+    { text: 'i like the dreams of the future beterr than the history of the past.', author: 'thomas jefferson' },
+    { text: 'the most valuable of all talents is that of never using two words when one will do.', author: 'thomas jefferson' },
+    { text: 'i cannot live without books', author: 'thomas jefferson' },
+    { text: 'whenever you do a thing, act as if the world were watching.', author: 'thomas jefferson' },
+
+    // theodore roosevelt
+    { text: 'believe you can and you\'re halfway there.', author: 'theodore roosevelt' },
+    { text: 'do what you can, with what you have, where you are.', author: 'theodore roosevelt' },
+
+    // benjamin franklin
+    { text: 'well done is better than well said.', author: 'benjamin franklin' },
+    { text: 'early to bed and early to rise makes a man healthy, wealhty and wise.', author: 'benjamin franklin' },
+    { text: 'energy and persistence conquer all things.', author: 'benjamin franklin' },
+    { text: 'diligence is the mother of good luck.', author: 'benjamin franklin' },
+    { text: 'by failing to prepare, you are preparing to fail.', author: 'benjamin franklin' },
+    { text: 'guests, like fish, begin to smel after three days.', author: 'benjamin franklin' },
+
+    // winston churchill
+    { text: 'short words are best and the old words when short are best of all.', author: 'winston churchill' },
+    { text: 'the empires of the future are the empires of the mind.', author: 'winston churchill' },
+
+    // napoleon
+    { text: 'when the enemy is making a false movement we must take good care not to interrupt him.', author: 'napoleon' },
+
+    // other philosophers and thinkers
     { text: 'the function of freedom is to free someone else.', author: 'toni morrison' },
     { text: 'one cannot step twice in the same river.', author: 'heraclitus' },
     { text: 'the price of anything is the amount of life you exchange for it.', author: 'henry david thoreau' },
@@ -420,33 +483,18 @@ window.QUOTES = [
     { text: 'if only god is among us, and eternity exists, then everything is different.', author: 'erasmus' },
     { text: 'intellect can be enlightened only in a kind person. a person can be kind only when he has an enlightened intellect.', author: 'chinese wisdom' },
     { text: 'simplicity is the consequence of refined emotions.', author: 'jean d\'alembert' },
-    { text: 'the ideal subject of totalitarian rule is not the convinced nazi or the convinced communist, but people for whom the distinction between fact and fiction and the distinction between true and false', author: 'hannah arendt' },
+    { text: 'i have never seen ordinary effort lead to extraordinary results.', author: 'alexandr wang' },
+    { text: 'most interesting phenomena have multiple causes.', author: 'n. p. calderwood' },
+    { text: "the best way to do something 'lean' is to gather a tight group of people, give them very little money, and very little time.", author: 'bob klein' },
+    { text: 'i think a life properly lived is just learn, learn, learn all the time.', author: 'charlie munger' },
+    { text: 'the population is made up of 4 types of people: a small number hunt witches. a large number go along with the hunt. a larger number are silent. a tiny number oppose it. the final group — as if by magic — become witches.', author: 'bret weinstein' },
+    { text: 'sometimes, magic is just someone spending more time on something than anyone else might reasonably expect.', author: 'teller' },
+    { text: 'i never understand anything until i have written about it.', author: 'horace walpole' },
+    { text: 'crime does not pay as much as code.', author: 'freddy vega' },
+    { text: 'the amount of energy necessary to refute bullshit is an order of magnitude bigger than to produce it.', author: 'paul kedrosky' },
+    { text: 'the less confident you are, the more serious you have to act.', author: 'tara ploughman' },
+    { text: 'we\'re even wrong about which mistakes we\'re making.', author: 'carl winfeld' },
+    { text: 'dreams are real while they last; can we say more of life?.', author: 'havelock' },
+    { text: 'the meaning of life is creative love.', author: 'tom morris' },
 
-    // scientists
-    { text: 'in the middle of every difficulty lies opportunity.', author: 'albert einstein' },
-    { text: 'if our brains were simple, we would be too simple to understand them.', author: 'mario puzo' },
-    { text: 'we all agree that your theory is crazy. the question which divides us is whether it is crazy enough.', author: 'niels bohr' },
-
-    // politicians
-    { text: 'the first duty of society is justice.', author: 'alexander hamilton' },
-    { text: 'the vigor of government is essential to the security of liberty.', author: 'alexander hamilton' },
-    { text: 'honesty is the first chapter in the book of wisdom.', author: 'thomas jefferson' },
-    { text: 'believe you can and you\'re halfway there.', author: 'theodore roosevelt' },
-    { text: 'do what you can, with what you have, where you are.', author: 'theodore roosevelt' },
-    { text: 'pride costs more than all that is necessary for food, drink, shelter, or dress.', author: 'thomas jefferson' },
-    { text: 'i like the dreams of the future beterr than the history of the past.', author: 'thomas jefferson' },
-    { text: 'the most valuable of all talents is that of never using two words when one will do.', author: 'thomas jefferson' },
-    { text: 'i cannot live without books', author: 'thomas jefferson' },
-    { text: 'whenever you do a thing, act as if the world were watching.', author: 'thomas jefferson' },
-    { text: 'well done is better than well said.', author: 'benjamin franklin' },
-    { text: 'early to bed and early to rise makes a man healthy, wealhty and wise.', author: 'benjamin franklin' },
-    { text: 'energy and persistence conquer all things.', author: 'benjamin franklin' },
-    { text: 'diligence is the mother of good luck.', author: 'benjamin franklin' },
-    { text: 'by failing to prepare, you are preparing to fail.', author: 'benjamin franklin' },
-    { text: 'guests, like fish, begin to smel after three days.', author: 'benjamin franklin' },
-    { text: 'short words are best and the old words when short are best of all.', author: 'winston churchill' },
-    
-    // entrepreneurs
-    { text: 'the only way to do great work is to love what you do.', author: 'steve jobs' },
-  
 ];

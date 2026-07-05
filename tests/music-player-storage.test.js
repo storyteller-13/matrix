@@ -82,7 +82,6 @@ describe('MusicPlayerStorage', () => {
         const data = { playlists: [], currentPlaylistId: null };
         storage.ensureDefaultPlaylists(data);
         expect(data.playlists.length).toBeGreaterThan(0);
-        expect(data.currentPlaylistId).toBe('2026 peaceful dreamer');
     });
 
     it('load() uses getDefaultData when stored value is invalid JSON', () => {

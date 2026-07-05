@@ -277,7 +277,7 @@ class XKCDPanel {
     showError() {
         const imageContainer = document.getElementById('xkcd-box-image-container');
         if (imageContainer) {
-            imageContainer.innerHTML = '<div class="xkcd-error">(failed to load)</div>';
+            imageContainer.innerHTML = '<div class="xkcd-error">(unable to load XKCD)</div>';
         }
     }
 

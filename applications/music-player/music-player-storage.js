@@ -73,7 +73,15 @@ class MusicPlayerStorage {
                         { id: 'fF8GARU44iY', title: 'wild mountain honey (steve miller)' }
                     ]
                 },
+                {
+                    id:   'a permanent perfect state of awe',
+                    name: 'a permanent perfect state of awe',
+                    songs: [
+                        { id: 'yzW0kLJSwkc', title: 'the 2nd coming was a moonrise (hammock)' },
+                    ]
+                },
             ],
+
             currentPlaylistId: 'the cutest couple in the world'
         };
     }
@@ -114,7 +122,7 @@ class MusicPlayerStorage {
             }
         });
         if (!data.currentPlaylistId || !defaultPlaylistIds.has(data.currentPlaylistId)) {
-            data.currentPlaylistId = '2026 peaceful dreamer';
+            data.currentPlaylistId = 'the cutest couple in the world';
         }
     }
 

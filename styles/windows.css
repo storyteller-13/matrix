@@ -156,8 +156,7 @@
 .dock-icon svg,
 .file-icon svg,
 .home-icon svg,
-.artwork-icon svg,
-.folder-icon svg {
+.artwork-icon svg {
     display: block;
     filter: none;
 }
@@ -240,9 +239,10 @@
     flex-direction: column;
 }
 
+
 .file-toolbar {
     height: 40px;
-    background: rgba(255, 245, 249, 0.95);
+    background: rgba(255, 245, 249, 0, 0.95);
     display: flex;
     align-items: center;
     padding: 0 12px;
@@ -329,6 +329,16 @@ a.file-item {
     text-align: center;
     word-break: break-word;
     text-shadow: none;
+}
+
+
+/* Home Window*/
+.home-window {
+    width: 1100px;
+    height: 720px;
+    top: 50px;
+    left: 100px;
+    z-index: 100;
 }
 
 /* Todo Application */

@@ -50,7 +50,7 @@ class TodoStorage {
             { text: 'nourish a community of good friends', completed: false },
             { text: 'travel the entire world with my family', completed: false },
             { text: 'play the piano and chess every morning', completed: false },
-            { text: 'feel grateful for my life every day', completed: true },
+            { text: 'feel grateful for my life every single day', completed: true },
         ];
         return defaultTodoData.map(data => this.createTodo(data.text, data.completed));
     }
