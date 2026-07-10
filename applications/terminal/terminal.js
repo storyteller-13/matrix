@@ -42,6 +42,7 @@
             },
             '/artwork': {
                 'begin.png': 'file',
+                'our_lady_of_grace.jpg': 'file',
             }
         };
 

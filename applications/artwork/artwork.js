@@ -9,7 +9,8 @@ class ArtworkApp extends BaseApp {
         this.fileListPopulated = false;
 
         this.images = [
-            'begin.png'
+            'begin.png',
+            'our_lady_of_grace.jpg'
         ];
 
         this.init();

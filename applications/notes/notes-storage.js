@@ -34,18 +34,6 @@ class NotesStorage {
 
     getDefaultEntries() {
         return [
-            {
-            date: '2026-07-11T00:00:00.000Z',
-            title: 'physical love',
-            content: this.cleanContent(`
-
-            < pablo neruda >
-
-            happy friday, my dear anon,
-
-
-                `)
-            },
 
             {
             date: '2026-07-06T00:00:00.000Z',
@@ -63,10 +51,9 @@ class NotesStorage {
             «i»if you are an american friend, how was your 4th of july celebration?
             if you are a non-american friend from the north, how has your summer been?
             if you are a non-american friend from the south, how has your winter been?
-            else, please take me to your planet!
-            «/i»
+            else, please take me to your planet!«/i»
 
-            i have been doing great, every single day feeling more and more complete, and more integrated with this beautiful universe of ours; it's really hard to be unhappy when you see so much beauty in every single thing in this reality
+            i have been doing great, every single day feeling more and more complete, and more integrated with this beautiful universe of ours (and a little more healed from the trauma); it's really hard to be unhappy when you see so much beauty in every single thing in this reality
 
             so many miracles, every day; you are a miracle yourself, my dear anon; if nobody has told you this recently, here it is, directly from the sun: look how complex your body and your existence are; they are so, so, so beautiful
 
@@ -75,7 +62,7 @@ class NotesStorage {
             now, as for the news, first, i'd like to send my special congratulations to one of my beautiful bffs on her dreamy wedding! live the dream, my dear; you deserve every bit of it 💜
             (and another congrats to everyone else getting married — finding your soulmate means you are WINNING the game)
 
-            second, i would like to say that i have never been so excited about my work; (ok, maybe i have always been VERY excited about my work...); i know i haven't shared much about what i have been building at NULLSTAR and about LOGIC 13, but this is by design, for now; there are several surprises waiting, and you will have to be patient, my dear anon friend; all i can say is... it's gonna be... what's the word the cutie said? ah, amazing!!!
+            second, i would like to say that i have never been so excited about my work; (ok, maybe i have always been VERY excited about my work...); i know i haven't shared much about what i have been building at NULLSTAR and about LOGIC 13, but this is by design, for now; there are several surprises waiting, and you will have to be patient, my dear anon friend; all i can say is... it's going to be very cool!
 
             finally, yeah, everything is a little weird; we are all feeling it; but... i would like to invite you to marina's rose-colored-soul experiment: what if, this week, we decide to pretend that everything is beautiful, that evil is just an annoying clown, that peace and fraternity are possible, and that love... love will save us all... love will help us see beyond our tired human eyes... love will make us feel invincible and whole
 
@@ -84,7 +71,12 @@ class NotesStorage {
             this week we celebrate love
             in all its shapes and forms
 
-                `)
+            ps: the new artwork is our lady of grace, who arrived at my mom's house yesterday. she travels from house to house, and it's always such a special blessing when she arrives. this depiction of mary is particularly interesting because she is stepping on a snake, symbolizing her triumph over the serpent. there are also a few fascinating biblical passages connected to this imagery that i encourage you to look up.
+
+            ps2: every time in my life that i (re)start working on a new project, i realy enjoy diving deep into books and articles and taking the time to become an expert as i build; i really, really enjoy reading and doing research; yes, i'm a weirdo — i love reading papers! of course they're only a small part of the work, but this week i've been indulging myself...
+            
+            ps3: since 1) i am super uber busy working on my career at the moment, 2) i am still waiting for the love of my life to find me, and 3) i need a little summer break, this project will be on pause for now; but don't fret, my dear anon friend — we have our entire lives and i will be back soon with more stories and wisdom (until then, have yourself a little colorful happiness).
+            `)
             },
 
             {

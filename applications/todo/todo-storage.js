@@ -42,11 +42,12 @@ class TodoStorage {
 
     getDefaultTodos() {
         const defaultTodoData = [
-            { text: 'love my so handsome soulmate forever', completed: false },
+            { text: 'trust you are finding me, love of my life', completed: false },
+            { text: 'love my so so handsome soulmate forever', completed: false },
             { text: 'build my perfect and sublime home', completed: false },
             { text: 'grow my cute and so loved family', completed: false },
             { text: 'have a lot of fun creating NULLSTAR ', completed: false },
-            { text: 'tell the great story of LOGIC 13', completed: false },
+            { text: 'tell the great story of LOGIC 13 MMORPG', completed: false },
             { text: 'nourish a community of good friends', completed: false },
             { text: 'travel the entire world with my family', completed: false },
             { text: 'play the piano and chess every morning', completed: false },
