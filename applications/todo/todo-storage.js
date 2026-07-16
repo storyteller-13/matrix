@@ -42,6 +42,7 @@ class TodoStorage {
 
     getDefaultTodos() {
         const defaultTodoData = [
+            { text: 'take a nice break to forgive and restart', completed: false },
             { text: 'trust you are finding me, love of my life', completed: false },
             { text: 'love my so so handsome soulmate forever', completed: false },
             { text: 'build my perfect and sublime home', completed: false },

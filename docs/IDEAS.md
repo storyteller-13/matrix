@@ -35,6 +35,6 @@
 - my experiences working at los alamos and brookhaven
 - lessons on how to communicate your boundaries
 - my favorite cemiteries around the world
-- tales from my the five years of my PhD
+- tales from the five years of my PhD
 - my top favorite countries and cities
 - odes to SP, LI, LA, Berlin, Japan

@@ -36,6 +36,79 @@ class NotesStorage {
         return [
 
             {
+            date: '2026-07-17T00:00:00.000Z',
+            title: 'humans are multidimensional',
+            content: this.cleanContent(`
+            all right, folks,
+
+            i told myself i was going to take a break from the matrix to get some rest, and i am about to leave for my vacation. but the voices in my brain are telling me to tell one more story today.
+
+            it's called "women are multidimensional". it could also be called "men are multidimensional", but since i am a woman, i can only really speak 100% for myself.
+
+            what do i mean by this?
+
+            i mean that the more we live and the more we experience, the more stories we collect, the more wisdom we accumulate, the more multidimensional we become.
+
+            in simple words, the more data we have in our brains, the more we are able to comprehend the full spectrum of feelings and ideas that make up the human condition.
+
+            i am someone who has gone on many hero's journeys. i have met many people, lived in many cities, read many books, and heard many stories. they are all part of who i am now. i can't deny one part because of another — they are all equally me.
+
+            when i was younger, i was much more one-dimensional — or perhaps two-dimensional. i didn't know much about life beyond what my family thought, what i learned in school, and the information i had available to me.
+
+            it was much easier to hold onto a single persona. in my case, it was the super-hardcore STEAM student.
+
+            as the years pass, i naturally incorporated many other versions of myself. it's inevitable.
+
+            by the time you are 42 years old, you are the sum of every person you have met, every city you have lived in, every book you have read, every movie you have watched, and every feeling you have felt.
+
+            you become this big box filled with everything.
+
+            and if you are able to create a coherent story around all of it — and hey, that's no trivial task at all; we are all doing our best — but if you are able to tell an integrated story about your life and your choices, then i believe you can say you have a satisfied mind. you can say you have become a complete individual.
+
+            i believe i have been able to do that.
+
+            it's a bit difficult because my life story is so unusual that perhaps not everyone understands it. some people will label it with concepts that are familiar to them, while others will invent different narratives.
+
+            but i know who i am, and i know what i am not. and i will keep saying it out loud until everyone understands.
+
+            🦁 i know i have a little autism (my mother's side of the family has it, and one of my uncles is on the severe end of the spectrum and spent his entire life in a specialized care facility).
+            🦁 i know i have a little ADHD (my dad was considered one of the first diagnosed hyperactive kids back in the day. luckily, he was also incredibly smart).
+            🦁 i know i have a little OCD (i actually kind of like that part — it keeps everything organized, clean, and nice. :) it has never really gotten in my way).
+            🦁 i also know that, aside from those traits, i am emotionally well-regulated. i have never had clinical depression — just a few sad days here and there because life can be hard. i am not bipolar or anything like that.
+            🦁 i know i am happy at least 90% of the time.
+            🦁 i know i love people with all my heart.
+            🦁 i know i am a bit naive.
+            🦁 i know i am an introvert and very private.
+            🦁 i know i hate social media, and i've been away from those kinds of interactions for years.
+            🦁 i know i believe in people more than i probably should, but i can't change that.
+            🦁 i know i keep my word, and integrity is one of the coolest qualities a person can have.
+            🦁 i know i tend to always tell the truth, and sometimes people don't understand.
+            🦁 i know i don't understand why people lie.
+            🦁 i know i believe in true love and soulmates.
+            🦁 i know i am a good person.
+            🦁 i know the truth always wins in the end.
+            🦁 i know justice can take a long time, but it eventually arrives.
+            🦁 i know kindness is beautiful.
+            🦁 i know love gives me enormous energy.
+            🦁 i know i have a pure heart.
+            🦁 i know i will find someone special who truly sees me.
+            🦁 i know my mom is awesome.
+            🦁 i know science is awesome.
+            🦁 i know there is always a path to happiness.
+            🦁 i know i will make it.
+            🦁 i know my real friends will always be there for me.
+            🦁 i know birds, cats, dogs, and all animals are adorable, and i love them.
+            🦁 i know i will be happy every single day of my life.
+            🦁 i know i am multidimensional.
+            🦁 and i know that's a beautiful thing.
+
+            stay in a higher dimension, my dear anon 🪩
+
+            ps: meanwhile, go watch big sean on jay shetty talking about "you do what others want and they still don't like you" and "what are you going to do with the time you have left in life?"
+            `)
+            },
+
+            {
             date: '2026-07-06T00:00:00.000Z',
             title: 'this week we celebrate love',
             content: this.cleanContent(`
@@ -74,7 +147,7 @@ class NotesStorage {
             ps: the new artwork is our lady of grace, who arrived at my mom's house yesterday. she travels from house to house, and it's always such a special blessing when she arrives. this depiction of mary is particularly interesting because she is stepping on a snake, symbolizing her triumph over the serpent. there are also a few fascinating biblical passages connected to this imagery that i encourage you to look up.
 
             ps2: every time in my life that i (re)start working on a new project, i realy enjoy diving deep into books and articles and taking the time to become an expert as i build; i really, really enjoy reading and doing research; yes, i'm a weirdo — i love reading papers! of course they're only a small part of the work, but this week i've been indulging myself...
-            
+
             ps3: since 1) i am super uber busy working on my career at the moment, 2) i am still waiting for the love of my life to find me, and 3) i need a little summer break, this project will be on pause for now; but don't fret, my dear anon friend — we have our entire lives and i will be back soon with more stories and wisdom (until then, have yourself a little colorful happiness).
             `)
             },
