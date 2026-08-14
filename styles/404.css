@@ -1,0 +1,56 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Nunito', 'Quicksand', system-ui, -apple-system, sans-serif;
+    background: #FFF0F5;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.page {
+    width: 1100px;
+    height: 720px;
+    max-width: calc(100vw - 40px);
+    max-height: calc(100vh - 40px);
+    background: rgba(255, 255, 255, 0.88);
+    border: 1px solid rgba(255, 133, 162, 0.35);
+    box-shadow: 0 4px 24px rgba(180, 100, 130, 0.12);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.code {
+    font-size: clamp(6rem, 18vw, 12rem);
+    font-weight: 700;
+    color: #FF85A2;
+    letter-spacing: 0.02em;
+    line-height: 1;
+}
+
+.message {
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: #A8919C;
+}
+
+.page a {
+    margin-top: 1.5rem;
+    color: #D946A6;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.page a:hover {
+    color: #FF85A2;
+}
