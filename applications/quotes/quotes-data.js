@@ -487,10 +487,10 @@ window.QUOTES = [
     { text: 'evil is a surd.', author: 'h.r. mackintosh' },
     { text: 'stupidity is the same as evil if you judge by the results.', author: 'margaret atwood' },
 
-    ////////////////////////////////////////
+    ///////////////////////////////////////////////
     // marina von steinkirch
-    // (yes, me - where i indulge myself =p)
-    ////////////////////////////////////////
+    // (yes, this is me - where i indulge myself =p)
+    ////////////////////////////////////////////////
     { text: 'impossible is a state of mind.', author: 'marina von steinkirch' },
     { text: 'you are supposed to be free.', author: 'marina von steinkirch' },
     { text: 'the difference between the successful and the rest isn\'t just talent — it\'s the ability to sacrifice the moment, plan for what\'s coming, and imagine what hasn\'t happened yet.', author: 'marina von steinkirch' },
@@ -534,4 +534,7 @@ window.QUOTES = [
     { text: 'never underestimate the damage that a grifter can do to your state of mind, progress, and flow. it’s your responsibility to cut emotional ties with anyone who is sabotaging your well-being.', author: 'marina von steinkirch' }, 
     { text: 'there is always a new day tomorrow, ready to be awesome and all yours. go to bed early.', author: 'marina von steinkirch' }, 
     { text: 'once, i had the best day of the year right after one of the worst days of my life. never underestimate the power of changing the tide, setting a strong boundary, and leaving behind what is hurting and imprisoning you.', author: 'marina von steinkirch' }, 
+    { text: 'when trying to understand a collective system, ask what is scarce, what is abundant, and how those variables will always shape incentives and behavior.', author: 'marina von steinkirch' },
+    { text: 'if you want to keep your sanity in this world, you have to accept that there will be people who will never understand you, no matter how hard you try. the sane choice is remove them from your thoughts, your decisions, and your life.', author: 'marina von steinkirch' },
+    { text: 'true love is easy, honest, trusting, reliable, stable, and safe. period.', author: 'marina von steinkirch' },
 ];

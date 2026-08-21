@@ -9,7 +9,7 @@ class ArtworkApp extends BaseApp {
         this.fileListPopulated = false;
 
         this.images = [
-
+            'summer.png'
         ];
 
         this.init();

@@ -41,7 +41,7 @@
                 'os-release': 'name="nullstar"\nversion="2024.12"\nid=nullstar\npretty_name="nullstar 2024.12"\nansi_color="0;34"'
             },
             '/artwork': {
-
+                'summer.png': 'file',
             }
         };
 

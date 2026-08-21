@@ -42,9 +42,10 @@ class TodoStorage {
 
     getDefaultTodos() {
         const defaultTodoData = [
-            { text: 'build the OS for multiplayer superintelligence ', completed: false },
+            { text: 'build the os for multiplayer superintelligence ', completed: false },
             { text: 'build the mmorpg universe of logic-13', completed: false },
             { text: 'nourish a community of good friends', completed: false },
+            { text: 'materialize my 43 goals this year ♡', completed: false },
         ];
         return defaultTodoData.map(data => this.createTodo(data.text, data.completed));
     }

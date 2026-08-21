@@ -68,7 +68,9 @@ class MusicPlayerStorage {
                         { id: 'IysMLKomjXs', title: 'singularity (james malikey)' },
                         { id: '6K5yqX4Np1Y', title: 'hyperion (ambient civilization)' },
                         { id: 'LTiqKDrjqr4', title: 'summer\'26 stargazing fest (lofi girl)' },
-                        { id: 'yzW0kLJSwkc', title: '2nd coming was a moonrise (hammock)' },
+                        { id: 'yzW0kLJSwkc', title: 'the 2nd coming was a moonrise (hammock)' },
+                        { id: 'JcHtM0PEETo', title: 'stillness in the cosmos (spiritual brother sci-fi)' },
+                        { id: 'FaJ40cZUz84', title: 'drifting in your room among the stars (future city)' },
                     ]
                 },
                 {
@@ -76,8 +78,11 @@ class MusicPlayerStorage {
                     name: 'a world we\'re creating together',
                     songs: [
                         { id: '5f3sMmdG2sg', title: 'sunshine (jungle)' },
+                        { id: 'G2nJPEDc02k', title: 'levitating (dua lipa)' },
                         { id: 'oHRNrgDIJfo', title: 'feeling good (nina simone)' },
-                        { id: 'x11NA63gLDM', title: 'change the world (eric clapton)' },
+                        { id: 'HVHUjzZZGQ4', title: 'island in the sun (weezer)' },
+                        { id: 'zp7NtW_hKJI', title: 'a sky full of stars (coldplay)' },
+                        { id: 'x11NA63gLDM', title: 'change the world (eric clapton)' },  
                     ]
                 },
             ],
