@@ -1,0 +1,121 @@
+/* Bottom Dock */
+.bottom-dock {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(20px);
+    padding: 8px 16px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-medium);
+    border: 1px solid rgba(255, 182, 213, 0.5);
+    z-index: 1000;
+}
+
+.dock-item {
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+}
+
+a.dock-item {
+    text-decoration: none;
+    color: inherit;
+}
+
+.dock-item:hover {
+    transform: translateY(-8px) scale(1.1);
+    background: rgba(255, 182, 213, 0.3);
+    box-shadow: var(--shadow-soft);
+}
+
+.dock-item.active {
+    background: rgba(255, 133, 162, 0.4);
+    box-shadow: var(--shadow-soft);
+}
+
+.dock-item.active::before {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    background: #FF85A2;
+    border-radius: 50%;
+    box-shadow: var(--shadow-soft);
+}
+
+.dock-icon {
+    font-size: 28px;
+}
+
+/* Slightly larger icons for email and heart (Sunday Chats) */
+.dock-item--icon-lg .dock-icon svg {
+    width: 38px;
+    height: 38px;
+}
+
+.email-count-badge,
+.todo-count-badge,
+.notes-count-badge,
+.artwork-count-badge {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background: #c9c1ca;
+    color: var(--text);
+    border-radius: 10px;
+    min-width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 0 4px;
+    box-shadow: var(--shadow-soft);
+    border: 2px solid rgba(255, 255, 255, 0.88);
+    font-family: inherit;
+}
+
+.dock-separator {
+    width: 1px;
+    height: 32px;
+    background: rgba(255, 133, 162, 0.4);
+    margin: 0 4px;
+    box-shadow: var(--shadow-soft);
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 240, 245, 0.8);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 133, 162, 0.4);
+    border-radius: 4px;
+    box-shadow: var(--shadow-soft);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 133, 162, 0.6);
+    box-shadow: var(--shadow-soft);
+}
+
