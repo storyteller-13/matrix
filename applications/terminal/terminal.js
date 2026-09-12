@@ -241,6 +241,7 @@
   clear       - clear terminal
   date        - display current date and time
   view [file] - open picture file
+  exit        - close terminal
   help        - show this help message`;
             },
 
@@ -359,6 +360,20 @@
                 }
                 openPicture(filepath);
                 return '';
+            },
+
+            exit: () => {
+                const terminalWindow = terminal.closest('.window');
+                if (!terminalWindow) return null;
+
+                const dockItem = document.getElementById('terminal-dock-item');
+                if (window.WindowManager) {
+                    window.WindowManager.close(terminalWindow, dockItem);
+                } else {
+                    terminalWindow.style.display = 'none';
+                    if (dockItem) dockItem.classList.remove('active');
+                }
+                return null;
             }
         };
 

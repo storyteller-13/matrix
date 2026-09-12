@@ -99,10 +99,10 @@ class MusicPlayerStorage {
                     songs: [
                         { id: '44FId4BpMx0', title: 'heroes (bowie)' },
                         { id: 'tVXXD7KXAec', title: 'rescuer (alex warren)' },
-                        { id: 'afSgBNwmZrQ', title: 'petal (ariana grande)' },
                         { id: '-qcko5RfeLc', title: 'demon days (gorillaz)' },
                         { id: '3Zzz-xpjshM', title: 'time (alabama shakes)' },
                         { id: 'aWpw-Ynl0Yc', title: 'bass persuades (miley)' },
+                        { id: 'afSgBNwmZrQ', title: 'petal (ariana grande)' },
                         { id: 'HVHUjzZZGQ4', title: 'island in the sun (weezer)' },
                         { id: 'oytaoGL-mck', title: 'princess of the night (train)' },
                         { id: 'fDltPLFdkYI', title: 'power in the blood (polyphia)' },    

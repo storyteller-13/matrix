@@ -104,6 +104,19 @@ describe('Terminal', () => {
         expect(document.getElementById('terminal-output-container').innerHTML).toBe('');
     });
 
+    it('exit closes the terminal window', () => {
+        const win = document.getElementById('terminal-window');
+        win.style.display = 'block';
+        window.WindowManager = { close: vi.fn() };
+        typeCommand('exit');
+        expect(window.WindowManager.close).toHaveBeenCalledWith(win, null);
+        delete window.WindowManager;
+
+        win.style.display = 'block';
+        typeCommand('exit');
+        expect(win.style.display).toBe('none');
+    });
+
     it('arrow keys walk command history', () => {
         typeCommand('echo one');
         typeCommand('echo two');
