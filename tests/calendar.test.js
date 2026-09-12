@@ -144,6 +144,25 @@ describe('CalendarPanel', () => {
         expect(panel.getEventCount()).toBe(3);
     });
 
+    it('counts only events in the current month for the badge', () => {
+        document.body.innerHTML = `
+            ${calendarDom()}
+            <span id="calendar-count-badge" style="display: none;">0</span>
+            <span id="calendar-menu-count" style="display: none;">0</span>
+        `;
+        const panel = new window.CalendarPanelClass();
+        panel.events = [
+            { date: '2026-09-10', type: 'new-moon', label: 'new moon' },
+            { date: '2026-09-25', type: 'post', label: 'new post' },
+            { date: '2026-08-01', type: 'full-moon', label: 'full moon' },
+            { date: '2026-10-05', type: 'post', label: 'new post' },
+        ];
+        panel.updateBadge();
+        expect(panel.getEventCount()).toBe(2);
+        expect(document.getElementById('calendar-count-badge').textContent).toBe('2');
+        expect(document.getElementById('calendar-menu-count').textContent).toBe('2');
+    });
+
     it('caps badge text at 99+ and hides badges when empty', () => {
         document.body.innerHTML = `
             ${calendarDom()}

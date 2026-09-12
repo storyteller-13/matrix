@@ -111,7 +111,10 @@ class CalendarPanel {
     }
 
     getEventCount() {
-        return Array.isArray(this.events) ? this.events.length : 0;
+        if (!Array.isArray(this.events)) return 0;
+        const now = new Date();
+        const prefix = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`;
+        return this.events.filter((ev) => typeof ev.date === 'string' && ev.date.startsWith(prefix)).length;
     }
 
     updateBadge(countArg) {
