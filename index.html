@@ -511,6 +511,17 @@
                             </svg>
                         </span>
                     </a>
+                    <a href="javascript:void(0)" class="tray-button" id="bird-icon-tray" title="bird of the day" aria-label="bird of the day" data-i18n-title="tray.bird" data-i18n-aria-label="tray.bird" onclick="window.openBirdWindow(); return false;">
+                        <span class="tray-icon tray-icon-bird" aria-hidden="true">
+                            <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3.4 18H12a8 8 0 0 0 8-8V7a4 4 0 0 0-7.28-2.3L2 20" fill="rgba(216, 70, 166, 0.22)" stroke="#E879A9" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="m20 7 2 .5-2 .5" fill="none" stroke="#E879A9" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M10 18v3M14 17.75V21" fill="none" stroke="#E879A9" stroke-width="1.55" stroke-linecap="round"/>
+                                <path d="M7 18a6 6 0 0 0 3.84-10.61" fill="none" stroke="#E879A9" stroke-width="1.55" stroke-linecap="round"/>
+                                <circle cx="16" cy="7" r="0.95" fill="#E879A9"/>
+                            </svg>
+                        </span>
+                    </a>
                     <a href="javascript:void(0)" class="tray-button" id="apod-icon-tray" title="astronomy picture of the day" aria-label="astronomy picture of the day" data-i18n-title="tray.apod" data-i18n-aria-label="tray.apod" onclick="window.openApodWindow(); return false;">
                         <span class="tray-icon" aria-hidden="true">
                             <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -666,6 +677,23 @@
             <div id="music-youtube" style="display: none;"></div>
         </div>
 
+        <div class="desktop-panels-row">
+        <!-- Bird Box (bird of the day) -->
+        <div class="bird-box" id="bird-box" style="display: none;">
+            <div class="bird-box-glow"></div>
+            <div class="bird-box-content">
+                <div class="bird-box-header">
+                    <button class="bird-box-close" id="bird-box-close" title="Close" aria-label="Close" data-i18n-title="panel.close" data-i18n-aria-label="panel.close">
+                        <span class="close-icon" aria-hidden="true"></span>
+                    </button>
+                    <span class="bird-box-title" id="bird-box-title" data-i18n="panel.birdTitle">TODAY'S BIRD</span>
+                </div>
+                <div class="bird-box-image-container" id="bird-box-image-container">
+                    <div class="bird-loading" data-i18n="panel.loading">loading...</div>
+                </div>
+            </div>
+        </div>
+
         <!-- APOD Box (universe) -->
         <div class="apod-box" id="apod-box" style="display: none;">
             <div class="apod-box-glow"></div>
@@ -681,6 +709,26 @@
                 </div>
             </div>
         </div>
+        </div>
+        </div>
+
+        <!-- Bird Popup -->
+        <div class="bird-popup" id="bird-popup" style="display: none;">
+            <div class="bird-popup-content">
+                <div class="bird-popup-header">
+                    <span class="bird-title" id="bird-title"></span>
+                    <button class="bird-close" id="bird-close">×</button>
+                </div>
+                <div class="bird-popup-image-container">
+                    <img class="bird-popup-image" id="bird-popup-image" alt="Bird of the Day">
+                </div>
+                <div class="bird-scientific" id="bird-scientific"></div>
+                <div class="bird-popup-explanation" id="bird-explanation"></div>
+                <div class="bird-popup-footer">
+                    <div class="bird-popup-date" id="bird-date"></div>
+                    <a href="https://www.allaboutbirds.org/guide/" target="_blank" rel="noopener noreferrer" class="bird-learn-link" id="bird-learn-link" data-i18n="panel.birdLearn">learn more →</a>
+                </div>
+            </div>
         </div>
 
         <!-- APOD Popup -->
@@ -1080,6 +1128,9 @@
     <!-- Quotes Panel (data first, then panel) -->
     <script src="applications/quotes/quotes-data.js"></script>
     <script src="applications/quotes/quotes.js"></script>
+
+    <!-- Bird Panel -->
+    <script src="applications/bird/bird.js"></script>
 
     <!-- APOD Panel -->
     <script src="applications/apod/apod.js"></script>

@@ -223,9 +223,14 @@
         z-index: 1800;
     }
 
+    .bird-popup {
+        z-index: 1800;
+    }
+
     .quotes-box,
     .chess-box,
     .sky-box,
+    .bird-box,
     .apod-box,
     .music-player {
         z-index: 900;
@@ -302,6 +307,31 @@
     }
 
     .apod-box-close {
+        width: 18px;
+        height: 18px;
+        min-width: 18px;
+        flex-shrink: 0;
+    }
+
+    .bird-box {
+        width: calc(100% - 40px);
+        max-width: 360px;
+        left: 50%;
+        top: 50%;
+        bottom: auto;
+        right: auto;
+        transform: translate(-50%, -50%);
+    }
+
+    .bird-box:hover {
+        transform: translate(-50%, -50%) translateY(-4px) scale(1.02);
+    }
+
+    .bird-box-image-container {
+        height: 195px;
+    }
+
+    .bird-box-close {
         width: 18px;
         height: 18px;
         min-width: 18px;
@@ -406,6 +436,29 @@
     .apod-popup-explanation {
         font-size: 13px;
         padding: 16px;
+        max-height: 150px;
+    }
+
+    .bird-popup-content {
+        max-width: 95%;
+        max-height: 85vh;
+    }
+
+    .bird-popup-image-container {
+        max-height: 50vh;
+    }
+
+    .bird-popup-image {
+        max-height: 50vh;
+    }
+
+    .bird-title {
+        font-size: 16px;
+    }
+
+    .bird-popup-explanation {
+        font-size: 13px;
+        padding: 12px 16px 16px;
         max-height: 150px;
     }
 
@@ -859,6 +912,33 @@
         height: 18px;
     }
 
+    .bird-box {
+        width: calc(100% - 12px);
+        max-width: 240px;
+        left: 50%;
+        top: 50%;
+        bottom: auto;
+        right: auto;
+        transform: translate(-50%, -50%);
+    }
+
+    .bird-box:hover {
+        transform: translate(-50%, -50%) translateY(-4px) scale(1.02);
+    }
+
+    .bird-box-content {
+        padding: 10px;
+    }
+
+    .bird-box-image-container {
+        height: 100px;
+    }
+
+    .bird-box-close {
+        width: 18px;
+        height: 18px;
+    }
+
     .chess-box {
         width: calc(100% - 12px);
         max-width: 360px;
@@ -1159,6 +1239,28 @@
         height: 18px;
     }
 
+    .bird-box {
+        left: 50%;
+        top: 50%;
+        bottom: auto;
+        right: auto;
+        width: 220px;
+        transform: translate(-50%, -50%);
+    }
+
+    .bird-box:hover {
+        transform: translate(-50%, -50%) translateY(-4px) scale(1.02);
+    }
+
+    .bird-box-image-container {
+        height: 120px;
+    }
+
+    .bird-box-close {
+        width: 18px;
+        height: 18px;
+    }
+
     .chess-box {
         left: 50%;
         top: 50%;
@@ -1307,11 +1409,38 @@
     }
 }
 
+/* Narrow tablets / small laptops: keep clocks from colliding with the tray */
+@media (min-width: 769px) and (max-width: 1600px) {
+    .clock-seconds {
+        display: none;
+    }
+
+    .clock-city-full {
+        display: none;
+    }
+
+    .clock-city-short {
+        display: inline;
+    }
+
+    .clock-zone {
+        padding: 0 6px;
+        gap: 4px;
+    }
+
+    .clock-city {
+        font-size: 9px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+    }
+}
+
 /* Touch devices: don't leave hover-scale stuck after a tap */
 @media (hover: none) and (max-width: 768px) {
     .quotes-box:hover,
     .sky-box:hover,
-    .chess-box:hover {
+    .chess-box:hover,
+    .bird-box:hover {
         transform: translate(-50%, -50%);
     }
 

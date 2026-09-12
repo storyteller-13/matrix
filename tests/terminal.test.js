@@ -174,6 +174,19 @@ describe('Terminal', () => {
         expect(lastOutput()).toBe('file');
     });
 
+    it('resolves relative dirs under / and tolerates a bare relative cwd', () => {
+        typeCommand('ls .secrets');
+        expect(lastOutput()).toMatch(/cannot access|\.secrets|no such/i);
+        typeCommand('cd /');
+        typeCommand('ls bin');
+        expect(lastOutput()).toMatch(/cannot access|no such/i);
+        typeCommand('cd bin');
+        typeCommand('pwd');
+        expect(lastOutput()).toBe('bin');
+        typeCommand('ls');
+        expect(lastOutput()).toBe('');
+    });
+
     it('cd into artwork from home uses the filesystem directory entry', () => {
         typeCommand('cd artwork');
         typeCommand('pwd');

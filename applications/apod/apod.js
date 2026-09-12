@@ -188,7 +188,9 @@ class APODPanel {
         imageContainer.appendChild(img);
 
         if (titleElement) {
-            titleElement.textContent = 'APOD';
+            titleElement.textContent = window.I18n
+                ? window.I18n.t('panel.universeTitle')
+                : "TODAY'S UNIVERSE";
             titleElement.title = data.title || fallbackTitle;
         }
 

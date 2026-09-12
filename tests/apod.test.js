@@ -116,7 +116,7 @@ describe('APODPanel', () => {
         await panel.loadAPOD();
         const img = document.querySelector('#apod-box-image-container img');
         expect(img.src).toContain('saturn.jpg');
-        expect(document.getElementById('apod-box-title').textContent).toBe('APOD');
+        expect(document.getElementById('apod-box-title').textContent).toBe("TODAY'S UNIVERSE");
         expect(document.getElementById('apod-popup-image').src).toContain('saturn.jpg');
         expect(document.getElementById('apod-explanation').textContent).toBe('hexagon');
         expect(panel.getCachedAPOD()).toEqual(image);
@@ -322,6 +322,19 @@ describe('APODPanel', () => {
         expect(panel.shouldAutoOpen()).toBe(false);
         expect(document.getElementById('apod-box').style.display).not.toBe('block');
         expect(global.fetch).not.toHaveBeenCalled();
+    });
+
+    it('shouldAutoOpen falls back to !isMobile when Env is missing', () => {
+        const panel = new window.APODPanelClass();
+        const originalEnv = window.Env;
+        window.Env = undefined;
+        window.matchMedia = () => ({ matches: false, addListener() {}, removeListener() {} });
+        expect(panel.shouldAutoOpen()).toBe(true);
+        window.Env = {};
+        expect(panel.shouldAutoOpen()).toBe(true);
+        window.matchMedia = () => ({ matches: true, addListener() {}, removeListener() {} });
+        expect(panel.shouldAutoOpen()).toBe(false);
+        window.Env = originalEnv;
     });
 
     it('uses I18n fallbacks and re-renders on localechange', () => {

@@ -228,6 +228,34 @@ describe('WindowManager', () => {
         document.body.removeChild(term);
     });
 
+    it('open() clamps an overflowing centered non-dock window', () => {
+        const wm = window.WindowManager;
+        const dock = document.createElement('div');
+        dock.className = 'bottom-dock';
+        document.body.appendChild(dock);
+        vi.spyOn(dock, 'getBoundingClientRect').mockReturnValue({
+            top: 700, bottom: 780, left: 0, right: 800, width: 800, height: 80,
+            x: 0, y: 700, toJSON: () => {},
+        });
+
+        const term = document.createElement('div');
+        term.className = 'window terminal-window';
+        term.style.display = 'none';
+        document.body.appendChild(term);
+        vi.spyOn(term, 'getBoundingClientRect').mockReturnValue({
+            top: 50, bottom: 820, left: 100, right: 700, width: 600, height: 770,
+            x: 100, y: 50, toJSON: () => {},
+        });
+        const clamp = vi.spyOn(wm, 'clampWindowToViewport');
+        vi.stubGlobal('requestAnimationFrame', (cb) => { cb(); });
+
+        wm.open(term, null);
+        expect(clamp).toHaveBeenCalledWith(term);
+
+        document.body.removeChild(term);
+        document.body.removeChild(dock);
+    });
+
     it('open() centers the home-window in the middle of the page', () => {
         const wm = window.WindowManager;
         const home = document.createElement('div');

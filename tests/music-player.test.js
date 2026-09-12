@@ -324,6 +324,31 @@ describe('MusicPlayer', () => {
         expect(player.loadPlaylists).toHaveBeenCalled();
     });
 
+    it('setupYouTubeAPI sets up immediately when YT is already present', () => {
+        const player = new window.MusicPlayerClass();
+        player.player = null;
+        player.isReady = false;
+        player.youtubeApiRequested = false;
+        player.setupYouTubeAPI();
+        expect(player.player).toBeTruthy();
+        expect(player.youtubeApiRequested).toBe(true);
+    });
+
+    it('setupPlayer reloads playlists when the current song slot is empty', () => {
+        const player = new window.MusicPlayerClass();
+        player.player = null;
+        player.isReady = false;
+        player.songs = [null];
+        player.currentSongIndex = 0;
+        player.loadPlaylists = vi.fn(() => {
+            player.songs = [{ id: 'abc', title: 'recovered' }];
+        });
+        player.setupPlayer();
+        expect(player.loadPlaylists).toHaveBeenCalled();
+        expect(player.currentSongIndex).toBe(0);
+        expect(player.player).toBeTruthy();
+    });
+
     it('setupPlayer resets a bad index and swallows constructor errors', () => {
         const player = new window.MusicPlayerClass();
         player.player = null;

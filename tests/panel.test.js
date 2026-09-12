@@ -49,6 +49,18 @@ describe('Panel', () => {
             expect(panel.formatClockTime('Asia/Tokyo', date)).toBe('21:00:00');
         });
 
+        it('formatClockTime pads missing time parts with zeros', () => {
+            const panel = new window.PanelClass();
+            panel.clockFormatters.clear();
+            const OriginalDateTimeFormat = Intl.DateTimeFormat;
+            vi.spyOn(Intl, 'DateTimeFormat').mockImplementation(() => ({
+                formatToParts: () => [{ type: 'literal', value: ':' }],
+            }));
+            expect(panel.formatClockTime(undefined, new Date())).toBe('00:00:00');
+            Intl.DateTimeFormat = OriginalDateTimeFormat;
+            vi.restoreAllMocks();
+        });
+
         it('updateClock fills each zone from its timezone', () => {
             document.body.innerHTML = `
                 <div class="clock">
@@ -347,6 +359,11 @@ describe('Panel', () => {
             const parent = document.querySelector('.menu-item-has-submenu');
             const submenu = document.querySelector('.menu-submenu');
             parent.dispatchEvent(new MouseEvent('mouseenter', { bubbles: true }));
+            expect(submenu.classList.contains('show')).toBe(false);
+            parent.dispatchEvent(new MouseEvent('mouseleave', { bubbles: true }));
+            submenu.dispatchEvent(new MouseEvent('mouseenter', { bubbles: true }));
+            submenu.dispatchEvent(new MouseEvent('mouseleave', { bubbles: true }));
+            parent.dispatchEvent(new FocusEvent('focus', { bubbles: true }));
             expect(submenu.classList.contains('show')).toBe(false);
             parent.click();
             expect(submenu.classList.contains('show')).toBe(true);

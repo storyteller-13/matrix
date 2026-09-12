@@ -54,6 +54,7 @@ describe('DOMContentLoaded initialization', () => {
             <div class="window" id="terminal-window"><input id="terminal-input-main" /></div>
             <div id="terminal-dock-item" class="dock-item"></div>
             <div id="apod-box"><div id="apod-box-image-container"></div></div>
+            <div id="bird-box"><div id="bird-box-image-container"></div></div>
             <div id="music-player"><div id="music-song-list"></div><div id="music-youtube"></div></div>
             <div class="window" id="notes-letter-window"><div class="window-header"></div></div>
         `;
@@ -76,6 +77,7 @@ describe('DOMContentLoaded initialization', () => {
         await import('../applications/notes/notes.js');
         await import('../applications/terminal/terminal-app.js');
         await import('../applications/apod/apod.js');
+        await import('../applications/bird/bird.js');
         await import('../applications/music-player/music-player-storage.js');
         await import('../applications/music-player/music-player.js');
         await import('../applications/terminal/terminal.js');
@@ -85,6 +87,7 @@ describe('DOMContentLoaded initialization', () => {
         expect(window.AboutApp).toBeUndefined();
         expect(window.Panel).toBeUndefined();
         expect(window.WindowManager).toBeUndefined();
+        expect(window.BirdPanel).toBeUndefined();
         document.dispatchEvent(new Event('DOMContentLoaded'));
         expect(window.AboutApp).toBeDefined();
         expect(window.HomeApp).toBeDefined();
@@ -96,6 +99,7 @@ describe('DOMContentLoaded initialization', () => {
         expect(window.NotesApp).toBeDefined();
         expect(window.TerminalApp).toBeDefined();
         expect(window.APODPanel).toBeDefined();
+        expect(window.BirdPanel).toBeDefined();
         expect(window.MusicPlayer).toBeDefined();
         expect(window.I18n).toBeDefined();
         expect(window.Panel).toBeDefined();

@@ -76,14 +76,37 @@
 
     .desktop-panels-right {
         right: var(--desktop-gap);
+        width: max-content;
+        height: auto;
+        max-height: calc(100dvh - var(--top-panel-height) - var(--desktop-gap) * 2);
+    }
+
+    .desktop-panels-right > .desktop-panels-row {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        gap: 12px;
+        width: max-content;
+        max-width: none;
+        pointer-events: none;
     }
 
     .desktop-panels-left .quotes-box,
+    .desktop-panels-right .bird-box,
     .desktop-panels-right .apod-box {
         flex: 0 1 auto;
     }
 
+    .desktop-panels-right .bird-box,
+    .desktop-panels-right .apod-box {
+        width: var(--panel-width);
+        flex: 0 0 var(--panel-width);
+    }
+
     .desktop-panels-right .music-player {
+        width: var(--panel-width);
+        max-width: var(--panel-width);
+        align-self: flex-end;
         flex: 1 1 auto;
     }
 }
@@ -262,6 +285,169 @@
     text-shadow: none;
     letter-spacing: 0.03em;
     font-weight: 700;
+}
+
+/* Bird Box – same height/style as APOD, sits to its left */
+.bird-box {
+    position: fixed;
+    bottom: 20px;
+    right: calc(20px + var(--panel-width) + 12px);
+    width: var(--panel-width);
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 133, 162, 0.6);
+    border-radius: 12px;
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.8),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    z-index: 1001;
+    padding: 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+}
+
+.bird-box::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(125, 238, 164, 0.12) 0%, transparent 70%);
+    animation: rotate-glow 8s linear infinite;
+    pointer-events: none;
+}
+
+.bird-box-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 133, 162, 0.1) 0%, rgba(125, 238, 164, 0.12) 100%);
+    opacity: 0.5;
+    pointer-events: none;
+    border-radius: 12px;
+}
+
+.bird-box:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow:
+        0 12px 40px rgba(0, 0, 0, 0.9),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    border-color: rgba(125, 238, 164, 0.75);
+}
+
+.bird-box-content {
+    position: relative;
+    z-index: 1;
+    padding: 8px;
+}
+
+.bird-box-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text);
+    font-size: 11px;
+    text-shadow: none;
+    margin-bottom: 8px;
+    min-height: 18px;
+}
+
+.bird-box-title {
+    flex: 1;
+    min-width: 0;
+    font-weight: 700;
+    font-size: 9px;
+    letter-spacing: 0.04em;
+    line-height: 18px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.bird-box-close {
+    background: linear-gradient(135deg, rgba(255, 133, 162, 0.4) 0%, rgba(125, 238, 164, 0.35) 100%);
+    border: 1px solid rgba(255, 133, 162, 0.6);
+    color: var(--text);
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-shadow: none;
+    padding: 0;
+    line-height: 0;
+    flex-shrink: 0;
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.bird-box-close::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.3s, height 0.3s;
+}
+
+.bird-box-close:hover::before {
+    width: 100%;
+    height: 100%;
+}
+
+.bird-box-close:hover {
+    background: linear-gradient(135deg, rgba(255, 133, 162, 0.6) 0%, rgba(125, 238, 164, 0.5) 100%);
+    box-shadow: var(--shadow-soft);
+    transform: scale(1.15) rotate(5deg);
+    border-color: rgba(255, 133, 162, 0.9);
+}
+
+.bird-box-close:active {
+    transform: scale(1.05) rotate(-5deg);
+}
+
+.bird-box-image-container {
+    width: 100%;
+    height: 148px;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    border: 1px solid rgba(255, 133, 162, 0.2);
+}
+
+.bird-box-image-container:hover {
+    border-color: rgba(125, 238, 164, 0.55);
+    box-shadow: var(--shadow-soft);
+}
+
+.bird-box-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.bird-loading,
+.bird-error {
+    font-size: 12px;
+    color: #FF85A2;
+    text-shadow: none;
 }
 
 /* APOD Box */
@@ -637,7 +823,8 @@
         padding: 12px;
     }
 
-    .apod-box-image-container {
+    .apod-box-image-container,
+    .bird-box-image-container {
         height: 118px;
     }
 
@@ -672,7 +859,8 @@
         font-size: 10px;
     }
 
-    .apod-box-image-container {
+    .apod-box-image-container,
+    .bird-box-image-container {
         height: 96px;
     }
 
@@ -976,6 +1164,22 @@
     animation: fadeIn 0.3s ease;
 }
 
+.bird-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    animation: fadeIn 0.3s ease;
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -1104,10 +1308,129 @@
     letter-spacing: 0.5px;
 }
 
+.bird-popup-content {
+    max-width: 900px;
+    max-height: 90vh;
+    background: rgba(20, 10, 30, 0.98);
+    border: 1px solid rgba(125, 238, 164, 0.45);
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    animation: slideUp 0.3s ease;
+}
+
+.bird-popup-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid rgba(125, 238, 164, 0.28);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(125, 238, 164, 0.08);
+}
+
+.bird-title {
+    color: var(--text);
+    font-size: 24px;
+    font-weight: 700;
+    text-shadow: none;
+    flex: 1;
+    padding-right: 20px;
+}
+
+.bird-close {
+    background: none;
+    border: none;
+    color: var(--text);
+    font-size: 28px;
+    cursor: pointer;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: all 0.2s;
+    line-height: 1;
+}
+
+.bird-close:hover {
+    background: rgba(125, 238, 164, 0.18);
+    color: #7DEEA4;
+    text-shadow: none;
+}
+
+.bird-popup-image-container {
+    max-height: 60vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #FFF5F7;
+}
+
+.bird-popup-image {
+    max-width: 100%;
+    max-height: 60vh;
+    object-fit: contain;
+    display: block;
+}
+
+.bird-scientific {
+    padding: 8px 20px 0;
+    color: #7DEEA4;
+    font-size: 13px;
+    font-style: italic;
+    letter-spacing: 0.02em;
+}
+
+.bird-popup-explanation {
+    padding: 16px 20px 20px;
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.6;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.bird-popup-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 20px;
+    border-top: 1px solid rgba(125, 238, 164, 0.2);
+    background: rgba(125, 238, 164, 0.05);
+}
+
+.bird-popup-date {
+    color: #F9A8C9;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.bird-learn-link {
+    color: #86efac;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+}
+
+.bird-learn-link:hover {
+    text-decoration: underline;
+    opacity: 0.9;
+}
+
 @media (prefers-reduced-motion: reduce) {
     .quotes-box::before,
     .chess-box::before,
     .sky-box::before,
+    .bird-box::before,
     .apod-box::before {
         animation: none;
     }
