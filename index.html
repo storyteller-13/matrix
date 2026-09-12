@@ -165,6 +165,23 @@
                                     <span class="menu-item-text" data-i18n="menu.focusList">focus list</span>
                                     <span class="menu-item-count" id="todo-menu-count" style="display: none;">0</span>
                                 </a>
+                                <a href="javascript:void(0)" class="menu-item" onclick="window.openCalendarWindow(); return false;">
+                                    <span class="menu-item-icon">
+                                        <svg width="18" height="18" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                            <rect x="2.2" y="3.2" width="11.6" height="10.6" rx="1.4" fill="rgba(216, 70, 166, 0.12)" stroke="#E879A9" stroke-width="1.2"/>
+                                            <path d="M2.2 6.1 H13.8" stroke="#E879A9" stroke-width="1.2"/>
+                                            <rect x="4.3" y="2.1" width="1.3" height="2.4" rx="0.45" fill="#FFF5F7" stroke="#E879A9" stroke-width="1"/>
+                                            <rect x="10.4" y="2.1" width="1.3" height="2.4" rx="0.45" fill="#FFF5F7" stroke="#E879A9" stroke-width="1"/>
+                                            <rect x="4.1" y="7.6" width="1.7" height="1.7" rx="0.35" fill="#E879A9" opacity="0.35"/>
+                                            <rect x="7.15" y="7.6" width="1.7" height="1.7" rx="0.35" fill="#E879A9" opacity="0.55"/>
+                                            <rect x="10.2" y="7.6" width="1.7" height="1.7" rx="0.35" fill="#E879A9" opacity="0.35"/>
+                                            <rect x="4.1" y="10.3" width="1.7" height="1.7" rx="0.35" fill="#E879A9" opacity="0.35"/>
+                                            <rect x="7.15" y="10.3" width="1.7" height="1.7" rx="0.35" fill="#E879A9" opacity="0.35"/>
+                                        </svg>
+                                    </span>
+                                    <span class="menu-item-text" data-i18n="menu.calendar">calendar</span>
+                                    <span class="menu-item-count" id="calendar-menu-count" style="display: none;">0</span>
+                                </a>
                             </div>
                         </div>
                         <div class="menu-separator"></div>
@@ -443,7 +460,7 @@
                     <div class="clock-zone" data-timezone="America/New_York">
                         <span class="clock-time"><span class="clock-hm">00:00</span><span class="clock-seconds">:00</span></span>
                         <span class="clock-city">
-                            <span class="clock-city-full" data-i18n="clock.nyc">nyc</span>
+                            <span class="clock-city-full" data-i18n="clock.nyc">new york</span>
                             <span class="clock-city-short">nyc</span>
                         </span>
                     </div>
@@ -710,6 +727,23 @@
             </div>
         </div>
         </div>
+        </div>
+
+        <!-- Month Calendar (centered overlay) -->
+        <div class="calendar-box" id="calendar-box" style="display: none;">
+            <div class="calendar-box-glow"></div>
+            <div class="calendar-box-content">
+                <div class="calendar-box-header">
+                    <button class="calendar-box-close" id="calendar-box-close" title="Close" aria-label="Close" data-i18n-title="panel.close" data-i18n-aria-label="panel.close">
+                        <span class="close-icon" aria-hidden="true"></span>
+                    </button>
+                    <button type="button" class="calendar-nav" id="calendar-prev" title="previous month" aria-label="previous month" data-i18n-title="calendar.prev" data-i18n-aria-label="calendar.prev">‹</button>
+                    <span class="calendar-box-title" id="calendar-box-title">calendar</span>
+                    <button type="button" class="calendar-nav" id="calendar-next" title="next month" aria-label="next month" data-i18n-title="calendar.next" data-i18n-aria-label="calendar.next">›</button>
+                </div>
+                <div class="calendar-weekdays" id="calendar-weekdays" aria-hidden="true"></div>
+                <div class="calendar-grid" id="calendar-grid" role="grid" aria-label="Month calendar"></div>
+            </div>
         </div>
 
         <!-- Bird Popup -->
@@ -1100,6 +1134,22 @@
                 </div>
                 <span class="todo-count-badge" id="todo-count-badge" style="display: none;">0</span>
             </a>
+            <a href="javascript:void(0)" class="dock-item" id="calendar-dock-item" onclick="window.openCalendarWindow(); return false;" style="text-decoration: none; cursor: pointer;">
+                <div class="dock-icon">
+                    <svg width="26" height="26" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="2.2" y="3.2" width="11.6" height="10.6" rx="1.4" fill="rgba(216, 70, 166, 0.12)" stroke="#E879A9" stroke-width="1.2"/>
+                        <path d="M2.2 6.1 H13.8" stroke="#E879A9" stroke-width="1.2"/>
+                        <rect x="4.3" y="2.1" width="1.3" height="2.4" rx="0.45" fill="#FFF5F7" stroke="#E879A9" stroke-width="1"/>
+                        <rect x="10.4" y="2.1" width="1.3" height="2.4" rx="0.45" fill="#FFF5F7" stroke="#E879A9" stroke-width="1"/>
+                        <rect x="4.1" y="7.6" width="1.7" height="1.7" rx="0.35" fill="#E879A9" opacity="0.35"/>
+                        <rect x="7.15" y="7.6" width="1.7" height="1.7" rx="0.35" fill="#E879A9" opacity="0.55"/>
+                        <rect x="10.2" y="7.6" width="1.7" height="1.7" rx="0.35" fill="#E879A9" opacity="0.35"/>
+                        <rect x="4.1" y="10.3" width="1.7" height="1.7" rx="0.35" fill="#E879A9" opacity="0.35"/>
+                        <rect x="7.15" y="10.3" width="1.7" height="1.7" rx="0.35" fill="#E879A9" opacity="0.35"/>
+                    </svg>
+                </div>
+                <span class="todo-count-badge" id="calendar-count-badge" style="display: none;">0</span>
+            </a>
         </div>
     </div>
 
@@ -1140,6 +1190,10 @@
 
     <!-- Sky Panel -->
     <script src="applications/sky/sky.js"></script>
+
+    <!-- Calendar Panel -->
+    <script src="applications/calendar/calendar-events.js"></script>
+    <script src="applications/calendar/calendar.js"></script>
 
     <!-- About App -->
     <script src="applications/about/about.js"></script>

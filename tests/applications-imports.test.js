@@ -129,6 +129,29 @@ describe('Application modules (coverage)', () => {
         expect(document.getElementById('sky-box').style.display).not.toBe('block');
     });
 
+    it('calendar.js loads and exposes CalendarPanel and openCalendarWindow', async () => {
+        document.body.innerHTML = `
+            <div id="calendar-box">
+                <button id="calendar-box-close"></button>
+                <button id="calendar-prev"></button>
+                <span id="calendar-box-title"></span>
+                <button id="calendar-next"></button>
+                <div id="calendar-weekdays"></div>
+                <div id="calendar-grid"></div>
+            </div>
+        `;
+        if (!window.matchMedia) {
+            window.matchMedia = () => ({ matches: false, addListener: () => {}, removeListener: () => {} });
+        }
+        await import('../core/env.js');
+        await import('../applications/calendar/calendar-events.js');
+        await import('../applications/calendar/calendar.js');
+        expect(window.CalendarPanel).toBeDefined();
+        expect(window.CALENDAR_EVENTS.length).toBeGreaterThan(0);
+        expect(typeof window.openCalendarWindow).toBe('function');
+        expect(document.getElementById('calendar-box').style.display).not.toBe('block');
+    });
+
     it('artwork.js loads and exposes ArtworkAppClass and openArtworkWindow', async () => {
         document.body.innerHTML = `
             <div id="artwork-window" class="window"><div class="file-list"></div></div>

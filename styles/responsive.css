@@ -232,6 +232,7 @@
     .sky-box,
     .bird-box,
     .apod-box,
+    .calendar-box,
     .music-player {
         z-index: 900;
     }
@@ -398,6 +399,47 @@
         height: 18px;
         min-width: 18px;
         flex-shrink: 0;
+    }
+
+    .calendar-box {
+        width: calc(100% - 24px);
+        max-width: 560px;
+        left: 50%;
+        right: auto;
+        top: 50%;
+        bottom: auto;
+        transform: translate(-50%, -50%);
+        display: none;
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+    .calendar-box[style*="display: block"] {
+        display: flex !important;
+    }
+
+    .calendar-box:hover {
+        transform: translate(-50%, -50%);
+    }
+
+    .calendar-box-close {
+        width: 20px;
+        height: 20px;
+        min-width: 20px;
+        flex-shrink: 0;
+    }
+
+    .calendar-day {
+        min-height: 58px;
+    }
+
+    .calendar-day-empty {
+        min-height: 58px;
+    }
+
+    .calendar-day-event {
+        font-size: 8px;
+        padding: 2px 3px;
     }
 
     .sky-planet-list {
@@ -987,6 +1029,33 @@
         height: 18px;
     }
 
+    .calendar-box {
+        width: calc(100% - 24px);
+        max-width: 480px;
+        left: 50%;
+        right: auto;
+        top: 50%;
+        bottom: auto;
+        transform: translate(-50%, -50%);
+    }
+
+    .calendar-box:hover {
+        transform: translate(-50%, -50%);
+    }
+
+    .calendar-box-close {
+        width: 20px;
+        height: 20px;
+    }
+
+    .calendar-day {
+        min-height: 48px;
+    }
+
+    .calendar-day-empty {
+        min-height: 48px;
+    }
+
     .music-player-content {
         padding: 10px;
     }
@@ -1296,6 +1365,38 @@
         transform: translate(-50%, -50%) translateY(-4px) scale(1.02);
     }
 
+    .calendar-box {
+        width: min(420px, calc(100% - 16px));
+        max-height: 80vh;
+        left: 50%;
+        right: auto;
+        top: 50%;
+        bottom: auto;
+        transform: translate(-50%, -50%);
+    }
+
+    .calendar-box:hover {
+        transform: translate(-50%, -50%);
+    }
+
+    .calendar-day {
+        min-height: 42px;
+        padding: 3px;
+    }
+
+    .calendar-day-empty {
+        min-height: 42px;
+    }
+
+    .calendar-day-num {
+        font-size: 11px;
+    }
+
+    .calendar-day-event {
+        font-size: 7px;
+        padding: 1px 2px;
+    }
+
     .terminal-window,
     .todo-window,
     .notes-window,
@@ -1409,23 +1510,26 @@
     }
 }
 
-/* Narrow tablets / small laptops: keep clocks from colliding with the tray */
-@media (min-width: 769px) and (max-width: 1600px) {
+/* Mid-width desktops: drop seconds so clocks stay clear of the tray */
+@media (min-width: 769px) and (max-width: 1400px) {
     .clock-seconds {
         display: none;
     }
 
+    .clock-zone {
+        padding: 0 6px;
+        gap: 4px;
+    }
+}
+
+/* Tight laptops: city codes instead of full names */
+@media (min-width: 769px) and (max-width: 1100px) {
     .clock-city-full {
         display: none;
     }
 
     .clock-city-short {
         display: inline;
-    }
-
-    .clock-zone {
-        padding: 0 6px;
-        gap: 4px;
     }
 
     .clock-city {
@@ -1440,6 +1544,7 @@
     .quotes-box:hover,
     .sky-box:hover,
     .chess-box:hover,
+    .calendar-box:hover,
     .bird-box:hover {
         transform: translate(-50%, -50%);
     }

@@ -10,7 +10,7 @@ my real job is actually being an engineer and a scientist, which i have been doi
 
 i decided to create this project after a very traumatic and cruel experience — one for which i never received justice, apologies, compensation for the enormous amount of damage it caused to my life for many years, or even an explanation; one that forced me to learn to let go of my old dreams and many things i had worked so hard for, and to move forward with my life without closure; one that i don't think i will ever be able to fully heal from, but i know i can forget and move on — far away.
 
-my career as a scholar and builder has always been my main focus in life, and i am pretty proud of what i have been able to achieve so far. i am looking forward to the many more achievements to come. in addition, i have always been a very private person and never had social media, nor any interest in growing an audience or building a brand (because none of that is necessary for my profession, nor is it part of my personality). but after the long healing process, i needed a space for storytelling and creative expression.
+my career as a scholar and builder has always been my main focus in life, and i am pretty proud of what i have been able to achieve so far. i am looking forward to the many more achievements to come. in addition, i have always been a very private person and never had social media, nor any interest in growing an audience or building a brand (because none of that is necessary for my profession, nor is it part of my personality). but after the long healing process, i needed a space for storytelling and creative expression. working on this particular project — matrix — is so much fun. it’s really relaxing for me.
 
 i am also a hermit. i haven't been with anyone for years. i am still searching for my soulmate and the one i will love until the end. and i dream every day about my family and my life when that happens. meanwhile, however, i am still a pretty happy human. i love myself, my life, my routine, and all the projects and adventures i work on. and i love studying and experiencing things such as astronomy, chess, languages, computer science, physics, mathematics, philosophy, literature, history, movies, art, traveling, and music. that's it and thank you for reading!
 
@@ -26,7 +26,7 @@ const ABOUT_JA = {
 
 このプロジェクトをつくろうとおもったのは、とてもつらく、ざんこくないけんのあとでした。せいぎも、あやまりも、ながいあいだじんせいにおおきなダメージをあたえたことへのほしょうも、せつめいさえも、いちどももらえなかったできごと。むかしのゆめや、いっしょうけんめいにつみあげてきたたくさんのものを手放すことをおしえられ、とじめもないまま、じんせいをすすまなければならなかったできごと。かんぜんにいやせるとはおもえないけれど、わすれて、とおくへ、まえにすすめることはしっています。
 
-がくしゃとして、つくりてとしてのキャリアは、いつもじんせいのちゅうしんにありました。いままでできてきたことは、けっこうほこらしいです。これから先の、もっとたくさんのことも、たのしみにしています。それに、わたしはずっととてもプライベートなにんげんで、SNSをもったこともないし、オーディエンスをふやしたり、ブランドをつくったりするきもちもありませんでした（しょくぎょうにも、せいかくにも、いらないから）。でも、ながいいやしのプロセスのあと、ものがたりと、そうぞうのひょうげんのためのばしょがひつようになりました。
+がくしゃとして、つくりてとしてのキャリアは、いつもじんせいのちゅうしんにありました。いままでできてきたことは、けっこうほこらしいです。これから先の、もっとたくさんのことも、たのしみにしています。それに、わたしはずっととてもプライベートなにんげんで、SNSをもったこともないし、オーディエンスをふやしたり、ブランドをつくったりするきもちもありませんでした（しょくぎょうにも、せいかくにも、いらないから）。でも、ながいいやしのプロセスのあと、ものがたりと、そうぞうのひょうげんのためのばしょがひつようになりました。このとくべつなプロジェクト — マトリックス — にとりくむのは、ほんとうにたのしいです。とてもリラックスできます。
 
 わたしは、いんじゃでもあります。なんねんも、だれかといっしょにいたことがありません。いまも、ソウルメイトと、さいごまであいするひとをさがしています。それがおとずれたときの、かぞくとじんせいを、まいにちゆめみています。それでも、いまのわたしは、けっこうしあわせなにんげんです。じぶんのことも、じんせいも、にっちゅうも、とりくんでいるプロジェクトやぼうけんも、だいすきです。てんもん、チェス、げんご、コンピュータサイエンス、ぶつり、すうがく、てつがく、ぶんがく、れきし、えいが、アート、たび、おんがく。そういうことをまなんだり、たいけんしたりするのもだいすきです。以上です。よんでくれてありがとう。
 `,
