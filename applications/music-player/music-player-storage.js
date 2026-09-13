@@ -75,8 +75,8 @@ class MusicPlayerStorage {
                 },
 
                 {
-                    id:   'the spacetime journeys through galaxies',
-                    name: 'the spacetime journeys through galaxies',
+                    id:   'the spacetime journey through galaxies',
+                    name: 'the spacetime journey through galaxies',
                     songs: [
                         
                         { id: 'pDyl6I6ESSw', title: 'space oddity (bowie)' },
@@ -119,19 +119,19 @@ class MusicPlayerStorage {
                 },
 
                 {
-                    id:   'the life around the planet earth: brazil',
-                    name: 'the life around the planet earth: brazil',
+                    id:   'the life around the planet earth ➜ brazil',
+                    name: 'the life around the planet earth ➜ brazil',
                     songs: [
                         { id: '5r4i5MNRtgI', title: 'astronauta (nenhum de nós)' },
                         { id: '8D7yIqJIMwA', title: 'primavera (tim maia)' },
                         { id: 'gWSSanodnIs', title: 'baila comigo (rita lee)' },
                         { id: 'R_mbnbcEIoE', title: 'eu te amo (ana carolina)' },
                         { id: 'rfrpOhC6858', title: 'taj mahal (jorge ben jor)' },
-                        { id: 'g6p1w65NC8o', title: 'o segundo sol (cassia eller)' },
+                        { id: '_rZCF09BeYw', title: 'o segundo sol (cassia eller)' },
                         { id: 'wJ2prEKx3_Y', title: 'o leãozinho (caetano veloso)' },
                         { id: 'JFfvlwfql-g', title: 'casinha de sape (kid abelha)' },
                         { id: 'NK88geNsUmQ', title: 'te ver e nao te querer (skank)' },
-                        { id: 'f6S3OXin-0k', title: 'amor meu grande amor (angela roro)' },
+                        { id: '-NAqR4E5KnA', title: 'amor meu grande amor (angela roro)' },
                         { id: '8uPXyMaU3co', title: 'paisagem da janela (milton nascimento)' },
                         { id: 'Gbv4pB3YmL4', title: 'aguas de março (elis regina + tom jobim)' },
                         { id: '8JKxOBUA3cY', title: 'assim caminha a humanidade (lulu santos)' },
@@ -140,8 +140,8 @@ class MusicPlayerStorage {
                 },
 
                 {
-                    id:   'the life around the planet earth: japan',
-                    name: 'the life around the planet earth: japan',
+                    id:   'the life around the planet earth ➜ japan',
+                    name: 'the life around the planet earth ➜ japan',
                     songs: []
                 },
 

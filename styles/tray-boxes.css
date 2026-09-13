@@ -313,7 +313,7 @@
     left: -50%;
     width: 200%;
     height: 200%;
-    background: radial-gradient(circle, rgba(125, 238, 164, 0.12) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(255, 133, 162, 0.1) 0%, transparent 70%);
     animation: rotate-glow 8s linear infinite;
     pointer-events: none;
 }
@@ -324,7 +324,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(255, 133, 162, 0.1) 0%, rgba(125, 238, 164, 0.12) 100%);
+    background: linear-gradient(135deg, rgba(255, 133, 162, 0.1) 0%, rgba(244, 114, 182, 0.1) 100%);
     opacity: 0.5;
     pointer-events: none;
     border-radius: 12px;
@@ -335,7 +335,7 @@
     box-shadow:
         0 12px 40px rgba(0, 0, 0, 0.9),
         inset 0 1px 0 rgba(255, 255, 255, 0.15);
-    border-color: rgba(125, 238, 164, 0.75);
+    border-color: rgba(255, 133, 162, 0.8);
 }
 
 .bird-box-content {
@@ -368,7 +368,7 @@
 }
 
 .bird-box-close {
-    background: linear-gradient(135deg, rgba(255, 133, 162, 0.4) 0%, rgba(125, 238, 164, 0.35) 100%);
+    background: linear-gradient(135deg, rgba(255, 133, 162, 0.4) 0%, rgba(244, 114, 182, 0.4) 100%);
     border: 1px solid rgba(255, 133, 162, 0.6);
     color: var(--text);
     width: 18px;
@@ -408,7 +408,7 @@
 }
 
 .bird-box-close:hover {
-    background: linear-gradient(135deg, rgba(255, 133, 162, 0.6) 0%, rgba(125, 238, 164, 0.5) 100%);
+    background: linear-gradient(135deg, rgba(255, 133, 162, 0.6) 0%, rgba(244, 114, 182, 0.6) 100%);
     box-shadow: var(--shadow-soft);
     transform: scale(1.15) rotate(5deg);
     border-color: rgba(255, 133, 162, 0.9);
@@ -432,7 +432,7 @@
 }
 
 .bird-box-image-container:hover {
-    border-color: rgba(125, 238, 164, 0.55);
+    border-color: rgba(255, 133, 162, 0.5);
     box-shadow: var(--shadow-soft);
 }
 
@@ -1312,7 +1312,7 @@
     max-width: 900px;
     max-height: 90vh;
     background: rgba(20, 10, 30, 0.98);
-    border: 1px solid rgba(125, 238, 164, 0.45);
+    border: 1px solid rgba(255, 133, 162, 0.5);
     border-radius: 12px;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8);
     overflow: hidden;
@@ -1323,11 +1323,11 @@
 
 .bird-popup-header {
     padding: 16px 20px;
-    border-bottom: 1px solid rgba(125, 238, 164, 0.28);
+    border-bottom: 1px solid rgba(255, 133, 162, 0.3);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(125, 238, 164, 0.08);
+    background: rgba(255, 133, 162, 0.1);
 }
 
 .bird-title {
@@ -1357,8 +1357,8 @@
 }
 
 .bird-close:hover {
-    background: rgba(125, 238, 164, 0.18);
-    color: #7DEEA4;
+    background: rgba(255, 133, 162, 0.2);
+    color: var(--secondary);
     text-shadow: none;
 }
 
@@ -1380,7 +1380,7 @@
 
 .bird-scientific {
     padding: 8px 20px 0;
-    color: #7DEEA4;
+    color: #F9A8C9;
     font-size: 13px;
     font-style: italic;
     letter-spacing: 0.02em;
@@ -1401,8 +1401,8 @@
     justify-content: space-between;
     gap: 12px;
     padding: 12px 20px;
-    border-top: 1px solid rgba(125, 238, 164, 0.2);
-    background: rgba(125, 238, 164, 0.05);
+    border-top: 1px solid rgba(255, 133, 162, 0.2);
+    background: rgba(255, 133, 162, 0.05);
 }
 
 .bird-popup-date {
@@ -1413,7 +1413,7 @@
 }
 
 .bird-learn-link {
-    color: #86efac;
+    color: #FF85A2;
     font-size: 12px;
     font-weight: 600;
     text-decoration: none;
@@ -1438,7 +1438,7 @@
     width: min(720px, calc(100vw - 48px));
     max-width: calc(100vw - 48px);
     max-height: calc(100dvh - var(--top-panel-height) - 80px);
-    background: rgba(255, 255, 255, 0.92);
+    background: rgba(255, 255, 255, 0.88);
     backdrop-filter: blur(15px);
     border: 1px solid rgba(255, 133, 162, 0.6);
     border-radius: 14px;
@@ -1458,7 +1458,7 @@
     left: -50%;
     width: 200%;
     height: 200%;
-    background: radial-gradient(circle, rgba(196, 181, 253, 0.16) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(255, 133, 162, 0.1) 0%, transparent 70%);
     animation: rotate-glow 8s linear infinite;
     pointer-events: none;
 }
@@ -1469,7 +1469,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(255, 133, 162, 0.1) 0%, rgba(196, 181, 253, 0.14) 100%);
+    background: linear-gradient(135deg, rgba(255, 133, 162, 0.1) 0%, rgba(244, 114, 182, 0.1) 100%);
     opacity: 0.5;
     pointer-events: none;
     border-radius: 14px;
@@ -1479,7 +1479,7 @@
     box-shadow:
         0 12px 40px rgba(0, 0, 0, 0.9),
         inset 0 1px 0 rgba(255, 255, 255, 0.15);
-    border-color: rgba(196, 181, 253, 0.85);
+    border-color: rgba(255, 133, 162, 0.8);
 }
 
 .calendar-box-content {
@@ -1519,7 +1519,7 @@
 }
 
 .calendar-nav {
-    background: linear-gradient(135deg, rgba(255, 133, 162, 0.4) 0%, rgba(196, 181, 253, 0.45) 100%);
+    background: linear-gradient(135deg, rgba(255, 133, 162, 0.4) 0%, rgba(244, 114, 182, 0.4) 100%);
     border: 1px solid rgba(255, 133, 162, 0.6);
     color: var(--text);
     width: 22px;
@@ -1560,7 +1560,7 @@
 }
 
 .calendar-nav:hover {
-    background: linear-gradient(135deg, rgba(255, 133, 162, 0.6) 0%, rgba(196, 181, 253, 0.65) 100%);
+    background: linear-gradient(135deg, rgba(255, 133, 162, 0.6) 0%, rgba(244, 114, 182, 0.6) 100%);
     box-shadow: var(--shadow-soft);
     transform: scale(1.15);
     border-color: rgba(255, 133, 162, 0.9);
@@ -1571,7 +1571,7 @@
 }
 
 .calendar-box-close {
-    background: linear-gradient(135deg, rgba(255, 133, 162, 0.4) 0%, rgba(196, 181, 253, 0.45) 100%);
+    background: linear-gradient(135deg, rgba(255, 133, 162, 0.4) 0%, rgba(244, 114, 182, 0.4) 100%);
     border: 1px solid rgba(255, 133, 162, 0.6);
     color: var(--text);
     width: 22px;
@@ -1611,7 +1611,7 @@
 }
 
 .calendar-box-close:hover {
-    background: linear-gradient(135deg, rgba(255, 133, 162, 0.6) 0%, rgba(196, 181, 253, 0.65) 100%);
+    background: linear-gradient(135deg, rgba(255, 133, 162, 0.6) 0%, rgba(244, 114, 182, 0.6) 100%);
     box-shadow: var(--shadow-soft);
     transform: scale(1.15) rotate(5deg);
     border-color: rgba(255, 133, 162, 0.9);
@@ -1685,7 +1685,7 @@
 }
 
 .calendar-day-has-event {
-    background: rgba(196, 181, 253, 0.2);
+    background: rgba(255, 133, 162, 0.18);
 }
 
 .calendar-day-events {

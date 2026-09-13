@@ -671,5 +671,8 @@ window.QUOTES = [
     { text: 'you can break any rule you want if you’re not charging for it. this is the ultimate definition of freedom of speech. that’s what the npc don’t get.', author: 'marina von steinkirch' },
     { text: 'the most important values to live by: integrity, honesty, fairness, focus, and patience.', author: 'marina von steinkirch' },
     { text: 'you won’t ever be able to teach or show the truth to people who are highly ego-dominated. it\'s not your job. the only way for them to understand is to let them figure it by themselves. it’s about removing yourself completely from their neurosis.', author: 'marina von steinkirch' },
+    { text: 'it’s impossible to convey all the pain of being unknowingly impersonated for years, of witnessing people treat you as something you are not, and of having your dreams, agency, and dignity taken from you. the daily fight is deciding how much i will allow this monstrosity to have a central role in my life.', author: 'marina von steinkirch' },
+    { text: 'forgiveness is the highest form of courage.', author: 'marina von steinkirch' },
+    { text: 'i hear the birds singing, and i feel calm. the little beauties in the world are there to remind you of the sublime — to pause, to breathe, and to notice the wonder around you. remember that there is always a way to make your dreams come true.', author: 'marina von steinkirch' },
 ];
 

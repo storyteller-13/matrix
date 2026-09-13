@@ -378,7 +378,7 @@ describe('MusicPlayer', () => {
 
     it('loadPlaylists falls back to defaults when the current playlist is empty', () => {
         const player = new window.MusicPlayerClass();
-        player.playlistsData.currentPlaylistId = 'the life around the planet earth: japan';
+        player.playlistsData.currentPlaylistId = 'the life around the planet earth ➜ japan';
         player.storage.save(player.playlistsData);
         player.currentSongIndex = 3;
         player.loadPlaylists();
