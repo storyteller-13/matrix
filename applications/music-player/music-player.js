@@ -516,6 +516,8 @@ class MusicPlayer {
 // Expose class constructor for testing
 window.MusicPlayerClass = MusicPlayer;
 
+window.openMusicWindow = () => window.MusicPlayer?.toggleVisibility();
+
 // Initialize when DOM is ready
 const initMusicPlayer = () => {
     window.MusicPlayer = new MusicPlayer();

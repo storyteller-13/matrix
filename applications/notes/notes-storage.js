@@ -48,7 +48,7 @@ class NotesStorage {
             i'll be documenting our journey on the weekends,
             starting sometime this fall.
 
-            (for now, enjoy my carefully curated little playlists)
+            (for now, enjoy my carefully curated little mixtapes)
                 `)
             },
 

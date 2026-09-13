@@ -47,13 +47,13 @@ const I18N_STRINGS = {
         'clock.curitiba': 'curitiba',
         'clock.iceland': 'iceland',
         'clock.berlin': 'berlin',
-        'clock.japan': 'japan',
+        'clock.tokyo': 'tokyo',
         'tray.wisdom': "today's wisdom",
-        'tray.apod': 'astronomy picture of the day',
-        'tray.bird': 'bird of the day',
+        'tray.apod': "today's universe",
+        'tray.bird': "today's bird",
         'tray.chess': "today's chess",
         'tray.sky': "today's sky",
-        'tray.music': 'music player',
+        'tray.music': 'my mixtapes',
         'tray.calendar': 'calendar',
         'panel.wisdomTitle': "TODAY'S WISDOM",
         'panel.chessTitle': "TODAY'S CHESS",
@@ -109,18 +109,18 @@ const I18N_STRINGS = {
         'notes.entry': '{count} entry',
         'notes.entries': '{count} entries',
         'notes.hello.title': 'hello starlit world',
-        'notes.hello.content': `i am a scholar always creating the sublime
+        'notes.hello.content': `i am a scholar, always creating the sublime.
 
-in the next years, as i continue to grow
-my career, home, family, and all my dreams
+in the next years, as i continue to grow,
+my career, home, family, and all my dreams,
 
 i'll be talking about good books, films, music, art
-and all the beauties of this life; with you, in here
+and all the beauties of this life; with you, in here.
 
-i'll be registering our journey on the weekends,
-starting at some point, this fall
+i'll be documenting our journey on the weekends,
+starting sometime this fall.
 
-(for now, enjoy my carefully curated little playlists)`,
+(for now, enjoy my carefully curated little mixtapes)`,
         'notes.weekday.sunday': 'sunday',
         'notes.weekday.monday': 'monday',
         'notes.weekday.tuesday': 'tuesday',
@@ -130,7 +130,7 @@ starting at some point, this fall
         'notes.weekday.saturday': 'saturday',
         'quotes.empty': 'No quotes loaded.',
         'apod.fallbackTitle': 'astronomical picture of the day',
-        'bird.fallbackTitle': 'bird of the day',
+        'bird.fallbackTitle': "today's bird",
         'sky.rx': 'rx',
         'sky.retrograde': 'retrograde',
         'sky.planet.sun': 'sun',
@@ -204,13 +204,13 @@ starting at some point, this fall
         'clock.curitiba': 'クリチバ',
         'clock.iceland': 'アイスランド',
         'clock.berlin': 'ベルリン',
-        'clock.japan': 'にほん',
+        'clock.tokyo': 'とうきょう',
         'tray.wisdom': 'きょうのちえ',
-        'tray.apod': 'きょうのてんたいしゃしん',
+        'tray.apod': 'きょうのうちゅう',
         'tray.bird': 'きょうのとり',
         'tray.chess': 'きょうのチェス',
         'tray.sky': 'きょうのそら',
-        'tray.music': 'おんがく',
+        'tray.music': 'わたしのミックステープ',
         'tray.calendar': 'カレンダー',
         'panel.wisdomTitle': 'きょうのちえ',
         'panel.chessTitle': 'きょうのチェス',
@@ -266,18 +266,18 @@ starting at some point, this fall
         'notes.entry': '{count}けん',
         'notes.entries': '{count}けん',
         'notes.hello.title': 'こんにちは、ほしぞらのせかい',
-        'notes.hello.content': `わたしはがくしゃ、いつもsublimeなものをつくりつづけている
+        'notes.hello.content': `わたしはがくしゃ、いつもsublimeなものをつくりつづけている。
 
-これからさき、キャリアも、いえも、かぞくも、すべてのゆめも
-そだてつづけていくなかで
+これからさき、キャリアも、いえも、かぞくも、すべてのゆめも、
+そだてつづけていくなかで、
 
 いいほん、えいが、おんがく、アート、
-そしてこのじんせいのうつくしさを、ここで、あなたとはなしていくね
+そしてこのじんせいのうつくしさを、ここで、あなたとはなしていくね。
 
-しゅうまつのたびを、きろくしていくよ
-いつか、このあきから
+しゅうまつのたびを、きろくしていくよ、
+このあきのどこかから。
 
-（いまは、だいじにえらんだちいさなプレイリストをたのしんでね）`,
+（いまは、だいじにえらんだちいさなミックステープをたのしんでね）`,
         'notes.weekday.sunday': 'にちようび',
         'notes.weekday.monday': 'げつようび',
         'notes.weekday.tuesday': 'かようび',

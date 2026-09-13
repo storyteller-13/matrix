@@ -239,7 +239,7 @@ class BirdPanel {
 
         const img = document.createElement('img');
         img.src = data.url;
-        const fallbackTitle = window.I18n ? window.I18n.t('bird.fallbackTitle') : 'bird of the day';
+        const fallbackTitle = window.I18n ? window.I18n.t('bird.fallbackTitle') : "today's bird";
         const loadingText = window.I18n ? window.I18n.t('panel.loading') : 'loading...';
         img.alt = data.title || fallbackTitle;
         img.className = 'bird-box-image';

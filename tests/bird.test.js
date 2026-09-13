@@ -342,7 +342,7 @@ describe('BirdPanel', () => {
         const panel = new window.BirdPanelClass();
         panel.displayBird({ url: 'https://example.com/x.jpg' });
         const img = document.querySelector('#bird-box-image-container img');
-        expect(img.alt).toMatch(/bird of the day/i);
+        expect(img.alt).toMatch(/today's bird/i);
         img.onerror();
         expect(document.querySelector('.bird-error')).toBeTruthy();
     });

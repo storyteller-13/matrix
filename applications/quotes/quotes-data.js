@@ -494,7 +494,7 @@ window.QUOTES = [
     // thomas jefferson
     { text: 'honesty is the first chapter in the book of wisdom.', author: 'thomas jefferson' },
     { text: 'pride costs more than all that is necessary for food, drink, shelter, or dress.', author: 'thomas jefferson' },
-    { text: 'i like the dreams of the future beterr than the history of the past.', author: 'thomas jefferson' },
+    { text: 'i like the dreams of the future better than the history of the past.', author: 'thomas jefferson' },
     { text: 'the most valuable of all talents is that of never using two words when one will do.', author: 'thomas jefferson' },
     { text: 'i cannot live without books', author: 'thomas jefferson' },
     { text: 'whenever you do a thing, act as if the world were watching.', author: 'thomas jefferson' },
@@ -674,7 +674,6 @@ window.QUOTES = [
     { text: 'it’s impossible to convey all the pain of being unknowingly impersonated for years, of witnessing people treat you as something you are not, and of having your dreams, agency, and dignity taken from you. the daily fight is deciding how much i will allow this monstrosity to have a central role in my life.', author: 'marina von steinkirch' },
     { text: 'forgiveness is the highest form of courage.', author: 'marina von steinkirch' },
     { text: 'i hear the birds singing, and i feel calm. the little beauties in the world are there to remind you of the sublime — to pause, to breathe, and to notice the wonder around you. remember that there is always a way to make your dreams come true.', author: 'marina von steinkirch' },
-    { text: 'forgiveness is the highest form of courage.', author: 'marina von steinkirch' },
     { text: 'the opinionated will inherit the world.', author: 'marina von steinkirch' },
 ];
 
