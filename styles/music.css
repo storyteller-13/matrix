@@ -3,7 +3,7 @@
     position: fixed;
     top: calc(var(--top-panel-height) + 10px);
     right: 20px;
-    width: var(--panel-width);
+    width: var(--music-player-width);
     max-height: calc(100vh - var(--top-panel-height) - 20px);
     max-height: calc(100dvh - var(--top-panel-height) - 20px);
     display: none;
@@ -514,8 +514,8 @@
     background: rgba(255, 133, 162, 0.15);
     border: 1px solid rgba(255, 133, 162, 0.3);
     color: var(--text);
-    font-size: 8px;
-    font-weight: 600;
+    font-size: 10px;
+    font-weight: 700;
     text-shadow: none;
 }
 
@@ -583,7 +583,7 @@
     padding: 4px 8px;
     border-radius: 4px;
     color: var(--text);
-    font-size: 7px;
+    font-size: 8px;
     font-style: italic;
     opacity: 0.7;
     text-shadow: none;
@@ -598,7 +598,7 @@
     background: rgba(255, 133, 162, 0.08);
     border: 1px solid rgba(255, 133, 162, 0.15);
     color: var(--text);
-    font-size: 7px;
+    font-size: 8px;
     font-weight: 600;
     text-shadow: none;
 }

@@ -37,16 +37,16 @@ class NotesStorage {
             contentKey: 'notes.hello.content',
             title: 'hello starlit world',
             content: this.cleanContent(`
-            i am a scholar always creating the sublime
+            i am a scholar, always creating the sublime.
 
-            in the next years, as i continue to grow
-            my career, home, family, and all my dreams
+            in the next years, as i continue to grow,
+            my career, home, family, and all my dreams,
 
             i'll be talking about good books, films, music, art
-            and all the beauties of this life; with you, in here
+            and all the beauties of this life; with you, in here.
 
-            i'll be registering our journey on the weekends,
-            starting at some point, this fall
+            i'll be documenting our journey on the weekends,
+            starting sometime this fall.
 
             (for now, enjoy my carefully curated little playlists)
                 `)

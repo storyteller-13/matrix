@@ -674,5 +674,7 @@ window.QUOTES = [
     { text: 'it’s impossible to convey all the pain of being unknowingly impersonated for years, of witnessing people treat you as something you are not, and of having your dreams, agency, and dignity taken from you. the daily fight is deciding how much i will allow this monstrosity to have a central role in my life.', author: 'marina von steinkirch' },
     { text: 'forgiveness is the highest form of courage.', author: 'marina von steinkirch' },
     { text: 'i hear the birds singing, and i feel calm. the little beauties in the world are there to remind you of the sublime — to pause, to breathe, and to notice the wonder around you. remember that there is always a way to make your dreams come true.', author: 'marina von steinkirch' },
+    { text: 'forgiveness is the highest form of courage.', author: 'marina von steinkirch' },
+    { text: 'the opinionated will inherit the world.', author: 'marina von steinkirch' },
 ];
 

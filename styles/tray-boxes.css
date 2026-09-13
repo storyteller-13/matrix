@@ -104,8 +104,8 @@
     }
 
     .desktop-panels-right .music-player {
-        width: var(--panel-width);
-        max-width: var(--panel-width);
+        width: var(--music-player-width);
+        max-width: var(--music-player-width);
         align-self: flex-end;
         flex: 1 1 auto;
     }

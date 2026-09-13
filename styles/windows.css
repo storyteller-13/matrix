@@ -327,7 +327,7 @@ a.file-item {
     height: min(400px, calc(100dvh - var(--top-panel-height) - var(--dock-clearance)));
     top: 80px;
     left: auto;
-    right: calc(var(--panel-width) + var(--desktop-gap) * 2);
+    right: calc(var(--music-player-width) + var(--desktop-gap) * 2 + 12px);
     z-index: 100;
 }
 
@@ -689,7 +689,7 @@ a.file-item {
 
 /* Notes Letter Window */
 .notes-letter-window {
-    width: min(600px, calc(100vw - 32px));
+    width: min(680px, calc(100vw - 32px));
     height: min(460px, calc(100dvh - var(--top-panel-height) - var(--dock-clearance)));
     top: 50%;
     left: 50%;
@@ -739,7 +739,7 @@ a.file-item {
     flex-direction: column;
     gap: 6px;
     color: hsl(336, 87%, 82%);
-    font-size: 20px;
+    font-size: 15px;
     font-style: normal;
     font-family: inherit;
     font-weight: 900;
@@ -757,7 +757,7 @@ a.file-item {
 }
 
 .letter-title {
-    font-size: 18px;
+    font-size: 22px;
     font-weight: 800;
     margin-bottom: 28px;
     color: #C084FC;
@@ -774,13 +774,14 @@ a.file-item {
 }
 
 .letter-text {
-    font-size: 10px;
+    font-size: 12px;
     font-weight: 700;
     white-space: pre-wrap;
     color: #5bbbf2;
     line-height: 1.45;
     font-family: inherit;
     text-shadow: none;
+    text-align: center;
     word-wrap: break-word;
     overflow-wrap: break-word;
     word-break: break-word;
@@ -800,6 +801,7 @@ a.file-item {
 }
 .letter-container.letter-container--ascii .letter-text {
     white-space: pre;
+    text-align: left;
     word-wrap: normal;
     overflow-wrap: normal;
     word-break: normal;
