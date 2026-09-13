@@ -177,7 +177,7 @@ a.menu-button {
     display: inline-block;
 }
 
-    .menu-dropdown {
+.menu-dropdown {
     position: absolute;
     top: 100%;
     left: 0;
@@ -186,7 +186,8 @@ a.menu-button {
     border: 1px solid rgba(255, 133, 162, 0.3);
     border-radius: 6px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-    min-width: 176px;
+    min-width: 132px;
+    width: max-content;
     max-width: calc(100vw - 32px);
     display: none;
     z-index: 20001;
@@ -202,14 +203,14 @@ a.menu-button {
 .menu-item {
     display: flex;
     align-items: center;
-    padding: 5px 14px;
+    padding: 5px 10px;
     color: var(--text);
     font-size: 13px;
     font-weight: 700;
     text-decoration: none;
     cursor: pointer;
     transition: all 0.2s;
-    gap: 12px;
+    gap: 8px;
 }
 
 .menu-item:hover {
@@ -265,13 +266,13 @@ a.menu-button {
     position: relative;
     display: flex;
     align-items: center;
-    padding: 5px 14px;
+    padding: 5px 10px;
     color: var(--text);
     font-size: 13px;
     font-weight: 700;
     cursor: pointer;
     transition: all 0.2s;
-    gap: 12px;
+    gap: 8px;
     outline: none;
 }
 
@@ -297,7 +298,9 @@ a.menu-button {
     left: 100%;
     top: 0;
     margin-left: -2px;
-    min-width: 160px;
+    min-width: 120px;
+    width: max-content;
+    max-width: calc(100vw - 32px);
     background: rgba(255, 250, 252, 0.95);
     border: 1px solid rgba(255, 133, 162, 0.3);
     border-radius: 6px;
@@ -320,19 +323,19 @@ a.menu-button {
 
 .menu-submenu .menu-item,
 .menu-submenu .menu-item-has-submenu {
-    padding: 2px 12px;
+    padding: 2px 8px;
     font-size: 11px;
-    gap: 8px;
+    gap: 6px;
 }
 
 .menu-submenu .menu-item-icon {
-    width: 16px;
+    width: 14px;
     font-size: 13px;
 }
 
 .menu-submenu .menu-item-icon svg {
-    width: 13px;
-    height: 13px;
+    width: 12px;
+    height: 12px;
 }
 
 .menu-submenu .menu-item-count {
@@ -340,7 +343,7 @@ a.menu-button {
     min-width: 14px;
     height: 14px;
     padding: 0 4px;
-    margin-left: 4px;
+    margin-left: 2px;
 }
 
 .menu-submenu .menu-submenu-arrow {
@@ -349,7 +352,7 @@ a.menu-button {
 }
 
 .menu-submenu .menu-separator {
-    margin: 3px 10px;
+    margin: 3px 8px;
 }
 
 .menu-submenu .menu-submenu {
