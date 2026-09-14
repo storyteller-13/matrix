@@ -732,6 +732,10 @@ a.file-item {
     margin-bottom: 24px;
     padding-bottom: 16px;
     border-bottom: 1px solid rgba(255, 133, 162, 0.2);
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
 }
 
 .letter-date {
@@ -743,6 +747,33 @@ a.file-item {
     font-style: normal;
     font-family: inherit;
     font-weight: 900;
+}
+
+.letter-share {
+    flex-shrink: 0;
+    appearance: none;
+    border: 1px solid rgba(255, 133, 162, 0.35);
+    background: rgba(255, 255, 255, 0.55);
+    color: #E879A9;
+    border-radius: 999px;
+    padding: 4px 10px;
+    font: inherit;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.letter-share:hover {
+    background: rgba(255, 133, 162, 0.12);
+    border-color: rgba(232, 121, 169, 0.55);
+}
+
+.letter-share.copied {
+    color: #7dd3c0;
+    border-color: rgba(125, 211, 192, 0.55);
+    background: rgba(125, 211, 192, 0.12);
 }
 
 .letter-body {

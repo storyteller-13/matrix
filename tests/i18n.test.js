@@ -150,6 +150,8 @@ describe('I18n', () => {
             'todo.item.people',
             'notes.hello.title',
             'notes.hello.content',
+            'notes.share',
+            'notes.shareCopied',
             'notes.weekday.sunday',
         ];
         const en = window.I18N_STRINGS.en;
@@ -166,6 +168,10 @@ describe('I18n', () => {
         expect(ja['notes.hello.title']).toContain('ほしぞら');
         expect(en['notes.hello.content']).toContain('scholar');
         expect(ja['notes.hello.content']).toContain('がくしゃ');
+        expect(en['notes.share']).toBe('share');
+        expect(ja['notes.share']).toBe('シェア');
+        expect(en['notes.shareCopied']).toBe('copied');
+        expect(ja['notes.shareCopied']).toContain('コピー');
     });
 
     it('has and t fall back to english when the active table omits a key', () => {

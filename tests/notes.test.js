@@ -25,11 +25,17 @@ const notesDom = () => `
     </div>
     <div id="notes-dock-item" class="dock-item"></div>
     <div id="notes-letter-window" class="window notes-letter-window" style="display: none;">
+        <div class="window-header">
+            <span class="control close"></span>
+        </div>
         <div class="window-content"></div>
         <div class="letter-container">
             <div id="letter-date"></div>
             <div id="letter-title"></div>
             <div id="letter-content"></div>
+            <button type="button" id="letter-share" class="letter-share">
+                <span class="letter-share-label">share</span>
+            </button>
         </div>
     </div>
 `;
@@ -49,6 +55,7 @@ describe('NotesApp', () => {
         delete window.WindowManager;
         delete window.bringToFront;
         window.I18n = undefined;
+        history.replaceState(null, '', window.location.pathname);
         vi.stubGlobal('requestAnimationFrame', (cb) => cb());
     });
 
@@ -291,5 +298,187 @@ describe('NotesApp', () => {
         ];
         app.render();
         expect(app.elements.notesCount.textContent).toBe('2けん');
+    });
+
+    it('assigns stable share ids and updates the url when a note opens', () => {
+        const replaceSpy = vi.spyOn(history, 'replaceState');
+        const app = new window.NotesAppClass();
+        expect(app.entries[0].id).toBe('hello');
+        expect(app.getShareUrl(app.entries[0])).toContain('note=hello');
+        app.openLetterWindow(app.entries[0]);
+        expect(replaceSpy).toHaveBeenCalled();
+        const urlArg = String(replaceSpy.mock.calls.at(-1)[2]);
+        expect(urlArg).toContain('note=hello');
+        replaceSpy.mockRestore();
+    });
+
+    it('opens a note from ?note= on load and clears the url on close', () => {
+        const url = new URL(window.location.href);
+        url.searchParams.set('note', 'hello');
+        history.replaceState(null, '', url);
+
+        const app = new window.NotesAppClass();
+        expect(app.activeLetterEntry?.id).toBe('hello');
+        expect(document.getElementById('notes-letter-window').style.display).toBe('block');
+
+        document.querySelector('#notes-letter-window .control.close').click();
+        expect(app.activeLetterEntry).toBeNull();
+        expect(new URLSearchParams(window.location.search).get('note')).toBeNull();
+    });
+
+    it('copies the share url from the letter button', async () => {
+        const writeText = vi.fn().mockResolvedValue(undefined);
+        Object.defineProperty(navigator, 'clipboard', {
+            configurable: true,
+            value: { writeText },
+        });
+        vi.useFakeTimers();
+        const app = new window.NotesAppClass();
+        app.openLetterWindow(app.entries[0]);
+        await app.copyShareUrl();
+        expect(writeText).toHaveBeenCalledWith(expect.stringContaining('note=hello'));
+        expect(document.getElementById('letter-share').classList.contains('copied')).toBe(true);
+        expect(document.querySelector('.letter-share-label').textContent).toBe('copied');
+        vi.advanceTimersByTime(1600);
+        expect(document.getElementById('letter-share').classList.contains('copied')).toBe(false);
+        expect(document.querySelector('.letter-share-label').textContent).toBe('share');
+    });
+
+    it('share button click copies the url and uses i18n labels', async () => {
+        window.I18n = {
+            t(key) {
+                if (key === 'notes.share') return 'シェア';
+                if (key === 'notes.shareCopied') return 'コピーしたよ';
+                return key;
+            },
+        };
+        const writeText = vi.fn().mockResolvedValue(undefined);
+        Object.defineProperty(navigator, 'clipboard', {
+            configurable: true,
+            value: { writeText },
+        });
+        vi.useFakeTimers();
+        const app = new window.NotesAppClass();
+        const copySpy = vi.spyOn(app, 'copyShareUrl').mockResolvedValue(undefined);
+        app.openLetterWindow(app.entries[0]);
+        expect(document.querySelector('.letter-share-label').textContent).toBe('シェア');
+
+        document.getElementById('letter-share').click();
+        expect(copySpy).toHaveBeenCalled();
+        copySpy.mockRestore();
+
+        await app.copyShareUrl();
+        expect(writeText).toHaveBeenCalled();
+        expect(document.querySelector('.letter-share-label').textContent).toBe('コピーしたよ');
+        vi.advanceTimersByTime(1600);
+        expect(document.querySelector('.letter-share-label').textContent).toBe('シェア');
+    });
+
+    it('falls back to execCommand copy when clipboard is unavailable', async () => {
+        Object.defineProperty(navigator, 'clipboard', {
+            configurable: true,
+            value: undefined,
+        });
+        document.execCommand = vi.fn().mockReturnValue(true);
+        const app = new window.NotesAppClass();
+        app.openLetterWindow(app.entries[0]);
+        await app.copyShareUrl();
+        expect(document.execCommand).toHaveBeenCalledWith('copy');
+        expect(document.getElementById('letter-share').classList.contains('copied')).toBe(true);
+    });
+
+    it('falls back when clipboard.writeText rejects', async () => {
+        Object.defineProperty(navigator, 'clipboard', {
+            configurable: true,
+            value: { writeText: vi.fn().mockRejectedValue(new Error('denied')) },
+        });
+        document.execCommand = vi.fn().mockReturnValue(true);
+        const app = new window.NotesAppClass();
+        app.openLetterWindow(app.entries[0]);
+        await app.copyShareUrl();
+        expect(document.execCommand).toHaveBeenCalledWith('copy');
+    });
+
+    it('copyShareUrl no-ops without an open letter and when fallback copy fails', async () => {
+        const app = new window.NotesAppClass();
+        await expect(app.copyShareUrl()).resolves.toBeUndefined();
+
+        Object.defineProperty(navigator, 'clipboard', {
+            configurable: true,
+            value: undefined,
+        });
+        document.execCommand = vi.fn().mockImplementation(() => {
+            throw new Error('blocked');
+        });
+        app.openLetterWindow(app.entries[0]);
+        await app.copyShareUrl();
+        expect(document.getElementById('letter-share').classList.contains('copied')).toBe(false);
+    });
+
+    it('openNoteFromUrl ignores missing ids and skips reopening the same note', () => {
+        const app = new window.NotesAppClass();
+        const openSpy = vi.spyOn(app, 'openLetterWindow');
+
+        expect(app.findEntryByShareId(null)).toBeNull();
+        expect(app.findEntryByShareId('missing')).toBeNull();
+        expect(app.findEntryByShareId('HELLO')?.id).toBe('hello');
+
+        app.openNoteFromUrl();
+        expect(openSpy).not.toHaveBeenCalled();
+
+        const url = new URL(window.location.href);
+        url.searchParams.set('note', 'missing');
+        history.replaceState(null, '', url);
+        app.openNoteFromUrl();
+        expect(openSpy).not.toHaveBeenCalled();
+
+        url.searchParams.set('note', 'hello');
+        history.replaceState(null, '', url);
+        app.openNoteFromUrl();
+        expect(openSpy).toHaveBeenCalledTimes(1);
+
+        app.openNoteFromUrl();
+        expect(openSpy).toHaveBeenCalledTimes(1);
+    });
+
+    it('opens a shared note on popstate', () => {
+        const app = new window.NotesAppClass();
+        const url = new URL(window.location.href);
+        url.searchParams.set('note', 'hello');
+        history.replaceState(null, '', url);
+        window.dispatchEvent(new PopStateEvent('popstate'));
+        expect(app.activeLetterEntry?.id).toBe('hello');
+    });
+
+    it('setNoteInUrl no-ops while syncing or when the id is unchanged', () => {
+        const replaceSpy = vi.spyOn(history, 'replaceState');
+        const app = new window.NotesAppClass();
+        replaceSpy.mockClear();
+
+        app.syncingFromUrl = true;
+        app.setNoteInUrl(app.entries[0]);
+        expect(replaceSpy).not.toHaveBeenCalled();
+        app.syncingFromUrl = false;
+
+        const url = new URL(window.location.href);
+        url.searchParams.set('note', 'hello');
+        history.replaceState(null, '', url);
+        replaceSpy.mockClear();
+        app.setNoteInUrl(app.entries[0]);
+        expect(replaceSpy).not.toHaveBeenCalled();
+
+        app.clearNoteFromUrl();
+        expect(replaceSpy).toHaveBeenCalled();
+        replaceSpy.mockClear();
+        app.clearNoteFromUrl();
+        expect(replaceSpy).not.toHaveBeenCalled();
+        replaceSpy.mockRestore();
+    });
+
+    it('resetShareButton and showShareCopied tolerate a missing share button', () => {
+        const app = new window.NotesAppClass();
+        app.elements.shareButton = null;
+        expect(() => app.resetShareButton()).not.toThrow();
+        expect(() => app.showShareCopied()).not.toThrow();
     });
 });

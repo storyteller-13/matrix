@@ -15,7 +15,7 @@ class NotesStorage {
 
     normalizeEntry(entry) {
         return {
-            id: entry.id || this.generateId(),
+            id: entry.id || this.deriveStableId(entry) || this.generateId(),
             title: entry.title || '',
             content: entry.content || '',
             titleKey: entry.titleKey || undefined,
@@ -28,10 +28,40 @@ class NotesStorage {
         };
     }
 
+    /**
+     * Prefer a stable share id: explicit id, notes.<slug>.* key, title slug, or date.
+     */
+    deriveStableId(entry) {
+        if (!entry) return null;
+        if (entry.titleKey) {
+            const match = String(entry.titleKey).match(/^notes\.([^.]+)/);
+            if (match) return match[1];
+        }
+        const fromTitle = this.slugify(entry.title);
+        if (fromTitle) return fromTitle;
+        const date = entry.date || entry.createdAt;
+        if (date) {
+            const day = String(date).slice(0, 10);
+            if (/^\d{4}-\d{2}-\d{2}$/.test(day)) return day;
+        }
+        return null;
+    }
+
+    slugify(text) {
+        const slug = String(text || '')
+            .toLowerCase()
+            .trim()
+            .replace(/[^a-z0-9]+/g, '-')
+            .replace(/^-+|-+$/g, '')
+            .slice(0, 64);
+        return slug || null;
+    }
+
     getDefaultEntries() {
         return [
 
             {
+            id: 'hello',
             date: '2026-08-02T00:00:00.000Z',
             titleKey: 'notes.hello.title',
             contentKey: 'notes.hello.content',

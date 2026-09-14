@@ -10,6 +10,8 @@ class NotesApp extends BaseApp {
         this.entriesByDate = {};
         this.elements = {};
         this.activeLetterEntry = null;
+        this.shareResetTimer = null;
+        this.syncingFromUrl = false;
         this.init();
     }
 
@@ -19,14 +21,17 @@ class NotesApp extends BaseApp {
         this.cacheElements();
         this.loadEntries();
         this.setupEventListeners();
+        this.setupShareRouting();
         this.render();
         this.updateBadge();
         document.addEventListener('localechange', () => {
             this.render();
             if (this.activeLetterEntry) {
                 this.populateLetterContent(this.activeLetterEntry);
+                this.resetShareButton();
             }
         });
+        this.openNoteFromUrl();
     }
 
     cacheElements() {
@@ -34,6 +39,155 @@ class NotesApp extends BaseApp {
         this.elements.notesCount = document.getElementById('notes-count');
         this.elements.badge = document.getElementById('notes-count-badge');
         this.elements.menuCount = document.getElementById('notes-menu-count');
+        this.elements.shareButton = document.getElementById('letter-share');
+    }
+
+    setupShareRouting() {
+        window.addEventListener('popstate', () => this.openNoteFromUrl());
+
+        const letterWindow = document.getElementById('notes-letter-window');
+        if (letterWindow) {
+            const closeBtn = letterWindow.querySelector('.control.close');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', () => {
+                    this.activeLetterEntry = null;
+                    this.clearNoteFromUrl();
+                    this.resetShareButton();
+                });
+            }
+        }
+
+        const { shareButton } = this.elements;
+        if (shareButton) {
+            shareButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                this.copyShareUrl();
+            });
+        }
+    }
+
+    getNoteIdFromUrl() {
+        try {
+            return new URLSearchParams(window.location.search).get('note');
+        } catch {
+            return null;
+        }
+    }
+
+    findEntryByShareId(shareId) {
+        if (!shareId) return null;
+        const needle = String(shareId).toLowerCase();
+        return this.entries.find(entry => String(entry.id).toLowerCase() === needle) || null;
+    }
+
+    getShareUrl(entry) {
+        const url = new URL(window.location.href);
+        url.searchParams.set('note', entry.id);
+        return url.toString();
+    }
+
+    setNoteInUrl(entry) {
+        if (this.syncingFromUrl) return;
+        try {
+            const url = new URL(window.location.href);
+            const nextId = entry?.id || null;
+            const currentId = url.searchParams.get('note');
+            if (nextId) {
+                if (currentId === nextId) return;
+                url.searchParams.set('note', nextId);
+            } else {
+                if (!currentId) return;
+                url.searchParams.delete('note');
+            }
+            history.replaceState(null, '', url);
+        } catch {
+            // Ignore URL update failures in non-browser test hosts
+        }
+    }
+
+    clearNoteFromUrl() {
+        this.setNoteInUrl(null);
+    }
+
+    openNoteFromUrl() {
+        const shareId = this.getNoteIdFromUrl();
+        if (!shareId) {
+            return;
+        }
+        const entry = this.findEntryByShareId(shareId);
+        if (!entry) return;
+        if (this.activeLetterEntry && this.activeLetterEntry.id === entry.id) return;
+
+        this.syncingFromUrl = true;
+        try {
+            this.openLetterWindow(entry);
+        } finally {
+            this.syncingFromUrl = false;
+        }
+    }
+
+    async copyShareUrl() {
+        if (!this.activeLetterEntry) return;
+        const shareUrl = this.getShareUrl(this.activeLetterEntry);
+        let copied = false;
+
+        try {
+            if (navigator.clipboard?.writeText) {
+                await navigator.clipboard.writeText(shareUrl);
+                copied = true;
+            }
+        } catch {
+            copied = false;
+        }
+
+        if (!copied) {
+            copied = this.copyShareUrlFallback(shareUrl);
+        }
+        if (copied) {
+            this.showShareCopied();
+        }
+    }
+
+    copyShareUrlFallback(text) {
+        try {
+            const input = document.createElement('textarea');
+            input.value = text;
+            input.setAttribute('readonly', '');
+            input.style.position = 'fixed';
+            input.style.opacity = '0';
+            document.body.appendChild(input);
+            input.select();
+            const ok = document.execCommand('copy');
+            document.body.removeChild(input);
+            return ok;
+        } catch {
+            return false;
+        }
+    }
+
+    showShareCopied() {
+        const { shareButton } = this.elements;
+        if (!shareButton) return;
+        const label = shareButton.querySelector('.letter-share-label');
+        const copied = this.i18nLabel('notes.shareCopied', 'copied');
+        shareButton.classList.add('copied');
+        if (label) label.textContent = copied;
+        shareButton.setAttribute('title', copied);
+        shareButton.setAttribute('aria-label', copied);
+        clearTimeout(this.shareResetTimer);
+        this.shareResetTimer = setTimeout(() => this.resetShareButton(), 1600);
+    }
+
+    resetShareButton() {
+        const { shareButton } = this.elements;
+        if (!shareButton) return;
+        const label = shareButton.querySelector('.letter-share-label');
+        const share = this.i18nLabel('notes.share', 'share');
+        shareButton.classList.remove('copied');
+        if (label) label.textContent = share;
+        shareButton.setAttribute('title', share);
+        shareButton.setAttribute('aria-label', share);
     }
 
     loadEntries() {
@@ -121,7 +275,7 @@ class NotesApp extends BaseApp {
             const indicator = isRead ? '✓' : '💌';
 
             return `
-                <div class="notes-date-item ${isRead ? 'read' : ''}" data-date-key="${dateKey}">
+                <div class="notes-date-item ${isRead ? 'read' : ''}" data-date-key="${dateKey}" data-note-id="${this.escapeHtml(firstEntry.id)}">
                     <div class="notes-read-indicator">${indicator}</div>
                     <span class="notes-date-text">${this.escapeHtml(date)}</span>
                     ${title ? `<span class="notes-date-title">${this.escapeHtml(title)}</span>` : ''}
@@ -153,6 +307,8 @@ class NotesApp extends BaseApp {
 
         // Populate letter content
         this.populateLetterContent(entry);
+        this.resetShareButton();
+        this.setNoteInUrl(entry);
 
         // Show letter window
         if (window.WindowManager) {
@@ -314,4 +470,3 @@ window.openNotesWindow = function() {
         window.NotesApp.open();
     }
 };
-

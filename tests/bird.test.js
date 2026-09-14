@@ -381,17 +381,12 @@ describe('BirdPanel', () => {
         expect(spy).not.toHaveBeenCalled();
     });
 
-    it('stays closed on mobile init', () => {
-        window.matchMedia = () => ({ matches: true, addListener() {}, removeListener() {} });
-        if (window.Env?.shouldAutoOpenDesktopPanels?.mockRestore) {
-            window.Env.shouldAutoOpenDesktopPanels.mockRestore();
-        }
-        vi.spyOn(window.Env, 'shouldAutoOpenDesktopPanels').mockReturnValue(false);
+    it('stays closed on init', () => {
         global.fetch.mockClear();
         const panel = new window.BirdPanelClass();
-        expect(panel.isMobile()).toBe(true);
         expect(panel.shouldAutoOpen()).toBe(false);
         expect(document.getElementById('bird-box').style.display).not.toBe('block');
+        expect(global.fetch).not.toHaveBeenCalled();
     });
 
     it('uses I18n fallbacks and re-renders on localechange', () => {
@@ -452,15 +447,13 @@ describe('BirdPanel', () => {
         expect(document.getElementById('bird-learn-link').href).toContain('allaboutbirds.org');
     });
 
-    it('shouldAutoOpen falls back to !isMobile when Env is missing', () => {
+    it('shouldAutoOpen stays false so the panel starts closed', () => {
         const panel = new window.BirdPanelClass();
         const originalEnv = window.Env;
         window.Env = undefined;
         window.matchMedia = () => ({ matches: false, addListener() {}, removeListener() {} });
-        expect(panel.shouldAutoOpen()).toBe(true);
-        window.Env = {};
-        expect(panel.shouldAutoOpen()).toBe(true);
-        window.matchMedia = () => ({ matches: true, addListener() {}, removeListener() {} });
+        expect(panel.shouldAutoOpen()).toBe(false);
+        window.Env = { shouldAutoOpenDesktopPanels: () => true };
         expect(panel.shouldAutoOpen()).toBe(false);
         window.Env = originalEnv;
     });

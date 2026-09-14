@@ -48,10 +48,6 @@ class BirdPanel {
 
     init() {
         this.setupEventListeners();
-        if (this.shouldAutoOpen()) {
-            this.loadBird();
-            this.showBox({ reload: false });
-        }
         document.addEventListener('localechange', () => {
             if (this.lastData) this.displayBird(this.lastData);
         });
@@ -62,10 +58,7 @@ class BirdPanel {
     }
 
     shouldAutoOpen() {
-        if (window.Env && typeof window.Env.shouldAutoOpenDesktopPanels === 'function') {
-            return window.Env.shouldAutoOpenDesktopPanels();
-        }
-        return !this.isMobile();
+        return false;
     }
 
     setupEventListeners() {

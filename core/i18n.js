@@ -108,6 +108,8 @@ const I18N_STRINGS = {
         'notes.empty': 'no entries yet',
         'notes.entry': '{count} entry',
         'notes.entries': '{count} entries',
+        'notes.share': 'share',
+        'notes.shareCopied': 'copied',
         'notes.hello.title': 'hello starlit world',
         'notes.hello.content': `i am a scholar, always creating the sublime.
 
@@ -265,6 +267,8 @@ starting sometime this fall.
         'notes.empty': 'まだきろくがないよ',
         'notes.entry': '{count}けん',
         'notes.entries': '{count}けん',
+        'notes.share': 'シェア',
+        'notes.shareCopied': 'コピーしたよ',
         'notes.hello.title': 'こんにちは、ほしぞらのせかい',
         'notes.hello.content': `わたしはがくしゃ、いつもsublimeなものをつくりつづけている。
 
