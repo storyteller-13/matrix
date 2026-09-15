@@ -87,6 +87,7 @@ class MusicPlayerStorage {
                         { id: 'o7WGrdg-p4Y', title: 'a deep breath (giuseppe centonze)' },
                         { id: 'LTiqKDrjqr4', title: 'summer\'26 stargazing fest (lofi girl)' },
                         { id: 'v1ZkSsxl98A', title: 'a moment before forever (sci-fi ambience)' },
+                        { id: '5KvDE_xdAOM', title: 'the archangel and the dragon (quiet gallery)' }, 
                         { id: 'yzW0kLJSwkc', title: 'the 2nd coming was a moonrise (hammock)' },
                         { id: 'JcHtM0PEETo', title: 'stillness in the cosmos (spiritual brother sci-fi)' },
                         { id: 'FaJ40cZUz84', title: 'drifting in your room among the stars (future city)' },

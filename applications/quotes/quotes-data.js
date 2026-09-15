@@ -565,6 +565,7 @@ window.QUOTES = [
     { text: 'evil brings with it its own destruction. it is an absurdity that consumes itself.', author: 'reinhold niebuhr' },
     { text: 'evil is a surd.', author: 'h.r. mackintosh' },
     { text: 'stupidity is the same as evil if you judge by the results.', author: 'margaret atwood' },
+    { text: 'looking for my next twin flame; have only one is delusional.', author: 'taroverse' },
 
     //////////////////////////
     // marina von steinkirch
@@ -576,6 +577,7 @@ window.QUOTES = [
     { text: 'never underestimate (or mess with) someone who has lost everything and has nothing else to lose.', author: 'marina von steinkirch' },
     { text: 'whatever i do now is going to be my best work ever. and whoever i make my family now will be the most loved people ever.', author: 'marina von steinkirch' },
     { text: 'i\'ve spent my entire life building myself into the best mother i could be.', author: 'marina von steinkirch' },
+    { text: 'i\'ve spent my entire life building myself into the best wife i could be.', author: 'marina von steinkirch' },
     { text: 'soon i will be sitting in my nice chair, in my nice house, with a nice cup of tea, looking at everything i have and how i overcame so much. and i will feel this immense happiness inside my veins — something so strong and so intense. total. complete. bliss.', author: 'marina von steinkirch' },
     { text: 'being a winner means mastering the art of not taking rejection personally. even better: actively seek it. try everything, reach out to everyone. you\'ll get a flood of NOs and silence. but eventually, a signal breaks through — and when it does, it feels incredible.', author: 'marina von steinkirch' },
     { text: 'being misunderstood is underrated — it\'s a signal that you\'re not following the herd. embrace that feeling, tune out the noise of criticism, and keep trusting your intuition to take you where you need to go.', author: 'marina von steinkirch' },
@@ -675,5 +677,10 @@ window.QUOTES = [
     { text: 'forgiveness is the highest form of courage.', author: 'marina von steinkirch' },
     { text: 'i hear the birds singing, and i feel calm. the little beauties in the world are there to remind you of the sublime — to pause, to breathe, and to notice the wonder around you. remember that there is always a way to make your dreams come true.', author: 'marina von steinkirch' },
     { text: 'the opinionated will inherit the world.', author: 'marina von steinkirch' },
+    { text: 'love always comes first; everything else is plastic, inorganic, changeable, replaceable, and ephemeral.', author: 'marina von steinkirch' },
+    { text: 'the best thing about getting older is that you don\'t have to put up with nonsense anymore, you can simply state what is important for the life you want to live ahead and ignore the noise, the superficial interactions, the drama, and the endless distractions.', author: 'marina von steinkirch' },
+    { text: 'mature men who know who they are and have their lives together are ridiculously hot on an incommensurable scale.', author: 'marina von steinkirch' },
+    { text: 'kindness is wisdom.', author: 'marina von steinkirch' },
+    { text: 'i cannot wait to live every next day of the rest of the life i still have in this world.', author: 'marina von steinkirch' },
 ];
 
