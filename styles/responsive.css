@@ -571,6 +571,7 @@
     }
 
     .notes-letter-window,
+    .books-window,
     .about-window {
         width: 95%;
         height: calc(100vh - 48px - 80px);
@@ -1091,6 +1092,7 @@
     }
 
     .notes-letter-window,
+    .books-window,
     .about-window {
         width: 100% !important;
         height: calc(100vh - 52px - 80px) !important;
@@ -1403,6 +1405,7 @@
     .home-window,
     .artwork-window,
     .notes-letter-window,
+    .books-window,
     .about-window {
         width: 95%;
         height: calc(100dvh - 44px - 70px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));

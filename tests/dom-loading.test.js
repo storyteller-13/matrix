@@ -51,6 +51,15 @@ describe('DOMContentLoaded initialization', () => {
             <div id="todo-dock-item" class="dock-item"></div>
             <div class="window" id="notes-window"><div id="notes-entries-list"></div></div>
             <div id="notes-dock-item" class="dock-item"></div>
+            <div class="window books-window notes-letter-window" id="books-window">
+                <div id="books-letter-title"></div>
+                <div id="books-letter-content"></div>
+            </div>
+            <div class="window artwork-window lists-folder-window" id="lists-folder-window">
+                <div class="window-title"></div>
+                <div class="file-list"></div>
+            </div>
+            <div id="lists-folder-dock-item" class="dock-item"></div>
             <div class="window" id="terminal-window"><input id="terminal-input-main" /></div>
             <div id="terminal-dock-item" class="dock-item"></div>
             <div id="apod-box"><div id="apod-box-image-container"></div></div>
@@ -75,6 +84,9 @@ describe('DOMContentLoaded initialization', () => {
         await import('../applications/todo/todo.js');
         await import('../applications/notes/notes-storage.js');
         await import('../applications/notes/notes.js');
+        await import('../applications/lists/books-data.js');
+        await import('../applications/lists/books.js');
+        await import('../applications/lists/lists-folder.js');
         await import('../applications/terminal/terminal-app.js');
         await import('../applications/apod/apod.js');
         await import('../applications/bird/bird.js');
@@ -97,6 +109,8 @@ describe('DOMContentLoaded initialization', () => {
         expect(window.SkyPanel).toBeDefined();
         expect(window.TodoApp).toBeDefined();
         expect(window.NotesApp).toBeDefined();
+        expect(window.BooksApp).toBeDefined();
+        expect(window.ListsFolderApp).toBeDefined();
         expect(window.TerminalApp).toBeDefined();
         expect(window.APODPanel).toBeDefined();
         expect(window.BirdPanel).toBeDefined();

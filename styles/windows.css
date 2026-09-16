@@ -310,6 +310,53 @@ a.file-item {
     text-shadow: none;
 }
 
+.lists-folder-window {
+    /* reuse artwork-window sizing; keep a distinct id for dock mapping */
+}
+
+.lists-folder-window .file-list {
+    position: relative;
+    min-height: 220px;
+}
+
+.lists-folder-item {
+    appearance: none;
+    border: none;
+    background: transparent;
+    font: inherit;
+    color: inherit;
+}
+
+.lists-folder-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 6px;
+    min-height: 48px;
+}
+
+.lists-folder-empty {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.lists-folder-empty-text {
+    color: #E879A9;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+}
+
+.lists-folder-window .file-list > .lists-folder-item {
+    position: relative;
+    z-index: 1;
+}
+
 
 /* Home Window*/
 .home-window {
@@ -694,6 +741,185 @@ a.file-item {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.books-window {
+    width: min(780px, calc(100vw - 32px));
+    height: min(720px, calc(100dvh - var(--top-panel-height) - var(--dock-clearance)));
+}
+
+.books-window .letter-paper {
+    padding: 16px 20px 14px;
+}
+
+.books-window .letter-title {
+    margin-bottom: 12px;
+    font-size: 22px;
+}
+
+.books-letter-text {
+    text-align: left;
+    color: var(--text);
+    overflow-y: auto;
+    flex: 1;
+    min-height: 0;
+    padding-right: 2px;
+}
+
+.books-tables {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    width: 100%;
+}
+
+.books-month {
+    margin: 0;
+    width: 100%;
+}
+
+.books-month + .books-month {
+    margin-top: -5px;
+}
+
+.books-month + .books-month .books-table {
+    border-top: none;
+}
+
+.books-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    table-layout: fixed;
+    background: rgba(255, 255, 255, 0.42);
+    border: 1px solid rgba(255, 133, 162, 0.28);
+    border-radius: 0;
+    overflow: hidden;
+}
+
+.books-month:first-child .books-table {
+    border-radius: 4px 4px 0 0;
+}
+
+.books-month:last-child .books-table {
+    border-radius: 0 0 4px 4px;
+}
+
+.books-month:only-child .books-table {
+    border-radius: 4px;
+}
+
+.books-table col.books-col-title {
+    width: 58%;
+}
+
+.books-table col.books-col-rating {
+    width: 16%;
+}
+
+.books-table col.books-col-notes {
+    width: 26%;
+}
+
+.books-table th,
+.books-table td {
+    padding: 6px 10px;
+    vertical-align: middle;
+    border-bottom: 1px solid rgba(255, 133, 162, 0.14);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.books-table thead th {
+    background: rgba(232, 121, 169, 0.14);
+    color: #E879A9;
+    font-size: 11px;
+    font-weight: 900;
+    text-transform: lowercase;
+    letter-spacing: 0.04em;
+    text-align: left;
+}
+
+.books-table thead th:first-child,
+.books-table td.books-col-title {
+    text-align: left;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.books-table thead th:nth-child(2),
+.books-table td.books-col-rating {
+    text-align: center;
+}
+
+.books-table thead th:nth-child(3),
+.books-table td.books-col-notes {
+    text-align: right;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.books-table tbody tr:nth-child(even) {
+    background: rgba(255, 245, 249, 0.55);
+}
+
+.books-table tbody tr:hover {
+    background: rgba(255, 133, 162, 0.12);
+}
+
+.books-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.books-col-title {
+    font-weight: 700;
+    color: var(--text);
+}
+
+.books-col-title a,
+.books-col-notes a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(232, 121, 169, 0.35);
+}
+
+.books-col-title a:hover,
+.books-col-notes a:hover {
+    color: #E879A9;
+    border-bottom-color: #E879A9;
+}
+
+.books-col-rating {
+    color: #C084FC;
+    font-weight: 800;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.books-col-notes {
+    color: #5bbbf2;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.books-backlog {
+    display: flex;
+    justify-content: center;
+}
+
+.books-table--backlog {
+    width: 58%;
+    max-width: 420px;
+    font-size: 11px;
+}
+
+.books-table--backlog .books-col-title {
+    font-weight: 600;
+}
+
+.books-table--backlog td {
+    padding: 4px 10px;
+    text-align: left;
 }
 
 .letter-container {

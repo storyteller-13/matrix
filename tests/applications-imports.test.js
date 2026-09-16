@@ -89,6 +89,62 @@ describe('Application modules (coverage)', () => {
         expect(document.getElementById('notes-window').style.display).not.toBe('block');
     });
 
+    it('books loads and exposes BooksAppClass and openBooksWindow', async () => {
+        document.body.innerHTML = `
+            <div id="books-window" class="window books-window notes-letter-window">
+                <div class="letter-title" id="books-letter-title"></div>
+                <div class="letter-text" id="books-letter-content"></div>
+            </div>
+        `;
+        await import('../core/base-app.js');
+        await import('../applications/lists/books-data.js');
+        await import('../applications/lists/books.js');
+        expect(window.BOOKS_2026).toBeDefined();
+        expect(window.BooksAppClass).toBeDefined();
+        expect(window.BooksApp).toBeDefined();
+        expect(typeof window.openBooksWindow).toBe('function');
+        expect(document.getElementById('books-letter-content').innerHTML).toContain('books-table');
+        expect(document.getElementById('books-letter-content').innerHTML).toContain('books-backlog');
+        const linked = window.BOOKS_2026.backlog.filter((b) => b.url);
+        expect(linked.length).toBeGreaterThan(0);
+        expect(window.BOOKS_2026.backlog.every((b) => b.title === b.title.toLowerCase())).toBe(true);
+        expect(document.getElementById('books-letter-content').innerHTML).toContain('href=');
+        expect(document.getElementById('books-window').style.display).not.toBe('block');
+    });
+
+    it('lists-folder loads and browses books / empty music folders', async () => {
+        document.body.innerHTML = `
+            <div id="lists-folder-window" class="window artwork-window lists-folder-window">
+                <div class="window-title">CURATE LISTS</div>
+                <div class="file-list"></div>
+            </div>
+            <div id="lists-folder-dock-item" class="dock-item"></div>
+            <div id="books-window" class="window"></div>
+        `;
+        window.openBooksWindow = vi.fn();
+        await import('../core/base-app.js');
+        await import('../applications/lists/lists-folder.js');
+        expect(window.ListsFolderAppClass).toBeDefined();
+        expect(window.ListsFolderApp).toBeDefined();
+        expect(typeof window.openListsFolderWindow).toBe('function');
+
+        const app = window.ListsFolderApp;
+        const list = app.window.querySelector('.file-list');
+        expect(list.textContent).toContain('books');
+        expect(list.textContent).toContain('movies');
+        expect(list.textContent).toContain('places');
+        expect(list.textContent).toContain('art');
+        expect(list.textContent).toContain('food');
+
+        [...list.querySelectorAll('.file-item')].find((el) => el.textContent.includes('books')).click();
+        expect(list.textContent).toContain('2026 reading list');
+        [...list.querySelectorAll('.file-item')].find((el) => el.textContent.includes('2026 reading list')).click();
+        expect(window.openBooksWindow).toHaveBeenCalled();
+
+        app.open('movies');
+        expect(list.textContent).toContain('this folder is empty');
+    });
+
     it('apod.js loads and exposes APODPanelClass and buildApiUrl', async () => {
         document.body.innerHTML = `
             <div id="apod-box"><div id="apod-box-image-container"></div><button id="apod-box-close"></button></div>

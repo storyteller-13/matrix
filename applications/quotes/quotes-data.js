@@ -62,7 +62,7 @@ window.QUOTES = [
     // jp sartre
     { text: 'man is condemned to be free.', author: 'jean-paul sartre' },
     { text: 'existence precedes essence.', author: 'jean-paul sartre' },
-    { text: 'hell is—other people!', author: 'jean-paul sartre' },
+    { text: 'hell is — other people!', author: 'jean-paul sartre' },
     { text: 'freedom is what you do with what’s been done to you.', author: 'jean-paul sartre' },
     { text: 'we are our choices.', author: 'jean-paul sartre' },
     { text: 'man is condemned to be free.', author: 'jean-paul sartre' },

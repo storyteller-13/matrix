@@ -14,7 +14,9 @@ class WindowManager {
     isCenteredWindow(el) {
         return el && (el.classList.contains('terminal-window') ||
             el.classList.contains('artwork-window') ||
+            el.classList.contains('lists-folder-window') ||
             el.classList.contains('notes-letter-window') ||
+            el.classList.contains('books-window') ||
             el.classList.contains('about-window') ||
             el.classList.contains('home-window'));
     }
@@ -438,6 +440,7 @@ class WindowManager {
                         'home-window': 'home-dock-item',
                         'terminal-window': 'terminal-dock-item',
                         'artwork-window': 'artwork-dock-item',
+                        'lists-folder-window': 'lists-folder-dock-item',
                         'notes-window': 'notes-dock-item',
                         'about-window': 'about-dock-item'
                     };
