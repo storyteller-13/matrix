@@ -752,9 +752,22 @@ a.file-item {
     padding: 16px 20px 14px;
 }
 
-.books-window .letter-title {
+.books-window .letter-header {
     margin-bottom: 12px;
+    padding-bottom: 0;
+    border-bottom: none;
+    align-items: center;
+}
+
+.books-window .letter-share {
+    margin-left: auto;
+}
+
+.books-window .letter-title {
+    margin-bottom: 0;
     font-size: 22px;
+    flex: 1;
+    min-width: 0;
 }
 
 .books-letter-text {
@@ -779,7 +792,7 @@ a.file-item {
 }
 
 .books-month + .books-month {
-    margin-top: -5px;
+    margin-top: -6px;
 }
 
 .books-month + .books-month .books-table {
@@ -823,7 +836,7 @@ a.file-item {
 
 .books-table th,
 .books-table td {
-    padding: 6px 10px;
+    padding: 4px 8px;
     vertical-align: middle;
     border-bottom: 1px solid rgba(255, 133, 162, 0.14);
     word-wrap: break-word;
@@ -843,8 +856,8 @@ a.file-item {
 .books-table thead th:first-child,
 .books-table td.books-col-title {
     text-align: left;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 8px;
+    padding-right: 8px;
 }
 
 .books-table thead th:nth-child(2),
@@ -855,8 +868,8 @@ a.file-item {
 .books-table thead th:nth-child(3),
 .books-table td.books-col-notes {
     text-align: right;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 8px;
+    padding-right: 8px;
 }
 
 .books-table tbody tr:nth-child(even) {
@@ -904,13 +917,27 @@ a.file-item {
 
 .books-backlog {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 22px;
+}
+
+.books-backlog-title {
+    margin: 0 0 10px;
+    text-align: center;
+    color: #E879A9;
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: 0.04em;
+    text-transform: lowercase;
 }
 
 .books-table--backlog {
-    width: 58%;
-    max-width: 420px;
+    width: 72%;
+    max-width: 540px;
     font-size: 11px;
+    border-radius: 4px;
 }
 
 .books-table--backlog .books-col-title {

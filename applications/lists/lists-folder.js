@@ -1,5 +1,5 @@
 /**
- * Curate lists folder browser – nested folders for books / movies / places / art / food.
+ * Curate lists folder browser – nested folders for books / movies / places / art / articles / food.
  */
 class ListsFolderApp extends BaseApp {
     constructor() {
@@ -60,6 +60,7 @@ class ListsFolderApp extends BaseApp {
         if (leaf === 'music') return this.t('menu.listsMusic', 'music');
         if (leaf === 'places') return this.t('menu.listsPlaces', 'places');
         if (leaf === 'art') return this.t('menu.listsArt', 'art');
+        if (leaf === 'articles') return this.t('menu.listsArticles', 'articles');
         if (leaf === 'food') return this.t('menu.listsFood', 'food');
         return this.t('menu.curateLists', 'my curated lists');
     }
@@ -67,6 +68,7 @@ class ListsFolderApp extends BaseApp {
     rootEntries() {
         return [
             { id: 'art', label: this.t('menu.listsArt', 'art'), kind: 'folder', empty: true },
+            { id: 'articles', label: this.t('menu.listsArticles', 'articles'), kind: 'folder', empty: true },
             { id: 'food', label: this.t('menu.listsFood', 'food'), kind: 'folder', empty: true },
             { id: 'books', label: this.t('menu.listsBooks', 'books'), kind: 'folder' },
             { id: 'movies', label: this.t('menu.listsMovies', 'movies'), kind: 'folder', empty: true },
@@ -78,7 +80,7 @@ class ListsFolderApp extends BaseApp {
         return [
             {
                 id: 'books-2026',
-                label: this.t('menu.books2026', '2026 reading list'),
+                label: this.t('menu.books2026', 'books i am reading in 2026'),
                 kind: 'list',
                 open: () => window.openBooksWindow?.(),
             },
@@ -89,7 +91,7 @@ class ListsFolderApp extends BaseApp {
         const leaf = this.path[this.path.length - 1];
         if (!leaf) return this.rootEntries();
         if (leaf === 'books') return this.booksEntries();
-        if (leaf === 'movies' || leaf === 'music' || leaf === 'places' || leaf === 'art' || leaf === 'food') return [];
+        if (leaf === 'movies' || leaf === 'music' || leaf === 'places' || leaf === 'art' || leaf === 'articles' || leaf === 'food') return [];
         return this.rootEntries();
     }
 

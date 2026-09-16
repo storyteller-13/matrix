@@ -105,6 +105,7 @@ class MusicPlayerStorage {
                         { id: 'aWpw-Ynl0Yc', title: 'bass persuades (miley)' },
                         { id: 'afSgBNwmZrQ', title: 'petal (ariana grande)' },
                         { id: 'HVHUjzZZGQ4', title: 'island in the sun (weezer)' },
+                        { id: 'Tk9TM7-eTmw', title: 'joseph (falling in reverse)' },
                         { id: 'oytaoGL-mck', title: 'princess of the night (train)' },
                         { id: 'fDltPLFdkYI', title: 'power in the blood (polyphia)' },    
                         { id: 'fpQstZwQL5M', title: 'living undercover (rise against)' },  

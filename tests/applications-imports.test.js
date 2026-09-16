@@ -100,6 +100,7 @@ describe('Application modules (coverage)', () => {
         await import('../applications/lists/books-data.js');
         await import('../applications/lists/books.js');
         expect(window.BOOKS_2026).toBeDefined();
+        expect(window.BOOKS_2026.shareId).toBe('books-2026');
         expect(window.BooksAppClass).toBeDefined();
         expect(window.BooksApp).toBeDefined();
         expect(typeof window.openBooksWindow).toBe('function');
@@ -134,14 +135,19 @@ describe('Application modules (coverage)', () => {
         expect(list.textContent).toContain('movies');
         expect(list.textContent).toContain('places');
         expect(list.textContent).toContain('art');
+        expect(list.textContent).toContain('articles');
         expect(list.textContent).toContain('food');
 
         [...list.querySelectorAll('.file-item')].find((el) => el.textContent.includes('books')).click();
-        expect(list.textContent).toContain('2026 reading list');
-        [...list.querySelectorAll('.file-item')].find((el) => el.textContent.includes('2026 reading list')).click();
+        expect(list.textContent).toContain('books i am reading in 2026');
+        [...list.querySelectorAll('.file-item')].find((el) => el.textContent.includes('books i am reading in 2026')).click();
         expect(window.openBooksWindow).toHaveBeenCalled();
 
         app.open('movies');
+        expect(list.textContent).toContain('this folder is empty');
+
+        app.open('articles');
+        expect(app.window.querySelector('.window-title').textContent).toBe('ARTICLES');
         expect(list.textContent).toContain('this folder is empty');
     });
 
