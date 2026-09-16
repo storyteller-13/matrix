@@ -1,5 +1,5 @@
 /**
- * Curate lists folder browser – nested folders for books / movies / places / art / articles / food.
+ * Curate lists folder browser – nested folders for books / movies / places / art / articles / food / podcasts / games.
  */
 class ListsFolderApp extends BaseApp {
     constructor() {
@@ -57,11 +57,13 @@ class ListsFolderApp extends BaseApp {
         const leaf = this.path[this.path.length - 1];
         if (leaf === 'books') return this.t('menu.listsBooks', 'books');
         if (leaf === 'movies') return this.t('menu.listsMovies', 'movies');
+        if (leaf === 'games') return this.t('menu.listsGames', 'games');
         if (leaf === 'music') return this.t('menu.listsMusic', 'music');
         if (leaf === 'places') return this.t('menu.listsPlaces', 'places');
         if (leaf === 'art') return this.t('menu.listsArt', 'art');
         if (leaf === 'articles') return this.t('menu.listsArticles', 'articles');
         if (leaf === 'food') return this.t('menu.listsFood', 'food');
+        if (leaf === 'podcasts') return this.t('menu.listsPodcasts', 'podcasts');
         return this.t('menu.curateLists', 'my curated lists');
     }
 
@@ -69,10 +71,12 @@ class ListsFolderApp extends BaseApp {
         return [
             { id: 'art', label: this.t('menu.listsArt', 'art'), kind: 'folder', empty: true },
             { id: 'articles', label: this.t('menu.listsArticles', 'articles'), kind: 'folder', empty: true },
+            { id: 'games', label: this.t('menu.listsGames', 'games'), kind: 'folder', empty: true },
             { id: 'food', label: this.t('menu.listsFood', 'food'), kind: 'folder', empty: true },
             { id: 'books', label: this.t('menu.listsBooks', 'books'), kind: 'folder' },
             { id: 'movies', label: this.t('menu.listsMovies', 'movies'), kind: 'folder', empty: true },
             { id: 'places', label: this.t('menu.listsPlaces', 'places'), kind: 'folder', empty: true },
+            { id: 'podcasts', label: this.t('menu.listsPodcasts', 'podcasts'), kind: 'folder', empty: true },
         ];
     }
 
@@ -91,7 +95,7 @@ class ListsFolderApp extends BaseApp {
         const leaf = this.path[this.path.length - 1];
         if (!leaf) return this.rootEntries();
         if (leaf === 'books') return this.booksEntries();
-        if (leaf === 'movies' || leaf === 'music' || leaf === 'places' || leaf === 'art' || leaf === 'articles' || leaf === 'food') return [];
+        if (leaf === 'movies' || leaf === 'music' || leaf === 'places' || leaf === 'art' || leaf === 'articles' || leaf === 'food' || leaf === 'podcasts' || leaf === 'games') return [];
         return this.rootEntries();
     }
 

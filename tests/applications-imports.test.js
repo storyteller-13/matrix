@@ -133,10 +133,12 @@ describe('Application modules (coverage)', () => {
         const list = app.window.querySelector('.file-list');
         expect(list.textContent).toContain('books');
         expect(list.textContent).toContain('movies');
+        expect(list.textContent).toContain('games');
         expect(list.textContent).toContain('places');
         expect(list.textContent).toContain('art');
         expect(list.textContent).toContain('articles');
         expect(list.textContent).toContain('food');
+        expect(list.textContent).toContain('podcasts');
 
         [...list.querySelectorAll('.file-item')].find((el) => el.textContent.includes('books')).click();
         expect(list.textContent).toContain('books i am reading in 2026');
@@ -149,6 +151,12 @@ describe('Application modules (coverage)', () => {
         app.open('articles');
         expect(app.window.querySelector('.window-title').textContent).toBe('ARTICLES');
         expect(list.textContent).toContain('this folder is empty');
+
+        app.open('podcasts');
+        expect(list.textContent).toContain('this folder is empty'); 
+
+        app.open('games');
+        expect(list.textContent).toContain('this folder is empty'); 
     });
 
     it('apod.js loads and exposes APODPanelClass and buildApiUrl', async () => {

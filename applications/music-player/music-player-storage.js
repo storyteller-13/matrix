@@ -89,6 +89,7 @@ class MusicPlayerStorage {
                         { id: 'v1ZkSsxl98A', title: 'a moment before forever (sci-fi ambience)' },
                         { id: '5KvDE_xdAOM', title: 'the archangel and the dragon (quiet gallery)' }, 
                         { id: 'yzW0kLJSwkc', title: 'the 2nd coming was a moonrise (hammock)' },
+                        { id: 'OqK2XmcWu8g', title: 'abstract jazz for disappearing into work (sileo)' }, 
                         { id: 'JcHtM0PEETo', title: 'stillness in the cosmos (spiritual brother sci-fi)' },
                         { id: 'FaJ40cZUz84', title: 'drifting in your room among the stars (future city)' },
                     ]
