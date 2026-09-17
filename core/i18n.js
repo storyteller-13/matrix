@@ -118,7 +118,7 @@ const I18N_STRINGS = {
         'lists.rating': 'rating',
         'lists.notes': 'notes',
         'lists.thoughts': 'my thoughts',
-        'lists.backlog': 'my backlog',
+        'lists.backlog': 'my endeless ever-changing backlog',
         'lists.folderEmpty': 'this folder is empty',
         'lists.back': 'back',
         'todo.empty': 'no tasks yet',

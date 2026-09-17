@@ -104,8 +104,8 @@ describe('BooksApp', () => {
             expect(html).toContain('linked backlog');
             expect(html).toContain('https://example.com/back');
             expect(html).toContain('books-backlog-title');
-            expect(html).toMatch(/<h2 class="books-backlog-title">my backlog<\/h2>/);
-            expect(html).not.toMatch(/<th[^>]*>my backlog<\/th>/);
+            expect(html).toMatch(/<h2 class="books-backlog-title">my endeless ever-changing backlog<\/h2>/);
+            expect(html).not.toMatch(/<th[^>]*>my endeless ever-changing backlog<\/th>/);
         } finally {
             window.BOOKS_2026 = original;
         }

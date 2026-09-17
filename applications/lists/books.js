@@ -228,7 +228,7 @@ class BooksApp extends BaseApp {
 
     renderBacklog(backlog) {
         if (!backlog?.length) return '';
-        const label = this.escapeHtml(window.I18n?.t?.('lists.backlog') || 'my backlog');
+        const label = this.escapeHtml(window.I18n?.t?.('lists.backlog') || 'my endeless ever-changing backlog');
         const rows = backlog.map((entry) => {
             const item = typeof entry === 'string' ? { title: entry } : (entry || {});
             const title = this.escapeHtml((item.title || '').toLowerCase());
