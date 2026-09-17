@@ -62,21 +62,8 @@ class MusicPlayerStorage {
             playlists: [
 
                 {
-                    id:   'an ode to my future one and only love',
-                    name: 'an ode to my future one and only love',
-                    songs: [
-                        { id: 'ZoC9_udLNeU', title: 'let\'s dance (bowie)' },
-                        { id: '5f3sMmdG2sg', title: 'sunshine (jungle)' },
-                        { id: 'G2nJPEDc02k', title: 'levitating (dua lipa)' },
-                        { id: 'oHRNrgDIJfo', title: 'feeling good (nina simone)' },
-                        { id: 'zp7NtW_hKJI', title: 'a sky full of stars (coldplay)' },
-                        { id: 'x11NA63gLDM', title: 'change the world (eric clapton)' },
-                    ]
-                },
-
-                {
-                    id:   'the spacetime journey through galaxies',
-                    name: 'the spacetime journey through galaxies',
+                    id:   'spacetime journey through the galaxies',
+                    name: 'spacetime journey through the galaxies',
                     songs: [
                         
                         { id: 'pDyl6I6ESSw', title: 'space oddity (bowie)' },
@@ -96,8 +83,71 @@ class MusicPlayerStorage {
                 },
 
                 {
-                    id:   'the free people inside the babel tower',
-                    name: 'the free people inside the babel tower',
+                    id:   'when i was young, in a faraway reality',
+                    name: 'when i was young, in a faraway reality',
+                    songs: []
+                },
+
+
+                {
+                    id:   'life around the planet earth ➜ japan',
+                    name: 'life around the planet earth ➜ japan',
+                    songs: []
+                },
+
+                {
+                    id:   'life around the planet earth ➜ america',
+                    name: 'life around the planet earth ➜ america',
+                    songs: [
+
+                    ]
+                },
+
+                {
+                    id:   'life around the planet earth ➜ europe',
+                    name: 'life around the planet earth ➜ europe',
+                    songs: [
+
+                    ]
+                },
+
+                {
+                    id:   'life around the planet earth ➜ brazil',
+                    name: 'life around the planet earth ➜ brazil',
+                    songs: [
+                        { id: '5r4i5MNRtgI', title: 'astronauta (nenhum de nós)' },
+                        { id: '8D7yIqJIMwA', title: 'primavera (tim maia)' },
+                        { id: 'gWSSanodnIs', title: 'baila comigo (rita lee)' },
+                        { id: 'R_mbnbcEIoE', title: 'eu te amo (ana carolina)' },
+                        { id: 'rfrpOhC6858', title: 'taj mahal (jorge ben jor)' },
+                        { id: '_rZCF09BeYw', title: 'o segundo sol (cassia eller)' },
+                        { id: 'wJ2prEKx3_Y', title: 'o leãozinho (caetano veloso)' },
+                        { id: 'JFfvlwfql-g', title: 'casinha de sape (kid abelha)' },
+                        { id: 'NK88geNsUmQ', title: 'te ver e nao te querer (skank)' },
+                        { id: '-NAqR4E5KnA', title: 'amor meu grande amor (angela ro ro)' },
+                        { id: '8uPXyMaU3co', title: 'paisagem da janela (milton nascimento)' },
+                        { id: 'Gbv4pB3YmL4', title: 'aguas de março (elis regina + tom jobim)' },
+                        { id: '8JKxOBUA3cY', title: 'assim caminha a humanidade (lulu santos)' },
+                        { id: 'ao65W_bOs5M', title: 'eu sei que vou te amar (vinicius de moraes)' },
+                    ]
+                },
+
+                {
+                    id:   'an ode to my future one and only love',
+                    name: 'an ode to my future one and only love',
+                    songs: [
+                        { id: 'ZoC9_udLNeU', title: 'let\'s dance (bowie)' },
+                        { id: '5f3sMmdG2sg', title: 'sunshine (jungle)' },
+                        { id: 'G2nJPEDc02k', title: 'levitating (dua lipa)' },
+                        { id: 'oHRNrgDIJfo', title: 'feeling good (nina simone)' },
+                        { id: 'zp7NtW_hKJI', title: 'a sky full of stars (coldplay)' },
+                        { id: 'x11NA63gLDM', title: 'change the world (eric clapton)' },
+                    ]
+                },
+
+                {
+                    id:   'all those free people inside the babel',
+                    name: 'all those free people inside the babel',
                     songs: [
                         { id: '44FId4BpMx0', title: 'heroes (bowie)' },
                         { id: 'tVXXD7KXAec', title: 'rescuer (alex warren)' },
@@ -121,36 +171,9 @@ class MusicPlayerStorage {
                     ]
                 },
 
-                {
-                    id:   'the life around the planet earth ➜ brazil',
-                    name: 'the life around the planet earth ➜ brazil',
-                    songs: [
-                        { id: '5r4i5MNRtgI', title: 'astronauta (nenhum de nós)' },
-                        { id: '8D7yIqJIMwA', title: 'primavera (tim maia)' },
-                        { id: 'gWSSanodnIs', title: 'baila comigo (rita lee)' },
-                        { id: 'R_mbnbcEIoE', title: 'eu te amo (ana carolina)' },
-                        { id: 'rfrpOhC6858', title: 'taj mahal (jorge ben jor)' },
-                        { id: '_rZCF09BeYw', title: 'o segundo sol (cassia eller)' },
-                        { id: 'wJ2prEKx3_Y', title: 'o leãozinho (caetano veloso)' },
-                        { id: 'JFfvlwfql-g', title: 'casinha de sape (kid abelha)' },
-                        { id: 'NK88geNsUmQ', title: 'te ver e nao te querer (skank)' },
-                        { id: '-NAqR4E5KnA', title: 'amor meu grande amor (angela roro)' },
-                        { id: '8uPXyMaU3co', title: 'paisagem da janela (milton nascimento)' },
-                        { id: 'Gbv4pB3YmL4', title: 'aguas de março (elis regina + tom jobim)' },
-                        { id: '8JKxOBUA3cY', title: 'assim caminha a humanidade (lulu santos)' },
-                        { id: 'ao65W_bOs5M', title: 'eu sei que vou te amar (vinicius de moraes)' },
-                    ]
-                },
-
-                {
-                    id:   'the life around the planet earth ➜ japan',
-                    name: 'the life around the planet earth ➜ japan',
-                    songs: []
-                },
-
             ],
 
-            currentPlaylistId: 'an ode to my future one and only love'
+            currentPlaylistId: 'spacetime journey through the galaxies'
         };
     }
 

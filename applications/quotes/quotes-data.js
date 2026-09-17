@@ -682,5 +682,6 @@ window.QUOTES = [
     { text: 'mature men who know who they are and have their lives together are ridiculously hot on an incommensurable scale.', author: 'marina von steinkirch' },
     { text: 'kindness is wisdom.', author: 'marina von steinkirch' },
     { text: 'i cannot wait to live every next day of the rest of the life i still have in this world.', author: 'marina von steinkirch' },
+    { text: 'it took me a while to realize this fundamental truth about life, and that\' why i\'m sharing it: there is zero point in getting involved with a man who is not evidently husband and father material. and the damage they might do to you can last for years.', author: 'marina von steinkirch' },
 ];
 
