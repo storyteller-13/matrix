@@ -96,18 +96,18 @@ class MusicPlayerStorage {
                 },
 
                 {
-                    id:   'life around the planet earth ➜ america',
-                    name: 'life around the planet earth ➜ america',
+                    id:   'life around the planet earth ➜ europe',
+                    name: 'life around the planet earth ➜ europe',
                     songs: [
 
                     ]
                 },
 
                 {
-                    id:   'life around the planet earth ➜ europe',
-                    name: 'life around the planet earth ➜ europe',
+                    id:   'life around the planet earth ➜ america',
+                    name: 'life around the planet earth ➜ america',
                     songs: [
-
+                        { id: 'nbwn21TU4ec', title: 'under pressure (bowie)' },
                     ]
                 },
 
