@@ -8,6 +8,15 @@ const BOOKS_2026 = {
     sourceUrl: 'https://gist.github.com/von-steinkirch/abceab872b7a4bab220e64230f92a66a',
     months: [
         {
+            id: 'september',
+            label: 'september',
+            count: 2,
+            books: [
+                { title: 'cryptonomicon (neal stephenson)', rating: 'tba', url: 'tba', note: 'my thoughts' },
+                { title: 'the emperors new mind (roger penrose)', rating: 'tba', url: 'tba', note: 'my thoughts' },
+            ]
+        },
+        {
             id: 'august',
             label: 'august',
             count: 4,
@@ -279,6 +288,7 @@ const BOOKS_2026 = {
         { title: 'free will (harris)' },
         { title: 'determined: a science of life without free wil (sapolsky)' },
         { title: 'in the theater of consciousness (baars)', url: 'https://books.google.com/books?hl=en&lr=&id=RTpmQkXoUMEC&oi=fnd&pg=PR13&ots=ZnmiwNpWOe&sig=nRGfRhlNN0Zp0lhZMdIl46Sq4c0#v=onepage&q&f=false' },
+        { title: 'east of eden (john steinbeck)' },
     ]
 };
 

@@ -388,16 +388,6 @@ describe('MusicPlayer', () => {
         existing.options.events.onError({ data: 2 });
     });
 
-    it('loadPlaylists falls back to defaults when the current playlist is empty', () => {
-        const player = new window.MusicPlayerClass();
-        player.playlistsData.currentPlaylistId = 'life around the planet earth ➜ japan';
-        player.storage.save(player.playlistsData);
-        player.currentSongIndex = 3;
-        player.loadPlaylists();
-        expect(player.songs.length).toBeGreaterThan(0);
-        expect(player.currentSongIndex).toBe(0);
-    });
-
     it('switchPlaylist no-ops without data and sets up a missing player', () => {
         const player = new window.MusicPlayerClass();
         player.playlistsData = null;

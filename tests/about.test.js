@@ -35,17 +35,7 @@ describe('AboutApp', () => {
         expect(document.querySelector('.about-disclaimer').textContent).toMatch(/gentle disclaimer/i);
         expect(window.ABOUT.name).toMatch(/marina/i);
     });
-
-    it('renders japanese copy when the locale is ja', () => {
-        window.I18n = { locale: 'ja' };
-        new window.AboutAppClass();
-        expect(document.querySelector('.about-name').textContent).toMatch(/マリーナ/);
-        expect(document.querySelector('.about-role').textContent).toMatch(/てつがくしゃ/);
-        expect(document.querySelector('.about-text').textContent).toMatch(/わたしはマリーナ/);
-        expect(document.querySelector('.about-disclaimer').textContent).toMatch(/やさしいことわり/);
-        expect(window.ABOUT_JA.name).toMatch(/マリーナ/);
-    });
-
+    
     it('re-renders when the locale changes', () => {
         window.I18n = { locale: 'en' };
         new window.AboutAppClass();

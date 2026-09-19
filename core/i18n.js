@@ -88,7 +88,7 @@ const I18N_STRINGS = {
         'calendar.next': 'next month',
         'calendar.event.newMoon': 'new moon',
         'calendar.event.fullMoon': 'full moon',
-        'calendar.event.newPost': 'new post',
+        'calendar.event.newPost': 'inaugural story',
         'calendar.weekday.sun': 's',
         'calendar.weekday.mon': 'm',
         'calendar.weekday.tue': 't',
@@ -118,7 +118,7 @@ const I18N_STRINGS = {
         'lists.rating': 'rating',
         'lists.notes': 'notes',
         'lists.thoughts': 'my thoughts',
-        'lists.backlog': 'my endeless ever-changing backlog',
+        'lists.backlog': 'my endless ever-changing backlog',
         'lists.folderEmpty': 'this folder is empty',
         'lists.back': 'back',
         'todo.empty': 'no tasks yet',
@@ -135,10 +135,10 @@ const I18N_STRINGS = {
         'notes.hello.title': 'hello starlit world',
         'notes.hello.content': `i am a scholar, always creating the sublime.
 
-in the next years, as i continue to grow,
+in the next years, as i continue to grow
 my career, home, family, and all my dreams,
 
-i'll be talking about good books, films, music, art
+i'll be talking about good books, films, music, art,
 and all the beauties of this life; with you, in here.
 
 i'll be documenting our journey on the weekends,

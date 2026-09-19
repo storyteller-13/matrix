@@ -25,7 +25,7 @@ class MusicPlayerStorage {
     load() {
         const stored = localStorage.getItem(this.storageKey);
         let data;
-        
+
         if (stored) {
             try {
                 data = JSON.parse(stored);
@@ -37,7 +37,7 @@ class MusicPlayerStorage {
             data = this.getDefaultData();
             this.save(data);
         }
-        
+
         return data;
     }
 
@@ -65,7 +65,6 @@ class MusicPlayerStorage {
                     id:   'spacetime journey through the galaxies',
                     name: 'spacetime journey through the galaxies',
                     songs: [
-                        
                         { id: 'pDyl6I6ESSw', title: 'space oddity (bowie)' },
                         { id: 'o7WGrdg-p4Y', title: 'a deep breath (giuseppe centonze)' },
                         { id: 'IysMLKomjXs', title: 'singularity (james malikey)' },
@@ -75,51 +74,22 @@ class MusicPlayerStorage {
                         { id: 'LTiqKDrjqr4', title: 'summer\'26 stargazing fest (lofi girl)' },
                         { id: '2gezcxmmy30', title: 'love is in small things (puuung1)' },
                         { id: '6K5yqX4Np1Y', title: 'hyperion (ambient civilization)' },
-                        { id: '5KvDE_xdAOM', title: 'the archangel and the dragon (quiet gallery)' }, 
                         { id: 'v1ZkSsxl98A', title: 'a moment before forever (sci-fi ambience)' },
                         { id: 'JcHtM0PEETo', title: 'stillness in the cosmos (spiritual brother sci-fi)' },
-                        { id: 'FaJ40cZUz84', title: 'drifting in your room among the stars (future city)' },
+                        { id: 'oJ5ciSr8rAc', title: 'all that we perceive (thievery corporation)' },
                     ]
                 },
 
                 {
-                    id:   'when i was young, in a faraway reality',
-                    name: 'when i was young, in a faraway reality',
-                    songs: []
-                },
-
-
-                {
-                    id:   'life around the planet earth ➜ japan',
-                    name: 'life around the planet earth ➜ japan',
-                    songs: []
-                },
-
-                {
-                    id:   'life around the planet earth ➜ europe',
-                    name: 'life around the planet earth ➜ europe',
-                    songs: [
-
-                    ]
-                },
-
-                {
-                    id:   'life around the planet earth ➜ america',
-                    name: 'life around the planet earth ➜ america',
-                    songs: [
-                        { id: 'nbwn21TU4ec', title: 'under pressure (bowie)' },
-                    ]
-                },
-
-                {
-                    id:   'life around the planet earth ➜ brazil',
-                    name: 'life around the planet earth ➜ brazil',
+                    id:   'life around our beautiful planet ➜ brazil',
+                    name: 'life around our beautiful planet ➜ brazil',
                     songs: [
                         { id: '5r4i5MNRtgI', title: 'astronauta (nenhum de nós)' },
                         { id: '8D7yIqJIMwA', title: 'primavera (tim maia)' },
                         { id: 'gWSSanodnIs', title: 'baila comigo (rita lee)' },
                         { id: 'R_mbnbcEIoE', title: 'eu te amo (ana carolina)' },
                         { id: 'rfrpOhC6858', title: 'taj mahal (jorge ben jor)' },
+                        { id: 'Fc9e27PFIlo', title: 'joao e maria (chico buarque)' },
                         { id: '_rZCF09BeYw', title: 'o segundo sol (cassia eller)' },
                         { id: 'wJ2prEKx3_Y', title: 'o leãozinho (caetano veloso)' },
                         { id: 'JFfvlwfql-g', title: 'casinha de sape (kid abelha)' },
@@ -129,46 +99,14 @@ class MusicPlayerStorage {
                         { id: 'Gbv4pB3YmL4', title: 'aguas de março (elis regina + tom jobim)' },
                         { id: '8JKxOBUA3cY', title: 'assim caminha a humanidade (lulu santos)' },
                         { id: 'ao65W_bOs5M', title: 'eu sei que vou te amar (vinicius de moraes)' },
-                    ]
-                },
-
-                {
-                    id:   'an ode to my future one and only love',
-                    name: 'an ode to my future one and only love',
-                    songs: [
-                        { id: 'ZoC9_udLNeU', title: 'let\'s dance (bowie)' },
-                        { id: '5f3sMmdG2sg', title: 'sunshine (jungle)' },
-                        { id: 'G2nJPEDc02k', title: 'levitating (dua lipa)' },
-                        { id: 'oHRNrgDIJfo', title: 'feeling good (nina simone)' },
-                        { id: 'zp7NtW_hKJI', title: 'a sky full of stars (coldplay)' },
-                        { id: 'x11NA63gLDM', title: 'change the world (eric clapton)' },
-                    ]
-                },
-
-                {
-                    id:   'all those free people inside the babel',
-                    name: 'all those free people inside the babel',
-                    songs: [
-                        { id: '44FId4BpMx0', title: 'heroes (bowie)' },
-                        { id: 'tVXXD7KXAec', title: 'rescuer (alex warren)' },
-                        { id: '-qcko5RfeLc', title: 'demon days (gorillaz)' },
-                        { id: '3Zzz-xpjshM', title: 'time (alabama shakes)' },
-                        { id: 'aWpw-Ynl0Yc', title: 'bass persuades (miley)' },
-                        { id: 'afSgBNwmZrQ', title: 'petal (ariana grande)' },
-                        { id: 'HVHUjzZZGQ4', title: 'island in the sun (weezer)' },
-                        { id: 'Tk9TM7-eTmw', title: 'joseph (falling in reverse)' },
-                        { id: 'oytaoGL-mck', title: 'princess of the night (train)' },
-                        { id: 'fDltPLFdkYI', title: 'power in the blood (polyphia)' },    
-                        { id: 'fpQstZwQL5M', title: 'living undercover (rise against)' },  
-                        { id: 'AXWHQb9VsJA', title: 'teach yourself (david duchovny)' }, 
-                        { id: 'KWn5FkkuYwk', title: 'hear me now (kaskade x friends)' },
-                        { id: '8NikIaI6gQM', title: 'rabbit ♡ (florence + the machine)' },
-                        { id: 'zdJYdfkOJeg', title: 'the pretty girl in the tower (halsey)' },
-                        { id: 'mi7KlC1hxpI', title: 'can\'t you see (bonobo + aanya martin)' },
-                        { id: 'UezrC5nNQxE', title: 'when you\'ve had enough (evanescence)' },
-                        { id: 'oJ5ciSr8rAc', title: 'all that we perceive (thievery corporation)' },
                         { id: 'TnK29aJCOp4', title: 'stairway to heaven (orquestra sinfônica curitiba)' },
                     ]
+                },
+
+                {
+                    id:   'life around our beautiful planet ➜ japan',
+                    name: 'life around our beautiful planet ➜ japan',
+                    songs: []
                 },
 
             ],

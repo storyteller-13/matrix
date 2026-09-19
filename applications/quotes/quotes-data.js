@@ -3,7 +3,7 @@
  * Add or edit entries; each is { text: string, author: string }.
  */
 window.QUOTES = [
-    
+
     // confucius
     { text: 'we have two lives, and the second begins when we realize we only have one.', author: 'confucius' },
     { text: 'pure perfection can be found only in god; one\'s life consists of becoming closer to god.', author: 'confucius' },
@@ -287,7 +287,7 @@ window.QUOTES = [
     // arthur c clarke
     { text: 'if a scientist says that something is possible she is almost certainly right, but if she says that it is impossible, she is very probably wrong.', author: 'arthur c. clarke' },
 
-    // niccolò machiavelli 
+    // niccolò machiavelli
     { text: 'there is nothing more difficult to take in hand, more perilous to conduct, or more uncertain in its success, than to take the lead in the introduction of a new order of things.', author: 'niccolò machiavelli' },
     { text: 'there is nothing more difficult to take in hand, more perilous to conduct, or more uncertain in its success, than to take the lead in the introduction of a new order of things.', author: 'niccolò machiavelli' },
 
@@ -394,7 +394,7 @@ window.QUOTES = [
     { text: 'we haven\'t gotten any smarter, we\'ve just changed our representation system.', author: 'alan kay' },
     { text: 'art is anything you can get away with.', author: 'alan kay' },
     { text: 'the computer is the most remarkable tool we’ve ever come up with. it’s the equivalent of a bicycle for our minds.', author: 'alan kay' },
-    
+
     // ray kurzweil
     { text: 'the power of patterns to endure goes beyond explicitly self-replicating systems, such as organisms and self-replicating technology.', author: 'ray kurzweil' },
     { text: 'knowledge is precious in all its forms: music, art, science, and technology, as well as the embedded knowledge in our bodies and brains. any loss of this knowledge is tragic.', author: 'ray kurzweil' },
@@ -403,6 +403,7 @@ window.QUOTES = [
     // niels bohr
     { text: 'we all agree that your theory is crazy. the question which divides us is whether it is crazy enough.', author: 'niels bohr' },
     { text: 'an expert is a man who has made all the mistakes which can be made in a very narrow field.', author: 'niels bohr' },
+    { text: 'one must never forget that in the drama of existence we are ourselves both actors and spectators.', author: 'niels bohr'},
 
     // blaise pascal
     { text: 'belief is a wise wager; granted that faith cannot be proved, what harm will come to you if you gamble on its truth and it proves false?', author: 'blaise pascal' },
@@ -410,6 +411,7 @@ window.QUOTES = [
 
     // carl sagan
     { text: "i didn't make a decision to pursue astronomy. rather, it just grabbed me, and i had no thought of escaping.", author: 'carl sagan' },
+    { text: "imagination will often carry us to worlds that never were. But without it we go nowhere.", author: 'carl sagan'},
 
     // hannah arendt
     { text: 'the ideal subject of totalitarian rule is not the convinced nazi or the convinced communist, but people for whom the distinction between fact and fiction and the distinction between true and false', author: 'hannah arendt' },
@@ -609,11 +611,11 @@ window.QUOTES = [
     { text: 'being invincible means you will figure out how to get what you want, and you won\'t stop until you get it.', author: 'marina von steinkirch' },
     { text: 'i will never forget the day god became the girardian scapegoat, and died again by the undeniable logic of occam\'s razor.', author: 'marina von steinkirch' },
     { text: 'it cannot be labeled a "lie" if you are in the dark, being abused for years, fighting to recover your freedom, surviving through logical induction and miracles, while absolutely no one has the courage to help you or tell you what’s going on.', author: 'marina von steinkirch' },
-    { text: 'when you die, if you still stay around, your only role while in here is to protect the land.', author: 'marina von steinkirch' }, 
-    { text: 'no matter what you are going through at this moment, you are beautiful, your mind is free, and it will get better.', author: 'marina von steinkirch' }, 
-    { text: 'never underestimate the damage that a grifter can do to your state of mind, progress, and flow. it’s your responsibility to cut emotional ties with anyone who is sabotaging your well-being.', author: 'marina von steinkirch' }, 
-    { text: 'there is always a new day tomorrow, ready to be awesome and all yours. go to bed early.', author: 'marina von steinkirch' }, 
-    { text: 'once, i had the best day of the year right after one of the worst days of my life. never underestimate the power of changing the tide, setting a strong boundary, and leaving behind what is hurting and imprisoning you.', author: 'marina von steinkirch' }, 
+    { text: 'when you die, if you still stay around, your only role while in here is to protect the land.', author: 'marina von steinkirch' },
+    { text: 'no matter what you are going through at this moment, you are beautiful, your mind is free, and it will get better.', author: 'marina von steinkirch' },
+    { text: 'never underestimate the damage that a grifter can do to your state of mind, progress, and flow. it’s your responsibility to cut emotional ties with anyone who is sabotaging your well-being.', author: 'marina von steinkirch' },
+    { text: 'there is always a new day tomorrow, ready to be awesome and all yours. go to bed early.', author: 'marina von steinkirch' },
+    { text: 'once, i had the best day of the year right after one of the worst days of my life. never underestimate the power of changing the tide, setting a strong boundary, and leaving behind what is hurting and imprisoning you.', author: 'marina von steinkirch' },
     { text: 'when trying to understand a collective system, ask what is scarce, what is abundant, and how those variables will always shape incentives and behavior.', author: 'marina von steinkirch' },
     { text: 'if you want to keep your sanity in this world, you have to accept that there will be people who will never understand you, no matter how hard you try. the sane choice is to remove them from your thoughts, your decisions, and your life.', author: 'marina von steinkirch' },
     { text: 'true love is easy, honest, trusting, reliable, stable, and safe. period.', author: 'marina von steinkirch' },
@@ -639,7 +641,7 @@ window.QUOTES = [
     { text: 'evil is a clown.', author: 'marina von steinkirch' },
     { text: 'being a slave taught me that there is a threshold of pain and abuse beyond which you become desensitized, and your oppressor no longer has power over you.', author: 'marina von steinkirch' },
     { text: 'the true source of evil always reveals itself.', author: 'marina von steinkirch' },
-    { text: 'do not let them forget your magic; do not let them forget your worth; do not let them forget who you are.', author: 'marina von steinkirch' }, 
+    { text: 'do not let them forget your magic; do not let them forget your worth; do not let them forget who you are.', author: 'marina von steinkirch' },
     { text: 'let the tongues talk; the circles will always be there. do not change your course, and do not let them affect you. live your life with integrity, and the power they have over you will always be temporary and limited.', author: 'marina von steinkirch' },
     { text: 'there will be a moment when you will have to make a choice regarding standing up for what\'s right; this choice cannot be postponed for too long.', author: 'marina von steinkirch' },
     { text: 'every single time you attacked someone weaker than you, you brought a little piece of injustice and evil to the scales of the world.', author: 'marina von steinkirch' },
@@ -683,5 +685,18 @@ window.QUOTES = [
     { text: 'kindness is wisdom.', author: 'marina von steinkirch' },
     { text: 'i cannot wait to live every next day of the rest of the life i still have in this world.', author: 'marina von steinkirch' },
     { text: 'it took me a while to realize this fundamental truth about life, and that\' why i\'m sharing it: there is zero point in getting involved with a man who is not evidently husband and father material. and the damage they might do to you can last for years.', author: 'marina von steinkirch' },
+    { text: 'i guess, in the face of a deadlock, all one can do is have a big ’n’ old laugh.', author: 'marina von steinkirch' },
+    { text: 'there are two types of people in the world: those who do the hard work, and those who mock, ridicule, gossip, and get in the way of those who do the hard work.', author: 'marina von steinkirch' },
+    { text: 'the world might be insane, but my own world is not. that\'s why strong boundaries are so important.', author: 'marina von steinkirch' },
+    { text: 'unless you are a psychopath, you have kindness, compassion, and sweetness inside yourself. this is your most beautiful side. don\'t let the unavoidable scars from life make you forget that.', author: 'marina von steinkirch' },
+    { text: 'choosing kindness, integrity, and honest work is an active choice. it takes energy at first, but over time it has the potential to become the default habit.', author: 'marina von steinkirch' },
+    { text: 'everybody might deny it, but everybody is searching to be seen and to be truly loved.', author: 'marina von steinkirch' },
+    { text: 'i never really thought about fame. it was never a goal or even a remote interest of mine. then it inevitably happened because all i do in life is work. i realized that once someone knows you, they will never unknow you. and i still have no idea how to deal with the process at scale.', author: 'marina von steinkirch' },
+    { text: 'a respectful and truthful friendship is as honorable as the lifelong love held by two soulmates.', author: 'marina von steinkirch' },
+    { text: 'there is still time for us all to work together for a future we never imagined before, and as good as any dream we had when we were young.', author: 'marina von steinkirch' },
+    { text: 'all the journeys in my life sum up in a state of mind where i cannot distinguish the world as a separate place anymore. anywhere and everywhere is home. anyone and everyone is a beautiful human.', author: 'marina von steinkirch' },
+    { text: 'we are not done until every single human in the world has access to food, home, privacy, and the liberty to chase any dream they want.', author: 'marina von steinkirch' },
+    { text: 'the truth and justice are final.', author: 'marina von steinkirch' },
+    { text: 'no feeling feels more free than that moment when you finally say "it\'s not my problem".', author: 'marina von steinkirch' },
+    { text: 'not until there is no longer this heartbroken disconnection between the divine feminine and the divine masculine will the world be at peace.', author: 'marina von steinkirch'}
 ];
-
