@@ -85,7 +85,8 @@ class MusicPlayerStorage {
                 {
                     id:   'when i was young, in a faraway reality',
                     name: 'when i was young, in a faraway reality',
-                    songs: []
+                    songs: [
+                    ]
                 },
 
 
@@ -98,16 +99,14 @@ class MusicPlayerStorage {
                 {
                     id:   'life around the planet earth ➜ europe',
                     name: 'life around the planet earth ➜ europe',
-                    songs: [
-
-                    ]
+                    songs: []
                 },
 
                 {
                     id:   'life around the planet earth ➜ america',
                     name: 'life around the planet earth ➜ america',
                     songs: [
-                        { id: 'nbwn21TU4ec', title: 'under pressure (bowie)' },
+                        { id: 'nbwn21TU4ec', title: 'under pressure (bowie + queens)' },
                     ]
                 },
 
@@ -120,6 +119,7 @@ class MusicPlayerStorage {
                         { id: 'gWSSanodnIs', title: 'baila comigo (rita lee)' },
                         { id: 'R_mbnbcEIoE', title: 'eu te amo (ana carolina)' },
                         { id: 'rfrpOhC6858', title: 'taj mahal (jorge ben jor)' },
+                        { id: 'Fc9e27PFIlo', title: 'joao e maria (chico buarque)' },
                         { id: '_rZCF09BeYw', title: 'o segundo sol (cassia eller)' },
                         { id: 'wJ2prEKx3_Y', title: 'o leãozinho (caetano veloso)' },
                         { id: 'JFfvlwfql-g', title: 'casinha de sape (kid abelha)' },

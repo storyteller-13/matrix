@@ -279,6 +279,7 @@ const BOOKS_2026 = {
         { title: 'free will (harris)' },
         { title: 'determined: a science of life without free wil (sapolsky)' },
         { title: 'in the theater of consciousness (baars)', url: 'https://books.google.com/books?hl=en&lr=&id=RTpmQkXoUMEC&oi=fnd&pg=PR13&ots=ZnmiwNpWOe&sig=nRGfRhlNN0Zp0lhZMdIl46Sq4c0#v=onepage&q&f=false' },
+        { title: 'east of eden (john steinbeck)' },
     ]
 };
 

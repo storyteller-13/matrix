@@ -463,7 +463,7 @@ class MusicPlayer {
             const isExpanded = this.expandedPlaylists.has(playlist.id);
             const songs = playlist.songs || [];
             const songsHtml = songs.length === 0
-                ? `<div class="music-song-soon">soon</div>`
+                ? `<div class="music-song-soon">this playlist is under construction</div>`
                 : songs.map((song, songIndex) => {
                     const isActive = isCurrentPlaylist && songIndex === this.currentSongIndex;
                     return `

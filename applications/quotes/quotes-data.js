@@ -683,5 +683,17 @@ window.QUOTES = [
     { text: 'kindness is wisdom.', author: 'marina von steinkirch' },
     { text: 'i cannot wait to live every next day of the rest of the life i still have in this world.', author: 'marina von steinkirch' },
     { text: 'it took me a while to realize this fundamental truth about life, and that\' why i\'m sharing it: there is zero point in getting involved with a man who is not evidently husband and father material. and the damage they might do to you can last for years.', author: 'marina von steinkirch' },
+    { text: 'i guess, in the face of a deadlock, all one can do is have a big ’n’ old laugh.', author: 'marina von steinkirch' },
+    { text: 'there are two types of people in the world: those who do the hard work, and those who mock, ridicule, gossip, and get in the way of those who do the hard work.', author: 'marina von steinkirch' },
+    { text: 'the world might be insane, but my own world is not. that\'s why strong boundaries are so important.', author: 'marina von steinkirch' },
+    { text: 'unless you are a psychopath, you have kindness, compassion, and sweetness inside yourself. this is your most beautiful side. don\'t let the unavoidable scars from life make you forget that.', author: 'marina von steinkirch' },
+    { text: 'choosing kindness, integrity, and honest work is an active choice. it takes energy at first, but over time it has the potential to become the default habit.', author: 'marina von steinkirch' },
+    { text: 'everybody might deny it, but everybody is searching to be seen and to be truly loved.', author: 'marina von steinkirch' },
+    { text: 'i never really thought about fame. it was never a goal or even a remote interest of mine. then it inevitably happened because all i do in life is work. i realized that once someone knows you, they will never unknow you. and i still have no idea how to deal with the process at scale.', author: 'marina von steinkirch' },
+    { text: 'a respectful and truthful friendship is as honorable as the lifelong love held by two soulmates.', author: 'marina von steinkirch' },
+    { text: 'there is still time for us all to work together for a future we never imagined before, and as good as any dream we had when we were young.', author: 'marina von steinkirch' },
+    { text: 'all the journeys in my life sum up in a state of mind where i cannot distinguish the world as a separate place anymore. anywhere and everywhere is home. anyone and everyone is a beautiful human.', author: 'marina von steinkirch' },
+    { text: 'we are not done until every single human in the world has access to food, home, privacy, and the liberty to chase any dream they want.', author: 'marina von steinkirch' },
+    { text: 'the truth and justice are final.', author: 'marina von steinkirch' },
 ];
 
