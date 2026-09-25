@@ -106,7 +106,9 @@ class MusicPlayerStorage {
                 {
                     id:   'life around our beautiful planet ➜ japan',
                     name: 'life around our beautiful planet ➜ japan',
-                    songs: []
+                  songs: [
+                        { id: 'D4cAD8sJ6Gc', title: 'dream odyssey (mono)' },
+                  ]
                 },
 
             ],

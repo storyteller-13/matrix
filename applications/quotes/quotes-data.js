@@ -241,7 +241,7 @@ window.QUOTES = [
     { text: "defiance and acceptance belong together. there is always a countermove, another path, or a way through. there is no reason to panic. the way exists for those willing to find it.", author: "ryan holiday" },
     { text: "if your nerve holds, then nothing of real consequence has happened. your perception determines its significance.", author: "ryan holiday" },
     { text: "panic causes mistakes. people override systems, ignore procedures, abandon plans, and lose the ability to think clearly.", author: "ryan holiday" },
-    { text: "life is no different. obstacles stir emotion, but we overcome them only by keeping those emotions under control. the greeks called this apatheia.", author: "ryan holiday" },
+    { text: "obstacles stir emotion, but we overcome them only by keeping those emotions under control. the greeks called this apatheia.", author: "ryan holiday" },
     { text: "remind yourself: 'i am in control, not my emotions. i see what is really happening. i will not become excited or upset.'", author: "ryan holiday" },
     { text: "we cannot change the obstacles themselves, but we can change our perspective. perspective changes how obstacles appear.", author: "ryan holiday" },
     { text: "the struggle against an obstacle inevitably raises us to a higher level. the greater the struggle, the greater the growth. the obstacle is an advantage, not adversity.", author: "ryan holiday" },

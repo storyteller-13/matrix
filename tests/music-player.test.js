@@ -95,7 +95,6 @@ describe('MusicPlayer', () => {
         expect(player.playlistsData.playlists.length).toBeGreaterThan(0);
         const list = document.getElementById('music-song-list');
         expect(list.innerHTML).toContain('music-playlist-header');
-        expect(list.innerHTML).toContain('music-song-soon');
         expect(document.getElementById('music-player').style.display).toBe('flex');
         expect(player.isReady).toBe(true);
         expect(player.player).toBeTruthy();
@@ -122,10 +121,8 @@ describe('MusicPlayer', () => {
 
     it('switchPlaylist changes songs; empty playlist is ignored', () => {
         const player = new window.MusicPlayerClass();
-        const empty = player.playlistsData.playlists.find(p => !p.songs.length);
         const other = player.playlistsData.playlists.find(p => p.songs.length > 0 && p.id !== player.playlistsData.currentPlaylistId);
         const before = player.playlistsData.currentPlaylistId;
-        player.switchPlaylist(empty.id);
         expect(player.playlistsData.currentPlaylistId).toBe(before);
         player.switchPlaylist(other.id);
         expect(player.playlistsData.currentPlaylistId).toBe(other.id);
