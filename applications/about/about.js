@@ -11,26 +11,32 @@ my real job is actually being an engineer and a scientist, which i have been doi
 
 my career as a scholar and builder has always been my main focus in life, and i am pretty proud of what i have been able to achieve so far. i am looking forward to the many more achievements to come. in addition, i have always been a very private person and never had social media, nor any interest in growing an audience or building a brand (because none of that is necessary for my profession, nor is it part of my personality). but i wanted a space for storytelling and creative expression. working on this particular project — matrix — is so much fun. it’s really relaxing for me.
 
-i am also a hermit. however, i am still a pretty happy human. i love myself, my life, my routine, and all the projects and adventures i work on. and i love studying and experiencing things such as astronomy, chess, languages, computer science, physics, mathematics, philosophy, literature, history, movies, art, traveling, and music.
+i am a pretty happy human. i love myself, my life, my routine, and all the projects and adventures i work on. and i love studying and experiencing things such as astronomy, chess, languages, computer science, physics, mathematics, philosophy, literature, history, movies, art, traveling, and music.
 
 that's it and thank you for reading!
 
 `,
-    disclaimer: `🩷 gentle disclaimer: you might notice that none of my public work have ever, at any point, had any option for feedback or comments. this is intentional: they are monologues. i am not trying to connect or send messages to anyone online. and, again, my personal life is and has always been offline and very private. any of my outreach projects are simply free-speech, handmade, authentic, expressive projects, with no desire or need to build an audience, make a profit, become popular, or anything like that.`
 };
 
 const ABOUT_JA = {
     name: 'マリーナ・フォン・シュタインキルヒ',
     role: 'せんさい · がんばりや · らくてんてき · てつがくしゃ',
-    text: `こんにちは、マリナです。ここは私の個人的な場所で、自由な時間に、ちょっとした考えや物語を共有しています。
+    text: `私はマリーナです。ここは私の個人的な空間で、自由な時間に、自分の考えや日々の物語を少しずつ綴っています。
 
-本業は、実はエンジニアであり科学者でもあります。ほぼ30年間、休むことなくフルタイムで続けてきて、時間の大半は、技術や科学に関する自分の取り組みにひっそりと費やしています。これこそが私の本当の目的なので、ぜひ私のウェブサイトも見てみてください！
+本業はエンジニアであり、科学者です。もうほぼ30年にわたって、一度も途切れることなくフルタイムでこの仕事を続けています。普段は人目につかないところで、技術や科学に関するさまざまな活動に、ほとんどの時間を費やしています。これこそが私の本当の目的であり、人生の中心です。ぜひ私のウェブサイトも覗いてみてください！
 
-学者として、ものづくりをする者としてのキャリアは、ずっと人生の中心にあり、これまで成し遂げてきたことをとても誇りに思っています。これから先の多くの成果も楽しみです。また、私はずっとプライベートを大切にする人間で、SNSをやったことは一度もなく、オーディエンスを増やすことにも、ブランドを築くことにも興味がありません（仕事にそれらは必要ありませんし、私の性格にも合わないからです）。それでも、物語を語り、創造的に表現できる場所がほしかったのです。この「matrix」というプロジェクトに取り組むのはとても楽しくて、私にとっては心が休まる時間でもあります。
+研究者として、そしてものを生み出す人としてのキャリアは、いつも私の人生における最も大切なものです。そして、これまで成し遂げてきたことを、私はかなり誇りに思っています。これからさらに多くのことを成し遂げていけることを楽しみにしています。
 
-私は隠者でもあります。それでも、かなり幸せな人間です。自分自身も、自分の人生も、日々のルーティンも、取り組んでいるすべてのプロジェクトや冒険も大好きです。そして、天文学、チェス、語学、コンピュータサイエンス、物理学、数学、哲学、文学、歴史、映画、アート、旅行、音楽といったものを学んだり体験したりすることも大好きです。以上です。読んでくれてありがとう！
+また、私は昔からとてもプライベートな人間で、これまでソーシャルメディアを持ったこともありませんし、フォロワーを増やしたり、ブランドを築いたりすることにも興味がありませんでした。そもそも、そうしたことは私の職業には必要ありませんし、私自身の性格にも合っていません。
 
-🩷 やさしいお断り：私が公開している作品には、これまで一度もフィードバックやコメントの機能がないことにお気づきかもしれません。これは意図的なものです。どれもモノローグ（独白）だからです。私はオンラインで誰かとつながったり、メッセージを送ったりしようとしているわけではありません。繰り返しになりますが、私の私生活は、今もこれまでもずっとオフラインで、とてもプライベートなものです。私の発信のプロジェクトはどれも、手づくりで、本物の、表現としての自由な発言にすぎず、オーディエンスを築いたり、利益を得たり、人気者になったりしたいという願望も必要もありません。`
+ただ、物語を綴ったり、創造的に自分を表現したりできる場所が欲しかったのです。この「Matrix」というプロジェクトに取り組むのは、とても楽しいです。私にとって本当にリラックスできる時間でもあります。
+
+私は、自分ではかなり幸せな人間だと思っています。自分自身も、自分の人生も、日々の生活も、そして取り組んでいるすべてのプロジェクトや冒険も大好きです。
+
+そして、天文学、チェス、言語、コンピューターサイエンス、物理学、数学、哲学、文学、歴史、映画、芸術、旅行、音楽など、さまざまなことを学んだり、実際に体験したりすることが大好きです。
+
+そんなところです。読んでくださって、ありがとうございます！
+`
 };
 
 class AboutApp extends BaseApp {

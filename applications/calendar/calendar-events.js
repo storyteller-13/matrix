@@ -22,6 +22,12 @@ window.CALENDAR_EVENTS = [
         label: 'full moon'
     },
     {
+        date: '2026-09-27',
+        type: 'd-day',
+        labelKey: 'calendar.event.DDay',
+        label: 'd-day'
+    },
+    {
         date: '2026-10-10',
         type: 'new-moon',
         labelKey: 'calendar.event.newMoon',

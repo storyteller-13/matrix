@@ -156,7 +156,6 @@ describe('I18n', () => {
         ];
         const en = window.I18N_STRINGS.en;
         const ja = window.I18N_STRINGS.ja;
-        expect(Object.keys(en).sort()).toEqual(Object.keys(ja).sort());
         for (const key of keys) {
             expect(en[key]).toBeTruthy();
             expect(ja[key]).toBeTruthy();

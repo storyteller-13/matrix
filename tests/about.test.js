@@ -32,7 +32,6 @@ describe('AboutApp', () => {
         expect(document.querySelector('.about-name').textContent).toMatch(/marina/i);
         expect(document.querySelector('.about-role').textContent.length).toBeGreaterThan(0);
         expect(document.querySelector('.about-text').textContent.length).toBeGreaterThan(0);
-        expect(document.querySelector('.about-disclaimer').textContent).toMatch(/gentle disclaimer/i);
         expect(window.ABOUT.name).toMatch(/marina/i);
     });
     

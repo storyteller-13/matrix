@@ -88,6 +88,7 @@ const I18N_STRINGS = {
         'calendar.next': 'next month',
         'calendar.event.newMoon': 'new moon',
         'calendar.event.fullMoon': 'full moon',
+        'calendar.event.DDay': 'd-day',
         'calendar.event.newPost': 'inaugural story',
         'calendar.weekday.sun': 's',
         'calendar.weekday.mon': 'm',

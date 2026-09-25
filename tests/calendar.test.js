@@ -122,6 +122,7 @@ describe('CalendarPanel', () => {
                 'calendar.weekday.sun': '日',
                 'calendar.event.newMoon': 'しんげつ',
                 'calendar.event.fullMoon': 'まんげつ',
+                'calendar.event.DDay': 'd-day',
                 'calendar.event.newPost': 'あたらしい投稿'
             }[key] || key)
         };
@@ -137,6 +138,7 @@ describe('CalendarPanel', () => {
                 'calendar.weekday.sun': 's',
                 'calendar.event.newMoon': 'new moon',
                 'calendar.event.fullMoon': 'full moon',
+                'calendar.event.DDay': 'd-day',
             }[key] || key)
         };
         document.dispatchEvent(new CustomEvent('localechange', { detail: { locale: 'en' } }));
