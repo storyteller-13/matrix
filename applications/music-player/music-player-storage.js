@@ -74,6 +74,7 @@ class MusicPlayerStorage {
                         { id: 'LTiqKDrjqr4', title: 'summer\'26 stargazing fest (lofi girl)' },
                         { id: '2gezcxmmy30', title: 'love is in small things (puuung1)' },
                         { id: '6K5yqX4Np1Y', title: 'hyperion (ambient civilization)' },
+                        { id: '4Ymarg9u0v0', title: '夢見る街  (future city)' },
                         { id: 'v1ZkSsxl98A', title: 'a moment before forever (sci-fi ambience)' },
                         { id: 'JcHtM0PEETo', title: 'stillness in the cosmos (spiritual brother sci-fi)' },
                         { id: 'oJ5ciSr8rAc', title: 'all that we perceive (thievery corporation)' },
