@@ -134,17 +134,17 @@ const I18N_STRINGS = {
         'notes.share': 'share',
         'notes.shareCopied': 'copied',
         'notes.hello.title': 'hello starlit world',
-        'notes.hello.content': `i am a scholar, always creating the sublime.
+        'notes.hello.content': ` i'm that cool scholar always creating the sublime...
 
-in the next years, as i continue to grow
+in the years ahead, as i continue to grow
 my career, home, family, and all my dreams,
-
 i'll be talking about good books, films, music, art,
-and all the beauties of this life; with you, in here.
+and all the beauties of this life; with you, here.
 
-i'll be documenting our journey on the weekends,
-starting sometime this fall.
+i'll be documenting our journey and the party,
+usually on friday nights or over the weekends.
 
+(starting at some point before halloween)
 (for now, enjoy my carefully curated little mixtapes)`,
         'notes.weekday.sunday': 'sunday',
         'notes.weekday.monday': 'monday',

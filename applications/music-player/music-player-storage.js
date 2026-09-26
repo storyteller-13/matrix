@@ -81,43 +81,58 @@ class MusicPlayerStorage {
                 },
 
                 {
-                    id:   'all those free people inside the babel',
-                    name: 'all those free people inside the babel',
+                    id:   'the free people inside babel ➜ prelude',
+                    name: 'the free people inside babel ➜ prelude',
                     songs: [
                         { id: '44FId4BpMx0', title: 'heroes (bowie)' },
-                        { id: '1mCN-RDh0-0', title: 'silencio (u2)' },
                         { id: 'ooX11qSJoxQ', title: 'the last run on the ladder (tom morello)' },
-                        { id: 'tVXXD7KXAec', title: 'rescuer (alex warren)' },
+                        { id: 'eAOIpDUDGX4', title: 'where the goth girls at? (queen of the stone age)' },
                         { id: '-qcko5RfeLc', title: 'demon days (gorillaz)' },
-                        { id: '3Zzz-xpjshM', title: 'time (alabama shakes)' },
-                        { id: 'aWpw-Ynl0Yc', title: 'bass persuades (miley)' },
                         { id: 'afSgBNwmZrQ', title: 'petal (ariana grande)' },
-                        { id: 'HVHUjzZZGQ4', title: 'island in the sun (weezer)' },
-                        { id: 'Tk9TM7-eTmw', title: 'joseph (falling in reverse)' },
-                        { id: 'oytaoGL-mck', title: 'princess of the night (train)' },
-                        { id: 'fDltPLFdkYI', title: 'power in the blood (polyphia)' },    
-                        { id: 'fpQstZwQL5M', title: 'living undercover (rise against)' },  
-                        { id: 'AXWHQb9VsJA', title: 'teach yourself (david duchovny)' }, 
-                        { id: 'KWn5FkkuYwk', title: 'hear me now (kaskade x friends)' },
+                        { id: '1mCN-RDh0-0', title: 'silencio (u2)' },
+                        { id: 'xFMdDMELQIY', title: 'princess (drake)' },
+                        { id: 'Sqhuk0iaq4k', title: 'ghost (jhené aiko)' },
+                        { id: 'fpQstZwQL5M', title: 'living undercover (rise against)' },
                         { id: '8NikIaI6gQM', title: 'rabbit ♡ (florence + the machine)' },
                         { id: 'zdJYdfkOJeg', title: 'the pretty girl in the tower (halsey)' },
-                        { id: 'mi7KlC1hxpI', title: 'can\'t you see (bonobo + aanya martin)' },
                         { id: 'UezrC5nNQxE', title: 'when you\'ve had enough (evanescence)' },
-                        { id: 'oJ5ciSr8rAc', title: 'all that we perceive (thievery corporation)' },
-                        { id: 'TnK29aJCOp4', title: 'stairway to heaven (orquestra sinfônica curitiba)' },
+                        { id: 'Tk9TM7-eTmw', title: 'joseph (falling in reverse)' },
+                        { id: '6NZzjs3_VwY', title: 'burden the heavens (sabrina jordan)' },
                     ]
                 },
 
                 {
-                    id:   'an ode to my future one and only love',
-                    name: 'an ode to my future one and only love',
+                    id:   'the free people inside babel ➜ interlude',
+                    name: 'the free people inside babel ➜ interlude',
+                    songs: [
+                        { id: 'x11NA63gLDM', title: 'change the world (eric clapton)' },
+                        { id: 'jsILu2K6K3E', title: 'upperhand (apocalyptica)' },
+                        { id: 'fDltPLFdkYI', title: 'power in the blood (polyphia)' },
+                        { id: '3x2BXn0cPM8', title: 'roses (chvrches)' },
+                        { id: 'aWpw-Ynl0Yc', title: 'bass persuades (miley)' },
+                        { id: 'KWn5FkkuYwk', title: 'hear me now (kaskade x friends)' },
+                        { id: 'mi7KlC1hxpI', title: 'can\'t you see (bonobo + aanya martin)' },
+                        { id: 'oytaoGL-mck', title: 'princess of the night (train)' },
+                        { id: 'tVXXD7KXAec', title: 'rescuer (alex warren)' },
+                        { id: '3Zzz-xpjshM', title: 'time (alabama shakes)' },
+                        { id: 'AXWHQb9VsJA', title: 'teach yourself (david duchovny)' },
+                        { id: 'c0Y4PqvDvqc', title: 'the station of a showgirl (tay tay)' },
+                    ]
+                },
+
+
+                {
+                    id:   'the free people inside babel ➜ finale',
+                    name: 'the free people inside babel ➜ finale',
                     songs: [
                         { id: 'ZoC9_udLNeU', title: 'let\'s dance (bowie)' },
-                        { id: '5f3sMmdG2sg', title: 'sunshine (jungle)' },
                         { id: 'G2nJPEDc02k', title: 'levitating (dua lipa)' },
+                        { id: '5f3sMmdG2sg', title: 'sunshine (jungle)' },
                         { id: 'oHRNrgDIJfo', title: 'feeling good (nina simone)' },
                         { id: 'zp7NtW_hKJI', title: 'a sky full of stars (coldplay)' },
-                        { id: 'x11NA63gLDM', title: 'change the world (eric clapton)' },
+                        { id: 'HVHUjzZZGQ4', title: 'island in the sun (weezer)' },
+                        { id: 'oJ5ciSr8rAc', title: 'all that we perceive (thievery corporation)' },
+                        { id: 'TnK29aJCOp4', title: 'stairway to heaven (orquestra sinfônica curitiba)' },
                     ]
                 },
 
@@ -149,6 +164,7 @@ class MusicPlayerStorage {
                     name: 'life around our beautiful planet ➜ japan',
                   songs: [
                         { id: 'D4cAD8sJ6Gc', title: 'dream odyssey (mono)' },
+                        { id: 'CbnGz3qyzRA', title: 'ember (ichika nito)' },
                   ]
                 },
 

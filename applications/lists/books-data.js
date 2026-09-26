@@ -13,7 +13,7 @@ const BOOKS_2026 = {
             count: 2,
             books: [
                 { title: 'cryptonomicon (neal stephenson)', rating: 'tba', url: 'tba', note: 'my thoughts' },
-                { title: 'the emperors new mind (roger penrose)', rating: 'tba', url: 'tba', note: 'my thoughts' },
+                { title: 'the emperor\'s new mind (roger penrose)', rating: 'tba', url: 'tba', note: 'my thoughts' },
             ]
         },
         {

@@ -67,17 +67,17 @@ class NotesStorage {
             contentKey: 'notes.hello.content',
             title: 'hello starlit world',
             content: this.cleanContent(`
-            i am a scholar, always creating the sublime.
+            i'm that cool scholar always creating the sublime...
 
-            in the next years, as i continue to grow
+            in the years ahead, as i continue to grow
             my career, home, family, and all my dreams,
-
             i'll be talking about good books, films, music, art,
-            and all the beauties of this life; with you, in here.
+            and all the beauties of this life; with you, here.
 
-            i'll be documenting our journey on the weekends,
-            starting sometime this fall.
+            i'll be documenting our journey and the party
+            usually on friday nights or over the weekends.
 
+            (starting at some point before halloween)
             (for now, enjoy my carefully curated little mixtapes)
                 `)
             },
@@ -97,7 +97,7 @@ class NotesStorage {
         while (lines.length > 0 && lines[lines.length - 1].trim() === '') {
             lines.pop();
         }
-        
+
         let minIndent = Infinity;
         for (const line of lines) {
             if (line.trim() === '') continue;
@@ -111,7 +111,7 @@ class NotesStorage {
             if (line.trim() === '') return '';
             return line.substring(minIndent);
         });
-        
+
         return cleanedLines
             .join('\n')
             .replace(/\n{3,}/g, '\n\n') // Replace 3+ newlines with 2
@@ -143,4 +143,3 @@ class NotesStorage {
 }
 
 window.NotesStorage = NotesStorage;
-
