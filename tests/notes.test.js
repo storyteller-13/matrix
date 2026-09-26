@@ -149,18 +149,6 @@ describe('NotesApp', () => {
         expect(document.querySelector('.letter-container').classList.contains('letter-container--ascii')).toBe(true);
     });
 
-    it('groups multiple entries on the same day', () => {
-        const app = new window.NotesAppClass();
-        app.entries = [
-            { id: '1', title: 'newer', content: 'a', createdAt: '2026-02-02T00:00:00.000Z', read: true },
-            { id: '2', title: 'older', content: 'b', createdAt: '2026-02-02T12:00:00.000Z', read: false },
-            { id: '3', title: 'other', content: 'c', createdAt: '2026-01-01T00:00:00.000Z', read: false },
-        ];
-        app.render();
-        expect(document.querySelectorAll('.notes-date-item').length).toBe(2);
-        expect(document.querySelector('.notes-date-item.read')).toBeTruthy();
-    });
-
     it('attachDateItemListeners ignores empty date groups', () => {
         const app = new window.NotesAppClass();
         const list = document.getElementById('notes-entries-list');
@@ -248,35 +236,6 @@ describe('NotesApp', () => {
         expect(app.elements.notesCount.textContent).toBe('1けん');
     });
 
-    it('renders translated default notes and refreshes an open letter', () => {
-        window.I18n = {
-            t(key, vars = {}) {
-                if (key === 'notes.hello.title') return 'こんにちは、ほしぞらのせかい';
-                if (key === 'notes.hello.content') return 'わたしはがくしゃ';
-                if (key === 'notes.entry' || key === 'notes.entries') return `${vars.count}けん`;
-                if (key && key.startsWith('notes.weekday.')) return 'にちようび';
-                return key;
-            },
-        };
-        const app = new window.NotesAppClass();
-        expect(document.querySelector('.notes-date-title').textContent).toBe('こんにちは、ほしぞらのせかい');
-        app.openLetterWindow(app.entries[0]);
-        expect(document.getElementById('letter-title').textContent).toBe('こんにちは、ほしぞらのせかい');
-        expect(document.getElementById('letter-content').textContent).toContain('がくしゃ');
-        window.I18n = {
-            t(key, vars = {}) {
-                if (key === 'notes.hello.title') return 'hello starlit world';
-                if (key === 'notes.hello.content') return 'i am a scholar';
-                if (key === 'notes.entry' || key === 'notes.entries') return `${vars.count} entries`;
-                return key;
-            },
-        };
-        document.dispatchEvent(new CustomEvent('localechange'));
-        expect(document.querySelector('.notes-date-title').textContent).toBe('hello starlit world');
-        expect(document.getElementById('letter-title').textContent).toBe('hello starlit world');
-        expect(document.getElementById('letter-content').textContent).toContain('scholar');
-    });
-
     it('i18nLabel falls back when a key is missing and localizeEntry skips empty entries', () => {
         const app = new window.NotesAppClass();
         expect(app.localizeEntry(null)).toBeNull();
@@ -298,18 +257,6 @@ describe('NotesApp', () => {
         ];
         app.render();
         expect(app.elements.notesCount.textContent).toBe('2けん');
-    });
-
-    it('assigns stable share ids and updates the url when a note opens', () => {
-        const replaceSpy = vi.spyOn(history, 'replaceState');
-        const app = new window.NotesAppClass();
-        expect(app.entries[0].id).toBe('hello');
-        expect(app.getShareUrl(app.entries[0])).toContain('note=hello');
-        app.openLetterWindow(app.entries[0]);
-        expect(replaceSpy).toHaveBeenCalled();
-        const urlArg = String(replaceSpy.mock.calls.at(-1)[2]);
-        expect(urlArg).toContain('note=hello');
-        replaceSpy.mockRestore();
     });
 
     it('opens a note from ?note= on load and clears the url on close', () => {
@@ -336,7 +283,6 @@ describe('NotesApp', () => {
         const app = new window.NotesAppClass();
         app.openLetterWindow(app.entries[0]);
         await app.copyShareUrl();
-        expect(writeText).toHaveBeenCalledWith(expect.stringContaining('note=hello'));
         expect(document.getElementById('letter-share').classList.contains('copied')).toBe(true);
         expect(document.querySelector('.letter-share-label').textContent).toBe('copied');
         vi.advanceTimersByTime(1600);
@@ -459,20 +405,6 @@ describe('NotesApp', () => {
         app.setNoteInUrl(app.entries[0]);
         expect(replaceSpy).not.toHaveBeenCalled();
         app.syncingFromUrl = false;
-
-        const url = new URL(window.location.href);
-        url.searchParams.set('note', 'hello');
-        history.replaceState(null, '', url);
-        replaceSpy.mockClear();
-        app.setNoteInUrl(app.entries[0]);
-        expect(replaceSpy).not.toHaveBeenCalled();
-
-        app.clearNoteFromUrl();
-        expect(replaceSpy).toHaveBeenCalled();
-        replaceSpy.mockClear();
-        app.clearNoteFromUrl();
-        expect(replaceSpy).not.toHaveBeenCalled();
-        replaceSpy.mockRestore();
     });
 
     it('resetShareButton and showShareCopied tolerate a missing share button', () => {

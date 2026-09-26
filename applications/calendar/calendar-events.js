@@ -28,6 +28,12 @@ window.CALENDAR_EVENTS = [
         label: 'd-day'
     },
     {
+        date: '2026-09-28',
+        type: 'free',
+        labelKey: 'calendar.event.free',
+        label: 'i am free now'
+    },
+    {
         date: '2026-10-10',
         type: 'new-moon',
         labelKey: 'calendar.event.newMoon',

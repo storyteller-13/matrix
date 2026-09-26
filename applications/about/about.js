@@ -7,36 +7,31 @@ const ABOUT = {
     role: 'delicate · hardworking · optimistic · philosopher ',
     text: `i am marina, and this is a personal space where, during my free time, i share a little bit of my thoughts and stories.
 
-my real job is actually being an engineer and a scientist, which i have been doing full-time without stopping for almost three decades, and i spend most of my time privately working on my technical and scientific endeavors. this is my real purpose, and you should definitely check out my website!
+my real job is actually being an engineer and a scientist, which i have been doing full-time, without interruption, for almost three decades. i spend most of my time privately working on my technical and scientific endeavors. this is my real purpose, and you should definitely check out my website!
 
-my career as a scholar and builder has always been my main focus in life, and i am pretty proud of what i have been able to achieve so far. i am looking forward to the many more achievements to come. in addition, i have always been a very private person and never had social media, nor any interest in growing an audience or building a brand (because none of that is necessary for my profession, nor is it part of my personality). but i wanted a space for storytelling and creative expression. working on this particular project — matrix — is so much fun. it’s really relaxing for me.
+my career as a scholar and builder has always been my main focus in life, and i am pretty proud of what i have been able to achieve so far. i am looking forward to the many more achievements to come.
 
-i am a pretty happy human. i love myself, my life, my routine, and all the projects and adventures i work on. and i love studying and experiencing things such as astronomy, chess, languages, computer science, physics, mathematics, philosophy, literature, history, movies, art, traveling, and music.
+matrix was born because i wanted a space for storytelling and creative expression. working on this particular side project is really relaxing for me.
 
-that's it and thank you for reading!
+besides all that, i am a pretty happy human. i love my life, my routine, and all the projects and adventures i work on. i also love studying and experiencing things such as astronomy, chess, languages, computer science, physics, mathematics, philosophy, literature, history, movies, art, travel, and music.
 
-`,
+that's it, and thank you for reading!`,
 };
 
 const ABOUT_JA = {
     name: 'マリーナ・フォン・シュタインキルヒ',
     role: 'せんさい · がんばりや · らくてんてき · てつがくしゃ',
-    text: `私はマリーナです。ここは私の個人的な空間で、自由な時間に、自分の考えや日々の物語を少しずつ綴っています。
+    text: `わたしはまりなです。ここは、わたしが自由な時間に、自分の考えていることやちょっとした物語を少しずつ綴っている、個人的な場所です。
 
-本業はエンジニアであり、科学者です。もうほぼ30年にわたって、一度も途切れることなくフルタイムでこの仕事を続けています。普段は人目につかないところで、技術や科学に関するさまざまな活動に、ほとんどの時間を費やしています。これこそが私の本当の目的であり、人生の中心です。ぜひ私のウェブサイトも覗いてみてください！
+本業はエンジニアであり、科学者でもあります。もう30年近く、途切れることなくフルタイムでこの仕事を続けています。普段はほとんどの時間を、自分の技術的・科学的な研究やプロジェクトにひっそりと費やしています。これがわたしの本当の目的であり、ぜひわたしのウェブサイトも覗いてみてください！
 
-研究者として、そしてものを生み出す人としてのキャリアは、いつも私の人生における最も大切なものです。そして、これまで成し遂げてきたことを、私はかなり誇りに思っています。これからさらに多くのことを成し遂げていけることを楽しみにしています。
+研究者として、そして何かを生み出す人間としてのキャリアは、これまでずっと人生の中心でした。そして、これまで自分が成し遂げてきたことを、かなり誇りに思っています。これから先、さらにたくさんのことを成し遂げていけることを楽しみにしています。
 
-また、私は昔からとてもプライベートな人間で、これまでソーシャルメディアを持ったこともありませんし、フォロワーを増やしたり、ブランドを築いたりすることにも興味がありませんでした。そもそも、そうしたことは私の職業には必要ありませんし、私自身の性格にも合っていません。
+「matrix」は、物語を書いたり、創造的な表現をしたりするための場所が欲しくて始めました。この小さなサイドプロジェクトに取り組む時間は、わたしにとって本当にリラックスできるひとときです。
 
-ただ、物語を綴ったり、創造的に自分を表現したりできる場所が欲しかったのです。この「Matrix」というプロジェクトに取り組むのは、とても楽しいです。私にとって本当にリラックスできる時間でもあります。
+それはさておき、わたしはけっこう幸せな人間です。自分の人生も、日々のルーティンも、取り組んでいるたくさんのプロジェクトや冒険も大好きです。そして、天文学、チェス、言語、コンピューターサイエンス、物理学、数学、哲学、文学、歴史、映画、アート、旅行、音楽など、いろいろなことを学んだり、実際に体験したりするのも大好きです。
 
-私は、自分ではかなり幸せな人間だと思っています。自分自身も、自分の人生も、日々の生活も、そして取り組んでいるすべてのプロジェクトや冒険も大好きです。
-
-そして、天文学、チェス、言語、コンピューターサイエンス、物理学、数学、哲学、文学、歴史、映画、芸術、旅行、音楽など、さまざまなことを学んだり、実際に体験したりすることが大好きです。
-
-そんなところです。読んでくださって、ありがとうございます！
-`
+そんなところです。読んでくれて、ありがとう！`
 };
 
 class AboutApp extends BaseApp {

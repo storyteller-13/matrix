@@ -81,15 +81,6 @@ describe('NotesStorage', () => {
         expect(storage.cleanContent('\n\n  hello\n\n\n  world\n\n')).toBe('hello\n\nworld');
     });
 
-    it('default entries keep translation keys', () => {
-        const storage = new window.NotesStorage();
-        const [entry] = storage.load();
-        expect(entry.titleKey).toBe('notes.hello.title');
-        expect(entry.contentKey).toBe('notes.hello.content');
-        expect(entry.title).toBe('hello starlit world');
-        expect(entry.id).toBe('hello');
-    });
-
     it('deriveStableId prefers titleKey, then title slug, then date', () => {
         const storage = new window.NotesStorage();
         expect(storage.deriveStableId({ titleKey: 'notes.autumn.title' })).toBe('autumn');

@@ -61,6 +61,104 @@ class NotesStorage {
         return [
 
             {
+            id: 'prelude',
+            date: '2026-09-28T00:00:00.000Z',
+            titleKey: 'notes.prelude.title',
+            contentKey: 'notes.prelude.content',
+            title: 'prelude: this is d-day',
+            content: this.cleanContent(`
+hello again, my dear friends,
+
+artists, poets, philosophers, youtubers, scientists, engineers
+all of you who have entered my life when i needed angels,
+and all of you who want to remain in my life now that i finally have my own wings.
+
+(and to all those who decided to part ways, 
+i want to give you my respectful goodbye, and thank you for everything)
+
+there is so much i want to tell you,
+and so much i want to show you.
+
+things i've been building and dreaming about in secret.
+all the things you grasp when you transcend,
+when you level up into your final, best self.
+
+when i look back at these last few years, and abstract my human ego as much as i can,
+i see how this crime that happened to me could be translated as a huge quest to finally level up into what i always could have been, but didn't know i could be.
+
+only after everything is stripped from you
+do you realize that you can finally be who you really are, without excuses or fear.
+and now that i know, i can be it all.
+
+the big shift from the last events is that,
+i now understand the plot a little bit more.
+(well, not all of it, but enough to really let the story go for good)
+
+the big thing of the last few months is that
+i have built so much. i have produced so much.
+and i completely detached from old, outdated ideas.
+
+and what before was a torture every day,
+desperately trying to figure out what was going on,
+has slowly turned into something else.
+has turned into the final story of the past character.
+
+i look at all my work.
+all the influence i've had in the world.
+all the problems i've solved.
+how cool and fun i am.
+how much i know about so many things.
+
+and i just think...
+i am freaking awesome, i'm sorry =p
+
+and, i don't know, man...
+i'm kinda tired of all the drama...
+not really my thing...
+
+what is my thing is that
+i am the best engineer i've ever met.
+i have built so many cool things.
+i can build anything.
+i can solve any problem.
+
+i have never found a problem in my life that i couldn't solve by myself.
+and usually in the most creative and clever way.
+and i have so many achievements.
+
+so, i think i will pass on the whole
+“not being completely happy and awesome every single second” thing.
+
+and whoever matches this energy:
+
+i can't wait to meet you down the road
+and have a million laughs together,
+and watch sunsets and shining stars,
+and dance and play and run and live.
+
+and i cannot wait to show you the things i've been building in secret,
+and the puzzles and art and fun i have planed for the future.
+and all the things i will do that have never been done before.
+
+so yes.
+let's get this party ready.
+this is d-day.
+
+whoever wants to be in my world,
+you gotta match this high energy.
+and i promise you, it's going to be a ride for life.
+
+<3
+
+ps: the first story is coming in a few weeks, as you can check in the calendar.
+and from now on, since i have already arrived at my destination,
+i'll be continuing to work privately on my projects during the week,
+and i'll be updating this matrix and my technical blog on marina.nullstar.fun on weekends.
+so you know.
+            `)
+            },
+
+            {
             id: 'hello',
             date: '2026-08-02T00:00:00.000Z',
             titleKey: 'notes.hello.title',

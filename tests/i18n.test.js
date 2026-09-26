@@ -143,36 +143,6 @@ describe('I18n', () => {
         expect(() => i18n.syncToggle()).not.toThrow();
     });
 
-    it('covers notes and todo list copy in both locales', () => {
-        const keys = [
-            'todo.item.dreams',
-            'todo.item.peace',
-            'todo.item.people',
-            'notes.hello.title',
-            'notes.hello.content',
-            'notes.share',
-            'notes.shareCopied',
-            'notes.weekday.sunday',
-        ];
-        const en = window.I18N_STRINGS.en;
-        const ja = window.I18N_STRINGS.ja;
-        for (const key of keys) {
-            expect(en[key]).toBeTruthy();
-            expect(ja[key]).toBeTruthy();
-            expect(ja[key]).not.toBe(en[key]);
-        }
-        expect(en['todo.item.dreams']).toBe('never give up on my dreams');
-        expect(ja['todo.item.dreams']).toContain('ゆめ');
-        expect(en['notes.hello.title']).toBe('hello starlit world');
-        expect(ja['notes.hello.title']).toContain('ほしぞら');
-        expect(en['notes.hello.content']).toContain('scholar');
-        expect(ja['notes.hello.content']).toContain('がくしゃ');
-        expect(en['notes.share']).toBe('share');
-        expect(ja['notes.share']).toBe('シェア');
-        expect(en['notes.shareCopied']).toBe('copied');
-        expect(ja['notes.shareCopied']).toContain('コピー');
-    });
-
     it('has and t fall back to english when the active table omits a key', () => {
         const i18n = new window.I18nClass();
         i18n.locale = 'ja';

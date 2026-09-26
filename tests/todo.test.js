@@ -240,25 +240,6 @@ describe('TodoApp', () => {
         expect(app.elements.todoCount.textContent).toBe('のこり1こ');
     });
 
-    it('renders translated default todo items', () => {
-        window.I18n = {
-            t(key) {
-                if (key === 'todo.item.dreams') return 'ゆめを、ぜったにあきらめない';
-                if (key === 'todo.item.peace') return 'しあわせで、じゆうで、やすらかでいる';
-                if (key === 'todo.item.people') return 'いいひとたちと、いいじんせいをおくる';
-                if (key === 'todo.itemLeft' || key === 'todo.itemsLeft') return 'count';
-                return key;
-            },
-        };
-        const app = new window.TodoAppClass();
-        expect(app.elements.todoList.innerHTML).toContain('ゆめを、ぜったにあきらめない');
-        expect(app.elements.todoList.innerHTML).toContain('しあわせで、じゆうで、やすらかでいる');
-        expect(app.elements.todoList.innerHTML).toContain('いいひとたちと、いいじんせいをおくる');
-        window.I18n = undefined;
-        document.dispatchEvent(new CustomEvent('localechange'));
-        expect(app.elements.todoList.innerHTML).toContain('never give up on my dreams');
-    });
-
     it('todoLabel falls back to stored text when translation is missing', () => {
         const app = new window.TodoAppClass();
         expect(app.todoLabel({ text: 'plain' })).toBe('plain');

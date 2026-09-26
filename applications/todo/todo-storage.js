@@ -44,18 +44,20 @@ class TodoStorage {
 
     getDefaultTodos() {
         const defaultTodoData = [
-            { textKey: 'todo.item.dreams', text: 'never give up on my dreams', completed: false },
-            { textKey: 'todo.item.peace', text: 'be happy, free, and at peace', completed: false },
-            { textKey: 'todo.item.people', text: 'live a good life with good people', completed: false }
+            { textKey: 'todo.item.dreams', text: 'never give up on any of my dreams', completed: false },
+            { textKey: 'todo.item.peace', text: 'live a happy, free, and peaceful life', completed: false },
+            { textKey: 'todo.item.people', text: 'have a good time with good people', completed: false },
+            { textKey: 'todo.item.love', text: 'marry the love of my life someday', completed: false }
         ];
         return defaultTodoData.map(data => this.createTodo(data.text, data.completed, data.textKey));
     }
 
     textKeyFor(text) {
         const keys = {
-            'never give up on my dreams': 'todo.item.dreams',
-            'be happy, free, and at peace': 'todo.item.peace',
-            'live a good life with good people': 'todo.item.people',
+            'never give up on any of my dreams': 'todo.item.dreams',
+            'live a happy, free, and peaceful life': 'todo.item.peace',
+            'have a good time with good people': 'todo.item.people',
+            'marry the love of my life someday': 'todo.item.love',
         };
         return keys[text] || null;
     }

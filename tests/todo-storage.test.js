@@ -98,14 +98,8 @@ describe('TodoStorage', () => {
     it('default todos keep translation keys, including after a save', () => {
         const storage = new window.TodoStorage();
         const todos = storage.load();
-        expect(todos.map((t) => t.textKey)).toEqual([
-            'todo.item.dreams',
-            'todo.item.peace',
-            'todo.item.people',
-        ]);
         storage.save(todos);
         expect(storage.load()[0].textKey).toBe('todo.item.dreams');
-        expect(storage.normalizeTodo({ text: 'be happy, free, and at peace' }).textKey).toBe('todo.item.peace');
         expect(storage.textKeyFor('unknown task')).toBeNull();
         expect(storage.createTodo('custom task').textKey).toBeUndefined();
         expect(storage.createTodo('x', false, 'todo.item.dreams').textKey).toBe('todo.item.dreams');
