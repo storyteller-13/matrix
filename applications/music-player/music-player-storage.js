@@ -94,11 +94,11 @@ class MusicPlayerStorage {
                         { id: '1mCN-RDh0-0', title: 'silencio (u2)' },
                         { id: 'xFMdDMELQIY', title: 'princess (drake)' },
                         { id: 'Sqhuk0iaq4k', title: 'ghost (jhené aiko)' },
-                        { id: '0l11LJvFdgo', title: 'i was stone (syml)' },
-                        { id: '7M9A_sVI4BI', title: 'stone fruit (blondshell)' },
+                        { id: '_jkfczaOFDU', title: 'gasoline (sheryl crow)' },
                         { id: 'fpQstZwQL5M', title: 'living undercover (rise against)' },
                         { id: '8NikIaI6gQM', title: 'rabbit ♡ (florence + the machine)' },
                         { id: 'zdJYdfkOJeg', title: 'the pretty girl in the tower (halsey)' },
+                        { id: 'ity-l7be1z0', title: 'don\'t let me be misunderstood (joe cocker)' },
                         { id: 'UezrC5nNQxE', title: 'when you\'ve had enough (evanescence)' },
                         { id: 'Tk9TM7-eTmw', title: 'joseph (falling in reverse)' },
                         { id: '6NZzjs3_VwY', title: 'burden the heavens (sabrina jordan)' },
@@ -136,7 +136,6 @@ class MusicPlayerStorage {
                         { id: 'zp7NtW_hKJI', title: 'a sky full of stars (coldplay)' },
                         { id: 'HVHUjzZZGQ4', title: 'island in the sun (weezer)' },
                         { id: 'oJ5ciSr8rAc', title: 'all that we perceive (thievery corporation)' },
-                        { id: 'TnK29aJCOp4', title: 'stairway to heaven (orquestra sinfônica curitiba)' },
                     ]
                 },
 
