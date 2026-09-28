@@ -80,7 +80,7 @@ class MusicPlayerStorage {
                         { id: '0nfLWrDaQl8', title: 'oppenheimer (alienworlds)' },
                         { id: 'v1ZkSsxl98A', title: 'a moment before forever (sci-fi ambience)' },
                         { id: 'JcHtM0PEETo', title: 'stillness in the cosmos (spiritual brother sci-fi)' },
-                        { id: 'oJ5ciSr8rAc', title: 'all that we perceive (thievery corporation)' },
+                        { id: 'DSUkLP-EZr0', title: 'when everything is still (future city)' },
                     ]
                 },
 

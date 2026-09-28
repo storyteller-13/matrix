@@ -56,5 +56,11 @@ window.CALENDAR_EVENTS = [
         type: 'full-moon',
         labelKey: 'calendar.event.fullMoon',
         label: 'full moon'
+    },
+    {
+        date: '2026-10-31',
+        type: 'halloween',
+        labelKey: 'calendar.event.newEvent',
+        label: 'halloween'
     }
 ];

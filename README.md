@@ -29,11 +29,12 @@ make test
 
 <br>
 
-### TODO
+### BACKLOG OF MINOR TASKS
 
 <br>
 
-- refactor list, add all the subitems for the future, create a base class to be shared within all the sublists
+- refactor lists, add all the subitems for the future, create a base class to be shared within all the sublists
 - remove duplicate code from the api/ and their application classes
 - remove extra small star line from left bottom corner
 - make sure nothing breaks with new apod url
+
