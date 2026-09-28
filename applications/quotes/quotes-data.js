@@ -416,6 +416,10 @@ window.QUOTES = [
     { text: 'outside of a dog, a book is man\'s best friend, inside of a dog, it\'s too dark to read.', author: 'vitalik buterin' },
     { text: 'if one person dreams, they will not fear pain. if a hundred thousand people dream a hundred thousand dreams, pain will fear them.', author: 'vitalik buterin' },
 
+    // dhh 
+    { text: 'rust is amazing.', author: 'dhh' },
+    { text: 'don\'t take the black pill, don\'t be a loser.', author: 'dhh' },
+
     // carl sagan
     { text: "i didn't make a decision to pursue astronomy. rather, it just grabbed me, and i had no thought of escaping.", author: 'carl sagan' },
     { text: "imagination will often carry us to worlds that never were. But without it we go nowhere.", author: 'carl sagan'},
