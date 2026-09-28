@@ -812,7 +812,7 @@
 
 @media (min-width: 769px) and (max-height: 800px) {
     :root {
-        --panel-width: 220px;
+        --panel-width: 240px;
         --desktop-gap: 8px;
     }
 

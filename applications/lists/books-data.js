@@ -10,10 +10,11 @@ const BOOKS_2026 = {
         {
             id: 'september',
             label: 'september',
-            count: 2,
+            count: 3,
             books: [
-                { title: 'cryptonomicon (neal stephenson)', rating: 'tba', url: 'tba', note: 'my thoughts' },
-                { title: 'the emperor\'s new mind (roger penrose)', rating: 'tba', url: 'tba', note: 'my thoughts' },
+                { title: 'snowmoon (v.buterin)', rating: '8.5/10', url: 'https://gist.github.com/von-steinkirch/260bb93042b3ffa595a8971db54f1131', note: 'my thoughts' },
+                { title: 'cryptonomicon (neal stephenson)', rating: 'tba', url: 'tba', note: 'tba' },
+                { title: 'the emperor\'s new mind (roger penrose)', rating: 'tba', url: 'tba', note: 'tba' },
             ]
         },
         {

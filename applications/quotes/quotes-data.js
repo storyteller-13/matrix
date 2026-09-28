@@ -409,6 +409,10 @@ window.QUOTES = [
     { text: 'belief is a wise wager; granted that faith cannot be proved, what harm will come to you if you gamble on its truth and it proves false?', author: 'blaise pascal' },
     { text: 'one of the key questions we face is whether our lives end after death.', author: 'blaise pascal' },
 
+    // vitalik buterin
+    { text: 'because the laws of physics are time-reversible, nothing can be invincible.', author: 'vitalik buterin' },
+    { text: 'how is it at all realistic that AIs can read each other\'s minds?.', author: 'vitalik buterin' },
+
     // carl sagan
     { text: "i didn't make a decision to pursue astronomy. rather, it just grabbed me, and i had no thought of escaping.", author: 'carl sagan' },
     { text: "imagination will often carry us to worlds that never were. But without it we go nowhere.", author: 'carl sagan'},

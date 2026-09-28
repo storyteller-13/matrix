@@ -74,6 +74,7 @@ class MusicPlayerStorage {
                         { id: 'LTiqKDrjqr4', title: 'summer\'26 stargazing fest (lofi girl)' },
                         { id: '2gezcxmmy30', title: 'love is in small things (puuung1)' },
                         { id: '6K5yqX4Np1Y', title: 'hyperion (ambient civilization)' },
+                        { id: '6K5yqX4Np1Y', title: 'contours (blake farfan)' },
                         { id: '4Ymarg9u0v0', title: '夢見る街  (future city)' },
                         { id: '0nfLWrDaQl8', title: 'oppenheimer (alienworlds)' },
                         { id: 'v1ZkSsxl98A', title: 'a moment before forever (sci-fi ambience)' },

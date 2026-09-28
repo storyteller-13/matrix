@@ -81,16 +81,16 @@ and so much i want to show you.
 
 things i've been building and dreaming about in secret.
 all the things you grasp when you transcend,
-when you level up into your final, best self.
+when you finally raise the bar and become your final, best self.
 
 when i look back at these last few years, and abstract my human ego as much as i can,
-i see how this crime that happened to me could be translated as a huge quest to finally level up into what i always could have been, but didn't know i could be.
+i see how this crime that happened to me could be translated as a huge quest to level up into what i always could have been, but nobody told me.
 
 only after everything is stripped from you
 do you realize that you can finally be who you really are, without excuses or fear.
 and now that i know, i can be it all.
 
-the big shift from the last events is that,
+the big shift from the last events is that
 i now understand the plot a little bit more.
 (well, not all of it, but enough to really let the story go for good)
 
@@ -153,7 +153,7 @@ and i promise you, it's going to be a ride for life.
 ps: the first story is coming in a few weeks, as you can check in the calendar.
 and from now on, since i have already arrived at my destination,
 i'll be continuing to work privately on my projects during the week,
-and i'll be updating this matrix and my technical blog on marina.nullstar.fun on weekends.
+and i'll be updating this matrix and my technical blog on weekends.
 so you know.
             `)
             },

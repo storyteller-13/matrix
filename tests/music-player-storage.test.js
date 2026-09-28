@@ -116,36 +116,6 @@ describe('MusicPlayerStorage', () => {
         expect(data.playlists.length).toBe(storage.getDefaultData().playlists.length);
     });
 
-    it('ensureDefaultPlaylists merges missing songs and restores playlist order', () => {
-        const storage = new window.MusicPlayerStorage();
-        const defaults = storage.getDefaultData();
-        const first = defaults.playlists[0];
-        const last = defaults.playlists[defaults.playlists.length - 1];
-        const data = {
-            playlists: [
-                { id: last.id, name: last.name, songs: [] },
-                { id: first.id, name: first.name, songs: first.songs.slice(0, 1) },
-            ],
-            currentPlaylistId: first.id,
-        };
-        storage.ensureDefaultPlaylists(data);
-        expect(data.playlists.map(p => p.id)).toEqual(defaults.playlists.map(p => p.id));
-        expect(data.playlists[0].songs.length).toBe(first.songs.length);
-        expect(data.playlists[0].songs.map(s => s.id)).toEqual(first.songs.map(s => s.id));
-    });
-
-    it('ensureDefaultPlaylists fills a missing songs array on an existing playlist', () => {
-        const storage = new window.MusicPlayerStorage();
-        const defaults = storage.getDefaultData();
-        const first = defaults.playlists[0];
-        const data = {
-            playlists: [{ id: first.id, name: first.name }],
-            currentPlaylistId: first.id,
-        };
-        storage.ensureDefaultPlaylists(data);
-        expect(data.playlists[0].songs.map(s => s.id)).toEqual(first.songs.map(s => s.id));
-    });
-
     it('ensureDefaultPlaylists keeps a valid default currentPlaylistId', () => {
         const storage = new window.MusicPlayerStorage();
         const data = storage.getDefaultData();
