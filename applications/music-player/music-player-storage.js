@@ -2,6 +2,7 @@
  * Music Player Storage Module
  * Handles localStorage persistence for playlists
  */
+
 class MusicPlayerStorage {
     constructor() {
         this.storageKey = 'music-player-playlists';

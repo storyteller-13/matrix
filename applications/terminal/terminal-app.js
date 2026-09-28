@@ -2,6 +2,7 @@
  * Terminal Application Module
  * Wrapper for terminal.js functionality
  */
+
 class TerminalApp {
     constructor() {
         this.windowId = 'terminal-window';

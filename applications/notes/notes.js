@@ -2,6 +2,7 @@
  * Notes Application Module
  * Self-contained notes application for creating and managing notes
  */
+
 class NotesApp extends BaseApp {
     constructor() {
         super({ windowId: 'notes-window', dockItemId: 'notes-dock-item' });

@@ -2,6 +2,7 @@
  * Todo Storage Module
  * Handles localStorage persistence for todos
  */
+
 class TodoStorage {
     constructor() {
         this.storageKey = 'todos';
@@ -21,16 +22,7 @@ class TodoStorage {
         }
         return this.getDefaultTodos();
     }
-
-    save(todos) {
-        if (!Array.isArray(todos)) return;
-        try {
-            localStorage.setItem(this.storageKey, JSON.stringify(todos));
-        } catch (_) {
-            // quota or disabled
-        }
-    }
-
+    
     normalizeTodo(t) {
         const text = t.text || '';
         return {

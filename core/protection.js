@@ -3,6 +3,7 @@
  * NOTE: This cannot fully prevent source code viewing - it only makes it harder.
  * Determined users can always bypass these protections.
  */
+
 (function() {
     'use strict';
 

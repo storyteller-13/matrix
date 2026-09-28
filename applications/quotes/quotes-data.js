@@ -1,7 +1,7 @@
 /**
  * Quotes –  my personal curated list for the quotes panel.
- * Add or edit entries; each is { text: string, author: string }.
  */
+
 window.QUOTES = [
 
     // confucius

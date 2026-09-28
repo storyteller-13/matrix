@@ -2,6 +2,7 @@
  * Environment utilities – centralize host/API detection for local vs production.
  * Use isLocalhost() to choose direct API URLs (localhost) vs /api proxy (production).
  */
+
 (function () {
     function isLocalhost() {
         const h = window.location.hostname;

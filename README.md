@@ -6,7 +6,7 @@
 
 <br>
 
-Start the local development server at **[`localhost:8088`](http://localhost:8088)**:
+start the local development server at **[`localhost:8088`](http://localhost:8088)**:
 
 <br>
 
@@ -26,3 +26,14 @@ make pre-commit
 make lint
 make test
 ```
+
+<br>
+
+### TODO
+
+<br>
+
+- refactor list, add all the subitems for the future, create a base class to be shared within all the sublists
+- remove duplicate code from the api/ and their application classes
+- remove extra small star line from left bottom corner
+- make sure nothing breaks with new apod url

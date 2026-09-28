@@ -1,6 +1,7 @@
 /**
  * Tiny EN/JA i18n for chrome copy. Persists locale and paints [data-i18n*] nodes.
  */
+
 const I18N_STORAGE_KEY = 'matrix-locale';
 const I18N_LOCALES = ['en', 'ja'];
 
