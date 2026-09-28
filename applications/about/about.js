@@ -1,7 +1,7 @@
 /**
  * About Window Application Module
- * A short "who i am" letter.
  */
+
 const ABOUT = {
     name: 'marina von steinkirch',
     role: 'delicate · hardworking · optimistic · philosopher ',

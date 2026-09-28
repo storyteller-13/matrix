@@ -4,6 +4,9 @@
  * No API key required; read-only public data.
  */
 
+const API_URL = 'https://api.chess.com/pub/puzzle';
+const USER_AGENT = 'matrix.nullstar.fun.com/1.0';
+
 export default async function handler(req, res) {
   if (req.method === 'OPTIONS') {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -18,13 +21,8 @@ export default async function handler(req, res) {
   }
 
   try {
-    const random = req.query.random === '1';
-    const apiUrl = random
-      ? 'https://api.chess.com/pub/puzzle/random'
-      : 'https://api.chess.com/pub/puzzle';
-
-    const response = await fetch(apiUrl, {
-      headers: { 'User-Agent': 'matrix.nullstar.fun.com/1.0' },
+    const response = await fetch(API_URL, {
+      headers: { 'User-Agent': USER_AGENT },
     });
 
     if (!response.ok) {

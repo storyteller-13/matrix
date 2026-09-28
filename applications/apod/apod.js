@@ -2,6 +2,7 @@
  * APOD (Astronomy Picture of the Day) Module
  * Fetches and displays NASA's Astronomy Picture of the Day
  */
+
 class APODPanel {
     constructor() {
         this.apiBase = window.Env && window.Env.getApiBase('apod');

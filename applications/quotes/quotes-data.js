@@ -411,7 +411,10 @@ window.QUOTES = [
 
     // vitalik buterin
     { text: 'because the laws of physics are time-reversible, nothing can be invincible.', author: 'vitalik buterin' },
-    { text: 'how is it at all realistic that AIs can read each other\'s minds?.', author: 'vitalik buterin' },
+    { text: 'how is it at all realistic that AIs can read each other\'s minds?', author: 'vitalik buterin' },
+    { text: 'what if part of the human condition is that we don\'t fully know what we want, and any attempt to crystallize it into one piece breaks down if you push it far enough?', author: 'vitalik buterin' },
+    { text: 'outside of a dog, a book is man\'s best friend, inside of a dog, it\'s too dark to read.', author: 'vitalik buterin' },
+    { text: 'if one person dreams, they will not fear pain. if a hundred thousand people dream a hundred thousand dreams, pain will fear them.', author: 'vitalik buterin' },
 
     // carl sagan
     { text: "i didn't make a decision to pursue astronomy. rather, it just grabbed me, and i had no thought of escaping.", author: 'carl sagan' },

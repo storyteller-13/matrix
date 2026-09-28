@@ -1,6 +1,7 @@
 /**
  * Calendar Panel – current-month grid with moon / post markers.
  */
+
 class CalendarPanel {
     constructor() {
         this.events = typeof window.CALENDAR_EVENTS !== 'undefined' ? window.CALENDAR_EVENTS : [];

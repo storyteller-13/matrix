@@ -5,7 +5,7 @@
 
 const INAT_TAXA = 'https://api.inaturalist.org/v1/taxa';
 const WIKI_SUMMARY = 'https://en.wikipedia.org/api/rest_v1/page/summary/';
-const UA = 'matrix.nullstar.fun/1.0';
+const USER_AGENT = 'matrix.nullstar.fun/1.0';
 
 /** Calendar date in US Eastern, matching APOD's day boundary. */
 function easternDateString(offsetDays = 0) {
@@ -56,7 +56,7 @@ async function fetchJson(url) {
   const response = await fetch(url, {
     headers: {
       Accept: 'application/json',
-      'User-Agent': UA,
+      'User-Agent': USER_AGENT,
     },
   });
   if (!response.ok) {

@@ -1,7 +1,7 @@
 /**
  * Home Window Application Module
- * Simple iframe-based "what i do" window
  */
+
 class HomeApp extends BaseApp {
     constructor() {
         super({ windowId: 'home-window', dockItemId: 'home-dock-item' });

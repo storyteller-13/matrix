@@ -3,7 +3,8 @@
  * Proxies today's sky_summary so the panel can cache it and identify the app.
  */
 
-const TRANSIT_URL = 'https://api.cosmyday.com/content/transit';
+const API_URL = 'https://api.cosmyday.com/content/transit';
+const USER_AGENT = 'matrix.nullstar.fun/1.0';
 
 export default async function handler(req, res) {
   if (req.method === 'OPTIONS') {
@@ -19,10 +20,10 @@ export default async function handler(req, res) {
   }
 
   try {
-    const response = await fetch(TRANSIT_URL, {
+    const response = await fetch(API_URL, {
       headers: {
         Accept: 'application/json',
-        'User-Agent': 'matrix.nullstar.fun/1.0',
+        'User-Agent': USER_AGENT,
       },
     });
 

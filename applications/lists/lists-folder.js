@@ -1,6 +1,7 @@
 /**
  * Curate lists folder browser – nested folders for books / movies / places / art / articles / food / podcasts / games.
  */
+
 class ListsFolderApp extends BaseApp {
     constructor() {
         super({ windowId: 'lists-folder-window', dockItemId: 'lists-folder-dock-item' });
@@ -80,6 +81,7 @@ class ListsFolderApp extends BaseApp {
         ];
     }
 
+    /** Start adding entries for folders. */
     booksEntries() {
         return [
             {
