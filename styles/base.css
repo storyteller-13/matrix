@@ -25,7 +25,7 @@
     --dock-clearance: 76px;
     --desktop-gap: 10px;
     --panel-width: 248px;
-    --music-player-width: calc(var(--panel-width) + 16px);
+    --music-player-width: calc(var(--panel-width) + 40px);
 }
 
 * {

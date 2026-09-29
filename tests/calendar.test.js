@@ -123,7 +123,7 @@ describe('CalendarPanel', () => {
                 'calendar.event.newMoon': 'しんげつ',
                 'calendar.event.fullMoon': 'まんげつ',
                 'calendar.event.DDay': 'd-day',
-                'calendar.event.newPost': 'あたらしい投稿'
+                'calendar.event.newPost': 'あたらしい投稿',
             }[key] || key)
         };
         const panel = new window.CalendarPanelClass();

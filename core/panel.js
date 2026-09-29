@@ -2,6 +2,7 @@
  * Panel Module
  * Handles top panel functionality (clock, menu)
  */
+
 class Panel {
     // Constants
     static CLOCK_UPDATE_INTERVAL = 1000; // 1 second

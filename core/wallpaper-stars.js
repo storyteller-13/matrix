@@ -2,6 +2,7 @@
  * Extra wallpaper stars clustered into a Milky Way band.
  * Phones/tablets get a lighter field so the compositor is not flooded.
  */
+
 (() => {
     const COLORS = ['#FF85A2', '#F9A8C9', '#C4B5FD', '#E879A9', '#FFB3C6', '#F472B6'];
     const GOLDEN = 1.618033988749895;

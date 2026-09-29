@@ -1,6 +1,7 @@
 /**
  * Calendar Panel – current-month grid with moon / post markers.
  */
+
 class CalendarPanel {
     constructor() {
         this.events = typeof window.CALENDAR_EVENTS !== 'undefined' ? window.CALENDAR_EVENTS : [];
@@ -107,6 +108,8 @@ class CalendarPanel {
         if (type === 'new-moon') return '\u25CF';
         if (type === 'full-moon') return '\u25CB';
         if (type === 'post') return '\u270E';
+        if (type === 'd-day') return '🌞';
+        if (type === 'halloween') return '💀';
         return '\u2022';
     }
 

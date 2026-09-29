@@ -53,7 +53,6 @@ class TodoApp extends BaseApp {
                 if (!todoId) return;
                 if (e.target.classList.contains('todo-checkbox')) {
                     e.stopPropagation();
-                    this.toggleTodo(todoId);
                 }
             });
         }
@@ -69,20 +68,6 @@ class TodoApp extends BaseApp {
         super.open();
         this.render();
         this.updateBadge();
-    }
-
-    toggleTodo(id) {
-        const todo = this.todos.find(t => t.id === id);
-        if (!todo) return;
-        todo.completed = !todo.completed;
-        this.persistAndUpdate();
-    }
-
-    persistAndUpdate() {
-        this.storage.save(this.todos);
-        const activeCount = this.getActiveCount();
-        this.render(activeCount);
-        this.updateBadge(activeCount);
     }
 
     render(activeCountArg) {

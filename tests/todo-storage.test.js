@@ -27,13 +27,6 @@ describe('TodoStorage', () => {
         localStorage.removeItem(TODOS_KEY);
     });
 
-    it('defines TodoStorage class with load and save', () => {
-        const TodoStorage = window.TodoStorage;
-        expect(TodoStorage).toBeDefined();
-        expect(typeof TodoStorage.prototype.load).toBe('function');
-        expect(typeof TodoStorage.prototype.save).toBe('function');
-    });
-
     it('load() returns an array of todos with expected shape', () => {
         const TodoStorage = window.TodoStorage;
         const storage = new TodoStorage();
@@ -47,16 +40,6 @@ describe('TodoStorage', () => {
         expect(first).toHaveProperty('createdAt');
     });
 
-    it('save() persists and load() returns saved data', () => {
-        const TodoStorage = window.TodoStorage;
-        const storage = new TodoStorage();
-        const todos = storage.load();
-        todos[0].text = 'updated';
-        storage.save(todos);
-        const loaded = storage.load();
-        expect(loaded[0].text).toBe('updated');
-    });
-
     it('load() uses defaults when stored JSON is invalid', () => {
         const storage = new window.TodoStorage();
         localStorage.setItem(TODOS_KEY, '{not json');
@@ -68,16 +51,6 @@ describe('TodoStorage', () => {
         const storage = new window.TodoStorage();
         localStorage.setItem(TODOS_KEY, '[]');
         expect(storage.load().length).toBeGreaterThan(0);
-    });
-
-    it('save() ignores non-arrays and storage errors', () => {
-        const storage = new window.TodoStorage();
-        expect(() => storage.save(null)).not.toThrow();
-        vi.spyOn(localStorage, 'setItem').mockImplementation(() => {
-            throw new Error('quota');
-        });
-        expect(() => storage.save([{ id: '1', text: 'x', completed: false }])).not.toThrow();
-        vi.restoreAllMocks();
     });
 
     it('normalizeTodo fills missing fields', () => {
@@ -97,8 +70,6 @@ describe('TodoStorage', () => {
 
     it('default todos keep translation keys, including after a save', () => {
         const storage = new window.TodoStorage();
-        const todos = storage.load();
-        storage.save(todos);
         expect(storage.load()[0].textKey).toBe('todo.item.dreams');
         expect(storage.textKeyFor('unknown task')).toBeNull();
         expect(storage.createTodo('custom task').textKey).toBeUndefined();

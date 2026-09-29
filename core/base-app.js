@@ -1,6 +1,7 @@
 /**
  * Base class for dock + window applications.
  */
+
 class BaseApp {
     constructor(options = {}) {
         this.windowId = options.windowId;

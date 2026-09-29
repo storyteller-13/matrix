@@ -1,6 +1,7 @@
 /**
  * Quotes Panel – random quote from the curated list.
  */
+
 class QuotesPanel {
     constructor() {
         this.quotes = typeof window.QUOTES !== 'undefined' ? window.QUOTES : [];

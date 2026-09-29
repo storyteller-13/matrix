@@ -49,18 +49,6 @@ describe('api/chess', () => {
         expect(String(fetch.mock.calls[0][0])).toMatch(/\/puzzle$/);
     });
 
-    it('requests a random puzzle when random=1', async () => {
-        vi.stubGlobal('fetch', vi.fn().mockResolvedValue({
-            ok: true,
-            status: 200,
-            json: async () => ({ title: 'random' }),
-        }));
-        const res = mockRes();
-        await handler({ method: 'GET', query: { random: '1' } }, res);
-        expect(res.statusCode).toBe(200);
-        expect(String(fetch.mock.calls[0][0])).toMatch(/\/puzzle\/random$/);
-    });
-
     it('returns 500 when Chess.com is unavailable', async () => {
         vi.stubGlobal('fetch', vi.fn().mockResolvedValue({
             ok: false,

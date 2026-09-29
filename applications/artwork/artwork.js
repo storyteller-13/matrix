@@ -1,19 +1,23 @@
 /**
- * Artwork Window Application Module
- * Simple file manager window for artwork (image lightbox).
+ * Artwork Window Application Module.
  */
+
+const IMAGES = [
+    'summer.png',
+    'love.png',
+    'lion.jpg',
+];
+
+const BASE_PATH = '/pages/artwork/';
+
+
 class ArtworkApp extends BaseApp {
     constructor() {
         super({ windowId: 'artwork-window', dockItemId: 'artwork-dock-item' });
         this.elements = {};
         this.fileListPopulated = false;
 
-        this.images = [
-            'summer.png',
-            'love.png',
-            'lion.jpg',
-        ];
-
+        this.images = IMAGES;
         this.init();
     }
 
@@ -50,16 +54,15 @@ class ArtworkApp extends BaseApp {
         if (!fileList) return;
 
         const fragment = document.createDocumentFragment();
-        const basePath = '/pages/artwork/';
 
         for (const imageName of this.images) {
             const fileItem = document.createElement('div');
             fileItem.className = 'file-item';
             fileItem.style.cursor = 'pointer';
-            fileItem.addEventListener('click', () => this.openImage(basePath + imageName));
+            fileItem.addEventListener('click', () => this.openImage(BASE_PATH + imageName));
 
             const img = document.createElement('img');
-            img.src = basePath + imageName;
+            img.src = BASE_PATH + imageName;
             img.alt = imageName;
             img.loading = 'lazy';
             Object.assign(img.style, {

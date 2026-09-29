@@ -1,6 +1,7 @@
 /**
  * Tiny EN/JA i18n for chrome copy. Persists locale and paints [data-i18n*] nodes.
  */
+
 const I18N_STORAGE_KEY = 'matrix-locale';
 const I18N_LOCALES = ['en', 'ja'];
 
@@ -91,6 +92,7 @@ const I18N_STRINGS = {
         'calendar.event.DDay': 'd-day',
         'calendar.event.free': 'i am free now and it\'s time to build',
         'calendar.event.newPost': 'inaugural story',
+        'calender.event.halloween': 'halloween',
         'calendar.weekday.sun': 's',
         'calendar.weekday.mon': 'm',
         'calendar.weekday.tue': 't',

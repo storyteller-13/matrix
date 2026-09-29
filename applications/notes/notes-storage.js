@@ -105,9 +105,10 @@ has turned into the final story of the past character.
 
 i look at all my work.
 all the influence i've had in the world.
+the impact i've had on so many lives.
 all the problems i've solved.
-how cool and fun i am.
 how much i know about so many things.
+how cool and fun i am.
 
 and i just think...
 i am freaking awesome, i'm sorry =p

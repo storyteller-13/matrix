@@ -2,6 +2,10 @@
  * Music Player Application Module
  * Handles YouTube music player functionality
  */
+
+const YOUTUBE_URL = 'https://www.youtube.com/iframe_api'
+
+
 class MusicPlayer {
     constructor() {
         this.player = null;
@@ -87,7 +91,7 @@ class MusicPlayer {
         if (document.getElementById('youtube-iframe-api')) return;
         const tag = document.createElement('script');
         tag.id = 'youtube-iframe-api';
-        tag.src = 'https://www.youtube.com/iframe_api';
+        tag.src = YOUTUBE_URL;
         tag.async = true;
         document.head.appendChild(tag);
     }

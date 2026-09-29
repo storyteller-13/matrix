@@ -65,20 +65,6 @@ describe('TodoApp', () => {
         expect(app.getActiveCount()).toBe(1);
     });
 
-    it('toggleTodo flips completed', () => {
-        const app = new window.TodoAppClass();
-        app.todos = [{ id: '1', text: 'x', completed: false, createdAt: new Date().toISOString() }];
-        app.toggleTodo('1');
-        expect(app.todos[0].completed).toBe(true);
-    });
-
-    it('toggleTodo no-op for unknown id', () => {
-        const app = new window.TodoAppClass();
-        app.todos = [{ id: '1', text: 'x', completed: false, createdAt: new Date().toISOString() }];
-        app.toggleTodo('unknown');
-        expect(app.todos[0].completed).toBe(false);
-    });
-
     it('render() shows empty state when no todos', () => {
         const app = new window.TodoAppClass();
         app.todos = [];
@@ -117,15 +103,6 @@ describe('TodoApp', () => {
         app.open();
         expect(openSpy).toHaveBeenCalled();
         expect(renderSpy).toHaveBeenCalled();
-    });
-
-    it('click on todo-checkbox toggles todo', () => {
-        const app = new window.TodoAppClass();
-        app.todos = [{ id: 't1', text: 'x', completed: false, createdAt: new Date().toISOString() }];
-        app.render();
-        const checkbox = app.elements.todoList.querySelector('.todo-checkbox[data-todo-id="t1"]');
-        checkbox.dispatchEvent(new MouseEvent('click', { bubbles: true }));
-        expect(app.todos[0].completed).toBe(true);
     });
 
     it('refresh() re-renders and updates badge', () => {

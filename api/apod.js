@@ -6,6 +6,9 @@
  * Get your free API key at: https://api.nasa.gov/
  */
 
+const USER_AGENT = 'matrix.nullstar.fun.com/1.0';
+const API_URL = 'https://api.nasa.gov/planetary/apod?';
+
 /** NASA publishes APOD by US Eastern calendar date, not UTC. */
 function easternDateString(offsetDays = 0) {
   const parts = new Intl.DateTimeFormat('en-CA', {
@@ -21,9 +24,9 @@ function easternDateString(offsetDays = 0) {
 }
 
 function fetchNasaApod(apiKey, date) {
-  return fetch(`https://api.nasa.gov/planetary/apod?api_key=${apiKey}&date=${date}`, {
+  return fetch(`${API_URL}api_key=${apiKey}&date=${date}`, {
     headers: {
-      'User-Agent': 'matrix.nullstar.fun/1.0',
+      'User-Agent': USER_AGENT,
     },
   });
 }

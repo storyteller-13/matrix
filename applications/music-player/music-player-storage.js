@@ -2,6 +2,7 @@
  * Music Player Storage Module
  * Handles localStorage persistence for playlists
  */
+
 class MusicPlayerStorage {
     constructor() {
         this.storageKey = 'music-player-playlists';
@@ -79,7 +80,7 @@ class MusicPlayerStorage {
                         { id: '0nfLWrDaQl8', title: 'oppenheimer (alienworlds)' },
                         { id: 'v1ZkSsxl98A', title: 'a moment before forever (sci-fi ambience)' },
                         { id: 'JcHtM0PEETo', title: 'stillness in the cosmos (spiritual brother sci-fi)' },
-                        { id: 'oJ5ciSr8rAc', title: 'all that we perceive (thievery corporation)' },
+                        { id: 'DSUkLP-EZr0', title: 'when everything is still (future city)' },
                     ]
                 },
 
@@ -98,9 +99,11 @@ class MusicPlayerStorage {
                         { id: '_jkfczaOFDU', title: 'gasoline (sheryl crow)' },
                         { id: 'fpQstZwQL5M', title: 'living undercover (rise against)' },
                         { id: '8NikIaI6gQM', title: 'rabbit ♡ (florence + the machine)' },
+                        { id: '8kQbg4Pqa4Q', title: 'helen keller (placebo)' },
                         { id: 'zdJYdfkOJeg', title: 'the pretty girl in the tower (halsey)' },
                         { id: 'ity-l7be1z0', title: 'don\'t let me be misunderstood (joe cocker)' },
                         { id: 'UezrC5nNQxE', title: 'when you\'ve had enough (evanescence)' },
+                        { id: '9uPMQ7KZ2KU', title: 'to whom it may concern (a perfect circle)' },
                         { id: 'Tk9TM7-eTmw', title: 'joseph (falling in reverse)' },
                         { id: '6NZzjs3_VwY', title: 'burden the heavens (sabrina jordan)' },
                     ]
@@ -115,12 +118,13 @@ class MusicPlayerStorage {
                         { id: 'fDltPLFdkYI', title: 'power in the blood (polyphia)' },
                         { id: '3x2BXn0cPM8', title: 'roses (chvrches)' },
                         { id: 'aWpw-Ynl0Yc', title: 'bass persuades (miley)' },
-                        { id: 'KWn5FkkuYwk', title: 'hear me now (kaskade x friends)' },
+                        { id: 'KWn5FkkuYwk', title: 'hear me now (kaskade + friends)' },
                         { id: 'mi7KlC1hxpI', title: 'can\'t you see (bonobo + aanya martin)' },
                         { id: 'oytaoGL-mck', title: 'princess of the night (train)' },
+                        { id: 'AXWHQb9VsJA', title: 'teach yourself (david duchovny)' }, 
+                        { id: 'fR4HjTH_fTM', title: 'the long and winding road (the beatles)' }, 
                         { id: 'tVXXD7KXAec', title: 'rescuer (alex warren)' },
                         { id: '3Zzz-xpjshM', title: 'time (alabama shakes)' },
-                        { id: 'AXWHQb9VsJA', title: 'teach yourself (david duchovny)' },
                         { id: 'c0Y4PqvDvqc', title: 'the station of a showgirl (tay tay)' },
                     ]
                 },

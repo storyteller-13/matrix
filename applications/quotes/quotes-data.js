@@ -1,7 +1,7 @@
 /**
  * Quotes –  my personal curated list for the quotes panel.
- * Add or edit entries; each is { text: string, author: string }.
  */
+
 window.QUOTES = [
 
     // confucius
@@ -144,7 +144,13 @@ window.QUOTES = [
     { text: 'you win battles by knowing the enemy\'s timing, and using a timing which the enemy does not expect.', author: 'miyamoto musashi' },
     { text: 'perception is strong and sight weak. in strategy it is important to see distant things as if they were close and to take a distanced view of close things.', author: 'miyamoto musashi' },
     { text: 'water adopts the shape of its receptacle, it is sometimes a trickle and sometimes a wild sea.', author: 'miyamoto musashi' },
-
+    { text: 'both in fighting and in everyday life you should be determined though calm.', author: 'miyamoto musashi' },
+    { text: 'many things can cause a loss of balance. one cause is danger, another is hardship, and another is surprise.', author: 'miyamoto musashi' }, 
+    { text: 'to renew, when we are deadlocked with the enemy, means that without changing our circumstance we change our spirit and win through a different technique.', author: 'miyamoto musashi' }, 
+    { text: 'when you have mastered the Way of Strategy you can suddenly make your body like a rock, and ten thousand things cannot touch you.', author: 'miyamoto musashi' }, 
+    { text: 'by knowing things that exist, you can know that which does not exist. that is the void.', author: 'miyamoto musashi' }, 
+    { text: 'in the void is virtue, and no evil. wisdom has existence, principle has existence, the way has existence, spirit is nothingness.', author: 'miyamoto musashi' }, 
+    
     // socrates
     { text: 'the only true wisdom is in knowing you know nothing.', author: 'socrates' },
     { text: 'the unexamined life is not worth living.', author: 'socrates' },
@@ -411,7 +417,14 @@ window.QUOTES = [
 
     // vitalik buterin
     { text: 'because the laws of physics are time-reversible, nothing can be invincible.', author: 'vitalik buterin' },
-    { text: 'how is it at all realistic that AIs can read each other\'s minds?.', author: 'vitalik buterin' },
+    { text: 'how is it at all realistic that AIs can read each other\'s minds?', author: 'vitalik buterin' },
+    { text: 'what if part of the human condition is that we don\'t fully know what we want, and any attempt to crystallize it into one piece breaks down if you push it far enough?', author: 'vitalik buterin' },
+    { text: 'outside of a dog, a book is man\'s best friend, inside of a dog, it\'s too dark to read.', author: 'vitalik buterin' },
+    { text: 'if one person dreams, they will not fear pain. if a hundred thousand people dream a hundred thousand dreams, pain will fear them.', author: 'vitalik buterin' },
+
+    // dhh 
+    { text: 'rust is amazing.', author: 'dhh' },
+    { text: 'don\'t take the black pill, don\'t be a loser.', author: 'dhh' },
 
     // carl sagan
     { text: "i didn't make a decision to pursue astronomy. rather, it just grabbed me, and i had no thought of escaping.", author: 'carl sagan' },
@@ -702,5 +715,8 @@ window.QUOTES = [
     { text: 'we are not done until every single human in the world has access to food, home, privacy, and the liberty to chase any dream they want.', author: 'marina von steinkirch' },
     { text: 'the truth and justice are final.', author: 'marina von steinkirch' },
     { text: 'no feeling feels more free than that moment when you finally say "it\'s not my problem".', author: 'marina von steinkirch' },
-    { text: 'not until there is no longer this heartbroken disconnection between the divine feminine and the divine masculine will the world be at peace.', author: 'marina von steinkirch'}
+    { text: 'love feels really good.', author: 'marina von steinkirch' },
+    { text: 'it’s time to stop treating people like spoiled kids. there are very clear and explicit rules that govern adulthood, maturity, and integrity. we need to hold everyone to them, just as we would our own children.', author: 'marina von steinkirch' },
+    { text: 'not until there is no longer this heartbroken disconnection between the divine feminine and the divine masculine will the world be at peace.', author: 'marina von steinkirch'},
+    { text: 'one measure of intelligence is the capacity to change and improve one’s ideas and ways after a learning experience. those who temporarily show progress but then return to their old behavior are simply demonstrating that they are unintelligent.', author: 'marina von steinkirch'},
 ];

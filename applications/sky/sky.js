@@ -1,6 +1,9 @@
 /**
  * Today's Sky panel – CosmyDay transit sky_summary (planet, sign, angle).
  */
+
+const API_URL = 'https://api.cosmyday.com/content/transit'
+
 const PLANET_ORDER = [
     'sun', 'moon', 'mercury', 'venus', 'mars', 'jupiter',
     'saturn', 'uranus', 'neptune', 'pluto',
@@ -50,7 +53,7 @@ const SKIP_KEYS = new Set(['stelliums', 'top_aspects']);
 class SkyPanel {
     constructor() {
         this.apiBase = window.Env && window.Env.getApiBase('sky');
-        this.directUrl = 'https://api.cosmyday.com/content/transit';
+        this.directUrl = API_URL;
         this.cacheKey = 'sky_cache';
         this.cacheExpiry = 24 * 60 * 60 * 1000;
         this.lastSky = null;

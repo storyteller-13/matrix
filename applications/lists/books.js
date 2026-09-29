@@ -1,6 +1,7 @@
 /**
  * Books 2026 – curated reading list window (notes letter styles).
  */
+
 class BooksApp extends BaseApp {
     constructor() {
         super({ windowId: 'books-window' });

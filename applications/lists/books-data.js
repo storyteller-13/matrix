@@ -1,19 +1,28 @@
 /**
- * Books I am reading in 2026 – curated list data.
- * Source: https://gist.github.com/von-steinkirch/abceab872b7a4bab220e64230f92a66a
+ * Books I am reading in 2026.
+ *
  */
+
 const BOOKS_2026 = {
     title: 'books i am reading in 2026',
     shareId: 'books-2026',
     sourceUrl: 'https://gist.github.com/von-steinkirch/abceab872b7a4bab220e64230f92a66a',
     months: [
         {
+            id: 'october',
+            label: 'october',
+            count: 1,
+            books: [
+                { title: 'cryptonomicon (neal stephenson)', rating: 'tba', url: 'tba', note: 'tba' },
+            ]
+        },
+        {
             id: 'september',
             label: 'september',
             count: 3,
             books: [
-                { title: 'snowmoon (v.buterin)', rating: '8.5/10', url: 'https://gist.github.com/von-steinkirch/260bb93042b3ffa595a8971db54f1131', note: 'my thoughts' },
-                { title: 'cryptonomicon (neal stephenson)', rating: 'tba', url: 'tba', note: 'tba' },
+                { title: 'snowmoon (vitalik buterin)', rating: '8.5/10', url: 'https://gist.github.com/von-steinkirch/260bb93042b3ffa595a8971db54f1131', note: 'my thoughts' },
+                { title: 'the book of five rings (miyamoto musashi)', rating: '9/10', url: 'https://gist.github.com/von-steinkirch/279b0cb6d83fb4c959b1c2988cefca77', note: 'my thoughts' },
                 { title: 'the emperor\'s new mind (roger penrose)', rating: 'tba', url: 'tba', note: 'tba' },
             ]
         },
@@ -35,7 +44,7 @@ const BOOKS_2026 = {
             books: [
                 { title: 'superintelligence (nick bostrom)', rating: '10/10', url: 'https://marina.nullstar.fun/pages/post.html?post=book_superintel', note: 'my thoughts' },
                 { title: 'the tale of genji (murasaki shikibu)', rating: '(unfinished)', note: 'another time <3' },
-                { title: 'neuromancer (william gibson)', rating: '7/10' },
+                { title: 'neuromancer (william gibson)', rating: '7/10', note: 'read it the first time in college and loved it; loved slightly less this second time. "this is the matrix. you’re wintermute.”'},
                 { title: 'the obstacle is the way (ryan holiday)', rating: '9/10', url: 'https://gist.github.com/von-steinkirch/13a135cca8097caa3126d1b6ce6e9f4a', note: 'my thoughts' },
                 { title: 'the singularity is near (ray kurzweil)', rating: '8/10', url: 'https://gist.github.com/von-steinkirch/31c1545bc212c091d77e2c5b111328e3', note: 'my thoughts' },
             ]
@@ -55,7 +64,7 @@ const BOOKS_2026 = {
             books: [
                 { title: 'the lean startup (eric ries)', rating: '7/10', url: 'https://gist.github.com/von-steinkirch/3fb77a84eacb36d4a8642fa73bd22030', note: 'my thoughts' },
                 { title: 'hagakure: book of the samurai (yamamoto tsunetomo)', rating: '8/10', url: 'https://gist.github.com/von-steinkirch/1eed70049ed6c41ad8c65f7883d13430', note: 'my thoughts' },
-                { title: 'ethics (spinoza)', rating: '7/10' },
+                { title: 'ethics (spinoza)', rating: '7/10', note: '"by god, i mean a being absolutely infinite—that is, a substance consisting in infinite attributes, of which each expresses eternal and infinite essentiality."' },
                 { title: 'the psychology of persuasion (robert b. cialdini)', rating: '(unfinished)' },
             ]
         },
@@ -64,8 +73,8 @@ const BOOKS_2026 = {
             label: 'april',
             count: 2,
             books: [
-                { title: 'pirkei avot', rating: '8/10' },
-                { title: 'the republic (plato)', rating: '8/10' },
+                { title: 'pirkei avot', rating: '8/10', url: 'https://gist.github.com/von-steinkirch/abceab872b7a4bab220e64230f92a66a#-april-2-books-read-', note: 'my thoughts' },
+                { title: 'the republic (plato)', rating: '8/10', url: 'https://gist.github.com/von-steinkirch/abceab872b7a4bab220e64230f92a66a#-april-2-books-read-', note: 'my thoughts' },
             ]
         },
         {
@@ -73,9 +82,9 @@ const BOOKS_2026 = {
             label: 'march',
             count: 4,
             books: [
-                { title: 'abundance (ezra klein & derek thompson)', rating: '6/10' },
-                { title: 'the rational optimist (matt ridley)', rating: '7/10' },
-                { title: 'compensation (ralph waldo emerson)', rating: '7/10' },
+                { title: 'abundance (ezra klein & derek thompson)', rating: '6/10', url: 'https://gist.github.com/von-steinkirch/abceab872b7a4bab220e64230f92a66a#-march-4-books-read-', note: 'my thoughts' },
+                { title: 'the rational optimist (matt ridley)', rating: '7/10', url: 'https://gist.github.com/von-steinkirch/abceab872b7a4bab220e64230f92a66a#-march-4-books-read-', note: 'my thoughts' },
+                { title: 'compensation (ralph waldo emerson)', rating: '7/10', url: 'https://gist.github.com/von-steinkirch/abceab872b7a4bab220e64230f92a66a#-march-4-books-read-', note: 'my thoughts' },
                 { title: 'calendar of wisdom (leo tolstoy)', rating: '8/10', url: 'https://gist.github.com/von-steinkirch/b00b90d17d17a218fd660df8c9166ec9', note: 'my thoughts' },
             ]
         },
@@ -89,8 +98,8 @@ const BOOKS_2026 = {
                 { title: 'the symbolic species (terrence w. deacon)', rating: '8/10', url: 'https://gist.github.com/von-steinkirch/996eeae70ea700f7de54cdf91e39cc31', note: 'my thoughts' },
                 { title: 'yes to life (viktor frankl)', rating: '8/10', url: 'https://gist.github.com/von-steinkirch/edfd956297c66f7ce2734370391b3c0d', note: 'my thoughts' },
                 { title: 'nausea (jean-paul sartre)', rating: '7/10', note: '"life begins on the other side of despair."' },
-                { title: 'the code of the woosters (p.g. wodehouse)', rating: '7/10' },
-                { title: 'at the mountains of madness (h.p. lovecraft)', rating: '6/10' },
+                { title: 'the code of the woosters (p.g. wodehouse)', rating: '7/10', url: 'https://gist.github.com/von-steinkirch/abceab872b7a4bab220e64230f92a66a#-february-7-books-read-', note: 'my thoughts' },
+                { title: 'at the mountains of madness (h.p. lovecraft)', rating: '6/10', url: 'https://gist.github.com/von-steinkirch/abceab872b7a4bab220e64230f92a66a#-february-7-books-read-', note: 'my thoughts' },
             ]
         },
         {
@@ -99,12 +108,12 @@ const BOOKS_2026 = {
             count: 7,
             books: [
                 { title: 'meditations (marcus aurelius)', rating: '10/10', url: 'https://gist.github.com/von-steinkirch/038cccccd1d428a3deca69080c300276', note: 'my thoughts' },
-                { title: 'the book of sand (jorge luis borges)', rating: '8/10' },
-                { title: 'shakespeare memory (jorge luis borges)', rating: '8/10' },
-                { title: 'artifices (jorge luis borges)', rating: '8/10' },
-                { title: 'the aleph (jorge luis borges)', rating: '8/10' },
-                { title: 'fictions (jorge luis borges)', rating: '8/10' },
-                { title: 'snow crash (neal stephenson)', rating: '8/10' },
+                { title: 'the book of sand (jorge luis borges)', rating: '8/10', url: 'https://gist.github.com/von-steinkirch/abceab872b7a4bab220e64230f92a66a#-january-8-books-read-', note: 'my thoughts' },
+                { title: 'shakespeare memory (jorge luis borges)', rating: '8/10', url: 'https://gist.github.com/von-steinkirch/abceab872b7a4bab220e64230f92a66a#-january-8-books-read-', note: 'my thoughts' },
+                { title: 'artifices (jorge luis borges)', rating: '8/10', url: 'https://gist.github.com/von-steinkirch/abceab872b7a4bab220e64230f92a66a#-january-8-books-read-', note: 'my thoughts' },
+                { title: 'the aleph (jorge luis borges)', rating: '8/10', url: 'https://gist.github.com/von-steinkirch/abceab872b7a4bab220e64230f92a66a#-january-8-books-read-', note: 'my thoughts' },
+                { title: 'fictions (jorge luis borges)', rating: '8/10', url: 'https://gist.github.com/von-steinkirch/abceab872b7a4bab220e64230f92a66a#-january-8-books-read-', note: 'my thoughts' },
+                { title: 'snow crash (neal stephenson)', rating: '8/10', url: 'https://gist.github.com/von-steinkirch/abceab872b7a4bab220e64230f92a66a#-january-8-books-read-', note: 'my thoughts' },
             ]
         },
     ],
@@ -291,6 +300,8 @@ const BOOKS_2026 = {
         { title: 'in the theater of consciousness (baars)', url: 'https://books.google.com/books?hl=en&lr=&id=RTpmQkXoUMEC&oi=fnd&pg=PR13&ots=ZnmiwNpWOe&sig=nRGfRhlNN0Zp0lhZMdIl46Sq4c0#v=onepage&q&f=false' },
         { title: 'east of eden (john steinbeck)' },
         { title: 'souls in the great machine (sean mcmullen)' },
+        { title: 'what is intelligence (blaise agüera y arcas)' },
+        { title: 'a world appears (michael pollan)'}
     ]
 };
 

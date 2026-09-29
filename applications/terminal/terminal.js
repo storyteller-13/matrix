@@ -1,4 +1,5 @@
 // Terminal functionality for index.html
+
 (function() {
     // Constants
     const HOME_DIR = '~';

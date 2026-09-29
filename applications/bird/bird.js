@@ -2,6 +2,7 @@
  * Bird of the Day Module
  * Daily bird image panel (companion to APOD), sourced from iNaturalist + Wikipedia.
  */
+
 class BirdPanel {
     constructor() {
         this.apiBase = window.Env && window.Env.getApiBase('bird');
