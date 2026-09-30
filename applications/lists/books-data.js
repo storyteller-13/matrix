@@ -23,7 +23,7 @@ const BOOKS_2026 = {
             books: [
                 { title: 'snowmoon (vitalik buterin)', rating: '8.5/10', url: 'https://gist.github.com/von-steinkirch/260bb93042b3ffa595a8971db54f1131', note: 'my thoughts' },
                 { title: 'the book of five rings (miyamoto musashi)', rating: '9/10', url: 'https://gist.github.com/von-steinkirch/279b0cb6d83fb4c959b1c2988cefca77', note: 'my thoughts' },
-                { title: 'the emperor\'s new mind (roger penrose)', rating: 'tba', url: 'tba', note: 'tba' },
+                { title: 'the emperor\'s new mind (roger penrose)', rating: '10/10', url: 'https://gist.github.com/von-steinkirch/6bcd2833b421d062e5fcf6754aef3ef1', note: 'my thoughts' },
             ]
         },
         {
