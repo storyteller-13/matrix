@@ -106,6 +106,7 @@ class MusicPlayerStorage {
                         { id: 'UezrC5nNQxE', title: 'when you\'ve had enough (evanescence)' },
                         { id: '9uPMQ7KZ2KU', title: 'to whom it may concern (a perfect circle)' },
                         { id: 'Tk9TM7-eTmw', title: 'joseph (falling in reverse)' },
+                        { id: 'eVTXPUF4Oz4', title: 'in the end (linkin park)' },
                         { id: '6NZzjs3_VwY', title: 'burden the heavens (sabrina jordan)' },
                     ]
                 },
