@@ -422,7 +422,12 @@ window.QUOTES = [
     { text: 'outside of a dog, a book is man\'s best friend, inside of a dog, it\'s too dark to read.', author: 'vitalik buterin' },
     { text: 'if one person dreams, they will not fear pain. if a hundred thousand people dream a hundred thousand dreams, pain will fear them.', author: 'vitalik buterin' },
 
-    // dhh 
+    // roger penrose
+    { text: 'in my own mind, the absoluteness of mathematical truth and the platonic existence of mathematical concepts are essentially the same thing.', author: 'roger penrose' },
+    { text: 'the mandelbrot set is not an invention of the human mind: it was a discovery.', author: 'roger penrose' },
+    { text: 'mathematical objects have a timeless existence of their own, not dependent on human society nor on particular physical objects.', author: 'roger penrose' },
+
+    // dhh
     { text: 'rust is amazing.', author: 'dhh' },
     { text: 'don\'t take the black pill, don\'t be a loser.', author: 'dhh' },
 
