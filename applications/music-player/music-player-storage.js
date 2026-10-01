@@ -141,7 +141,10 @@ class MusicPlayerStorage {
                         { id: '5f3sMmdG2sg', title: 'sunshine (jungle)' },
                         { id: 'oHRNrgDIJfo', title: 'feeling good (nina simone)' },
                         { id: 'zp7NtW_hKJI', title: 'a sky full of stars (coldplay)' },
+                        { id: 'JAYb8ZyjzD0', title: 'hoppípolla (sigur rós)' },
+                        { id: 'n3nPiBai66M', title: 'just like heaven (the cure)' },
                         { id: 'HVHUjzZZGQ4', title: 'island in the sun (weezer)' },
+                        { id: 'Rk_sAHh9s08', title: 'return to innocence (enigma)' },
                         { id: 'oJ5ciSr8rAc', title: 'all that we perceive (thievery corporation)' },
                     ]
                 },

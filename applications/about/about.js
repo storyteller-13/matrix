@@ -4,7 +4,7 @@
 
 const ABOUT = {
     name: 'marina von steinkirch',
-    role: 'delicate · hardworking · optimistic · philosopher ',
+    role: 'kind · delicate · hardworking · optimistic · autistic · philosopher ',
     text: `i am marina, and this is a personal space where, during my free time, i share a little bit of my thoughts and stories.
 
 my real job is actually being an engineer and a scientist, which i have been doing full-time, without interruption, for almost three decades. i spend most of my time privately working on my technical and scientific endeavors. this is my real purpose, and you should definitely check out my website!

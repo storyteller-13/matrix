@@ -301,7 +301,8 @@ const BOOKS_2026 = {
         { title: 'east of eden (john steinbeck)' },
         { title: 'souls in the great machine (sean mcmullen)' },
         { title: 'what is intelligence (blaise agüera y arcas)' },
-        { title: 'a world appears (michael pollan)'}
+        { title: 'a world appears (michael pollan)'},
+        { title: 'waging a good war (thomas rick)'},
     ]
 };
 
