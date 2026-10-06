@@ -52,7 +52,7 @@ window.QUOTES = [
     { text: 'the mind is everything. what you think you become.', author: 'buddha' },
     { text: 'a man who starts to live for his soul is like a man who brings a lantern into a dark house. the darkness disappears at once. you have to be persistent in this, and your soul will have this light.', author: 'buddha' },
 
-    // carl young
+    // carl jung
     { text: 'even a happy life cannot be without a measure of darkness.', author: 'carl jung' },
     { text: 'freedom of will is the ability to do gladly that which i must do.', author: 'carl jung' },
 
@@ -295,7 +295,6 @@ window.QUOTES = [
 
     // niccolò machiavelli
     { text: 'there is nothing more difficult to take in hand, more perilous to conduct, or more uncertain in its success, than to take the lead in the introduction of a new order of things.', author: 'niccolò machiavelli' },
-    { text: 'there is nothing more difficult to take in hand, more perilous to conduct, or more uncertain in its success, than to take the lead in the introduction of a new order of things.', author: 'niccolò machiavelli' },
 
     // schopenhauer
     { text: 'a constant flow of thoughts expressed by other people can stop and deaden your own thought and your own initiative.', author: 'arthur schopenhauer' },
@@ -473,7 +472,6 @@ window.QUOTES = [
     { text: 'there is no substitute for reality.', author: 'ayn rand' },
     { text: 'you can avoid reality, but you cannot avoid the consequences of avoiding reality.', author: 'ayn rand' },
     { text: 'check your premises.', author: 'ayn rand' },
-    { text: 'a creative man is motivated by the desire to achieve, not by the desire to beat others.', author: 'ayn rand' },
     { text: 'the question isn\'t who is going to let me; it\'s who is going to stop me.', author: 'ayn rand' },
 
     // steve jobs
@@ -529,11 +527,11 @@ window.QUOTES = [
 
     // benjamin franklin
     { text: 'well done is better than well said.', author: 'benjamin franklin' },
-    { text: 'early to bed and early to rise makes a man healthy, wealhty and wise.', author: 'benjamin franklin' },
+    { text: 'early to bed and early to rise makes a man healthy, wealthy and wise.', author: 'benjamin franklin' },
     { text: 'energy and persistence conquer all things.', author: 'benjamin franklin' },
     { text: 'diligence is the mother of good luck.', author: 'benjamin franklin' },
     { text: 'by failing to prepare, you are preparing to fail.', author: 'benjamin franklin' },
-    { text: 'guests, like fish, begin to smel after three days.', author: 'benjamin franklin' },
+    { text: 'guests, like fish, begin to smell after three days.', author: 'benjamin franklin' },
 
     // winston churchill
     { text: 'short words are best and the old words when short are best of all.', author: 'winston churchill' },
@@ -735,11 +733,14 @@ window.QUOTES = [
     { text: 'rule #10 of fame: trust no one, mr. mulder.', author: 'marina von steinkirch'},
     { text: 'rule #11 of fame: try not to be too careless because it\'s live and everyone is watching.', author: 'marina von steinkirch'},
     { text: 'rule #12 of fame: before you even realize it, "being famous" is all you do for your entire day, every day, for your entire life.', author: 'marina von steinkirch'},
-    { text: 'rule #13 of fame: sometimes, even when you try your best to be unfamous, it\'s inevitable because you are just a natural at it.', author: 'marina von steinkirch'},
+    { text: 'rule #13 of fame: sometimes, even when you try your best to be unfamous, it\'s inevitable because you are just a natural.', author: 'marina von steinkirch'},
     { text: 'rule #14 of fame: some people really work hard to become famous, like it\'s their life goal. for them, everything done in public is a statement. learn from them; it might be easier this way.', author: 'marina von steinkirch'},
     { text: 'rule #15 of fame: just from analyzing the history and facts, when you become famous, the probability that you will end up dying by suicide has increased by 4%. it\'s just math, deal with it.', author: 'marina von steinkirch'},
     { text: 'rule #16 of fame: the good news is that there is a 100% probability that one day you will die, and then you will be able to rest in peace forever.', author: 'marina von steinkirch'},
     { text: 'rule #17 of fame: the days you want to disappear forever are exactly the days you must show up and give your best.', author: 'marina von steinkirch'},
     { text: 'rule #18 of fame: chin up and keep going with your dreams, one day at a time; you have everything you need to shine and be who you always meant to be.', author: 'marina von steinkirch'},
     { text: 'one measure of intelligence is the capacity to change and improve one’s ideas and ways after a learning experience. those who temporarily show progress but then return to their old behavior are simply demonstrating that they are unintelligent.', author: 'marina von steinkirch'},
+    { text: 'somedays you just hold tight until tomorrow.', author: 'marina von steinkirch'},
+    { text: 'one measure of progress on your journey is realizing that, one day, you will simply stop taking other people’s advice without first questioning whether their life goals are congruent with yours.', author: 'marina von steinkirch'},
+    { text: 'it\'s wonderful, now let\'s put a beautiful box on it.', author: 'marina von steinkirch'},
 ];

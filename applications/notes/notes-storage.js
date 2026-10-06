@@ -59,7 +59,6 @@ class NotesStorage {
 
     getDefaultEntries() {
         return [
-
             {
             id: 'prelude',
             date: '2026-09-28T00:00:00.000Z',
@@ -139,7 +138,7 @@ and watch sunsets and shining stars,
 and dance and play and run and live.
 
 and i cannot wait to show you the things i've been building in secret,
-and the puzzles and art and fun i have planed for the future.
+and the puzzles and art and fun i have planned for the future.
 and all the things i will do that have never been done before.
 
 so yes.

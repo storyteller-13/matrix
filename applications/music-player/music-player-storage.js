@@ -66,18 +66,20 @@ class MusicPlayerStorage {
                     id:   'spacetime journey through the galaxies',
                     name: 'spacetime journey through the galaxies',
                     songs: [
+                        { id: 'HX33ezQhBio', title: 'night surf (soundgarden)' },
                         { id: 'pDyl6I6ESSw', title: 'space oddity (bowie)' },
                         { id: 'o7WGrdg-p4Y', title: 'a deep breath (giuseppe centonze)' },
                         { id: 'IysMLKomjXs', title: 'singularity (james malikey)' },
                         { id: 'OqK2XmcWu8g', title: 'abstract jazz for disappearing into work (sileo)' },
                         { id: 'JCX0SEX9YMo', title: 'way out (blume)' },
+                        { id: '-cPmDQqHQN0', title: 'sleepless nights (nobody)' },
                         { id: 'yzW0kLJSwkc', title: 'the 2nd coming was a moonrise (hammock)' },
                         { id: 'LTiqKDrjqr4', title: 'summer\'26 stargazing fest (lofi girl)' },
                         { id: '2gezcxmmy30', title: 'love is in small things (puuung1)' },
                         { id: '6K5yqX4Np1Y', title: 'hyperion (ambient civilization)' },
-                        { id: '6K5yqX4Np1Y', title: 'contours (blake farfan)' },
                         { id: '4Ymarg9u0v0', title: '夢見る街  (future city)' },
                         { id: '0nfLWrDaQl8', title: 'oppenheimer (alienworlds)' },
+                        { id: '4Opd1HFs--g', title: 'the call of ktulu (metallica)' },
                         { id: 'v1ZkSsxl98A', title: 'a moment before forever (sci-fi ambience)' },
                         { id: 'JcHtM0PEETo', title: 'stillness in the cosmos (spiritual brother sci-fi)' },
                         { id: 'DSUkLP-EZr0', title: 'when everything is still (future city)' },
@@ -88,15 +90,18 @@ class MusicPlayerStorage {
                     id:   'the free people inside babel ➜ prelude',
                     name: 'the free people inside babel ➜ prelude',
                     songs: [
+                        { id: '3mbBbFH9fAg', title: 'black hole sun (soundgarden)' },
                         { id: '44FId4BpMx0', title: 'heroes (bowie)' },
                         { id: 'ooX11qSJoxQ', title: 'the last run on the ladder (tom morello)' },
-                        { id: 'eAOIpDUDGX4', title: 'where the goth girls at? (queen of the stone age)' },
+                        { id: 'eAOIpDUDGX4', title: 'where the goth girls at? (queens of the stone age)' },
+                        { id: 'gt4eSe_43pg', title: 'like a stone (tom + serj)' },
                         { id: '-qcko5RfeLc', title: 'demon days (gorillaz)' },
                         { id: 'afSgBNwmZrQ', title: 'petal (ariana grande)' },
                         { id: '1mCN-RDh0-0', title: 'silencio (u2)' },
                         { id: 'xFMdDMELQIY', title: 'princess (drake)' },
                         { id: 'Sqhuk0iaq4k', title: 'ghost (jhené aiko)' },
                         { id: '_jkfczaOFDU', title: 'gasoline (sheryl crow)' },
+                        { id: 'HQDB1n0UZtM', title: 'season of the witch (alanis morissette)' },
                         { id: 'fpQstZwQL5M', title: 'living undercover (rise against)' },
                         { id: '8NikIaI6gQM', title: 'rabbit ♡ (florence + the machine)' },
                         { id: '8kQbg4Pqa4Q', title: 'helen keller (placebo)' },
@@ -106,7 +111,9 @@ class MusicPlayerStorage {
                         { id: 'UezrC5nNQxE', title: 'when you\'ve had enough (evanescence)' },
                         { id: '9uPMQ7KZ2KU', title: 'to whom it may concern (a perfect circle)' },
                         { id: 'Tk9TM7-eTmw', title: 'joseph (falling in reverse)' },
+                        { id: 'vVXIK1xCRpY', title: 'show me how to live (audioslave)' },
                         { id: 'eVTXPUF4Oz4', title: 'in the end (linkin park)' },
+                        { id: 'tgbkQxyYjS4', title: 'the divine feminine (mac miller)' },
                         { id: '6NZzjs3_VwY', title: 'burden the heavens (sabrina jordan)' },
                     ]
                 },
@@ -115,6 +122,7 @@ class MusicPlayerStorage {
                     id:   'the free people inside babel ➜ interlude',
                     name: 'the free people inside babel ➜ interlude',
                     songs: [
+                        { id: 'WC5FdFlUcl0', title: 'be yourself (audioslave)' },
                         { id: 'x11NA63gLDM', title: 'change the world (eric clapton)' },
                         { id: 'jsILu2K6K3E', title: 'upperhand (apocalyptica)' },
                         { id: 'fDltPLFdkYI', title: 'power in the blood (polyphia)' },
@@ -131,10 +139,9 @@ class MusicPlayerStorage {
                     ]
                 },
 
-
                 {
-                    id:   'the free people inside babel ➜ finale',
-                    name: 'the free people inside babel ➜ finale',
+                    id:   'the free people inside babel ➜ the finale',
+                    name: 'the free people inside babel ➜ the finale',
                     songs: [
                         { id: 'ZoC9_udLNeU', title: 'let\'s dance (bowie)' },
                         { id: 'G2nJPEDc02k', title: 'levitating (dua lipa)' },

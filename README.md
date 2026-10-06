@@ -29,7 +29,9 @@ make test
 
 <br>
 
-### BACKLOG OF MINOR TASKS
+---
+
+### backlog of minor tasks
 
 <br>
 
@@ -49,7 +51,7 @@ make test
 
 <br>
 
-#### featurs
+#### features
 
 - add 2026 lists for each folder
 - set the stage for films awards
