@@ -1,6 +1,7 @@
 /**
  * APOD (Astronomy Picture of the Day) Module
  * Fetches and displays NASA's Astronomy Picture of the Day
+ * Updated with WordPress normalization and a "check it out" link fallback.
  */
 
 class APODPanel {
@@ -72,7 +73,11 @@ class APODPanel {
 
         // Click on image container to show popup
         if (imageContainer) {
-            imageContainer.addEventListener('click', () => this.showPopup());
+            imageContainer.addEventListener('click', (e) => {
+                // Prevent opening popup if clicking the "check it out" link directly
+                if (e.target.tagName === 'A') return;
+                this.showPopup();
+            });
         }
 
         // Close box button
@@ -135,6 +140,32 @@ class APODPanel {
     }
 
     /**
+     * Normalizes APOD response data to handle NASA's WordPress migration.
+     */
+    normalizeApodData(data) {
+        if (!data) return null;
+        const item = Array.isArray(data) ? data[0] : data;
+        if (!item) return null;
+
+        // Preserve original permalink/article URL
+        item.permalink = item.permalink || item.url;
+
+        // Ensure url points to valid image asset
+        if (item.hdurl && typeof item.hdurl === 'string' && item.hdurl.startsWith('http')) {
+            item.url = item.hdurl;
+        } else if (item.url && item.url.includes('image-article')) {
+            if (item.basic_html) {
+                const match = item.basic_html.match(/src="(https:\/\/assets\.science\.nasa\.gov\/[^"]+)"/);
+                if (match && match[1]) {
+                    item.url = match[1];
+                }
+            }
+        }
+
+        return item;
+    }
+
+    /**
      * Fetches the latest image APOD, walking back past unpublished dates and videos.
      */
     async fetchAPOD() {
@@ -152,7 +183,8 @@ class APODPanel {
             if (!response.ok) continue;
 
             try {
-                const data = await response.json();
+                const rawData = await response.json();
+                const data = this.normalizeApodData(rawData);
                 if (data && data.media_type === 'image' && data.url) return data;
             } catch (_) {}
         }
@@ -174,19 +206,31 @@ class APODPanel {
 
         this.lastData = data;
 
-        // Clear loading state
+        // Clear container state
         imageContainer.innerHTML = '';
 
-        // Create image
+        // Create image element
         const img = document.createElement('img');
         img.src = data.url;
         const fallbackTitle = window.I18n ? window.I18n.t('apod.fallbackTitle') : 'astronomical picture of the day';
         const loadingText = window.I18n ? window.I18n.t('panel.loading') : 'loading...';
         img.alt = data.title || fallbackTitle;
         img.className = 'apod-box-image';
+        
+        // If image fails to load, show error text
         img.onerror = () => this.showError(loadingText);
 
         imageContainer.appendChild(img);
+
+        // Add "check it out" link for direct original image/permalink access
+        const link = document.createElement('a');
+        link.href = data.permalink || data.url;
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        link.className = 'apod-check-it-out-link';
+        link.textContent = 'check it out';
+        link.style.cssText = 'display: block; text-align: center; margin-top: 6px; font-size: 12px; color: #4fa3ff; text-decoration: underline; cursor: pointer;';
+        imageContainer.appendChild(link);
 
         if (titleElement) {
             titleElement.textContent = window.I18n
@@ -305,7 +349,9 @@ class APODPanel {
             if (!raw) return null;
             const { data, timestamp } = JSON.parse(raw);
             const valid = Date.now() - timestamp < this.cacheExpiry;
-            if (valid || allowExpired) return data;
+            if (valid || allowExpired) {
+                return this.normalizeApodData(data);
+            }
             return null;
         } catch (_) {
             return null;
@@ -340,3 +386,4 @@ window.openApodWindow = () => {
         window.APODPanel.toggleVisibility();
     }
 };
+

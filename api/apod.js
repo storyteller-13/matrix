@@ -1,87 +1,82 @@
-/**
- * Vercel Serverless Function - NASA APOD API Proxy
- * Proxies requests to the NASA APOD API to avoid CORS and rate limiting issues
- * 
- * Set NASA_API_KEY in Vercel environment variables for better rate limits
- * Get your free API key at: https://api.nasa.gov/
- */
+const API_URL = 'https://science.nasa.gov/wp-json/wp/v2/apod-basic';
+const HEADERS = {
+  'User-Agent':
+    'Mozilla/5.0 (compatible; matrix.nullstar.fun/1.0; +https://matrix.nullstar.fun)',
+  Accept: 'application/json',
+};
 
-const USER_AGENT = 'matrix.nullstar.fun.com/1.0';
-const API_URL = 'https://api.nasa.gov/planetary/apod?';
-
-/** NASA publishes APOD by US Eastern calendar date, not UTC. */
-function easternDateString(offsetDays = 0) {
-  const parts = new Intl.DateTimeFormat('en-CA', {
-    timeZone: 'America/New_York',
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-  }).formatToParts(new Date());
-  const year = Number(parts.find((p) => p.type === 'year').value);
-  const month = Number(parts.find((p) => p.type === 'month').value);
-  const day = Number(parts.find((p) => p.type === 'day').value);
-  return new Date(Date.UTC(year, month - 1, day + offsetDays)).toISOString().slice(0, 10);
+function toYYMMDD(date) {
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(date || '');
+  return m ? `${m[1].slice(2)}${m[2]}${m[3]}` : null;
 }
 
-function fetchNasaApod(apiKey, date) {
-  return fetch(`${API_URL}api_key=${apiKey}&date=${date}`, {
-    headers: {
-      'User-Agent': USER_AGENT,
-    },
-  });
+function stripHtml(html) {
+  if (!html) return '';
+  return String(html)
+    .replace(/<br\s*\/?>/gi, '\n')
+    .replace(/<\/p>/gi, '\n\n')
+    .replace(/<[^>]+>/g, '')
+    .replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"').replace(/&#0?39;|&apos;/g, "'").replace(/&nbsp;/g, ' ')
+    .trim();
+}
+
+function normalize(item) {
+  const img = item.hdurl || item.url;
+  return {
+    date: item.date,
+    title: stripHtml(item.title),
+    explanation: stripHtml(item.explanation),
+    media_type: item.media_type,
+    url: img,
+    hdurl: img,
+    copyright: stripHtml(item.copyright || item.credit) || undefined,
+    permalink: item.permalink || item.url,
+  };
+}
+
+async function getJson(url) {
+  const r = await fetch(url, { headers: HEADERS });
+  const text = await r.text();
+  let json = null;
+  try { json = JSON.parse(text); } catch {}
+  return { status: r.status, ok: r.ok, json, snippet: text.slice(0, 300) };
 }
 
 export default async function handler(req, res) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
   if (req.method === 'OPTIONS') {
-    res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
     return res.status(200).end();
   }
-
-  if (req.method !== 'GET') {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    return res.status(405).json({ error: 'method not allowed' });
-  }
+  if (req.method !== 'GET') return res.status(405).json({ error: 'method not allowed' });
 
   try {
-    const apiKey = process.env.NASA_API_KEY || 'DEMO_KEY';
     const requested = Array.isArray(req.query.date) ? req.query.date[0] : req.query.date;
-    const dates = requested
-      ? [requested, easternDateString(), easternDateString(-1)]
-      : [easternDateString(), easternDateString(-1)];
+    const code = toYYMMDD(requested);
 
-    let response;
-    for (const date of [...new Set(dates)]) {
-      response = await fetchNasaApod(apiKey, date);
-      if (response.ok || response.status === 429) break;
+    // specific date -> /YYMMDD ; otherwise latest -> ?per_page=1
+    const url = code ? `${API_URL}/${code}` : `${API_URL}?per_page=1`;
+    const result = await getJson(url);
+
+    if (!result.ok || !result.json) {
+      console.error('NASA upstream failure', url, result.status, result.snippet);
+      return res.status(result.status === 404 ? 404 : 502).json({
+        error: 'upstream failure',
+        upstreamStatus: result.status,
+        upstreamUrl: url,
+        upstreamBody: result.snippet,
+      });
     }
 
-    if (!response.ok) {
-      if (response.status === 429) {
-        res.setHeader('Access-Control-Allow-Origin', '*');
-        return res.status(429).json({
-          error: 'rate limit exceeded',
-          message: 'too many requests. please try again later.',
-          retryAfter: Number(response.headers.get('Retry-After')) || 3600
-        });
-      }
+    const item = Array.isArray(result.json) ? result.json[0] : result.json;
+    if (!item) return res.status(404).json({ error: 'no apod found' });
 
-      throw new Error(`NASA API returned ${response.status}: ${response.statusText}`);
-    }
-
-    const data = await response.json();
-
-    res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=86400');
-    return res.status(200).json(data);
-
+    return res.status(200).json(normalize(item));
   } catch (error) {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    return res.status(500).json({
-      error: 'failed to fetch apod',
-      message: error.message || 'an unexpected error occurred'
-    });
+    console.error('apod handler error', error);
+    return res.status(500).json({ error: 'failed to fetch apod', message: error.message });
   }
 }
-

@@ -134,7 +134,7 @@ describe('Application modules (coverage)', () => {
         expect(list.textContent).toContain('books');
         expect(list.textContent).toContain('movies');
         expect(list.textContent).toContain('games');
-        expect(list.textContent).toContain('places');
+        expect(list.textContent).toContain('adventures');
         expect(list.textContent).toContain('art');
         expect(list.textContent).toContain('articles');
         expect(list.textContent).toContain('food');

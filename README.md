@@ -53,8 +53,10 @@ make test
 
 #### features
 
-- add 2026 lists for each folder
+- add 2027 lists for each folder
+- move books backlog to its own window
 - set the stage for films awards
 - stein bot
 - volume adjustment
 - migrate all revelant gists here
+- move mixtapes to its own item and then organize them by year (i.e., the current goes to 2026's mixtape)

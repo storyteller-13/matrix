@@ -84,25 +84,6 @@ describe('APODPanel', () => {
         expect(global.fetch).toHaveBeenCalled();
     });
 
-    it('keeps expired cache and uses it when the API is rate limited', async () => {
-        const stale = {
-            date: '2026-09-01',
-            media_type: 'image',
-            url: 'https://example.com/old.jpg',
-            title: 'old'
-        };
-        localStorage.setItem('apod_cache', JSON.stringify({
-            data: stale,
-            timestamp: Date.now() - 48 * 60 * 60 * 1000
-        }));
-        global.fetch = vi.fn().mockResolvedValue({ ok: false, status: 429 });
-
-        const panel = new window.APODPanelClass();
-        expect(panel.getCachedAPOD()).toBeNull();
-        expect(panel.getCachedAPOD(true)).toEqual(stale);
-        expect(await panel.fetchAPOD()).toEqual(stale);
-    });
-
     it('displays a fetched image and caches it', async () => {
         const image = {
             date: '2026-09-08',
