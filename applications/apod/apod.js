@@ -228,8 +228,8 @@ class APODPanel {
         link.target = '_blank';
         link.rel = 'noopener noreferrer';
         link.className = 'apod-check-it-out-link';
-        link.textContent = 'check it out';
-        link.style.cssText = 'display: block; text-align: center; margin-top: 6px; font-size: 12px; color: #4fa3ff; text-decoration: underline; cursor: pointer;';
+        link.textContent = '→';
+        link.style.cssText = 'display: block; text-align: left; margin-top: 6px; margin-right: 4px; font-size: 12px; color:rgb(107, 231, 134); text-decoration: none; cursor: pointer; font-weight: bold;';
         imageContainer.appendChild(link);
 
         if (titleElement) {

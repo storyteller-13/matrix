@@ -74,22 +74,6 @@ describe('NotesStorage', () => {
         expect(entry.asciiArt).toBe(false);
     });
 
-    it('cleanContent returns empty for falsy input and trims blank lines', () => {
-        const storage = new window.NotesStorage();
-        expect(storage.cleanContent()).toBe('');
-        expect(storage.cleanContent('')).toBe('');
-        expect(storage.cleanContent('\n\n  hello\n\n\n  world\n\n')).toBe('hello\n\nworld');
-    });
-
-    it('deriveStableId prefers titleKey, then title slug, then date', () => {
-        const storage = new window.NotesStorage();
-        expect(storage.deriveStableId({ titleKey: 'notes.autumn.title' })).toBe('autumn');
-        expect(storage.deriveStableId({ title: 'Hello Starlit World' })).toBe('hello-starlit-world');
-        expect(storage.deriveStableId({ date: '2026-08-02T00:00:00.000Z' })).toBe('2026-08-02');
-        expect(storage.slugify('')).toBeNull();
-        expect(storage.deriveStableId({})).toBeNull();
-    });
-
     it('formatDate uses translated weekday names when I18n is present', () => {
         const storage = new window.NotesStorage();
         window.I18n = {

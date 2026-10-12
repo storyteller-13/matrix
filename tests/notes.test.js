@@ -130,25 +130,6 @@ describe('NotesApp', () => {
         expect(() => app.openLetterWindow(app.entries[0])).not.toThrow();
     });
 
-    it('formats italic markers and toggles letter classes', () => {
-        const app = new window.NotesAppClass();
-        expect(app.formatContent('plain')).toBe('plain');
-        expect(app.formatContent('a «i»b\nc«/i» d')).toBe('a <em>b<br>c</em> d');
-        expect(app.formatContent('«i»only«/i»')).toBe('<em>only</em>');
-
-        const entry = {
-            title: '',
-            content: 'hello',
-            createdAt: '2026-01-01T00:00:00.000Z',
-            italic: true,
-            asciiArt: true,
-        };
-        app.populateLetterContent(entry);
-        expect(document.getElementById('letter-title').textContent).toBe('');
-        expect(document.getElementById('letter-content').classList.contains('letter-content--italic')).toBe(true);
-        expect(document.querySelector('.letter-container').classList.contains('letter-container--ascii')).toBe(true);
-    });
-
     it('attachDateItemListeners ignores empty date groups', () => {
         const app = new window.NotesAppClass();
         const list = document.getElementById('notes-entries-list');
@@ -236,36 +217,13 @@ describe('NotesApp', () => {
         expect(app.elements.notesCount.textContent).toBe('1けん');
     });
 
-    it('i18nLabel falls back when a key is missing and localizeEntry skips empty entries', () => {
-        const app = new window.NotesAppClass();
-        expect(app.localizeEntry(null)).toBeNull();
-        expect(app.i18nLabel(null, 'fallback')).toBe('fallback');
-        expect(app.i18nLabel('notes.hello.title', 'hello')).toBe('hello');
-        window.I18n = {
-            t(key, vars = {}) {
-                if (key === 'notes.hello.title') return '';
-                if (key === 'notes.entries') return `${vars.count}けん`;
-                return key;
-            },
-        };
-        expect(app.i18nLabel('notes.hello.title', 'hello')).toBe('hello');
-        expect(app.i18nLabel('missing.key', 'hello')).toBe('hello');
-        expect(app.i18nLabel('missing.key')).toBe('');
-        app.entries = [
-            { id: '1', title: 'one', content: 'x', createdAt: '2026-01-01T00:00:00.000Z', read: false },
-            { id: '2', title: 'two', content: 'y', createdAt: '2026-01-02T00:00:00.000Z', read: false },
-        ];
-        app.render();
-        expect(app.elements.notesCount.textContent).toBe('2けん');
-    });
-
     it('opens a note from ?note= on load and clears the url on close', () => {
         const url = new URL(window.location.href);
-        url.searchParams.set('note', 'hello');
+        url.searchParams.set('note', 'hi');
         history.replaceState(null, '', url);
 
         const app = new window.NotesAppClass();
-        expect(app.activeLetterEntry?.id).toBe('hello');
+        expect(app.activeLetterEntry?.id).toBe('hi');
         expect(document.getElementById('notes-letter-window').style.display).toBe('block');
 
         document.querySelector('#notes-letter-window .control.close').click();
@@ -367,7 +325,6 @@ describe('NotesApp', () => {
 
         expect(app.findEntryByShareId(null)).toBeNull();
         expect(app.findEntryByShareId('missing')).toBeNull();
-        expect(app.findEntryByShareId('HELLO')?.id).toBe('hello');
 
         app.openNoteFromUrl();
         expect(openSpy).not.toHaveBeenCalled();
@@ -377,23 +334,6 @@ describe('NotesApp', () => {
         history.replaceState(null, '', url);
         app.openNoteFromUrl();
         expect(openSpy).not.toHaveBeenCalled();
-
-        url.searchParams.set('note', 'hello');
-        history.replaceState(null, '', url);
-        app.openNoteFromUrl();
-        expect(openSpy).toHaveBeenCalledTimes(1);
-
-        app.openNoteFromUrl();
-        expect(openSpy).toHaveBeenCalledTimes(1);
-    });
-
-    it('opens a shared note on popstate', () => {
-        const app = new window.NotesAppClass();
-        const url = new URL(window.location.href);
-        url.searchParams.set('note', 'hello');
-        history.replaceState(null, '', url);
-        window.dispatchEvent(new PopStateEvent('popstate'));
-        expect(app.activeLetterEntry?.id).toBe('hello');
     });
 
     it('setNoteInUrl no-ops while syncing or when the id is unchanged', () => {

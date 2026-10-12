@@ -38,9 +38,9 @@ make test
 #### bugs
 
 - remove extra small star line from left bottom corner
-- make sure nothing breaks with new apod url
 - make sure it looks good on all devices
 - google fonts fallback to run locally
+- calendar icon doesnt show as selected (like all the others)
 
 <br>
 

@@ -141,8 +141,8 @@ describe('Application modules (coverage)', () => {
         expect(list.textContent).toContain('podcasts');
 
         [...list.querySelectorAll('.file-item')].find((el) => el.textContent.includes('books')).click();
-        expect(list.textContent).toContain('books i am reading in 2026');
-        [...list.querySelectorAll('.file-item')].find((el) => el.textContent.includes('books i am reading in 2026')).click();
+        expect(list.textContent).toContain('books i read in 2026');
+        [...list.querySelectorAll('.file-item')].find((el) => el.textContent.includes('books i read in 2026')).click();
         expect(window.openBooksWindow).toHaveBeenCalled();
 
         app.open('movies');

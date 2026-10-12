@@ -7,13 +7,11 @@ const ABOUT = {
     role: 'kind · delicate · hardworking · optimistic · autistic · philosopher ',
     text: `i am marina, and this is my handmade personal space, where i share a little of my thoughts and stories during my free time.
 
-my real job is being an engineer and a scientist, which i've been doing full-time, without interruption, for almost three decades. i spend most of my time working privately on my technical and scientific endeavors. this is my true purpose, and if you're into that sort of thing too, you should definitely check out my website!  
+my real job is being an engineer and a scientist, which i've been doing full-time, without interruption, for almost three decades. this is my true purpose, and if you're into that sort of thing too, you should definitely check out my website!  
 
-by the way, i'm currently building something i'm incredibly excited about, which i believe will be the future of friendship networks, and i hope you'll join me in this adventure next year.
+besides that, i'm a pretty happy human. i love my life, my routine, and all the projects and adventures i get to work on. i love studying and experiencing things like computer science, physics, mathematics, philosophy, astronomy, literature, history, languages, chess, movies, art, music, traveling, surfing, and snowboarding.
 
-besides all that, i'm a pretty happy human. i love my life, my routines, and all the projects and adventures i get to work on. i love studying and experiencing things like computer science, physics, mathematics, philosophy, astronomy, literature, history, languages, chess, movies, art, and music. plus, going on adventures with good people, traveling, surfing, camping, and snowboarding.
-
-that's it, welcome, and thank you for reading!`,
+that's it, welcome, and thank you for being here!`,
 };
 
 const ABOUT_JA = {

@@ -47,7 +47,7 @@ describe('BooksApp', () => {
 
     it('renders the reading list tables and backlog', () => {
         const app = new window.BooksAppClass();
-        expect(document.getElementById('books-letter-title').textContent).toBe('books i am reading in 2026');
+        expect(document.getElementById('books-letter-title').textContent).toBe('books i read in 2026');
         expect(document.getElementById('books-letter-content').innerHTML).toContain('books-table');
         expect(document.getElementById('books-letter-content').innerHTML).toContain('books-backlog');
         expect(document.getElementById('books-letter-content').innerHTML).not.toContain('highlights');

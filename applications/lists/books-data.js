@@ -4,9 +4,8 @@
  */
 
 const BOOKS_2026 = {
-    title: 'books i am reading in 2026',
+    title: 'books i read in 2026',
     shareId: 'books-2026',
-    sourceUrl: 'https://gist.github.com/von-steinkirch/abceab872b7a4bab220e64230f92a66a',
     months: [
         {
             id: 'october',

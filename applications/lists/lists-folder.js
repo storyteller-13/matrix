@@ -86,7 +86,7 @@ class ListsFolderApp extends BaseApp {
         return [
             {
                 id: 'books-2026',
-                label: this.t('menu.books2026', 'books i am reading in 2026'),
+                label: this.t('menu.books2026', 'books i read in 2026'),
                 kind: 'list',
                 open: () => window.openBooksWindow?.(),
             },

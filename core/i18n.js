@@ -28,7 +28,7 @@ const I18N_STRINGS = {
         'menu.listsArticles': 'articles',
         'menu.listsFood': 'food',
         'menu.listsMusic': 'music',
-        'menu.books2026': 'books i am reading in 2026',
+        'menu.books2026': 'books i read in 2026',
         'menu.allOldStories': 'all the old stories',
         'menu.innerExistentialism': 'inner existentialism',
         'menu.lunaCapra': 'luna capra',
@@ -113,7 +113,7 @@ const I18N_STRINGS = {
         'calendar.month.12': 'december',
         'window.todo': 'FOCUS LIST',
         'window.notes': 'STORIES, ART, PHILOSOPHY',
-        'window.books': 'books i am reading in 2026',
+        'window.books': 'books i read in 2026',
         'window.about': 'WHO I AM',
         'window.home': 'WHAT I DO',
         'window.artwork': 'ARTWORK',
@@ -136,19 +136,6 @@ const I18N_STRINGS = {
         'notes.entries': '{count} entries',
         'notes.share': 'share',
         'notes.shareCopied': 'copied',
-        'notes.hello.title': 'hello starlit world',
-        'notes.hello.content': ` i'm that cool scholar always creating the sublime...
-
-in the years ahead, as i continue to grow
-my career, home, family, and all my dreams,
-i'll be talking about good books, films, music, art,
-and all the beauties of this life; with you, here.
-
-i'll be documenting our journey and the party,
-usually on friday nights or over the weekends.
-
-(starting at some point before halloween)
-(for now, enjoy my carefully curated little mixtapes)`,
         'notes.weekday.sunday': 'sunday',
         'notes.weekday.monday': 'monday',
         'notes.weekday.tuesday': 'tuesday',
@@ -318,19 +305,6 @@ usually on friday nights or over the weekends.
         'notes.entries': '{count}けん',
         'notes.share': 'シェア',
         'notes.shareCopied': 'コピーしたよ',
-        'notes.hello.title': 'こんにちは、ほしぞらのせかい',
-        'notes.hello.content': `わたしはがくしゃ、いつもsublimeなものをつくりつづけている。
-
-これからさき、キャリアも、いえも、かぞくも、すべてのゆめも、
-そだてつづけていくなかで、
-
-いいほん、えいが、おんがく、アート、
-そしてこのじんせいのうつくしさを、ここで、あなたとはなしていくね。
-
-しゅうまつのたびを、きろくしていくよ、
-このあきのどこかから。
-
-（いまは、だいじにえらんだちいさなミックステープをたのしんでね）`,
         'notes.weekday.sunday': 'にちようび',
         'notes.weekday.monday': 'げつようび',
         'notes.weekday.tuesday': 'かようび',
