@@ -12,9 +12,9 @@ const BOOKS_2026 = {
             label: 'october',
             count: 3,
             books: [
-                { title: 'cryptonomicon (neal stephenson)', rating: 'tba', url: 'tba', note: 'tba' },
-                { title: 'job-less utopia (marcus hutter)', rating: 'tba', url: 'https://hutter1.net/publ/jobsubi.pdf', note: 'tba' },
-                { title: 'the road to general intelligence (j. swan et al.)', rating: 'tba', url: 'https://library.oapen.org/bitstream/handle/20.500.12657/57384/1/978-3-031-08020-3.pdf', note: 'tba' },
+                { title: 'cryptonomicon (neal stephenson)', rating: 'tba', url: '', note: 'tba' },
+                { title: 'job-less utopia (marcus hutter)', rating: 'tba', url: '', note: 'tba' },
+                { title: 'the road to general intelligence (j. swan et al.)', rating: '8/10', url: 'https://gist.github.com/von-steinkirch/030fbf9867ea362d2c5503434a44e4b9', note: 'my thoughts' },
             ]
         },
         {
