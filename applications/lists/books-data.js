@@ -13,7 +13,7 @@ const BOOKS_2026 = {
             count: 3,
             books: [
                 { title: 'cryptonomicon (neal stephenson)', rating: 'tba', url: '', note: 'tba' },
-                { title: 'job-less utopia (marcus hutter)', rating: 'tba', url: '', note: 'tba' },
+                { title: 'job-less utopia (marcus hutter)', rating: '8/10', url: 'https://gist.github.com/von-steinkirch/84dd53a6cb02ec6038661dee248cb7b5', note: 'my thoughts' },
                 { title: 'the road to general intelligence (j. swan et al.)', rating: '8/10', url: 'https://gist.github.com/von-steinkirch/030fbf9867ea362d2c5503434a44e4b9', note: 'my thoughts' },
             ]
         },
