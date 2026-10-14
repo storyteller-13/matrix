@@ -511,6 +511,15 @@ window.QUOTES = [
     // alexander hamilton
     { text: 'the first duty of society is justice.', author: 'alexander hamilton' },
     { text: 'the vigor of government is essential to the security of liberty.', author: 'alexander hamilton' },
+    
+    //gödel
+    { text: 'either mathematics is too big for the human mind, or the human mind is more than a machine.', author: 'kurt gödel'},
+    { text: 'the more i think about language, the more it amazes me that people ever understand each other at all.', author: 'kurt gödel'},
+    { text: 'but every error is due to extraneous factors; reason itself does not err.', author: 'kurt gödel'},
+    { text: 'all generalizations, with the possible exception of this one, are false.', author: 'kurt gödel'},
+    { text: 'the meaning of the world is the separation of wish and fact.', author: 'kurt gödel'},
+    { text: 'i am convinced of the afterlife, independent of theology.', author: 'kurt gödel'},
+    { text: 'i don\'t believe in empirical science. i only believe in a priori truth.', author: 'kurt gödel'},
 
     // thomas jefferson
     { text: 'honesty is the first chapter in the book of wisdom.', author: 'thomas jefferson' },
@@ -751,5 +760,9 @@ window.QUOTES = [
     { text: 'until you talk to me in person, you have no idea who i really am.', author: 'marina von steinkirch'},
     { text: 'i do science and i build things, nothing more and nothing less; therefore, politics is not my expertise, interest, or problem; therefore, it’s not my job to take a public stance on it.', author: 'marina von steinkirch'},
     { text: 'a soulmate is that one person you end up calling the love of your life.', author: 'marina von steinkirch'},
-    { text: 'even if astrology is not real, we are in the business of making the age of aquarius real.', author: 'marina von steinkirch'},
-];
+    { text: 'even if astrology is not real #1: we are in the business of making the age of aquarius real.', author: 'marina von steinkirch'},
+    { text: 'even if astrology is not real #2: we love to talk about it because it triggers funny reactions from the squares.', author: 'marina von steinkirch'},
+    { text: 'even if astrology is not real #3: leos sun, moon, and rising are destined to become the collective superintelligent hearts leading humanity.', author: 'marina von steinkirch'},
+    { text: 'even if astrology is not real #4: we crazies are becoming the majority, and we are on a mission to really change the world for the better.', author: 'marina von steinkirch'},
+    { text: 'creativity and kindness are the only two edges that matter in the superintelligent future. cynicism and attacking an underdog from a position of power are not really fashionable anymore.', author: 'marina von steinkirch'},
+]; 

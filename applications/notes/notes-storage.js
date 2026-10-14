@@ -307,9 +307,6 @@ and all the beauties of this life; with you, here
 
 i'll be documenting our journey and the party
 usually on friday nights or over the weekends
-
-(starting at some point before halloween)
-(for now, enjoy my carefully curated little mixtapes)
 `)
             },
         ];
