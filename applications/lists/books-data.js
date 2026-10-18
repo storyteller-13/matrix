@@ -12,7 +12,7 @@ const BOOKS_2026 = {
             label: 'october',
             count: 3,
             books: [
-                { title: 'cryptonomicon (neal stephenson)', rating: 'tba', url: '', note: 'tba' },
+                { title: 'cryptonomicon (neal stephenson)', rating: '9/10', url: 'https://gist.github.com/von-steinkirch/8e377166a33f5ced4a7662ff2788916a', note: 'my thoughts' },
                 { title: 'job-less utopia (marcus hutter)', rating: '8/10', url: 'https://gist.github.com/von-steinkirch/84dd53a6cb02ec6038661dee248cb7b5', note: 'my thoughts' },
                 { title: 'the road to general intelligence (j. swan et al.)', rating: '8/10', url: 'https://gist.github.com/von-steinkirch/030fbf9867ea362d2c5503434a44e4b9', note: 'my thoughts' },
             ]
@@ -276,8 +276,6 @@ const BOOKS_2026 = {
         { title: 'the anxious generation (jonathan haidt)' },
         { title: 'how to raise kids who aren’t assholes (melinda winner moyer)' },
         { title: 'alexander hamilton (ron chernow)' },
-        { title: 'the art thief (michael finkel)' },
-        { title: 'the tiger (john valiant)' },
         { title: 'meow (sam austen)' },
         { title: 'anything from rainer maria rilke' },
         { title: 'the technological republic (power)' },
@@ -300,9 +298,9 @@ const BOOKS_2026 = {
         { title: 'east of eden (john steinbeck)' },
         { title: 'souls in the great machine (sean mcmullen)' },
         { title: 'what is intelligence (blaise agüera y arcas)' },
-        { title: 'a world appears (michael pollan)'},
         { title: 'waging a good war (thomas e. ricks)'},
         { title: 'a world appears (michael pollan)'},
+        { title: 'protocols (a. huberman)'},
     ]
 };
 

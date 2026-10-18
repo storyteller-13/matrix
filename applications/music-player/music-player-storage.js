@@ -44,7 +44,7 @@ class MusicPlayerStorage {
 
         try {
             const data = JSON.parse(stored);
-
+        
             if (
                 !data ||
                 typeof data !== 'object' ||
@@ -52,7 +52,10 @@ class MusicPlayerStorage {
             ) {
                 throw new Error('Invalid playlist data structure');
             }
-
+        
+            this.ensureDefaultPlaylists(data);
+            this.save(data);
+        
             return data;
         } catch (e) {
             const data = this.getDefaultData();
@@ -89,24 +92,29 @@ class MusicPlayerStorage {
                     id: 'spacetime journey through the galaxies',
                     name: 'spacetime journey through the galaxies',
                     songs: [
-                        { id: 'UDO8hHGZ3MU', title: 'amber of memory (tommy guerrero)' },
-                        { id: 'HX33ezQhBio', title: 'night surf (soundgarden)' },
-                        { id: 'o7WGrdg-p4Y', title: 'a deep breath (giuseppe centonze)' },
+                        { id: '4uX-5HOx2Wc', title: 'the art of fugue (bach)' },
                         { id: 'IysMLKomjXs', title: 'singularity (james malikey)' },
-                        { id: 'OqK2XmcWu8g', title: 'abstract jazz for disappearing into work (sileo)' },
-                        { id: 'fBmQ8IDv140', title: 'somewhere over the rainbow (blume)' },
-                        { id: '-cPmDQqHQN0', title: 'sleepless nights (nobody)' },
-                        { id: 'yzW0kLJSwkc', title: 'the 2nd coming was a moonrise (hammock)' },
-                        { id: 'LTiqKDrjqr4', title: "summer'26 stargazing fest (lofi girl)" },
-                        { id: '2gezcxmmy30', title: 'love is in small things (puuung1)' },
-                        { id: '6K5yqX4Np1Y', title: 'hyperion (ambient civilization)' },
-                        { id: '4Ymarg9u0v0', title: '夢見る街  (future city)' },
-                        { id: '0nfLWrDaQl8', title: 'oppenheimer (alienworlds)' },
+                        { id: 'o7WGrdg-p4Y', title: 'a deep breath (giuseppe centonze)' },
+                        { id: 'cOWKBzSERM8', title: 'bittersweet (apocalyptica)' },
                         { id: '4Opd1HFs--g', title: 'the call of ktulu (metallica)' },
+                        { id: 'HX33ezQhBio', title: 'night surf (soundgarden)' },
+                        { id: '-cPmDQqHQN0', title: 'sleepless nights (nobody)' },
+                        { id: '0nfLWrDaQl8', title: 'oppenheimer (alienworlds)' },
+                        { id: '4Ymarg9u0v0', title: '夢見る街  (future city)' },
+                        { id: 'BQcJcdc6bbQ', title: 'quantum rebirth (moebius fm)' },
                         { id: 'v1ZkSsxl98A', title: 'a moment before forever (sci-fi ambience)' },
                         { id: 'JcHtM0PEETo', title: 'stillness in the cosmos (spiritual brother sci-fi)' },
+                        { id: 'LTiqKDrjqr4', title: "summer'26 stargazing fest (lofi girl)" },
+                        { id: 'uQRuQwUJFxg', title: 'mars emotional (sci-fi escapes)' },
+                        { id: '6K5yqX4Np1Y', title: 'hyperion (ambient civilization)' },
+                        { id: '2gezcxmmy30', title: 'love is in small things (puuung1)' },
+                        { id: 'xA43JUXgc1k', title: 'break free (pure grit studio)' },
+                        { id: 'OqK2XmcWu8g', title: 'abstract jazz for disappearing into work (sileo)' },
+                        { id: 'fBmQ8IDv140', title: 'somewhere over the rainbow (blume)' },
+                        { id: 'yzW0kLJSwkc', title: 'the 2nd coming was a moonrise (hammock)' },
+                        { id: 'UDO8hHGZ3MU', title: 'amber of memory (tommy guerrero)' },
                         { id: '0DKHswQbr_8', title: 'gentle debussy (halidon music)' },
-                        { id: 'pDyl6I6ESSw', title: 'space oddity (bowie)' }
+                        { id: 'pDyl6I6ESSw', title: 'space oddity (bowie)' },
                     ]
                 },
 
@@ -158,6 +166,7 @@ class MusicPlayerStorage {
                         { id: 'fR4HjTH_fTM', title: 'the long and winding road (the beatles)' },
                         { id: 'tVXXD7KXAec', title: 'rescuer (alex warren)' },
                         { id: '3Zzz-xpjshM', title: 'time (alabama shakes)' },
+                        { id: 'bO28lB1uwp4', title: 'have you ever seen the rain (ccr)' },
                         { id: 'c0Y4PqvDvqc', title: 'the station of a showgirl (tay tay)' }
                     ]
                 },
@@ -170,6 +179,7 @@ class MusicPlayerStorage {
                         { id: 'ZoC9_udLNeU', title: "let's dance (bowie)" },
                         { id: 'G2nJPEDc02k', title: 'levitating (dua lipa)' },
                         { id: '5f3sMmdG2sg', title: 'sunshine (jungle)' },
+                        { id: 'ik8LoE3oBVI', title: 'i can see clearly now (johnny nash)' },
                         { id: 'oHRNrgDIJfo', title: 'feeling good (nina simone)' },
                         { id: 'zp7NtW_hKJI', title: 'a sky full of stars (coldplay)' },
                         { id: 'JAYb8ZyjzD0', title: 'hoppípolla (sigur rós)' },
@@ -177,6 +187,15 @@ class MusicPlayerStorage {
                         { id: 'HVHUjzZZGQ4', title: 'island in the sun (weezer)' },
                         { id: 'Rk_sAHh9s08', title: 'return to innocence (enigma)' },
                         { id: 'oJ5ciSr8rAc', title: 'all that we perceive (thievery corporation)' }
+                    ]
+                },
+
+                {
+                    id: 'life around our beautiful planet ➜ japan',
+                    name: 'life around our beautiful planet ➜ japan',
+                    songs: [
+                        { id: 'D4cAD8sJ6Gc', title: 'dream odyssey (mono)' },
+                        { id: 'CbnGz3qyzRA', title: 'ember (ichika nito)' }
                     ]
                 },
 
@@ -202,15 +221,6 @@ class MusicPlayerStorage {
                         { id: 'TnK29aJCOp4', title: 'stairway to heaven (orquestra sinfônica curitiba)' }
                     ]
                 },
-
-                {
-                    id: 'life around our beautiful planet ➜ japan',
-                    name: 'life around our beautiful planet ➜ japan',
-                    songs: [
-                        { id: 'D4cAD8sJ6Gc', title: 'dream odyssey (mono)' },
-                        { id: 'CbnGz3qyzRA', title: 'ember (ichika nito)' }
-                    ]
-                }
             ],
 
             currentPlaylistId: 'spacetime journey through the galaxies'

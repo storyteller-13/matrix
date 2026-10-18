@@ -36,12 +36,14 @@ class TodoStorage {
 
     getDefaultTodos() {
         const defaultTodoData = [
-            { textKey: 'todo.item.dreams', text: 'never give up on any of my dreams', completed: false },
-            { textKey: 'todo.item.peace', text: 'live a happy, free, and peaceful life', completed: false },
-            { textKey: 'todo.item.people', text: 'have a good time with good people', completed: false },
-            { textKey: 'todo.item.love', text: 'marry the love of my life someday', completed: false }
+            { textKey: 'todo.item.halloween', completed: false },
+            { textKey: 'todo.item.home', completed: false},
+            { textKey: 'todo.item.dreams', completed: false },
+            { textKey: 'todo.item.peace', completed: false },
+            { textKey: 'todo.item.people', completed: false },
+            { textKey: 'todo.item.love', completed: false }
         ];
-        return defaultTodoData.map(data => this.createTodo(data.text, data.completed, data.textKey));
+        return defaultTodoData.map(data => this.createTodo(data.completed, data.textKey));
     }
 
     textKeyFor(text) {
@@ -54,11 +56,10 @@ class TodoStorage {
         return keys[text] || null;
     }
 
-    createTodo(text, completed = false, textKey = null) {
+    createTodo(completed = false, textKey) {
         return {
             id: this.generateId(),
-            text,
-            textKey: textKey || this.textKeyFor(text) || undefined,
+            textKey: textKey || undefined,
             completed,
             createdAt: new Date().toISOString()
         };

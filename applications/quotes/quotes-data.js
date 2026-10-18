@@ -52,6 +52,9 @@ window.QUOTES = [
     { text: 'the mind is everything. what you think you become.', author: 'buddha' },
     { text: 'a man who starts to live for his soul is like a man who brings a lantern into a dark house. the darkness disappears at once. you have to be persistent in this, and your soul will have this light.', author: 'buddha' },
 
+    // mahatma gandhi
+    { text: 'whatever you do will be insignificant, but it is very important that you do it.', author: 'mahatma gandhi' },
+
     // carl jung
     { text: 'even a happy life cannot be without a measure of darkness.', author: 'carl jung' },
     { text: 'freedom of will is the ability to do gladly that which i must do.', author: 'carl jung' },
@@ -390,6 +393,9 @@ window.QUOTES = [
     { text: 'one must edge forward like the inchworm, bit by bit.', author: 'yamamoto tsunetomo' },
     { text: 'the gods and buddhas, too, first started with a vow.', author: 'yamamoto tsunetomo' },
 
+    // t.s. eliot
+    { text: 'home is where one starts from. as we grow older, the world becomes stranger, the pattern more complicated of dead and living.', author: 't.s. eliot' },
+
     // alan kay
     { text: 'a change in perspective is worth 80 iq points.', author: 'alan kay' },
     { text: 'technology is anything that was invented after you were born.', author: 'alan kay' },
@@ -403,6 +409,7 @@ window.QUOTES = [
     { text: 'the power of patterns to endure goes beyond explicitly self-replicating systems, such as organisms and self-replicating technology.', author: 'ray kurzweil' },
     { text: 'knowledge is precious in all its forms: music, art, science, and technology, as well as the embedded knowledge in our bodies and brains. any loss of this knowledge is tragic.', author: 'ray kurzweil' },
     { text: 'information lasts only so long as someone cares about it.', author: 'ray kurzweil' },
+    { text: 'intelligence is the ability to use optimally limited resources – including time – to achieve goals.', author: 'ray kurzweil' },
 
     // niels bohr
     { text: 'we all agree that your theory is crazy. the question which divides us is whether it is crazy enough.', author: 'niels bohr' },
@@ -512,7 +519,7 @@ window.QUOTES = [
     { text: 'the first duty of society is justice.', author: 'alexander hamilton' },
     { text: 'the vigor of government is essential to the security of liberty.', author: 'alexander hamilton' },
     
-    //gödel
+    // kurt gödel
     { text: 'either mathematics is too big for the human mind, or the human mind is more than a machine.', author: 'kurt gödel'},
     { text: 'the more i think about language, the more it amazes me that people ever understand each other at all.', author: 'kurt gödel'},
     { text: 'but every error is due to extraneous factors; reason itself does not err.', author: 'kurt gödel'},
@@ -765,4 +772,19 @@ window.QUOTES = [
     { text: 'even if astrology is not real #3: leos sun, moon, and rising are destined to become the collective superintelligent hearts leading humanity.', author: 'marina von steinkirch'},
     { text: 'even if astrology is not real #4: we crazies are becoming the majority, and we are on a mission to really change the world for the better.', author: 'marina von steinkirch'},
     { text: 'creativity and kindness are the only two edges that matter in the superintelligent future. cynicism and attacking an underdog from a position of power are not really fashionable anymore.', author: 'marina von steinkirch'},
-]; 
+    { text: 'evil might be simply the compounded accumulation of pain, suffering, and injustice in the world. we stop evil by breaking the cycle.', author: 'marina von steinkirch'},
+    { text: 'the most important rule is: no matter what, do not break the flow.', author: 'marina von steinkirch'},
+    { text: 'rule #1 of true love: you are the king of my world, and you deserve to be treated like a king at all times. likewise, i should be the queen of your world.', author: 'marina von steinkirch' },
+    { text: 'rule #2 of true love: perfect love is infinite, and so should be forgiveness and kindness.', author: 'marina von steinkirch' },
+    { text: 'rule #3 of true love: there should never be a third party, ever. the world is already very good at making you feel less than you are, so no one should ever have to feel paranoid about the one person they choose to love.', author: 'marina von steinkirch' },
+    { text: 'rule #4 of true love: if you are not willing to do your very best to make it last forever, if you do not see this as the last person you will ever love, then why are you wasting everyone’s time?', author: 'marina von steinkirch' },
+    { text: 'rule #5 of true love: real friends, both pocket friends and lifelong friends, are important for everyone.', author: 'marina von steinkirch' },
+    { text: 'rule #6 of true love: privacy is important for everyone. it is both a human right and a human need.', author: 'marina von steinkirch' },
+    { text: 'rule #7 of true love: you will make terrible mistakes. you will change and become a better person by learning from them, and the person who loves you will forgive you for your terrible mistakes.', author: 'marina von steinkirch' },
+    { text: 'rule #8 of true love: love is a precious asset, and you will die in the end, so do not waste time on irrelevance. make every single day count.', author: 'marina von steinkirch' },
+    { text: 'rule #9 of true love: once you find it, your life will change radically, forever. and even if it is scary, it is one of the most natural events in the story of your life.', author: 'marina von steinkirch' },
+    { text: 'rule #10 of true love: love should never replace your purpose, craft, agency, or ambitions. true love leaves room for self-realization, self-improvement, and personal achievement.', author: 'marina von steinkirch' },
+    { text: 'rule #11 of true love: find that person who can see and appreciate every layer of you, with whom your soul never has to be ashamed of its nakedness.', author: 'marina von steinkirch' },
+    { text: 'rule #12 of true love: protect what you cherish from prying eyes. the most precious things are often the ones best kept sacred, away from the world’s noise and interference.', author: 'marina von steinkirch' },
+    { text: 'rule #13 of true love: everything before a perfect union is the journey that leads two souls to find each other. everything after it is where their real story begins, and where all the beautiful things they create together come to life.', author: 'marina von steinkirch' },
+];

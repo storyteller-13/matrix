@@ -1,0 +1,122 @@
+# ─────────────────────────────────────────────
+# .gitattributes
+# ─────────────────────────────────────────────
+
+# Normalize line endings: LF in the repo, native on checkout
+* text=auto eol=lf
+
+# ── Source code ──────────────────────────────
+*.js     text eol=lf diff=javascript
+*.jsx    text eol=lf diff=javascript
+*.ts     text eol=lf
+*.tsx    text eol=lf
+*.py     text eol=lf diff=python
+*.rb     text eol=lf diff=ruby
+*.go     text eol=lf diff=golang
+*.rs     text eol=lf diff=rust
+*.java   text eol=lf diff=java
+*.kt     text eol=lf
+*.swift  text eol=lf
+*.c      text eol=lf diff=cpp
+*.h      text eol=lf diff=cpp
+*.cpp    text eol=lf diff=cpp
+*.cs     text eol=lf diff=csharp
+*.php    text eol=lf diff=php
+*.sh     text eol=lf
+*.bash   text eol=lf
+*.zsh    text eol=lf
+
+# ── Web ──────────────────────────────────────
+*.html   text eol=lf diff=html
+*.css    text eol=lf diff=css
+*.scss   text eol=lf diff=css
+*.json   text eol=lf
+*.xml    text eol=lf
+*.svg    text eol=lf
+*.vue    text eol=lf
+*.svelte text eol=lf
+
+# ── Docs & config ────────────────────────────
+*.md     text eol=lf diff=markdown
+*.txt    text eol=lf
+*.yml    text eol=lf
+*.yaml   text eol=lf
+*.toml   text eol=lf
+*.ini    text eol=lf
+*.env.example text eol=lf
+Dockerfile text eol=lf
+Makefile   text eol=lf
+
+# ── Windows scripts need CRLF ────────────────
+*.bat    text eol=crlf
+*.cmd    text eol=crlf
+*.ps1    text eol=crlf
+
+# ── Binary files: never touch, never diff as text ──
+*.png    binary
+*.jpg    binary
+*.jpeg   binary
+*.gif    binary
+*.ico    binary
+*.webp   binary
+*.pdf    binary
+*.zip    binary
+*.gz     binary
+*.tar    binary
+*.7z     binary
+*.woff   binary
+*.woff2  binary
+*.ttf    binary
+*.otf    binary
+*.eot    binary
+*.mp3    binary
+*.mp4    binary
+*.mov    binary
+*.wasm   binary
+
+# ── Lockfiles: don't clutter diffs or merge conflicts ──
+package-lock.json  -diff linguist-generated
+yarn.lock          -diff linguist-generated
+pnpm-lock.yaml     -diff linguist-generated
+Cargo.lock         -diff linguist-generated
+poetry.lock        -diff linguist-generated
+Gemfile.lock       -diff linguist-generated
+composer.lock      -diff linguist-generated
+
+# ── Make GitHub's language bar look right (linguist) ──
+# Hide vendored / generated code from language stats
+vendor/**          linguist-vendored
+node_modules/**    linguist-vendored
+dist/**            linguist-generated
+build/**           linguist-generated
+*.min.js           linguist-generated
+*.min.css          linguist-generated
+*.map              linguist-generated
+
+# Hide docs from language stats (uncomment to enable)
+# docs/**          linguist-documentation
+# *.md             linguist-documentation
+
+# Force-count files GitHub might misclassify
+# *.h              linguist-language=C
+# *.tpl            linguist-language=HTML
+
+# ── 🎨 Color the language bar ──
+# GitHub picks bar colors per language, and prose/data languages are
+# hidden by default. Marking them detectable adds their colors:
+#   Markdown (blue), YAML (red), JSON (gray), Dockerfile (blue),
+#   Shell (green), Makefile (green)
+*.md             linguist-detectable
+*.yml            linguist-detectable
+*.yaml           linguist-detectable
+*.json           linguist-detectable
+*.toml           linguist-detectable
+*.sh             linguist-detectable
+Dockerfile       linguist-detectable
+Makefile         linguist-detectable
+
+# ── Export-ignore: keep release tarballs clean ──
+.gitattributes     export-ignore
+.gitignore         export-ignore
+.github/           export-ignore
+tests/             export-ignore

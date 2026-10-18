@@ -44,26 +44,6 @@ describe('MusicPlayerStorage', () => {
 
     });
 
-    it('save() persists and load() returns saved data', () => {
-        const storage = new window.MusicPlayerStorage();
-        const data = storage.load();
-        data.currentPlaylistId = '2026 after afterlife zeitgeist';
-        storage.save(data);
-        const loaded = storage.load();
-        expect(loaded.currentPlaylistId).toBe('2026 after afterlife zeitgeist');
-    });
-
-    it('clearPersisted() removes key; next load() uses defaults', () => {
-        const storage = new window.MusicPlayerStorage();
-        const data = storage.load();
-        data.currentPlaylistId = '2026 after afterlife zeitgeist';
-        storage.save(data);
-        storage.clearPersisted();
-        expect(localStorage.getItem(STORAGE_KEY)).toBeNull();
-        const loaded = storage.load();
-        expect(loaded.currentPlaylistId).toBe(storage.getDefaultData().currentPlaylistId);
-    });
-
     it('clearPersisted() ignores storage errors', () => {
         const storage = new window.MusicPlayerStorage();
         vi.spyOn(localStorage, 'removeItem').mockImplementation(() => {

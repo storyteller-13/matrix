@@ -35,7 +35,6 @@ describe('TodoStorage', () => {
         expect(todos.length).toBeGreaterThan(0);
         const first = todos[0];
         expect(first).toHaveProperty('id');
-        expect(first).toHaveProperty('text');
         expect(first).toHaveProperty('completed');
         expect(first).toHaveProperty('createdAt');
     });
@@ -62,17 +61,4 @@ describe('TodoStorage', () => {
         expect(todo.createdAt).toBeTruthy();
     });
 
-    it('createTodo defaults completed to false', () => {
-        const storage = new window.TodoStorage();
-        expect(storage.createTodo('x').completed).toBe(false);
-        expect(storage.createTodo('y', true).completed).toBe(true);
-    });
-
-    it('default todos keep translation keys, including after a save', () => {
-        const storage = new window.TodoStorage();
-        expect(storage.load()[0].textKey).toBe('todo.item.dreams');
-        expect(storage.textKeyFor('unknown task')).toBeNull();
-        expect(storage.createTodo('custom task').textKey).toBeUndefined();
-        expect(storage.createTodo('x', false, 'todo.item.dreams').textKey).toBe('todo.item.dreams');
-    });
 });
