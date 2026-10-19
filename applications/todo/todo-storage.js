@@ -24,11 +24,9 @@ class TodoStorage {
     }
     
     normalizeTodo(t) {
-        const text = t.text || '';
         return {
             id: t.id || this.generateId(),
-            text,
-            textKey: t.textKey || this.textKeyFor(text) || undefined,
+            textKey: t.textKey || undefined,
             completed: Boolean(t.completed),
             createdAt: t.createdAt || new Date().toISOString()
         };
@@ -41,19 +39,9 @@ class TodoStorage {
             { textKey: 'todo.item.dreams', completed: false },
             { textKey: 'todo.item.peace', completed: false },
             { textKey: 'todo.item.people', completed: false },
-            { textKey: 'todo.item.love', completed: false }
+            { textKey: 'todo.item.love', completed: false },
         ];
         return defaultTodoData.map(data => this.createTodo(data.completed, data.textKey));
-    }
-
-    textKeyFor(text) {
-        const keys = {
-            'never give up on any of my dreams': 'todo.item.dreams',
-            'live a happy, free, and peaceful life': 'todo.item.peace',
-            'have a good time with good people': 'todo.item.people',
-            'marry the love of my life someday': 'todo.item.love',
-        };
-        return keys[text] || null;
     }
 
     createTodo(completed = false, textKey) {

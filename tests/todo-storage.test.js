@@ -56,7 +56,6 @@ describe('TodoStorage', () => {
         const storage = new window.TodoStorage();
         const todo = storage.normalizeTodo({});
         expect(todo.id).toBeTruthy();
-        expect(todo.text).toBe('');
         expect(todo.completed).toBe(false);
         expect(todo.createdAt).toBeTruthy();
     });

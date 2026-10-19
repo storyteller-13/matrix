@@ -92,7 +92,7 @@ class MusicPlayerStorage {
                     id: 'spacetime journey through the galaxies',
                     name: 'spacetime journey through the galaxies',
                     songs: [
-                        { id: '4uX-5HOx2Wc', title: 'the art of fugue (bach)' },
+                        { id: 'njnohokIEcQ', title: 'the art of fugue (bach + glenn gould)' },
                         { id: 'IysMLKomjXs', title: 'singularity (james malikey)' },
                         { id: 'o7WGrdg-p4Y', title: 'a deep breath (giuseppe centonze)' },
                         { id: 'cOWKBzSERM8', title: 'bittersweet (apocalyptica)' },
@@ -102,6 +102,7 @@ class MusicPlayerStorage {
                         { id: '0nfLWrDaQl8', title: 'oppenheimer (alienworlds)' },
                         { id: '4Ymarg9u0v0', title: '夢見る街  (future city)' },
                         { id: 'BQcJcdc6bbQ', title: 'quantum rebirth (moebius fm)' },
+                        { id: 'XOzLCEhXHo4', title: 'lost in the neon megacity (dreamwave84)' },
                         { id: 'v1ZkSsxl98A', title: 'a moment before forever (sci-fi ambience)' },
                         { id: 'JcHtM0PEETo', title: 'stillness in the cosmos (spiritual brother sci-fi)' },
                         { id: 'LTiqKDrjqr4', title: "summer'26 stargazing fest (lofi girl)" },
@@ -146,6 +147,7 @@ class MusicPlayerStorage {
                         { id: 'Tk9TM7-eTmw', title: 'joseph (falling in reverse)' },
                         { id: 'eVTXPUF4Oz4', title: 'in the end (linkin park)' },
                         { id: 'tgbkQxyYjS4', title: 'the divine feminine (mac miller)' },
+                        { id: 'bO28lB1uwp4', title: 'have you ever seen the rain (ccr)' },
                         { id: '6NZzjs3_VwY', title: 'burden the heavens (sabrina jordan)' }
                     ]
                 },
@@ -159,6 +161,7 @@ class MusicPlayerStorage {
                         { id: 'fDltPLFdkYI', title: 'power in the blood (polyphia)' },
                         { id: '3x2BXn0cPM8', title: 'roses (chvrches)' },
                         { id: 'aWpw-Ynl0Yc', title: 'bass persuades (miley)' },
+                        { id: 'DuKHHwt0Ovg', title: 'sun sun sun (obli + mrsuicidesheep)' },
                         { id: 'KWn5FkkuYwk', title: 'hear me now (kaskade + friends)' },
                         { id: 'mi7KlC1hxpI', title: "can't you see (bonobo + aanya martin)" },
                         { id: 'oytaoGL-mck', title: 'princess of the night (train)' },
@@ -166,7 +169,6 @@ class MusicPlayerStorage {
                         { id: 'fR4HjTH_fTM', title: 'the long and winding road (the beatles)' },
                         { id: 'tVXXD7KXAec', title: 'rescuer (alex warren)' },
                         { id: '3Zzz-xpjshM', title: 'time (alabama shakes)' },
-                        { id: 'bO28lB1uwp4', title: 'have you ever seen the rain (ccr)' },
                         { id: 'c0Y4PqvDvqc', title: 'the station of a showgirl (tay tay)' }
                     ]
                 },
