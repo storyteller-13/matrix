@@ -107,6 +107,7 @@ window.QUOTES = [
 	{ text: 'educating the mind without educating the heart is no education at all.', author: 'aristotle' },
 	{ text: 'to function well is the characteristic end of every thing, as sight is of the eye.', author: 'aristotle' },
 	{ text: 'pleasure in the job puts perfection in the work.', author: 'aristotle' },
+    { text: 'hope is a waking dream.', author: 'aristotle' },
 
     // miyamoto musashi
     { text: 'to become the enemy, see yourself as the enemy of the enemy.', author: 'miyamoto musashi' },
@@ -603,6 +604,7 @@ window.QUOTES = [
     { text: 'evil is a surd.', author: 'h.r. mackintosh' },
     { text: 'stupidity is the same as evil if you judge by the results.', author: 'margaret atwood' },
     { text: 'looking for my next twin flame; have only one is delusional.', author: 'taroverse' },
+    { text: 'john galt, you are my forever.', author: 'dagny taggart' },
 
     //////////////////////////
     // marina von steinkirch
@@ -787,4 +789,6 @@ window.QUOTES = [
     { text: 'rule #11 of true love: find that person who can see and appreciate every layer of you, with whom your soul never has to be ashamed of its nakedness.', author: 'marina von steinkirch' },
     { text: 'rule #12 of true love: protect what you cherish from prying eyes. the most precious things are often the ones best kept sacred, away from the world’s noise and interference.', author: 'marina von steinkirch' },
     { text: 'rule #13 of true love: everything before a perfect union is the journey that leads two souls to find each other. everything after it is where their real story begins, and where all the beautiful things they create together come to life.', author: 'marina von steinkirch' },
+    { text: 'the time you need to heal is the time you need to heal.', author: 'marina von steinkirch' },
+    { text: 'i am yet to find a greater pleasure than the pleasure of creating and bringing something new into the world.', author: 'marina von steinkirch' },
 ];

@@ -6,7 +6,6 @@ const IMAGES = [
     'summer.png',
     'love.png',
     'lion.jpg',
-    'unresolved.png',
 ];
 
 const BASE_PATH = '/pages/artwork/';

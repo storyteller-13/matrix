@@ -45,7 +45,6 @@
                 'summer.png': 'file',
                 'love.png': 'file',
                 'lion.jpg': 'file',
-                'unresolved.png': 'file',
             }
         };
 

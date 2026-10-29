@@ -34,8 +34,6 @@ class TodoStorage {
 
     getDefaultTodos() {
         const defaultTodoData = [
-            { textKey: 'todo.item.halloween', completed: false },
-            { textKey: 'todo.item.home', completed: false},
             { textKey: 'todo.item.dreams', completed: false },
             { textKey: 'todo.item.peace', completed: false },
             { textKey: 'todo.item.people', completed: false },
