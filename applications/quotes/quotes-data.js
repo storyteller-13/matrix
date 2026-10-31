@@ -791,4 +791,7 @@ window.QUOTES = [
     { text: 'rule #13 of true love: everything before a perfect union is the journey that leads two souls to find each other. everything after it is where their real story begins, and where all the beautiful things they create together come to life.', author: 'marina von steinkirch' },
     { text: 'the time you need to heal is the time you need to heal.', author: 'marina von steinkirch' },
     { text: 'i am yet to find a greater pleasure than the pleasure of creating and bringing something new into the world.', author: 'marina von steinkirch' },
+    { text: 'that amusing moment when the bug is rebranded as a feature.', author: 'marina von steinkirch' },
+    { text: 'minimalist life; intentional choices; peaceful state of mind.', author: 'marina von steinkirch' },
+    { text: 'every day, when you wake up, remember everything you love about yourself, all the blessings you have in your life, all the beautiful things you still need to create, and all the wonderful moments still waiting to be lived in the fleeting existence that is yours.', author: 'marina von steinkirch' },
 ];
