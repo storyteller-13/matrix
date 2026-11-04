@@ -29,6 +29,7 @@ describe('BooksApp', () => {
         document.body.innerHTML = booksDom();
         await import('../core/base-app.js');
         await import('../applications/lists/books-data.js');
+        await import('../applications/lists/movies-data.js');
         await import('../applications/lists/books.js');
     });
 
@@ -115,6 +116,52 @@ describe('BooksApp', () => {
         window.dispatchEvent(new PopStateEvent('popstate'));
         expect(app.shareId).toBe('books-backlog');
         expect(document.getElementById('books-letter-content').innerHTML).toContain('books-table--backlog');
+    });
+
+    it('opens the zeitgeist awards with the reveal note and one numbered table per category', () => {
+        const app = new window.BooksAppClass();
+        app.open('zeitgeist-2026');
+        expect(document.getElementById('books-letter-title').textContent).toBe('zeitgeist awards 2026');
+        expect(app.getShareUrl()).toContain('list=zeitgeist-2026');
+        const content = document.getElementById('books-letter-content');
+        expect(content.querySelector('.books-subtitle').textContent).toBe('winners will be revealed on thanksgiving');
+        const tables = [...content.querySelectorAll('.books-table--award')];
+        expect(tables.map((t) => t.querySelector('th').textContent)).toEqual([
+            '10 movies that told the story of 2026',
+            'the 5 most whimsical stories',
+            'the 5 most brave new world stories',
+            'the 5 stories to watch with your special someone',
+            'the 5 best monsters',
+            'the 5 greatest heroes',
+        ]);
+        expect(tables.map((t) => t.querySelectorAll('tbody tr').length)).toEqual([10, 5, 5, 5, 5, 5]);
+        expect(content.querySelector('tbody .books-col-rank').textContent).toBe('1');
+        expect(content.querySelector('.books-empty')).toBeNull();
+    });
+
+    it('fills award slots with winners and translates the reveal note', () => {
+        window.I18n = { t: (key) => (key === 'lists.zeitgeistReveal' ? 'はっぴょう' : key) };
+        const original = window.ZEITGEIST_2026;
+        window.ZEITGEIST_2026 = {
+            ...original,
+            categories: [
+                { label: 'monsters', size: 2, movies: ['plain <b>', { title: 'linked', url: 'https://example.com/m' }, 'extra'] },
+                { label: 'no size' },
+            ],
+        };
+        try {
+            const app = new window.BooksAppClass();
+            app.open('zeitgeist-2026');
+            const content = document.getElementById('books-letter-content');
+            expect(content.querySelector('.books-subtitle').textContent).toBe('はっぴょう');
+            const [monsters, unsized] = content.querySelectorAll('.books-table--award');
+            expect(monsters.querySelectorAll('tbody tr').length).toBe(3);
+            expect(monsters.innerHTML).toContain('plain &lt;b&gt;');
+            expect(monsters.querySelector('a').getAttribute('href')).toBe('https://example.com/m');
+            expect(unsized.querySelectorAll('tbody tr').length).toBe(0);
+        } finally {
+            window.ZEITGEIST_2026 = original;
+        }
     });
 
     it('openBooksWindow forwards the list id', () => {

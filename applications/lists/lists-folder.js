@@ -54,6 +54,15 @@ class ListsFolderApp extends BaseApp {
         </svg>`;
     }
 
+    movieListSvg() {
+        return `<svg width="48" height="48" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="3.5" y="5.5" width="17" height="13" rx="1.8" fill="rgba(216, 70, 166, 0.15)" stroke="#E879A9" stroke-width="1.55"/>
+            <path d="M3.5 9 H20.5 M3.5 15 H20.5" stroke="#E879A9" stroke-width="1.2" opacity="0.8"/>
+            <path d="M7 5.5 V9 M12 5.5 V9 M17 5.5 V9 M7 15 V18.5 M12 15 V18.5 M17 15 V18.5" stroke="#E879A9" stroke-width="1.2" opacity="0.8"/>
+            <path d="M10.6 10.6 L14 12 L10.6 13.4 Z" fill="#E879A9" stroke="#E879A9" stroke-width="0.8" stroke-linejoin="round"/>
+        </svg>`;
+    }
+
     currentTitle() {
         const leaf = this.path[this.path.length - 1];
         if (leaf === 'books') return this.t('menu.listsBooks', 'books');
@@ -75,7 +84,7 @@ class ListsFolderApp extends BaseApp {
             { id: 'games', label: this.t('menu.listsGames', 'games'), kind: 'folder', empty: true },
             { id: 'food', label: this.t('menu.listsFood', 'food'), kind: 'folder', empty: true },
             { id: 'books', label: this.t('menu.listsBooks', 'books'), kind: 'folder' },
-            { id: 'movies', label: this.t('menu.listsMovies', 'movies'), kind: 'folder', empty: true },
+            { id: 'movies', label: this.t('menu.listsMovies', 'movies'), kind: 'folder' },
             { id: 'adventures', label: this.t('menu.listsPlaces', 'adventures'), kind: 'folder', empty: true },
             { id: 'podcasts', label: this.t('menu.listsPodcasts', 'podcasts'), kind: 'folder', empty: true },
         ];
@@ -105,11 +114,24 @@ class ListsFolderApp extends BaseApp {
         ];
     }
 
+    moviesEntries() {
+        return [
+            {
+                id: 'zeitgeist-2026',
+                label: this.t('menu.zeitgeist2026', 'zeitgeist awards 2026'),
+                kind: 'list',
+                icon: 'movie',
+                open: () => window.openBooksWindow?.('zeitgeist-2026'),
+            },
+        ];
+    }
+
     entriesForPath() {
         const leaf = this.path[this.path.length - 1];
         if (!leaf) return this.rootEntries();
         if (leaf === 'books') return this.booksEntries();
-        if (leaf === 'movies' || leaf === 'music' || leaf === 'adventures' || leaf === 'art' || leaf === 'articles' || leaf === 'food' || leaf === 'podcasts' || leaf === 'games') return [];
+        if (leaf === 'movies') return this.moviesEntries();
+        if (leaf === 'music' || leaf === 'adventures' || leaf === 'art' || leaf === 'articles' || leaf === 'food' || leaf === 'podcasts' || leaf === 'games') return [];
         return this.rootEntries();
     }
 
@@ -160,7 +182,8 @@ class ListsFolderApp extends BaseApp {
         }
 
         for (const entry of entries) {
-            const iconHtml = entry.kind === 'list' ? this.bookListSvg() : this.folderSvg();
+            let iconHtml = this.folderSvg();
+            if (entry.kind === 'list') iconHtml = entry.icon === 'movie' ? this.movieListSvg() : this.bookListSvg();
             fileList.appendChild(this.makeItem({
                 iconHtml,
                 label: entry.label,

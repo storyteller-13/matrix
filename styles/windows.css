@@ -759,15 +759,26 @@ a.file-item {
     align-items: center;
 }
 
+/* Title centred on the full letter width (so it lines up with the subtitle), share on the right. */
+.books-window .letter-header {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: start;
+}
+
 .books-window .letter-share {
-    margin-left: auto;
+    grid-column: 3;
+    grid-row: 1;
+    justify-self: end;
 }
 
 .books-window .letter-title {
+    grid-column: 2;
+    grid-row: 1;
     margin-bottom: 0;
     font-size: 22px;
-    flex: 1;
     min-width: 0;
+    text-align: center;
 }
 
 .books-letter-text {
@@ -925,6 +936,48 @@ a.file-item {
 
 .books-tables > .books-backlog:first-child {
     margin-top: 0;
+}
+
+.books-subtitle {
+    margin: 0 0 14px;
+    text-align: center;
+    color: #C084FC;
+    font-size: 13px;
+    font-weight: 700;
+    font-style: italic;
+}
+
+/* The letter text keeps whitespace (pre-wrap); collapse template line breaks in award tables. */
+.books-subtitle,
+.books-award {
+    white-space: normal;
+}
+
+.books-award + .books-award {
+    margin-top: 14px;
+}
+
+.books-award .books-table {
+    border-radius: 4px;
+}
+
+.books-table--award col.books-col-rank {
+    width: 10%;
+}
+
+.books-table--award col.books-col-title {
+    width: 90%;
+}
+
+.books-table--award td.books-col-rank {
+    text-align: center;
+    color: #C084FC;
+    font-weight: 800;
+    font-size: 12px;
+}
+
+.books-table--award td {
+    height: 22px;
 }
 
 .books-empty {
@@ -1106,3 +1159,22 @@ a.file-item {
     min-width: min-content;
 }
 
+
+/* Narrow screens: not enough room for the title plus equal space on both sides of it,
+   so put share on its own row and centre the title on the full width beneath it. */
+@media (max-width: 480px) {
+    .books-window .letter-header {
+        grid-template-columns: 1fr;
+        row-gap: 6px;
+    }
+
+    .books-window .letter-share {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .books-window .letter-title {
+        grid-column: 1;
+        grid-row: 2;
+    }
+}

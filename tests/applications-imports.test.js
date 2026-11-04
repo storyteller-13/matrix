@@ -156,6 +156,14 @@ describe('Application modules (coverage)', () => {
         expect(window.openBooksWindow).toHaveBeenLastCalledWith('books-backlog');
 
         app.open('movies');
+        expect(app.window.querySelector('.window-title').textContent).toBe('MOVIES');
+        expect(list.textContent).toContain('zeitgeist awards 2026');
+        expect(list.textContent).not.toContain('this folder is empty');
+        expect(list.querySelectorAll('.file-item')[1].innerHTML).toContain('M10.6 10.6');
+        clickList('zeitgeist awards 2026');
+        expect(window.openBooksWindow).toHaveBeenLastCalledWith('zeitgeist-2026');
+
+        app.open('art');
         expect(list.textContent).toContain('this folder is empty');
 
         app.open('articles');

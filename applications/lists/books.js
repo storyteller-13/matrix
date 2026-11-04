@@ -1,12 +1,13 @@
 /**
- * Curated book lists window (notes letter styles): books read in 2026, books read
- * in 2027, and the backlog. One window shows whichever list was opened.
+ * Curated lists window (notes letter styles): books read in 2026, books read in 2027,
+ * the book backlog, and the zeitgeist movie awards. One window shows whichever list was opened.
  */
 
 const BOOK_LISTS = [
     { id: 'books-2026', dataKey: 'BOOKS_2026', titleKey: 'window.books' },
     { id: 'books-2027', dataKey: 'BOOKS_2027', titleKey: 'window.books2027' },
     { id: 'books-backlog', dataKey: 'BOOKS_BACKLOG', titleKey: 'window.booksBacklog' },
+    { id: 'zeitgeist-2026', dataKey: 'ZEITGEIST_2026', titleKey: 'window.zeitgeist2026', subtitleKey: 'lists.zeitgeistReveal' },
 ];
 const DEFAULT_BOOK_LIST = 'books-2026';
 
@@ -276,6 +277,35 @@ class BooksApp extends BaseApp {
         </section>`;
     }
 
+    /** An award category: a numbered table, blank slots until winners are filled in. */
+    renderCategoryTable(category) {
+        const label = this.escapeHtml(category.label || '');
+        const movies = category.movies || [];
+        const size = Math.max(category.size || 0, movies.length);
+        const rows = Array.from({ length: size }, (_, i) => {
+            const movie = movies[i];
+            const item = typeof movie === 'string' ? { title: movie } : (movie || {});
+            const title = item.title ? this.renderBookTitle(item) : '';
+            return `<tr>
+                <td class="books-col-rank">${i + 1}</td>
+                <td class="books-col-title">${title}</td>
+            </tr>`;
+        }).join('');
+
+        return `<section class="books-award">
+            <table class="books-table books-table--award">
+                <colgroup>
+                    <col class="books-col-rank">
+                    <col class="books-col-title">
+                </colgroup>
+                <thead>
+                    <tr><th scope="col" colspan="2">${label}</th></tr>
+                </thead>
+                <tbody>${rows}</tbody>
+            </table>
+        </section>`;
+    }
+
     renderEmpty() {
         const text = this.escapeHtml(this.i18nLabel('lists.empty', 'no books here yet'));
         return `<p class="books-empty">${text}</p>`;
@@ -293,10 +323,14 @@ class BooksApp extends BaseApp {
         if (titleEl) titleEl.textContent = title;
         if (headerTitleEl) headerTitleEl.textContent = title.toUpperCase();
 
+        const subtitle = data.subtitle ? this.i18nLabel(list.subtitleKey, data.subtitle) : '';
+        const subtitleHtml = subtitle ? `<p class="books-subtitle">${this.escapeHtml(subtitle)}</p>` : '';
+        const categoriesHtml = (data.categories || []).map((category) => this.renderCategoryTable(category)).join('');
         const monthsHtml = (data.months || []).map((month) => this.renderMonthTable(month)).join('');
         // A list that is only a backlog already carries the backlog name as its title.
         const backlogHtml = this.renderBacklog(data.backlog, { heading: Boolean(data.months) });
-        const content = monthsHtml || backlogHtml ? `${monthsHtml}${backlogHtml}` : this.renderEmpty();
+        const listHtml = `${categoriesHtml}${monthsHtml}${backlogHtml}`;
+        const content = `${subtitleHtml}${listHtml || this.renderEmpty()}`;
 
         bodyEl.innerHTML = `<div class="books-tables">${content}</div>`;
     }
