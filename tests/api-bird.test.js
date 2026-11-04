@@ -1,7 +1,7 @@
 /**
  * Bird of the Day proxy – method handling, enrichment, and failure paths.
  */
-import { describe, it, expect, afterEach, vi } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import handler from '../api/bird.js';
 
 function mockRes() {
@@ -35,7 +35,12 @@ const wiki = {
 };
 
 describe('api/bird', () => {
+    beforeEach(() => {
+        vi.spyOn(console, 'error').mockImplementation(() => {});
+    });
+
     afterEach(() => {
+        vi.restoreAllMocks();
         vi.unstubAllGlobals();
     });
 

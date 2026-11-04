@@ -1,10 +1,18 @@
+/**
+ * Vercel Serverless Function - NASA Astronomy Picture of the Day
+ * Reads NASA's public APOD feed (?date=YYYY-MM-DD for a specific day, otherwise the latest)
+ * and returns a plain-text, normalized picture.
+ */
+
+import { createHandler, fetchJson, queryParam, HttpError, UpstreamError } from './_lib/http.js';
+
 const API_URL = 'https://science.nasa.gov/wp-json/wp/v2/apod-basic';
-const HEADERS = {
-  'User-Agent':
-    'Mozilla/5.0 (compatible; matrix.nullstar.fun/1.0; +https://matrix.nullstar.fun)',
-  Accept: 'application/json',
+// NASA's site expects a browser-like User-Agent.
+const NASA_HEADERS = {
+  'User-Agent': 'Mozilla/5.0 (compatible; matrix.nullstar.fun/1.0; +https://matrix.nullstar.fun)',
 };
 
+/** "2026-11-04" -> "261104" (NASA's per-day path), or null for anything else. */
 function toYYMMDD(date) {
   const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(date || '');
   return m ? `${m[1].slice(2)}${m[2]}${m[3]}` : null;
@@ -35,48 +43,23 @@ function normalize(item) {
   };
 }
 
-async function getJson(url) {
-  const r = await fetch(url, { headers: HEADERS });
-  const text = await r.text();
-  let json = null;
-  try { json = JSON.parse(text); } catch {}
-  return { status: r.status, ok: r.ok, json, snippet: text.slice(0, 300) };
-}
+async function loadApod(req) {
+  const code = toYYMMDD(queryParam(req, 'date'));
+  const url = code ? `${API_URL}/${code}` : `${API_URL}?per_page=1`;
 
-export default async function handler(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  if (req.method === 'OPTIONS') {
-    res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-    return res.status(200).end();
-  }
-  if (req.method !== 'GET') return res.status(405).json({ error: 'method not allowed' });
-
+  let json;
   try {
-    const requested = Array.isArray(req.query.date) ? req.query.date[0] : req.query.date;
-    const code = toYYMMDD(requested);
-
-    // specific date -> /YYMMDD ; otherwise latest -> ?per_page=1
-    const url = code ? `${API_URL}/${code}` : `${API_URL}?per_page=1`;
-    const result = await getJson(url);
-
-    if (!result.ok || !result.json) {
-      console.error('NASA upstream failure', url, result.status, result.snippet);
-      return res.status(result.status === 404 ? 404 : 502).json({
-        error: 'upstream failure',
-        upstreamStatus: result.status,
-        upstreamUrl: url,
-        upstreamBody: result.snippet,
-      });
-    }
-
-    const item = Array.isArray(result.json) ? result.json[0] : result.json;
-    if (!item) return res.status(404).json({ error: 'no apod found' });
-
-    res.setHeader('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=86400');
-    return res.status(200).json(normalize(item));
+    json = await fetchJson(url, { headers: NASA_HEADERS });
   } catch (error) {
-    console.error('apod handler error', error);
-    return res.status(500).json({ error: 'failed to fetch apod', message: error.message });
+    if (error instanceof UpstreamError && error.status === 404) {
+      throw new HttpError(404, 'no apod for that date');
+    }
+    throw error;
   }
+
+  const item = Array.isArray(json) ? json[0] : json;
+  if (!item) throw new HttpError(404, 'no apod found');
+  return normalize(item);
 }
+
+export default createHandler({ name: 'apod', load: loadApod });

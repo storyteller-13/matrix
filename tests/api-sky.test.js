@@ -1,7 +1,7 @@
 /**
  * CosmyDay transit proxy – method handling and error paths
  */
-import { describe, it, expect, afterEach, vi } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import handler from '../api/sky.js';
 
 function mockRes() {
@@ -17,7 +17,12 @@ function mockRes() {
 }
 
 describe('api/sky', () => {
+    beforeEach(() => {
+        vi.spyOn(console, 'error').mockImplementation(() => {});
+    });
+
     afterEach(() => {
+        vi.restoreAllMocks();
         vi.unstubAllGlobals();
     });
 

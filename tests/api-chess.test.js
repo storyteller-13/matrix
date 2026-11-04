@@ -1,7 +1,7 @@
 /**
  * Chess.com puzzle proxy – method handling, random flag, and error paths
  */
-import { describe, it, expect, afterEach, vi } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import handler from '../api/chess.js';
 
 function mockRes() {
@@ -17,7 +17,12 @@ function mockRes() {
 }
 
 describe('api/chess', () => {
+    beforeEach(() => {
+        vi.spyOn(console, 'error').mockImplementation(() => {});
+    });
+
     afterEach(() => {
+        vi.restoreAllMocks();
         vi.unstubAllGlobals();
     });
 
@@ -55,20 +60,16 @@ describe('api/chess', () => {
             status: 503,
             statusText: 'Unavailable',
         }));
-        const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
         const res = mockRes();
         await handler({ method: 'GET', query: {} }, res);
-        errorSpy.mockRestore();
         expect(res.statusCode).toBe(500);
         expect(res.body.error).toMatch(/failed to fetch puzzle/i);
     });
 
     it('uses a fallback message when the thrown error has no message', async () => {
         vi.stubGlobal('fetch', vi.fn().mockRejectedValue(new Error('')));
-        const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
         const res = mockRes();
         await handler({ method: 'GET', query: {} }, res);
-        errorSpy.mockRestore();
         expect(res.statusCode).toBe(500);
         expect(res.body.message).toMatch(/unexpected error/i);
     });

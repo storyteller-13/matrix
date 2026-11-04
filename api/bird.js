@@ -3,9 +3,10 @@
  * Picks a stable daily bird from iNaturalist (Aves) and enriches with Wikipedia.
  */
 
+import { createHandler, fetchJson, queryParam } from './_lib/http.js';
+
 const INAT_TAXA = 'https://api.inaturalist.org/v1/taxa';
 const WIKI_SUMMARY = 'https://en.wikipedia.org/api/rest_v1/page/summary/';
-const USER_AGENT = 'matrix.nullstar.fun/1.0';
 
 /** Calendar date in US Eastern, matching APOD's day boundary. */
 function easternDateString(offsetDays = 0) {
@@ -50,19 +51,6 @@ function wikipediaTitleFromUrl(url) {
   } catch (_) {
     return null;
   }
-}
-
-async function fetchJson(url) {
-  const response = await fetch(url, {
-    headers: {
-      Accept: 'application/json',
-      'User-Agent': USER_AGENT,
-    },
-  });
-  if (!response.ok) {
-    throw new Error(`upstream ${response.status}: ${response.statusText}`);
-  }
-  return response.json();
 }
 
 async function pickBird(dateStr) {
@@ -111,35 +99,10 @@ async function enrichWithWikipedia(bird) {
   }
 }
 
-export default async function handler(req, res) {
-  if (req.method === 'OPTIONS') {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-    return res.status(200).end();
-  }
-
-  if (req.method !== 'GET') {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    return res.status(405).json({ error: 'method not allowed' });
-  }
-
-  try {
-    const requested = Array.isArray(req.query.date) ? req.query.date[0] : req.query.date;
-    const dateStr = requested && /^\d{4}-\d{2}-\d{2}$/.test(requested)
-      ? requested
-      : easternDateString();
-
-    const bird = await enrichWithWikipedia(await pickBird(dateStr));
-
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=86400');
-    return res.status(200).json(bird);
-  } catch (error) {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    return res.status(500).json({
-      error: 'failed to fetch bird',
-      message: error.message || 'an unexpected error occurred',
-    });
-  }
+async function loadBird(req) {
+  const requested = queryParam(req, 'date');
+  const dateStr = requested && /^\d{4}-\d{2}-\d{2}$/.test(requested) ? requested : easternDateString();
+  return enrichWithWikipedia(await pickBird(dateStr));
 }
+
+export default createHandler({ name: 'bird', load: loadBird });
