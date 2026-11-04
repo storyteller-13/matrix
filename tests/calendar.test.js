@@ -173,6 +173,37 @@ describe('CalendarPanel', () => {
         expect(document.getElementById('calendar-box').style.display).toBe('none');
     });
 
+    it('marks the calendar dock icon as selected while open, like the other dock icons', () => {
+        document.body.insertAdjacentHTML('beforeend', `
+            <a class="dock-item active" id="notes-dock-item"></a>
+            <a class="dock-item" id="calendar-dock-item"></a>
+        `);
+        const panel = new window.CalendarPanelClass();
+        const dockItem = document.getElementById('calendar-dock-item');
+
+        panel.toggleVisibility();
+        expect(dockItem.classList.contains('active')).toBe(true);
+        expect(document.getElementById('notes-dock-item').classList.contains('active')).toBe(false);
+
+        panel.toggleVisibility();
+        expect(dockItem.classList.contains('active')).toBe(false);
+
+        panel.showBox();
+        document.getElementById('calendar-box-close').click();
+        expect(dockItem.classList.contains('active')).toBe(false);
+
+        vi.advanceTimersByTime(400);
+        panel.showBox();
+        document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }));
+        expect(dockItem.classList.contains('active')).toBe(false);
+    });
+
+    it('show and hide work without a calendar dock icon', () => {
+        const panel = new window.CalendarPanelClass();
+        expect(() => panel.showBox()).not.toThrow();
+        expect(() => panel.hideBox()).not.toThrow();
+    });
+
     it('toggleVisibility shows and hides the box', () => {
         const panel = new window.CalendarPanelClass();
         expect(document.getElementById('calendar-box').style.display).toBe('none');

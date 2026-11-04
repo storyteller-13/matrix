@@ -8,7 +8,8 @@ class CalendarPanel {
         this.viewDate = new Date();
         this.elements = {
             badge: null,
-            menuCount: null
+            menuCount: null,
+            dockItem: null
         };
         this.init();
     }
@@ -16,6 +17,7 @@ class CalendarPanel {
     init() {
         this.elements.badge = document.getElementById('calendar-count-badge');
         this.elements.menuCount = document.getElementById('calendar-menu-count');
+        this.elements.dockItem = document.getElementById('calendar-dock-item');
 
         const closeBtn = document.getElementById('calendar-box-close');
         if (closeBtn) closeBtn.addEventListener('click', () => this.hideBox());
@@ -213,6 +215,16 @@ class CalendarPanel {
         this.updateBadge();
     }
 
+    /** Show the dock icon as selected while the calendar is open, like the window apps do. */
+    setDockActive(active) {
+        const { dockItem } = this.elements;
+        if (!dockItem) return;
+        if (active) {
+            document.querySelectorAll('.dock-item').forEach((item) => item.classList.remove('active'));
+        }
+        dockItem.classList.toggle('active', active);
+    }
+
     toggleVisibility() {
         const box = this.getBox();
         if (!box) return;
@@ -225,6 +237,7 @@ class CalendarPanel {
         if (!box) return;
         this.render();
         box.style.display = 'block';
+        this.setDockActive(true);
         this.bringToFront();
         box.style.opacity = '0';
         box.style.transform = 'translate(-50%, -50%) translateY(-10px) scale(0.95)';
@@ -239,6 +252,7 @@ class CalendarPanel {
     hideBox() {
         const box = this.getBox();
         if (!box) return;
+        this.setDockActive(false);
         box.style.opacity = '0';
         box.style.transform = 'translate(-50%, -50%) translateY(-10px) scale(0.95)';
         setTimeout(() => { box.style.display = 'none'; }, 400);
