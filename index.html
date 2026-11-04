@@ -316,32 +316,65 @@
                                     </span>
                                     <span class="menu-item-text" data-i18n="menu.listsPodcasts">podcasts</span>
                                 </a>
-                                <a href="javascript:void(0)" class="menu-item" onclick="window.openMusicWindow(); return false;">
-                                    <span class="menu-item-icon">
-                                        <svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                            <defs>
-                                                <clipPath id="menu-piano-body-lists">
-                                                    <rect x="2.4" y="5" width="19.2" height="14" rx="2.6"/>
-                                                </clipPath>
-                                            </defs>
-                                            <rect x="2.4" y="5" width="19.2" height="14" rx="2.6" fill="rgba(255, 245, 249, 0.95)" stroke="#E879A9" stroke-width="1.75"/>
-                                            <g clip-path="url(#menu-piano-body-lists)">
-                                                <g stroke="#E879A9" stroke-width="1.15" opacity="0.78">
-                                                    <path d="M6.24 5 V19"/>
-                                                    <path d="M10.08 5 V19"/>
-                                                    <path d="M13.92 5 V19"/>
-                                                    <path d="M17.76 5 V19"/>
-                                                </g>
-                                                <g fill="#E879A9">
-                                                    <rect x="5.14" y="5" width="2.2" height="7.8" rx="0.55" opacity="0.78"/>
-                                                    <rect x="8.98" y="5" width="2.2" height="7.8" rx="0.55" opacity="0.78"/>
-                                                    <rect x="16.66" y="5" width="2.2" height="7.8" rx="0.55" opacity="0.78"/>
-                                                </g>
-                                            </g>
-                                        </svg>
-                                    </span>
-                                    <span class="menu-item-text" data-i18n="tray.music">mixtapes</span>
-                                </a>
+                            </div>
+                        </div>
+                        <div class="menu-separator"></div>
+                        <div class="menu-item menu-item-has-submenu" tabindex="0">
+                            <span class="menu-item-text" data-i18n="menu.musicMixtapes">my music mixtapes</span>
+                            <span class="menu-submenu-arrow" aria-hidden="true">›</span>
+                            <div class="menu-submenu">
+                                        <a href="javascript:void(0)" class="menu-item" onclick="window.openSoundtrack('2026'); return false;">
+                                            <span class="menu-item-icon">
+                                                <svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                    <defs>
+                                                        <clipPath id="menu-piano-body-2026">
+                                                            <rect x="2.4" y="5" width="19.2" height="14" rx="2.6"/>
+                                                        </clipPath>
+                                                    </defs>
+                                                    <rect x="2.4" y="5" width="19.2" height="14" rx="2.6" fill="rgba(255, 245, 249, 0.95)" stroke="#E879A9" stroke-width="1.75"/>
+                                                    <g clip-path="url(#menu-piano-body-2026)">
+                                                        <g stroke="#E879A9" stroke-width="1.15" opacity="0.78">
+                                                            <path d="M6.24 5 V19"/>
+                                                            <path d="M10.08 5 V19"/>
+                                                            <path d="M13.92 5 V19"/>
+                                                            <path d="M17.76 5 V19"/>
+                                                        </g>
+                                                        <g fill="#E879A9">
+                                                            <rect x="5.14" y="5" width="2.2" height="7.8" rx="0.55" opacity="0.78"/>
+                                                            <rect x="8.98" y="5" width="2.2" height="7.8" rx="0.55" opacity="0.78"/>
+                                                            <rect x="16.66" y="5" width="2.2" height="7.8" rx="0.55" opacity="0.78"/>
+                                                        </g>
+                                                    </g>
+                                                </svg>
+                                            </span>
+                                            <span class="menu-item-text" data-i18n="music.soundtrack2026">the soundtrack of 2026</span>
+                                        </a>
+                                        <a href="javascript:void(0)" class="menu-item" onclick="window.openSoundtrack('2027'); return false;">
+                                            <span class="menu-item-icon">
+                                                <svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                    <defs>
+                                                        <clipPath id="menu-piano-body-2027">
+                                                            <rect x="2.4" y="5" width="19.2" height="14" rx="2.6"/>
+                                                        </clipPath>
+                                                    </defs>
+                                                    <rect x="2.4" y="5" width="19.2" height="14" rx="2.6" fill="rgba(255, 245, 249, 0.95)" stroke="#E879A9" stroke-width="1.75"/>
+                                                    <g clip-path="url(#menu-piano-body-2027)">
+                                                        <g stroke="#E879A9" stroke-width="1.15" opacity="0.78">
+                                                            <path d="M6.24 5 V19"/>
+                                                            <path d="M10.08 5 V19"/>
+                                                            <path d="M13.92 5 V19"/>
+                                                            <path d="M17.76 5 V19"/>
+                                                        </g>
+                                                        <g fill="#E879A9">
+                                                            <rect x="5.14" y="5" width="2.2" height="7.8" rx="0.55" opacity="0.78"/>
+                                                            <rect x="8.98" y="5" width="2.2" height="7.8" rx="0.55" opacity="0.78"/>
+                                                            <rect x="16.66" y="5" width="2.2" height="7.8" rx="0.55" opacity="0.78"/>
+                                                        </g>
+                                                    </g>
+                                                </svg>
+                                            </span>
+                                            <span class="menu-item-text" data-i18n="music.soundtrack2027">the soundtrack of 2027</span>
+                                        </a>
                             </div>
                         </div>
                         <div class="menu-separator"></div>
@@ -936,6 +969,7 @@
         <div class="music-player" id="music-player" style="display: none;">
             <div class="music-player-glow"></div>
             <div class="music-player-content">
+                <div class="music-soundtrack-title" id="music-soundtrack-title">the soundtrack of 2026</div>
                 <div class="music-player-header">
                     <button class="music-close" id="music-close" title="Close" aria-label="Close" data-i18n-title="panel.close" data-i18n-aria-label="panel.close">
                         <span class="close-icon" aria-hidden="true"></span>

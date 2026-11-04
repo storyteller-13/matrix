@@ -22,6 +22,7 @@ function FakePlayer(elementId, options) {
     this.videoId = options.videoId;
     this.playVideo = vi.fn(() => { this.state = 1; });
     this.pauseVideo = vi.fn(() => { this.state = 2; });
+    this.stopVideo = vi.fn(() => { this.state = 5; });
     this.loadVideoById = vi.fn((id) => { this.videoId = id; });
     this.cueVideoById = vi.fn((id) => { this.videoId = id; });
     this.getPlayerState = vi.fn(() => this.state);
@@ -42,6 +43,7 @@ const YT_STATES = {
 const musicDom = () => `
     <a id="sound-icon-toggle"></a>
     <div id="music-player" class="music-player" style="display: none;">
+        <div id="music-soundtrack-title"></div>
         <button id="music-prev"></button>
         <span id="music-title"></span>
         <button id="music-next"></button>
@@ -87,6 +89,92 @@ describe('MusicPlayer', () => {
         window.openMusicWindow();
         // hidePlayer uses a timeout; just ensure toggleVisibility was invoked
         expect(player).toBeDefined();
+    });
+
+    it('shows the soundtrack of 2026 by default', () => {
+        const player = new window.MusicPlayerClass();
+        expect(player.soundtrackId).toBe('2026');
+        expect(document.getElementById('music-soundtrack-title').textContent).toBe('the soundtrack of 2026');
+        expect(player.storage.storageKey).toBe('music-player-playlists');
+    });
+
+    it('openSoundtrack switches to the empty 2027 soundtrack and back to 2026', () => {
+        const player = new window.MusicPlayerClass();
+        const firstSong = player.songs[0];
+        player.player.state = YT_STATES.PLAYING;
+        document.getElementById('music-player').classList.add('playing');
+
+        player.openSoundtrack('2027');
+        expect(player.player.stopVideo).toHaveBeenCalled();
+        expect(document.getElementById('music-player').classList.contains('playing')).toBe(false);
+        expect(player.soundtrackId).toBe('2027');
+        expect(player.storage.storageKey).toBe('music-player-playlists-2027');
+        expect(player.songs).toEqual([]);
+        expect(document.getElementById('music-soundtrack-title').textContent).toBe('the soundtrack of 2027');
+        expect(document.getElementById('music-title').textContent).toBe('coming soon');
+        expect(document.getElementById('music-song-list').textContent).toContain('this mixtape is under construction');
+
+        // nothing to play: controls are no-ops and nothing is saved into the 2026 key
+        const before = localStorage.getItem('music-player-playlists');
+        player.togglePlayPause();
+        player.playNextSong();
+        player.playPreviousSong();
+        expect(player.pendingPlay).toBe(false);
+        expect(localStorage.getItem('music-player-playlists')).toBe(before);
+
+        player.openSoundtrack('2026');
+        expect(player.songs[0]).toEqual(firstSong);
+        expect(document.getElementById('music-soundtrack-title').textContent).toBe('the soundtrack of 2026');
+        expect(document.getElementById('music-title').textContent).toBe(firstSong.title);
+    });
+
+    it('openSoundtrack shows a hidden player, ignores unknown ids, and window.openSoundtrack forwards', () => {
+        const player = new window.MusicPlayerClass();
+        const el = document.getElementById('music-player');
+        el.style.display = 'none';
+        player.openSoundtrack('2026');
+        expect(el.style.display).toBe('flex');
+
+        player.openSoundtrack('1999');
+        expect(player.soundtrackId).toBe('2026');
+
+        const previous = window.MusicPlayer;
+        window.MusicPlayer = { openSoundtrack: vi.fn() };
+        window.openSoundtrack('2027');
+        expect(window.MusicPlayer.openSoundtrack).toHaveBeenCalledWith('2027');
+        window.MusicPlayer = previous;
+    });
+
+    it('a 2027 soundtrack with mixtapes plays its first mixtape and keeps its own storage', () => {
+        const original = window.SOUNDTRACK_2027;
+        window.SOUNDTRACK_2027 = {
+            currentPlaylistId: null,
+            playlists: [{ id: 'first 2027', name: 'first 2027', songs: [{ id: 'abc123', title: 'new song (artist)' }] }],
+        };
+        try {
+            const player = new window.MusicPlayerClass();
+            player.openSoundtrack('2027');
+            expect(player.playlistsData.currentPlaylistId).toBe('first 2027');
+            expect(player.songs).toEqual([{ id: 'abc123', title: 'new song (artist)' }]);
+            expect(document.getElementById('music-title').textContent).toBe('new song (artist)');
+            expect(JSON.parse(localStorage.getItem('music-player-playlists-2027')).playlists[0].id).toBe('first 2027');
+            expect(JSON.parse(localStorage.getItem('music-player-playlists')).playlists[0].id).not.toBe('first 2027');
+        } finally {
+            window.SOUNDTRACK_2027 = original;
+        }
+    });
+
+    it('translates the soundtrack title and coming-soon text on localechange', () => {
+        const player = new window.MusicPlayerClass();
+        player.openSoundtrack('2027');
+        window.I18n = { t: (key) => ({ 'music.soundtrack2027': '2027ねんのサウンドトラック', 'music.comingSoon': 'もうすぐ' }[key] || key) };
+        try {
+            document.dispatchEvent(new Event('localechange'));
+            expect(document.getElementById('music-soundtrack-title').textContent).toBe('2027ねんのサウンドトラック');
+            expect(document.getElementById('music-title').textContent).toBe('もうすぐ');
+        } finally {
+            window.I18n = undefined;
+        }
     });
 
     it('init loads default songs and renders playlists', () => {

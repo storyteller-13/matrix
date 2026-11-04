@@ -2,11 +2,28 @@
 /**
  * Music Player Storage Module
  * Handles localStorage persistence for playlists.
+ * Each soundtrack (2026, 2027, ...) has its own storage key and default mixtapes.
  */
 
+/**
+ * The soundtrack of 2027 – starts empty. Add mixtapes the same way as the 2026 ones, e.g.
+ * playlists: [{ id: 'my mixtape', name: 'my mixtape', songs: [{ id: '<youtube video id>', title: 'song (artist)' }] }]
+ * The first mixtape is selected automatically unless currentPlaylistId names another one.
+ */
+const SOUNDTRACK_2027 = {
+    currentPlaylistId: null,
+    playlists: [],
+};
+
 class MusicPlayerStorage {
-    constructor() {
-        this.storageKey = 'music-player-playlists';
+    /**
+     * @param {Object} [options]
+     * @param {string} [options.storageKey] - localStorage key for this soundtrack.
+     * @param {Object} [options.defaultData] - default mixtapes; omitted means the 2026 soundtrack.
+     */
+    constructor({ storageKey = 'music-player-playlists', defaultData = null } = {}) {
+        this.storageKey = storageKey;
+        this.defaultData = defaultData;
     }
 
     /**
@@ -86,6 +103,9 @@ class MusicPlayerStorage {
      * @returns {Object} Default playlists data.
      */
     getDefaultData() {
+        if (this.defaultData) {
+            return JSON.parse(JSON.stringify(this.defaultData));
+        }
         return {
             playlists: [
                 {
@@ -423,3 +443,4 @@ class MusicPlayerStorage {
 }
 
 window.MusicPlayerStorage = MusicPlayerStorage;
+window.SOUNDTRACK_2027 = SOUNDTRACK_2027;

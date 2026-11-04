@@ -621,3 +621,19 @@
     display: inline-block;
 }
 
+
+/* Soundtrack name above the player controls (same voice as the other boxes' titles) */
+.music-soundtrack-title {
+    flex-shrink: 0;
+    margin: 0 0 6px;
+    color: #E879A9;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    line-height: 16px;
+    text-align: center;
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

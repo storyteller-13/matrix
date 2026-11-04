@@ -113,6 +113,17 @@ describe('MusicPlayerStorage', () => {
         expect(data.currentPlaylistId).toBe(storage.getDefaultData().currentPlaylistId);
     });
 
+    it('a soundtrack storage uses its own key and a copy of its default data', () => {
+        const defaults = { currentPlaylistId: null, playlists: [] };
+        const storage2027 = new window.MusicPlayerStorage({ storageKey: 'music-player-playlists-2027', defaultData: defaults });
+        expect(storage2027.storageKey).toBe('music-player-playlists-2027');
+        const data = storage2027.load();
+        expect(data).toEqual(defaults);
+        expect(data).not.toBe(defaults);
+        expect(window.SOUNDTRACK_2027).toEqual({ currentPlaylistId: null, playlists: [] });
+        expect(new window.MusicPlayerStorage().storageKey).toBe('music-player-playlists');
+    });
+
     it('load() uses getDefaultData when stored value is invalid JSON', () => {
         localStorage.setItem(STORAGE_KEY, 'not valid json');
         const storage = new window.MusicPlayerStorage();

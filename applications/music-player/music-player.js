@@ -5,6 +5,19 @@
 
 const YOUTUBE_URL = 'https://www.youtube.com/iframe_api'
 
+/** Soundtracks the player can show; each keeps its own mixtapes and saved state. */
+const SOUNDTRACKS = [
+    { id: '2026', title: 'the soundtrack of 2026', titleKey: 'music.soundtrack2026' },
+    {
+        id: '2027',
+        title: 'the soundtrack of 2027',
+        titleKey: 'music.soundtrack2027',
+        storageKey: 'music-player-playlists-2027',
+        defaultDataKey: 'SOUNDTRACK_2027',
+    },
+];
+const DEFAULT_SOUNDTRACK = '2026';
+
 
 class MusicPlayer {
     constructor() {
@@ -12,7 +25,9 @@ class MusicPlayer {
         this.isReady = false;
         this.currentSongIndex = 0;
         this.songs = [];
-        this.storage = new MusicPlayerStorage();
+        this.soundtrackId = DEFAULT_SOUNDTRACK;
+        this.storages = {};
+        this.storage = this.storageFor(DEFAULT_SOUNDTRACK);
         this.playlistsData = null;
         this.expandedPlaylists = new Set();
         this.youtubeApiRequested = false;
@@ -24,6 +39,7 @@ class MusicPlayer {
             soundIcon: 'sound-icon-toggle',
             close: 'music-close',
             title: 'music-title',
+            soundtrackTitle: 'music-soundtrack-title',
             prev: 'music-prev',
             next: 'music-next',
             songList: 'music-song-list'
@@ -31,6 +47,73 @@ class MusicPlayer {
 
         this.loadPlaylists({ resetDefaultEntry: true });
         this.init();
+    }
+
+    findSoundtrack(id) {
+        return SOUNDTRACKS.find((soundtrack) => soundtrack.id === String(id)) || null;
+    }
+
+    storageFor(id) {
+        if (!this.storages[id]) {
+            const soundtrack = this.findSoundtrack(id);
+            this.storages[id] = soundtrack?.storageKey
+                ? new MusicPlayerStorage({
+                    storageKey: soundtrack.storageKey,
+                    defaultData: window[soundtrack.defaultDataKey] || { currentPlaylistId: null, playlists: [] },
+                })
+                : new MusicPlayerStorage();
+        }
+        return this.storages[id];
+    }
+
+    soundtrackTitle() {
+        const soundtrack = this.findSoundtrack(this.soundtrackId);
+        if (!soundtrack) return '';
+        const translated = window.I18n?.t?.(soundtrack.titleKey);
+        return translated && translated !== soundtrack.titleKey ? translated : soundtrack.title;
+    }
+
+    updateSoundtrackTitle() {
+        const element = document.getElementById(this.selectors.soundtrackTitle);
+        if (element) element.textContent = this.soundtrackTitle();
+    }
+
+    /**
+     * Show a soundtrack (e.g. '2026', '2027') in the player and make sure the player is visible.
+     */
+    openSoundtrack(id = DEFAULT_SOUNDTRACK) {
+        const soundtrack = this.findSoundtrack(id);
+        if (!soundtrack) return;
+
+        if (soundtrack.id !== this.soundtrackId) {
+            this.stopPlayback();
+            this.soundtrackId = soundtrack.id;
+            this.storage = this.storageFor(soundtrack.id);
+            this.currentSongIndex = 0;
+            this.expandedPlaylists.clear();
+            this.loadPlaylists();
+            this.updateSongTitle();
+            if (this.songs.length > 0 && this.player && this.isReady) this.loadSong();
+        }
+        this.updateSoundtrackTitle();
+
+        const musicPlayer = document.getElementById(this.selectors.player);
+        if (musicPlayer && (musicPlayer.style.display === 'none' || window.getComputedStyle(musicPlayer).display === 'none')) {
+            this.showPlayer(musicPlayer);
+        }
+    }
+
+    stopPlayback() {
+        this.pendingPlay = false;
+        if (this.player && this.isReady) {
+            try {
+                this.player.stopVideo();
+            } catch (error) {
+                console.error('Failed to stop playback:', error);
+            }
+        }
+        document.getElementById(this.selectors.toggle)?.classList.remove('playing');
+        document.getElementById(this.selectors.player)?.classList.remove('playing');
     }
 
     /**
@@ -53,8 +136,12 @@ class MusicPlayer {
             this.currentSongIndex = Math.max(0, Math.min(this.currentSongIndex, this.songs.length - 1));
         } else {
             this.playlistsData = this.storage.getDefaultData();
+            const firstPlaylist = this.playlistsData.playlists[0];
+            if (!this.storage.getCurrentPlaylist(this.playlistsData) && firstPlaylist) {
+                this.playlistsData.currentPlaylistId = firstPlaylist.id;
+            }
             this.storage.save(this.playlistsData);
-            this.songs = [...this.playlistsData.playlists[0].songs];
+            this.songs = [...(this.storage.getCurrentPlaylist(this.playlistsData)?.songs || [])];
             this.currentSongIndex = 0;
         }
     }
@@ -63,7 +150,12 @@ class MusicPlayer {
         const musicPlayer = document.getElementById(this.selectors.player);
         this.setupUIControls();
         if (musicPlayer && this.shouldAutoOpen()) this.showPlayer(musicPlayer);
+        this.updateSoundtrackTitle();
         this.renderSongList();
+        document.addEventListener('localechange', () => {
+            this.updateSoundtrackTitle();
+            this.updateSongTitle();
+        });
     }
 
     isMobile() {
@@ -323,6 +415,7 @@ class MusicPlayer {
     }
 
     togglePlayPause() {
+        if (!this.songs || this.songs.length === 0) return;
         if (!this.player || !this.isReady) {
             this.pendingPlay = true;
             this.ensureYouTubeAPI();
@@ -451,6 +544,9 @@ class MusicPlayer {
         const titleElement = document.getElementById(this.selectors.title);
         if (titleElement && this.songs[this.currentSongIndex]) {
             titleElement.textContent = this.songs[this.currentSongIndex].title;
+        } else if (titleElement && this.songs.length === 0) {
+            const comingSoon = window.I18n?.t?.('music.comingSoon');
+            titleElement.textContent = comingSoon && comingSoon !== 'music.comingSoon' ? comingSoon : 'coming soon';
         }
         this.renderSongList();
     }
@@ -461,6 +557,11 @@ class MusicPlayer {
 
         const currentPlaylistId = this.playlistsData.currentPlaylistId;
         
+        if (this.playlistsData.playlists.length === 0) {
+            songListElement.innerHTML = '<div class="music-song-soon">this mixtape is under construction</div>';
+            return;
+        }
+
         // Build HTML for all playlists
         songListElement.innerHTML = this.playlistsData.playlists.map(playlist => {
             const isCurrentPlaylist = playlist.id === currentPlaylistId;
@@ -521,6 +622,7 @@ class MusicPlayer {
 window.MusicPlayerClass = MusicPlayer;
 
 window.openMusicWindow = () => window.MusicPlayer?.toggleVisibility();
+window.openSoundtrack = (id) => window.MusicPlayer?.openSoundtrack(id);
 
 // Initialize when DOM is ready
 const initMusicPlayer = () => {
