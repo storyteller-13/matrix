@@ -1559,3 +1559,38 @@
     }
 }
 
+
+/* Phones: five clocks plus the tray don't fit in one row, and eight 44px dock
+   icons are wider than the screen. Keep three clocks (hawaii ≈ sf, iceland ≈ berlin)
+   and let dock icons shrink evenly instead of running off the edge. */
+@media (max-width: 480px) {
+    .clock-zone {
+        flex-shrink: 0;
+    }
+
+    .clock-zone[data-timezone="Pacific/Honolulu"],
+    .clock-zone[data-timezone="Atlantic/Reykjavik"] {
+        display: none;
+    }
+
+    .clock-zone[data-timezone="America/Los_Angeles"]::before {
+        display: none;
+    }
+
+    .bottom-dock {
+        width: max-content;
+    }
+
+    .bottom-dock .dock-item {
+        flex: 0 1 auto;
+        width: 44px;
+        min-width: 0;
+    }
+}
+
+/* Very narrow phones (e.g. 320px): only room for two clocks beside the tray */
+@media (max-width: 340px) {
+    .clock-zone[data-timezone="Asia/Tokyo"] {
+        display: none;
+    }
+}
