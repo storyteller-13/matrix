@@ -773,6 +773,7 @@ window.QUOTES = [
     { text: 'even if astrology is not real #2: we love to talk about it because it triggers funny reactions from the squares.', author: 'marina von steinkirch'},
     { text: 'even if astrology is not real #3: leos sun, moon, and rising are destined to become the collective superintelligent hearts leading humanity.', author: 'marina von steinkirch'},
     { text: 'even if astrology is not real #4: we crazies are becoming the majority, and we are on a mission to really change the world for the better.', author: 'marina von steinkirch'},
+    { text: 'even if astrology is not real #5: the only way to live is to have a few clearly defined long-term goals and values, and to work obsessively toward them through every cycle of life.', author: 'marina von steinkirch'},
     { text: 'creativity and kindness are the only two edges that matter in the superintelligent future. cynicism and attacking an underdog from a position of power are not really fashionable anymore.', author: 'marina von steinkirch'},
     { text: 'evil might be simply the compounded accumulation of pain, suffering, and injustice in the world. we stop evil by breaking the cycle.', author: 'marina von steinkirch'},
     { text: 'the most important rule is: no matter what, do not break the flow.', author: 'marina von steinkirch'},
@@ -794,4 +795,5 @@ window.QUOTES = [
     { text: 'that amusing moment when the bug is rebranded as a feature.', author: 'marina von steinkirch' },
     { text: 'minimalist life; intentional choices; peaceful state of mind.', author: 'marina von steinkirch' },
     { text: 'every day, when you wake up, remember everything you love about yourself, all the blessings you have in your life, all the beautiful things you still need to create, and all the wonderful moments still waiting to be lived in the fleeting existence that is yours.', author: 'marina von steinkirch' },
+    { text: 'the most underrated skill you cultivate as you grow older is patience.', author: 'marina von steinkirch' },
 ];

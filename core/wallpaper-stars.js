@@ -25,15 +25,7 @@
 
     const frac = (n) => n - Math.floor(n);
 
-    const place = (n, field) => {
-        if (field) {
-            return {
-                left: 3 + frac(n * GOLDEN) * 94,
-                top: 5 + frac(n * GOLDEN * GOLDEN) * 86,
-                plane: 2
-            };
-        }
-
+    const place = (n) => {
         const t = frac(n * GOLDEN);
         const curve = Math.sin(t * Math.PI) * 7;
         const cx = -5 + t * 110;
@@ -55,14 +47,13 @@
 
     for (let i = 0; i < EXTRA; i++) {
         const n = i + 73;
-        const field = frac(n * 0.61803398875) > 0.88;
-        const { left, top, plane } = place(n, field);
+        // Skip the former "field" slots so the band stars keep their exact positions.
+        if (frac(n * 0.61803398875) > 0.88) continue;
+        const { left, top, plane } = place(n);
         const sizeRoll = frac(n * 0.41421356237);
-        const size = field
-            ? (sizeRoll > 0.92 ? 7 : 5)
-            : plane < 0.5
-                ? (sizeRoll > 0.84 ? 11 : sizeRoll > 0.52 ? 8 : 7)
-                : (sizeRoll > 0.72 ? 7 : 5);
+        const size = plane < 0.5
+            ? (sizeRoll > 0.84 ? 11 : sizeRoll > 0.52 ? 8 : 7)
+            : (sizeRoll > 0.72 ? 7 : 5);
         const twinkle = !reducedMotion && frac(n * 0.73205080757) > 0.36;
         const duration = twinkle
             ? (1.6 + frac(n * 0.236067977) * 0.9)
@@ -77,14 +68,14 @@
             twinkle,
             duration,
             delay,
-            dim: field || plane > 1.15,
+            dim: plane > 1.15,
             animate: !reducedMotion
         }));
     }
 
     for (let i = 0; i < DUST; i++) {
         const n = i + 997;
-        const { left, top, plane } = place(n, false);
+        const { left, top, plane } = place(n);
         if (plane > 1.05) continue;
         const size = 3 + (frac(n * 0.41421356237) > 0.7 ? 2 : 1);
         fragment.appendChild(makeStar({
