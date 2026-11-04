@@ -335,6 +335,17 @@ a.file-item {
     min-height: 48px;
 }
 
+.lists-folder-icon-art {
+    position: relative;
+    display: inline-flex;
+}
+
+/* Same look as the dock badges (dock.css); pinned to the folder icon's top-right corner. */
+.lists-folder-count-badge {
+    top: -2px;
+    right: -8px;
+}
+
 .lists-folder-empty {
     position: absolute;
     inset: 0;

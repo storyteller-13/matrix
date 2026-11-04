@@ -76,7 +76,8 @@ a.dock-item {
 
 .todo-count-badge,
 .notes-count-badge,
-.artwork-count-badge {
+.artwork-count-badge,
+.lists-folder-count-badge {
     position: absolute;
     top: 2px;
     right: 2px;

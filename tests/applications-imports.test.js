@@ -143,7 +143,17 @@ describe('Application modules (coverage)', () => {
         expect(list.textContent).toContain('food');
         expect(list.textContent).toContain('podcasts');
 
+        const badgeFor = (label) => [...list.querySelectorAll('.file-item')]
+            .find((el) => el.querySelector('.file-name').textContent === label)
+            .querySelector('.lists-folder-count-badge');
+        expect(badgeFor('books').textContent).toBe('3');
+        expect(badgeFor('movies').textContent).toBe('1');
+        ['art', 'articles', 'games', 'food', 'adventures', 'podcasts'].forEach((label) => {
+            expect(badgeFor(label)).toBeNull();
+        });
+
         [...list.querySelectorAll('.file-item')].find((el) => el.textContent.includes('books')).click();
+        expect(list.querySelector('.lists-folder-count-badge')).toBeNull();
         expect(list.textContent).toContain('books i read in 2026');
         expect(list.textContent).toContain('books i read in 2027');
         expect(list.textContent).toContain('my endless ever-changing backlog');

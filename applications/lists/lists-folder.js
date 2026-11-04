@@ -126,20 +126,25 @@ class ListsFolderApp extends BaseApp {
         ];
     }
 
+    /** Entries inside a sub-folder; folders without content return []. */
+    entriesForFolder(folderId) {
+        if (folderId === 'books') return this.booksEntries();
+        if (folderId === 'movies') return this.moviesEntries();
+        return [];
+    }
+
     entriesForPath() {
         const leaf = this.path[this.path.length - 1];
         if (!leaf) return this.rootEntries();
-        if (leaf === 'books') return this.booksEntries();
-        if (leaf === 'movies') return this.moviesEntries();
-        if (leaf === 'music' || leaf === 'adventures' || leaf === 'art' || leaf === 'articles' || leaf === 'food' || leaf === 'podcasts' || leaf === 'games') return [];
-        return this.rootEntries();
+        return this.entriesForFolder(leaf);
     }
 
-    makeItem({ iconHtml, label, onActivate }) {
+    makeItem({ iconHtml, label, onActivate, count = 0 }) {
         const item = document.createElement('button');
         item.type = 'button';
         item.className = 'file-item lists-folder-item';
-        item.innerHTML = `<div class="lists-folder-icon">${iconHtml}</div><div class="file-name"></div>`;
+        const badge = count > 0 ? `<span class="lists-folder-count-badge">${count}</span>` : '';
+        item.innerHTML = `<div class="lists-folder-icon"><span class="lists-folder-icon-art">${iconHtml}${badge}</span></div><div class="file-name"></div>`;
         item.querySelector('.file-name').textContent = label;
         item.addEventListener('click', (e) => {
             e.preventDefault();
@@ -187,6 +192,7 @@ class ListsFolderApp extends BaseApp {
             fileList.appendChild(this.makeItem({
                 iconHtml,
                 label: entry.label,
+                count: entry.kind === 'folder' ? this.entriesForFolder(entry.id).length : 0,
                 onActivate: () => {
                     if (entry.kind === 'folder') {
                         this.path.push(entry.id);
