@@ -88,7 +88,19 @@ class ListsFolderApp extends BaseApp {
                 id: 'books-2026',
                 label: this.t('menu.books2026', 'books i read in 2026'),
                 kind: 'list',
-                open: () => window.openBooksWindow?.(),
+                open: () => window.openBooksWindow?.('books-2026'),
+            },
+            {
+                id: 'books-2027',
+                label: this.t('menu.books2027', 'books i read in 2027'),
+                kind: 'list',
+                open: () => window.openBooksWindow?.('books-2027'),
+            },
+            {
+                id: 'books-backlog',
+                label: this.t('menu.booksBacklog', 'my endless ever-changing backlog'),
+                kind: 'list',
+                open: () => window.openBooksWindow?.('books-backlog'),
             },
         ];
     }

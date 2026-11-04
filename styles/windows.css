@@ -923,6 +923,18 @@ a.file-item {
     margin-top: 22px;
 }
 
+.books-tables > .books-backlog:first-child {
+    margin-top: 0;
+}
+
+.books-empty {
+    margin: 24px 0;
+    text-align: center;
+    color: #E879A9;
+    font-size: 13px;
+    font-style: italic;
+}
+
 .books-backlog-title {
     margin: 0 0 10px;
     text-align: center;

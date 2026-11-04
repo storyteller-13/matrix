@@ -8,6 +8,7 @@ const booksDom = () => `
     <div id="books-window" class="window books-window notes-letter-window" style="display: none;">
         <div class="window-header">
             <span class="control close"></span>
+            <div class="window-title">BOOKS I READ IN 2026</div>
         </div>
         <div class="letter-container">
             <div class="letter-paper">
@@ -45,11 +46,11 @@ describe('BooksApp', () => {
         vi.unstubAllGlobals();
     });
 
-    it('renders the reading list tables and backlog', () => {
+    it('renders the 2026 reading list tables without the backlog', () => {
         const app = new window.BooksAppClass();
         expect(document.getElementById('books-letter-title').textContent).toBe('books i read in 2026');
         expect(document.getElementById('books-letter-content').innerHTML).toContain('books-table');
-        expect(document.getElementById('books-letter-content').innerHTML).toContain('books-backlog');
+        expect(document.getElementById('books-letter-content').innerHTML).not.toContain('books-backlog');
         expect(document.getElementById('books-letter-content').innerHTML).not.toContain('highlights');
         expect(app.shareId).toBe('books-2026');
     });
@@ -69,7 +70,62 @@ describe('BooksApp', () => {
         expect(document.getElementById('books-letter-title').textContent).toBe('2026ねんによんでいるほん');
         expect(document.getElementById('books-letter-content').innerHTML).toContain('ひょうか');
         expect(document.getElementById('books-letter-content').innerHTML).toContain('かんそう');
-        expect(document.getElementById('books-letter-content').innerHTML).toContain('マイバックログ');
+    });
+
+    it('opens the empty 2027 list with the same layout and an empty note', () => {
+        const app = new window.BooksAppClass();
+        app.open('books-2027');
+        const title = 'books i read in 2027';
+        expect(document.getElementById('books-letter-title').textContent).toBe(title);
+        expect(document.querySelector('#books-window .window-title').textContent).toBe(title.toUpperCase());
+        const html = document.getElementById('books-letter-content').innerHTML;
+        expect(html).toContain('books-tables');
+        expect(html).toContain('no books here yet');
+        expect(html).not.toContain('books-backlog');
+        expect(app.getShareUrl()).toContain('list=books-2027');
+        expect(new URLSearchParams(window.location.search).get('list')).toBe('books-2027');
+    });
+
+    it('opens the backlog as its own list without repeating its name as a heading', () => {
+        window.I18n = { t: (key) => (key === 'window.booksBacklog' ? 'マイバックログ' : key) };
+        const app = new window.BooksAppClass();
+        app.open('books-backlog');
+        expect(document.getElementById('books-letter-title').textContent).toBe('マイバックログ');
+        const html = document.getElementById('books-letter-content').innerHTML;
+        expect(html).toContain('books-table--backlog');
+        expect(html).toContain('the warmth of other suns');
+        expect(html).not.toContain('books-backlog-title');
+        expect(html).not.toContain('books-month');
+        expect(app.shareId).toBe('books-backlog');
+    });
+
+    it('switches lists in the same window and opens shared 2027/backlog links', () => {
+        const app = new window.BooksAppClass();
+        app.open('books-backlog');
+        app.open('books-2026');
+        expect(document.getElementById('books-letter-title').textContent).toBe('books i read in 2026');
+        expect(new URLSearchParams(window.location.search).get('list')).toBe('books-2026');
+
+        app.open('unknown-list');
+        expect(app.shareId).toBe('books-2026');
+
+        const url = new URL(window.location.href);
+        url.searchParams.set('list', 'books-backlog');
+        history.replaceState(null, '', url);
+        window.dispatchEvent(new PopStateEvent('popstate'));
+        expect(app.shareId).toBe('books-backlog');
+        expect(document.getElementById('books-letter-content').innerHTML).toContain('books-table--backlog');
+    });
+
+    it('openBooksWindow forwards the list id', () => {
+        const open = vi.fn();
+        const previous = window.BooksApp;
+        window.BooksApp = { open };
+        window.openBooksWindow('books-2027');
+        expect(open).toHaveBeenCalledWith('books-2027');
+        window.openBooksWindow();
+        expect(open).toHaveBeenLastCalledWith(null);
+        window.BooksApp = previous;
     });
 
     it('renders book notes, links, and string backlog entries', () => {

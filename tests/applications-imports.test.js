@@ -105,10 +105,13 @@ describe('Application modules (coverage)', () => {
         expect(window.BooksApp).toBeDefined();
         expect(typeof window.openBooksWindow).toBe('function');
         expect(document.getElementById('books-letter-content').innerHTML).toContain('books-table');
-        expect(document.getElementById('books-letter-content').innerHTML).toContain('books-backlog');
-        const linked = window.BOOKS_2026.backlog.filter((b) => b.url);
-        expect(linked.length).toBeGreaterThan(0);
-        expect(window.BOOKS_2026.backlog.every((b) => b.title === b.title.toLowerCase())).toBe(true);
+        expect(document.getElementById('books-letter-content').innerHTML).not.toContain('books-backlog');
+        expect(window.BOOKS_2026.backlog).toBeUndefined();
+        expect(window.BOOKS_2027).toEqual({ title: 'books i read in 2027', shareId: 'books-2027', months: [] });
+        expect(window.BOOKS_2027.backlog).toBeUndefined();
+        expect(window.BOOKS_BACKLOG.shareId).toBe('books-backlog');
+        expect(window.BOOKS_BACKLOG.backlog.length).toBeGreaterThan(0);
+        expect(window.BOOKS_BACKLOG.backlog.every((b) => b.title === b.title.toLowerCase())).toBe(true);
         expect(document.getElementById('books-letter-content').innerHTML).toContain('href=');
         expect(document.getElementById('books-window').style.display).not.toBe('block');
     });
@@ -142,8 +145,15 @@ describe('Application modules (coverage)', () => {
 
         [...list.querySelectorAll('.file-item')].find((el) => el.textContent.includes('books')).click();
         expect(list.textContent).toContain('books i read in 2026');
-        [...list.querySelectorAll('.file-item')].find((el) => el.textContent.includes('books i read in 2026')).click();
-        expect(window.openBooksWindow).toHaveBeenCalled();
+        expect(list.textContent).toContain('books i read in 2027');
+        expect(list.textContent).toContain('my endless ever-changing backlog');
+        const clickList = (label) => [...list.querySelectorAll('.file-item')].find((el) => el.textContent.includes(label)).click();
+        clickList('books i read in 2026');
+        expect(window.openBooksWindow).toHaveBeenLastCalledWith('books-2026');
+        clickList('books i read in 2027');
+        expect(window.openBooksWindow).toHaveBeenLastCalledWith('books-2027');
+        clickList('my endless ever-changing backlog');
+        expect(window.openBooksWindow).toHaveBeenLastCalledWith('books-backlog');
 
         app.open('movies');
         expect(list.textContent).toContain('this folder is empty');

@@ -1,6 +1,5 @@
 /**
- * Books I am reading in 2026.
- *
+ * Curated book lists: books read in 2026, books read in 2027, and the backlog.
  */
 
 const BOOKS_2026 = {
@@ -141,6 +140,25 @@ const BOOKS_2026 = {
             ]
         },
     ],
+};
+
+window.BOOKS_2026 = BOOKS_2026;
+
+/**
+ * Books I am reading in 2027 – same shape as BOOKS_2026. Add months newest first, e.g.
+ * { id: 'january', label: 'january', count: 1, books: [{ title: '...', rating: '9/10', url: '', note: 'my thoughts' }] }
+ */
+const BOOKS_2027 = {
+    title: 'books i read in 2027',
+    shareId: 'books-2027',
+    months: [],
+};
+
+window.BOOKS_2027 = BOOKS_2027;
+
+const BOOKS_BACKLOG = {
+    title: 'my endless ever-changing backlog',
+    shareId: 'books-backlog',
     backlog: [
         { title: 'the warmth of other suns (isabel wilkerson)' },
         { title: 'the crack-up (f. scott fitzgerald)' },
@@ -326,7 +344,7 @@ const BOOKS_2026 = {
         { title: 'the secret history of the universe (mark booth)'},
         { title: 'universal artificial intelligence (m. hutter)' }, // https://hutter1.net/publ/uaibook2.pdf
         { title: 'the art of debugging (s. bekman)' }, // https://github.com/stas00/the-art-of-debugging/tree/master
-    ]
+    ],
 };
 
-window.BOOKS_2026 = BOOKS_2026;
+window.BOOKS_BACKLOG = BOOKS_BACKLOG;

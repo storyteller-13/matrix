@@ -1,6 +1,14 @@
 /**
- * Books 2026 – curated reading list window (notes letter styles).
+ * Curated book lists window (notes letter styles): books read in 2026, books read
+ * in 2027, and the backlog. One window shows whichever list was opened.
  */
+
+const BOOK_LISTS = [
+    { id: 'books-2026', dataKey: 'BOOKS_2026', titleKey: 'window.books' },
+    { id: 'books-2027', dataKey: 'BOOKS_2027', titleKey: 'window.books2027' },
+    { id: 'books-backlog', dataKey: 'BOOKS_BACKLOG', titleKey: 'window.booksBacklog' },
+];
+const DEFAULT_BOOK_LIST = 'books-2026';
 
 class BooksApp extends BaseApp {
     constructor() {
@@ -9,8 +17,28 @@ class BooksApp extends BaseApp {
         this.shareResetTimer = null;
         this.syncingFromUrl = false;
         this.shareOpen = false;
-        this.shareId = window.BOOKS_2026?.shareId || 'books-2026';
+        this.listId = DEFAULT_BOOK_LIST;
         this.init();
+    }
+
+    /** Known lists whose data is loaded, keyed by their share id. */
+    lists() {
+        return BOOK_LISTS
+            .map((list) => ({ ...list, data: window[list.dataKey], id: window[list.dataKey]?.shareId || list.id }))
+            .filter((list) => list.data);
+    }
+
+    findList(id) {
+        const wanted = String(id || '').toLowerCase();
+        return this.lists().find((list) => list.id.toLowerCase() === wanted) || null;
+    }
+
+    currentList() {
+        return this.findList(this.listId);
+    }
+
+    get shareId() {
+        return this.currentList()?.id || DEFAULT_BOOK_LIST;
     }
 
     init() {
@@ -94,12 +122,13 @@ class BooksApp extends BaseApp {
     openListFromUrl() {
         const shareId = this.getListIdFromUrl();
         if (!shareId) return;
-        if (String(shareId).toLowerCase() !== String(this.shareId).toLowerCase()) return;
-        if (this.shareOpen) return;
+        const list = this.findList(shareId);
+        if (!list) return;
+        if (this.shareOpen && list.id === this.shareId) return;
 
         this.syncingFromUrl = true;
         try {
-            this.open();
+            this.open(list.id);
         } finally {
             this.syncingFromUrl = false;
         }
@@ -227,7 +256,7 @@ class BooksApp extends BaseApp {
         </section>`;
     }
 
-    renderBacklog(backlog) {
+    renderBacklog(backlog, { heading = true } = {}) {
         if (!backlog?.length) return '';
         const label = this.escapeHtml(window.I18n?.t?.('lists.backlog') || 'my endless ever-changing backlog');
         const rows = backlog.map((entry) => {
@@ -238,31 +267,44 @@ class BooksApp extends BaseApp {
                 : title;
             return `<tr><td class="books-col-title">${cell}</td></tr>`;
         }).join('');
+        const headingHtml = heading ? `<h2 class="books-backlog-title">${label}</h2>` : '';
         return `<section class="books-backlog" id="books-backlog">
-            <h2 class="books-backlog-title">${label}</h2>
+            ${headingHtml}
             <table class="books-table books-table--backlog">
                 <tbody>${rows}</tbody>
             </table>
         </section>`;
     }
 
-    render() {
-        const titleEl = this.window.querySelector('#books-letter-title');
-        const bodyEl = this.window.querySelector('#books-letter-content');
-        const data = window.BOOKS_2026;
-        if (!data || !bodyEl) return;
-
-        if (titleEl) {
-            titleEl.textContent = window.I18n?.t?.('window.books') || data.title;
-        }
-
-        const monthsHtml = (data.months || []).map((month) => this.renderMonthTable(month)).join('');
-        const backlogHtml = this.renderBacklog(data.backlog);
-
-        bodyEl.innerHTML = `<div class="books-tables">${monthsHtml}${backlogHtml}</div>`;
+    renderEmpty() {
+        const text = this.escapeHtml(this.i18nLabel('lists.empty', 'no books here yet'));
+        return `<p class="books-empty">${text}</p>`;
     }
 
-    open() {
+    render() {
+        const titleEl = this.window.querySelector('#books-letter-title');
+        const headerTitleEl = this.window.querySelector('.window-header .window-title');
+        const bodyEl = this.window.querySelector('#books-letter-content');
+        const list = this.currentList();
+        if (!list || !bodyEl) return;
+        const { data } = list;
+
+        const title = this.i18nLabel(list.titleKey, data.title);
+        if (titleEl) titleEl.textContent = title;
+        if (headerTitleEl) headerTitleEl.textContent = title.toUpperCase();
+
+        const monthsHtml = (data.months || []).map((month) => this.renderMonthTable(month)).join('');
+        // A list that is only a backlog already carries the backlog name as its title.
+        const backlogHtml = this.renderBacklog(data.backlog, { heading: Boolean(data.months) });
+        const content = monthsHtml || backlogHtml ? `${monthsHtml}${backlogHtml}` : this.renderEmpty();
+
+        bodyEl.innerHTML = `<div class="books-tables">${content}</div>`;
+    }
+
+    open(listId = null) {
+        const list = listId ? this.findList(listId) : null;
+        if (list) this.listId = list.id;
+        if (this.window) this.render();
         super.open();
         if (!this.window) return;
         this.shareOpen = true;
@@ -301,4 +343,4 @@ if (document.readyState === 'loading') {
     initBooksApp();
 }
 
-window.openBooksWindow = () => window.BooksApp?.open();
+window.openBooksWindow = (listId = null) => window.BooksApp?.open(listId);
