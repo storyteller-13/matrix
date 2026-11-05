@@ -18,7 +18,8 @@ class WindowManager {
             el.classList.contains('notes-letter-window') ||
             el.classList.contains('books-window') ||
             el.classList.contains('about-window') ||
-            el.classList.contains('home-window'));
+            el.classList.contains('home-window') ||
+            this.isCompactViewport());
     }
 
     isDockAnchoredWindow(el) {
@@ -26,7 +27,7 @@ class WindowManager {
     }
 
     isCompactViewport() {
-        return typeof window.matchMedia === 'function' && window.matchMedia('(max-width: 768px)').matches;
+        return typeof window.matchMedia === 'function' && window.matchMedia('(max-width: 768px), (max-height: 500px)').matches;
     }
 
     init() {
@@ -226,6 +227,8 @@ class WindowManager {
         if (availableHeight <= 0) return;
 
         // Ensure window never exceeds the vertical space between panel and dock.
+        // Clear any earlier limit first so the window can grow again after rotating.
+        element.style.height = '';
         element.style.maxHeight = `${availableHeight}px`;
 
         if (element.offsetHeight > availableHeight) {
@@ -248,11 +251,14 @@ class WindowManager {
             let centerX = rect.left + rect.width / 2;
             let centerY = rect.top + rect.height / 2;
 
-            centerX = this.clampValue(
-                centerX,
-                this.viewportPadding + width / 2,
-                window.innerWidth - this.viewportPadding - width / 2
-            );
+            // A window too wide for the side padding (full-width on phones) just stays centred.
+            centerX = width + this.viewportPadding * 2 >= window.innerWidth
+                ? window.innerWidth / 2
+                : this.clampValue(
+                    centerX,
+                    this.viewportPadding + width / 2,
+                    window.innerWidth - this.viewportPadding - width / 2
+                );
             centerY = this.clampValue(
                 centerY,
                 safeTopY + height / 2,

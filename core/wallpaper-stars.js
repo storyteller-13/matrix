@@ -13,7 +13,7 @@
     const matches = (query) => typeof window.matchMedia === 'function' && window.matchMedia(query).matches;
     const reducedMotion = matches('(prefers-reduced-motion: reduce)');
     const constrained = reducedMotion
-        || matches('(max-width: 768px)')
+        || matches('(max-width: 768px), (max-height: 500px)')
         || matches('(pointer: coarse)');
 
     const EXTRA = reducedMotion ? 36 : constrained ? 96 : 360;

@@ -11,6 +11,7 @@ const calendarDom = () => `
         <button id="calendar-next" type="button">›</button>
         <div id="calendar-weekdays"></div>
         <div id="calendar-grid"></div>
+        <div id="calendar-day-detail" hidden></div>
     </div>
 `;
 
@@ -151,6 +152,58 @@ describe('CalendarPanel', () => {
         expect(panel.eventIcon('new-moon')).toBe('\u25CF');
         expect(panel.eventIcon('full-moon')).toBe('\u25CB');
         expect(panel.eventIcon('post')).toBe('\u270E');
+    });
+
+    it('labels only november stories as zeitgeist awards, with the award icon', () => {
+        const posts = window.CALENDAR_EVENTS.filter((ev) => ev.type === 'post');
+        const november = posts.filter((ev) => ev.date.slice(5, 7) === '11');
+        const others = posts.filter((ev) => ev.date.slice(5, 7) !== '11');
+        expect(november.length).toBe(5);
+        november.forEach((ev) => {
+            expect(ev.label).toBe('new story + zeitgeist awards');
+            expect(ev.labelKey).toBe('calendar.event.newPostZeitgeist');
+            expect(ev.icon).toBe('🏆');
+        });
+        others.forEach((ev) => {
+            expect(ev.label).toBe('new story');
+            expect(ev.icon).toBeUndefined();
+        });
+    });
+
+    it('renders an event-level icon instead of the type icon', () => {
+        vi.setSystemTime(new Date('2026-11-05T12:00:00'));
+        const panel = new window.CalendarPanelClass();
+        panel.showBox();
+        const icons = [...document.querySelectorAll('.calendar-day-event-post .calendar-day-event-icon')];
+        expect(icons.map((el) => el.textContent)).toEqual(['🏆']);
+    });
+
+    it('tapping a day shows its events below the grid and tapping again hides them', () => {
+        vi.setSystemTime(new Date('2026-11-05T12:00:00'));
+        const panel = new window.CalendarPanelClass();
+        panel.showBox();
+        const detail = document.getElementById('calendar-day-detail');
+        expect(detail.hidden).toBe(true);
+        const cell = () => document.querySelector('.calendar-day-post');
+        expect(cell().getAttribute('aria-label')).toBe('13: new story + zeitgeist awards');
+
+        cell().click();
+        expect(detail.hidden).toBe(false);
+        expect(detail.textContent).toBe('13 · 🏆 new story + zeitgeist awards');
+        expect(cell().classList.contains('calendar-day-selected')).toBe(true);
+
+        cell().dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }));
+        expect(detail.hidden).toBe(true);
+        expect(cell().classList.contains('calendar-day-selected')).toBe(false);
+    });
+
+    it('hides the day detail after moving to another month', () => {
+        vi.setSystemTime(new Date('2026-11-05T12:00:00'));
+        const panel = new window.CalendarPanelClass();
+        panel.showBox();
+        document.querySelector('.calendar-day-post').click();
+        document.getElementById('calendar-next').click();
+        expect(document.getElementById('calendar-day-detail').hidden).toBe(true);
     });
 
     it('isMobile follows matchMedia', () => {

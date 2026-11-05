@@ -18,7 +18,7 @@
     }
 
     function isNarrowViewport() {
-        return matchesMedia('(max-width: 768px)');
+        return matchesMedia('(max-width: 768px), (max-height: 500px)');
     }
 
     function isCoarsePointer() {

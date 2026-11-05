@@ -6,6 +6,7 @@ class CalendarPanel {
     constructor() {
         this.events = typeof window.CALENDAR_EVENTS !== 'undefined' ? window.CALENDAR_EVENTS : [];
         this.viewDate = new Date();
+        this.selectedDateKey = null;
         this.elements = {
             badge: null,
             menuCount: null,
@@ -53,7 +54,7 @@ class CalendarPanel {
     }
 
     isMobile() {
-        return typeof window.matchMedia === 'function' && window.matchMedia('(max-width: 768px)').matches;
+        return typeof window.matchMedia === 'function' && window.matchMedia('(max-width: 768px), (max-height: 500px)').matches;
     }
 
     bringToFront() {
@@ -187,6 +188,20 @@ class CalendarPanel {
             cell.appendChild(num);
 
             if (dayEvents.length) {
+                const key = this.dateKey(year, monthIndex, day);
+                const labels = dayEvents.map((ev) => this.eventLabel(ev)).join(', ');
+                cell.setAttribute('role', 'button');
+                cell.setAttribute('tabindex', '0');
+                cell.setAttribute('aria-label', `${day}: ${labels}`);
+                if (this.selectedDateKey === key) cell.classList.add('calendar-day-selected');
+                cell.addEventListener('click', () => this.selectDay(key));
+                cell.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        this.selectDay(key);
+                    }
+                });
+
                 const eventsWrap = document.createElement('div');
                 eventsWrap.className = 'calendar-day-events';
                 dayEvents.forEach((ev) => {
@@ -196,7 +211,7 @@ class CalendarPanel {
                     const icon = document.createElement('span');
                     icon.className = 'calendar-day-event-icon';
                     icon.setAttribute('aria-hidden', 'true');
-                    icon.textContent = this.eventIcon(ev.type);
+                    icon.textContent = ev.icon || this.eventIcon(ev.type);
 
                     const text = document.createElement('span');
                     text.className = 'calendar-day-event-text';
@@ -212,7 +227,34 @@ class CalendarPanel {
             gridEl.appendChild(cell);
         }
 
+        this.renderDayDetail();
         this.updateBadge();
+    }
+
+    /** Tap a day to read its events below the grid; tap again to close. Phones show icons only in the grid. */
+    selectDay(key) {
+        this.selectedDateKey = this.selectedDateKey === key ? null : key;
+        this.render();
+    }
+
+    renderDayDetail() {
+        const detail = document.getElementById('calendar-day-detail');
+        if (!detail) return;
+        const dayEvents = this.selectedDateKey
+            ? this.events.filter((ev) => ev.date === this.selectedDateKey)
+            : [];
+        const year = this.viewDate.getFullYear();
+        const monthIndex = this.viewDate.getMonth();
+        const inView = this.selectedDateKey?.startsWith(this.dateKey(year, monthIndex, 1).slice(0, 8));
+        detail.textContent = '';
+        detail.hidden = !dayEvents.length || !inView;
+        if (detail.hidden) return;
+        dayEvents.forEach((ev) => {
+            const line = document.createElement('div');
+            line.className = 'calendar-day-detail-line';
+            line.textContent = `${Number(ev.date.slice(8))} · ${ev.icon || this.eventIcon(ev.type)} ${this.eventLabel(ev)}`;
+            detail.appendChild(line);
+        });
     }
 
     /** Show the dock icon as selected while the calendar is open, like the window apps do. */

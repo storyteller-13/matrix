@@ -51,7 +51,7 @@ class APODPanel {
     }
 
     isMobile() {
-        return typeof window.matchMedia === 'function' && window.matchMedia('(max-width: 768px)').matches;
+        return typeof window.matchMedia === 'function' && window.matchMedia('(max-width: 768px), (max-height: 500px)').matches;
     }
 
     shouldAutoOpen() {
@@ -311,14 +311,15 @@ class APODPanel {
         const box = document.getElementById('apod-box');
         if (!box) return;
 
+        const center = this.isMobile() ? 'translate(-50%, -50%) ' : '';
         box.style.display = 'block';
         box.style.opacity = '0';
-        box.style.transform = 'translateY(-10px) scale(0.95)';
+        box.style.transform = center + 'translateY(-10px) scale(0.95)';
         void box.offsetHeight; // Force reflow
         requestAnimationFrame(() => {
             box.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
             box.style.opacity = '1';
-            box.style.transform = 'translateY(0) scale(1)';
+            box.style.transform = center + 'translateY(0) scale(1)';
         });
 
         if (options.reload !== false) {
@@ -333,8 +334,9 @@ class APODPanel {
         const box = document.getElementById('apod-box');
         if (!box) return;
 
+        const center = this.isMobile() ? 'translate(-50%, -50%) ' : '';
         box.style.opacity = '0';
-        box.style.transform = 'translateY(-10px) scale(0.95)';
+        box.style.transform = center + 'translateY(-10px) scale(0.95)';
         setTimeout(() => {
             box.style.display = 'none';
         }, 400);

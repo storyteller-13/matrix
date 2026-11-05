@@ -1,5 +1,5 @@
 /* Responsive – mobile-first improvements */
-@media (max-width: 768px) {
+@media (max-width: 768px), (max-height: 500px) {
     .desktop-panels {
         display: contents;
     }
@@ -1212,7 +1212,7 @@
 }
 
 /* Landscape Mobile */
-@media (max-width: 768px) and (orientation: landscape) {
+@media (max-width: 768px) and (orientation: landscape), (max-height: 500px) and (orientation: landscape) {
     /* Desktop container padding for fixed top panel */
     .desktop {
         padding-top: calc(44px + env(safe-area-inset-top, 0px));
@@ -1447,7 +1447,7 @@
 }
 
 /* Touch Target Improvements */
-@media (max-width: 768px) {
+@media (max-width: 768px), (max-height: 500px) {
     /* Keep tray/menu compact so the top bar fits; expand hit area via ::after */
     .todo-checkbox {
         min-width: 44px;
@@ -1543,7 +1543,7 @@
 }
 
 /* Touch devices: don't leave hover-scale stuck after a tap */
-@media (hover: none) and (max-width: 768px) {
+@media (hover: none) and (max-width: 768px), (hover: none) and (max-height: 500px) {
     .quotes-box:hover,
     .sky-box:hover,
     .chess-box:hover,
@@ -1592,5 +1592,195 @@
 @media (max-width: 340px) {
     .clock-zone[data-timezone="Asia/Tokyo"] {
         display: none;
+    }
+}
+
+
+/* Compact screens: phones in either orientation and short landscape screens.
+   Keep this query in sync with the isCompact/isMobile checks in core/ and applications/. */
+.calendar-day-detail {
+    display: none;
+}
+
+@media (max-width: 768px), (max-height: 500px) {
+    :root {
+        --compact-top: calc(48px + env(safe-area-inset-top, 0px));
+        --compact-bottom: calc(78px + env(safe-area-inset-bottom, 0px));
+        --compact-safe-x: max(env(safe-area-inset-left, 0px), env(safe-area-inset-right, 0px));
+    }
+
+    /* Widgets sit centred between the top bar and the dock, and scroll if they don't fit */
+    .quotes-box,
+    .chess-box,
+    .sky-box,
+    .bird-box,
+    .apod-box,
+    .calendar-box,
+    .music-player {
+        position: fixed;
+        left: 50%;
+        right: auto;
+        bottom: auto;
+        margin-inline: 0;
+        top: calc(var(--compact-top) + (100dvh - var(--compact-top) - var(--compact-bottom)) / 2);
+        width: min(380px, calc(100vw - 16px - 2 * var(--compact-safe-x)));
+        max-width: none;
+        max-height: calc(100dvh - var(--compact-top) - var(--compact-bottom) - 12px);
+        overflow-x: hidden;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        -webkit-overflow-scrolling: touch;
+        transform: translate(-50%, -50%);
+    }
+
+    .calendar-box {
+        width: min(460px, calc(100vw - 16px - 2 * var(--compact-safe-x)));
+    }
+
+    /* Embedded sites use their own mobile layout instead of a shrunken desktop one */
+    .home-container {
+        --home-page-scale: 1;
+    }
+
+    .terminal-input-main {
+        flex: 1 1 0;
+        width: 0;
+        min-width: 0;
+    }
+
+    .terminal-line {
+        min-width: 0;
+    }
+
+    .menu-dropdown {
+        max-width: min(250px, calc(100vw - 16px - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px)));
+        width: 100%;
+    }
+
+    /* Calendar: icons in the grid, full text below it when a day is tapped */
+    .calendar-grid {
+        gap: 4px;
+    }
+
+    .calendar-day,
+    .calendar-day-empty {
+        min-height: 44px;
+        padding: 3px;
+    }
+
+    .calendar-day-has-event {
+        cursor: pointer;
+    }
+
+    .calendar-day-events {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1px;
+    }
+
+    .calendar-day-event {
+        background: none;
+        padding: 0;
+        font-size: 14px;
+        line-height: 1.1;
+    }
+
+    .calendar-day-event-text {
+        display: none;
+    }
+
+    .calendar-day-selected {
+        outline: 2px solid #E879A9;
+        outline-offset: -2px;
+    }
+
+    .calendar-day-detail:not([hidden]) {
+        display: block;
+        margin-top: 8px;
+        padding: 8px 10px;
+        border-radius: 8px;
+        background: rgba(232, 121, 169, 0.14);
+        color: var(--text);
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 1.35;
+    }
+
+    .calendar-day-detail-line + .calendar-day-detail-line {
+        margin-top: 4px;
+    }
+}
+
+@media (max-height: 500px) and (orientation: landscape), (max-width: 768px) and (orientation: landscape) {
+    :root {
+        --compact-top: calc(44px + env(safe-area-inset-top, 0px));
+        --compact-bottom: calc(70px + env(safe-area-inset-bottom, 0px));
+    }
+
+    /* Keep window edges and close buttons clear of the notch */
+    .window {
+        max-width: calc(100vw - 16px - 2 * var(--compact-safe-x));
+    }
+}
+
+/* Touch screens of any size: controls big enough to tap */
+@media (pointer: coarse) {
+    .control.close,
+    .terminal-window .control.close,
+    .quotes-box-close,
+    .sky-box-close,
+    .bird-box-close,
+    .apod-box-close,
+    .chess-box-close,
+    .calendar-box-close,
+    .calendar-nav,
+    .music-close,
+    .music-nav,
+    .music-toggle {
+        width: 32px;
+        height: 32px;
+        min-width: 32px;
+        min-height: 32px;
+    }
+
+    .menu-dropdown .menu-item {
+        min-height: 44px;
+        box-sizing: border-box;
+    }
+
+    .locale-toggle::after {
+        content: '';
+        position: absolute;
+        inset: -12px -2px;
+    }
+
+    .home-container {
+        --home-page-scale: 0.75;
+    }
+}
+
+@media (pointer: coarse) and (max-width: 768px), (pointer: coarse) and (max-height: 500px) {
+    .home-container {
+        --home-page-scale: 1;
+    }
+}
+
+/* Desktop layout on narrower screens: keep the bottom widgets clear of the centred dock */
+@media (min-width: 769px) and (min-height: 501px) and (max-width: 1500px) {
+    .desktop-panels-row .sky-box,
+    .desktop-panels-row .bird-box {
+        margin-bottom: calc(var(--dock-clearance) - var(--desktop-gap));
+    }
+}
+
+@media (min-width: 769px) and (min-height: 501px) and (max-width: 920px) {
+    .desktop-panels {
+        bottom: var(--dock-clearance);
+    }
+
+    .desktop-panels-row .sky-box,
+    .desktop-panels-row .bird-box {
+        margin-bottom: 0;
     }
 }

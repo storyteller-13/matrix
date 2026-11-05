@@ -35,7 +35,7 @@ class ChessPanel {
   }
 
   isMobile() {
-    return typeof window.matchMedia === 'function' && window.matchMedia('(max-width: 768px)').matches;
+    return typeof window.matchMedia === 'function' && window.matchMedia('(max-width: 768px), (max-height: 500px)').matches;
   }
 
   shouldAutoOpen() {

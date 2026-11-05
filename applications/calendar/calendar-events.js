@@ -672,8 +672,9 @@ window.CALENDAR_EVENTS = [
     {
         date: '2026-11-13',
         type: 'post',
-        labelKey: 'calendar.event.newPost',
-        label: 'new story',
+        labelKey: 'calendar.event.newPostZeitgeist',
+        label: 'new story + zeitgeist awards',
+        icon: '🏆',
     },
     {
         date: '2026-11-23',
@@ -751,8 +752,9 @@ window.CALENDAR_EVENTS = [
     {
         date: '2027-11-19',
         type: 'post',
-        labelKey: 'calendar.event.newPost',
-        label: 'new story',
+        labelKey: 'calendar.event.newPostZeitgeist',
+        label: 'new story + zeitgeist awards',
+        icon: '🏆',
     },
     {
         date: '2027-12-17',
@@ -825,8 +827,9 @@ window.CALENDAR_EVENTS = [
     {
         date: '2028-11-17',
         type: 'post',
-        labelKey: 'calendar.event.newPost',
-        label: 'new story',
+        labelKey: 'calendar.event.newPostZeitgeist',
+        label: 'new story + zeitgeist awards',
+        icon: '🏆',
     },
     {
         date: '2028-12-15',
@@ -899,8 +902,9 @@ window.CALENDAR_EVENTS = [
     {
         date: '2029-11-16',
         type: 'post',
-        labelKey: 'calendar.event.newPost',
-        label: 'new story',
+        labelKey: 'calendar.event.newPostZeitgeist',
+        label: 'new story + zeitgeist awards',
+        icon: '🏆',
     },
     {
         date: '2029-12-21',
@@ -973,8 +977,9 @@ window.CALENDAR_EVENTS = [
     {
         date: '2030-11-15',
         type: 'post',
-        labelKey: 'calendar.event.newPost',
-        label: 'new story',
+        labelKey: 'calendar.event.newPostZeitgeist',
+        label: 'new story + zeitgeist awards',
+        icon: '🏆',
     },
     {
         date: '2030-12-20',

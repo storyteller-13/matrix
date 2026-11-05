@@ -159,7 +159,7 @@ class MusicPlayer {
     }
 
     isMobile() {
-        return typeof window.matchMedia === 'function' && window.matchMedia('(max-width: 768px)').matches;
+        return typeof window.matchMedia === 'function' && window.matchMedia('(max-width: 768px), (max-height: 500px)').matches;
     }
 
     shouldAutoOpen() {
@@ -452,8 +452,9 @@ class MusicPlayer {
     }
 
     hidePlayer(element) {
+        const center = this.isMobile() ? 'translate(-50%, -50%) ' : '';
         element.style.opacity = '0';
-        element.style.transform = 'translateY(-10px) scale(0.95)';
+        element.style.transform = center + 'translateY(-10px) scale(0.95)';
         setTimeout(() => {
             element.style.display = 'none';
         }, 400);
@@ -461,14 +462,15 @@ class MusicPlayer {
 
     showPlayer(element) {
         this.ensureYouTubeAPI();
+        const center = this.isMobile() ? 'translate(-50%, -50%) ' : '';
         element.style.display = 'flex';
         element.style.opacity = '0';
-        element.style.transform = 'translateY(-10px) scale(0.95)';
+        element.style.transform = center + 'translateY(-10px) scale(0.95)';
         void element.offsetHeight; // Force reflow
         requestAnimationFrame(() => {
             element.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
             element.style.opacity = '1';
-            element.style.transform = 'translateY(0) scale(1)';
+            element.style.transform = center + 'translateY(0) scale(1)';
         });
     }
 

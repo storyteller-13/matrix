@@ -1,5 +1,5 @@
 /* Desktop widget columns – keep quotes/chess and music/apod stacked inside the viewport */
-@media (min-width: 769px) {
+@media (min-width: 769px) and (min-height: 501px) {
     .desktop-panels {
         position: fixed;
         z-index: 1001;

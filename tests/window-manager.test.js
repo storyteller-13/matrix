@@ -80,6 +80,43 @@ describe('WindowManager', () => {
         expect(wm.isDockAnchoredWindow(term)).toBe(false);
     });
 
+    it('isCenteredWindow is true for every window on compact screens', () => {
+        const wm = window.WindowManager;
+        const todo = document.createElement('div');
+        todo.className = 'window todo-window';
+        const original = window.matchMedia;
+        window.matchMedia = () => ({ matches: true });
+        expect(wm.isCenteredWindow(todo)).toBe(true);
+        window.matchMedia = () => ({ matches: false });
+        expect(wm.isCenteredWindow(todo)).toBe(false);
+        window.matchMedia = original;
+    });
+
+    it('constrainWindowToVerticalBounds clears an earlier height so windows regrow after rotating', () => {
+        const wm = window.WindowManager;
+        const el = document.createElement('div');
+        el.style.height = '200px';
+        vi.spyOn(wm, 'getSafeTopY').mockReturnValue(60);
+        vi.spyOn(wm, 'getSafeBottomY').mockReturnValue(700);
+        wm.constrainWindowToVerticalBounds(el);
+        expect(el.style.height).toBe('');
+        expect(el.style.maxHeight).toBe('640px');
+        vi.restoreAllMocks();
+    });
+
+    it('clampWindowToViewport keeps a full-width window centred on compact screens', () => {
+        const wm = window.WindowManager;
+        const el = document.createElement('div');
+        el.className = 'window home-window';
+        el.style.display = 'block';
+        Object.defineProperty(el, 'offsetWidth', { value: window.innerWidth });
+        Object.defineProperty(el, 'offsetHeight', { value: 300 });
+        el.getBoundingClientRect = () => ({ left: 12, top: 100, width: window.innerWidth, height: 300 });
+        wm.clampWindowToViewport(el);
+        expect(el.style.left).toBe(`${window.innerWidth / 2}px`);
+        expect(el.style.transform).toBe('translate(-50%, -50%)');
+    });
+
     it('isCenteredWindow returns false for regular window', () => {
         const wm = window.WindowManager;
         const el = document.getElementById('test-window');
