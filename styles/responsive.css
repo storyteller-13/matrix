@@ -246,7 +246,7 @@
     .window {
         max-width: 100%;
     }
-    img, iframe:not(#home-iframe) {
+    img, iframe:not(#home-iframe):not(#status-iframe):not(#building-iframe) {
         max-width: 100%;
         height: auto;
     }
