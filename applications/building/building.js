@@ -4,7 +4,7 @@
 
 class BuildingApp extends BaseApp {
     constructor() {
-        super({ windowId: 'building-window' });
+        super({ windowId: 'building-window', dockItemId: 'building-dock-item' });
         this.init();
     }
 

@@ -6,6 +6,7 @@ import { describe, it, expect, beforeAll, beforeEach, vi } from 'vitest';
 const buildingDom = () => `
     <div id="building-window" class="window" style="display: none;"></div>
     <a id="building-desktop-icon" class="desktop-icon"></a>
+    <a id="building-dock-item" class="dock-item"></a>
 `;
 
 describe('BuildingApp', () => {
@@ -25,6 +26,15 @@ describe('BuildingApp', () => {
         const openSpy = vi.spyOn(app, 'open');
         document.getElementById('building-desktop-icon').dispatchEvent(new MouseEvent('click', { bubbles: true }));
         expect(openSpy).toHaveBeenCalled();
+    });
+
+    it('dock item click opens the building window once and marks the item active', () => {
+        const app = new window.BuildingAppClass();
+        const openSpy = vi.spyOn(app, 'open');
+        const dockItem = document.getElementById('building-dock-item');
+        dockItem.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+        expect(openSpy).toHaveBeenCalledTimes(1);
+        expect(dockItem.classList.contains('active')).toBe(true);
     });
 
     it('openBuildingWindow opens BuildingApp when present', () => {

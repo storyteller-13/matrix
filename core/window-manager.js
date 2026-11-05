@@ -444,6 +444,7 @@ class WindowManager {
                     const dockItemMap = {
                         'todo-window': 'todo-dock-item',
                         'home-window': 'home-dock-item',
+                        'building-window': 'building-dock-item',
                         'terminal-window': 'terminal-dock-item',
                         'artwork-window': 'artwork-dock-item',
                         'lists-folder-window': 'lists-folder-dock-item',
