@@ -1,11 +1,11 @@
-PHONY: server install lint test coverage pre-commit clean
+.PHONY: server install lint test coverage pre-commit clean
 
 PORT ?= 8088
 PYTHON := python3
 
 server:
 	@echo "⭐️ starting development server on http://localhost:$(PORT)"
-	@$(PYTHON) -m http.server $(PORT)
+	@$(PYTHON) scripts/dev-server.py $(PORT)
 
 install: node_modules/.installed
 

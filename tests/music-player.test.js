@@ -382,24 +382,24 @@ describe('MusicPlayer', () => {
         expect(player.player).toBeTruthy();
     });
 
-    it('setupYouTubeAPI interval sets up the player then gives up', () => {
+    it('setupYouTubeAPI waits for the ready callback instead of polling', () => {
         vi.useFakeTimers();
         const origYT = window.YT;
         delete window.YT;
         delete global.YT;
-        const player = new window.MusicPlayerClass();
-        window.YT = origYT;
-        global.YT = origYT;
-        vi.advanceTimersByTime(100);
-        expect(player.player).toBeTruthy();
-
-        delete window.YT;
-        delete global.YT;
-        const waiting = new window.MusicPlayerClass();
-        vi.advanceTimersByTime(6000);
-        expect(waiting.player).toBeFalsy();
-        window.YT = origYT;
-        global.YT = origYT;
+        try {
+            const player = new window.MusicPlayerClass();
+            window.YT = origYT;
+            global.YT = origYT;
+            // The API is now present, but nothing should pick it up until YouTube calls back.
+            vi.advanceTimersByTime(6000);
+            expect(player.player).toBeFalsy();
+            window.onYouTubeIframeAPIReady();
+            expect(player.player).toBeTruthy();
+        } finally {
+            window.YT = origYT;
+            global.YT = origYT;
+        }
     });
 
     it('setupPlayer returns early without an element, API, or songs', () => {

@@ -122,12 +122,18 @@ describe('Application modules (coverage)', () => {
                 <div class="window-title">CURATE LISTS</div>
                 <div class="file-list"></div>
             </div>
-            <div id="lists-folder-dock-item" class="dock-item"></div>
+            <div id="lists-folder-dock-item" class="dock-item"><span id="lists-folder-count-badge" style="display: none;">0</span></div>
             <div id="books-window" class="window"></div>
         `;
         window.openBooksWindow = vi.fn();
         await import('../core/base-app.js');
+        await import('../applications/lists/podcast-player.js');
         await import('../applications/lists/lists-folder.js');
+        // The zeitgeist awards (movies + podcasts) stay hidden on main until the reveal.
+        const revealed = window.PODCAST_EPISODES.length > 0;
+        const dockBadge = document.getElementById('lists-folder-count-badge');
+        expect(dockBadge.textContent).toBe(revealed ? '13' : '11');
+        expect(dockBadge.style.display).toBe('flex');
         expect(window.ListsFolderAppClass).toBeDefined();
         expect(window.ListsFolderApp).toBeDefined();
         expect(typeof window.openListsFolderWindow).toBe('function');
@@ -139,16 +145,19 @@ describe('Application modules (coverage)', () => {
         expect(list.textContent).toContain('games');
         expect(list.textContent).toContain('adventures');
         expect(list.textContent).toContain('art');
-        expect(list.textContent).toContain('articles');
+        expect(list.textContent).toContain('science');
         expect(list.textContent).toContain('food');
         expect(list.textContent).toContain('podcasts');
 
         const badgeFor = (label) => [...list.querySelectorAll('.file-item')]
             .find((el) => el.querySelector('.file-name').textContent === label)
             .querySelector('.lists-folder-count-badge');
-        expect(badgeFor('books').textContent).toBe('3');
-        expect(badgeFor('movies').textContent).toBe('1');
-        ['art', 'articles', 'games', 'food', 'adventures', 'podcasts'].forEach((label) => {
+        expect(badgeFor('books').textContent).toBe('4');
+        expect(badgeFor('movies').textContent).toBe(revealed ? '3' : '2');
+        if (revealed) expect(badgeFor('podcasts').textContent).toBe('1');
+        expect(badgeFor('games').textContent).toBe('1');
+        expect(badgeFor('adventures').textContent).toBe('4');
+        ['art', 'science', 'food', ...(revealed ? [] : ['podcasts'])].forEach((label) => {
             expect(badgeFor(label)).toBeNull();
         });
 
@@ -164,27 +173,167 @@ describe('Application modules (coverage)', () => {
         expect(window.openBooksWindow).toHaveBeenLastCalledWith('books-2027');
         clickList('my endless ever-changing backlog');
         expect(window.openBooksWindow).toHaveBeenLastCalledWith('books-backlog');
+        clickList('books our kids should read');
+        expect(window.openBooksWindow).toHaveBeenLastCalledWith('kids-books');
 
         app.open('movies');
         expect(app.window.querySelector('.window-title').textContent).toBe('MOVIES');
-        expect(list.textContent).toContain('zeitgeist awards 2026');
         expect(list.textContent).not.toContain('this folder is empty');
-        expect(list.querySelectorAll('.file-item')[1].innerHTML).toContain('M10.6 10.6');
-        clickList('zeitgeist awards 2026');
-        expect(window.openBooksWindow).toHaveBeenLastCalledWith('zeitgeist-2026');
+        if (revealed) {
+            expect(list.querySelectorAll('.file-item')[1].innerHTML).toContain('M10.6 10.6');
+            clickList('zeitgeist awards 2026');
+            expect(window.openBooksWindow).toHaveBeenLastCalledWith('zeitgeist-2026');
+        } else {
+            expect(list.textContent).not.toContain('zeitgeist awards 2026');
+        }
+        clickList('movies to watch with our kids');
+        expect(window.openBooksWindow).toHaveBeenLastCalledWith('kids-movies');
+        clickList('classic american movies for the winter holiday');
+        expect(window.openBooksWindow).toHaveBeenLastCalledWith('winter-movies');
+
+        app.open('adventures');
+        expect(app.window.querySelector('.window-title').textContent).toBe('ADVENTURES');
+        expect(list.querySelectorAll('.file-item')[2].innerHTML).toContain('circle cx="12" cy="9.6"');
+        clickList('my bucket list');
+        expect(window.openBooksWindow).toHaveBeenLastCalledWith('bucket-list');
+        expect(list.querySelectorAll('.file-item')[3].innerHTML).toContain('M9.8 20.4');
+        clickList('cities i have lived');
+        expect(window.openBooksWindow).toHaveBeenLastCalledWith('cities-lived');
+        expect(list.querySelectorAll('.file-item')[4].innerHTML).toContain('M3.6 12 H20.4');
+        clickList('countries i have explored');
+        expect(window.openBooksWindow).toHaveBeenLastCalledWith('countries-explored');
+        clickList('my guides');
+        expect(app.window.querySelector('.window-title').textContent).toBe('MY GUIDES');
+        expect(list.querySelector('.file-item:nth-child(2)').innerHTML).toContain('M9 4.2 V17.8');
+        clickList('alagoas, brazil');
+        expect(window.openBooksWindow).toHaveBeenLastCalledWith('guide-alagoas');
+        clickList('iceland');
+        expect(window.openBooksWindow).toHaveBeenLastCalledWith('guide-iceland');
+        clickList('fun in berlin');
+        expect(window.openBooksWindow).toHaveBeenLastCalledWith('guide-berlin');
 
         app.open('art');
         expect(list.textContent).toContain('this folder is empty');
 
-        app.open('articles');
-        expect(app.window.querySelector('.window-title').textContent).toBe('ARTICLES');
+        app.open('science');
+        expect(app.window.querySelector('.window-title').textContent).toBe('SCIENCE');
         expect(list.textContent).toContain('this folder is empty');
 
         app.open('podcasts');
-        expect(list.textContent).toContain('this folder is empty'); 
+        expect(window.location.search).toBe('?folder=podcasts');
+        expect(list.querySelector('.lists-folder-description')).toBeNull();
+        expect(app.window.classList.contains('lists-folder-window--wide')).toBe(false);
+        if (revealed) {
+            const episodes = window.PODCAST_EPISODES;
+            expect(list.textContent).not.toContain('this folder is empty');
+            expect([...list.querySelectorAll('.file-item')].find((el) => el.textContent.includes('zeitgeist awards 2026'))
+                .querySelector('.lists-folder-count-badge').textContent).toBe(String(episodes.length));
+
+            window.openPodcastWindow = vi.fn();
+            clickList('zeitgeist awards 2026');
+            expect(app.path).toEqual(['podcasts', 'zeitgeist-awards-2026']);
+            expect(app.window.querySelector('.window-title').textContent).toBe('ZEITGEIST AWARDS 2026');
+            expect(window.location.search).toBe('?folder=podcasts/zeitgeist-awards-2026');
+            [episodes[0], episodes[episodes.length - 1]].forEach(({ title, videoId }) => {
+                clickList(title);
+                expect(window.openPodcastWindow).toHaveBeenLastCalledWith({ title, videoId });
+            });
+            expect(list.querySelector('.lists-folder-description').textContent).toBeTruthy();
+            expect(app.window.classList.contains('lists-folder-window--wide')).toBe(true);
+            expect(list.querySelectorAll('.lists-folder-item')).toHaveLength(episodes.length + 1);
+            clickList('back');
+            expect(app.path).toEqual(['podcasts']);
+            expect(window.location.search).toBe('?folder=podcasts');
+        } else {
+            expect(list.textContent).toContain('this folder is empty');
+        }
+
+        // Links: ?folder=<name>, nested paths, bare nested ids, and unknown folders are ignored.
+        expect(app.resolveFolderPath('movies')).toEqual(['movies']);
+        expect(app.resolveFolderPath('Adventures/My-Guides')).toEqual(['adventures', 'my-guides']);
+        expect(app.resolveFolderPath('my-guides')).toEqual(['adventures', 'my-guides']);
+        expect(app.resolveFolderPath('nope')).toBeNull();
+        expect(app.resolveFolderPath('movies/nope')).toBeNull();
+        history.replaceState(null, '', '/?folder=my-guides');
+        app.openFromUrl();
+        expect(app.path).toEqual(['adventures', 'my-guides']);
+        expect(window.location.search).toBe('?folder=adventures/my-guides');
+        history.replaceState(null, '', '/?folder=nope');
+        app.open('books');
+        history.replaceState(null, '', '/?folder=nope');
+        app.openFromUrl();
+        expect(app.path).toEqual(['books']);
+        app.open();
+        expect(window.location.search).toBe('');
+        app.open('movies');
+        app.window.insertAdjacentHTML('afterbegin', '<span class="control close"></span>');
+        app.window.querySelector('.control.close').click();
+        expect(window.location.search).toBe('');
+        history.replaceState(null, '', '/');
 
         app.open('games');
-        expect(list.textContent).toContain('this folder is empty'); 
+        expect(list.textContent).not.toContain('this folder is empty');
+        expect(list.querySelectorAll('.file-item')[1].innerHTML).toContain('M7.6 10.2');
+        clickList('the games of my youth');
+        expect(window.openBooksWindow).toHaveBeenLastCalledWith('games-youth');
+    });
+
+    it('podcast-player plays a youtube episode and stops on close', async () => {
+        document.body.innerHTML = `
+            <div id="podcast-window" class="window">
+                <span class="control close"></span>
+                <div class="window-title">PODCAST</div>
+                <iframe id="podcast-iframe" src="about:blank"></iframe>
+            </div>
+        `;
+        await import('../core/base-app.js');
+        await import('../applications/lists/podcast-player.js');
+        expect(window.PodcastPlayerAppClass).toBeDefined();
+        expect(typeof window.openPodcastWindow).toBe('function');
+        const app = new window.PodcastPlayerAppClass();
+        const iframe = document.getElementById('podcast-iframe');
+
+        app.open({ title: 'bad', videoId: 'javascript:alert(1)' });
+        expect(iframe.getAttribute('src')).toBe('about:blank');
+
+        app.open({ title: 'robert greene on andrew huberman', videoId: 'y-fRFiTrrg4' });
+        expect(iframe.getAttribute('src')).toBe('https://www.youtube-nocookie.com/embed/y-fRFiTrrg4?autoplay=1&rel=0&modestbranding=1&playsinline=1');
+        expect(iframe.getAttribute('title')).toBe('robert greene on andrew huberman');
+        expect(document.querySelector('.window-title').textContent).toBe('ROBERT GREENE ON ANDREW HUBERMAN');
+
+        document.querySelector('.control.close').click();
+        expect(iframe.getAttribute('src')).toBe('about:blank');
+
+        window.PodcastPlayerApp = app;
+        window.openPodcastWindow = (episode) => app.open(episode);
+        window.openPodcastEpisode('nope');
+        expect(iframe.getAttribute('src')).toBe('about:blank');
+        const [first] = window.PODCAST_EPISODES;
+        if (first) {
+            window.openPodcastEpisode(first.id);
+            expect(iframe.getAttribute('src')).toContain(`/embed/${first.videoId}?`);
+            expect(document.querySelector('.window-title').textContent).toBe(first.title.toUpperCase());
+            window.openPodcastEpisode('nope');
+            expect(iframe.getAttribute('src')).toContain(`/embed/${first.videoId}?`);
+        }
+    });
+
+    it('podcast-player builds the episode menu from PODCAST_EPISODES', async () => {
+        document.body.innerHTML = '<div id="podcast-menu-episodes"><button>stale</button></div>';
+        vi.resetModules();
+        await import('../core/base-app.js');
+        await import('../applications/lists/podcast-player.js');
+        const menu = document.getElementById('podcast-menu-episodes');
+        const buttons = menu.querySelectorAll('button.menu-item');
+        const episodes = window.PODCAST_EPISODES;
+        expect(buttons.length).toBe(episodes.length);
+        expect(menu.querySelectorAll('.menu-separator').length).toBe(Math.max(buttons.length - 1, 0));
+        expect(menu.textContent).not.toContain('stale');
+        buttons.forEach((button, i) => {
+            expect(button.dataset.action).toBe('openPodcastEpisode');
+            expect(button.dataset.arg).toBe(episodes[i].id);
+            expect(button.textContent).toBe(episodes[i].title);
+        });
     });
 
     it('apod.js loads and exposes APODPanelClass and buildApiUrl', async () => {

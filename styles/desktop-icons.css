@@ -20,11 +20,6 @@
     transition: background 0.2s;
 }
 
-a.desktop-icon {
-    text-decoration: none;
-    color: inherit;
-}
-
 .desktop-icon:hover {
     background: rgba(255, 182, 213, 0.2);
     box-shadow: var(--shadow-soft);

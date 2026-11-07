@@ -246,7 +246,7 @@
     .window {
         max-width: 100%;
     }
-    img, iframe:not(#home-iframe):not(#status-iframe):not(#building-iframe) {
+    img, iframe:not(#home-iframe):not(#status-iframe):not(#building-iframe):not(#podcast-iframe) {
         max-width: 100%;
         height: auto;
     }
@@ -582,6 +582,12 @@
         bottom: auto;
         left: 50%;
         transform: translateX(-50%);
+    }
+
+    .books-window {
+        --books-max: calc(100dvh - 48px - 80px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+        --books-header: 46px;
+        height: auto;
     }
 
     .about-window {
@@ -1106,6 +1112,12 @@
         border-radius: 0;
     }
 
+    .books-window {
+        --books-max: calc(100dvh - 52px - 80px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+        --books-header: 54px;
+        height: auto !important;
+    }
+
     .about-window {
         top: calc(52px + env(safe-area-inset-top, 0px) + var(--desktop-gap)) !important;
         height: calc(100vh - 52px - 80px - var(--desktop-gap)) !important;
@@ -1132,17 +1144,21 @@
         margin-bottom: 22px;
     }
 
+    #notes-letter-window .letter-title {
+        font-size: 22px;
+    }
+
     .letter-text {
         font-size: 11px;
     }
 
     .about-name {
-        font-size: 13px;
+        font-size: 20px;
     }
 
     .about-role {
-        font-size: 9px;
-        margin-bottom: 10px;
+        font-size: 12px;
+        margin-bottom: 12px;
     }
 
     .about-text {
@@ -1415,6 +1431,12 @@
         left: 50%;
         right: auto;
         transform: translateX(-50%);
+    }
+
+    .books-window {
+        --books-max: calc(100dvh - 44px - 70px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+        --books-header: 46px;
+        height: auto;
     }
 
     .about-window {
@@ -1782,5 +1804,75 @@
     .desktop-panels-row .sky-box,
     .desktop-panels-row .bird-box {
         margin-bottom: 0;
+    }
+}
+
+/* Curated lists on phones: keep the rating header whole, stack guide details, tighten cards. */
+@media (max-width: 480px) {
+    .books-table col.books-col-rating {
+        width: 64px;
+    }
+
+    .guide-section {
+        padding: 12px;
+    }
+
+    .guide-details {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .guide-detail dd {
+        margin-bottom: 6px;
+    }
+
+    .bucket-region-count {
+        margin-left: 0;
+        flex-basis: 100%;
+    }
+}
+
+/* "who i am" fits its text on small screens too, so it sits centred instead of filling the screen. */
+@media (max-width: 768px), (max-height: 500px) {
+    .about-window {
+        height: auto !important;
+    }
+
+    .about-window .window-content {
+        height: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Centre "who i am" between the top panel (52px) and the dock (80px). */
+    .about-window {
+        top: calc(52px + env(safe-area-inset-top, 0px) + (100dvh - 52px - 80px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px)) / 2) !important;
+        transform: translateY(-50%) !important;
+    }
+}
+
+/* Reflections on tablets and phones: keep the bigger type, with less padding around the sheet. */
+@media (max-width: 768px), (max-height: 500px) {
+    #notes-letter-window .letter-container {
+        padding: 10px;
+    }
+
+    #notes-letter-window .letter-paper {
+        padding: 22px 20px 28px;
+    }
+
+    #notes-letter-window .letter-title {
+        font-size: 26px;
+        margin-bottom: 24px;
+    }
+
+    #notes-letter-window .letter-text {
+        font-size: 13.5px;
+        line-height: 1.7;
+    }
+
+    #notes-letter-window .letter-container--ascii .letter-text {
+        font-size: 11px;
+        line-height: 1.45;
     }
 }

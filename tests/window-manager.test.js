@@ -51,33 +51,28 @@ describe('WindowManager', () => {
         expect(window.WindowManagerClass).toBeDefined();
     });
 
-    it('isCenteredWindow returns true for terminal-window, artwork-window, notes-letter-window, about-window, home-window', () => {
+    it('isCenteredWindow is true for windows marked data-centered', () => {
         const wm = window.WindowManager;
         const term = document.createElement('div');
         term.className = 'window terminal-window';
+        term.dataset.centered = '';
         const art = document.createElement('div');
         art.className = 'window artwork-window';
+        art.dataset.centered = '';
         const notes = document.createElement('div');
         notes.className = 'window notes-letter-window';
+        notes.dataset.centered = '';
         const about = document.createElement('div');
         about.className = 'window about-window';
+        about.dataset.centered = '';
         const home = document.createElement('div');
         home.className = 'window home-window';
+        home.dataset.centered = '';
         expect(wm.isCenteredWindow(term)).toBe(true);
         expect(wm.isCenteredWindow(art)).toBe(true);
         expect(wm.isCenteredWindow(notes)).toBe(true);
         expect(wm.isCenteredWindow(about)).toBe(true);
         expect(wm.isCenteredWindow(home)).toBe(true);
-    });
-
-    it('isDockAnchoredWindow is true only for about-window', () => {
-        const wm = window.WindowManager;
-        const about = document.createElement('div');
-        about.className = 'window about-window';
-        const term = document.createElement('div');
-        term.className = 'window terminal-window';
-        expect(wm.isDockAnchoredWindow(about)).toBe(true);
-        expect(wm.isDockAnchoredWindow(term)).toBe(false);
     });
 
     it('isCenteredWindow is true for every window on compact screens', () => {
@@ -108,6 +103,7 @@ describe('WindowManager', () => {
         const wm = window.WindowManager;
         const el = document.createElement('div');
         el.className = 'window home-window';
+        el.dataset.centered = '';
         el.style.display = 'block';
         Object.defineProperty(el, 'offsetWidth', { value: window.innerWidth });
         Object.defineProperty(el, 'offsetHeight', { value: 300 });
@@ -201,6 +197,7 @@ describe('WindowManager', () => {
 
         const about = document.createElement('div');
         about.className = 'window about-window';
+        about.dataset.centered = '';
         about.style.display = 'none';
         document.body.appendChild(about);
         vi.spyOn(about, 'getBoundingClientRect').mockReturnValue({
@@ -220,41 +217,30 @@ describe('WindowManager', () => {
         document.body.removeChild(dock);
     });
 
-    it('open() sits the about window just above the dock', () => {
+    it('open() centers the about window in the middle of the page', () => {
         const wm = window.WindowManager;
-        const dock = document.createElement('div');
-        dock.className = 'bottom-dock';
-        document.body.appendChild(dock);
-        vi.spyOn(dock, 'getBoundingClientRect').mockReturnValue({
-            top: 700, bottom: 754, left: 572, right: 868, width: 296, height: 54,
-            x: 572, y: 700, toJSON: () => {},
-        });
-
         const about = document.createElement('div');
         about.className = 'window about-window';
+        about.dataset.centered = '';
         about.style.display = 'none';
         document.body.appendChild(about);
-        Object.defineProperty(about, 'offsetHeight', { configurable: true, value: 500 });
-        Object.defineProperty(about, 'offsetWidth', { configurable: true, value: 860 });
         vi.stubGlobal('requestAnimationFrame', (cb) => { cb(); });
 
         wm.open(about, null);
 
-        const safeBottomY = 700 - wm.dockClearance;
         expect(about.style.display).toBe('flex');
-        expect(about.style.bottom).toBe('auto');
-        expect(parseFloat(about.style.top)).toBe(safeBottomY - 250 - wm.dockAnchorLift);
-        expect(parseFloat(about.style.left)).toBe(window.innerWidth / 2);
+        expect(about.style.top).toBe('50%');
+        expect(about.style.left).toBe('50%');
         expect(about.style.transform).toContain('translate(-50%, -50%)');
 
         document.body.removeChild(about);
-        document.body.removeChild(dock);
     });
 
     it('open() with centered window sets translate(-50%, -50%)', () => {
         const wm = window.WindowManager;
         const term = document.createElement('div');
         term.className = 'window terminal-window';
+        term.dataset.centered = '';
         term.style.display = 'none';
         document.body.appendChild(term);
         vi.stubGlobal('requestAnimationFrame', (cb) => { cb(); });
@@ -277,6 +263,7 @@ describe('WindowManager', () => {
 
         const term = document.createElement('div');
         term.className = 'window terminal-window';
+        term.dataset.centered = '';
         term.style.display = 'none';
         document.body.appendChild(term);
         vi.spyOn(term, 'getBoundingClientRect').mockReturnValue({
@@ -297,6 +284,7 @@ describe('WindowManager', () => {
         const wm = window.WindowManager;
         const home = document.createElement('div');
         home.className = 'window home-window';
+        home.dataset.centered = '';
         home.style.display = 'none';
         document.body.appendChild(home);
         vi.stubGlobal('requestAnimationFrame', (cb) => { cb(); });
@@ -311,6 +299,7 @@ describe('WindowManager', () => {
         const wm = window.WindowManager;
         const term = document.createElement('div');
         term.className = 'window terminal-window';
+        term.dataset.centered = '';
         term.style.display = 'block';
         document.body.appendChild(term);
         wm.close(term, null);
@@ -363,6 +352,7 @@ describe('WindowManager', () => {
         const wm = new window.WindowManagerClass();
         const win = document.createElement('div');
         win.className = 'window terminal-window';
+        win.dataset.centered = '';
         win.innerHTML = '<div class="window-header">Title</div>';
         win.style.position = 'fixed';
         win.style.width = '200px';
@@ -429,6 +419,7 @@ describe('WindowManager', () => {
         vi.stubGlobal('requestAnimationFrame', (cb) => { cb(); });
         const about = document.createElement('div');
         about.className = 'window about-window';
+        about.dataset.centered = '';
         document.body.appendChild(about);
         wm.open(about, null);
         expect(about.style.top).toBe('50%');
@@ -456,9 +447,8 @@ describe('WindowManager', () => {
         expect(wm.clampValue(5, 1, 9)).toBe(5);
     });
 
-    it('anchor and constrain helpers no-op for missing or unsized windows', () => {
+    it('constrain helpers no-op for missing or unsized windows', () => {
         const wm = new window.WindowManagerClass();
-        expect(() => wm.anchorCenteredWindowToDock(null)).not.toThrow();
         expect(() => wm.constrainWindowToVerticalBounds(null)).not.toThrow();
         expect(() => wm.clampWindowToViewport(null)).not.toThrow();
         const el = document.createElement('div');
@@ -486,6 +476,7 @@ describe('WindowManager', () => {
         const wm = new window.WindowManagerClass();
         const el = document.createElement('div');
         el.className = 'window terminal-window';
+        el.dataset.centered = '';
         el.style.display = 'block';
         document.body.appendChild(el);
         Object.defineProperty(el, 'offsetWidth', { configurable: true, value: 200 });
@@ -541,6 +532,7 @@ describe('WindowManager', () => {
         const wm = new window.WindowManagerClass();
         const win = document.createElement('div');
         win.className = 'window terminal-window';
+        win.dataset.centered = '';
         win.innerHTML = '<div class="window-header">Title</div>';
         win._xOffset = 12;
         win._yOffset = 8;

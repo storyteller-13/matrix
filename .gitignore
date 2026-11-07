@@ -47,5 +47,20 @@ yarn-error.log*
 docs/*
 NOTES
 
-# claude code personal settings
-.claude/settings.local.json
+# Cursor
+.cursor/
+
+# OpenAI Codqex
+.codex/
+.agents/
+
+# Claude Code
+.claude/
+CLAUDE.local.md
+
+# Gemini CLI
+.gemini/
+
+# Windsurf / Codeium
+.windsurf/
+.devin/

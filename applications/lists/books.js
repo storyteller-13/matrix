@@ -1,13 +1,24 @@
 /**
  * Curated lists window (notes letter styles): books read in 2026, books read in 2027,
- * the book backlog, and the zeitgeist movie awards. One window shows whichever list was opened.
+ * the book backlog, the books our kids should read, the zeitgeist movie awards, the games of my youth
+ * and my travel guides. One window shows whichever list was opened.
  */
 
 const BOOK_LISTS = [
     { id: 'books-2026', dataKey: 'BOOKS_2026', titleKey: 'window.books' },
     { id: 'books-2027', dataKey: 'BOOKS_2027', titleKey: 'window.books2027' },
     { id: 'books-backlog', dataKey: 'BOOKS_BACKLOG', titleKey: 'window.booksBacklog' },
+    { id: 'kids-books', dataKey: 'KIDS_BOOKS', titleKey: 'window.kidsBooks' },
     { id: 'zeitgeist-2026', dataKey: 'ZEITGEIST_2026', titleKey: 'window.zeitgeist2026', subtitleKey: 'lists.zeitgeistReveal' },
+    { id: 'kids-movies', dataKey: 'KIDS_MOVIES', titleKey: 'window.kidsMovies' },
+    { id: 'winter-movies', dataKey: 'WINTER_MOVIES', titleKey: 'window.winterMovies' },
+    { id: 'games-youth', dataKey: 'GAMES_YOUTH', titleKey: 'window.gamesYouth' },
+    { id: 'guide-alagoas', dataKey: 'GUIDE_ALAGOAS', titleKey: 'window.guideAlagoas' },
+    { id: 'guide-iceland', dataKey: 'GUIDE_ICELAND', titleKey: 'window.guideIceland' },
+    { id: 'guide-berlin', dataKey: 'GUIDE_BERLIN', titleKey: 'window.guideBerlin' },
+    { id: 'bucket-list', dataKey: 'BUCKET_LIST', titleKey: 'window.bucketList' },
+    { id: 'cities-lived', dataKey: 'CITIES_LIVED', titleKey: 'window.citiesLived' },
+    { id: 'countries-explored', dataKey: 'COUNTRIES_EXPLORED', titleKey: 'window.countriesExplored' },
 ];
 const DEFAULT_BOOK_LIST = 'books-2026';
 
@@ -277,14 +288,18 @@ class BooksApp extends BaseApp {
         </section>`;
     }
 
-    /** An award category: a numbered table, blank slots until winners are filled in. */
+    /**
+     * A category table: numbered with blank slots until winners are filled in (award lists),
+     * or a plain unnumbered list when `ranked: false` (e.g. the games of my youth).
+     */
     renderCategoryTable(category) {
         const label = this.escapeHtml(category.label || '');
-        const movies = category.movies || [];
-        const size = Math.max(category.size || 0, movies.length);
+        const items = category.movies || category.games || category.books || category.places || [];
+        if (category.ranked === false) return this.renderPlainCategory(label, items, category);
+        const size = Math.max(category.size || 0, items.length);
         const rows = Array.from({ length: size }, (_, i) => {
-            const movie = movies[i];
-            const item = typeof movie === 'string' ? { title: movie } : (movie || {});
+            const entry = items[i];
+            const item = typeof entry === 'string' ? { title: entry } : (entry || {});
             const title = item.title ? this.renderBookTitle(item) : '';
             return `<tr>
                 <td class="books-col-rank">${i + 1}</td>
@@ -306,6 +321,160 @@ class BooksApp extends BaseApp {
         </section>`;
     }
 
+    /** Splits "title (director, year)" into its name and the trailing credit, keeping inner parentheses. */
+    splitCredit(title) {
+        const match = String(title || '').match(/^(.*\S)\s*\(([^()]*)\)\s*$/);
+        return match ? { name: match[1], credit: match[2] } : { name: String(title || ''), credit: '' };
+    }
+
+    /**
+     * An award category (layout: 'awards'): a card with an emoji badge and ranked entries; the top
+     * three get gold, silver and bronze medals, each entry shows its credit and a one-line comment,
+     * and empty slots stay as "to be revealed" placeholders up to `size`.
+     */
+    renderAwardCategory(category, index) {
+        const esc = (value) => this.escapeHtml(value);
+        const items = category.movies || [];
+        const size = Math.max(category.size || 0, items.length);
+        const medals = ['gold', 'silver', 'bronze'];
+        const pending = esc(this.i18nLabel('lists.toBeRevealed', 'to be revealed'));
+        const entries = Array.from({ length: size }, (_, i) => {
+            const entry = items[i];
+            const item = typeof entry === 'string' ? { title: entry } : (entry || {});
+            const rank = `<span class="award-rank" aria-label="#${i + 1}">${i + 1}</span>`;
+            if (!item.title) {
+                return `<li class="award-entry award-entry--empty">${rank}<span class="award-pending">${pending}</span></li>`;
+            }
+            const { name, credit } = this.splitCredit(item.title);
+            const nameHtml = item.url
+                ? `<a href="${esc(item.url)}" target="_blank" rel="noopener noreferrer">${esc(name)}</a>`
+                : esc(name);
+            const creditHtml = credit ? `<span class="award-credit">${esc(credit)}</span>` : '';
+            const comment = item.comment ? `<p class="award-comment">${esc(item.comment)}</p>` : '';
+            const medal = medals[i] ? ` award-entry--${medals[i]}` : '';
+            return `<li class="award-entry${medal}">${rank}<div class="award-body">`
+                + `<span class="award-title">${nameHtml}</span>${creditHtml}${comment}</div></li>`;
+        }).join('');
+        const emoji = category.emoji ? `<span class="award-emoji" aria-hidden="true">${esc(category.emoji)}</span>` : '';
+        const featured = index === 0 && size > 5 ? ' award-category--featured' : '';
+        return `<section class="award-category${featured}">
+            <header class="award-head">${emoji}<h3 class="award-label">${esc(category.label || '')}</h3></header>
+            <ol class="award-list">${entries}</ol>
+        </section>`;
+    }
+
+    /** An unnumbered table; guides add an optional note per item and a note / footnote per category. */
+    renderPlainCategory(label, items, category = {}) {
+        const rows = items.map((entry) => {
+            const item = typeof entry === 'string' ? { title: entry } : (entry || {});
+            const note = item.note ? `<span class="books-item-note"> → ${this.escapeHtml(item.note)}</span>` : '';
+            return `<tr><td class="books-col-title">${item.title ? this.renderBookTitle(item) : ''}${note}</td></tr>`;
+        }).join('');
+        const noteRow = category.note
+            ? `<tr><td class="books-category-note">${this.escapeHtml(category.note)}</td></tr>`
+            : '';
+        const footnote = category.footnote
+            ? `<p class="books-category-note books-category-footnote">${this.escapeHtml(category.footnote)}</p>`
+            : '';
+        return `<section class="books-award">
+            <table class="books-table books-table--award books-table--plain">
+                <thead>
+                    <tr><th scope="col">${label}</th></tr>
+                    ${noteRow}
+                </thead>
+                <tbody>${rows}</tbody>
+            </table>${footnote}
+        </section>`;
+    }
+
+    /** A long-form guide section: heading, place, paragraphs, then an optional table, details, lists and tip. */
+    renderGuideSection(section) {
+        const esc = (value) => this.escapeHtml(value);
+        const place = section.place ? `<p class="guide-place">${esc(section.place)}</p>` : '';
+        const paragraphs = (section.paragraphs || []).map((text) => `<p class="guide-paragraph">${esc(text)}</p>`).join('');
+        let table = '';
+        if (section.table) {
+            const head = (section.table.columns || []).map((column) => `<th scope="col">${esc(column)}</th>`).join('');
+            const rows = (section.table.rows || [])
+                .map((row) => `<tr>${row.map((cell) => `<td>${esc(cell)}</td>`).join('')}</tr>`).join('');
+            const caption = section.table.caption ? `<caption>${esc(section.table.caption)}</caption>` : '';
+            table = `<table class="books-table guide-table">${caption}<thead><tr>${head}</tr></thead><tbody>${rows}</tbody></table>`;
+        }
+        const detailRows = (section.details || []).map((detail) => {
+            const value = detail.url
+                ? `<a href="${esc(detail.url)}" target="_blank" rel="noopener noreferrer">${esc(detail.value)}</a>`
+                : esc(detail.value);
+            return `<div class="guide-detail"><dt>${esc(detail.label)}</dt><dd>${value}</dd></div>`;
+        }).join('');
+        const details = detailRows ? `<dl class="guide-details">${detailRows}</dl>` : '';
+        const lists = (section.lists || []).map((list) => {
+            const heading = list.heading ? `<h4 class="guide-list-heading">${esc(list.heading)}</h4>` : '';
+            const items = (list.items || []).map((item) => `<li>${esc(item)}</li>`).join('');
+            return `${heading}<ul class="guide-list">${items}</ul>`;
+        }).join('');
+        const tip = section.tip ? `<p class="guide-tip">${esc(section.tip)}</p>` : '';
+        return `<section class="guide-section">
+            <h3 class="guide-heading">${esc(section.label || '')}</h3>${place}${paragraphs}${table}${details}${lists}${tip}
+        </section>`;
+    }
+
+    /** A count line under the title: "5 continents · 64 countries · 210 places" or "30 countries". */
+    renderStats(data) {
+        const count = (n, key, fallback) => `${n} ${this.i18nLabel(key, fallback)}`;
+        let parts = [];
+        if (data.regions?.length) {
+            const countries = data.regions.flatMap((region) => region.countries || []);
+            const places = countries.reduce((n, country) => n + (country.places || []).length, 0);
+            parts = [
+                count(data.regions.length, 'lists.continents', 'continents'),
+                count(countries.length, 'lists.countries', 'countries'),
+                count(places, 'lists.places', 'places'),
+            ];
+        } else if (data.visited?.length) {
+            parts = [count(data.visited.length, 'lists.countries', 'countries')];
+        }
+        return parts.length ? `<p class="list-stats">${this.escapeHtml(parts.join(' · '))}</p>` : '';
+    }
+
+    /** A continent: heading with its counts, then one card per country with its places as pills. */
+    renderBucketRegion(region) {
+        const esc = (value) => this.escapeHtml(value);
+        const countries = region.countries || [];
+        const places = countries.reduce((n, country) => n + (country.places || []).length, 0);
+        const cards = countries.map((country) => {
+            const pills = (country.places || []).map((place) => `<li class="bucket-place">${esc(place)}</li>`).join('');
+            const list = pills ? `<ul class="bucket-places">${pills}</ul>` : '';
+            return `<div class="bucket-card"><h4 class="bucket-country">${esc(country.name)}</h4>${list}</div>`;
+        }).join('');
+        const emoji = region.emoji ? `<span class="bucket-region-emoji" aria-hidden="true">${esc(region.emoji)}</span>` : '';
+        const count = `${countries.length} ${this.i18nLabel('lists.countries', 'countries')} · ${places} ${this.i18nLabel('lists.places', 'places')}`;
+        return `<section class="bucket-region">
+            <h3 class="bucket-region-title">${emoji}<span>${esc(region.label || '')}</span><span class="bucket-region-count">${esc(count)}</span></h3>
+            <div class="bucket-grid">${cards}</div>
+        </section>`;
+    }
+
+    /** Cities i have lived: numbered cards in order, "city, state or country" on one line. */
+    renderCities(cities) {
+        if (!cities?.length) return '';
+        const cards = cities.map((entry, i) => {
+            const where = entry.where ? `<span class="city-where">, ${this.escapeHtml(entry.where)}</span>` : '';
+            return `<li class="city-card"><span class="city-number">${String(i + 1).padStart(2, '0')}</span>`
+                + `<span class="city-name">${this.escapeHtml(entry.city || '')}${where}</span></li>`;
+        }).join('');
+        return `<ol class="city-grid">${cards}</ol>`;
+    }
+
+    /** Countries i have explored: a flag card per country. */
+    renderVisited(visited) {
+        if (!visited?.length) return '';
+        const cards = visited.map((entry) => {
+            const flag = entry.flag ? `<span class="country-flag" aria-hidden="true">${this.escapeHtml(entry.flag)}</span>` : '';
+            return `<li class="city-card country-card">${flag}<span class="city-name">${this.escapeHtml(entry.name || '')}</span></li>`;
+        }).join('');
+        return `<ul class="city-grid country-grid">${cards}</ul>`;
+    }
+
     renderEmpty() {
         const text = this.escapeHtml(this.i18nLabel('lists.empty', 'no books here yet'));
         return `<p class="books-empty">${text}</p>`;
@@ -323,16 +492,35 @@ class BooksApp extends BaseApp {
         if (titleEl) titleEl.textContent = title;
         if (headerTitleEl) headerTitleEl.textContent = title.toUpperCase();
 
+        // Above the list: subtitle, intro and a count line, each only when the list has one.
         const subtitle = data.subtitle ? this.i18nLabel(list.subtitleKey, data.subtitle) : '';
-        const subtitleHtml = subtitle ? `<p class="books-subtitle">${this.escapeHtml(subtitle)}</p>` : '';
-        const categoriesHtml = (data.categories || []).map((category) => this.renderCategoryTable(category)).join('');
-        const monthsHtml = (data.months || []).map((month) => this.renderMonthTable(month)).join('');
-        // A list that is only a backlog already carries the backlog name as its title.
-        const backlogHtml = this.renderBacklog(data.backlog, { heading: Boolean(data.months) });
-        const listHtml = `${categoriesHtml}${monthsHtml}${backlogHtml}`;
-        const content = `${subtitleHtml}${listHtml || this.renderEmpty()}`;
+        const headerHtml = (subtitle ? `<p class="books-subtitle">${this.escapeHtml(subtitle)}</p>` : '')
+            + (data.intro ? `<p class="guide-intro">${this.escapeHtml(data.intro)}</p>` : '')
+            + this.renderStats(data);
+        const awards = data.layout === 'awards';
+        const categoriesHtml = awards
+            ? `<div class="award-grid">${(data.categories || []).map((c, i) => this.renderAwardCategory(c, i)).join('')}</div>`
+            : (data.categories || []).map((category) => this.renderCategoryTable(category)).join('');
+        const listHtml = [
+            data.categories?.length ? categoriesHtml : '',
+            (data.sections || []).map((section) => this.renderGuideSection(section)).join(''),
+            (data.regions || []).map((region) => this.renderBucketRegion(region)).join(''),
+            this.renderCities(data.cities),
+            this.renderVisited(data.visited),
+            (data.months || []).map((month) => this.renderMonthTable(month)).join(''),
+            // A list that is only a backlog already carries the backlog name as its title.
+            this.renderBacklog(data.backlog, { heading: Boolean(data.months) }),
+        ].join('');
+        const content = `${headerHtml}${listHtml || this.renderEmpty()}`;
 
-        bodyEl.innerHTML = `<div class="books-tables">${content}</div>`;
+        // Unranked lists (all plain categories) flow into side-by-side columns sized to their text.
+        const categories = data.categories || [];
+        const plain = categories.length > 0 && categories.every((category) => category.ranked === false);
+        const tablesClass = plain ? 'books-tables books-tables--columns' : 'books-tables';
+        // The note stays centred above the columns instead of flowing into the first one.
+        bodyEl.innerHTML = plain
+            ? `<div class="books-tables">${headerHtml}<div class="${tablesClass}">${listHtml}</div></div>`
+            : `<div class="${tablesClass}">${content}</div>`;
     }
 
     open(listId = null) {

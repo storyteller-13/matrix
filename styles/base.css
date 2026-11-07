@@ -1,3 +1,22 @@
+/* Controls rendered as <button>: drop the UA button chrome.
+   :where() keeps specificity at zero so each component's own styles win. */
+:where(button.menu-item, button.menu-button, button.dock-item, button.desktop-icon, button.tray-button) {
+    appearance: none;
+    background: none;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    font: inherit;
+    color: inherit;
+    letter-spacing: inherit;
+    text-align: inherit;
+    cursor: pointer;
+}
+
+:where(button.menu-item) {
+    width: 100%;
+}
+
 :root {
     --bg-solid: #FFF0F5;
     --bg-gradient: linear-gradient(160deg, #FFF5F7 0%, #FFE4EC 50%, #FDF2F8 100%);

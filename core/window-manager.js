@@ -7,23 +7,12 @@ class WindowManager {
         this.highestZIndex = 100;
         this.viewportPadding = 12;
         this.dockClearance = 8;
-        this.dockAnchorLift = 40;
         this.init();
     }
 
+    /** Windows marked data-centered open in the middle of the screen; on compact screens all do. */
     isCenteredWindow(el) {
-        return el && (el.classList.contains('terminal-window') ||
-            el.classList.contains('artwork-window') ||
-            el.classList.contains('lists-folder-window') ||
-            el.classList.contains('notes-letter-window') ||
-            el.classList.contains('books-window') ||
-            el.classList.contains('about-window') ||
-            el.classList.contains('home-window') ||
-            this.isCompactViewport());
-    }
-
-    isDockAnchoredWindow(el) {
-        return el && el.classList.contains('about-window');
+        return Boolean(el) && (el.hasAttribute('data-centered') || this.isCompactViewport());
     }
 
     isCompactViewport() {
@@ -75,20 +64,15 @@ class WindowManager {
         windowElement.style.opacity = '0';
 
         const isCentered = this.isCenteredWindow(windowElement);
-        const dockAnchor = this.isDockAnchoredWindow(windowElement) && !this.isCompactViewport();
 
         this.constrainWindowToVerticalBounds(windowElement);
 
         if (isCentered) {
             windowElement._xOffset = 0;
             windowElement._yOffset = 0;
-            if (dockAnchor) {
-                this.anchorCenteredWindowToDock(windowElement, 0.9);
-            } else {
-                windowElement.style.top = '50%';
-                windowElement.style.left = '50%';
-                windowElement.style.transform = 'translate(-50%, -50%) scale(0.9)';
-            }
+            windowElement.style.top = '50%';
+            windowElement.style.left = '50%';
+            windowElement.style.transform = 'translate(-50%, -50%) scale(0.9)';
         } else {
             windowElement.style.transform = 'translate(0, 0) scale(0.9)';
         }
@@ -115,11 +99,6 @@ class WindowManager {
         // Keep windows inside the viewport and above the dock.
         // Centered windows stay at top/left 50% unless they would overflow.
         requestAnimationFrame(() => {
-            if (dockAnchor) {
-                this.anchorCenteredWindowToDock(windowElement, 1);
-                return;
-            }
-
             if (!isCentered) {
                 this.clampWindowToViewport(windowElement);
                 return;
@@ -192,29 +171,6 @@ class WindowManager {
     clampValue(value, min, max) {
         if (max < min) return min;
         return Math.min(Math.max(value, min), max);
-    }
-
-    anchorCenteredWindowToDock(element, scale = 1) {
-        if (!element) return;
-
-        this.constrainWindowToVerticalBounds(element);
-
-        const height = element.offsetHeight;
-        const safeTopY = this.getSafeTopY();
-        const safeBottomY = this.getSafeBottomY();
-        const centerX = window.innerWidth / 2;
-        const centerY = this.clampValue(
-            safeBottomY - height / 2 - this.dockAnchorLift,
-            safeTopY + height / 2,
-            safeBottomY - height / 2 - this.dockAnchorLift
-        );
-
-        element.style.bottom = 'auto';
-        element.style.left = `${centerX}px`;
-        element.style.top = `${centerY}px`;
-        element.style.transform = `translate(-50%, -50%) scale(${scale})`;
-        element._xOffset = 0;
-        element._yOffset = centerY - window.innerHeight / 2;
     }
 
     constrainWindowToVerticalBounds(element) {

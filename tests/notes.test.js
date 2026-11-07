@@ -63,6 +63,13 @@ describe('NotesApp', () => {
         vi.useRealTimers();
     });
 
+
+    it('binds the dock click once (one open per click)', () => {
+        const app = new window.NotesAppClass();
+        const open = vi.spyOn(app, 'open').mockImplementation(() => {});
+        app.dockItem.click();
+        expect(open).toHaveBeenCalledTimes(1);
+    });
     it('renders dated entries and updates the badge', () => {
         const app = new window.NotesAppClass();
         expect(document.querySelectorAll('.notes-date-item').length).toBeGreaterThan(0);
@@ -112,6 +119,40 @@ describe('NotesApp', () => {
         expect(window.WindowManager.bringToFront).toHaveBeenCalled();
         expect(document.querySelector('.notes-date-item').classList.contains('read')).toBe(true);
         expect(document.getElementById('letter-content').innerHTML.length).toBeGreaterThan(0);
+    });
+
+    it('turns dash-framed lines into section headings and epigraph cards', () => {
+        const app = new window.NotesAppClass();
+        app.currentAsciiArt = false;
+        const html = app.formatContent([
+            '-----',
+            '"a quote <3"',
+            '— someone',
+            '-----',
+            '',
+            'hello',
+            '',
+            '-------',
+            'pocket friends',
+            '------',
+            '',
+            'body',
+            '---',
+            'lone line',
+        ].join('\n'));
+        const box = document.createElement('div');
+        box.innerHTML = html;
+        const epigraph = box.querySelector('.letter-epigraph');
+        expect(epigraph.innerHTML).toBe('"a quote &lt;3"<br>— someone');
+        const heading = box.querySelector('.letter-section');
+        expect(heading.textContent).toBe('pocket friends');
+        expect(heading.getAttribute('role')).toBe('heading');
+        expect(html).toContain('</span>hello<span class="letter-section"');
+        expect(html).toContain('</span>body<br>---<br>lone line');
+        expect(box.querySelectorAll('.letter-section, .letter-epigraph').length).toBe(2);
+
+        app.currentAsciiArt = true;
+        expect(app.formatContent('---\nart\n---')).toBe('---<br>art<br>---');
     });
 
     it('opens the letter with the fallback path', () => {

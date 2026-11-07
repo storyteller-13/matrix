@@ -341,7 +341,7 @@ a.file-item {
 }
 
 /* Same look as the dock badges (dock.css); pinned to the folder icon's top-right corner. */
-.lists-folder-count-badge {
+.lists-folder-icon-art .lists-folder-count-badge {
     top: -2px;
     right: -8px;
 }
@@ -363,9 +363,50 @@ a.file-item {
     text-align: center;
 }
 
+.lists-folder-description {
+    grid-column: 1 / -1;
+    margin: 0;
+    padding: 0 8px;
+    text-align: center;
+    color: #C084FC;
+    font-size: 13px;
+    font-weight: 700;
+    font-style: italic;
+    line-height: 1.45;
+}
+
+/* Folders with a note (the podcast episodes) get a wider window that grows to show every item,
+   capped at the space between the top panel and the dock; past that the grid scrolls. */
+@media (min-width: 769px) and (min-height: 501px) {
+    .lists-folder-window.lists-folder-window--wide {
+        width: min(920px, calc(100vw - 32px));
+        height: auto;
+    }
+
+    .lists-folder-window--wide .window-content,
+    .lists-folder-window--wide .file-manager {
+        height: auto;
+    }
+
+    .lists-folder-window--wide .file-list {
+        max-height: calc(100dvh - var(--top-panel-height) - var(--dock-clearance) - 38px);
+        gap: 12px 10px;
+    }
+}
+
+.lists-folder-window--wide .file-list {
+    align-content: start;
+}
+
 .lists-folder-window .file-list > .lists-folder-item {
     position: relative;
     z-index: 1;
+}
+
+/* Keep words whole in item names; only a word wider than its tile wraps. */
+.lists-folder-window .file-name {
+    word-break: normal;
+    overflow-wrap: break-word;
 }
 
 
@@ -377,6 +418,24 @@ a.file-item {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 100;
+}
+
+/* Podcast player: a black stage the YouTube embed fills edge to edge */
+.podcast-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    background: #000;
+}
+
+.podcast-container iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    border: none;
 }
 
 /* Todo Application */
@@ -657,10 +716,10 @@ a.file-item {
     height: auto;
     max-height: calc(100vh - var(--top-panel-height) - var(--dock-clearance) - var(--desktop-gap));
     max-height: calc(100dvh - var(--top-panel-height) - var(--dock-clearance) - var(--desktop-gap) - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
-    top: auto;
-    bottom: calc(var(--dock-clearance) + 40px);
+    top: 50%;
+    bottom: auto;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%);
 }
 
 .about-window .window-content {
@@ -704,7 +763,8 @@ a.file-item {
 }
 
 .about-name {
-    font-size: 13px;
+    font-size: 24px;
+    line-height: 1.2;
     font-weight: 800;
     color: var(--text);
     text-align: center;
@@ -712,11 +772,11 @@ a.file-item {
 }
 
 .about-role {
-    font-size: 9px;
+    font-size: 14px;
     font-weight: 600;
     color: #C084FC;
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: 14px;
 }
 
 .about-text {
@@ -754,9 +814,29 @@ a.file-item {
     transform: translate(-50%, -50%);
 }
 
+/* Curated lists hug their content: short lists get a short window, long ones scroll inside
+   once they reach --books-max (the window cap); --books-header is the title bar plus borders. */
 .books-window {
+    --books-max: min(720px, calc(100dvh - var(--top-panel-height) - var(--dock-clearance)));
+    --books-header: 38px;
     width: min(780px, calc(100vw - 32px));
-    height: min(720px, calc(100dvh - var(--top-panel-height) - var(--dock-clearance)));
+    height: auto;
+}
+
+.books-window .window-content {
+    height: auto;
+    overflow: hidden;
+}
+
+.books-window .letter-container {
+    height: auto;
+    max-height: calc(var(--books-max) - var(--books-header));
+}
+
+.books-window .letter-paper,
+.books-window .letter-body,
+.books-window .books-letter-text {
+    flex: 0 1 auto;
 }
 
 .books-window .letter-paper {
@@ -764,7 +844,7 @@ a.file-item {
 }
 
 .books-window .letter-header {
-    margin-bottom: 12px;
+    margin-bottom: 22px;
     padding-bottom: 0;
     border-bottom: none;
     align-items: center;
@@ -787,7 +867,8 @@ a.file-item {
     grid-column: 2;
     grid-row: 1;
     margin-bottom: 0;
-    font-size: 22px;
+    font-size: 34px;
+    line-height: 1.15;
     min-width: 0;
     text-align: center;
 }
@@ -968,6 +1049,308 @@ a.file-item {
     margin-top: 14px;
 }
 
+/* Count line under a list title (bucket list, cities, countries). */
+.list-stats {
+    margin: 0 0 18px;
+    text-align: center;
+    white-space: normal;
+    color: #C084FC;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+.bucket-region {
+    white-space: normal;
+    text-align: left;
+}
+
+.bucket-region + .bucket-region {
+    margin-top: 26px;
+}
+
+.bucket-region-title {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 8px;
+    margin: 0 0 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid rgba(255, 133, 162, 0.35);
+    color: #E879A9;
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.bucket-region-emoji {
+    font-size: 18px;
+}
+
+.bucket-region-count {
+    margin-left: auto;
+    color: #C084FC;
+    font-size: 11px;
+    font-weight: 600;
+    font-style: italic;
+}
+
+.bucket-grid {
+    column-width: 200px;
+    column-gap: 10px;
+}
+
+.bucket-card {
+    break-inside: avoid;
+    margin: 0 0 10px;
+    padding: 9px 11px;
+    background: rgba(255, 255, 255, 0.55);
+    border: 1px solid rgba(255, 133, 162, 0.28);
+    border-radius: 10px;
+}
+
+.bucket-country {
+    margin: 0;
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.bucket-places {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin: 7px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.bucket-place {
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: rgba(216, 70, 166, 0.08);
+    border: 1px solid rgba(232, 121, 169, 0.3);
+    color: #B5487F;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.5;
+}
+
+/* Cities i have lived: numbered cards in a responsive grid. */
+.city-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    white-space: normal;
+    text-align: left;
+}
+
+.city-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 10px 12px 9px;
+    background: rgba(255, 255, 255, 0.55);
+    border: 1px solid rgba(255, 133, 162, 0.28);
+    border-radius: 10px;
+}
+
+.city-number {
+    color: #E879A9;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    opacity: 0.75;
+}
+
+.city-name {
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 800;
+    line-height: 1.25;
+}
+
+.city-where {
+    color: #C084FC;
+    font-weight: 600;
+}
+
+/* Countries i have explored: a big flag over the name. */
+.country-grid {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+}
+
+.country-card {
+    align-items: center;
+    gap: 4px;
+    padding: 12px 10px 10px;
+    text-align: center;
+}
+
+.country-flag {
+    font-size: 30px;
+    line-height: 1;
+}
+
+/* Long-form guides (e.g. iceland): full-width sections of prose, details, a table and tips. */
+.guide-intro,
+.guide-section {
+    white-space: normal;
+    text-align: left;
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.55;
+}
+
+.guide-intro {
+    max-width: 620px;
+    margin: 0 auto 18px;
+    text-align: center;
+}
+
+.guide-section {
+    padding: 14px 16px;
+    background: rgba(255, 255, 255, 0.42);
+    border: 1px solid rgba(255, 133, 162, 0.28);
+}
+
+.guide-section + .guide-section {
+    margin-top: 14px;
+}
+
+.guide-heading {
+    margin: 0;
+    color: #E879A9;
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.guide-place {
+    margin: 2px 0 0;
+    color: #C084FC;
+    font-size: 12px;
+    font-style: italic;
+}
+
+.guide-paragraph {
+    margin: 10px 0 0;
+}
+
+/* One grid for all rows so every value starts at the same column. */
+.guide-details {
+    margin: 12px 0 0;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 4px 14px;
+}
+
+.guide-detail {
+    display: contents;
+}
+
+.guide-detail dt {
+    color: #E879A9;
+    font-weight: 700;
+}
+
+.guide-detail dd {
+    margin: 0;
+    text-align: left;
+}
+
+.guide-section a {
+    color: #E879A9;
+}
+
+.guide-table {
+    margin-top: 12px;
+    table-layout: auto;
+}
+
+.guide-table caption {
+    caption-side: top;
+    padding-bottom: 6px;
+    text-align: left;
+    color: #E879A9;
+    font-weight: 700;
+}
+
+.books-table.guide-table thead th,
+.books-table.guide-table td {
+    text-align: left;
+    overflow-wrap: normal;
+    word-break: normal;
+}
+
+.books-table.guide-table th:first-child,
+.books-table.guide-table td:first-child {
+    white-space: nowrap;
+}
+
+.guide-list-heading {
+    margin: 14px 0 4px;
+    color: #E879A9;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.guide-list {
+    margin: 0;
+    padding-left: 18px;
+}
+
+.guide-list li + li {
+    margin-top: 4px;
+}
+
+.guide-tip {
+    margin: 12px 0 0;
+    padding: 8px 12px;
+    border-left: 3px solid #E879A9;
+    background: rgba(216, 70, 166, 0.06);
+    color: #C084FC;
+    font-style: italic;
+}
+
+/* Travel guides: a short line under a region's heading, after a place, and below a table. */
+.books-category-note {
+    margin: 0;
+    color: #C084FC;
+    font-size: 12px;
+    font-style: italic;
+    font-weight: 400;
+    white-space: normal;
+}
+
+.books-category-footnote {
+    margin-top: 6px;
+}
+
+.books-item-note {
+    color: #C084FC;
+    font-style: italic;
+}
+
+/* Unranked lists (e.g. the games of my youth): short tables flow into columns instead of full-width rows. */
+.books-tables--columns {
+    display: block;
+    column-width: 210px;
+    column-gap: 14px;
+}
+
+.books-tables--columns .books-award {
+    break-inside: avoid;
+    margin: 0 0 14px;
+}
+
+.books-tables--columns .books-award + .books-award {
+    margin-top: 0;
+}
+
 .books-award .books-table {
     border-radius: 4px;
 }
@@ -1129,6 +1512,12 @@ a.file-item {
     max-width: 100%;
 }
 
+/* Reflections: the note's own title reads as a heading. */
+#notes-letter-window .letter-title {
+    font-size: 30px;
+    line-height: 1.2;
+}
+
 .letter-content--italic {
     font-style: italic;
 }
@@ -1147,6 +1536,166 @@ a.file-item {
     word-break: break-word;
     max-width: 100%;
     overflow-x: hidden;
+}
+
+/* Reflections: a roomier window, a plain soft-pink sheet, a plain pink date, the title over a
+   small ornament, and larger body text in a readable column. */
+/* On desktop the window hugs its note: short notes get a short window, long ones scroll
+   inside once they reach --note-max; --note-header is the title bar plus borders. */
+@media (min-width: 769px) and (min-height: 501px) {
+    #notes-letter-window {
+        --note-max: min(780px, calc(100dvh - var(--top-panel-height) - var(--dock-clearance)));
+        --note-header: 38px;
+        width: min(880px, calc(100vw - 32px));
+        height: auto;
+    }
+
+    #notes-letter-window .window-content {
+        height: auto;
+        overflow: hidden;
+    }
+
+    #notes-letter-window .letter-container {
+        height: auto;
+        max-height: calc(var(--note-max) - var(--note-header));
+    }
+
+    #notes-letter-window .letter-paper {
+        flex: 0 0 auto;
+    }
+}
+
+#notes-letter-window .letter-container {
+    padding: 18px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(232, 121, 169, 0.45) transparent;
+}
+
+#notes-letter-window .letter-paper {
+    flex: 1 0 auto;
+    overflow: visible;
+    padding: 30px 44px 40px;
+    border-radius: 16px;
+    border-color: rgba(255, 133, 162, 0.26);
+    background: rgba(252, 239, 245, 0.95);
+    box-shadow: 0 10px 30px rgba(180, 100, 130, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+#notes-letter-window .letter-header {
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+#notes-letter-window .letter-date {
+    color: #E879A9;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+}
+
+#notes-letter-window .letter-body {
+    flex: 0 0 auto;
+    overflow: visible;
+}
+
+#notes-letter-window .letter-title {
+    font-size: 36px;
+    line-height: 1.2;
+    margin-bottom: 34px;
+}
+
+/* A small ornament under the title: ── ✦ ── */
+#notes-letter-window .letter-title::after {
+    content: '✦';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 16px auto 0;
+    width: min(220px, 60%);
+    color: #F9A8C9;
+    font-size: 13px;
+    background:
+        linear-gradient(90deg, transparent, rgba(232, 121, 169, 0.45)) left center / 42% 1px no-repeat,
+        linear-gradient(90deg, rgba(232, 121, 169, 0.45), transparent) right center / 42% 1px no-repeat;
+}
+
+#notes-letter-window .letter-text {
+    max-width: 660px;
+    margin: 0 auto;
+    font-size: 14.5px;
+    font-weight: 600;
+    line-height: 1.8;
+    letter-spacing: 0.005em;
+    color: #8E5B7E;
+}
+
+#notes-letter-window .letter-text a {
+    color: #E879A9;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(232, 121, 169, 0.4);
+}
+
+#notes-letter-window .letter-text a:hover {
+    border-bottom-color: #E879A9;
+}
+
+/* Section headings (a line framed by dashes in the note text): ─── heading ─── */
+#notes-letter-window .letter-section {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 2.2em 0 1.1em;
+    color: #E879A9;
+    font-size: 1.2em;
+    font-weight: 900;
+    line-height: 1.3;
+    letter-spacing: 0.02em;
+}
+
+#notes-letter-window .letter-section::before,
+#notes-letter-window .letter-section::after {
+    content: '';
+    flex: 1;
+    min-width: 24px;
+    height: 1px;
+}
+
+#notes-letter-window .letter-section::before {
+    background: linear-gradient(90deg, transparent, rgba(232, 121, 169, 0.5));
+}
+
+#notes-letter-window .letter-section::after {
+    background: linear-gradient(90deg, rgba(232, 121, 169, 0.5), transparent);
+}
+
+/* Epigraphs (several lines framed by dashes, e.g. a quote and its author): a soft quote card. */
+#notes-letter-window .letter-epigraph {
+    display: block;
+    position: relative;
+    margin: 0.2em auto 1.8em;
+    padding: 16px 26px;
+    max-width: 560px;
+    border-radius: 14px;
+    color: #C084FC;
+    font-style: italic;
+    line-height: 1.65;
+    border-left: 3px solid rgba(232, 121, 169, 0.45);
+    border-right: 3px solid rgba(232, 121, 169, 0.45);
+    background: linear-gradient(160deg, rgba(255, 255, 255, 0.75), rgba(243, 232, 255, 0.55));
+    box-shadow: inset 0 0 0 1px rgba(192, 132, 252, 0.22), 0 4px 14px rgba(180, 100, 130, 0.08);
+}
+
+#notes-letter-window .letter-text > .letter-section:first-child {
+    margin-top: 0.4em;
+}
+
+/* ASCII art keeps its smaller monospace grid so it still lines up. */
+#notes-letter-window .letter-container--ascii .letter-text {
+    max-width: none;
+    font-size: 12px;
+    line-height: 1.45;
 }
 
 /* ASCII art notes: preserve alignment with pre, allow horizontal scroll */
@@ -1187,5 +1736,222 @@ a.file-item {
     .books-window .letter-title {
         grid-column: 1;
         grid-row: 2;
+        font-size: 26px;
+    }
+}
+
+/* Zeitgeist awards (layout: 'awards'): category cards in a two-column grid, the first (biggest)
+   category spans the full width with its entries in two columns; the top three get medals. */
+.award-grid {
+    --award-gold: #E8B04B;
+    --award-silver: #A9B4C2;
+    --award-bronze: #D08A5C;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 14px;
+    white-space: normal;
+    text-align: left;
+}
+
+.award-category {
+    position: relative;
+    padding: 14px 14px 10px;
+    background: rgba(255, 246, 250, 0.85);
+    border: 1px solid rgba(255, 133, 162, 0.28);
+    border-radius: 14px;
+    box-shadow: 0 6px 20px rgba(180, 100, 130, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    overflow: hidden;
+}
+
+.award-category--featured {
+    grid-column: 1 / -1;
+}
+
+/* With the featured card first, an even-numbered last card would sit alone: let it span too. */
+.award-category--featured ~ .award-category:last-child:nth-child(even) {
+    grid-column: 1 / -1;
+}
+
+.award-category--featured .award-list,
+.award-category--featured ~ .award-category:last-child:nth-child(even) .award-list {
+    columns: 2 260px;
+    column-gap: 18px;
+}
+
+.award-category .award-entry {
+    break-inside: avoid;
+}
+
+.award-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.award-emoji {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 34px;
+    height: 34px;
+    font-size: 18px;
+    border-radius: 50%;
+    background: rgba(255, 133, 162, 0.16);
+    box-shadow: inset 0 0 0 1px rgba(255, 133, 162, 0.3);
+}
+
+.award-label {
+    margin: 0;
+    color: #E879A9;
+    font-size: 15px;
+    font-weight: 900;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+    text-transform: lowercase;
+}
+
+.award-category--featured .award-label {
+    font-size: 18px;
+}
+
+.award-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.award-entry {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 7px 6px;
+    border-radius: 8px;
+    border-bottom: 1px dashed rgba(255, 133, 162, 0.18);
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.award-entry:hover {
+    background: rgba(255, 133, 162, 0.1);
+    transform: translateX(2px);
+}
+
+.award-rank {
+    display: grid;
+    place-items: center;
+    flex: none;
+    width: 24px;
+    height: 24px;
+    margin-top: 1px;
+    border-radius: 50%;
+    color: #C084FC;
+    font-size: 11px;
+    font-weight: 900;
+    background: rgba(192, 132, 252, 0.12);
+}
+
+.award-entry--gold .award-rank,
+.award-entry--silver .award-rank,
+.award-entry--bronze .award-rank {
+    color: #fff;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.18);
+}
+
+.award-entry--gold .award-rank {
+    background: radial-gradient(circle at 30% 30%, #FFE9A8, var(--award-gold));
+    box-shadow: 0 0 0 2px rgba(232, 176, 75, 0.25), 0 2px 8px rgba(232, 176, 75, 0.45);
+}
+
+.award-entry--silver .award-rank {
+    background: radial-gradient(circle at 30% 30%, #F1F4F8, var(--award-silver));
+    box-shadow: 0 0 0 2px rgba(169, 180, 194, 0.25);
+}
+
+.award-entry--bronze .award-rank {
+    background: radial-gradient(circle at 30% 30%, #F6CDA8, var(--award-bronze));
+    box-shadow: 0 0 0 2px rgba(208, 138, 92, 0.25);
+}
+
+.award-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    min-width: 0;
+}
+
+.award-title {
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 800;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+}
+
+.award-entry--gold .award-title {
+    font-size: 14px;
+}
+
+.award-title a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(232, 121, 169, 0.35);
+}
+
+.award-title a:hover {
+    color: #E879A9;
+    border-bottom-color: #E879A9;
+}
+
+.award-credit {
+    color: var(--text-muted);
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+}
+
+.award-comment {
+    margin: 3px 0 0;
+    color: #5bbbf2;
+    font-size: 11.5px;
+    font-style: italic;
+    font-weight: 600;
+    line-height: 1.35;
+}
+
+.award-comment::before {
+    content: '“';
+}
+
+.award-comment::after {
+    content: '”';
+}
+
+.award-entry--empty {
+    align-items: center;
+}
+
+.award-pending {
+    color: var(--text-muted);
+    font-size: 11px;
+    font-style: italic;
+    opacity: 0.8;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .award-entry,
+    .award-entry:hover {
+        transition: none;
+        transform: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .award-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .award-category--featured .award-list,
+    .award-category--featured ~ .award-category:last-child:nth-child(even) .award-list {
+        columns: 1;
     }
 }

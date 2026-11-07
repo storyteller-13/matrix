@@ -1,12 +1,8 @@
-## 👾 matrix.nullstar.fun
+# 👾 matrix.nullstar.fun
 
 <br>
 
-### running locally
-
-<br>
-
-start the local development server at **[`localhost:8088`](http://localhost:8088)**:
+### run
 
 <br>
 
@@ -14,6 +10,8 @@ start the local development server at **[`localhost:8088`](http://localhost:8088
 make install
 make server
 ```
+
+(open **[`localhost:8088`](http://localhost:8088)**)
 
 <br>
 
@@ -26,5 +24,3 @@ make pre-commit
 make lint
 make test
 ```
-
-<br>

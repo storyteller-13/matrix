@@ -1,5 +1,6 @@
 /**
- * Curated book lists: books read in 2026, books read in 2027, and the backlog.
+ * Curated book lists: books read in 2026, books read in 2027, the backlog,
+ * and the books our kids should read.
  */
 
 const BOOKS_2026 = {
@@ -25,9 +26,9 @@ const BOOKS_2026 = {
                 { title: 'cryptonomicon (neal stephenson)', rating: '9/10', url: 'https://gist.github.com/von-steinkirch/8e377166a33f5ced4a7662ff2788916a', note: 'my thoughts' },
                 { title: 'job-less utopia (marcus hutter)', rating: '8/10', url: 'https://gist.github.com/von-steinkirch/84dd53a6cb02ec6038661dee248cb7b5', note: 'my thoughts' },
                 { title: 'the road to general intelligence (j. swan et al.)', rating: '8/10', url: 'https://gist.github.com/von-steinkirch/030fbf9867ea362d2c5503434a44e4b9', note: 'my thoughts' },
-                { title: 'harness engineering (i. wijesiri)', rating: '8/10', url: 'https://marina.nullstar.fun/pages/post.html?post=book_harness_eng', note: 'my thoughts' },
-                { title: 'machine super Intelligence (s. legg)', rating: '10/10', url: 'https://marina.nullstar.fun/pages/post.html?post=book_legg', note: 'my thoughts' },
-                { title: 'machine learning engineering (s. bekman)', rating: '10/10', url:'http://marina.nullstar.fun/pages/post.html?post=book_ml_eng', notes: 'my thoughts'}
+                { title: 'harness engineering (i. wijesiri)', rating: '8/10', url: 'https://marina.nullstar.fun/blog/book_harness_eng.html', note: 'my thoughts' },
+                { title: 'machine super Intelligence (s. legg)', rating: '10/10', url: 'https://marina.nullstar.fun/blog/book_legg.html', note: 'my thoughts' },
+                { title: 'machine learning engineering (s. bekman)', rating: '10/10', url:'https://marina.nullstar.fun/blog/book_ml_eng.html', notes: 'my thoughts'}
             ]
         },
         {
@@ -49,23 +50,22 @@ const BOOKS_2026 = {
                 { title: 'the virtue of selfishness (ayn rand)', rating: '9.9/10', url: 'https://gist.github.com/von-steinkirch/7b18ffc28983e015de7a8f32ddfaa0a3', note: 'my thoughts' },
                 { title: 'the sayings of confucius', rating: '8/10', url: 'https://gist.github.com/von-steinkirch/1b7449fc68b3a148a0fceb36768eed4f', note: 'my thoughts' },
                 { title: 'the denial of death (ernest becker)', rating: '8/10', url: 'https://gist.github.com/von-steinkirch/e9acac56479421576b23173be663b6f6', note: 'my thoughts' },
-                { title: 'superintelligence (bostrom)', rating: '10/10', url: 'https://marina.nullstar.fun/pages/post.html?post=book_superintel', note: 'my thoughts' },
-                { title: 'artificial intelligence (russell & norvig)', rating: '10/10', url: 'https://marina.nullstar.fun/pages/post.html?post=book_ai3', note: 'my thoughts' },
-                { title: 'the art of computer programming (donald e. knuth)', rating: '10/10', url: 'https://marina.nullstar.fun/pages/post.html?post=book_knuth_4', note: 'my thoughts' },
+                { title: 'superintelligence (bostrom)', rating: '10/10', url: 'https://marina.nullstar.fun/blog/book_superintel.html', note: 'my thoughts' },
+                { title: 'artificial intelligence (russell & norvig)', rating: '10/10', url: 'https://marina.nullstar.fun/blog/book_ai3.html', note: 'my thoughts' },
+                { title: 'the art of computer programming (donald e. knuth)', rating: '10/10', url: 'https://marina.nullstar.fun/blog/book_knuth_4.html', note: 'my thoughts' },
             ]
         },
         {
             id: 'july',
             label: 'july',
-            count: 7,
+            count: 6,
             books: [
-                { title: 'superintelligence (nick bostrom)', rating: '10/10', url: 'https://marina.nullstar.fun/pages/post.html?post=book_superintel', note: 'my thoughts' },
-                { title: 'the tale of genji (murasaki shikibu)', rating: '(unfinished)', note: 'another time <3' },
+                { title: 'superintelligence (nick bostrom)', rating: '10/10', url: 'https://marina.nullstar.fun/blog/book_superintel.html', note: 'my thoughts' },
                 { title: 'neuromancer (william gibson)', rating: '7/10', note: 'read it the first time in college and loved it; loved slightly less this second time. "this is the matrix. you’re wintermute.”'},
                 { title: 'the obstacle is the way (ryan holiday)', rating: '9/10', url: 'https://gist.github.com/von-steinkirch/13a135cca8097caa3126d1b6ce6e9f4a', note: 'my thoughts' },
                 { title: 'the singularity is near (ray kurzweil)', rating: '8/10', url: 'https://gist.github.com/von-steinkirch/31c1545bc212c091d77e2c5b111328e3', note: 'my thoughts' },
-                { title: 'generative ai with langchain (auffarth)', rating: '8/10', url: 'https://marina.nullstar.fun/pages/post.html?post=book_lanchain', note: 'my thoughts' },
-                { title: 'hands-on llm (alammar & grootendorst)', rating: '8/10', url: 'https://marina.nullstar.fun/pages/post.html?post=book_hands', note: 'my thoughts' },
+                { title: 'generative ai with langchain (auffarth)', rating: '8/10', url: 'https://marina.nullstar.fun/blog/book_lanchain.html', note: 'my thoughts' },
+                { title: 'hands-on llm (alammar & grootendorst)', rating: '8/10', url: 'https://marina.nullstar.fun/blog/book_hands.html', note: 'my thoughts' },
             ]
         },
         {
@@ -74,8 +74,8 @@ const BOOKS_2026 = {
             count: 3,
             books: [
                 { title: 'the prince (machiavelli)', rating: '8/10', url: 'https://gist.github.com/von-steinkirch/80e3397c4619111d5e8da2cef3c3d9ed', note: 'my thoughts' },
-                { title: 'llm engineer handbook (chaumond)', rating: '9/10', url: 'https://marina.nullstar.fun/pages/post.html?post=book_llm_eng', note: 'my thoughts' },
-                { title: 'reinforcement learning (sutton & barto)', rating: '10/10', url: 'https://marina.nullstar.fun/pages/post.html?post=book_rl', note: 'my thoughts' },
+                { title: 'llm engineer handbook (chaumond)', rating: '9/10', url: 'https://marina.nullstar.fun/blog/book_llm_eng.html', note: 'my thoughts' },
+                { title: 'reinforcement learning (sutton & barto)', rating: '10/10', url: 'https://marina.nullstar.fun/blog/book_rl.html', note: 'my thoughts' },
             ]
         },
         {
@@ -107,8 +107,8 @@ const BOOKS_2026 = {
                 { title: 'the rational optimist (matt ridley)', rating: '7/10', url: 'https://gist.github.com/von-steinkirch/abceab872b7a4bab220e64230f92a66a#-march-4-books-read-', note: 'my thoughts' },
                 { title: 'compensation (ralph waldo emerson)', rating: '7/10', url: 'https://gist.github.com/von-steinkirch/abceab872b7a4bab220e64230f92a66a#-march-4-books-read-', note: 'my thoughts' },
                 { title: 'calendar of wisdom (leo tolstoy)', rating: '8/10', url: 'https://gist.github.com/von-steinkirch/b00b90d17d17a218fd660df8c9166ec9', note: 'my thoughts' },
-                { title: 'build a llm from scratch (s. raschka)', rating: '9/10', url: 'https://marina.nullstar.fun/pages/post.html?post=book_build_llm', note: 'my thoughts' },
-                { title: 'ai engineering (huyen)', rating: '8/10', url: 'https://marina.nullstar.fun/pages/post.html?post=book_ai_eng', note: 'my thoughts' },
+                { title: 'build a llm from scratch (s. raschka)', rating: '9/10', url: 'https://marina.nullstar.fun/blog/book_build_llm.html', note: 'my thoughts' },
+                { title: 'ai engineering (huyen)', rating: '8/10', url: 'https://marina.nullstar.fun/blog/book_ai_eng.html', note: 'my thoughts' },
             ]
         },
         {
@@ -344,7 +344,74 @@ const BOOKS_BACKLOG = {
         { title: 'the secret history of the universe (mark booth)'},
         { title: 'universal artificial intelligence (m. hutter)' }, // https://hutter1.net/publ/uaibook2.pdf
         { title: 'the art of debugging (s. bekman)' }, // https://github.com/stas00/the-art-of-debugging/tree/master
+        { title: 'the law of the sublime (r. greene)' },
     ],
 };
 
 window.BOOKS_BACKLOG = BOOKS_BACKLOG;
+
+/**
+ * Books our kids should read – unranked, grouped by age, youngest first.
+ */
+const KIDS_BOOKS = {
+    title: 'books our kids should read',
+    shareId: 'kids-books',
+    categories: [
+        {
+            id: 'ages-3-6',
+            label: '3-6 years-old',
+            ranked: false,
+            books: [
+                { title: 'aesop\'s fables' },
+                { title: 'grimm\'s fairy tales (the brothers grimm)' },
+                { title: 'goodnight moon (margaret wise brown)' },
+                { title: 'the cat in the hat (dr. seuss)' },
+                { title: 'the little prince (antoine de saint-exupéry)' },
+                { title: 'winnie-the-pooh (a. a. milne)' },
+                { title: 'madeline (ludwig bemelmans)' },
+                { title: 'peter rabbit (beatrix potter)' },
+                { title: 'curious george (h. a. rey)' },
+                { title: 'chicka chicka boom boom (bill martin jr. & john archambault)' },
+                { title: 'if you give a mouse a cookie (laura numeroff)' },
+            ],
+        },
+        {
+            id: 'ages-7-10',
+            label: '7-10 years-old',
+            ranked: false,
+            books: [
+                { title: 'alice\'s adventures in wonderland' },
+                { title: 'the lion, the witch and the wardrobe' },
+                { title: 'the secret garden' },
+                { title: 'the wonderful wizard of oz' },
+                { title: 'treasure island' },
+                { title: 'the adventures of tom sawyer' },
+                { title: 'the hobbit' },
+                { title: 'a wrinkle in time' },
+                { title: 'harry potter (books 1-3)' },
+                { title: 'twenty thousand leagues under the sea' },
+                { title: 'd\'aulaires\' book of greek myths' },
+                { title: 'd\'aulaires\' book of norse myths' },
+                { title: 'heroes of olympus' },
+                { title: 'charlotte’s web' },
+                { title: 'matilda' },
+                { title: 'the mysterious benedict society' },
+            ],
+        },
+        {
+            id: 'later',
+            label: 'later',
+            ranked: false,
+            books: [
+                { title: 'the lord of the rings' },
+                { title: 'ender\'s game' },
+                { title: 'the hitchhiker\'s guide to the galaxy' },
+                { title: 'frankenstein' },
+                { title: 'ready player one' },
+                { title: 'orwells and brave new world' },
+            ],
+        },
+    ],
+};
+
+window.KIDS_BOOKS = KIDS_BOOKS;

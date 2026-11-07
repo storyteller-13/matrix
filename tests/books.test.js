@@ -30,6 +30,9 @@ describe('BooksApp', () => {
         await import('../core/base-app.js');
         await import('../applications/lists/books-data.js');
         await import('../applications/lists/movies-data.js');
+        await import('../applications/lists/guides-data.js');
+        await import('../applications/lists/adventures-data.js');
+        await import('../applications/lists/games-data.js');
         await import('../applications/lists/books.js');
     });
 
@@ -118,34 +121,25 @@ describe('BooksApp', () => {
         expect(document.getElementById('books-letter-content').innerHTML).toContain('books-table--backlog');
     });
 
-    it('opens the zeitgeist awards with the reveal note and one numbered table per category', () => {
-        const app = new window.BooksAppClass();
-        app.open('zeitgeist-2026');
-        expect(document.getElementById('books-letter-title').textContent).toBe('zeitgeist awards 2026');
-        expect(app.getShareUrl()).toContain('list=zeitgeist-2026');
-        const content = document.getElementById('books-letter-content');
-        expect(content.querySelector('.books-subtitle').textContent).toBe('winners will be revealed on thanksgiving');
-        const tables = [...content.querySelectorAll('.books-table--award')];
-        expect(tables.map((t) => t.querySelector('th').textContent)).toEqual([
-            '10 movies that told the story of 2026',
-            'the 5 most whimsical stories',
-            'the 5 most brave new world stories',
-            'the 5 stories to watch with your special someone',
-            'the 5 best monsters',
-            'the 5 greatest heroes',
-        ]);
-        expect(tables.map((t) => t.querySelectorAll('tbody tr').length)).toEqual([10, 5, 5, 5, 5, 5]);
-        expect(content.querySelector('tbody .books-col-rank').textContent).toBe('1');
-        expect(content.querySelector('.books-empty')).toBeNull();
-    });
-
-    it('fills award slots with winners and translates the reveal note', () => {
+    it('renders award cards with medals, credits, comments and to-be-revealed slots', () => {
         window.I18n = { t: (key) => (key === 'lists.zeitgeistReveal' ? 'はっぴょう' : key) };
         const original = window.ZEITGEIST_2026;
         window.ZEITGEIST_2026 = {
-            ...original,
+            title: 'zeitgeist awards 2026',
+            shareId: 'zeitgeist-2026',
+            layout: 'awards',
+            subtitle: '(the stories that were part of my life this year)',
             categories: [
-                { label: 'monsters', size: 2, movies: ['plain <b>', { title: 'linked', url: 'https://example.com/m' }, 'extra'] },
+                {
+                    label: 'monsters',
+                    emoji: '👹',
+                    size: 6,
+                    movies: [
+                        'plain <b>',
+                        { title: 'linked (some one, 2026)', url: 'https://example.com/m', comment: 'so <good>' },
+                        { title: 'good omens (S3) (rachel talalay, 2026)' },
+                    ],
+                },
                 { label: 'no size' },
             ],
         };
@@ -154,14 +148,211 @@ describe('BooksApp', () => {
             app.open('zeitgeist-2026');
             const content = document.getElementById('books-letter-content');
             expect(content.querySelector('.books-subtitle').textContent).toBe('はっぴょう');
-            const [monsters, unsized] = content.querySelectorAll('.books-table--award');
-            expect(monsters.querySelectorAll('tbody tr').length).toBe(3);
-            expect(monsters.innerHTML).toContain('plain &lt;b&gt;');
-            expect(monsters.querySelector('a').getAttribute('href')).toBe('https://example.com/m');
-            expect(unsized.querySelectorAll('tbody tr').length).toBe(0);
+            const [monsters, unsized] = content.querySelectorAll('.award-category');
+            expect(monsters.classList.contains('award-category--featured')).toBe(true);
+            expect(unsized.classList.contains('award-category--featured')).toBe(false);
+            expect(monsters.querySelector('.award-emoji').textContent).toBe('👹');
+            const entries = monsters.querySelectorAll('.award-entry');
+            expect(entries.length).toBe(6);
+            expect(entries[0].classList.contains('award-entry--gold')).toBe(true);
+            expect(entries[0].innerHTML).toContain('plain &lt;b&gt;');
+            expect(entries[1].classList.contains('award-entry--silver')).toBe(true);
+            expect(entries[1].querySelector('a').getAttribute('href')).toBe('https://example.com/m');
+            expect(entries[1].querySelector('a').textContent).toBe('linked');
+            expect(entries[1].querySelector('.award-credit').textContent).toBe('some one, 2026');
+            expect(entries[1].querySelector('.award-comment').innerHTML).toBe('so &lt;good&gt;');
+            expect(entries[2].querySelector('.award-title').textContent).toBe('good omens (S3)');
+            expect(entries[3].classList.contains('award-entry--empty')).toBe(true);
+            expect(entries[3].querySelector('.award-pending').textContent).toBe('to be revealed');
+            expect(unsized.querySelectorAll('.award-entry').length).toBe(0);
+            expect(content.querySelector('.books-table--award')).toBeNull();
         } finally {
             window.ZEITGEIST_2026 = original;
         }
+    });
+
+    it('gives every zeitgeist movie a credit and a one-line comment', (ctx) => {
+        // The awards data stays off main until the reveal.
+        const data = window.ZEITGEIST_2026;
+        if (!data) ctx.skip();
+        const app = new window.BooksAppClass();
+        app.open('zeitgeist-2026');
+        const entries = document.querySelectorAll('#books-letter-content .award-entry:not(.award-entry--empty)');
+        const movieCount = data.categories.reduce((sum, c) => sum + (c.movies?.length || 0), 0);
+        expect(entries.length).toBe(movieCount);
+        entries.forEach((entry) => {
+            expect(entry.querySelector('.award-credit')).not.toBeNull();
+            expect(entry.querySelector('.award-comment')?.textContent).toBeTruthy();
+        });
+    });
+
+    it('renders the games of my youth as unnumbered tables, one per console', () => {
+        const app = new window.BooksAppClass();
+        app.open('games-youth');
+        expect(app.shareId).toBe('games-youth');
+        expect(document.getElementById('books-letter-title').textContent).toBe('the games of my youth');
+        const content = document.getElementById('books-letter-content');
+        const tables = content.querySelectorAll('.books-table--plain');
+        expect(tables.length).toBe(5);
+        expect(content.querySelector('.books-tables--columns')).not.toBeNull();
+        expect(tables[0].querySelector('th').textContent).toBe('atari 2600 / arcades');
+        expect(tables[3].querySelectorAll('tbody tr').length).toBe(25);
+        expect(content.querySelector('.books-col-rank')).toBeNull();
+        expect(content.textContent).toContain('duke nukem 3d');
+        expect(content.textContent).not.toContain('never played them');
+    });
+
+    it('renders movies to watch with our kids in era columns without a note', () => {
+        const app = new window.BooksAppClass();
+        app.open('kids-movies');
+        expect(app.shareId).toBe('kids-movies');
+        const content = document.getElementById('books-letter-content');
+        expect(content.querySelector('.books-subtitle')).toBeNull();
+        expect(content.querySelector('.books-tables--columns')).not.toBeNull();
+        expect(content.querySelectorAll('.books-table--plain').length).toBe(4);
+        expect(content.querySelectorAll('tbody tr').length).toBe(23);
+        expect(content.textContent).toContain('the wizard of oz (victor fleming, 1939)');
+    });
+
+    it('renders books our kids should read in age columns', () => {
+        const app = new window.BooksAppClass();
+        app.open('kids-books');
+        expect(app.shareId).toBe('kids-books');
+        expect(document.getElementById('books-letter-title').textContent).toBe('books our kids should read');
+        const content = document.getElementById('books-letter-content');
+        expect(content.querySelector('.books-subtitle')).toBeNull();
+        expect(content.querySelector('.books-tables--columns')).not.toBeNull();
+        const tables = content.querySelectorAll('.books-table--plain');
+        expect(tables.length).toBe(3);
+        expect(tables[0].querySelector('th').textContent).toBe('3-6 years-old');
+        expect(content.querySelectorAll('tbody tr').length).toBe(33);
+        expect(content.textContent).toContain('goodnight moon (margaret wise brown)');
+    });
+
+    it('renders the alagoas guide as region columns with notes', () => {
+        const app = new window.BooksAppClass();
+        app.open('guide-alagoas');
+        expect(app.shareId).toBe('guide-alagoas');
+        expect(document.getElementById('books-letter-title').textContent).toBe('alagoas, brazil');
+        const content = document.getElementById('books-letter-content');
+        expect(content.querySelector('.books-tables--columns')).not.toBeNull();
+        const tables = content.querySelectorAll('.books-table--plain');
+        expect(tables.length).toBe(5);
+        expect(tables[0].querySelector('th').textContent).toBe('☀️ north — litoral norte');
+        expect(tables[0].querySelector('.books-category-note').textContent).toContain('natural pools');
+        expect(content.querySelectorAll('.books-col-title').length).toBe(16);
+        expect(content.querySelector('.books-category-footnote').textContent).toContain('canindé de são francisco');
+    });
+
+    it('renders the iceland guide as full-width sections with details, a table and tips', () => {
+        const app = new window.BooksAppClass();
+        app.open('guide-iceland');
+        expect(app.shareId).toBe('guide-iceland');
+        expect(document.getElementById('books-letter-title').textContent).toBe('iceland');
+        const content = document.getElementById('books-letter-content');
+        expect(content.querySelector('.books-subtitle').textContent).toContain('witchcraft & sorcery');
+        expect(content.querySelector('.guide-intro').textContent).toContain('male-dominated');
+        expect(content.querySelector('.books-tables--columns')).toBeNull();
+        const sections = content.querySelectorAll('.guide-section');
+        expect(sections.length).toBe(6);
+        expect(sections[0].querySelector('.guide-heading').textContent).toContain('museum of icelandic sorcery');
+        expect(sections[0].querySelector('.guide-place').textContent).toBe('hólmavík, westfjords');
+        expect(content.querySelector('.guide-details a')).toBeNull();
+        expect(sections[4].querySelector('.guide-tip').textContent).toContain('heart of icelandic witch country');
+        expect(sections[5].querySelectorAll('.guide-table tbody tr').length).toBe(4);
+        expect(sections[5].querySelector('.guide-table caption').textContent).toBe('best times to experience it');
+        expect(sections[5].querySelectorAll('.guide-list li').length).toBe(3);
+        expect(sections[2].querySelector('.guide-details')).toBeNull();
+    });
+
+    it('renders guide sections with only a heading', () => {
+        const app = new window.BooksAppClass();
+        const html = app.renderGuideSection({ table: { rows: [['a']] }, lists: [{ items: ['b'] }] });
+        expect(html).toContain('<td>a</td>');
+        expect(html).toContain('<li>b</li>');
+        expect(html).not.toContain('caption');
+        expect(html).not.toContain('guide-list-heading');
+    });
+
+    it('renders the winter holiday movies as a single list without a heading', () => {
+        const app = new window.BooksAppClass();
+        app.open('winter-movies');
+        expect(app.shareId).toBe('winter-movies');
+        expect(document.getElementById('books-letter-title').textContent).toBe('classic american movies for the winter holiday');
+        const content = document.getElementById('books-letter-content');
+        expect(content.querySelector('.books-backlog-title')).toBeNull();
+        expect(content.querySelectorAll('tbody tr').length).toBe(6);
+        expect(content.textContent).toContain('it\'s a wonderful life (frank capra, 1946)');
+    });
+
+    it('renders the bucket list as continents of country cards with place pills', () => {
+        const app = new window.BooksAppClass();
+        app.open('bucket-list');
+        expect(app.shareId).toBe('bucket-list');
+        expect(document.getElementById('books-letter-title').textContent).toBe('my bucket list');
+        const content = document.getElementById('books-letter-content');
+        const regions = content.querySelectorAll('.bucket-region');
+        expect(regions.length).toBe(5);
+        expect(regions[0].querySelector('.bucket-region-title').textContent).toContain('americas');
+        expect(regions[0].querySelector('.bucket-region-count').textContent).toBe('11 countries · 43 places');
+        const jamaica = [...content.querySelectorAll('.bucket-card')].find((card) => card.textContent === 'jamaica');
+        expect(jamaica.querySelector('.bucket-places')).toBeNull();
+        expect(content.querySelectorAll('.bucket-place').length).toBe(210);
+    });
+
+    it('renders a bucket region without emoji or countries', () => {
+        const app = new window.BooksAppClass();
+        const html = app.renderBucketRegion({ label: 'nowhere' });
+        expect(html).toContain('0 countries · 0 places');
+        expect(html).not.toContain('bucket-region-emoji');
+        expect(app.renderStats({})).toBe('');
+        expect(app.renderStats({ regions: [{ label: 'x' }] })).toContain('0 countries · 0 places');
+    });
+
+    it('renders the cities i have lived as numbered city cards', () => {
+        const app = new window.BooksAppClass();
+        app.open('cities-lived');
+        expect(app.shareId).toBe('cities-lived');
+        expect(document.getElementById('books-letter-title').textContent).toBe('cities i have lived');
+        const content = document.getElementById('books-letter-content');
+        expect(content.querySelector('.books-subtitle').textContent).toContain('more than a month');
+        expect(content.querySelector('.list-stats')).toBeNull();
+        const cards = content.querySelectorAll('.city-card');
+        expect(cards.length).toBe(37);
+        expect(cards[0].querySelector('.city-number').textContent).toBe('01');
+        expect(cards[0].querySelector('.city-name').textContent).toBe('curitiba, brazil');
+        expect(cards[0].querySelector('.city-where').textContent).toBe(', brazil');
+        expect(cards[29].querySelector('.city-name').textContent).toBe('malta');
+        expect(cards[29].querySelector('.city-where')).toBeNull();
+        expect(app.renderCities([{}])).toContain('city-name"></span>');
+    });
+
+    it('renders fun in berlin as category columns', () => {
+        const app = new window.BooksAppClass();
+        app.open('guide-berlin');
+        expect(app.shareId).toBe('guide-berlin');
+        expect(document.getElementById('books-letter-title').textContent).toBe('fun in berlin');
+        const content = document.getElementById('books-letter-content');
+        expect(content.querySelector('.books-tables--columns')).not.toBeNull();
+        const tables = content.querySelectorAll('.books-table--plain');
+        expect(tables.length).toBe(5);
+        expect(tables[0].querySelector('th').textContent).toBe('🏛️ museums');
+        expect(tables[1].querySelector('th').textContent).toBe('🖼️ galleries & collections');
+        expect(content.querySelectorAll('.books-col-title').length).toBe(40);
+    });
+
+    it('renders countries i have explored as flag cards', () => {
+        const app = new window.BooksAppClass();
+        app.open('countries-explored');
+        expect(app.shareId).toBe('countries-explored');
+        expect(document.getElementById('books-letter-title').textContent).toBe('countries i have explored');
+        const content = document.getElementById('books-letter-content');
+        expect(content.querySelector('.list-stats').textContent).toBe('30 countries');
+        const cards = content.querySelectorAll('.country-card');
+        expect(cards.length).toBe(30);
+        expect(cards[0].querySelector('.country-flag').textContent).toBe('🇧🇷');
+        expect(cards[0].querySelector('.city-name').textContent).toBe('brazil');
+        expect(app.renderVisited([{}])).not.toContain('country-flag');
     });
 
     it('openBooksWindow forwards the list id', () => {

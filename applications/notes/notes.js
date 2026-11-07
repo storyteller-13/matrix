@@ -21,7 +21,6 @@ class NotesApp extends BaseApp {
         if (!this.window) return;
         this.cacheElements();
         this.loadEntries();
-        this.setupEventListeners();
         this.setupShareRouting();
         this.render();
         this.updateBadge();
@@ -351,6 +350,7 @@ class NotesApp extends BaseApp {
         if (dateEl) dateEl.textContent = date;
         if (titleEl) titleEl.textContent = localized.title || '';
         if (contentEl) {
+            this.currentAsciiArt = entry.asciiArt === true;
             contentEl.innerHTML = this.formatContent(localized.content || '');
             contentEl.classList.toggle('letter-content--italic', entry.italic === true);
         }
@@ -418,7 +418,24 @@ class NotesApp extends BaseApp {
         const processed = segments.length
             ? segments.map(s => s.type === 'italic' ? '<em>' + this.escapeHtml(s.text) + '</em>' : this.escapeHtml(s.text)).join('')
             : this.escapeHtml(content);
-        return processed.replace(/\n/g, '<br>');
+        return this.formatDashedBlocks(processed).replace(/\n/g, '<br>');
+    }
+
+    /**
+     * Text framed by lines of dashes becomes a styled block: one line is a section heading,
+     * several lines (a quote and its author) an epigraph card. Surrounding blank lines are
+     * dropped since the blocks carry their own spacing. ASCII art notes keep the raw dashes.
+     */
+    formatDashedBlocks(html) {
+        if (this.currentAsciiArt) return html;
+        const framed = /\n*^[ \t]*-{3,}[ \t]*\n((?:[ \t]*(?!-{3,})\S[^\n]*\n?){1,4}?)[ \t]*-{3,}[ \t]*$\n*/gm;
+        return html.replace(framed, (_, inner) => {
+            const lines = inner.split('\n').map((line) => line.trim()).filter(Boolean);
+            if (lines.length === 1) {
+                return `<span class="letter-section" role="heading" aria-level="3">${lines[0]}</span>`;
+            }
+            return `<span class="letter-epigraph">${lines.join('<br>')}</span>`;
+        });
     }
 
     escapeHtml(text) {

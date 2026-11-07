@@ -1,12 +1,19 @@
 /**
  * Panel tests – PanelClass clock and menu helpers (no full DOM menu tree)
  */
-import { describe, it, expect, afterEach, vi } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 
 describe('Panel', () => {
     beforeAll(async () => {
         document.body.innerHTML = '<div class="clock"></div>';
         await import('../core/panel.js');
+        clearInterval(window.Panel.clockIntervalId);
+    });
+
+    // Panel timers touch `document`, which is gone once the environment is torn
+    // down. Fake timers still pending when real ones are restored never fire.
+    beforeEach(() => {
+        vi.useFakeTimers();
     });
 
     afterEach(() => {
@@ -53,9 +60,10 @@ describe('Panel', () => {
             const panel = new window.PanelClass();
             panel.clockFormatters.clear();
             const OriginalDateTimeFormat = Intl.DateTimeFormat;
-            vi.spyOn(Intl, 'DateTimeFormat').mockImplementation(() => ({
-                formatToParts: () => [{ type: 'literal', value: ':' }],
-            }));
+            // Called with `new`, so the mock must be a regular function, not an arrow.
+            vi.spyOn(Intl, 'DateTimeFormat').mockImplementation(function () {
+                return { formatToParts: () => [{ type: 'literal', value: ':' }] };
+            });
             expect(panel.formatClockTime(undefined, new Date())).toBe('00:00:00');
             Intl.DateTimeFormat = OriginalDateTimeFormat;
             vi.restoreAllMocks();
@@ -75,7 +83,6 @@ describe('Panel', () => {
                     <div class="clock-zone" data-timezone="Asia/Tokyo"></div>
                 </div>
             `;
-            vi.useFakeTimers();
             vi.setSystemTime(new Date('2026-01-15T12:00:00.000Z'));
             const panel = new window.PanelClass();
             panel.updateClock();
@@ -86,7 +93,6 @@ describe('Panel', () => {
         });
 
         it('startClock sets an interval and clears previous one', () => {
-            vi.useFakeTimers();
             const panel = new window.PanelClass();
             panel.clockIntervalId = 999;
             const clearSpy = vi.spyOn(global, 'clearInterval');
@@ -94,7 +100,6 @@ describe('Panel', () => {
             expect(clearSpy).toHaveBeenCalledWith(999);
             expect(panel.clockIntervalId).toBeTruthy();
             vi.advanceTimersByTime(2000);
-            vi.useRealTimers();
         });
 
         it('updateClock returns early when clock element is missing', () => {
@@ -162,7 +167,7 @@ describe('Panel', () => {
             expect(dropdown.classList.contains('show')).toBe(false);
         });
 
-        it('clicking leaf menu item closes dropdown after delay', async () => {
+        it('clicking leaf menu item closes dropdown after delay', () => {
             document.body.innerHTML = `
                 <div class="clock"></div>
                 <button id="applications-menu-button">Apps</button>
@@ -180,7 +185,8 @@ describe('Panel', () => {
             const dropdown = document.getElementById('applications-dropdown');
             const link = document.querySelector('a.menu-item');
             link.click();
-            await new Promise((r) => setTimeout(r, 150));
+            expect(dropdown.classList.contains('show')).toBe(true);
+            vi.advanceTimersByTime(window.PanelClass.MENU_CLOSE_DELAY);
             expect(dropdown.classList.contains('show')).toBe(false);
         });
 
@@ -207,7 +213,7 @@ describe('Panel', () => {
             expect(submenu.classList.contains('show')).toBe(true);
         });
 
-        it('mouseenter on parent shows submenu, mouseleave hides after delay', async () => {
+        it('mouseenter on parent shows submenu, mouseleave hides after delay', () => {
             document.body.innerHTML = `
                 <div class="clock"></div>
                 <button id="applications-menu-button">Apps</button>
@@ -227,7 +233,8 @@ describe('Panel', () => {
             parent.dispatchEvent(new MouseEvent('mouseenter', { bubbles: true }));
             expect(submenu.classList.contains('show')).toBe(true);
             parent.dispatchEvent(new MouseEvent('mouseleave', { bubbles: true }));
-            await new Promise((r) => setTimeout(r, 200));
+            expect(submenu.classList.contains('show')).toBe(true);
+            vi.advanceTimersByTime(window.PanelClass.SUBMENU_HIDE_DELAY);
             expect(submenu.classList.contains('show')).toBe(false);
         });
 

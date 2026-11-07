@@ -128,7 +128,7 @@ class Panel {
 
         // Close main dropdown only when clicking a leaf menu item (link inside a submenu), not when clicking a parent row
         applicationsDropdown.addEventListener('click', (e) => {
-            const link = e.target.closest('a.menu-item');
+            const link = e.target.closest('a.menu-item, button.menu-item');
             if (link && link.closest('.menu-submenu')) {
                 setTimeout(() => {
                     applicationsDropdown.classList.remove('show');
@@ -188,7 +188,7 @@ class Panel {
 
             parent.addEventListener('click', (e) => {
                 if (!this.isCompactMenu()) return;
-                if (e.target.closest('a.menu-item')) return;
+                if (e.target.closest('a.menu-item, button.menu-item')) return;
                 e.preventDefault();
                 e.stopPropagation();
                 const isShowing = submenu.classList.contains('show');
