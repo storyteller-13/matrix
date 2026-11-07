@@ -60,12 +60,23 @@ describe('vercel.json', () => {
         expect(h.value).toContain("base-uri 'self'");
     });
 
-    it('has filesystem then catch-all route for SPA', () => {
-        expect(config.routes).toBeDefined();
-        const filesystem = config.routes.find((r) => r.handle === 'filesystem');
-        expect(filesystem).toBeDefined();
-        const catchAll = config.routes.find((r) => r.src && r.dest === '/404.html');
-        expect(catchAll).toBeDefined();
+    it('does not use legacy routes (Vercel ignores headers/redirects alongside them)', () => {
+        expect(config.routes).toBeUndefined();
+    });
+
+    it('ships a root 404.html for Vercel to serve on misses', () => {
+        expect(() => readFileSync(join(__dirname, '../404.html'), 'utf8')).not.toThrow();
+    });
+
+    it('allows the third-party origins the page loads', () => {
+        const catchAll = config.headers.find((h) => h.source === '/(.*)');
+        const csp = catchAll.headers.find((x) => x.key === 'Content-Security-Policy').value;
+        const directive = (name) => csp.split(';').map((d) => d.trim()).find((d) => d.startsWith(name + ' '));
+        expect(directive('script-src')).toContain('https://www.youtube.com');
+        expect(directive('script-src')).not.toContain("'unsafe-inline'");
+        expect(directive('frame-src')).toContain('https://www.youtube.com');
+        expect(directive('style-src')).toContain('https://fonts.googleapis.com');
+        expect(directive('font-src')).toContain('https://fonts.gstatic.com');
     });
 
     it('redirects /index.html to /', () => {

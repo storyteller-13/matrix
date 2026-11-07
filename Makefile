@@ -1,4 +1,4 @@
-PHONY: server install lint test coverage pre-commit clean
+.PHONY: server install lint test coverage pre-commit clean
 
 PORT ?= 8088
 PYTHON := python3

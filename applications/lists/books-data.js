@@ -344,6 +344,7 @@ const BOOKS_BACKLOG = {
         { title: 'the secret history of the universe (mark booth)'},
         { title: 'universal artificial intelligence (m. hutter)' }, // https://hutter1.net/publ/uaibook2.pdf
         { title: 'the art of debugging (s. bekman)' }, // https://github.com/stas00/the-art-of-debugging/tree/master
+        { title: 'the law of the sublime (r. greene)' },
     ],
 };
 

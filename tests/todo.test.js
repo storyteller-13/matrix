@@ -41,6 +41,13 @@ describe('TodoApp', () => {
         window.I18n = undefined;
     });
 
+
+    it('binds the dock click once (one open per click)', () => {
+        const app = new window.TodoAppClass();
+        const open = vi.spyOn(app, 'open').mockImplementation(() => {});
+        app.dockItem.click();
+        expect(open).toHaveBeenCalledTimes(1);
+    });
     it('exposes TodoAppClass and TodoApp on window', () => {
         expect(window.TodoAppClass).toBeDefined();
         expect(window.TodoApp).toBeDefined();

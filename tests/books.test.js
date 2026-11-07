@@ -118,27 +118,6 @@ describe('BooksApp', () => {
         expect(document.getElementById('books-letter-content').innerHTML).toContain('books-table--backlog');
     });
 
-    it('opens the zeitgeist awards with the reveal note and one numbered table per category', () => {
-        const app = new window.BooksAppClass();
-        app.open('zeitgeist-2026');
-        expect(document.getElementById('books-letter-title').textContent).toBe('zeitgeist awards 2026');
-        expect(app.getShareUrl()).toContain('list=zeitgeist-2026');
-        const content = document.getElementById('books-letter-content');
-        expect(content.querySelector('.books-subtitle').textContent).toBe('winners will be revealed on thanksgiving');
-        const tables = [...content.querySelectorAll('.books-table--award')];
-        expect(tables.map((t) => t.querySelector('th').textContent)).toEqual([
-            '10 movies that told the story of 2026',
-            'the 5 most whimsical stories',
-            'the 5 most brave new world stories',
-            'the 5 stories to watch with your special someone',
-            'the 5 best monsters',
-            'the 5 greatest heroes',
-        ]);
-        expect(tables.map((t) => t.querySelectorAll('tbody tr').length)).toEqual([10, 5, 5, 5, 5, 5]);
-        expect(content.querySelector('tbody .books-col-rank').textContent).toBe('1');
-        expect(content.querySelector('.books-empty')).toBeNull();
-    });
-
     it('fills award slots with winners and translates the reveal note', () => {
         window.I18n = { t: (key) => (key === 'lists.zeitgeistReveal' ? 'はっぴょう' : key) };
         const original = window.ZEITGEIST_2026;

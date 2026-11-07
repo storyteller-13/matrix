@@ -117,6 +117,14 @@ describe('Terminal', () => {
         expect(win.style.display).toBe('none');
     });
 
+    it('echoes the typed command as text, not HTML', () => {
+        typeCommand('<img src=x onerror="window.__pwned=1">');
+        const lines = document.querySelectorAll('#terminal-output-container .command');
+        const last = lines[lines.length - 1];
+        expect(last.textContent).toBe('<img src=x onerror="window.__pwned=1">');
+        expect(last.querySelector('img')).toBeNull();
+    });
+
     it('arrow keys walk command history', () => {
         typeCommand('echo one');
         typeCommand('echo two');

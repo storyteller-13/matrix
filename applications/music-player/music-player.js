@@ -204,17 +204,7 @@ class MusicPlayer {
             }
             this.setupPlayer();
         };
-
-        let checkCount = 0;
-        const checkInterval = setInterval(() => {
-            checkCount++;
-            if (typeof YT !== 'undefined' && YT.Player && !this.player) {
-                clearInterval(checkInterval);
-                this.setupPlayer();
-            } else if (checkCount > 50) {
-                clearInterval(checkInterval);
-            }
-        }, 100);
+        // No polling needed: this callback is registered before loadYouTubeScript() adds the tag.
     }
 
     setupPlayer() {

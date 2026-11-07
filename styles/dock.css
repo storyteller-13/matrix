@@ -29,11 +29,6 @@
     position: relative;
 }
 
-a.dock-item {
-    text-decoration: none;
-    color: inherit;
-}
-
 .dock-item:hover {
     transform: translateY(-8px) scale(1.1);
     background: rgba(255, 182, 213, 0.3);

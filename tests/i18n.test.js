@@ -159,7 +159,8 @@ describe('I18n', () => {
 
     it('index.html wires chrome keys, the locale toggle, and a ja boot paint', () => {
         const html = readFileSync(join(__dirname, '../index.html'), 'utf8');
-        expect(html).toContain('src="core/i18n.js"');
+        expect(html).toContain('<script type="module" src="main.js"></script>');
+        expect(readFileSync(join(__dirname, '../main.js'), 'utf8')).toContain("import './core/i18n.js';");
         expect(html).toContain('id="locale-toggle"');
         expect(html).toContain('family=Zen+Maru+Gothic');
 
@@ -170,10 +171,12 @@ describe('I18n', () => {
             expect(window.I18N_STRINGS.ja).toHaveProperty(key);
         }
 
-        const boot = html.match(/<script>\s*(\(function \(\) \{[\s\S]*?\}\)\(\);)\s*<\/script>/);
-        expect(boot).toBeTruthy();
+        // The boot script is a classic <head> script so it paints before the stylesheets apply.
+        const head = html.slice(0, html.indexOf('</head>'));
+        expect(head).toContain('<script src="core/locale-boot.js"></script>');
+        const boot = readFileSync(join(__dirname, '../core/locale-boot.js'), 'utf8');
         const documentEl = { lang: 'en', classList: { add: vi.fn() } };
-        const run = new Function('document', 'localStorage', boot[1]);
+        const run = new Function('document', 'localStorage', boot);
         run({ documentElement: documentEl }, { getItem: () => 'ja' });
         expect(documentEl.lang).toBe('ja');
         expect(documentEl.classList.add).toHaveBeenCalledWith('locale-ja');

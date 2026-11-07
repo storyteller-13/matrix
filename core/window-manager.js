@@ -11,19 +11,14 @@ class WindowManager {
         this.init();
     }
 
+    /** Windows marked data-centered open in the middle of the screen; on compact screens all do. */
     isCenteredWindow(el) {
-        return el && (el.classList.contains('terminal-window') ||
-            el.classList.contains('artwork-window') ||
-            el.classList.contains('lists-folder-window') ||
-            el.classList.contains('notes-letter-window') ||
-            el.classList.contains('books-window') ||
-            el.classList.contains('about-window') ||
-            el.classList.contains('home-window') ||
-            this.isCompactViewport());
+        return Boolean(el) && (el.hasAttribute('data-centered') || this.isCompactViewport());
     }
 
+    /** Windows marked data-dock-anchored sit just above the dock on larger screens. */
     isDockAnchoredWindow(el) {
-        return el && el.classList.contains('about-window');
+        return Boolean(el) && el.hasAttribute('data-dock-anchored');
     }
 
     isCompactViewport() {

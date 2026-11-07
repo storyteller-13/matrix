@@ -12,11 +12,11 @@ class TodoApp extends BaseApp {
     }
 
     init() {
+        // Cache first: super.init() runs setupEventListeners(), which needs the elements.
+        this.cacheElements();
         super.init();
         if (!this.window) return;
-        this.cacheElements();
         this.loadTodos();
-        this.setupEventListeners();
         this.setupVisibilityListener();
         this.render();
         this.updateBadge();

@@ -391,7 +391,13 @@
 
             const commandLine = document.createElement('div');
             commandLine.className = 'terminal-line';
-            commandLine.innerHTML = `<span class="prompt">${PROMPT_PREFIX}${currentDirectory}$ </span><span class="command">${trimmed}</span>`;
+            const promptSpan = document.createElement('span');
+            promptSpan.className = 'prompt';
+            promptSpan.textContent = `${PROMPT_PREFIX}${currentDirectory}$ `;
+            const commandSpan = document.createElement('span');
+            commandSpan.className = 'command';
+            commandSpan.textContent = trimmed;
+            commandLine.append(promptSpan, commandSpan);
             terminalOutput.appendChild(commandLine);
 
             updateInputPrompt();

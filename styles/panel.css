@@ -127,10 +127,6 @@
     text-shadow: none;
 }
 
-a.menu-button {
-    text-decoration: none;
-}
-
 .menu-button.cherry-icon {
     padding: 0;
     width: var(--top-panel-height);
@@ -153,12 +149,18 @@ a.menu-button {
 }
 
 .menu-button.cherry-icon:hover,
-.menu-button.cherry-icon:focus,
-.menu-button.cherry-icon:focus-visible {
+.menu-button.cherry-icon:focus {
     background: transparent !important;
     outline: none;
     border: none;
     box-shadow: none;
+}
+
+/* Keyboard focus still needs to be visible */
+.menu-button.cherry-icon:focus-visible {
+    outline: 2px solid #D946A6;
+    outline-offset: -2px;
+    border-radius: 6px;
 }
 
 /* Hide the ::before glow on hover so it can't render as a box */

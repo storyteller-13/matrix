@@ -21,7 +21,6 @@ class NotesApp extends BaseApp {
         if (!this.window) return;
         this.cacheElements();
         this.loadEntries();
-        this.setupEventListeners();
         this.setupShareRouting();
         this.render();
         this.updateBadge();

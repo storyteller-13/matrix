@@ -63,6 +63,13 @@ describe('NotesApp', () => {
         vi.useRealTimers();
     });
 
+
+    it('binds the dock click once (one open per click)', () => {
+        const app = new window.NotesAppClass();
+        const open = vi.spyOn(app, 'open').mockImplementation(() => {});
+        app.dockItem.click();
+        expect(open).toHaveBeenCalledTimes(1);
+    });
     it('renders dated entries and updates the badge', () => {
         const app = new window.NotesAppClass();
         expect(document.querySelectorAll('.notes-date-item').length).toBeGreaterThan(0);
