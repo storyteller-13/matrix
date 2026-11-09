@@ -61,9 +61,7 @@ class NotesStorage {
      * 
     {
     id: 'story-??',
-    date: '2026-??-??T00:00:00.000Z',
-    titleKey: 'notes.story-??.title',
-    contentKey: 'notes.story-??.content',
+    date: '2026-??-??T12:00:00-07:00',
     title: '????',
     content: this.cleanContent(`
     
@@ -77,8 +75,135 @@ class NotesStorage {
         return [
 
             {
+                id: 'story-november-2026',
+                date: '2026-11-13T12:00:00-07:00',
+                title: 'grateful graceful memories',
+                content: this.cleanContent(`
+-------------------------------------------------------------
+"we are our memory, we are that chimerical museum of shifting shapes, that pile of broken mirrors."
+— jorge luis borges
+-------------------------------------------------------------
+
+
+hello there, my dear anon friend, and happy friday the 13th!
+it's weird to realize that it's already november. one less year, and one more year. 
+november's post will be about taking stock of this year, reflecting on the cycles that have ended, and welcoming the new life beginning as we declare victory and look toward the days ahead.
+
+
+shall we get to it?
+
+
+-----------
+postmortem
+-----------
+
+this was a big year and far from being an easy one.
+but i am pretty content with how far i have come after everything. so, let's recap.
+
+the year started with the most shocking news i had ever received. first, the non-consensual video, in early december; then, right after christmas, the realization that my macbook was being streamed to the world. my year began in malaysia, where i had just discovered the crime that had been taking place in my life for years. something that, as a normal, highly educated woman in her early forties, living an upper-middle-class life, i had never even imagined could be a reality.
+
+i was in shock for the entire month of january, processing the fact that people were thinking i was something other than an engineer and scientist, and that all my personal things, my brain, my habits, my day-to-day reading, choices, idiosyncrasies, it was all being publicly distributed (and the worst part was that there were people who thought this was all consensual).
+
+i was in a state of shock unlike anything i had ever experienced before, with waves of complete despair alternating with total denial. i was in shock from being sadistically, mercilessly fooled for years by someone who said he loved me, who i traveled with, whose family i met, who i let into my house, with whom i shared my intimacy, my little things.
+
+the shock of knowing that my entire life had been out in the world for a long time and nobody warned me directly. and the shock of knowing that there were people who somehow were trying to blame me, or who couldn't see how painful and surreal and cruel this abuse was, and how much strength i would have to gather to be able to move on. ah, and the desperate hope and wait for someone to be your friend in real life and speak up. this was my january. but it was my february, march, etc. it was most of my year.
+
+at that point, though, i still didn't know exactly what was going on, but i had to take care of myself. so i went to denver. i wanted to go back home and i had acquaintances who offered me their place. i thought, "well, i am going back, i am going to get rid of my hacked macbook and get another computer, and i am going to do what i do well: find a job as a software engineer, and then i will continue with my life, find a lawyer, and try to make sense of what was happening."
+
+rather, i had a very harsh experience in denver. first, things were worse than i had thought: changing machines didn't help, and somehow, people still seemed to have access to everything i did. it was a very weird and surreal situation, and i had to do my absolute best to keep myself grounded. this was one of those moments when, had i not managed to keep my anxiety under control, i could easily have gone insane.
+
+second, the place was really poor, and, having lived as an upper-class girl for years, i had to do a lot of mental gymnastics to pretend i wasn't completely panicking about where i was. i just kept telling myself, "you will find a job quickly, you will get out, and you can forget whatever this is."
+
+and, finally, i had to be very frugal because i still had no idea what was going on, why i was not able to get a job (which had been very simple before, given my cv and experience), and why whatever was happening was bigger than i thought, with a lot of bad people somehow trying to destroy my reputation for a reason i still don't know (i still don't know who these people are, why they hate me so much, or what i did to them).
+
+i had to be so frugal that i literally starved myself and was getting free food for the homeless from the church. those were really weird times, and i am glad they will never happen again and that this experience lasted only a couple of months.
+
+running out of options after years of running from a crime i did not understand, and having made no progress whatsoever, i went to «a:https://en.wikipedia.org/wiki/Curitiba»curitiba«/a» to stay with my mom, with whom i had maintained a rather superficial relationship for decades. (you see, i was actually raised by grandma helga von steinkirch, and mom and i never really got along. i had left curitiba in my late teens, first for são paulo and then for new york to pursue my phd, and had only returned a couple of times since, each visit lasting a week or so. so, this was a rather strange situation to find myself in.)
+
+at that point, i was still deeply traumatized, dealing with the last vestiges of shock and denial, having nightmares, and still hoping that someone would come to help me, or at least talk to me. during the summer, however, i was able to find some comfort, begin healing, and work on my websites, blogs, books, studies, and plans. i also worked on many pieces of «a:https://www.nullstar.games/»NULLSTAR«/a», and managed to pay off a lot of my technical debt in the AI field. i am pretty proud of, and grateful for, «a:https://marina.nullstar.fun/pages/blog.html»everything i produced and learned«/a».
+
+to complete the odyssey in curitiba, the final part of the story had to be about healing all the traumas, including generational ones. this year has been an honest journey through my identity and my ego, and the last part was about finding final closure with my childhood and my dad. during the last month, i stayed at a bed and breakfast a few blocks away from what used to be my dad's and grandma's house, pretty much where i grew up.
+
+i can't describe the nostalgia. so many memories, so many familiar places, where i used to go biking with my dad, where we used to eat, so many little things. there has been a deep inner peace within me since going through this process.
+
+this was the first time i had visited my dad's tomb in 21 years (remember i told you i rarely came back, and i never really returned to this part of town). i had a cathartic moment when i finally found him and had a final conversation with him. i apologized for taking so long, for all the suffering he went through, and for all the generational traumas and injustices in our family and in this country. i apologized for not being there during his last days, and i told him that i love him and miss him. i told him he would be proud of everything i still have to do in my life, and that i know he will be celebrating all my victories with me. and someday, i know we will meet again.
+
+i felt something truly transcendental after this. whether life after death is real or not (i don't know; i never really believed in ghosts, but that doesn't mean they aren't real), the simple act of saying these things out loud, as if he were listening to me, was one of the most liberating things i have ever done in my life. as i walked back, i felt a peace of mind and a sense of lightness i hadn't felt in a long while. rest in peace, dad.
+
+perhaps the second most vulnerable part of this tale was that a part of me, the girl who, after all these years, is still waiting for the fairy tale, still waiting for a magical prince to come and rescue her and love her forever, still had a little hope that something magical would happen on that front. nothing magical happened. it could have; it was not that big of a deal. i am a pretty lovable woman, and everywhere i go, people like me. but it didn't happen, and the show must go on.
+
+i decided to stop waiting. «a:https://github.com/storyteller-13/the-crime»this crime«/a» had already taken years and so much from me, and the full justice i expected would never come. the only thing i still had under my control was the days ahead. after spending the summer healing, i decided that i was not going to wait for anything or anyone anymore. i was going to be the one responsible for moving my life and my career forward, and i would take my life back.
+
+this shift in my mindset is the best thing i have ever done. i went back to who i am. the girl who got into «a:https://en.wikipedia.org/wiki/Polytechnic_School_of_the_University_of_S%C3%A3o_Paulo»the best engineering school in her country«/a» after studying in brazilian public schools her entire life. who went on to pursue «a:https://astro.sunysb.edu/steinkirch/»a phd in theoretical physics with a full scholarship in new york«/a», just three years after her dad was murdered. who did real science at literally three national labs. who «a:https://marina.nullstar.fun/»published so much in science and engineering, wrote books, spoke at conferences, and has the coolest github ever«/a».
+
+the girl who got a six-figure job right after grad school without even having a formal computer science degree. who worked at the best tech companies. who traveled the entire world. who dropped in on tony hawk's halfpipe. who learned to snowboard in her 30s and was already riding parks just two years later. who was deeply involved in the decentralized finance revolution from its early days. who was doing «a:https://web.archive.org/web/20070322015644/http://fly.to/bytegirl»fractals, C++, and AI back when she was a kid in the 90s«/a». who actually knows quantum field theory, has solved every equation, and feels theoretical physics in her bones.
+
+the girl who knows so much about culture, music, movies, art, and books. the girl who can solve any problem and create any reality. the girl who never dies and never gives up. the girl who is able to make miracles. the girl who will never, ever lose her kindness and her grace in this world.
+
+this girl is me. and i did not die. i only became the strongest i have ever been. today, i am the best, clearest, wisest, and most unbreakable version of myself. and today, i am building the biggest thing of my life, with the most humanitarian purpose, and it's called «a:https://www.nullstar.games/»NULLSTAR«/a».
+
+but don't be mistaken, my dear anon friend. this time, through the hardest hardship of my entire life, i could not have done it on my own. perhaps this is the first time i admit, or can claim, that no, this time i needed help. i got by, as i keep repeating, because of the good people in the world. even though they never spoke to me directly, they showered me with love through symbolic language. human angels saved my life.
+
+after this experience, i've become quite convinced of humanity's inherent kindness. beyond politics, nationality, or circumstance, i've found genuine compassion in all kinds of people. i believe that, by and large, humanity has a remarkable inclination toward goodness.
+
+now, the one thing that makes me wake up early every day, take care of myself, follow my routine, go to the gym, eat well, work until late, dream, smile, and all the rest, is the inspiration i drew from these people to build «a:https://www.nullstar.games/»NULLSTAR«/a». it's my homage to them, my gift to the world, my own unique way of giving back through all the skills and experience i've accumulated over so many decades of hard work. and that's why my whole heart and mind are devoted to it.
+
+my chapter in curitiba has finally come to an end. i can't wait to finally, finally, finally go back to america, my home, which i miss so much. i am grateful. i am so grateful. so much pain, so much pain, but i did it: i transmuted it. i did it. at times, i couldn't even believe it was possible, couldn't imagine how i would manage to do it, or where the inner strength would come from.
+
+but i did it, i did it. i transmuted the pain into wisdom, into a story of learning, into the memory of an experience that made me grow and become a better person. and now, as i go back home, i am not the same person i was when i left. far from it. and this is so beautiful, because i will be back with new eyes. what a blessing it is to be able to go back home, after so much longing, with completely new eyes, and better than i have ever been.
+
+and i miss the usa so much that i will never again take it for granted. i will cheer every single day of this reborn life. i will cheer every single day that i am in one piece, that i am healthy, that i can still work, that i made so many kind friends along the way, and that i might meet them in real life someday. that i can bring something amazing to the world. that everything will be worth it. that i will find true love and marry the love of my life someday. that i will see many beautiful sunsets and meteor showers. that i will help the world move in a better, more connected, more human direction. that i was forgiven and that i forgave. that i was given a second chance by the universe.
+
+i will cheer every day that i can still follow my dreams, that i believe we can build an amazing future together. that i will be a mom and it will be amazing. i will cheer every day that i made it, despite all the odds, all the rocks in the middle of the road, all the suffering, sorrow, grief, and all the scary, lonely nights. i made it, i made it, i made it. after the long night, i have found the dawn: it was within me all along, and i will never let it go away again.
+
+and if i can, my dear anon friend, so can you.
+
+
+-------------
+pepper coffee 
+--------------
+
+as i start this much-anticipated new chapter, take on new types of responsibilities, step into a more mature and long-awaited moment in my life, and return to being the stoic agent that is also part of my personality, the kind of outpouring above should not happen quite so frequently.
+
+all these months, when i poured my heart out to my anon readers, it was my way of making sure the world understood what happened to me, as well as a way of forging this particular healing process. but now, i am pretty confident that the old chapter is over, so we can go back to talking about fun stuff.
+
+i want my future notes to be about the good things in life, the beautiful stories i live, the lessons i learn, the people i meet, and all the things that happen when i finally get to eat the cake, while experiencing what life is like when you're working hard towards your dreams.
+
+i want my future notes to be very positive and inspiring, reflecting who i truly am. i also want them to sometimes be just pure storytelling. in the coming months, expect these types of stories: philosophy, learnings, wisdom, life, and the future. and since friendship and «a:https://matrix.nullstar.fun/?note=friendship»human connection«/a» are main themes of «a:https://www.nullstar.games/»NULLSTAR«/a»'s mission, let me tell you a quick one.
+
+my most recent pocket friends, bruno and rodrigo, own a super cute coffee shop two blocks from my grandma's old house, and it's where i've been working for the last month. by the way, «a:https://matrix.nullstar.fun/?artwork=memories.jpg»the new artwork«/a» is from my workspace, and through the window, you can see the patio of one of the campuses of the university of parana, where my dad taught me how to ride a bike and roller skate when i was a child.
+
+rodrigo was the first one i met. on the first day, i asked if i could spend the day working there. i was focusing on my project, and i had fond memories of the place. he was absolutely kind from the very beginning. between delicious coffee, free «a:https://en.wikipedia.org/wiki/Brigadeiro»brigadeiros«/a» (a brazilian delicacy), and chats on the balcony, i learned that this guy is about to win the lottery big time. he told me about this girl he is about to marry, who lives in a very small town in the middle of the state. they own a huge piece of land by the river, and he is going to move there, build a business with her, and spend his days in the water. now, this is someone very young who already understands what true happiness is.
+
+i met bruno a few days later. he used to work in software, and now he spends his days chilling with good people. i tried his pepper coffee, and it was one of the best drinks i have ever had. my mornings became a little more exciting because i knew i'd get my pepper fix when i got there.
+
+between the vinyl records playing MPB (brazilian jazzy music), RHCP, the cure, classic rock, and blues; delicious snacks and caffeinated beverages; all the cute, cool, clueless left-leaning kids from the university across the street; delicious street food; and the perfect sunny-but-chilly weather (it's always «a:https://web.archive.org/web/20110410001836/http://en.wikipedia.org/wiki/User:Steinkirch»my favorite season«/a» in curitiba), i must say, i had a great and productive time. and as my days there came to an end, i'm glad i got to celebrate the good life with pockets full of spice.
+
+
+-----------------
+friday the 13th 
+----------------
+
+
+let's end today's ramblings with a new tradition, plus some of my usual metaphysical divagations.
+
+every november post will come with a special treat for you, my dear anon friends. it's called  «a:https://matrix.nullstar.fun/?folder=movies&list=zeitgeist-2026»the zeitgeist awards«/a», and it's my way of sharing my lifelong cultivated taste with you all. the tradition will involve the movies that told the story of the year and other shenanigans.
+
+this year, since youtube had a huge influence on my life and on helping me figure out what was going on, we also have «a:https://matrix.nullstar.fun/?folder=podcasts/zeitgeist-awards-2026»the podcast version«/a». enjoy! and to the winners, thank you, from the bottom of my heart, for being who you are and for everything you have done for me.
+
+now, more interesting than a spooky friday, though, is the fact that today happens to be a rather extraordinary day astrologically, and it coincides quite nicely with the theme of this note.
+
+first, we have both venus and mercury going direct, meaning yay! after some much-needed "cleaning" in those areas of life, things should start moving more smoothly and quickly again. 
+
+but that's not all. on top of it, we have a rather rare triple conjunction of mars, jupiter, and the south node at 25 degrees of leo. and, coincidentally, that's exactly where my sun is. the sun can sometimes represent the paternal figure in your life, while the south node is associated with past karma and letting go of unfinished business. i won't tell you what mars and jupiter represent, but let's just say the symbolism matches the current moment almost a little too perfectly.
+
+so, whether you believe in astrology or not, here's to a great release, a little cosmic housekeeping, and stepping into a wonderful new chapter. see you next month!                
+                `)
+            },
+
+            {
                 id: 'friendship',
-                date: '2026-10-16T00:00:00.000Z',
+                date: '2026-10-16T12:00:00-07:00',
                 titleKey: 'notes.friendship.title',
                 contentKey: 'notes.friendship.content',
                 title: 'the future is about friendship',
@@ -186,7 +311,7 @@ if there is any truth in this whole idea that we are entering the age of aquariu
 
 (well, either this, or we are all going to move to the dystopian bleak world of complete isolation, loneliness, and disconnection)
 
--------
+------
 outro
 ------
 
@@ -200,7 +325,7 @@ lots of love, your wannabe lifelong friend
 
             {
                 id: 'prelude',
-                date: '2026-09-28T00:00:00.000Z',
+                date: '2026-09-28T12:00:00-07:00',
                 titleKey: 'notes.prelude.title',
                 contentKey: 'notes.prelude.content',
                 title: 'prelude: this is d-day',
@@ -292,7 +417,7 @@ and i promise you a ride for life
 
             {
                 id: 'hi',
-                date: '2026-08-02T00:00:00.000Z',
+                date: '2026-08-02T12:00:00-07:00',
                 titleKey: 'notes.hi.title',
                 contentKey: 'notes.hi.content',
                 title: 'hello starlit world',
@@ -349,14 +474,45 @@ usually on friday nights or over the weekends
         return Date.now().toString(36) + Math.random().toString(36).substring(2);
     }
 
-    formatDate(date) {
-        if (!date) return '';
-
+    /**
+     * Calendar date parts in San Francisco time, regardless of the viewer's timezone.
+     */
+    getPacificDateParts(date) {
+        if (!date) return null;
         const d = new Date(date);
-        if (isNaN(d.getTime())) return '';
+        if (isNaN(d.getTime())) return null;
 
-        const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
-        const dayName = days[d.getDay()];
+        const parts = {};
+        new Intl.DateTimeFormat('en-US', {
+            timeZone: 'America/Los_Angeles',
+            year: 'numeric',
+            month: 'numeric',
+            day: 'numeric',
+            weekday: 'long'
+        }).formatToParts(d).forEach(({ type, value }) => { parts[type] = value; });
+
+        return {
+            year: Number(parts.year),
+            month: Number(parts.month),
+            day: Number(parts.day),
+            weekday: parts.weekday.toLowerCase()
+        };
+    }
+
+    /**
+     * Sortable YYYY-MM-DD key for the San Francisco calendar day.
+     */
+    getDateKey(date) {
+        const p = this.getPacificDateParts(date);
+        if (!p) return '';
+        return `${p.year}-${String(p.month).padStart(2, '0')}-${String(p.day).padStart(2, '0')}`;
+    }
+
+    formatDate(date) {
+        const p = this.getPacificDateParts(date);
+        if (!p) return '';
+
+        const dayName = p.weekday;
         let day = dayName;
         if (window.I18n) {
             const translated = window.I18n.t(`notes.weekday.${dayName}`);
@@ -365,7 +521,7 @@ usually on friday nights or over the weekends
             }
         }
 
-        return `${d.getFullYear()}; ${d.getMonth() + 1}; ${d.getDate()}; ${day}`;
+        return `${p.year}; ${p.month}; ${p.day}; ${day}`;
     }
 }
 

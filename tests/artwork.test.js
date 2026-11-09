@@ -72,13 +72,13 @@ describe('ArtworkApp', () => {
         const modal = document.getElementById('artwork-image-modal');
         expect(modal.style.display).toBe('flex');
         expect(modal.style.opacity).toBe('1');
-        expect(modal.querySelector('img').src).toContain('summer.png');
+        expect(modal.querySelector('img').src).toContain('summer.jpg');
     });
 
     it('Escape and backdrop click close the lightbox', () => {
         vi.useFakeTimers();
         const app = new window.ArtworkAppClass();
-        app.openImage('/pages/artwork/love.png');
+        app.openImage('/pages/artwork/love.jpg');
         const modal = document.getElementById('artwork-image-modal');
         modal.querySelector('img').dispatchEvent(new MouseEvent('click', { bubbles: true }));
         expect(modal.style.display).toBe('flex');
@@ -86,7 +86,7 @@ describe('ArtworkApp', () => {
         vi.advanceTimersByTime(300);
         expect(modal.style.display).toBe('none');
 
-        app.openImage('/pages/artwork/love.png');
+        app.openImage('/pages/artwork/love.jpg');
         modal.click();
         vi.advanceTimersByTime(300);
         expect(modal.style.display).toBe('none');

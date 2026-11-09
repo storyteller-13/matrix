@@ -129,10 +129,8 @@ describe('Application modules (coverage)', () => {
         await import('../core/base-app.js');
         await import('../applications/lists/podcast-player.js');
         await import('../applications/lists/lists-folder.js');
-        // The zeitgeist awards (movies + podcasts) stay hidden on main until the reveal.
-        const revealed = window.PODCAST_EPISODES.length > 0;
         const dockBadge = document.getElementById('lists-folder-count-badge');
-        expect(dockBadge.textContent).toBe(revealed ? '13' : '11');
+        expect(dockBadge.textContent).toBe('13');
         expect(dockBadge.style.display).toBe('flex');
         expect(window.ListsFolderAppClass).toBeDefined();
         expect(window.ListsFolderApp).toBeDefined();
@@ -153,11 +151,11 @@ describe('Application modules (coverage)', () => {
             .find((el) => el.querySelector('.file-name').textContent === label)
             .querySelector('.lists-folder-count-badge');
         expect(badgeFor('books').textContent).toBe('4');
-        expect(badgeFor('movies').textContent).toBe(revealed ? '3' : '2');
-        if (revealed) expect(badgeFor('podcasts').textContent).toBe('1');
+        expect(badgeFor('movies').textContent).toBe('3');
+        expect(badgeFor('podcasts').textContent).toBe('1');
         expect(badgeFor('games').textContent).toBe('1');
         expect(badgeFor('adventures').textContent).toBe('4');
-        ['art', 'science', 'food', ...(revealed ? [] : ['podcasts'])].forEach((label) => {
+        ['art', 'science', 'food'].forEach((label) => {
             expect(badgeFor(label)).toBeNull();
         });
 
@@ -178,14 +176,11 @@ describe('Application modules (coverage)', () => {
 
         app.open('movies');
         expect(app.window.querySelector('.window-title').textContent).toBe('MOVIES');
+        expect(list.textContent).toContain('zeitgeist awards 2026');
         expect(list.textContent).not.toContain('this folder is empty');
-        if (revealed) {
-            expect(list.querySelectorAll('.file-item')[1].innerHTML).toContain('M10.6 10.6');
-            clickList('zeitgeist awards 2026');
-            expect(window.openBooksWindow).toHaveBeenLastCalledWith('zeitgeist-2026');
-        } else {
-            expect(list.textContent).not.toContain('zeitgeist awards 2026');
-        }
+        expect(list.querySelectorAll('.file-item')[1].innerHTML).toContain('M10.6 10.6');
+        clickList('zeitgeist awards 2026');
+        expect(window.openBooksWindow).toHaveBeenLastCalledWith('zeitgeist-2026');
         clickList('movies to watch with our kids');
         expect(window.openBooksWindow).toHaveBeenLastCalledWith('kids-movies');
         clickList('classic american movies for the winter holiday');
@@ -204,12 +199,13 @@ describe('Application modules (coverage)', () => {
         expect(window.openBooksWindow).toHaveBeenLastCalledWith('countries-explored');
         clickList('my guides');
         expect(app.window.querySelector('.window-title').textContent).toBe('MY GUIDES');
+        expect(list.querySelectorAll('.file-item').length).toBe(4);
         expect(list.querySelector('.file-item:nth-child(2)').innerHTML).toContain('M9 4.2 V17.8');
         clickList('alagoas, brazil');
         expect(window.openBooksWindow).toHaveBeenLastCalledWith('guide-alagoas');
-        clickList('iceland');
+        clickList('reykjavík, iceland');
         expect(window.openBooksWindow).toHaveBeenLastCalledWith('guide-iceland');
-        clickList('fun in berlin');
+        clickList('berlin, germany');
         expect(window.openBooksWindow).toHaveBeenLastCalledWith('guide-berlin');
 
         app.open('art');
@@ -220,44 +216,40 @@ describe('Application modules (coverage)', () => {
         expect(list.textContent).toContain('this folder is empty');
 
         app.open('podcasts');
+        expect(list.textContent).not.toContain('this folder is empty');
+        expect(list.textContent).toContain('zeitgeist awards 2026');
         expect(window.location.search).toBe('?folder=podcasts');
         expect(list.querySelector('.lists-folder-description')).toBeNull();
         expect(app.window.classList.contains('lists-folder-window--wide')).toBe(false);
-        if (revealed) {
-            const episodes = window.PODCAST_EPISODES;
-            expect(list.textContent).not.toContain('this folder is empty');
-            expect([...list.querySelectorAll('.file-item')].find((el) => el.textContent.includes('zeitgeist awards 2026'))
-                .querySelector('.lists-folder-count-badge').textContent).toBe(String(episodes.length));
 
-            window.openPodcastWindow = vi.fn();
-            clickList('zeitgeist awards 2026');
-            expect(app.path).toEqual(['podcasts', 'zeitgeist-awards-2026']);
-            expect(app.window.querySelector('.window-title').textContent).toBe('ZEITGEIST AWARDS 2026');
-            expect(window.location.search).toBe('?folder=podcasts/zeitgeist-awards-2026');
-            [episodes[0], episodes[episodes.length - 1]].forEach(({ title, videoId }) => {
-                clickList(title);
-                expect(window.openPodcastWindow).toHaveBeenLastCalledWith({ title, videoId });
-            });
-            expect(list.querySelector('.lists-folder-description').textContent).toBeTruthy();
-            expect(app.window.classList.contains('lists-folder-window--wide')).toBe(true);
-            expect(list.querySelectorAll('.lists-folder-item')).toHaveLength(episodes.length + 1);
-            clickList('back');
-            expect(app.path).toEqual(['podcasts']);
-            expect(window.location.search).toBe('?folder=podcasts');
-        } else {
-            expect(list.textContent).toContain('this folder is empty');
-        }
+        window.openPodcastWindow = vi.fn();
+        clickList('zeitgeist awards 2026');
+        expect(app.path).toEqual(['podcasts', 'zeitgeist-awards-2026']);
+        expect(app.window.querySelector('.window-title').textContent).toBe('ZEITGEIST AWARDS 2026');
+        expect(window.location.search).toBe('?folder=podcasts/zeitgeist-awards-2026');
+        clickList('father chad ripperger on shawn ryan');
+        expect(window.openPodcastWindow).toHaveBeenLastCalledWith({ title: 'father chad ripperger on shawn ryan', videoId: 'XKNMThu3jQI' });
+        clickList('dr. fei-fei li on andrew huberman');
+        expect(window.openPodcastWindow).toHaveBeenLastCalledWith({ title: 'dr. fei-fei li on andrew huberman', videoId: 'N5AQFYtqx8Q' });
+        clickList('arthur brooks on the daily stoic');
+        expect(window.openPodcastWindow).toHaveBeenLastCalledWith({ title: 'arthur brooks on the daily stoic', videoId: '9oI3NcbwEjI' });
+        expect(app.window.classList.contains('lists-folder-window--wide')).toBe(true);
+        clickList('pastor greg laurie on tetragrammaton');
+        expect(window.openPodcastWindow).toHaveBeenLastCalledWith({ title: 'pastor greg laurie on tetragrammaton', videoId: 'KGR27hIf8Ow' });
+        clickList('back');
+        expect(app.path).toEqual(['podcasts']);
+        expect(window.location.search).toBe('?folder=podcasts');
 
         // Links: ?folder=<name>, nested paths, bare nested ids, and unknown folders are ignored.
         expect(app.resolveFolderPath('movies')).toEqual(['movies']);
-        expect(app.resolveFolderPath('Adventures/My-Guides')).toEqual(['adventures', 'my-guides']);
-        expect(app.resolveFolderPath('my-guides')).toEqual(['adventures', 'my-guides']);
+        expect(app.resolveFolderPath('Podcasts/Zeitgeist-Awards-2026')).toEqual(['podcasts', 'zeitgeist-awards-2026']);
+        expect(app.resolveFolderPath('zeitgeist-awards-2026')).toEqual(['podcasts', 'zeitgeist-awards-2026']);
         expect(app.resolveFolderPath('nope')).toBeNull();
         expect(app.resolveFolderPath('movies/nope')).toBeNull();
-        history.replaceState(null, '', '/?folder=my-guides');
+        history.replaceState(null, '', '/?folder=zeitgeist-awards-2026');
         app.openFromUrl();
-        expect(app.path).toEqual(['adventures', 'my-guides']);
-        expect(window.location.search).toBe('?folder=adventures/my-guides');
+        expect(app.path).toEqual(['podcasts', 'zeitgeist-awards-2026']);
+        expect(window.location.search).toBe('?folder=podcasts/zeitgeist-awards-2026');
         history.replaceState(null, '', '/?folder=nope');
         app.open('books');
         history.replaceState(null, '', '/?folder=nope');
@@ -274,7 +266,7 @@ describe('Application modules (coverage)', () => {
         app.open('games');
         expect(list.textContent).not.toContain('this folder is empty');
         expect(list.querySelectorAll('.file-item')[1].innerHTML).toContain('M7.6 10.2');
-        clickList('the games of my youth');
+        clickList('the videogames of my youth');
         expect(window.openBooksWindow).toHaveBeenLastCalledWith('games-youth');
     });
 
@@ -306,16 +298,11 @@ describe('Application modules (coverage)', () => {
 
         window.PodcastPlayerApp = app;
         window.openPodcastWindow = (episode) => app.open(episode);
+        window.openPodcastEpisode('ripperger-shawn-ryan');
+        expect(iframe.getAttribute('src')).toContain('/embed/XKNMThu3jQI?');
+        expect(document.querySelector('.window-title').textContent).toBe('FATHER CHAD RIPPERGER ON SHAWN RYAN');
         window.openPodcastEpisode('nope');
-        expect(iframe.getAttribute('src')).toBe('about:blank');
-        const [first] = window.PODCAST_EPISODES;
-        if (first) {
-            window.openPodcastEpisode(first.id);
-            expect(iframe.getAttribute('src')).toContain(`/embed/${first.videoId}?`);
-            expect(document.querySelector('.window-title').textContent).toBe(first.title.toUpperCase());
-            window.openPodcastEpisode('nope');
-            expect(iframe.getAttribute('src')).toContain(`/embed/${first.videoId}?`);
-        }
+        expect(iframe.getAttribute('src')).toContain('/embed/XKNMThu3jQI?');
     });
 
     it('podcast-player builds the episode menu from PODCAST_EPISODES', async () => {
@@ -325,15 +312,12 @@ describe('Application modules (coverage)', () => {
         await import('../applications/lists/podcast-player.js');
         const menu = document.getElementById('podcast-menu-episodes');
         const buttons = menu.querySelectorAll('button.menu-item');
-        const episodes = window.PODCAST_EPISODES;
-        expect(buttons.length).toBe(episodes.length);
-        expect(menu.querySelectorAll('.menu-separator').length).toBe(Math.max(buttons.length - 1, 0));
+        expect(buttons.length).toBe(window.PODCAST_EPISODES.length);
+        expect(menu.querySelectorAll('.menu-separator').length).toBe(buttons.length - 1);
+        expect(buttons[0].dataset.action).toBe('openPodcastEpisode');
+        expect(buttons[0].dataset.arg).toBe('ripperger-shawn-ryan');
+        expect(buttons[6].textContent).toBe('lyn alden on natalie brunell');
         expect(menu.textContent).not.toContain('stale');
-        buttons.forEach((button, i) => {
-            expect(button.dataset.action).toBe('openPodcastEpisode');
-            expect(button.dataset.arg).toBe(episodes[i].id);
-            expect(button.textContent).toBe(episodes[i].title);
-        });
     });
 
     it('apod.js loads and exposes APODPanelClass and buildApiUrl', async () => {

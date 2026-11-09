@@ -15,6 +15,14 @@ const SOUNDTRACKS = [
         storageKey: 'music-player-playlists-2027',
         defaultDataKey: 'SOUNDTRACK_2027',
     },
+    {
+        id: '2028',
+        title: 'the soundtrack of 2028',
+        titleKey: 'music.soundtrack2028',
+        storageKey: 'music-player-playlists-2028',
+        defaultDataKey: 'SOUNDTRACK_2028',
+        comingSoonText: 'come back in 2028',
+    },
 ];
 const DEFAULT_SOUNDTRACK = '2026';
 
@@ -538,7 +546,7 @@ class MusicPlayer {
             titleElement.textContent = this.songs[this.currentSongIndex].title;
         } else if (titleElement && this.songs.length === 0) {
             const comingSoon = window.I18n?.t?.('music.comingSoon');
-            titleElement.textContent = comingSoon && comingSoon !== 'music.comingSoon' ? comingSoon : 'coming soon';
+            titleElement.textContent = comingSoon && comingSoon !== 'music.comingSoon' ? comingSoon : 'nothing yet';
         }
         this.renderSongList();
     }
@@ -546,6 +554,12 @@ class MusicPlayer {
     renderSongList() {
         const songListElement = document.getElementById(this.selectors.songList);
         if (!songListElement || !this.playlistsData || !this.playlistsData.playlists) return;
+
+        const soundtrack = this.findSoundtrack(this.soundtrackId);
+        if (soundtrack?.comingSoonText) {
+            songListElement.innerHTML = `<div class="music-song-soon">${soundtrack.comingSoonText}</div>`;
+            return;
+        }
 
         const currentPlaylistId = this.playlistsData.currentPlaylistId;
         

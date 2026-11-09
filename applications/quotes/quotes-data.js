@@ -43,6 +43,7 @@ window.QUOTES = [
 
     // nietzsche
     { text: 'to live is to suffer, to survive is to find some meaning in the suffering.', author: 'friedrich nietzsche' },
+    { text: 'one must still have chaos in oneself to be able to give birth to a dancing star.', author: 'friedrich nietzsche' },
 
     // joseph campbell
     { text: 'the cave you fear to enter holds the treasure you seek.', author: 'joseph campbell' },
@@ -397,6 +398,9 @@ window.QUOTES = [
     // t.s. eliot
     { text: 'home is where one starts from. as we grow older, the world becomes stranger, the pattern more complicated of dead and living.', author: 't.s. eliot' },
 
+    // jorge luis borges
+    { text: 'we are our memory, we are that chimerical museum of shifting shapes, that pile of broken mirrors.', author: 'jorge luis borges' },
+
     // alan kay
     { text: 'a change in perspective is worth 80 iq points.', author: 'alan kay' },
     { text: 'technology is anything that was invented after you were born.', author: 'alan kay' },
@@ -662,7 +666,7 @@ window.QUOTES = [
     { text: 'we don’t create rules and laws to avoid pain and suffering; we create rules and laws to become our best selves after experiencing pain and suffering.', author: 'marina von steinkirch' },
     { text: 'if you want to be a successful builder, i have two pieces of advice: work as hard as you can to master your craft, and stay absolutely away from drama.', author: 'marina von steinkirch' },
     { text: 'after years of completely disintegrating the self, i finally realize that every single soul around me is a beautiful, but scary, child.', author: 'marina von steinkirch' },
-    { text: 'does evil exist because of free will, or does free will exist because of evil? — assumming they are both real, of course.', author: 'marina von steinkirch' },
+    { text: 'does evil exist because of free will, or does free will exist because of evil? — assuming they are both real, of course.', author: 'marina von steinkirch' },
     { text: 'the hardest downside of reading minds is learning about an unexpected betrayal. that’s probably why you gotta have a very strong, ego-dead self to deal with this brave new world skill.', author: 'marina von steinkirch' },
     { text: 'if i have to make the choice, i will choose a thousand times over to be the one who gives rather than the one who takes.', author: 'marina von steinkirch' },
     { text: 'never underestimate the damage that envy and ignorance can inflict on an unguarded life. guard your diamonds by keeping distance from those who let both guide their lives.', author: 'marina von steinkirch' },
@@ -670,7 +674,7 @@ window.QUOTES = [
     { text: 'there is nothing more sublime and gratifying than having the privilege of devoting yourself to your craft every day with a childlike sense of wonder.', author: 'marina von steinkirch' },
     { text: 'rose-colored pareto rule: if 80% of your life was free, healthy, and loved, you’re very lucky — and whatever you’re going through now, you’ll overcome. if not, the odds are on your side, and you’ll have an amazing future ahead if you set your mind right.', author: 'marina von steinkirch' },
     { text: 'when you trap a very creative and intelligent person inside a box, their mind takes the shape of an octopus.', author: 'marina von steinkirch' },
-    { text: 'energy matches energy — after all the trials, all the choices, and all the searching, the people you end up with are an inexorable reflection of who you trully are.', author: 'marina von steinkirch' },
+    { text: 'energy matches energy — after all the trials, all the choices, and all the searching, the people you end up with are an inexorable reflection of who you truly are.', author: 'marina von steinkirch' },
     { text: 'the people who sacrifice integrity, growth, and honesty for attention should be the first to leave your life. the longer they remain in your field, the more damage they will cause — and they feed on it.', author: 'marina von steinkirch' },
     { text: 'every day better; every day smarter; every day stronger; every day closer.', author: 'marina von steinkirch' },
     { text: 'you must learn how to control your mind. if you wake from a bad dream, you need to take control of your thoughts and teach your brain to release the neurosis by replacing it with something you can feel grateful for that is related to it.', author: 'marina von steinkirch' },
@@ -684,7 +688,7 @@ window.QUOTES = [
     { text: 'every single time you attacked someone weaker than you, you brought a little piece of injustice and evil to the scales of the world.', author: 'marina von steinkirch' },
     { text: 'mortality is the ultimate and greatest source of redemption.', author: 'marina von steinkirch' },
     { text: 'the most beautiful thing about good is that it\'s a permanent force; the most reassuring thing about evil is that it\'s always revealed and defeated, even if it takes time.', author: 'marina von steinkirch' },
-    { text: 'never understimate the power of a healthy boundary against envy.', author: 'marina von steinkirch' },
+    { text: 'never underestimate the power of a healthy boundary against envy.', author: 'marina von steinkirch' },
     { text: 'privacy is the single most important aspect of being human; no one should have the right to invade your thoughts or steal your agency.', author: 'marina von steinkirch' },
     { text: 'forgive, even if your enemy hasn’t learned to do so yet. let him take his time while you stay away and live your best life.', author: 'marina von steinkirch' },
     { text: 'remember that you are an unlimited source of love and light; this is your source of flourishing and the one power that evil can never take from you.', author: 'marina von steinkirch' },
@@ -728,7 +732,7 @@ window.QUOTES = [
     { text: 'unless you are a psychopath, you have kindness, compassion, and sweetness inside yourself. this is your most beautiful side. don\'t let the unavoidable scars from life make you forget that.', author: 'marina von steinkirch' },
     { text: 'choosing kindness, integrity, and honest work is an active choice. it takes energy at first, but over time it has the potential to become the default habit.', author: 'marina von steinkirch' },
     { text: 'everybody might deny it, but everybody is searching to be seen and to be truly loved.', author: 'marina von steinkirch' },
-    { text: 'i never really thought about fame. it was never a goal or even a remote interest of mine. then it inevitably happened because all i do in life is work. i realized that once someone knows you, they will never unknow you. and i still have no idea how to deal with the process at scale.', author: 'marina von steinkirch' },
+    { text: 'i never really thought about fame. it was never a goal or even a remote interest of mine. then it inevitably happened because all i do in life is work. i realized that once someone knows you, they will never unknown you. and i still have no idea how to deal with the process at scale.', author: 'marina von steinkirch' },
     { text: 'a respectful and truthful friendship is as honorable as the lifelong love held by two soulmates.', author: 'marina von steinkirch' },
     { text: 'there is still time for us all to work together for a future we never imagined before, and as good as any dream we had when we were young.', author: 'marina von steinkirch' },
     { text: 'all the journeys in my life sum up in a state of mind where i cannot distinguish the world as a separate place anymore. anywhere and everywhere is home. anyone and everyone is a beautiful human.', author: 'marina von steinkirch' },
@@ -796,4 +800,5 @@ window.QUOTES = [
     { text: 'minimalist life; intentional choices; peaceful state of mind.', author: 'marina von steinkirch' },
     { text: 'every day, when you wake up, remember everything you love about yourself, all the blessings you have in your life, all the beautiful things you still need to create, and all the wonderful moments still waiting to be lived in the fleeting existence that is yours.', author: 'marina von steinkirch' },
     { text: 'the most underrated skill you cultivate as you grow older is patience.', author: 'marina von steinkirch' },
+    { text: 'if ihad to describe myself in one sentence: i come from the future.', author: 'marina von steinkirch' },
 ];

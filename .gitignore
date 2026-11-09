@@ -50,7 +50,7 @@ NOTES
 # Cursor
 .cursor/
 
-# OpenAI Codqex
+# OpenAI Codex
 .codex/
 .agents/
 

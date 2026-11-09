@@ -1,7 +1,5 @@
 /**
- * Curated lists window (notes letter styles): books read in 2026, books read in 2027,
- * the book backlog, the books our kids should read, the zeitgeist movie awards, the games of my youth
- * and my travel guides. One window shows whichever list was opened.
+ * Curated lists window
  */
 
 const BOOK_LISTS = [
@@ -289,8 +287,7 @@ class BooksApp extends BaseApp {
     }
 
     /**
-     * A category table: numbered with blank slots until winners are filled in (award lists),
-     * or a plain unnumbered list when `ranked: false` (e.g. the games of my youth).
+     * A category table
      */
     renderCategoryTable(category) {
         const label = this.escapeHtml(category.label || '');

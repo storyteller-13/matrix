@@ -1,10 +1,9 @@
 /**
- * The games of my youth – one table per console / setup, unranked.
  * Add a game with { title: 'name' } (optionally url: '') inside its category's `games`.
  */
 
 const GAMES_YOUTH = {
-    title: 'the games of my youth',
+    title: 'the videogames of my youth',
     shareId: 'games-youth',
     categories: [
         {

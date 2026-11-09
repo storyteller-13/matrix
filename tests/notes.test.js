@@ -155,6 +155,19 @@ describe('NotesApp', () => {
         expect(app.formatContent('---\nart\n---')).toBe('---<br>art<br>---');
     });
 
+    it('links words with «a:url»…«/a» markers, http(s) only', () => {
+        const app = new window.NotesAppClass();
+        app.currentAsciiArt = false;
+        const box = document.createElement('div');
+        box.innerHTML = app.formatContent('see «a:https://example.com/x?a=1&b=2»this page«/a» now, and «a:javascript:alert(1)»bad«/a»');
+        const link = box.querySelector('a');
+        expect(link.getAttribute('href')).toBe('https://example.com/x?a=1&b=2');
+        expect(link.textContent).toBe('this page');
+        expect(link.getAttribute('target')).toBe('_blank');
+        expect(box.querySelectorAll('a').length).toBe(1);
+        expect(box.textContent).toContain('«a:javascript:alert(1)»bad«/a»');
+    });
+
     it('opens the letter with the fallback path', () => {
         window.bringToFront = vi.fn();
         const app = new window.NotesAppClass();

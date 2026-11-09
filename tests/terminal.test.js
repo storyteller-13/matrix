@@ -73,12 +73,47 @@ describe('Terminal', () => {
         expect(lastOutput()).toMatch(/no such file or directory/i);
     });
 
+    it('ls shows the artwork and lists directories, and ls lists prints the whole tree', () => {
+        typeCommand('ls');
+        expect(lastOutput()).toContain('artwork');
+        expect(lastOutput()).toContain('lists');
+
+        window.ListsFolderApp = {
+            rootEntries: () => [
+                { id: 'books', label: 'books', kind: 'folder' },
+                { id: 'adventures', label: 'adventures', kind: 'folder' },
+            ],
+            entriesForFolder: (id) => ({
+                books: [{ id: 'b1', label: 'book one', kind: 'list' }],
+                adventures: [{ id: 'my-guides', label: 'my guides', kind: 'folder' }],
+                'my-guides': [{ id: 'g1', label: 'guide one', kind: 'list' }],
+            })[id] || [],
+            resolveFolderPath: (value) => (value === 'adventures' ? ['adventures'] : null),
+        };
+        typeCommand('ls lists');
+        expect(lastOutput()).toBe([
+            'lists',
+            '├── books',
+            '│   └── book one',
+            '└── adventures',
+            '    └── my guides',
+            '        └── guide one',
+            '',
+            '3 directories, 2 files',
+        ].join('\n'));
+        typeCommand('ls lists/adventures');
+        expect(lastOutput()).toContain('└── my guides');
+        typeCommand('ls lists/nope');
+        expect(lastOutput()).toMatch(/no such file or directory/i);
+        delete window.ListsFolderApp;
+    });
+
     it('cd changes directory and ls/cat work in the new path', () => {
         typeCommand('cd artwork');
         typeCommand('pwd');
         expect(lastOutput()).toBe('/artwork');
         typeCommand('ls');
-        expect(lastOutput()).toContain('summer.png');
+        expect(lastOutput()).toContain('summer.jpg');
         typeCommand('cd ..');
         typeCommand('pwd');
         expect(lastOutput()).toBe('~');
@@ -168,9 +203,9 @@ describe('Terminal', () => {
         typeCommand('ls /');
         expect(lastOutput()).toContain('bin');
         typeCommand('ls /artwork');
-        expect(lastOutput()).toContain('summer.png');
+        expect(lastOutput()).toContain('summer.jpg');
         typeCommand('ls artwork');
-        expect(lastOutput()).toContain('summer.png');
+        expect(lastOutput()).toContain('summer.jpg');
         typeCommand('ls /nope/');
         expect(lastOutput()).toMatch(/no such file or directory/i);
         typeCommand('cd /etc');
@@ -191,7 +226,7 @@ describe('Terminal', () => {
         typeCommand('cd /artwork');
         typeCommand('pwd');
         expect(lastOutput()).toBe('/artwork');
-        typeCommand('cat /artwork/summer.png');
+        typeCommand('cat /artwork/summer.jpg');
         expect(lastOutput()).toBe('file');
     });
 
@@ -224,18 +259,18 @@ describe('Terminal', () => {
             get src() { return this._src; }
         }
         vi.stubGlobal('Image', MockImage);
-        typeCommand('view summer.png');
+        typeCommand('view summer.jpg');
         await Promise.resolve();
-        expect(window.ArtworkApp.openImage).toHaveBeenCalledWith('/pages/artwork/summer.png');
-        typeCommand('view artwork/love.png');
+        expect(window.ArtworkApp.openImage).toHaveBeenCalledWith('/pages/artwork/summer.jpg');
+        typeCommand('view artwork/love.jpg');
         await Promise.resolve();
-        expect(window.ArtworkApp.openImage).toHaveBeenCalledWith('/pages/artwork/love.png');
+        expect(window.ArtworkApp.openImage).toHaveBeenCalledWith('/pages/artwork/love.jpg');
         typeCommand('view pages/artwork/lion.jpg');
         await Promise.resolve();
         expect(window.ArtworkApp.openImage).toHaveBeenCalledWith('pages/artwork/lion.jpg');
 
         window.ArtworkApp = undefined;
-        typeCommand('view summer.png');
+        typeCommand('view summer.jpg');
         await Promise.resolve();
         await Promise.resolve();
         const modal = document.getElementById('terminal-image-modal');
@@ -249,7 +284,7 @@ describe('Terminal', () => {
         modal.click();
         await new Promise((r) => setTimeout(r, 310));
         expect(modal.style.display).toBe('none');
-        typeCommand('view summer.png');
+        typeCommand('view summer.jpg');
         await Promise.resolve();
         expect(document.getElementById('terminal-image-modal')).toBe(modal);
         vi.unstubAllGlobals();
@@ -279,13 +314,13 @@ describe('Terminal', () => {
             get src() { return this._src; }
         }
         vi.stubGlobal('Image', MockImage);
-        vi.stubGlobal('prompt', vi.fn().mockReturnValueOnce('/pages/artwork/summer.png').mockReturnValueOnce(''));
+        vi.stubGlobal('prompt', vi.fn().mockReturnValueOnce('/pages/artwork/summer.jpg').mockReturnValueOnce(''));
         window.ArtworkApp = { openImage: vi.fn() };
         const terminal = document.getElementById('main-terminal');
         terminal.dispatchEvent(new MouseEvent('contextmenu', { bubbles: true, pageX: 12, pageY: 20 }));
         document.querySelector('.context-menu-item').click();
         await Promise.resolve();
-        expect(window.ArtworkApp.openImage).toHaveBeenCalledWith('/pages/artwork/summer.png');
+        expect(window.ArtworkApp.openImage).toHaveBeenCalledWith('/pages/artwork/summer.jpg');
         terminal.dispatchEvent(new MouseEvent('contextmenu', { bubbles: true, pageX: 12, pageY: 20 }));
         document.querySelector('.context-menu-item').click();
         expect(window.prompt).toHaveBeenCalledTimes(2);

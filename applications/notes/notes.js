@@ -249,7 +249,7 @@ class NotesApp extends BaseApp {
     groupEntriesByDate() {
         this.entriesByDate = {};
         this.entries.forEach(entry => {
-            const dateKey = new Date(entry.createdAt).toDateString();
+            const dateKey = this.storage.getDateKey(entry.createdAt);
             if (!this.entriesByDate[dateKey]) {
                 this.entriesByDate[dateKey] = [];
             }
@@ -258,9 +258,8 @@ class NotesApp extends BaseApp {
     }
 
     getSortedDates() {
-        return Object.keys(this.entriesByDate).sort((a, b) => {
-            return new Date(b) - new Date(a);
-        });
+        // Keys are YYYY-MM-DD, so string order is chronological; oldest first, newest at the bottom
+        return Object.keys(this.entriesByDate).sort((a, b) => a.localeCompare(b));
     }
 
     renderDateItems(sortedDates) {
@@ -400,24 +399,13 @@ class NotesApp extends BaseApp {
     }
 
     formatContent(content) {
-        // Support «i»...«/i» for inline italic (multiline allowed)
-        const italicRegex = /«i»([\s\S]*?)«\/i»/g;
-        const segments = [];
-        let lastIndex = 0;
-        let match;
-        while ((match = italicRegex.exec(content)) !== null) {
-            if (match.index > lastIndex) {
-                segments.push({ type: 'normal', text: content.slice(lastIndex, match.index) });
-            }
-            segments.push({ type: 'italic', text: match[1] });
-            lastIndex = match.index + match[0].length;
-        }
-        if (lastIndex < content.length) {
-            segments.push({ type: 'normal', text: content.slice(lastIndex) });
-        }
-        const processed = segments.length
-            ? segments.map(s => s.type === 'italic' ? '<em>' + this.escapeHtml(s.text) + '</em>' : this.escapeHtml(s.text)).join('')
-            : this.escapeHtml(content);
+        // Escape first; the «» markers contain no HTML-special characters, so they survive escaping.
+        // «i»...«/i» → inline italic (multiline allowed)
+        // «a:https://...»words«/a» → link on the words (http/https only)
+        const processed = this.escapeHtml(content)
+            .replace(/«i»([\s\S]*?)«\/i»/g, '<em>$1</em>')
+            .replace(/«a:(https?:\/\/[^»\s"<>]+)»([\s\S]*?)«\/a»/g,
+                (_, url, text) => `<a href="${url}" target="_blank" rel="noopener noreferrer">${text}</a>`);
         return this.formatDashedBlocks(processed).replace(/\n/g, '<br>');
     }
 

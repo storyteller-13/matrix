@@ -73,7 +73,7 @@ window.GUIDE_ALAGOAS = GUIDE_ALAGOAS;
  * table?: { columns, rows }, lists?: [{ heading?, items }], tip? }.
  */
 const GUIDE_ICELAND = {
-    title: 'iceland',
+    title: 'reykjavík, iceland',
     shareId: 'guide-iceland',
     subtitle: '✨ witchcraft & sorcery spots in iceland ✨',
     intro: '(iceland has a deeply fascinating — and surprisingly male-dominated — history of witchcraft and sorcery)',
@@ -172,7 +172,7 @@ const GUIDE_ICELAND = {
 window.GUIDE_ICELAND = GUIDE_ICELAND;
 
 const GUIDE_BERLIN = {
-    title: 'fun in berlin',
+    title: 'berlin, germany',
     shareId: 'guide-berlin',
     categories: [
         {

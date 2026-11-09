@@ -27,7 +27,7 @@ const BOOKS_2026 = {
                 { title: 'job-less utopia (marcus hutter)', rating: '8/10', url: 'https://gist.github.com/von-steinkirch/84dd53a6cb02ec6038661dee248cb7b5', note: 'my thoughts' },
                 { title: 'the road to general intelligence (j. swan et al.)', rating: '8/10', url: 'https://gist.github.com/von-steinkirch/030fbf9867ea362d2c5503434a44e4b9', note: 'my thoughts' },
                 { title: 'harness engineering (i. wijesiri)', rating: '8/10', url: 'https://marina.nullstar.fun/blog/book_harness_eng.html', note: 'my thoughts' },
-                { title: 'machine super Intelligence (s. legg)', rating: '10/10', url: 'https://marina.nullstar.fun/blog/book_legg.html', note: 'my thoughts' },
+                { title: 'machine superintelligence (s. legg)', rating: '10/10', url: 'https://marina.nullstar.fun/blog/book_legg.html', note: 'my thoughts' },
                 { title: 'machine learning engineering (s. bekman)', rating: '10/10', url:'https://marina.nullstar.fun/blog/book_ml_eng.html', notes: 'my thoughts'}
             ]
         },
@@ -61,7 +61,7 @@ const BOOKS_2026 = {
             count: 6,
             books: [
                 { title: 'superintelligence (nick bostrom)', rating: '10/10', url: 'https://marina.nullstar.fun/blog/book_superintel.html', note: 'my thoughts' },
-                { title: 'neuromancer (william gibson)', rating: '7/10', note: 'read it the first time in college and loved it; loved slightly less this second time. "this is the matrix. you’re wintermute.”'},
+                { title: 'neuromancer (william gibson)', rating: '7/10', note: 'read it the first time in college and loved it; loved slightly less this second time. “this is the matrix. you’re wintermute.”'},
                 { title: 'the obstacle is the way (ryan holiday)', rating: '9/10', url: 'https://gist.github.com/von-steinkirch/13a135cca8097caa3126d1b6ce6e9f4a', note: 'my thoughts' },
                 { title: 'the singularity is near (ray kurzweil)', rating: '8/10', url: 'https://gist.github.com/von-steinkirch/31c1545bc212c091d77e2c5b111328e3', note: 'my thoughts' },
                 { title: 'generative ai with langchain (auffarth)', rating: '8/10', url: 'https://marina.nullstar.fun/blog/book_lanchain.html', note: 'my thoughts' },
@@ -132,7 +132,7 @@ const BOOKS_2026 = {
             books: [
                 { title: 'meditations (marcus aurelius)', rating: '10/10', url: 'https://gist.github.com/von-steinkirch/038cccccd1d428a3deca69080c300276', note: 'my thoughts' },
                 { title: 'the book of sand (jorge luis borges)', rating: '8/10', url: 'https://gist.github.com/von-steinkirch/abceab872b7a4bab220e64230f92a66a#-january-8-books-read-', note: 'my thoughts' },
-                { title: 'shakespeare memory (jorge luis borges)', rating: '8/10', url: 'https://gist.github.com/von-steinkirch/abceab872b7a4bab220e64230f92a66a#-january-8-books-read-', note: 'my thoughts' },
+                { title: 'shakespeare\'s memory (jorge luis borges)', rating: '8/10', url: 'https://gist.github.com/von-steinkirch/abceab872b7a4bab220e64230f92a66a#-january-8-books-read-', note: 'my thoughts' },
                 { title: 'artifices (jorge luis borges)', rating: '8/10', url: 'https://gist.github.com/von-steinkirch/abceab872b7a4bab220e64230f92a66a#-january-8-books-read-', note: 'my thoughts' },
                 { title: 'the aleph (jorge luis borges)', rating: '8/10', url: 'https://gist.github.com/von-steinkirch/abceab872b7a4bab220e64230f92a66a#-january-8-books-read-', note: 'my thoughts' },
                 { title: 'fictions (jorge luis borges)', rating: '8/10', url: 'https://gist.github.com/von-steinkirch/abceab872b7a4bab220e64230f92a66a#-january-8-books-read-', note: 'my thoughts' },

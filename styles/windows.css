@@ -317,6 +317,10 @@ a.file-item {
 .lists-folder-window .file-list {
     position: relative;
     min-height: 220px;
+    /* Breathing room on every side, so icons never sit against the window's border. */
+    padding: 20px 24px;
+    /* Rows keep their own height instead of stretching to fill the window (no vertical centering). */
+    align-content: start;
 }
 
 .lists-folder-item {
@@ -398,15 +402,21 @@ a.file-item {
     align-content: start;
 }
 
+/* Tiles in a row share one height, so every hover box and icon line up across the row;
+   the icon + label stack is centered inside its tile. */
 .lists-folder-window .file-list > .lists-folder-item {
     position: relative;
     z-index: 1;
+    align-self: stretch;
+    justify-content: center;
+    padding: 8px 6px;
 }
 
 /* Keep words whole in item names; only a word wider than its tile wraps. */
 .lists-folder-window .file-name {
     word-break: normal;
     overflow-wrap: break-word;
+    line-height: 1.35;
 }
 
 
@@ -1335,7 +1345,7 @@ a.file-item {
     font-style: italic;
 }
 
-/* Unranked lists (e.g. the games of my youth): short tables flow into columns instead of full-width rows. */
+/* Unranked lists */
 .books-tables--columns {
     display: block;
     column-width: 210px;
@@ -1641,6 +1651,17 @@ a.file-item {
     border-bottom-color: #E879A9;
 }
 
+/* Links on words in the note text («a:https://…»words«/a») */
+#notes-letter-window #letter-content a {
+    color: #E879A9;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(232, 121, 169, 0.4);
+}
+
+#notes-letter-window #letter-content a:hover {
+    border-bottom-color: #E879A9;
+}
+
 /* Section headings (a line framed by dashes in the note text): ─── heading ─── */
 #notes-letter-window .letter-section {
     display: flex;
@@ -1775,6 +1796,16 @@ a.file-item {
 .award-category--featured .award-list,
 .award-category--featured ~ .award-category:last-child:nth-child(even) .award-list {
     columns: 2 260px;
+    column-gap: 18px;
+}
+
+/* Column balancing lays a five-entry list out as 2 + 3, so rank 3 sits beside rank 1.
+   Flow down the first column instead, keeping rank 3 directly under rank 2. */
+.award-category--featured ~ .award-category:last-child:nth-child(even) .award-list:has(> .award-entry:nth-child(5):last-child) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, auto);
+    grid-auto-flow: column;
     column-gap: 18px;
 }
 

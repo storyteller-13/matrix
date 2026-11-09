@@ -5,7 +5,7 @@
     const HOME_DIR = '~';
     const PROMPT_PREFIX = 'anon@nullstar:';
     const MODAL_ID = 'terminal-image-modal';
-    const HOME_ALLOWED_ENTRIES = ['.secrets', 'artwork'];
+    const HOME_ALLOWED_ENTRIES = ['.secrets', 'artwork', 'lists'];
     const LS_DETAILED_DATE = 'Dec 15 14:30';
     const LS_DETAILED_USER = 'anon';
     const LS_DIR_PERMS = 'drwxr-xr-x';
@@ -42,9 +42,10 @@
                 'os-release': 'name="nullstar"\nversion="2024.12"\nid=nullstar\npretty_name="nullstar 2024.12"\nansi_color="0;34"'
             },
             '/artwork': {
-                'summer.png': 'file',
-                'love.png': 'file',
+                'summer.jpg': 'file',
+                'love.jpg': 'file',
                 'lion.jpg': 'file',
+                'memories.jpg': 'file',
             }
         };
 
@@ -125,6 +126,52 @@
                 }).join('\n');
             }
             return entries.join('  ');
+        }
+
+        /**
+         * Renders the curated lists folder as a tree (like the `tree` command), read from the
+         * lists folder app so the terminal always matches what the folder shows.
+         * `arg` is "lists" or "lists/<sub-folder path>".
+         */
+        function listsTree(arg) {
+            const app = window.ListsFolderApp;
+            if (!app || typeof app.rootEntries !== 'function') {
+                return `ls: cannot access '${arg}': lists are not available`;
+            }
+
+            let rootLabel = 'lists';
+            let entries;
+            const sub = arg.slice('lists'.length).replace(/^\/+/, '');
+            if (sub) {
+                const path = app.resolveFolderPath(sub);
+                if (!path) return `ls: cannot access '${arg}': no such file or directory`;
+                entries = app.entriesForFolder(path[path.length - 1]);
+                rootLabel = arg.replace(/\/+$/, '');
+            } else {
+                entries = app.rootEntries();
+            }
+
+            let dirCount = 0;
+            let fileCount = 0;
+            const lines = [rootLabel];
+            const walk = (allItems, prefix) => {
+                // Podcast episode names are left out of the tree.
+                const items = allItems.filter((entry) => entry.kind !== 'podcast');
+                items.forEach((entry, i) => {
+                    const last = i === items.length - 1;
+                    lines.push(`${prefix}${last ? '└── ' : '├── '}${entry.label}`);
+                    if (entry.kind === 'folder') {
+                        dirCount++;
+                        walk(app.entriesForFolder(entry.id), `${prefix}${last ? '    ' : '│   '}`);
+                    } else {
+                        fileCount++;
+                    }
+                });
+            };
+            walk(entries, '');
+            lines.push('');
+            lines.push(`${dirCount} ${dirCount === 1 ? 'directory' : 'directories'}, ${fileCount} ${fileCount === 1 ? 'file' : 'files'}`);
+            return lines.join('\n');
         }
 
         function updateInputPrompt() {
@@ -249,6 +296,9 @@
             ls: (args) => {
                 const useDetailed = args && args.includes('-la');
                 const dirArg = args && args.find(arg => !arg.startsWith('-'));
+                if (dirArg && (dirArg === 'lists' || dirArg.startsWith('lists/')) && currentDirectory === HOME_DIR) {
+                    return listsTree(dirArg.replace(/\/+$/, ''));
+                }
                 const targetDir = dirArg ? resolveDirectoryPath(dirArg) : null;
 
                 if (targetDir) {
@@ -263,7 +313,7 @@
                 // List current directory
                 if (currentDirectory === HOME_DIR) {
                     return formatLsOutput(HOME_ALLOWED_ENTRIES,
-                        { '.secrets': 'file', 'artwork': 'directory' },
+                        { '.secrets': 'file', 'artwork': 'directory', 'lists': 'directory' },
                         useDetailed);
                 }
 

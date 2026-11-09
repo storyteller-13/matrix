@@ -111,7 +111,7 @@ describe('MusicPlayer', () => {
         expect(player.storage.storageKey).toBe('music-player-playlists-2027');
         expect(player.songs).toEqual([]);
         expect(document.getElementById('music-soundtrack-title').textContent).toBe('the soundtrack of 2027');
-        expect(document.getElementById('music-title').textContent).toBe('coming soon');
+        expect(document.getElementById('music-title').textContent).toBe('nothing yet');
         expect(document.getElementById('music-song-list').textContent).toContain('this mixtape is under construction');
 
         // nothing to play: controls are no-ops and nothing is saved into the 2026 key
@@ -164,7 +164,7 @@ describe('MusicPlayer', () => {
         }
     });
 
-    it('translates the soundtrack title and coming-soon text on localechange', () => {
+    it('translates the soundtrack title and nothing-yet text on localechange', () => {
         const player = new window.MusicPlayerClass();
         player.openSoundtrack('2027');
         window.I18n = { t: (key) => ({ 'music.soundtrack2027': '2027ねんのサウンドトラック', 'music.comingSoon': 'もうすぐ' }[key] || key) };

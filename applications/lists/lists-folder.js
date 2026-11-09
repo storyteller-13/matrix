@@ -1,9 +1,14 @@
 /**
- * Curate lists folder browser – nested folders for books / movies / adventures / art / science / food / podcasts / games.
+ * Curated lists folder browser – nested folders for books / movies / adventures / art / science / food / podcasts / games.
  * Every folder is linkable: ?folder=movies, ?folder=podcasts/zeitgeist-awards-2026 (a bare nested id also works).
  */
 
 const FOLDER_PARAM = 'folder';
+
+/** Recolors pink list/folder art to the award gold (same shapes, only the colors change). */
+const goldify = (svgMarkup) => svgMarkup
+    .replace(/#E879A9/g, '#E8B04B')
+    .replace(/rgba\(216, 70, 166, /g, 'rgba(232, 176, 75, ');
 
 /** 24px list icons drawn inside a shared <svg> frame; `icon` on an entry picks one (book by default). */
 const LIST_ICONS = {
@@ -165,16 +170,17 @@ class ListsFolderApp extends BaseApp {
         return window.I18n?.t?.(key) || fallback;
     }
 
-    folderSvg() {
+    folderSvg({ gold = false } = {}) {
+        const art = `<rect x="2" y="5" width="12" height="9" rx="1.5" fill="rgba(216, 70, 166, 0.15)" stroke="#E879A9" stroke-width="1.2"/>
+            <path d="M2 5 L6 5 L7.5 3.5 L12 3.5 L12 5" fill="#E879A9" opacity="0.8" stroke="#E879A9" stroke-width="1.2" stroke-linejoin="round"/>`;
         return `<svg width="48" height="48" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect x="2" y="5" width="12" height="9" rx="1.5" fill="rgba(216, 70, 166, 0.15)" stroke="#E879A9" stroke-width="1.2"/>
-            <path d="M2 5 L6 5 L7.5 3.5 L12 3.5 L12 5" fill="#E879A9" opacity="0.8" stroke="#E879A9" stroke-width="1.2" stroke-linejoin="round"/>
+            ${gold ? goldify(art) : art}
         </svg>`;
     }
 
-    listIconSvg(name) {
+    listIconSvg(name, { gold = false } = {}) {
         const art = LIST_ICONS[name] || LIST_ICONS.book;
-        return `<svg width="48" height="48" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">${art}</svg>`;
+        return `<svg width="48" height="48" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">${gold ? goldify(art) : art}</svg>`;
     }
 
     backSvg() {
@@ -203,7 +209,7 @@ class ListsFolderApp extends BaseApp {
             { id: 'books', label: this.t('menu.listsBooks', 'books'), kind: 'folder' },
             { id: 'movies', label: this.t('menu.listsMovies', 'movies'), kind: 'folder' },
             { id: 'adventures', label: this.t('menu.listsPlaces', 'adventures'), kind: 'folder' },
-            { id: 'podcasts', label: this.t('menu.listsPodcasts', 'podcasts'), kind: 'folder', empty: true },
+            { id: 'podcasts', label: this.t('menu.listsPodcasts', 'podcasts'), kind: 'folder' },
             { id: 'games', label: this.t('menu.listsGames', 'games'), kind: 'folder' },
             { id: 'food', label: this.t('menu.listsFood', 'food'), kind: 'folder', empty: true },
             { id: 'art', label: this.t('menu.listsArt', 'art'), kind: 'folder', empty: true },
@@ -244,6 +250,14 @@ class ListsFolderApp extends BaseApp {
     moviesEntries() {
         return [
             {
+                id: 'zeitgeist-2026',
+                label: this.t('menu.zeitgeist2026', 'zeitgeist awards 2026'),
+                kind: 'list',
+                icon: 'movie',
+                gold: true,
+                open: () => window.openBooksWindow?.('zeitgeist-2026'),
+            },
+            {
                 id: 'kids-movies',
                 label: this.t('menu.kidsMovies', 'movies to watch with our kids'),
                 kind: 'list',
@@ -264,7 +278,7 @@ class ListsFolderApp extends BaseApp {
         return [
             {
                 id: 'games-youth',
-                label: this.t('menu.gamesYouth', 'the games of my youth'),
+                label: this.t('menu.gamesYouth', 'the videogames of my youth'),
                 kind: 'list',
                 icon: 'game',
                 open: () => window.openBooksWindow?.('games-youth'),
@@ -299,7 +313,7 @@ class ListsFolderApp extends BaseApp {
         ];
     }
 
-    guidesEntries() {
+    myGuidesEntries() {
         return [
             {
                 id: 'guide-alagoas',
@@ -310,14 +324,14 @@ class ListsFolderApp extends BaseApp {
             },
             {
                 id: 'guide-iceland',
-                label: this.t('menu.guideIceland', 'iceland'),
+                label: this.t('menu.guideIceland', 'reykjavík, iceland'),
                 kind: 'list',
                 icon: 'map',
                 open: () => window.openBooksWindow?.('guide-iceland'),
             },
             {
                 id: 'guide-berlin',
-                label: this.t('menu.guideBerlin', 'fun in berlin'),
+                label: this.t('menu.guideBerlin', 'berlin, germany'),
                 kind: 'list',
                 icon: 'map',
                 open: () => window.openBooksWindow?.('guide-berlin'),
@@ -326,7 +340,14 @@ class ListsFolderApp extends BaseApp {
     }
 
     podcastsEntries() {
-        return [];
+        return [
+            {
+                id: 'zeitgeist-awards-2026',
+                label: this.t('menu.zeitgeist2026', 'zeitgeist awards 2026'),
+                kind: 'folder',
+                gold: true,
+            },
+        ];
     }
 
     podcastsZeitgeistEntries() {
@@ -345,12 +366,17 @@ class ListsFolderApp extends BaseApp {
         if (folderId === 'games') return this.gamesEntries();
         if (folderId === 'podcasts') return this.podcastsEntries();
         if (folderId === 'adventures') return this.adventuresEntries();
-        if (folderId === 'my-guides') return this.guidesEntries();
+        if (folderId === 'my-guides') return this.myGuidesEntries();
+        if (folderId === 'zeitgeist-awards-2026') return this.podcastsZeitgeistEntries();
         return [];
     }
 
-    /** Optional note shown above a folder's items (takes the folder id); folders with a note get the larger window. */
-    descriptionFor() {
+    /** Optional note shown above a folder's items; folders with a note get the larger window. */
+    descriptionFor(folderId) {
+        if (folderId === 'zeitgeist-awards-2026') {
+            return this.t('lists.podcastsZeitgeistNote',
+                '(the top conversations i kept carrying with me long after they ended)');
+        }
         return '';
     }
 
@@ -418,8 +444,8 @@ class ListsFolderApp extends BaseApp {
         }
 
         for (const entry of entries) {
-            let iconHtml = this.folderSvg();
-            if (entry.kind === 'list') iconHtml = this.listIconSvg(entry.icon);
+            let iconHtml = this.folderSvg({ gold: entry.gold });
+            if (entry.kind === 'list') iconHtml = this.listIconSvg(entry.icon, { gold: entry.gold });
             if (entry.kind === 'podcast') iconHtml = this.listIconSvg('podcast');
             fileList.appendChild(this.makeItem({
                 iconHtml,

@@ -5,15 +5,29 @@
  * Each soundtrack (2026, 2027, ...) has its own storage key and default mixtapes.
  */
 
-/**
- * The soundtrack of 2027 – starts empty. Add mixtapes the same way as the 2026 ones, e.g.
- * playlists: [{ id: 'my mixtape', name: 'my mixtape', songs: [{ id: '<youtube video id>', title: 'song (artist)' }] }]
- * The first mixtape is selected automatically unless currentPlaylistId names another one.
- */
+
 const SOUNDTRACK_2027 = {
     currentPlaylistId: null,
-    playlists: [],
+    playlists: [
+        {
+            id: 'life around our beautiful planet ➜ california',
+            name: 'life around our beautiful planet ➜ california',
+            songs: [
+
+            ]
+        },
+
+        {
+            id: 'life around our beautiful planet ➜ japan',
+            name: 'life around our beautiful planet ➜ japan',
+            songs: [
+                { id: 'D4cAD8sJ6Gc', title: 'dream odyssey (mono)' },
+                { id: 'CbnGz3qyzRA', title: 'ember (ichika nito)' }
+            ]
+        },
+    ],
 };
+
 
 class MusicPlayerStorage {
     /**
@@ -198,7 +212,7 @@ class MusicPlayerStorage {
                     id: 'the free people inside babel ➜ the finale',
                     name: 'the free people inside babel ➜ the finale',
                     songs: [
-                        { id: 'x11NA63gLDM', title: 'change the world (eric clapton)' },
+                        { id: 'x11NA63gLDM', title: 'change the world (eric clapton)' }, 
                         { id: 'ZoC9_udLNeU', title: "let's dance (bowie)" },
                         { id: 'G2nJPEDc02k', title: 'levitating (dua lipa)' },
                         { id: '5f3sMmdG2sg', title: 'sunshine (jungle)' },
@@ -209,15 +223,6 @@ class MusicPlayerStorage {
                         { id: 'HVHUjzZZGQ4', title: 'island in the sun (weezer)' },
                         { id: 'Rk_sAHh9s08', title: 'return to innocence (enigma)' },
                         { id: 'oJ5ciSr8rAc', title: 'all that we perceive (thievery corporation)' }
-                    ]
-                },
-
-                {
-                    id: 'life around our beautiful planet ➜ japan',
-                    name: 'life around our beautiful planet ➜ japan',
-                    songs: [
-                        { id: 'D4cAD8sJ6Gc', title: 'dream odyssey (mono)' },
-                        { id: 'CbnGz3qyzRA', title: 'ember (ichika nito)' }
                     ]
                 },
 

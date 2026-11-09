@@ -3,9 +3,10 @@
  */
 
 const IMAGES = [
-    'summer.png',
-    'love.png',
+    'summer.jpg',
+    'love.jpg',
     'lion.jpg',
+    'memories.jpg',
 ];
 
 const BASE_PATH = '/pages/artwork/';
@@ -59,7 +60,7 @@ class ArtworkApp extends BaseApp {
             const fileItem = document.createElement('div');
             fileItem.className = 'file-item';
             fileItem.style.cursor = 'pointer';
-            fileItem.addEventListener('click', () => this.openImage(BASE_PATH + imageName));
+            fileItem.addEventListener('click', () => this.openImage(imageName));
 
             const img = document.createElement('img');
             img.src = BASE_PATH + imageName;
@@ -124,14 +125,104 @@ class ArtworkApp extends BaseApp {
         });
         img.addEventListener('click', (e) => e.stopPropagation());
         modal.appendChild(img);
+
+        const shareBtn = document.createElement('button');
+        shareBtn.type = 'button';
+        shareBtn.className = 'artwork-share-link';
+        shareBtn.textContent = 'copy link';
+        Object.assign(shareBtn.style, {
+            position: 'absolute',
+            bottom: '24px',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            padding: '6px 14px',
+            font: 'inherit',
+            fontSize: '13px',
+            color: '#E879A9',
+            background: 'rgba(0, 0, 0, 0.4)',
+            border: '1px solid rgba(232, 121, 169, 0.6)',
+            borderRadius: '999px',
+            cursor: 'pointer'
+        });
+        shareBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            this.copyShareLink(shareBtn);
+        });
+        modal.appendChild(shareBtn);
+
         document.body.appendChild(modal);
         return modal;
     }
 
-    openImage(imageSrc) {
+    /** Image name from the ?artwork= query parameter, if it names a known picture. */
+    getArtworkFromUrl() {
+        try {
+            const name = new URLSearchParams(window.location.search).get('artwork');
+            return this.images.includes(name) ? name : null;
+        } catch {
+            return null;
+        }
+    }
+
+    setArtworkInUrl(imageName) {
+        try {
+            const url = new URL(window.location.href);
+            if (imageName) {
+                url.searchParams.set('artwork', imageName);
+            } else {
+                url.searchParams.delete('artwork');
+            }
+            history.replaceState(null, '', url);
+        } catch {
+            // Ignore URL update failures in non-browser test hosts
+        }
+    }
+
+    getShareUrl(imageName) {
+        const url = new URL(window.location.href);
+        url.searchParams.set('artwork', imageName);
+        return url.toString();
+    }
+
+    async copyShareLink(button) {
+        if (!this.currentImage) return;
+        const shareUrl = this.getShareUrl(this.currentImage);
+        let copied = false;
+        try {
+            if (navigator.clipboard?.writeText) {
+                await navigator.clipboard.writeText(shareUrl);
+                copied = true;
+            }
+        } catch {
+            copied = false;
+        }
+        if (!copied) {
+            const input = document.createElement('textarea');
+            input.value = shareUrl;
+            input.setAttribute('readonly', '');
+            input.style.position = 'fixed';
+            input.style.opacity = '0';
+            document.body.appendChild(input);
+            input.select();
+            try {
+                copied = document.execCommand('copy');
+            } catch {
+                copied = false;
+            }
+            input.remove();
+        }
+        if (copied) {
+            button.textContent = 'copied!';
+            setTimeout(() => { button.textContent = 'copy link'; }, 1600);
+        }
+    }
+
+    openImage(imageName) {
         const modal = this.ensureModal();
         const img = modal.querySelector('img');
-        img.src = imageSrc;
+        this.currentImage = imageName;
+        this.setArtworkInUrl(imageName);
+        img.src = BASE_PATH + imageName;
         modal.style.display = 'flex';
         requestAnimationFrame(() => { modal.style.opacity = '1'; });
     }
@@ -139,8 +230,18 @@ class ArtworkApp extends BaseApp {
     closeImage() {
         const modal = document.getElementById('artwork-image-modal');
         if (!modal) return;
+        this.currentImage = null;
+        this.setArtworkInUrl(null);
         modal.style.opacity = '0';
         setTimeout(() => { modal.style.display = 'none'; }, 300);
+    }
+
+    /** Opens the window and the picture named in the URL, e.g. ?artwork=love.jpg. */
+    openImageFromUrl() {
+        const imageName = this.getArtworkFromUrl();
+        if (!imageName) return;
+        this.open();
+        this.openImage(imageName);
     }
 
     open() {
@@ -156,9 +257,11 @@ window.ArtworkAppClass = ArtworkApp;
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
         window.ArtworkApp = new ArtworkApp();
+        window.ArtworkApp.openImageFromUrl();
     });
 } else {
     window.ArtworkApp = new ArtworkApp();
+    window.ArtworkApp.openImageFromUrl();
 }
 
 // Expose open function globally for onclick handlers
