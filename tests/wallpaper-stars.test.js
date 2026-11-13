@@ -15,11 +15,18 @@ describe('wallpaper-stars', () => {
     });
 
     it('appends extra wallpaper stars into the root', () => {
-        const stars = document.querySelectorAll('.wallpaper-stars .wallpaper-star');
+        const stars = [...document.querySelectorAll('.wallpaper-stars .wallpaper-star')]
+            .filter((star) => !/\bstar-\d+\b/.test(star.className));
         expect(stars.length).toBeGreaterThan(300);
         const first = stars[0];
         expect(first.style.left).toMatch(/%$/);
         expect(first.style.top).toMatch(/%$/);
         expect(first.querySelector('svg use')).toBeTruthy();
+    });
+
+    it('creates the 72 CSS-positioned stars from the wallpaper module', () => {
+        expect(document.querySelectorAll('.wallpaper-stars .wallpaper-star[class*="star-"]').length).toBe(72);
+        expect(document.querySelector('.wallpaper-star.star-1 svg use').getAttribute('fill')).toBe('#FF85A2');
+        expect(document.querySelector('.wallpaper-star.star-72 svg use').getAttribute('fill')).toBe('#F9A8C9');
     });
 });

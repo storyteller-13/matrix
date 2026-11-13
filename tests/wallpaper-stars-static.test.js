@@ -21,7 +21,8 @@ describe('wallpaper-stars with reduced motion', () => {
 
     it('adds a static lite field without animation', () => {
         const root = document.querySelector('.wallpaper-stars');
-        const stars = root.querySelectorAll('.wallpaper-star');
+        const stars = [...root.querySelectorAll('.wallpaper-star')]
+            .filter((star) => !/\bstar-\d+\b/.test(star.className));
         expect(root.classList.contains('is-lite')).toBe(true);
         expect(root.classList.contains('is-static')).toBe(true);
         expect(stars.length).toBeGreaterThan(20);

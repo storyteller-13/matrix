@@ -5,6 +5,14 @@
 
 (() => {
     const COLORS = ['#FF85A2', '#F9A8C9', '#C4B5FD', '#E879A9', '#FFB3C6', '#F472B6'];
+    const STATIC_COLORS = [
+        '#FF85A2', '#F9A8C9', '#C4B5FD', '#E879A9', '#FFB3C6', '#F472B6', '#FFB3C6', '#E879A9', '#C4B5FD', '#F9A8C9', '#FF85A2', '#F9A8C9',
+        '#C4B5FD', '#E879A9', '#FFB3C6', '#F472B6', '#FF85A2', '#F9A8C9', '#C4B5FD', '#E879A9', '#FFB3C6', '#F472B6', '#FF85A2', '#F9A8C9',
+        '#C4B5FD', '#E879A9', '#FFB3C6', '#F472B6', '#FF85A2', '#F9A8C9', '#C4B5FD', '#E879A9', '#FFB3C6', '#F472B6', '#FF85A2', '#F9A8C9',
+        '#C4B5FD', '#E879A9', '#FFB3C6', '#F472B6', '#FF85A2', '#F9A8C9', '#C4B5FD', '#E879A9', '#FFB3C6', '#F472B6', '#FF85A2', '#F9A8C9',
+        '#C4B5FD', '#E879A9', '#FFB3C6', '#F472B6', '#FF85A2', '#F9A8C9', '#C4B5FD', '#E879A9', '#FFB3C6', '#F472B6', '#FF85A2', '#F9A8C9',
+        '#C4B5FD', '#E879A9', '#FFB3C6', '#F472B6', '#FF85A2', '#F9A8C9', '#C4B5FD', '#E879A9', '#FFB3C6', '#F472B6', '#FF85A2', '#F9A8C9',
+    ];
     const GOLDEN = 1.618033988749895;
 
     const root = document.querySelector('.wallpaper-stars');
@@ -42,6 +50,12 @@
             plane: Math.abs(gauss)
         };
     };
+
+    const staticFragment = document.createDocumentFragment();
+    STATIC_COLORS.forEach((color, index) => {
+        staticFragment.appendChild(makeStaticStar(index + 1, color));
+    });
+    root.appendChild(staticFragment);
 
     const fragment = document.createDocumentFragment();
 
@@ -96,6 +110,20 @@
     document.addEventListener('visibilitychange', () => {
         root.classList.toggle('is-paused', document.hidden);
     });
+
+    function makeStaticStar(number, color) {
+        const star = document.createElement('span');
+        star.className = `wallpaper-star star-${number}`;
+
+        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        svg.setAttribute('viewBox', '0 0 24 24');
+        const use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+        use.setAttribute('href', '#wallpaper-star-shape');
+        use.setAttribute('fill', color);
+        svg.appendChild(use);
+        star.appendChild(svg);
+        return star;
+    }
 
     function makeStar({ left, top, size, color, twinkle, duration, delay, dim, animate }) {
         const star = document.createElement('span');

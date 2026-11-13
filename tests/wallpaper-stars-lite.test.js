@@ -21,7 +21,8 @@ describe('wallpaper-stars on constrained devices', () => {
 
     it('adds a lite field of CSS dots instead of hundreds of SVGs', () => {
         const root = document.querySelector('.wallpaper-stars');
-        const stars = root.querySelectorAll('.wallpaper-star');
+        const stars = [...root.querySelectorAll('.wallpaper-star')]
+            .filter((star) => !/\bstar-\d+\b/.test(star.className));
         expect(root.classList.contains('is-lite')).toBe(true);
         expect(stars.length).toBeGreaterThan(50);
         expect(stars.length).toBeLessThan(150);

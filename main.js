@@ -73,3 +73,12 @@ import './applications/artwork/artwork.js';
 // Terminal App
 import './applications/terminal/terminal-app.js';
 import './applications/terminal/terminal.js';
+
+// Cache the app shell so it can reopen without a network connection.
+if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./service-worker.js').catch((error) => {
+            console.warn('Offline support could not be enabled:', error);
+        });
+    }, { once: true });
+}
