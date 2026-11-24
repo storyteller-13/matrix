@@ -73,6 +73,38 @@ describe('api/apod', () => {
         expect(init.headers['User-Agent']).toMatch(/^Mozilla\/5\.0/);
     });
 
+    it('normalizes an object response and prefers its HD image and fallback fields', async () => {
+        vi.stubGlobal('fetch', vi.fn().mockResolvedValue({
+            ok: true,
+            status: 200,
+            json: async () => ({
+                date: '2026-11-05',
+                title: '',
+                explanation: '',
+                media_type: 'image',
+                url: 'https://example.com/apod.jpg',
+                hdurl: 'https://example.com/apod-hd.jpg',
+                copyright: 'Artist',
+                credit: 'Fallback artist',
+                permalink: '',
+            }),
+        }));
+        const res = mockRes();
+        await handler({ method: 'GET', query: {} }, res);
+
+        expect(res.statusCode).toBe(200);
+        expect(res.body).toEqual({
+            date: '2026-11-05',
+            title: '',
+            explanation: '',
+            media_type: 'image',
+            url: 'https://example.com/apod-hd.jpg',
+            hdurl: 'https://example.com/apod-hd.jpg',
+            copyright: 'Artist',
+            permalink: 'https://example.com/apod.jpg',
+        });
+    });
+
     it('requests a specific day from ?date= and 404s when NASA has none', async () => {
         vi.stubGlobal('fetch', vi.fn().mockResolvedValue({ ok: false, status: 404, statusText: 'Not Found' }));
         const res = mockRes();

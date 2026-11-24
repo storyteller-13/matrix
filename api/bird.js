@@ -3,7 +3,7 @@
  * Picks a stable daily bird from iNaturalist (Aves) and enriches with Wikipedia.
  */
 
-import { createHandler, fetchJson, queryParam } from './_lib/http.js';
+import { createHandler, fetchJson, dateParam } from './_lib/http.js';
 
 const INAT_TAXA = 'https://api.inaturalist.org/v1/taxa';
 const WIKI_SUMMARY = 'https://en.wikipedia.org/api/rest_v1/page/summary/';
@@ -100,8 +100,7 @@ async function enrichWithWikipedia(bird) {
 }
 
 async function loadBird(req) {
-  const requested = queryParam(req, 'date');
-  const dateStr = requested && /^\d{4}-\d{2}-\d{2}$/.test(requested) ? requested : easternDateString();
+  const dateStr = dateParam(req, 'date', { min: '2010-01-01' }) ?? easternDateString();
   return enrichWithWikipedia(await pickBird(dateStr));
 }
 

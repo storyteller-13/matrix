@@ -282,22 +282,11 @@ class SkyPanel {
     }
 
     getCachedSky(allowExpired = false) {
-        try {
-            const raw = localStorage.getItem(this.cacheKey);
-            if (!raw) return null;
-            const { data, timestamp } = JSON.parse(raw);
-            const valid = Date.now() - timestamp < this.cacheExpiry;
-            if (valid || allowExpired) return data;
-            return null;
-        } catch (_) {
-            return null;
-        }
+        return window.TimedCache.read(this.cacheKey, this.cacheExpiry, { allowExpired });
     }
 
     cacheSky(data) {
-        try {
-            localStorage.setItem(this.cacheKey, JSON.stringify({ data, timestamp: Date.now() }));
-        } catch (_) {}
+        window.TimedCache.write(this.cacheKey, data);
     }
 }
 

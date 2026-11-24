@@ -2,6 +2,7 @@
  * App modules register DOMContentLoaded when the document is still loading.
  */
 import { describe, it, expect, beforeAll, vi } from 'vitest';
+import '../core/timed-cache.js';
 
 function makeFakeStorage() {
     const store = {};

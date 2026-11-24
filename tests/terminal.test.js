@@ -116,7 +116,8 @@ describe('Terminal', () => {
         expect(lastOutput()).toContain('summer.jpg');
         typeCommand('cd ..');
         typeCommand('pwd');
-        expect(lastOutput()).toBe('~');
+        expect(lastOutput()).toBe('/');
+        typeCommand('cd ~');
         typeCommand('cat .secrets');
         expect(lastOutput()).toBe("let's be in love with life");
         typeCommand('cat missing');
@@ -227,7 +228,7 @@ describe('Terminal', () => {
         typeCommand('pwd');
         expect(lastOutput()).toBe('/artwork');
         typeCommand('cat /artwork/summer.jpg');
-        expect(lastOutput()).toBe('file');
+        expect(lastOutput()).toMatch(/binary file, use view/);
     });
 
     it('resolves relative dirs under / and tolerates a bare relative cwd', () => {
@@ -235,10 +236,10 @@ describe('Terminal', () => {
         expect(lastOutput()).toMatch(/cannot access|\.secrets|no such/i);
         typeCommand('cd /');
         typeCommand('ls bin');
-        expect(lastOutput()).toMatch(/cannot access|no such/i);
+        expect(lastOutput()).toBe('');
         typeCommand('cd bin');
         typeCommand('pwd');
-        expect(lastOutput()).toBe('bin');
+        expect(lastOutput()).toBe('/bin');
         typeCommand('ls');
         expect(lastOutput()).toBe('');
     });
@@ -267,7 +268,8 @@ describe('Terminal', () => {
         expect(window.ArtworkApp.openImage).toHaveBeenCalledWith('/pages/artwork/love.jpg');
         typeCommand('view pages/artwork/lion.jpg');
         await Promise.resolve();
-        expect(window.ArtworkApp.openImage).toHaveBeenCalledWith('pages/artwork/lion.jpg');
+        expect(lastOutput()).toMatch(/file does not exist: pages\/artwork\/lion.jpg/);
+        expect(window.ArtworkApp.openImage).toHaveBeenCalledTimes(2);
 
         window.ArtworkApp = undefined;
         typeCommand('view summer.jpg');
@@ -305,26 +307,18 @@ describe('Terminal', () => {
         vi.unstubAllGlobals();
     });
 
-    it('context menu open picture uses prompt', async () => {
-        class MockImage {
-            set src(value) {
-                this._src = value;
-                queueMicrotask(() => this.onload?.());
-            }
-            get src() { return this._src; }
-        }
-        vi.stubGlobal('Image', MockImage);
-        vi.stubGlobal('prompt', vi.fn().mockReturnValueOnce('/pages/artwork/summer.jpg').mockReturnValueOnce(''));
-        window.ArtworkApp = { openImage: vi.fn() };
+    it('context menu open picture fills in a view command instead of using prompt', () => {
+        const prompt = vi.fn();
+        vi.stubGlobal('prompt', prompt);
         const terminal = document.getElementById('main-terminal');
+        const input = document.getElementById('terminal-input-main');
         terminal.dispatchEvent(new MouseEvent('contextmenu', { bubbles: true, pageX: 12, pageY: 20 }));
         document.querySelector('.context-menu-item').click();
-        await Promise.resolve();
-        expect(window.ArtworkApp.openImage).toHaveBeenCalledWith('/pages/artwork/summer.jpg');
-        terminal.dispatchEvent(new MouseEvent('contextmenu', { bubbles: true, pageX: 12, pageY: 20 }));
-        document.querySelector('.context-menu-item').click();
-        expect(window.prompt).toHaveBeenCalledTimes(2);
+        expect(input.value).toBe('view ');
+        expect(document.querySelector('.terminal-context-menu').style.display).toBe('none');
+        expect(prompt).not.toHaveBeenCalled();
         vi.unstubAllGlobals();
+        input.value = '';
     });
 
     it('click uses bringToFront when available', () => {
@@ -332,5 +326,18 @@ describe('Terminal', () => {
         document.getElementById('main-terminal').dispatchEvent(new MouseEvent('click', { bubbles: true }));
         expect(window.bringToFront).toHaveBeenCalled();
         delete window.bringToFront;
+    });
+    it('redraws printed lines in the new language when the language changes', () => {
+        window.I18n = { locale: 'en' };
+        typeCommand('ls /nope');
+        expect(lastOutput()).toMatch(/cannot access/);
+        window.I18n.locale = 'ja';
+        document.dispatchEvent(new CustomEvent('localechange', { detail: { locale: 'ja' } }));
+        expect(lastOutput()).toMatch(/にアクセスできません/);
+        expect(outputText()).not.toMatch(/cannot access/);
+        window.I18n.locale = 'en';
+        document.dispatchEvent(new CustomEvent('localechange', { detail: { locale: 'en' } }));
+        expect(lastOutput()).toMatch(/cannot access/);
+        delete window.I18n;
     });
 });

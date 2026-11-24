@@ -25,17 +25,43 @@ class TerminalApp {
         }
 
         this.setupEventListeners();
+        window.addEventListener('popstate', () => this.syncWindowToUrl());
     }
 
     setupEventListeners() {
-        if (!this.dockItem) return;
+        if (this.dockItem) {
+            this.dockItem.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                e.stopImmediatePropagation();
+                this.open();
+            });
+        }
+        this.window.addEventListener('windowclose', () => this.writeOpenState(false));
+    }
 
-        this.dockItem.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            e.stopImmediatePropagation();
+    writeOpenState(isOpen) {
+        try {
+            const url = new URL(window.location.href);
+            if (isOpen) url.searchParams.set('open', 'terminal');
+            else if (url.searchParams.get('open') === 'terminal') url.searchParams.delete('open');
+            history.replaceState(null, '', url);
+        } catch {
+            // Ignore URL update failures in non-browser test hosts.
+        }
+    }
+
+    syncWindowToUrl() {
+        const shouldBeOpen = new URLSearchParams(window.location.search).get('open') === 'terminal';
+        if (shouldBeOpen) {
             this.open();
-        });
+        } else if (this.isWindowVisible()) {
+            if (window.WindowManager) window.WindowManager.close(this.window, this.dockItem);
+            else {
+                this.window.style.display = 'none';
+                this.dockItem?.classList.remove('active');
+            }
+        }
     }
 
     isWindowVisible() {
@@ -105,6 +131,7 @@ class TerminalApp {
 
     open() {
         if (!this.window) return;
+        this.writeOpenState(true);
 
         const isVisible = this.isWindowVisible();
 

@@ -1,0 +1,706 @@
+/*
+ * Matrix theme (the `matrix` command in the terminal). Marina's neon colors shape the purple and green palette.
+ * The rules sit under html.matrix-theme, so they change nothing until the class is added.
+ * Colours and the font live in the tokens below: change them here, not in the rules.
+ *
+ * Why so many !important: the pink base styles set colours and display on the same elements with
+ * the same or higher specificity, so the matrix overrides have to win explicitly.
+ */
+
+html.matrix-theme {
+    --mx-bright: #12F657; /* green accents, titles, and glowing lines */
+    --mx-link: #00FFFF; /* cyan links and terminal prompt */
+    --mx-text: #C9D1D9; /* foreground text */
+    --mx-dim: #9461C7; /* purple metadata and labels */
+    --mx-line: rgba(18, 246, 87, 0.35);
+    --mx-glow: rgba(18, 246, 87, 0.6);
+    --mx-tint: rgba(191, 0, 255, 0.25); /* selection */
+    --mx-surface: rgba(13, 17, 23, 0.96); /* windows, panels, and menus */
+    --mx-field: #161B22; /* buttons and inputs */
+    --mx-violet: #BF00FF; /* bridge and door */
+    --mx-badge: #161B22;
+    --mx-ink: #0A0A0A; /* dark text on bright accents */
+    --mx-font: 'IBM Plex Mono', 'JetBrains Mono', ui-monospace, 'Zen Maru Gothic', monospace;
+}
+
+html.matrix-theme body {
+    font-family: var(--mx-font) !important;
+}
+
+/* The falling characters sit behind the whole page; the page itself is transparent over them. */
+html.matrix-theme,
+html.matrix-theme body {
+    background: #0A0A0A !important;
+}
+
+html.matrix-theme #matrix-rain {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    pointer-events: none;
+}
+
+/* A dark fade at the top and bottom edges, so the bar and the dock stay readable over the rain. */
+html.matrix-theme body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+        radial-gradient(ellipse at center, rgba(10, 10, 10, 0) 55%, rgba(10, 10, 10, 0.7) 100%),
+        linear-gradient(
+            to bottom,
+            rgba(10, 10, 10, 0.92) 0,
+            rgba(10, 10, 10, 0) 90px,
+            rgba(10, 10, 10, 0) calc(100% - 130px),
+            rgba(10, 10, 10, 0.92) 100%
+        );
+}
+
+/* CRT scanlines over the whole screen: faint, and they let every click through. */
+html.matrix-theme::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 9000;
+    pointer-events: none;
+    opacity: 0.35;
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(10, 10, 10, 0) 0,
+        rgba(10, 10, 10, 0) 2px,
+        rgba(10, 10, 10, 0.5) 3px,
+        rgba(10, 10, 10, 0) 4px
+    );
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html.matrix-theme::after {
+        display: none;
+    }
+}
+
+html.matrix-theme .wallpaper-stars,
+html.matrix-theme .wallpaper-star-symbol {
+    display: none !important;
+}
+
+/* Text and borders: bright green. Backgrounds go transparent, so the rain shows through. */
+html.matrix-theme :where(body *):not(svg):not(svg *):not(img):not(iframe):not(canvas):not(video) {
+    background-color: transparent !important;
+    background-image: none !important;
+    color: var(--mx-text) !important;
+    border-color: var(--mx-line) !important;
+    text-shadow: none !important;
+}
+
+/* Windows, panels and menus get a dark translucent surface, so text stays readable over the rain. */
+html.matrix-theme [class*="-window"],
+html.matrix-theme [class*="-box"]:not(button),
+html.matrix-theme .top-panel,
+html.matrix-theme .dock,
+html.matrix-theme .system-tray,
+html.matrix-theme .music-player,
+html.matrix-theme .menu-submenu,
+html.matrix-theme #applications-dropdown,
+html.matrix-theme .terminal-context-menu,
+html.matrix-theme .command-palette-panel,
+html.matrix-theme .terminal-touch-bar {
+    background-color: var(--mx-surface) !important;
+    box-shadow: 0 0 18px rgba(18, 246, 87, 0.2) !important;
+}
+
+html.matrix-theme .menu-item:hover,
+html.matrix-theme .menu-item:focus-visible,
+html.matrix-theme .command-palette-result[aria-selected="true"] {
+    background-color: var(--mx-tint) !important;
+}
+
+html.matrix-theme button,
+html.matrix-theme input,
+html.matrix-theme textarea,
+html.matrix-theme select {
+    background-color: var(--mx-field) !important;
+}
+
+html.matrix-theme a {
+    color: var(--mx-link) !important;
+}
+
+/* Keyboard focus on controls: a bright green outline in place of the pink one. Text fields keep their caret only. */
+html.matrix-theme :is(button, a, [tabindex], .control, .dock-item):focus-visible {
+    outline: 2px solid var(--mx-bright);
+    outline-offset: 2px;
+}
+
+/* Hierarchy: titles are the brightest text and glow; metadata is dimmer. */
+html.matrix-theme :is(h1, h2, h3, [class*="-title"]) {
+    color: var(--mx-bright) !important;
+    text-shadow: 0 0 6px var(--mx-glow) !important;
+}
+
+html.matrix-theme :is(small, [class*="-meta"], [class*="-date"]) {
+    color: var(--mx-dim) !important;
+}
+
+/* Icons: Matrix mode recolors the pink SVG shapes and keeps pale fills on the theme foreground. */
+html.matrix-theme svg [stroke="#E879A9"] {
+    stroke: var(--mx-bright);
+}
+
+html.matrix-theme svg [fill="#E879A9"],
+html.matrix-theme svg [fill="#FF85A2"] {
+    fill: var(--mx-bright);
+}
+
+html.matrix-theme svg [fill="#FFF5F7"],
+html.matrix-theme svg [fill="rgba(255, 245, 249, 0.95)"],
+html.matrix-theme svg [fill="rgba(255, 245, 249, 0.9)"] {
+    fill: var(--mx-text);
+}
+
+html.matrix-theme svg [fill^="rgba(216, 70, 166"] {
+    fill: rgba(18, 246, 87, 0.18);
+}
+
+/* The small marks on the active dock item */
+html.matrix-theme .dock-item::before,
+html.matrix-theme .dock-item::after {
+    background-color: var(--mx-bright) !important;
+    border-color: var(--mx-bright) !important;
+}
+
+/* Dock counts and the mixtape bars keep their contrast in green */
+html.matrix-theme [class*="-count-badge"] {
+    background-color: var(--mx-badge) !important;
+    color: #FFFFFF !important;
+    border-color: var(--mx-bright) !important;
+}
+
+html.matrix-theme .visualizer-bar {
+    background: var(--mx-bright) !important;
+    box-shadow: 0 0 6px var(--mx-glow);
+}
+
+/* Icons with a matrix version: the classic drawing shows in the normal theme, the matrix drawing in matrix mode. */
+.icon-matrix {
+    display: none;
+}
+
+html.matrix-theme .icon-classic {
+    display: none;
+}
+
+html.matrix-theme .icon-matrix {
+    display: inline;
+}
+
+/* The "enter it" label: a lighter purple, so it reads on black */
+html.matrix-theme .icon-label.icon-matrix {
+    color: var(--mx-violet) !important;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+/* Panel headers ("today's ...") and their titles sit on the panel surface, without their own dark bar or glow box */
+html.matrix-theme [class*="-box"][class*="-header"],
+html.matrix-theme [class*="-box"][class*="-header"] [class*="-box"],
+html.matrix-theme [class*="-box"][class*="-title"] {
+    background-color: transparent !important;
+    box-shadow: none !important;
+}
+
+/* Top-right tray: no dark bar and no icons (the today's panels and the mixtape open from the top-left menu) */
+html.matrix-theme .system-tray {
+    background-color: transparent !important;
+    box-shadow: none !important;
+}
+
+html.matrix-theme .system-tray .tray-button {
+    display: none !important;
+}
+
+/* Keep the right-side Matrix control comfortably inset from the viewport edge. */
+html.matrix-theme .panel-right {
+    margin-right: 8px;
+}
+
+/* Keep the Matrix sun, clock, and language switch floating like the bottom controls, without a top bar. */
+html.matrix-theme .top-panel {
+    position: fixed;
+    top: calc(12px + env(safe-area-inset-top, 0px));
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    box-sizing: border-box;
+    padding: 0 calc(24px + env(safe-area-inset-right, 0px)) 0 calc(24px + env(safe-area-inset-left, 0px));
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+}
+
+html.matrix-theme .panel-right {
+    margin-right: 0;
+}
+
+/* Language toggle: no frame, a soft track and a glowing thumb */
+html.matrix-theme .locale-toggle,
+html.matrix-theme .system-tray .locale-toggle,
+html.matrix-theme .locale-toggle-track {
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+}
+
+html.matrix-theme .locale-toggle {
+    width: 68px;
+    height: 30px;
+}
+
+html.matrix-theme .locale-toggle-thumb {
+    width: 31px;
+    height: 23px;
+    background-color: var(--mx-violet) !important;
+    box-shadow: 0 0 8px rgba(191, 0, 255, 0.65);
+    transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+}
+
+html.matrix-theme .locale-toggle.is-ja .locale-toggle-thumb {
+    transform: translateX(31px);
+}
+
+html.matrix-theme .locale-toggle-blossom {
+    width: 15px;
+    height: 15px;
+}
+
+html.matrix-theme .locale-toggle-blossom [fill="#FFF7FA"],
+html.matrix-theme .locale-toggle-blossom [fill="#F9A8C9"] {
+    fill: var(--mx-ink);
+}
+
+html.matrix-theme .locale-toggle-blossom [fill="#FFE4EC"] {
+    fill: var(--mx-violet);
+}
+
+html.matrix-theme .locale-toggle-opt {
+    font-size: 12px;
+    color: var(--mx-text) !important;
+    transition: color 0.35s ease;
+}
+
+/* When English is on, the thumb sits under the "en" label, so that label is dark on the green thumb */
+html.matrix-theme .locale-toggle:not(.is-ja) .locale-toggle-en,
+html.matrix-theme .locale-toggle.is-ja .locale-toggle-ja {
+    color: var(--mx-ink) !important;
+}
+
+/* Bottom bar in matrix mode: only "enter it" and the terminal */
+html.matrix-theme #about-dock-item,
+html.matrix-theme #home-dock-item,
+html.matrix-theme #lists-folder-dock-item,
+html.matrix-theme #artwork-dock-item,
+html.matrix-theme #notes-dock-item,
+html.matrix-theme #todo-dock-item,
+html.matrix-theme #building-dock-item,
+html.matrix-theme #calendar-dock-item {
+    display: none !important;
+}
+
+/* "Today's" panels: hidden in matrix mode until their icon (top-right bar or menu) opens them */
+html.matrix-theme :is(.quotes-box, .chess-box, .sky-box, .bird-box, .apod-box, .music-player):not(.matrix-open) {
+    display: none !important;
+}
+
+/* Top bar: one clock of numbers in place of the world clocks */
+.logic-clock {
+    display: none;
+}
+
+html.matrix-theme .clock-zone {
+    display: none !important;
+}
+
+html.matrix-theme .logic-clock {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+html.matrix-theme .logic-clock-time {
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.04em;
+    color: var(--mx-violet) !important;
+    text-shadow: 0 0 6px rgba(191, 0, 255, 0.7) !important;
+}
+
+
+/* In matrix mode the TV sits directly in the bottom-right corner without the dock panel. */
+html.matrix-theme .bottom-dock {
+    left: auto !important;
+    right: 24px !important;
+    transform: none !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+}
+
+/* The terminal button becomes a labeled, door-sized TV with no surrounding tile. */
+html.matrix-theme #terminal-dock-item {
+    width: 64px !important;
+    height: auto !important;
+    padding: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+html.matrix-theme #terminal-dock-item:hover,
+html.matrix-theme #terminal-dock-item.active {
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+html.matrix-theme #terminal-dock-item:hover {
+    transform: none !important;
+}
+
+html.matrix-theme #terminal-dock-item::before,
+html.matrix-theme #terminal-dock-item::after {
+    display: none !important;
+}
+
+html.matrix-theme #terminal-dock-item .dock-icon,
+html.matrix-theme #terminal-dock-item .dock-icon svg {
+    width: 40px;
+    height: 40px;
+}
+
+#terminal-dock-item .terminal-tv-label {
+    display: none;
+}
+
+html.matrix-theme #terminal-dock-item .terminal-tv-label {
+    color: var(--mx-violet) !important;
+    display: block;
+    font-family: var(--mx-font);
+    font-size: 10px;
+    font-weight: 900;
+    line-height: 1.2;
+    text-transform: uppercase;
+    text-shadow: 0 0 6px rgba(191, 0, 255, 0.7);
+}
+
+/* "enter it" sits in the bottom-left corner in matrix mode, on the same bottom line as the terminal in the dock */
+html.matrix-theme .desktop-icons {
+    display: flex; /* phones hide the desktop icons in the pink theme; matrix mode keeps the door there */
+    position: fixed !important;
+    top: auto !important;
+    left: 24px !important;
+    right: auto !important;
+    bottom: 12px !important;
+}
+
+/* Top-left menu: every icon sits in a glowing green tile, with a sheen across it on hover */
+html.matrix-theme .menu-item-icon {
+    position: relative;
+    overflow: hidden;
+    width: 22px;
+    height: 22px;
+    border: 1px solid rgba(18, 246, 87, 0.5) !important;
+    border-radius: 5px;
+    background-color: rgba(18, 246, 87, 0.06) !important;
+    background-image: repeating-linear-gradient(0deg, rgba(18, 246, 87, 0.1) 0 1px, transparent 1px 3px) !important;
+    box-shadow: 0 0 8px rgba(18, 246, 87, 0.3), inset 0 0 8px rgba(18, 246, 87, 0.18);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+html.matrix-theme .menu-submenu .menu-item-icon {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+}
+
+html.matrix-theme .menu-item-icon svg {
+    filter: drop-shadow(0 0 3px rgba(18, 246, 87, 0.9));
+}
+
+html.matrix-theme .menu-item-icon::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -60%;
+    width: 40%;
+    background: linear-gradient(100deg, transparent, rgba(248, 248, 242, 0.55), transparent);
+    transform: skewX(-20deg);
+    pointer-events: none;
+}
+
+html.matrix-theme .menu-item:hover .menu-item-icon,
+html.matrix-theme .menu-item:focus-visible .menu-item-icon {
+    box-shadow: 0 0 14px var(--mx-bright), inset 0 0 8px rgba(18, 246, 87, 0.3);
+    transform: none;
+}
+
+html.matrix-theme .menu-item:hover .menu-item-icon::after,
+html.matrix-theme .menu-item:focus-visible .menu-item-icon::after {
+    animation: menu-icon-sheen 0.9s ease;
+}
+
+@keyframes menu-icon-sheen {
+    from { left: -60%; }
+    to { left: 120%; }
+}
+
+/* Desktop: in matrix mode only "enter it" stays on the desktop; "who i am" and "what i do" are hidden there (the dock keeps them) */
+html.matrix-theme #about-desktop-icon,
+html.matrix-theme #home-desktop-icon {
+    display: none;
+}
+
+/* The shining door: the light breathes and a sheen slides across the doorway */
+html.matrix-theme .door-enter-light {
+    animation: door-enter-breathe 2.8s ease-in-out infinite;
+}
+
+html.matrix-theme .door-enter-glow {
+    animation: door-enter-glow 2.8s ease-in-out infinite;
+}
+
+html.matrix-theme .door-enter-sheen {
+    animation: door-enter-sheen 3.6s ease-in-out infinite;
+}
+
+html.matrix-theme #terminal-dock-item.active .terminal-tv-screen {
+    animation: door-enter-breathe 2.8s ease-in-out infinite;
+    fill: url(#terminal-tv-screen);
+    filter: drop-shadow(0 0 3px rgba(191, 0, 255, 0.9));
+}
+
+html.matrix-theme .terminal-tv-sheen {
+    display: none;
+}
+
+html.matrix-theme #terminal-dock-item.active .terminal-tv-sheen {
+    display: block;
+    animation: door-enter-sheen 3.6s ease-in-out infinite;
+}
+
+html.matrix-theme .desktop-icon:hover .door-enter-light {
+    filter: drop-shadow(0 0 3px rgba(191, 0, 255, 0.9));
+}
+
+html.matrix-theme #terminal-dock-item:hover .terminal-tv-frame {
+    stroke: #FFFFFF;
+    filter: drop-shadow(0 0 3px rgba(191, 0, 255, 0.8));
+}
+
+/* The leaf swings from its left hinge: on hover it sits ajar, on click it opens and reveals the bright room behind */
+html.matrix-theme .door-enter-leaf {
+    transform-box: fill-box;
+    transform-origin: left center;
+    transition: transform 0.7s cubic-bezier(0.22, 0.8, 0.24, 1);
+    transform-style: preserve-3d;
+}
+
+html.matrix-theme .door-enter-opening {
+    opacity: 0;
+    transition: opacity 0.5s ease 0.15s;
+}
+
+html.matrix-theme .desktop-icon:hover .door-enter-leaf,
+html.matrix-theme .dock-item:hover .door-enter-leaf {
+    transform: perspective(42px) rotateY(-18deg);
+}
+
+html.matrix-theme .desktop-icon:hover .door-enter-frame,
+html.matrix-theme .dock-item:hover .door-enter-frame {
+    stroke: #FFFFFF;
+    filter: drop-shadow(0 0 3px rgba(191, 0, 255, 0.8));
+}
+
+html.matrix-theme .desktop-icon.is-opening .door-enter-leaf {
+    transform: perspective(42px) rotateY(-78deg);
+}
+
+html.matrix-theme .desktop-icon.is-opening .door-enter-opening {
+    opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html.matrix-theme .door-enter-leaf,
+    html.matrix-theme .door-enter-opening,
+    html.matrix-theme .terminal-tv-screen,
+    html.matrix-theme .terminal-tv-sheen {
+        transition: none;
+        animation: none;
+    }
+}
+
+@keyframes door-enter-breathe {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
+}
+
+@keyframes door-enter-glow {
+    0%, 100% { opacity: 0.25; }
+    50% { opacity: 0.6; }
+}
+
+@keyframes door-enter-sheen {
+    0%, 25% { transform: translateX(-4px) skewX(-18deg); opacity: 0; }
+    40% { opacity: 0.65; }
+    70%, 100% { transform: translateX(12px) skewX(-18deg); opacity: 0; }
+}
+
+/* Terminal: the prompt (anon@nullstar:) is a brighter, different green from the output and the typed text */
+html.matrix-theme .prompt {
+    color: var(--mx-link) !important;
+    text-shadow: 0 0 6px rgba(18, 246, 87, 0.5) !important;
+}
+
+/* The sun, the toggle's glow and the sun's rays and scan take the bridge's violet */
+html.matrix-theme #sun-matrix-glow stop {
+    stop-color: var(--mx-violet);
+}
+
+html.matrix-theme .sun-matrix-ring,
+html.matrix-theme .sun-matrix-rays,
+html.matrix-theme .sun-matrix-rays line {
+    stroke: var(--mx-violet);
+}
+
+html.matrix-theme .sun-matrix-core rect {
+    fill: var(--mx-violet);
+}
+
+html.matrix-theme .sun-matrix-core rect[fill="#FFFFFF"] {
+    fill: var(--mx-text);
+}
+
+html.matrix-theme .sun-matrix-scan {
+    fill: var(--mx-violet);
+}
+
+/* Top-left sun in matrix mode: it does not turn; the core breathes and the rays flicker */
+html.matrix-theme .sun-matrix-core {
+    animation: sun-matrix-breathe 3.2s ease-in-out infinite;
+    transform-origin: center;
+    transform-box: fill-box;
+}
+
+@keyframes sun-matrix-breathe {
+    0%, 100% { opacity: 0.85; transform: scale(0.97); }
+    50% { opacity: 1; transform: scale(1.03); }
+}
+
+/* A scanline sweeps down over the pixel sun, like a CRT or a terminal scan */
+html.matrix-theme .sun-matrix-scan {
+    animation: sun-matrix-scan 3.2s linear infinite;
+}
+
+@keyframes sun-matrix-scan {
+    0% { transform: translateY(0); opacity: 0; }
+    10%, 85% { opacity: 0.8; }
+    100% { transform: translateY(30px); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html.matrix-theme .menu-item:hover .menu-item-icon::after,
+    html.matrix-theme .menu-item:focus-visible .menu-item-icon::after,
+    html.matrix-theme .door-enter-light,
+    html.matrix-theme .door-enter-glow,
+    html.matrix-theme .door-enter-sheen,
+    html.matrix-theme .sun-matrix-core {
+        animation: none;
+    }
+
+    html.matrix-theme .sun-matrix-scan {
+        animation: none;
+        opacity: 0;
+    }
+
+    html.matrix-theme .door-enter-sheen {
+        opacity: 0;
+    }
+}
+
+/* Matrix windows use square corners, including their header and window controls. */
+html.matrix-theme .window,
+html.matrix-theme .window-header,
+html.matrix-theme .window-content,
+html.matrix-theme .window .control {
+    border-radius: 0 !important;
+}
+
+/* The calendar is a box rather than a window, but matrix mode squares its frame, glow and close control too. */
+html.matrix-theme .calendar-box,
+html.matrix-theme .calendar-box-glow,
+html.matrix-theme .calendar-box-close {
+    border-radius: 0 !important;
+}
+
+/* Matrix mode's music player (playlist) is a little wider than in pink mode. Other things that use the
+   width, such as the windows that sit beside it, follow the same value. */
+html.matrix-theme {
+    --music-player-width: calc(var(--panel-width) + 72px);
+}
+
+/* The music player is a box too: matrix mode squares its frame, glow and close control. */
+html.matrix-theme .music-player,
+html.matrix-theme .music-player-glow,
+html.matrix-theme .music-close {
+    border-radius: 0 !important;
+}
+
+/* Give the terminal's close control a clear square frame and keep the X stable on hover. */
+html.matrix-theme .window .control.close {
+    width: 22px;
+    height: 22px;
+    border: 1px solid var(--mx-bright) !important;
+    background: var(--mx-field) !important;
+    color: var(--mx-bright) !important;
+    box-shadow: inset 0 0 0 1px rgba(18, 246, 87, 0.15) !important;
+    transform: none !important;
+}
+
+html.matrix-theme .window .control.close::before {
+    display: none !important;
+}
+
+html.matrix-theme .window .control.close:hover,
+html.matrix-theme .window .control.close:active {
+    background: var(--mx-tint) !important;
+    border-color: var(--mx-violet) !important;
+    color: var(--mx-violet) !important;
+    transform: none !important;
+}
+
+html.matrix-theme .window .control.close .close-icon::before,
+html.matrix-theme .window .control.close .close-icon::after {
+    border-radius: 0;
+}
+
+/* The brand name NULLSTAR in terminal output: the same violet as the "enter" label */
+html.matrix-theme .terminal-output .brand-caps {
+    color: var(--mx-violet) !important;
+}

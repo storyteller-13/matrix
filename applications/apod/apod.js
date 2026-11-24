@@ -282,8 +282,11 @@ class APODPanel {
     showError(message) {
         const imageContainer = document.getElementById('apod-box-image-container');
         if (imageContainer) {
-            const text = message || (window.I18n ? window.I18n.t('panel.loading') : 'loading....');
-            imageContainer.innerHTML = `<div class="apod-error">${text}</div>`;
+            const text = message || (window.I18n ? window.I18n.t('panel.loading') : 'loading...');
+            const errorNode = document.createElement('div');
+            errorNode.className = 'apod-error';
+            errorNode.textContent = text;
+            imageContainer.replaceChildren(errorNode);
         }
     }
 
@@ -346,27 +349,15 @@ class APODPanel {
      * Gets cached APOD data. If allowExpired is true, returns data even when expired (stale fallback).
      */
     getCachedAPOD(allowExpired = false) {
-        try {
-            const raw = localStorage.getItem(this.cacheKey);
-            if (!raw) return null;
-            const { data, timestamp } = JSON.parse(raw);
-            const valid = Date.now() - timestamp < this.cacheExpiry;
-            if (valid || allowExpired) {
-                return this.normalizeApodData(data);
-            }
-            return null;
-        } catch (_) {
-            return null;
-        }
+        const data = window.TimedCache.read(this.cacheKey, this.cacheExpiry, { allowExpired });
+        return data === null ? null : this.normalizeApodData(data);
     }
 
     /**
      * Caches APOD data
      */
     cacheAPOD(data) {
-        try {
-            localStorage.setItem(this.cacheKey, JSON.stringify({ data, timestamp: Date.now() }));
-        } catch (_) {}
+        window.TimedCache.write(this.cacheKey, data);
     }
 }
 

@@ -2,6 +2,7 @@
  * Bird of the Day panel – Eastern dates, cache, direct fetch, UI wiring.
  */
 import { describe, it, expect, beforeAll, beforeEach, afterEach, vi } from 'vitest';
+import '../core/timed-cache.js';
 
 function makeFakeStorage() {
     const store = {};

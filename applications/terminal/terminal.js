@@ -1,17 +1,43 @@
-// Terminal functionality for index.html
+// Terminal functionality for index.html. Shell logic lives in terminal-core.js.
+
+import { createTerminal } from './terminal-core.js';
+import { createPictureViewer } from './terminal-picture.js';
+import { openApp } from '../../core/app-catalog.js';
+import { toggleMatrixTheme } from '../../core/matrix-theme.js';
+import { readStorage, writeStorage } from '../../core/storage.js';
+import { t } from './terminal-text.js';
 
 (function() {
-    // Constants
-    const HOME_DIR = '~';
-    const PROMPT_PREFIX = 'anon@nullstar:';
-    const MODAL_ID = 'terminal-image-modal';
-    const HOME_ALLOWED_ENTRIES = ['.secrets', 'artwork', 'lists'];
-    const LS_DETAILED_DATE = 'Dec 15 14:30';
-    const LS_DETAILED_USER = 'anon';
-    const LS_DIR_PERMS = 'drwxr-xr-x';
-    const LS_FILE_PERMS = '-rw-r--r--';
-    const LS_DIR_SIZE = '4096';
-    const LS_FILE_SIZE = '220';
+    const HISTORY_KEY = 'terminal-history';
+    const HISTORY_LIMIT = 100;
+
+    function loadHistory() {
+        try {
+            const saved = JSON.parse(readStorage(HISTORY_KEY) || '[]');
+            return Array.isArray(saved) ? saved.filter((item) => typeof item === 'string').slice(-HISTORY_LIMIT) : [];
+        } catch {
+            return [];
+        }
+    }
+
+    // Unavailable storage (private mode, blocked site data) means history lasts for this page only.
+    function saveHistory(history) {
+        writeStorage(HISTORY_KEY, JSON.stringify(history));
+    }
+
+    // Playlists of every mixtape (soundtrack), read the same way the music player loads them.
+    const MIXTAPE_IDS = ['2026', '2027', '2028'];
+    function allMixtapePlaylists() {
+        const player = window.MusicPlayer;
+        if (!player?.storageFor) return [];
+        return MIXTAPE_IDS.flatMap((id) => {
+            try {
+                return player.storageFor(id).load().playlists ?? [];
+            } catch {
+                return [];
+            }
+        });
+    }
 
     function initTerminal() {
         const terminal = document.getElementById('main-terminal');
@@ -22,32 +48,31 @@
             return;
         }
 
-        let commandHistory = [];
-        let historyIndex = -1;
-        let currentDirectory = HOME_DIR;
+        const commandHistory = loadHistory();
+        let historyIndex = commandHistory.length;
 
-        const fileSystem = {
-            '~': {
-                '.secrets': "let's be in love with life",
-                'artwork': 'directory'
-            },
-            '/': {
-                'bin': 'directory',
-                'etc': 'directory',
-                'home': 'directory',
-                'usr': 'directory',
-                'artwork': 'directory'
-            },
-            '/etc': {
-                'os-release': 'name="nullstar"\nversion="2024.12"\nid=nullstar\npretty_name="nullstar 2024.12"\nansi_color="0;34"'
-            },
-            '/artwork': {
-                'summer.jpg': 'file',
-                'love.jpg': 'file',
-                'lion.jpg': 'file',
-                'memories.jpg': 'file',
-            }
+        const musicPlayer = {
+            available: () => Boolean(window.MusicPlayer),
+            isPlaying: () => Boolean(document.getElementById('music-player')?.classList.contains('playing')),
+            toggle: () => window.MusicPlayer?.togglePlayPause(),
+            next: () => window.MusicPlayer?.playNextSong(true),
+            previous: () => window.MusicPlayer?.playPreviousSong(true),
         };
+
+        const shellOptions = {
+            getLists: () => window.ListsFolderApp,
+            now: () => new Date(),
+            getQuotes: () => window.QUOTES || [],
+            random: Math.random,
+            getHistory: () => commandHistory,
+            player: musicPlayer,
+            isMatrix: () => Boolean(window.MatrixTheme?.isMatrixTheme()),
+            getPlaylists: allMixtapePlaylists,
+            getNotes: () => window.NotesApp?.entries ?? [],
+            getTodos: () => window.TodoApp?.todos ?? [],
+        };
+        const shell = createTerminal(shellOptions);
+        const makeShell = () => createTerminal(shellOptions);
 
         terminalInput.focus();
 
@@ -72,410 +97,239 @@
             }, 0);
         }
 
-        function resolveDirectoryPath(path) {
-            if (!path) return null;
+        // Everything printed so far, kept so the screen can be drawn again in the other language.
+        // `clear` only moves visibleFrom: the lines stay in the log so commands can be replayed in order.
+        // Entries: {type: 'prompt', prompt, command, run}, {type: 'output', text, derived}, {type: 'message', key, fallback}.
+        // A derived output is what a command printed; it is produced again by the replay, so it is not kept.
+        const transcript = [];
+        let visibleFrom = 0;
 
-            let dirPath = path.endsWith('/') && path !== '/' ? path.slice(0, -1) : path;
-
-            if (dirPath === 'artwork') {
-                return '/artwork';
-            }
-
-            if (dirPath.startsWith('/')) {
-                return dirPath;
-            }
-
-            const currentDir = currentDirectory === HOME_DIR ? HOME_DIR : currentDirectory;
-            const files = fileSystem[currentDir] || {};
-            if (files[dirPath] === 'directory') {
-                return currentDir === HOME_DIR ? '/' + dirPath : currentDir + '/' + dirPath;
-            }
-
-            return null;
+        function messageText(entry) {
+            return window.I18n ? window.I18n.t(entry.key) : entry.fallback;
         }
 
-        function resolveFilePath(filepath) {
-            if (filepath.startsWith('/')) {
-                const parts = filepath.split('/').filter(p => p);
-                const filename = parts.pop();
-                const dir = '/' + (parts.length > 0 ? parts.join('/') : '');
-                return { dir, filename };
+        function renderEntry(entry) {
+            if (entry.type === 'prompt') {
+                const commandLine = document.createElement('div');
+                commandLine.className = 'terminal-line';
+                const promptSpan = document.createElement('span');
+                promptSpan.className = 'prompt';
+                promptSpan.textContent = entry.prompt;
+                const commandSpan = document.createElement('span');
+                commandSpan.className = 'command';
+                commandSpan.textContent = entry.command;
+                commandLine.append(promptSpan, commandSpan);
+                return commandLine;
             }
-            if (filepath.startsWith('~/')) {
-                const parts = filepath.split('/').filter(p => p);
-                const filename = parts.pop();
-                return { dir: HOME_DIR, filename };
-            }
-            return {
-                dir: currentDirectory === HOME_DIR ? HOME_DIR : currentDirectory,
-                filename: filepath
-            };
+            const text = entry.type === 'message' ? messageText(entry) : entry.text;
+            const output = document.createElement('div');
+            output.className = 'terminal-output';
+            // The page is lowercase by CSS; the brand name keeps its capitals in its own span.
+            String(text).split(/(NULLSTAR)/).forEach((part) => {
+                if (!part) return;
+                if (part === 'NULLSTAR') {
+                    const brand = document.createElement('span');
+                    brand.className = 'brand-caps';
+                    brand.textContent = part;
+                    output.appendChild(brand);
+                } else {
+                    output.appendChild(document.createTextNode(part));
+                }
+            });
+            return output;
         }
 
-        function formatLsEntry(name, isDir) {
-            const perms = isDir ? LS_DIR_PERMS : LS_FILE_PERMS;
-            const size = isDir ? LS_DIR_SIZE : LS_FILE_SIZE;
-            return `${perms}  1 ${LS_DETAILED_USER} ${LS_DETAILED_USER}  ${size} ${LS_DETAILED_DATE} ${name}`;
+        function record(entry) {
+            transcript.push(entry);
+            terminalOutput.appendChild(renderEntry(entry));
         }
 
-        function formatLsOutput(entries, files, useDetailed) {
-            if (useDetailed) {
-                return entries.map(name => {
-                    const isDir = files[name] === 'directory';
-                    return formatLsEntry(name, isDir);
-                }).join('\n');
-            }
-            return entries.join('  ');
+        function appendOutput(text, derived = false) {
+            record({ type: 'output', text, derived });
         }
 
-        /**
-         * Renders the curated lists folder as a tree (like the `tree` command), read from the
-         * lists folder app so the terminal always matches what the folder shows.
-         * `arg` is "lists" or "lists/<sub-folder path>".
-         */
-        function listsTree(arg) {
-            const app = window.ListsFolderApp;
-            if (!app || typeof app.rootEntries !== 'function') {
-                return `ls: cannot access '${arg}': lists are not available`;
-            }
+        function appendMessage(key, fallback) {
+            record({ type: 'message', key, fallback });
+        }
 
-            let rootLabel = 'lists';
-            let entries;
-            const sub = arg.slice('lists'.length).replace(/^\/+/, '');
-            if (sub) {
-                const path = app.resolveFolderPath(sub);
-                if (!path) return `ls: cannot access '${arg}': no such file or directory`;
-                entries = app.entriesForFolder(path[path.length - 1]);
-                rootLabel = arg.replace(/\/+$/, '');
-            } else {
-                entries = app.rootEntries();
-            }
+        function appendPromptLine(command, run = false) {
+            record({ type: 'prompt', prompt: shell.prompt(), command, run });
+        }
 
-            let dirCount = 0;
-            let fileCount = 0;
-            const lines = [rootLabel];
-            const walk = (allItems, prefix) => {
-                // Podcast episode names are left out of the tree.
-                const items = allItems.filter((entry) => entry.kind !== 'podcast');
-                items.forEach((entry, i) => {
-                    const last = i === items.length - 1;
-                    lines.push(`${prefix}${last ? '└── ' : '├── '}${entry.label}`);
-                    if (entry.kind === 'folder') {
-                        dirCount++;
-                        walk(app.entriesForFolder(entry.id), `${prefix}${last ? '    ' : '│   '}`);
-                    } else {
-                        fileCount++;
+        // Draws the visible part of the transcript again, with each message in the current language.
+        function redraw() {
+            terminalOutput.innerHTML = '';
+            transcript.slice(visibleFrom).forEach((entry) => terminalOutput.appendChild(renderEntry(entry)));
+        }
+
+        // Runs every typed command again on a fresh shell, so the printed results follow the current language.
+        // The replay also brings the folder back to where it was, even across a `clear`.
+        function rebuildTranscript() {
+            const replay = makeShell();
+            const rebuilt = [];
+            let nextVisibleFrom = null;
+            transcript.forEach((entry, index) => {
+                if (index === visibleFrom) nextVisibleFrom = rebuilt.length;
+                if (entry.type === 'output' && entry.derived) return;
+                rebuilt.push(entry);
+                if (entry.type === 'prompt' && entry.run) {
+                    const { output } = replay.execute(entry.command);
+                    if (output !== null && output !== undefined) {
+                        rebuilt.push({ type: 'output', text: output, derived: true });
                     }
-                });
-            };
-            walk(entries, '');
-            lines.push('');
-            lines.push(`${dirCount} ${dirCount === 1 ? 'directory' : 'directories'}, ${fileCount} ${fileCount === 1 ? 'file' : 'files'}`);
-            return lines.join('\n');
+                }
+            });
+            transcript.splice(0, transcript.length, ...rebuilt);
+            visibleFrom = nextVisibleFrom ?? rebuilt.length;
+            redraw();
+            scrollToBottom();
         }
+
+        document.addEventListener('localechange', () => {
+            rebuildTranscript();
+            // The context menu is built once; drop it so the next open builds it in the new language.
+            contextMenu?.remove();
+            contextMenu = null;
+        });
 
         function updateInputPrompt() {
             const terminalLine = terminalInput.closest('.terminal-line');
             if (terminalLine) {
                 const prompt = terminalLine.querySelector('.prompt');
                 if (prompt) {
-                    prompt.textContent = `${PROMPT_PREFIX}${currentDirectory}$ `;
+                    prompt.textContent = shell.prompt();
                 }
             } else {
                 const promptElement = terminalInput.previousElementSibling;
                 if (promptElement && promptElement.classList.contains('prompt')) {
-                    promptElement.textContent = `${PROMPT_PREFIX}${currentDirectory}$ `;
+                    promptElement.textContent = shell.prompt();
                 }
             }
         }
 
-        function createImageModal() {
-            let modal = document.getElementById(MODAL_ID);
-            if (modal) return modal;
-
-            modal = document.createElement('div');
-            modal.id = MODAL_ID;
-            Object.assign(modal.style, {
-                position: 'fixed',
-                top: '0',
-                left: '0',
-                width: '100%',
-                height: '100%',
-                backgroundColor: 'rgba(0, 0, 0, 0.9)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                zIndex: '10000',
-                cursor: 'pointer',
-                opacity: '0',
-                transition: 'opacity 0.3s ease'
-            });
-
-            modal.addEventListener('click', closePicture);
-
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && modal.style.display !== 'none') {
-                    closePicture();
-                }
-            });
-
-            document.body.appendChild(modal);
-            return modal;
-        }
-
-        function openPicture(imagePath) {
-            const testImg = new Image();
-
-            testImg.onerror = () => {
-                const error = document.createElement('div');
-                error.className = 'terminal-output';
-                error.textContent = `error: file does not exist: ${imagePath}`;
-                terminalOutput.appendChild(error);
+        const pictures = createPictureViewer({
+            onMissing: (imagePath) => {
+                appendOutput(`error: file does not exist: ${imagePath}`);
                 scrollToBottom();
-            };
+            },
+        });
 
-            testImg.onload = () => {
-                if (window.ArtworkApp && typeof window.ArtworkApp.openImage === 'function') {
-                    window.ArtworkApp.openImage(imagePath);
-                    return;
-                }
-
-                const modal = createImageModal();
-                let img = modal.querySelector('img');
-
-                if (!img) {
-                    img = document.createElement('img');
-                    Object.assign(img.style, {
-                        maxWidth: '90%',
-                        maxHeight: '90%',
-                        objectFit: 'contain',
-                        borderRadius: '8px',
-                        boxShadow: '0 0 40px rgba(219, 20, 147, 0.5)',
-                        cursor: 'default'
-                    });
-                    img.addEventListener('click', (e) => e.stopPropagation());
-                    modal.appendChild(img);
-                }
-
-                img.src = imagePath;
-                modal.style.display = 'flex';
-                requestAnimationFrame(() => {
-                    modal.style.opacity = '1';
-                });
-            };
-
-            testImg.src = imagePath;
+        function clearOutput() {
+            visibleFrom = transcript.length;
+            terminalOutput.innerHTML = '';
         }
 
-        function closePicture() {
-            const modal = document.getElementById(MODAL_ID);
-            if (modal) {
-                modal.style.opacity = '0';
-                setTimeout(() => {
-                    modal.style.display = 'none';
-                }, 300);
+        function closeWindow() {
+            const terminalWindow = terminal.closest('.window');
+            if (!terminalWindow) return;
+            window.TerminalApp?.writeOpenState(false);
+
+            const dockItem = document.getElementById('terminal-dock-item');
+            if (window.WindowManager) {
+                window.WindowManager.close(terminalWindow, dockItem);
+            } else {
+                terminalWindow.style.display = 'none';
+                if (dockItem) dockItem.classList.remove('active');
             }
         }
 
-        // Command implementations
-        const commands = {
-            help: () => {
-                return `available commands:
-  ls          - list directory contents
-  pwd         - print working directory
-  cd [dir]    - change directory
-  cat [file]  - display file contents
-  echo [text] - echo text
-  clear       - clear terminal
-  date        - display current date and time
-  view [file] - open picture file
-  exit        - close terminal
-  help        - show this help message`;
-            },
-
-            ls: (args) => {
-                const useDetailed = args && args.includes('-la');
-                const dirArg = args && args.find(arg => !arg.startsWith('-'));
-                if (dirArg && (dirArg === 'lists' || dirArg.startsWith('lists/')) && currentDirectory === HOME_DIR) {
-                    return listsTree(dirArg.replace(/\/+$/, ''));
+        function pushHistory(command) {
+            if (commandHistory[commandHistory.length - 1] !== command) {
+                commandHistory.push(command);
+                if (commandHistory.length > HISTORY_LIMIT) {
+                    commandHistory.splice(0, commandHistory.length - HISTORY_LIMIT);
                 }
-                const targetDir = dirArg ? resolveDirectoryPath(dirArg) : null;
-
-                if (targetDir) {
-                    if (fileSystem[targetDir]) {
-                        const files = fileSystem[targetDir] || {};
-                        const entries = Object.keys(files).sort();
-                        return formatLsOutput(entries, files, useDetailed);
-                    }
-                    return `ls: cannot access '${dirArg}': no such file or directory`;
-                }
-
-                // List current directory
-                if (currentDirectory === HOME_DIR) {
-                    return formatLsOutput(HOME_ALLOWED_ENTRIES,
-                        { '.secrets': 'file', 'artwork': 'directory', 'lists': 'directory' },
-                        useDetailed);
-                }
-
-                const dirToShow = currentDirectory;
-                if (fileSystem[dirToShow]) {
-                    const files = fileSystem[dirToShow] || {};
-                    const entries = Object.keys(files).sort();
-                    return formatLsOutput(entries, files, useDetailed);
-                }
-
-                return '';
-            },
-
-            pwd: () => currentDirectory,
-
-            cd: (args) => {
-                if (!args || args.length === 0 || args[0] === HOME_DIR) {
-                    currentDirectory = HOME_DIR;
-                    updateInputPrompt();
-                    return '';
-                }
-
-                const targetDir = args[0];
-                if (targetDir === '..') {
-                    currentDirectory = HOME_DIR;
-                    updateInputPrompt();
-                    return '';
-                }
-
-                const dir = currentDirectory === HOME_DIR ? HOME_DIR : currentDirectory;
-                const files = fileSystem[dir] || {};
-
-                if (files[targetDir] === 'directory' || fileSystem[targetDir] || fileSystem['/' + targetDir]) {
-                    if (targetDir.startsWith('/')) {
-                        currentDirectory = targetDir;
-                    } else if (fileSystem['/' + targetDir]) {
-                        currentDirectory = '/' + targetDir;
-                    } else {
-                        currentDirectory = targetDir;
-                    }
-                    updateInputPrompt();
-                    return '';
-                }
-
-                return `cd: no such file or directory: ${targetDir}`;
-            },
-
-            cat: (args) => {
-                if (!args || args.length === 0) {
-                    return 'cat: missing file operand';
-                }
-
-                const { dir, filename } = resolveFilePath(args[0]);
-                const files = fileSystem[dir] || {};
-
-                // Handle home directory files
-                if (dir === HOME_DIR && filename === '.secrets' && fileSystem[HOME_DIR] && fileSystem[HOME_DIR][filename]) {
-                    let content = fileSystem[HOME_DIR][filename];
-                    return content;
-                }
-
-                if (files[filename]) {
-                    if (files[filename] === 'directory') {
-                        return `cat: ${filename}: is a directory`;
-                    }
-                    let content = files[filename];
-                    return content;
-                }
-
-                return `cat: ${filename}: no such file or directory`;
-            },
-
-            echo: (args) => args.join(' '),
-
-            clear: () => {
-                terminalOutput.innerHTML = '';
-                return null;
-            },
-
-            date: () => new Date().toString(),
-
-            view: (args) => {
-                if (!args || args.length === 0) {
-                    return 'view: missing file operand';
-                }
-
-                let filepath = args[0];
-                // Handle artwork/image_name format
-                if (filepath.startsWith('artwork/')) {
-                    filepath = `/pages/${filepath}`;
-                }
-                // If it's just a filename without path, assume it's in artwork directory
-                else if (!filepath.includes('/') && !filepath.startsWith('pages/')) {
-                    filepath = `/pages/artwork/${filepath}`;
-                }
-                openPicture(filepath);
-                return '';
-            },
-
-            exit: () => {
-                const terminalWindow = terminal.closest('.window');
-                if (!terminalWindow) return null;
-
-                const dockItem = document.getElementById('terminal-dock-item');
-                if (window.WindowManager) {
-                    window.WindowManager.close(terminalWindow, dockItem);
-                } else {
-                    terminalWindow.style.display = 'none';
-                    if (dockItem) dockItem.classList.remove('active');
-                }
-                return null;
+                saveHistory(commandHistory);
             }
-        };
+            historyIndex = commandHistory.length;
+        }
 
-        function executeCommand(input) {
+        function openAppFromTerminal({ app, folder }) {
+            if (!openApp(app, folder)) {
+                appendOutput(`open: ${app} is not loaded`);
+            }
+        }
+
+        function runCommand(input) {
             const trimmed = input.trim();
             if (!trimmed) return;
 
-            const parts = trimmed.split(/\s+/);
-            const command = parts[0].toLowerCase();
-            const args = parts.slice(1);
+            pushHistory(trimmed);
+            appendPromptLine(trimmed, true);
 
-            commandHistory.push(trimmed);
-            historyIndex = commandHistory.length;
-
-            const commandLine = document.createElement('div');
-            commandLine.className = 'terminal-line';
-            const promptSpan = document.createElement('span');
-            promptSpan.className = 'prompt';
-            promptSpan.textContent = `${PROMPT_PREFIX}${currentDirectory}$ `;
-            const commandSpan = document.createElement('span');
-            commandSpan.className = 'command';
-            commandSpan.textContent = trimmed;
-            commandLine.append(promptSpan, commandSpan);
-            terminalOutput.appendChild(commandLine);
-
-            updateInputPrompt();
-
-            if (commands[command]) {
-                const result = commands[command](args);
-                if (result !== null) {
-                    const output = document.createElement('div');
-                    output.className = 'terminal-output';
-                    output.textContent = result;
-                    terminalOutput.appendChild(output);
+            const { output, effect } = shell.execute(trimmed);
+            if (effect && effect.type === 'clear') {
+                clearOutput();
+                if (output !== null && output !== undefined) appendOutput(output, true);
+            } else if (effect && effect.type === 'exit') {
+                closeWindow();
+            } else if (effect && effect.type === 'view') {
+                pictures.open(effect.src);
+            } else if (effect && effect.type === 'open') {
+                openAppFromTerminal(effect);
+            } else if (effect && effect.type === 'url') {
+                window.open(effect.href, '_blank', 'noopener,noreferrer');
+            } else if (effect && effect.type === 'matrix') {
+                clearOutput();
+                if (toggleMatrixTheme()) {
+                    appendMessage('terminal.matrixOn', 'wake up, anon... NULLSTAR has you.');
+                } else {
+                    appendMessage('terminal.matrixOff', 'back to the simulation.');
                 }
-            } else {
-                const error = document.createElement('div');
-                error.className = 'terminal-output';
-                error.textContent = `command not found: ${command}. type 'help' for available commands.`;
-                terminalOutput.appendChild(error);
+            } else if (output !== null && output !== undefined) {
+                appendOutput(output, true);
             }
 
+            updateInputPrompt();
+            scrollToBottom();
+        }
+
+        function cancelLine() {
+            appendPromptLine(`${terminalInput.value}^C`);
+            terminalInput.value = '';
+            historyIndex = commandHistory.length;
+            scrollToBottom();
+        }
+
+        function completeInput() {
+            const value = terminalInput.value;
+            const { raw, matches } = shell.complete(value);
+            if (matches.length === 0) return;
+
+            const head = value.slice(0, value.length - raw.length);
+            if (matches.length === 1) {
+                const [match] = matches;
+                terminalInput.value = head + match + (match.endsWith('/') ? '' : ' ');
+                return;
+            }
+
+            const shared = shell.commonPrefix(matches);
+            if (shared.length > raw.length) {
+                terminalInput.value = head + shared;
+                return;
+            }
+
+            appendPromptLine(value);
+            appendOutput(matches.join('  '));
             scrollToBottom();
         }
 
         terminalInput.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') {
+            const key = e.key.toLowerCase();
+            if (e.ctrlKey && key === 'l') {
+                e.preventDefault();
+                clearOutput();
+            } else if (e.ctrlKey && key === 'c') {
+                e.preventDefault();
+                cancelLine();
+            } else if (e.key === 'Enter') {
                 const command = terminalInput.value;
-                executeCommand(command);
+                runCommand(command);
                 terminalInput.value = '';
                 historyIndex = commandHistory.length;
+            } else if (e.key === 'Tab') {
+                e.preventDefault();
+                completeInput();
             } else if (e.key === 'ArrowUp') {
                 e.preventDefault();
                 if (historyIndex > 0) {
@@ -493,6 +347,47 @@
                 }
             }
         });
+
+        // Phones: keep the input visible when the on-screen keyboard opens, and offer the keys a keyboard would.
+        terminalInput.setAttribute('autocapitalize', 'off');
+        terminalInput.setAttribute('autocorrect', 'off');
+        terminalInput.enterKeyHint = 'go';
+        terminalInput.addEventListener('focus', () => {
+            setTimeout(() => terminalInput.scrollIntoView?.({ block: 'nearest' }), 300);
+        });
+        if (window.matchMedia && window.matchMedia('(pointer: coarse)').matches) {
+            const bar = document.createElement('div');
+            bar.className = 'terminal-touch-bar';
+            bar.setAttribute('role', 'toolbar');
+            bar.setAttribute('aria-label', t('keys.bar'));
+            const keys = [
+                ['tab', 'keys.complete', { key: 'Tab' }],
+                ['↑', 'keys.previous', { key: 'ArrowUp' }],
+                ['↓', 'keys.next', { key: 'ArrowDown' }],
+                ['^C', 'keys.cancel', { key: 'c', ctrlKey: true }],
+                ['^L', 'keys.clear', { key: 'l', ctrlKey: true }],
+            ];
+            const labelledButtons = [];
+            for (const [label, nameKey, init] of keys) {
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.textContent = label;
+                button.setAttribute('aria-label', t(nameKey));
+                labelledButtons.push([button, nameKey]);
+                // Keep focus in the input, so the on-screen keyboard stays open.
+                button.addEventListener('pointerdown', (e) => e.preventDefault());
+                button.addEventListener('click', () => {
+                    terminalInput.dispatchEvent(new KeyboardEvent('keydown', { bubbles: true, ...init }));
+                    terminalInput.focus();
+                });
+                bar.appendChild(button);
+            }
+            document.addEventListener('localechange', () => {
+                bar.setAttribute('aria-label', t('keys.bar'));
+                labelledButtons.forEach(([button, nameKey]) => button.setAttribute('aria-label', t(nameKey)));
+            });
+            terminal.insertAdjacentElement('afterend', bar);
+        }
 
         terminal.addEventListener('click', (e) => {
             if (!e.target.closest('a') && !e.target.closest('button')) {
@@ -521,15 +416,16 @@
 
             const viewLabel = document.createElement('div');
             viewLabel.className = 'context-menu-label';
-            viewLabel.textContent = 'view';
+            viewLabel.textContent = t('context.view');
             viewGroup.appendChild(viewLabel);
-
 
             const openPictureItem = document.createElement('div');
             openPictureItem.className = 'context-menu-item';
-            openPictureItem.innerHTML = '<span class="context-menu-item-text">open picture...</span>';
+            openPictureItem.innerHTML = `<span class="context-menu-item-text">${t('context.openPicture')}</span>`;
             openPictureItem.addEventListener('click', () => {
-                openPictureDialog();
+                // Fill in the view command so the user types only the file name.
+                terminalInput.value = 'view ';
+                terminalInput.focus();
                 hideContextMenu();
             });
             viewGroup.appendChild(openPictureItem);
@@ -552,13 +448,6 @@
         function hideContextMenu() {
             if (contextMenu) {
                 contextMenu.style.display = 'none';
-            }
-        }
-
-        function openPictureDialog() {
-            const picturePath = prompt('Enter picture path:');
-            if (picturePath) {
-                openPicture(picturePath);
             }
         }
 

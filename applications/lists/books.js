@@ -9,8 +9,15 @@ const BOOK_LISTS = [
     { id: 'kids-books', dataKey: 'KIDS_BOOKS', titleKey: 'window.kidsBooks' },
     { id: 'zeitgeist-2026', dataKey: 'ZEITGEIST_2026', titleKey: 'window.zeitgeist2026', subtitleKey: 'lists.zeitgeistReveal' },
     { id: 'kids-movies', dataKey: 'KIDS_MOVIES', titleKey: 'window.kidsMovies' },
+    { id: 'strangers-friendship-movies', dataKey: 'STRANGERS_FRIENDSHIP_MOVIES', titleKey: 'window.strangersFriendshipMovies' },
     { id: 'winter-movies', dataKey: 'WINTER_MOVIES', titleKey: 'window.winterMovies' },
+    { id: 'seventh-art-top-10', dataKey: 'SEVENTH_ART_TOP_10', titleKey: 'window.seventhArtTop10' },
+    { id: 'seventh-art-canonical', dataKey: 'SEVENTH_ART_CANONICAL', titleKey: 'window.seventhArtCanonical' },
+    { id: 'seventh-art-supplementary', dataKey: 'SEVENTH_ART_SUPPLEMENTARY', titleKey: 'window.seventhArtSupplementary' },
+    { id: 'zombie-favorites-2025', dataKey: 'ZOMBIE_FAVORITES_2025', titleKey: 'window.zombieFavorites2025' },
+    { id: 'vampire-favorites-2025', dataKey: 'VAMPIRE_FAVORITES_2025', titleKey: 'window.vampireFavorites2025' },
     { id: 'games-youth', dataKey: 'GAMES_YOUTH', titleKey: 'window.gamesYouth' },
+    { id: 'games-try-someday', dataKey: 'GAMES_TRY_SOMEDAY', titleKey: 'window.gamesTrySomeday' },
     { id: 'guide-alagoas', dataKey: 'GUIDE_ALAGOAS', titleKey: 'window.guideAlagoas' },
     { id: 'guide-iceland', dataKey: 'GUIDE_ICELAND', titleKey: 'window.guideIceland' },
     { id: 'guide-berlin', dataKey: 'GUIDE_BERLIN', titleKey: 'window.guideBerlin' },
@@ -298,21 +305,23 @@ class BooksApp extends BaseApp {
             const entry = items[i];
             const item = typeof entry === 'string' ? { title: entry } : (entry || {});
             const title = item.title ? this.renderBookTitle(item) : '';
+            const credit = item.credit ? ` <span class="books-item-credit">${this.escapeHtml(item.credit)}</span>` : '';
             return `<tr>
                 <td class="books-col-rank">${i + 1}</td>
-                <td class="books-col-title">${title}</td>
+                <td class="books-col-title">${title}${credit}</td>
             </tr>`;
         }).join('');
 
+        const heading = category.hideHeading ? '' : `<thead>
+                    <tr><th scope="col" colspan="2">${label}</th></tr>
+                </thead>`;
         return `<section class="books-award">
             <table class="books-table books-table--award">
                 <colgroup>
                     <col class="books-col-rank">
                     <col class="books-col-title">
                 </colgroup>
-                <thead>
-                    <tr><th scope="col" colspan="2">${label}</th></tr>
-                </thead>
+                ${heading}
                 <tbody>${rows}</tbody>
             </table>
         </section>`;
@@ -360,25 +369,30 @@ class BooksApp extends BaseApp {
         </section>`;
     }
 
-    /** An unnumbered table; guides add an optional note per item and a note / footnote per category. */
+    /** An unnumbered table; items may carry a muted credit, guides add a note per item and a note / footnote per category. */
     renderPlainCategory(label, items, category = {}) {
         const rows = items.map((entry) => {
             const item = typeof entry === 'string' ? { title: entry } : (entry || {});
             const note = item.note ? `<span class="books-item-note"> → ${this.escapeHtml(item.note)}</span>` : '';
-            return `<tr><td class="books-col-title">${item.title ? this.renderBookTitle(item) : ''}${note}</td></tr>`;
+            const credit = item.credit ? ` <span class="books-item-credit">${this.escapeHtml(item.credit)}</span>` : '';
+            return `<tr><td class="books-col-title">${item.title ? this.renderBookTitle(item) : ''}${credit}${note}</td></tr>`;
         }).join('');
-        const noteRow = category.note
-            ? `<tr><td class="books-category-note">${this.escapeHtml(category.note)}</td></tr>`
+        const source = category.source?.url && category.source?.label
+            ? `<a href="${this.escapeHtml(category.source.url)}" target="_blank" rel="noopener noreferrer">${this.escapeHtml(category.source.label)}</a>`
+            : '';
+        const noteRow = !category.hideHeading && (category.note || source)
+            ? `<tr><td class="books-category-note">${source || this.escapeHtml(category.note)}</td></tr>`
             : '';
         const footnote = category.footnote
             ? `<p class="books-category-note books-category-footnote">${this.escapeHtml(category.footnote)}</p>`
             : '';
-        return `<section class="books-award">
-            <table class="books-table books-table--award books-table--plain">
-                <thead>
+        const heading = category.hideHeading ? '' : `<thead>
                     <tr><th scope="col">${label}</th></tr>
                     ${noteRow}
-                </thead>
+                </thead>`;
+        return `<section class="books-award">
+            <table class="books-table books-table--award books-table--plain">
+                ${heading}
                 <tbody>${rows}</tbody>
             </table>${footnote}
         </section>`;
@@ -484,6 +498,7 @@ class BooksApp extends BaseApp {
         const list = this.currentList();
         if (!list || !bodyEl) return;
         const { data } = list;
+        this.window.classList.toggle('books-window--narrow', Boolean(data.narrowWindow));
 
         const title = this.i18nLabel(list.titleKey, data.title);
         if (titleEl) titleEl.textContent = title;
@@ -491,7 +506,10 @@ class BooksApp extends BaseApp {
 
         // Above the list: subtitle, intro and a count line, each only when the list has one.
         const subtitle = data.subtitle ? this.i18nLabel(list.subtitleKey, data.subtitle) : '';
-        const headerHtml = (subtitle ? `<p class="books-subtitle">${this.escapeHtml(subtitle)}</p>` : '')
+        const subtitleHtml = data.subtitleLink?.url && data.subtitleLink?.label
+            ? `<p class="books-subtitle"><a href="${this.escapeHtml(data.subtitleLink.url)}" target="_blank" rel="noopener noreferrer">${this.escapeHtml(data.subtitleLink.label)}</a></p>`
+            : (subtitle ? `<p class="books-subtitle">${this.escapeHtml(subtitle)}</p>` : '');
+        const headerHtml = subtitleHtml
             + (data.intro ? `<p class="guide-intro">${this.escapeHtml(data.intro)}</p>` : '')
             + this.renderStats(data);
         const awards = data.layout === 'awards';
@@ -513,7 +531,11 @@ class BooksApp extends BaseApp {
         // Unranked lists (all plain categories) flow into side-by-side columns sized to their text.
         const categories = data.categories || [];
         const plain = categories.length > 0 && categories.every((category) => category.ranked === false);
-        const tablesClass = plain ? 'books-tables books-tables--columns' : 'books-tables';
+        const tablesClass = data.tableLayout === 'two-up'
+            ? 'books-tables books-tables--two-up'
+            : (data.centered
+                ? `books-tables ${plain ? 'books-tables--centered-plain' : 'books-tables--centered'}`
+                : (plain ? 'books-tables books-tables--columns' : 'books-tables'));
         // The note stays centred above the columns instead of flowing into the first one.
         bodyEl.innerHTML = plain
             ? `<div class="books-tables">${headerHtml}<div class="${tablesClass}">${listHtml}</div></div>`

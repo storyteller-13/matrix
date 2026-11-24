@@ -2,14 +2,18 @@
   "name": "matrix.nullstar.fun",
   "version": "1.0.13",
   "description": "Marina von Steinkirch`s Matrix",
+  "private": true,
   "type": "module",
   "scripts": {
     "lint": "eslint . --max-warnings 0",
     "test": "vitest run --coverage",
-    "prepare": "husky"
+    "prepare": "husky",
+    "feeds": "node scripts/build-feeds.mjs",
+    "test:e2e": "playwright test"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.65.1",
     "@vitest/coverage-v8": "^5.1.0",
     "eslint": "^10.14.0",
     "globals": "^17.14.0",

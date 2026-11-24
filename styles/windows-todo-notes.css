@@ -1,0 +1,270 @@
+/* Todo Application */
+.todo-window {
+    width: min(300px, calc(100vw - 32px));
+    height: min(400px, calc(100dvh - var(--top-panel-height) - var(--dock-clearance)));
+    top: 80px;
+    left: auto;
+    right: calc(var(--music-player-width) + var(--desktop-gap) * 2 + 12px);
+    z-index: 100;
+}
+
+.todo-app {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: rgba(255, 250, 252, 0.98);
+}
+
+
+.todo-list {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    padding: 8px;
+    background:  rgba(255, 245, 249, 0.9);
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    margin-bottom: 8px;
+    background: rgba(211, 198, 217, 0.9);
+    border: 1px solid rgba(255, 133, 162, 0.2);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+    gap: 12px;
+}
+
+.todo-item:hover {
+    background: rgba(255, 133, 162, 0.15);
+    border-color: rgba(255, 133, 162, 0.4);
+    box-shadow: var(--shadow-soft);
+}
+
+.todo-item.completed {
+    opacity: 0.6;
+}
+
+.todo-item.completed .todo-text {
+    text-decoration: line-through;
+    color: #c78ba3;
+}
+
+.todo-checkbox {
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 133, 162, 0.5);
+    border-radius: 4px;
+    background: rgba(255, 240, 245, 0.8);
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s;
+    flex-shrink: 0;
+}
+
+.todo-checkbox:hover {
+    border-color: rgba(255, 133, 162, 0.8);
+    box-shadow: var(--shadow-soft);
+}
+
+.todo-checkbox.checked {
+    background: rgba(255, 133, 162, 0.6);
+    border-color: rgba(255, 133, 162, 0.8);
+    box-shadow: var(--shadow-soft);
+}
+
+.todo-checkbox.checked::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--text);
+    font-size: 11px;
+    font-weight: bold;
+    text-shadow: none;
+}
+
+.todo-text {
+    flex: 1;
+    color: var(--text);
+    font-size: 13px;
+    font-family: inherit;
+    font-weight: 700;
+    text-shadow: none;
+    word-break: break-word;
+}
+
+.todo-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: #F9A8C9;
+    text-align: center;
+    padding: 40px;
+}
+
+.todo-empty .empty-text {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.todo-footer {
+    padding: 12px 16px;
+    border-top: 1px solid rgba(255, 133, 162, 0.3);
+    background: rgba(255, 245, 249, 0.95);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+}
+
+.todo-count {
+    color: #C084FC;
+    font-size: 11px;
+    font-family: inherit;
+    text-shadow: none;
+}
+
+
+/* Notes Application */
+.notes-window {
+    width: min(520px, calc(100vw - 32px));
+    height: min(560px, calc(100dvh - var(--top-panel-height) - var(--dock-clearance)));
+    top: 60px;
+    left: 150px;
+    z-index: 100;
+}
+
+.notes-app {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: rgba(255, 250, 252, 0.98);
+    overflow: hidden;
+}
+
+.notes-entries-list {
+    flex: 1;
+    min-height: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 0;
+    background: rgba(237, 222, 238, 0.6);
+}
+
+.notes-footer {
+    padding: 12px 16px;
+    border-top: 1px solid rgba(255, 133, 162, 0.3);
+    background: rgba(255, 245, 249, 0.95);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.notes-count {
+    color: #C084FC;
+    font-size: 11px;
+    font-family: inherit;
+    font-weight: bold;
+    text-shadow: none;
+}
+
+.notes-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: #F9A8C9;
+    text-align: center;
+    padding: 40px;
+}
+
+.notes-empty .empty-icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+    opacity: 0.7;
+}
+
+.notes-empty .empty-text {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    text-shadow: none;
+}
+
+.notes-date-item {
+    width: 100%;
+    min-width: 0;
+    padding: 16px 20px;
+    cursor: pointer;
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+    border-bottom: 1px solid rgba(255, 133, 162, 0.1);
+    color: var(--text);
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    overflow: hidden;
+}
+
+.notes-date-item:last-child {
+    border-bottom: none;
+}
+
+.notes-date-item:hover {
+    background: rgba(255, 133, 162, 0.15);
+    box-shadow: inset 3px 0 0 #FF85A2;
+}
+
+.notes-read-indicator {
+    font-size: 16px;
+    font-weight: bold;
+    color: #FF85A2;
+    text-shadow: none;
+    width: 28px;
+    min-width: 28px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+.notes-date-item:not(.read) .notes-read-indicator {
+    font-size: 26px;
+}
+
+.notes-date-text {
+    text-shadow: none;
+    font-weight: 800;
+    font-size: 15px;
+    flex: 0 1 auto;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.notes-date-title {
+    margin-left: auto;
+    font-size: 13px;
+    color: var(--text);
+    font-family: inherit;
+    text-shadow: none;
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: right;
+    font-weight: 800;
+}
+

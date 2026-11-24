@@ -55,11 +55,12 @@
 
 html.locale-ja body,
 html[lang="ja"] body {
-    font-family: 'Zen Maru Gothic', 'Nunito', 'Quicksand', system-ui, -apple-system, sans-serif;
+    font-family: 'Nunito', 'Quicksand', 'Zen Maru Gothic', system-ui, -apple-system, sans-serif;
 }
 
 body {
     font-family: 'Nunito', 'Quicksand', system-ui, -apple-system, sans-serif;
+    text-transform: lowercase;
     overflow: hidden;
     background: var(--bg-solid);
     color: var(--text);
@@ -272,6 +273,25 @@ body {
 
     .wallpaper-star::after {
         display: none;
+    }
+}
+
+/* Keyboard users can see where focus is on window controls and dock items. */
+.control:focus-visible,
+.dock-item:focus-visible {
+    outline: 2px solid #E879A9;
+    outline-offset: 2px;
+}
+
+/* Reduced motion: stop animations and make transitions effectively instant across the app. */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
     }
 }
 

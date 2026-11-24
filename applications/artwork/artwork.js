@@ -129,7 +129,7 @@ class ArtworkApp extends BaseApp {
         const shareBtn = document.createElement('button');
         shareBtn.type = 'button';
         shareBtn.className = 'artwork-share-link';
-        shareBtn.textContent = 'copy link';
+        shareBtn.textContent = window.I18n?.t?.('artwork.copyLink') ?? 'copy link';
         Object.assign(shareBtn.style, {
             position: 'absolute',
             bottom: '24px',
@@ -212,8 +212,9 @@ class ArtworkApp extends BaseApp {
             input.remove();
         }
         if (copied) {
-            button.textContent = 'copied!';
-            setTimeout(() => { button.textContent = 'copy link'; }, 1600);
+            const i18n = window.I18n;
+            button.textContent = i18n?.t?.('artwork.copied') ?? 'copied!';
+            setTimeout(() => { button.textContent = i18n?.t?.('artwork.copyLink') ?? 'copy link'; }, 1600);
         }
     }
 

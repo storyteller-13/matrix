@@ -1,0 +1,412 @@
+/* Touch Target Improvements */
+@media (max-width: 768px), (max-height: 500px) {
+    /* Keep tray/menu compact so the top bar fits; expand hit area via ::after */
+    .todo-checkbox {
+        min-width: 44px;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .control {
+        position: relative;
+    }
+
+    .notes-date-item {
+        min-height: 44px;
+    }
+
+    /* Prevent text selection on interactive elements */
+    .menu-button,
+    .dock-item,
+    .desktop-icon,
+    .file-item,
+    .todo-item,
+    .notes-date-item {
+        -webkit-tap-highlight-color: rgba(255, 133, 162, 0.3);
+        -webkit-touch-callout: none;
+        user-select: none;
+    }
+}
+
+/* Very small phones – keep the top bar on one row */
+@media (max-width: 360px) {
+    .menu-button.cherry-icon {
+        width: 32px;
+        height: 32px;
+        min-width: 32px;
+        min-height: 32px;
+    }
+
+    .tray-button {
+        width: 28px;
+        height: 28px;
+        min-width: 28px;
+        min-height: 28px;
+    }
+
+    .tray-button::after {
+        inset: -8px 0;
+    }
+
+    .tray-icon,
+    .tray-icon svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    .clock-zone {
+        padding: 1px 2px;
+    }
+
+    .clock-time {
+        font-size: 8px;
+    }
+
+    .clock-city {
+        font-size: 5px;
+    }
+}
+
+/* Mid-width desktops: drop seconds so clocks stay clear of the tray */
+@media (min-width: 769px) and (max-width: 1400px) {
+    .clock-seconds {
+        display: none;
+    }
+
+    .clock-zone {
+        padding: 0 6px;
+        gap: 4px;
+    }
+}
+
+/* Tight laptops: city codes instead of full names */
+@media (min-width: 769px) and (max-width: 1100px) {
+    .clock-city-full {
+        display: none;
+    }
+
+    .clock-city-short {
+        display: inline;
+    }
+
+    .clock-city {
+        font-size: 9px;
+        letter-spacing: 0.06em;
+        text-transform: lowercase;
+    }
+}
+
+/* Touch devices: don't leave hover-scale stuck after a tap */
+@media (hover: none) and (max-width: 768px), (hover: none) and (max-height: 500px) {
+    .quotes-box:hover,
+    .sky-box:hover,
+    .chess-box:hover,
+    .calendar-box:hover,
+    .bird-box:hover {
+        transform: translate(-50%, -50%);
+    }
+
+    .music-player:hover,
+    .apod-box:hover,
+    .dock-item:hover {
+        transform: none;
+    }
+}
+
+
+/* Phones: five clocks plus the tray don't fit in one row, and nine 44px dock
+   icons are wider than the screen. Keep three clocks (hawaii ≈ sf, iceland ≈ berlin)
+   and let dock icons shrink evenly instead of running off the edge. */
+@media (max-width: 480px) {
+    .clock-zone {
+        flex-shrink: 0;
+    }
+
+    .clock-zone[data-timezone="Pacific/Honolulu"],
+    .clock-zone[data-timezone="Atlantic/Reykjavik"] {
+        display: none;
+    }
+
+    .clock-zone[data-timezone="America/Los_Angeles"]::before {
+        display: none;
+    }
+
+    .bottom-dock {
+        width: max-content;
+    }
+
+    .bottom-dock .dock-item {
+        flex: 0 1 auto;
+        width: 44px;
+        min-width: 0;
+    }
+}
+
+/* Very narrow phones (e.g. 320px): only room for two clocks beside the tray */
+@media (max-width: 340px) {
+    .clock-zone[data-timezone="Asia/Tokyo"] {
+        display: none;
+    }
+}
+
+
+/* Compact screens: phones in either orientation and short landscape screens.
+   Keep this query in sync with the isCompact/isMobile checks in core/ and applications/. */
+.calendar-day-detail {
+    display: none;
+}
+
+@media (max-width: 768px), (max-height: 500px) {
+    :root {
+        --compact-top: calc(48px + env(safe-area-inset-top, 0px));
+        --compact-bottom: calc(78px + env(safe-area-inset-bottom, 0px));
+        --compact-safe-x: max(env(safe-area-inset-left, 0px), env(safe-area-inset-right, 0px));
+    }
+
+    /* Widgets sit centred between the top bar and the dock, and scroll if they don't fit */
+    .quotes-box,
+    .chess-box,
+    .sky-box,
+    .bird-box,
+    .apod-box,
+    .calendar-box,
+    .music-player {
+        position: fixed;
+        left: 50%;
+        right: auto;
+        bottom: auto;
+        margin-inline: 0;
+        top: calc(var(--compact-top) + (100dvh - var(--compact-top) - var(--compact-bottom)) / 2);
+        width: min(380px, calc(100vw - 16px - 2 * var(--compact-safe-x)));
+        max-width: none;
+        max-height: calc(100dvh - var(--compact-top) - var(--compact-bottom) - 12px);
+        overflow-x: hidden;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        -webkit-overflow-scrolling: touch;
+        transform: translate(-50%, -50%);
+    }
+
+    .calendar-box {
+        width: min(460px, calc(100vw - 16px - 2 * var(--compact-safe-x)));
+    }
+
+    /* Embedded sites use their own mobile layout instead of a shrunken desktop one */
+    .home-container {
+        --home-page-scale: 1;
+    }
+
+    .terminal-input-main {
+        flex: 1 1 0;
+        width: 0;
+        min-width: 0;
+    }
+
+    .terminal-line {
+        min-width: 0;
+    }
+
+    .menu-dropdown {
+        max-width: min(250px, calc(100vw - 16px - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px)));
+        width: 100%;
+    }
+
+    /* Calendar: icons in the grid, full text below it when a day is tapped */
+    .calendar-grid {
+        gap: 4px;
+    }
+
+    .calendar-day,
+    .calendar-day-empty {
+        min-height: 44px;
+        padding: 3px;
+    }
+
+    .calendar-day-has-event {
+        cursor: pointer;
+    }
+
+    .calendar-day-events {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1px;
+    }
+
+    .calendar-day-event {
+        background: none;
+        padding: 0;
+        font-size: 14px;
+        line-height: 1.1;
+    }
+
+    .calendar-day-event-text {
+        display: none;
+    }
+
+    .calendar-day-selected {
+        outline: 2px solid #E879A9;
+        outline-offset: -2px;
+    }
+
+    .calendar-day-detail:not([hidden]) {
+        display: block;
+        margin-top: 8px;
+        padding: 8px 10px;
+        border-radius: 8px;
+        background: rgba(232, 121, 169, 0.14);
+        color: var(--text);
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 1.35;
+    }
+
+    .calendar-day-detail-line + .calendar-day-detail-line {
+        margin-top: 4px;
+    }
+}
+
+@media (max-height: 500px) and (orientation: landscape), (max-width: 768px) and (orientation: landscape) {
+    :root {
+        --compact-top: calc(44px + env(safe-area-inset-top, 0px));
+        --compact-bottom: calc(70px + env(safe-area-inset-bottom, 0px));
+    }
+
+    /* Keep window edges and close buttons clear of the notch */
+    .window {
+        max-width: calc(100vw - 16px - 2 * var(--compact-safe-x));
+    }
+}
+
+/* Touch screens of any size: controls big enough to tap */
+@media (pointer: coarse) {
+    .control.close,
+    .terminal-window .control.close,
+    .quotes-box-close,
+    .sky-box-close,
+    .bird-box-close,
+    .apod-box-close,
+    .chess-box-close,
+    .calendar-box-close,
+    .calendar-nav,
+    .music-close,
+    .music-nav,
+    .music-toggle {
+        width: 32px;
+        height: 32px;
+        min-width: 32px;
+        min-height: 32px;
+    }
+
+    .menu-dropdown .menu-item {
+        min-height: 44px;
+        box-sizing: border-box;
+    }
+
+    .locale-toggle::after {
+        content: '';
+        position: absolute;
+        inset: -12px -2px;
+    }
+
+    .home-container {
+        --home-page-scale: 0.75;
+    }
+}
+
+@media (pointer: coarse) and (max-width: 768px), (pointer: coarse) and (max-height: 500px) {
+    .home-container {
+        --home-page-scale: 1;
+    }
+}
+
+/* Desktop layout on narrower screens: keep the bottom widgets clear of the centred dock */
+@media (min-width: 769px) and (min-height: 501px) and (max-width: 1500px) {
+    .desktop-panels-row .sky-box,
+    .desktop-panels-row .bird-box {
+        margin-bottom: calc(var(--dock-clearance) - var(--desktop-gap));
+    }
+}
+
+@media (min-width: 769px) and (min-height: 501px) and (max-width: 920px) {
+    .desktop-panels {
+        bottom: var(--dock-clearance);
+    }
+
+    .desktop-panels-row .sky-box,
+    .desktop-panels-row .bird-box {
+        margin-bottom: 0;
+    }
+}
+
+/* Curated lists on phones: keep the rating header whole, stack guide details, tighten cards. */
+@media (max-width: 480px) {
+    .books-table col.books-col-rating {
+        width: 64px;
+    }
+
+    .guide-section {
+        padding: 12px;
+    }
+
+    .guide-details {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .guide-detail dd {
+        margin-bottom: 6px;
+    }
+
+    .bucket-region-count {
+        margin-left: 0;
+        flex-basis: 100%;
+    }
+}
+
+/* "who i am" fits its text on small screens too, so it sits centred instead of filling the screen. */
+@media (max-width: 768px), (max-height: 500px) {
+    .about-window {
+        height: auto !important;
+    }
+
+    .about-window .window-content {
+        height: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Centre "who i am" between the top panel (52px) and the dock (80px). */
+    .about-window {
+        top: calc(52px + env(safe-area-inset-top, 0px) + (100dvh - 52px - 80px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px)) / 2) !important;
+        transform: translateY(-50%) !important;
+    }
+}
+
+/* Reflections on tablets and phones: keep the bigger type, with less padding around the sheet. */
+@media (max-width: 768px), (max-height: 500px) {
+    #notes-letter-window .letter-container {
+        padding: 10px;
+    }
+
+    #notes-letter-window .letter-paper {
+        padding: 22px 20px 28px;
+    }
+
+    #notes-letter-window .letter-title {
+        font-size: 26px;
+        margin-bottom: 24px;
+    }
+
+    #notes-letter-window .letter-text {
+        font-size: 13.5px;
+        line-height: 1.7;
+    }
+
+    #notes-letter-window .letter-container--ascii .letter-text {
+        font-size: 11px;
+        line-height: 1.45;
+    }
+}

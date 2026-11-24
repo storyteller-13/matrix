@@ -1,0 +1,241 @@
+/* Landscape Mobile */
+@media (max-width: 768px) and (orientation: landscape), (max-height: 500px) and (orientation: landscape) {
+    /* Desktop container padding for fixed top panel */
+    .desktop {
+        padding-top: calc(44px + env(safe-area-inset-top, 0px));
+        padding-bottom: calc(70px + env(safe-area-inset-bottom, 0px));
+    }
+
+    .top-panel {
+        height: auto;
+        min-height: 44px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        z-index: 20000;
+        padding-top: env(safe-area-inset-top, 0px);
+        padding-left: calc(8px + env(safe-area-inset-left, 0px));
+        padding-right: calc(8px + env(safe-area-inset-right, 0px));
+    }
+
+    .menu-dropdown {
+        top: calc(44px + env(safe-area-inset-top, 0px));
+        max-height: calc(100dvh - 44px - 78px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+    }
+
+    .window-content {
+        height: calc(100% - 44px);
+    }
+
+    .clock-zone {
+        flex-direction: row;
+        align-items: baseline;
+        padding: 0 5px;
+        gap: 3px;
+    }
+
+    .music-player {
+        top: calc(44px + env(safe-area-inset-top, 0px) + 8px);
+        width: min(220px, calc(100vw - 24px));
+        max-height: calc(100vh - 68px);
+        max-height: calc(100dvh - 52px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+    }
+
+    .quotes-box {
+        bottom: auto;
+        left: 50%;
+        top: 50%;
+        width: 220px;
+        max-height: 70vh;
+        transform: translate(-50%, -50%);
+        display: none;
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+    .quotes-box[style*="display: block"] {
+        display: flex !important;
+    }
+
+    .quotes-box-content {
+        display: flex;
+        flex-direction: column;
+        min-height: 0;
+        flex: 1;
+    }
+
+    .quotes-box:hover {
+        transform: translate(-50%, -50%) translateY(-4px) scale(1.02);
+    }
+
+    .quotes-quote-container {
+        flex: 1;
+        min-height: 140px;
+        max-height: 45vh;
+        height: auto;
+        overflow-y: auto;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+
+    .apod-box {
+        bottom: 70px; /* Above bottom dock */
+        right: 8px;
+        width: 220px;
+    }
+
+    .apod-box-image-container {
+        height: 120px;
+    }
+
+    .apod-box-close {
+        width: 18px;
+        height: 18px;
+    }
+
+    .bird-box {
+        left: 50%;
+        top: 50%;
+        bottom: auto;
+        right: auto;
+        width: 220px;
+        transform: translate(-50%, -50%);
+    }
+
+    .bird-box:hover {
+        transform: translate(-50%, -50%) translateY(-4px) scale(1.02);
+    }
+
+    .bird-box-image-container {
+        height: 120px;
+    }
+
+    .bird-box-close {
+        width: 18px;
+        height: 18px;
+    }
+
+    .chess-box {
+        left: 50%;
+        top: 50%;
+        bottom: auto;
+        width: calc(100% - 16px);
+        max-width: 280px;
+        transform: translate(-50%, -50%);
+    }
+
+    .chess-box:hover {
+        transform: translate(-50%, -50%) translateY(-4px) scale(1.02);
+    }
+
+    .chess-box-puzzle-container {
+        height: 220px;
+    }
+
+    .chess-box-close {
+        width: 18px;
+        height: 18px;
+    }
+
+    .sky-box {
+        width: 220px;
+        max-height: 70vh;
+        left: 50%;
+        top: 50%;
+        bottom: auto;
+        transform: translate(-50%, -50%);
+    }
+
+    .sky-box:hover {
+        transform: translate(-50%, -50%) translateY(-4px) scale(1.02);
+    }
+
+    .calendar-box {
+        width: min(420px, calc(100% - 16px));
+        max-height: 80vh;
+        left: 50%;
+        right: auto;
+        top: 50%;
+        bottom: auto;
+        transform: translate(-50%, -50%);
+    }
+
+    .calendar-box:hover {
+        transform: translate(-50%, -50%);
+    }
+
+    .calendar-day {
+        min-height: 42px;
+        padding: 3px;
+    }
+
+    .calendar-day-empty {
+        min-height: 42px;
+    }
+
+    .calendar-day-num {
+        font-size: 11px;
+    }
+
+    .calendar-day-event {
+        font-size: 7px;
+        padding: 1px 2px;
+    }
+
+    .terminal-window,
+    .todo-window,
+    .notes-window,
+    .home-window,
+    .artwork-window,
+    .notes-letter-window,
+    .books-window,
+    .about-window {
+        width: 95%;
+        height: calc(100dvh - 44px - 70px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+        max-height: calc(100dvh - 44px - 70px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+        top: calc(44px + env(safe-area-inset-top, 0px));
+        bottom: auto;
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+    }
+
+    .books-window {
+        --books-max: calc(100dvh - 44px - 70px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+        --books-header: 46px;
+        height: auto;
+    }
+
+    .about-window {
+        top: calc(44px + env(safe-area-inset-top, 0px) + var(--desktop-gap));
+        height: calc(100dvh - 44px - 70px - var(--desktop-gap) - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+        max-height: calc(100dvh - 44px - 70px - var(--desktop-gap) - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px));
+    }
+
+    .about-window .window-content {
+        height: calc(100% - 44px);
+        max-height: none;
+    }
+
+    .bottom-dock {
+        bottom: calc(8px + env(safe-area-inset-bottom, 0px));
+        padding: 6px 10px;
+        padding-left: calc(10px + env(safe-area-inset-left, 0px));
+        padding-right: calc(10px + env(safe-area-inset-right, 0px));
+        position: fixed;
+        z-index: 1000;
+        --dock-icon-size: 26px;
+    }
+
+    .dock-item {
+        width: 40px;
+        height: 40px;
+        min-width: 40px;
+        min-height: 40px;
+    }
+}
+

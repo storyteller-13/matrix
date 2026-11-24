@@ -258,8 +258,8 @@ class NotesApp extends BaseApp {
     }
 
     getSortedDates() {
-        // Keys are YYYY-MM-DD, so string order is chronological; oldest first, newest at the bottom
-        return Object.keys(this.entriesByDate).sort((a, b) => a.localeCompare(b));
+        // Keys are YYYY-MM-DD, so reverse string order puts the newest date first
+        return Object.keys(this.entriesByDate).sort((a, b) => b.localeCompare(a));
     }
 
     renderDateItems(sortedDates) {
@@ -405,7 +405,11 @@ class NotesApp extends BaseApp {
         const processed = this.escapeHtml(content)
             .replace(/«i»([\s\S]*?)«\/i»/g, '<em>$1</em>')
             .replace(/«a:(https?:\/\/[^»\s"<>]+)»([\s\S]*?)«\/a»/g,
-                (_, url, text) => `<a href="${url}" target="_blank" rel="noopener noreferrer">${text}</a>`);
+                (_, url, text) => `<a href="${url}" target="_blank" rel="noopener noreferrer">${text}</a>`)
+            // The page is lowercased by body text-transform; keep the brand name in capitals.
+            // Tags and bare URLs are skipped so hrefs and addresses stay as written.
+            .replace(/(<[^>]+>)|(https?:\/\/[^\s<]+)|\bnullstar\b/gi,
+                (match, tag, url) => (tag || url ? match : '<span class="brand-caps">NULLSTAR</span>'));
         return this.formatDashedBlocks(processed).replace(/\n/g, '<br>');
     }
 

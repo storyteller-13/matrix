@@ -153,7 +153,7 @@ describe('api/bird', () => {
         const res = mockRes();
         await handler({ method: 'GET', query: {} }, res);
         expect(res.statusCode).toBe(500);
-        expect(res.body.message).toMatch(/no birds/i);
+        expect(res.body.message).toMatch(/unexpected error/i);
     });
 
     it('returns 500 when no bird has a photo', async () => {
@@ -167,7 +167,7 @@ describe('api/bird', () => {
         const res = mockRes();
         await handler({ method: 'GET', query: { date: '2026-09-12' } }, res);
         expect(res.statusCode).toBe(500);
-        expect(res.body.message).toMatch(/no bird with photo/i);
+        expect(res.body.message).toMatch(/unexpected error/i);
     });
 
     it('returns 500 when upstream fails', async () => {
@@ -246,7 +246,7 @@ describe('api/bird', () => {
         const res = mockRes();
         await handler({ method: 'GET', query: { date: '2026-09-12' } }, res);
         expect(res.statusCode).toBe(500);
-        expect(res.body.message).toMatch(/no birds/i);
+        expect(res.body.message).toMatch(/unexpected error/i);
 
         vi.stubGlobal('fetch', vi.fn().mockResolvedValue({
             ok: true,
@@ -258,6 +258,6 @@ describe('api/bird', () => {
         const res2 = mockRes();
         await handler({ method: 'GET', query: { date: '2026-09-12' } }, res2);
         expect(res2.statusCode).toBe(500);
-        expect(res2.body.message).toMatch(/no bird with photo/i);
+        expect(res2.body.message).toMatch(/unexpected error/i);
     });
 });

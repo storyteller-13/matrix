@@ -1,7 +1,10 @@
 /**
- * Curated lists folder browser – nested folders for books / movies / adventures / art / science / food / podcasts / games.
+ * Curated lists folder browser – nested folders for books / movies / adventures / art / science / nutrition / podcasts / games.
  * Every folder is linkable: ?folder=movies, ?folder=podcasts/zeitgeist-awards-2026 (a bare nested id also works).
  */
+
+import { renderListsMenu } from './lists-menu.js';
+import { rootFolderEntries, folderEntries } from './lists-folder-data.js';
 
 const FOLDER_PARAM = 'folder';
 
@@ -63,6 +66,8 @@ class ListsFolderApp extends BaseApp {
 
     init() {
         super.init();
+        this.renderMenu();
+        document.addEventListener('localechange', () => this.renderMenu());
         if (!this.window) return;
         this.cacheElements();
         this.setupUrlRouting();
@@ -70,6 +75,16 @@ class ListsFolderApp extends BaseApp {
         this.updateDockBadge();
         document.addEventListener('localechange', () => this.render());
         this.openFromUrl();
+    }
+
+    /** Rebuilds the top-left lists menu from the folder data, then refills its podcast episodes. */
+    renderMenu() {
+        const container = document.getElementById('lists-menu-root');
+        if (!container) return;
+        renderListsMenu(container, this);
+        window.renderPodcastMenu?.();
+        // The panel wires hover and click for submenus once at startup; the generated ones need the same wiring.
+        window.Panel?.setupSubmenus?.(container);
     }
 
     setupUrlRouting() {
@@ -204,171 +219,14 @@ class ListsFolderApp extends BaseApp {
         return label || this.t('menu.curateLists', 'my curated lists');
     }
 
+    /** Top-level folders; the content lives in lists-folder-data.js. */
     rootEntries() {
-        return [
-            { id: 'books', label: this.t('menu.listsBooks', 'books'), kind: 'folder' },
-            { id: 'movies', label: this.t('menu.listsMovies', 'movies'), kind: 'folder' },
-            { id: 'adventures', label: this.t('menu.listsPlaces', 'adventures'), kind: 'folder' },
-            { id: 'podcasts', label: this.t('menu.listsPodcasts', 'podcasts'), kind: 'folder' },
-            { id: 'games', label: this.t('menu.listsGames', 'games'), kind: 'folder' },
-            { id: 'food', label: this.t('menu.listsFood', 'food'), kind: 'folder', empty: true },
-            { id: 'art', label: this.t('menu.listsArt', 'art'), kind: 'folder', empty: true },
-            { id: 'science', label: this.t('menu.listsScience', 'science'), kind: 'folder', empty: true },
-        ];
-    }
-
-    /** Start adding entries for folders. */
-    booksEntries() {
-        return [
-            {
-                id: 'books-2026',
-                label: this.t('menu.books2026', 'books i read in 2026'),
-                kind: 'list',
-                open: () => window.openBooksWindow?.('books-2026'),
-            },
-            {
-                id: 'books-2027',
-                label: this.t('menu.books2027', 'books i read in 2027'),
-                kind: 'list',
-                open: () => window.openBooksWindow?.('books-2027'),
-            },
-            {
-                id: 'books-backlog',
-                label: this.t('menu.booksBacklog', 'my endless ever-changing backlog'),
-                kind: 'list',
-                open: () => window.openBooksWindow?.('books-backlog'),
-            },
-            {
-                id: 'kids-books',
-                label: this.t('menu.kidsBooks', 'books our kids should read'),
-                kind: 'list',
-                open: () => window.openBooksWindow?.('kids-books'),
-            },
-        ];
-    }
-
-    moviesEntries() {
-        return [
-            {
-                id: 'zeitgeist-2026',
-                label: this.t('menu.zeitgeist2026', 'zeitgeist awards 2026'),
-                kind: 'list',
-                icon: 'movie',
-                gold: true,
-                open: () => window.openBooksWindow?.('zeitgeist-2026'),
-            },
-            {
-                id: 'kids-movies',
-                label: this.t('menu.kidsMovies', 'movies to watch with our kids'),
-                kind: 'list',
-                icon: 'movie',
-                open: () => window.openBooksWindow?.('kids-movies'),
-            },
-            {
-                id: 'winter-movies',
-                label: this.t('menu.winterMovies', 'classic american movies for the winter holiday'),
-                kind: 'list',
-                icon: 'movie',
-                open: () => window.openBooksWindow?.('winter-movies'),
-            },
-        ];
-    }
-
-    gamesEntries() {
-        return [
-            {
-                id: 'games-youth',
-                label: this.t('menu.gamesYouth', 'the videogames of my youth'),
-                kind: 'list',
-                icon: 'game',
-                open: () => window.openBooksWindow?.('games-youth'),
-            },
-        ];
-    }
-
-    adventuresEntries() {
-        return [
-            { id: 'my-guides', label: this.t('menu.myGuides', 'my guides'), kind: 'folder' },
-            {
-                id: 'bucket-list',
-                label: this.t('menu.bucketList', 'my bucket list'),
-                kind: 'list',
-                icon: 'pin',
-                open: () => window.openBooksWindow?.('bucket-list'),
-            },
-            {
-                id: 'cities-lived',
-                label: this.t('menu.citiesLived', 'cities i have lived'),
-                kind: 'list',
-                icon: 'home',
-                open: () => window.openBooksWindow?.('cities-lived'),
-            },
-            {
-                id: 'countries-explored',
-                label: this.t('menu.countriesExplored', 'countries i have explored'),
-                kind: 'list',
-                icon: 'globe',
-                open: () => window.openBooksWindow?.('countries-explored'),
-            },
-        ];
-    }
-
-    myGuidesEntries() {
-        return [
-            {
-                id: 'guide-alagoas',
-                label: this.t('menu.guideAlagoas', 'alagoas, brazil'),
-                kind: 'list',
-                icon: 'map',
-                open: () => window.openBooksWindow?.('guide-alagoas'),
-            },
-            {
-                id: 'guide-iceland',
-                label: this.t('menu.guideIceland', 'reykjavík, iceland'),
-                kind: 'list',
-                icon: 'map',
-                open: () => window.openBooksWindow?.('guide-iceland'),
-            },
-            {
-                id: 'guide-berlin',
-                label: this.t('menu.guideBerlin', 'berlin, germany'),
-                kind: 'list',
-                icon: 'map',
-                open: () => window.openBooksWindow?.('guide-berlin'),
-            },
-        ];
-    }
-
-    podcastsEntries() {
-        return [
-            {
-                id: 'zeitgeist-awards-2026',
-                label: this.t('menu.zeitgeist2026', 'zeitgeist awards 2026'),
-                kind: 'folder',
-                gold: true,
-            },
-        ];
-    }
-
-    podcastsZeitgeistEntries() {
-        return (window.PODCAST_EPISODES || []).map((episode) => ({
-            id: episode.id,
-            label: episode.title,
-            kind: 'podcast',
-            open: () => window.openPodcastWindow?.({ title: episode.title, videoId: episode.videoId }),
-        }));
+        return rootFolderEntries((key, fallback) => this.t(key, fallback));
     }
 
     /** Entries inside a sub-folder; folders without content return []. */
     entriesForFolder(folderId) {
-        if (folderId === 'books') return this.booksEntries();
-        if (folderId === 'movies') return this.moviesEntries();
-        if (folderId === 'games') return this.gamesEntries();
-        if (folderId === 'podcasts') return this.podcastsEntries();
-        if (folderId === 'adventures') return this.adventuresEntries();
-        if (folderId === 'my-guides') return this.myGuidesEntries();
-        if (folderId === 'zeitgeist-awards-2026') return this.podcastsZeitgeistEntries();
-        return [];
+        return folderEntries(folderId, (key, fallback) => this.t(key, fallback));
     }
 
     /** Optional note shown above a folder's items; folders with a note get the larger window. */

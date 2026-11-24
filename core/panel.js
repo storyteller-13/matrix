@@ -3,6 +3,9 @@
  * Handles top panel functionality (clock, menu)
  */
 
+// Matrix mode's logic clock shows only these numbers, one per digit of the time.
+const LOGIC_DIGITS = ['1', '3', '7', '13', '37'];
+
 class Panel {
     // Constants
     static CLOCK_UPDATE_INTERVAL = 1000; // 1 second
@@ -71,7 +74,10 @@ class Panel {
             return;
         }
 
+        // One timestamp per tick, so every zone and the logic clock show the same second.
         const now = new Date();
+        this.updateLogicClock(clock, now);
+
         const zones = clock.querySelectorAll('.clock-zone');
         if (zones.length === 0) {
             clock.textContent = this.formatClockTime(undefined, now);
@@ -93,6 +99,22 @@ class Panel {
             }
             timeEl.textContent = formatted;
         });
+    }
+
+    /**
+     * Matrix mode's single numbers-only clock. It is a real clock (hours, minutes, seconds, as in pink mode),
+     * but every digit is shown as one of 1, 3, 7, 13 or 37: digit d becomes LOGIC_DIGITS[d % 5].
+     */
+    updateLogicClock(clock, now) {
+        const timeEl = clock.querySelector('.logic-clock-time');
+        if (!timeEl) {
+            return;
+        }
+        const time = this.formatClockTime(undefined, now);
+        const shown = Array.from(time, (ch) => (ch >= '0' && ch <= '9' ? LOGIC_DIGITS[Number(ch) % LOGIC_DIGITS.length] : ch)).join('');
+        if (timeEl.textContent !== shown) {
+            timeEl.textContent = shown;
+        }
     }
 
     /**

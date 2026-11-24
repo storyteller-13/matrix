@@ -4,7 +4,7 @@
  * and returns a plain-text, normalized picture.
  */
 
-import { createHandler, fetchJson, queryParam, HttpError, UpstreamError } from './_lib/http.js';
+import { createHandler, fetchJson, dateParam, HttpError, UpstreamError } from './_lib/http.js';
 
 const API_URL = 'https://science.nasa.gov/wp-json/wp/v2/apod-basic';
 // NASA's site expects a browser-like User-Agent.
@@ -44,7 +44,8 @@ function normalize(item) {
 }
 
 async function loadApod(req) {
-  const code = toYYMMDD(queryParam(req, 'date'));
+  // APOD starts on 1995-06-16.
+  const code = toYYMMDD(dateParam(req, 'date', { min: '1995-06-16' }));
   const url = code ? `${API_URL}/${code}` : `${API_URL}?per_page=1`;
 
   let json;

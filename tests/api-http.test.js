@@ -73,9 +73,10 @@ describe('api/_lib/http', () => {
     it('fetchJson identifies the site, merges headers, and throws UpstreamError on failure', async () => {
         vi.stubGlobal('fetch', vi.fn().mockResolvedValue({ ok: true, json: async () => ({ a: 1 }) }));
         await expect(fetchJson('https://example.com/x', { headers: { 'User-Agent': 'custom' } })).resolves.toEqual({ a: 1 });
-        expect(fetch).toHaveBeenCalledWith('https://example.com/x', {
+        expect(fetch).toHaveBeenCalledWith('https://example.com/x', expect.objectContaining({
             headers: { Accept: 'application/json', 'User-Agent': 'custom' },
-        });
+            signal: expect.any(AbortSignal),
+        }));
 
         await fetchJson('https://example.com/y');
         expect(fetch.mock.calls[1][1].headers['User-Agent']).toBe(USER_AGENT);

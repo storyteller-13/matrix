@@ -172,7 +172,7 @@ describe('BooksApp', () => {
         const app = new window.BooksAppClass();
         app.open('zeitgeist-2026');
         const entries = document.querySelectorAll('#books-letter-content .award-entry');
-        expect(entries.length).toBe(36);
+        expect(entries.length).toBe(38);
         entries.forEach((entry) => {
             expect(entry.querySelector('.award-comment')?.textContent).toBeTruthy();
         });
@@ -272,7 +272,7 @@ describe('BooksApp', () => {
         expect(document.getElementById('books-letter-title').textContent).toBe('classic american movies for the winter holiday');
         const content = document.getElementById('books-letter-content');
         expect(content.querySelector('.books-backlog-title')).toBeNull();
-        expect(content.querySelectorAll('tbody tr').length).toBe(6);
+        expect(content.querySelectorAll('tbody tr').length).toBe(11);
         expect(content.textContent).toContain('it\'s a wonderful life (frank capra, 1946)');
     });
 
@@ -285,7 +285,7 @@ describe('BooksApp', () => {
         const regions = content.querySelectorAll('.bucket-region');
         expect(regions.length).toBe(5);
         expect(regions[0].querySelector('.bucket-region-title').textContent).toContain('americas');
-        expect(regions[0].querySelector('.bucket-region-count').textContent).toBe('11 countries · 43 places');
+        expect(regions[0].querySelector('.bucket-region-count').textContent).toBe('11 countries · 44 places');
         const jamaica = [...content.querySelectorAll('.bucket-card')].find((card) => card.textContent === 'jamaica');
         expect(jamaica.querySelector('.bucket-places')).toBeNull();
     });

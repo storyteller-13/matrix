@@ -2,6 +2,28 @@
  * Calendar Panel – current-month grid with moon / post markers.
  */
 
+/** Smallest size a grid label shrinks to before it is allowed to overflow. */
+const MIN_EVENT_TEXT_PX = 6;
+
+/** One glyph per event type; each type also has its own colour in tray-boxes-sky-calendar.css. */
+const EVENT_ICONS = {
+    'new-moon': '🌑',
+    'full-moon': '🌕',
+    'post': '📖',
+    'd-day': '🌞',
+    'free': '🕊',
+    'earthDay': '🌍',
+    'equinox': '⚖',
+    'fibonacciDay': '🌀',
+    'halloween': '💀',
+    'meteorShower': '☄',
+    'moonDay': '🌙',
+    'solstice': '☀',
+    'starWarsDay': '★',
+    'valentines': '♥',
+    'worldSnowDay': '❄',
+};
+
 class CalendarPanel {
     constructor() {
         this.events = typeof window.CALENDAR_EVENTS !== 'undefined' ? window.CALENDAR_EVENTS : [];
@@ -45,6 +67,11 @@ class CalendarPanel {
             }
         });
         document.addEventListener('localechange', () => this.render());
+        let resizeTimer = null;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => this.fitEventText(), 150);
+        });
         this.render();
         this.updateBadge();
     }
@@ -108,12 +135,7 @@ class CalendarPanel {
     }
 
     eventIcon(type) {
-        if (type === 'new-moon') return '\u25CF';
-        if (type === 'full-moon') return '\u25CB';
-        if (type === 'post') return '\u270E';
-        if (type === 'd-day') return '🌞';
-        if (type === 'halloween') return '💀';
-        return '\u2022';
+        return EVENT_ICONS[type] || '\u2022';
     }
 
     getEventCount() {
@@ -229,6 +251,24 @@ class CalendarPanel {
 
         this.renderDayDetail();
         this.updateBadge();
+        this.fitEventText();
+    }
+
+    /**
+     * Shrinks grid labels until no single word is wider than its cell. Text only wraps between words,
+     * so a long word such as "fibonacci" gets a smaller size rather than being split across lines.
+     */
+    fitEventText() {
+        const grid = document.getElementById('calendar-grid');
+        if (!grid) return;
+        grid.querySelectorAll('.calendar-day-event-text').forEach((el) => {
+            el.style.fontSize = '';
+            let size = parseFloat(window.getComputedStyle(el).fontSize);
+            while (el.scrollWidth > el.clientWidth && size > MIN_EVENT_TEXT_PX) {
+                size = Math.max(MIN_EVENT_TEXT_PX, size - 0.5);
+                el.style.fontSize = `${size}px`;
+            }
+        });
     }
 
     /** Tap a day to read its events below the grid; tap again to close. Phones show icons only in the grid. */

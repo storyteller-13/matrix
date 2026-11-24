@@ -2,6 +2,8 @@
  * Calendar panel – month grid, events, navigation, badges, stacking
  */
 import { describe, it, expect, beforeAll, beforeEach, afterEach, vi } from 'vitest';
+import { readFileSync } from 'fs';
+import { join } from 'path';
 
 const calendarDom = () => `
     <div id="calendar-box" style="display: none;">
@@ -14,6 +16,7 @@ const calendarDom = () => `
         <div id="calendar-day-detail" hidden></div>
     </div>
 `;
+let defaultCalendarEvents;
 
 describe('CalendarPanel', () => {
     beforeAll(async () => {
@@ -26,12 +29,14 @@ describe('CalendarPanel', () => {
         await import('../core/env.js');
         await import('../applications/calendar/calendar-events.js');
         await import('../applications/calendar/calendar.js');
+        defaultCalendarEvents = window.CALENDAR_EVENTS;
     });
 
     beforeEach(() => {
         document.body.innerHTML = calendarDom();
         window.matchMedia = () => ({ matches: false, addListener() {}, removeListener() {} });
         window.I18n = undefined;
+        window.CALENDAR_EVENTS = defaultCalendarEvents;
         delete window.bringToFront;
         delete window.WindowManager;
         vi.stubGlobal('requestAnimationFrame', (cb) => cb());
@@ -149,9 +154,61 @@ describe('CalendarPanel', () => {
     it('falls back to default event icon for unknown types', () => {
         const panel = new window.CalendarPanelClass();
         expect(panel.eventIcon('unknown')).toBe('\u2022');
-        expect(panel.eventIcon('new-moon')).toBe('\u25CF');
-        expect(panel.eventIcon('full-moon')).toBe('\u25CB');
-        expect(panel.eventIcon('post')).toBe('\u270E');
+        expect(panel.eventIcon('new-moon')).toBe('🌑');
+        expect(panel.eventIcon('full-moon')).toBe('🌕');
+        expect(panel.eventIcon('post')).toBe('📖');
+    });
+
+    it('shrinks a grid label until its longest word fits, never below the minimum', () => {
+        const panel = window.CalendarPanel;
+        const grid = document.getElementById('calendar-grid');
+        const label = document.createElement('span');
+        label.className = 'calendar-day-event-text';
+        grid.appendChild(label);
+        const computed = vi.spyOn(window, 'getComputedStyle').mockReturnValue({ fontSize: '10px' });
+        // The word overflows until the inline size drops to 8px.
+        Object.defineProperty(label, 'clientWidth', { value: 50, configurable: true });
+        Object.defineProperty(label, 'scrollWidth', {
+            configurable: true,
+            get: () => (parseFloat(label.style.fontSize || '10') > 8 ? 100 : 40),
+        });
+        panel.fitEventText();
+        expect(label.style.fontSize).toBe('8px');
+
+        // A word that never fits stops at the minimum size.
+        Object.defineProperty(label, 'scrollWidth', { configurable: true, get: () => 100 });
+        panel.fitEventText();
+        expect(label.style.fontSize).toBe('6px');
+
+        computed.mockRestore();
+        label.remove();
+    });
+
+    it('refits the grid labels after the window is resized', () => {
+        vi.useFakeTimers();
+        try {
+            const spy = vi.spyOn(window.CalendarPanel, 'fitEventText');
+            window.dispatchEvent(new Event('resize'));
+            window.dispatchEvent(new Event('resize'));
+            expect(spy).not.toHaveBeenCalled();
+            vi.advanceTimersByTime(150);
+            expect(spy).toHaveBeenCalledTimes(1);
+            spy.mockRestore();
+        } finally {
+            vi.useRealTimers();
+        }
+    });
+
+    it('gives every event type in the calendar data its own icon and colour class', () => {
+        const panel = new window.CalendarPanelClass();
+        const types = [...new Set(window.CALENDAR_EVENTS.map((ev) => ev.type))];
+        const css = readFileSync(join(__dirname, '../styles/tray-boxes-sky-calendar.css'), 'utf8');
+        const icons = types.map((type) => panel.eventIcon(type));
+        types.forEach((type, i) => {
+            expect(icons[i], `icon for ${type}`).not.toBe('\u2022');
+            expect(css, `colour for ${type}`).toContain(`.calendar-day-event-${type} {`);
+        });
+        expect(new Set(icons).size).toBe(icons.length);
     });
 
     it('labels only november stories as zeitgeist awards, with the award icon', () => {
@@ -278,6 +335,54 @@ describe('CalendarPanel', () => {
     it('openCalendarWindow no-ops when the panel is missing', () => {
         window.CalendarPanel = undefined;
         expect(() => window.openCalendarWindow()).not.toThrow();
+    });
+
+    it('handles optional calendar markup, malformed events, and space-key selection', () => {
+        window.CALENDAR_EVENTS = [];
+        document.body.innerHTML = '<div id="calendar-grid"></div>';
+        const panel = new window.CalendarPanelClass();
+        panel.events = null;
+        expect(panel.getEventCount()).toBe(0);
+        expect(document.querySelectorAll('.calendar-day').length).toBeGreaterThan(0);
+        expect(panel.getBox()).toBeNull();
+        panel.showBox();
+        panel.hideBox();
+        panel.toggleVisibility();
+        panel.fitEventText();
+
+        window.CALENDAR_EVENTS = [{
+            date: '2026-09-04', type: 'unknown', label: 'a note',
+        }];
+        document.body.innerHTML = '<div id="calendar-grid"></div><div id="calendar-day-detail" hidden></div>';
+        new window.CalendarPanelClass();
+        const day = document.querySelector('.calendar-day-unknown');
+        expect(day.getAttribute('aria-label')).toBe('4: a note');
+        day.dispatchEvent(new KeyboardEvent('keydown', { key: ' ', bubbles: true, cancelable: true }));
+        expect(document.getElementById('calendar-day-detail').hidden).toBe(false);
+        window.CALENDAR_EVENTS = defaultCalendarEvents;
+    });
+
+    it('renders without title and weekday elements and skips bring-to-front when the box is missing', () => {
+        document.body.innerHTML = '<div id="calendar-grid"></div>';
+        const panel = new window.CalendarPanelClass();
+        expect(() => panel.render()).not.toThrow();
+        expect(() => panel.bringToFront()).not.toThrow();
+        expect(() => panel.updateBadge()).not.toThrow();
+        document.body.innerHTML = '';
+        expect(() => panel.render()).not.toThrow();
+    });
+
+    it('defaults missing event data to an empty list and allows blank event labels', () => {
+        const events = window.CALENDAR_EVENTS;
+        delete window.CALENDAR_EVENTS;
+        document.body.innerHTML = '<div id="calendar-grid"></div>';
+        const panel = new window.CalendarPanelClass();
+        expect(panel.events).toEqual([]);
+        window.CALENDAR_EVENTS = [{ date: '2026-09-04', type: 'unknown' }];
+        document.body.innerHTML = '<div id="calendar-grid"></div>';
+        new window.CalendarPanelClass();
+        expect(document.querySelector('.calendar-day-unknown').getAttribute('aria-label')).toBe('4: ');
+        window.CALENDAR_EVENTS = events;
     });
 
     it('exposes CALENDAR_EVENTS with moon and post markers', () => {

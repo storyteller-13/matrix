@@ -1,35 +1,23 @@
 /**
  * Todo Storage Module
- * Handles localStorage persistence for todos
+ * Supplies the fixed todo list. Todos are never saved.
  */
+import { removeStorage } from '../../core/storage.js';
 
 class TodoStorage {
     constructor() {
-        this.storageKey = 'todos';
+        // Legacy key from earlier builds, cleared on load so old saved tasks never come back.
+        this.legacyStorageKey = 'todos';
     }
 
+    /**
+     * The todo list is fixed content: it is never saved and never read back from storage.
+     * Returns frozen items, so the list cannot be changed at runtime.
+     */
     load() {
-        try {
-            const raw = localStorage.getItem(this.storageKey);
-            if (raw) {
-                const parsed = JSON.parse(raw);
-                if (Array.isArray(parsed) && parsed.length > 0) {
-                    return parsed.map(t => this.normalizeTodo(t));
-                }
-            }
-        } catch (_) {
-            // invalid or missing: use defaults
-        }
+        // Blocked storage has nothing to clear.
+        removeStorage(this.legacyStorageKey);
         return this.getDefaultTodos();
-    }
-    
-    normalizeTodo(t) {
-        return {
-            id: t.id || this.generateId(),
-            textKey: t.textKey || undefined,
-            completed: Boolean(t.completed),
-            createdAt: t.createdAt || new Date().toISOString()
-        };
     }
 
     getDefaultTodos() {
@@ -39,16 +27,16 @@ class TodoStorage {
             { textKey: 'todo.item.people', completed: false },
             { textKey: 'todo.item.love', completed: false },
         ];
-        return defaultTodoData.map(data => this.createTodo(data.completed, data.textKey));
+        return Object.freeze(defaultTodoData.map(data => this.createTodo(data.completed, data.textKey)));
     }
 
     createTodo(completed = false, textKey) {
-        return {
+        return Object.freeze({
             id: this.generateId(),
             textKey: textKey || undefined,
             completed,
             createdAt: new Date().toISOString()
-        };
+        });
     }
 
     generateId() {

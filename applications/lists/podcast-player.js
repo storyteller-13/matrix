@@ -159,6 +159,8 @@ const renderPodcastMenu = () => {
     });
 };
 
+window.renderPodcastMenu = renderPodcastMenu;
+
 const initPodcastPlayerApp = () => {
     window.PodcastPlayerApp = new PodcastPlayerApp();
     renderPodcastMenu();

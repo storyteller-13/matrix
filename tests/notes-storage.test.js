@@ -87,4 +87,51 @@ describe('NotesStorage', () => {
         expect(storage.formatDate('2026-03-08T12:00:00.000Z')).toMatch(/sunday|monday|tuesday|wednesday|thursday|friday|saturday/);
         window.I18n = undefined;
     });
+
+    it('derives stable identifiers from translation keys, titles, and dates', () => {
+        const storage = new window.NotesStorage();
+        expect(storage.deriveStableId({ titleKey: 'notes.my-story.title' })).toBe('my-story');
+        expect(storage.deriveStableId({ titleKey: 'other.key', title: 'Hello, World!' })).toBe('hello-world');
+        expect(storage.deriveStableId({ date: '2026-04-05T10:00:00Z' })).toBe('2026-04-05');
+        expect(storage.deriveStableId({ date: 'unknown', createdAt: 'also-unknown' })).toBeNull();
+        expect(storage.deriveStableId({ title: ' !!! ' })).toBeNull();
+        expect(storage.deriveStableId(null)).toBeNull();
+    });
+
+    it('normalizes explicit values and generates an id when no stable source exists', () => {
+        const storage = new window.NotesStorage();
+        const complete = storage.normalizeEntry({
+            id: 'explicit', title: 'Title', content: 'Body', titleKey: 'title.key', contentKey: 'body.key',
+            date: '2026-02-03', createdAt: 'ignored', updatedAt: 'today', read: true, italic: true, asciiArt: true,
+        });
+        expect(complete).toMatchObject({
+            id: 'explicit', title: 'Title', content: 'Body', titleKey: 'title.key', contentKey: 'body.key',
+            createdAt: '2026-02-03', updatedAt: 'today', read: true, italic: true, asciiArt: true,
+        });
+        vi.spyOn(storage, 'generateId').mockReturnValue('generated');
+        expect(storage.normalizeEntry({}).id).toBe('generated');
+    });
+
+    it('cleans content and returns an empty string for blank input', () => {
+        const storage = new window.NotesStorage();
+        expect(storage.cleanContent('')).toBe('');
+        expect(storage.cleanContent('\n    first\n\n\n    second\n    ')).toBe('first\n\nsecond');
+        expect(storage.cleanContent('\n\n')).toBe('');
+    });
+
+    it('returns empty date keys for invalid dates and uses the Pacific calendar day', () => {
+        const storage = new window.NotesStorage();
+        expect(storage.getPacificDateParts(null)).toBeNull();
+        expect(storage.getPacificDateParts('invalid')).toBeNull();
+        expect(storage.getDateKey('2026-03-08T06:30:00Z')).toBe('2026-03-07');
+        expect(storage.getDateKey('invalid')).toBe('');
+    });
+
+    it('load tolerates storage being blocked', () => {
+        const storage = new window.NotesStorage();
+        const workingStorage = localStorage;
+        vi.stubGlobal('localStorage', { removeItem() { throw new Error('blocked'); } });
+        expect(storage.load().length).toBeGreaterThan(0);
+        vi.stubGlobal('localStorage', workingStorage);
+    });
 });

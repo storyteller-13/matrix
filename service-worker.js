@@ -1,12 +1,19 @@
-const CACHE_NAME = 'matrix-shell-v1';
+// Bump the version when the app shell changes shape. Old caches are deleted on activate.
+const CACHE_NAME = 'matrix-shell-v2';
 const APP_SHELL = [
     '/',
     '/index.html',
     '/main.js',
     '/core/actions.js',
     '/core/env.js',
+    '/core/storage.js',
     '/core/i18n.js',
     '/core/base-app.js',
+    '/core/timed-cache.js',
+    '/core/app-catalog.js',
+    '/core/command-palette.js',
+    '/core/deep-link.js',
+    '/core/matrix-theme.js',
     '/core/wallpaper-stars.js',
     '/core/window-manager.js',
     '/core/panel.js',
@@ -24,6 +31,8 @@ const APP_SHELL = [
     '/applications/lists/games-data.js',
     '/applications/lists/books.js',
     '/applications/lists/podcast-player.js',
+    '/applications/lists/lists-menu.js',
+    '/applications/lists/lists-folder-data.js',
     '/applications/lists/lists-folder.js',
     '/applications/quotes/quotes-data.js',
     '/applications/quotes/quotes.js',
@@ -39,17 +48,31 @@ const APP_SHELL = [
     '/applications/status/status.js',
     '/applications/artwork/artwork.js',
     '/applications/terminal/terminal-app.js',
+    '/applications/terminal/terminal-core.js',
+    '/applications/terminal/terminal-text.js',
+    '/applications/terminal/terminal-picture.js',
     '/applications/terminal/terminal.js',
     '/styles/base.css',
     '/styles/404.css',
     '/styles/panel.css',
     '/styles/tray-boxes.css',
+    '/styles/tray-boxes-apod-chess.css',
+    '/styles/tray-boxes-sky-calendar.css',
     '/styles/music.css',
     '/styles/desktop-icons.css',
     '/styles/windows.css',
+    '/styles/windows-todo-notes.css',
+    '/styles/windows-about-lists.css',
+    '/styles/windows-reflections.css',
     '/styles/dock.css',
+    '/styles/palette.css',
+    '/styles/matrix-theme.css',
     '/styles/responsive.css',
+    '/styles/responsive-phones.css',
+    '/styles/responsive-landscape.css',
+    '/styles/responsive-touch-apps.css',
     '/assets/favicon.svg',
+    '/assets/favicon-matrix.svg',
     '/pages/artwork/memories.jpg',
     '/pages/artwork/summer.jpg',
     '/pages/artwork/love.jpg',
@@ -83,7 +106,7 @@ self.addEventListener('fetch', (event) => {
             .then((response) => {
                 if (response.ok) {
                     const copy = response.clone();
-                    caches.open(CACHE_NAME).then((cache) => cache.put('/index.html', copy));
+                    event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.put('/index.html', copy)));
                 }
                 return response;
             })
@@ -91,11 +114,14 @@ self.addEventListener('fetch', (event) => {
         return;
     }
 
-    event.respondWith(caches.match(request).then((cached) => cached || fetch(request).then((response) => {
-        if (response.ok) {
-            const copy = response.clone();
-            caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
-        }
-        return response;
-    })));
+    // Network first, so a deploy reaches returning visitors. The cached copy is the offline fallback.
+    event.respondWith(fetch(request)
+        .then((response) => {
+            if (response.ok) {
+                const copy = response.clone();
+                event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.put(request, copy)));
+            }
+            return response;
+        })
+        .catch(() => caches.match(request)));
 });

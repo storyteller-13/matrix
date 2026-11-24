@@ -632,8 +632,13 @@
     letter-spacing: 0.04em;
     line-height: 16px;
     text-align: center;
-    text-transform: uppercase;
+    text-transform: lowercase;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+/* The soundtrack name shown in the player is in capitals. */
+.music-soundtrack-title {
+    text-transform: uppercase;
 }

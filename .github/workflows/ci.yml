@@ -21,8 +21,24 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Audit production dependencies
+        # Fails on known vulnerabilities in what ships. Dev-only tooling findings are reviewed separately.
+        run: npm audit --omit=dev --audit-level=high
+
+      - name: Feeds are up to date
+        # Regenerates the feeds; fails if the committed copies differ from the site data.
+        run: |
+          npm run feeds
+          git diff --exit-code feeds/
+
       - name: Lint
         run: npm run lint
 
       - name: Test
         run: npm test
+
+      - name: Install browser for end-to-end tests
+        run: npx playwright install --with-deps chromium
+
+      - name: End-to-end tests
+        run: npm run test:e2e

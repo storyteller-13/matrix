@@ -1,6 +1,7 @@
 /**
  * Notes Storage Module
  * Supplies default notes entries (persistence is disabled).
+ * Classic script, not an ES module: scripts/build-feeds.mjs evaluates it in a vm sandbox, so it cannot import.
  */
 class NotesStorage {
     constructor() {
@@ -8,7 +9,11 @@ class NotesStorage {
     }
 
     load() {
-        localStorage.removeItem(this.storageKey);
+        try {
+            localStorage.removeItem(this.storageKey);
+        } catch (_) {
+            // Storage blocked: nothing stored to clear.
+        }
         const defaults = this.getDefaultEntries();
         return defaults.map(entry => this.normalizeEntry(entry));
     }
@@ -100,7 +105,7 @@ postmortem
 this was a big year and far from being an easy one.
 but i am pretty content with how far i have come after everything. so, let's recap.
 
-the year started with the most shocking news i had ever received. first, the non-consensual video, in early december; then, right after christmas, the realization that my macbook was being streamed to the world. my year began in malaysia, where i had just discovered the crime that had been taking place in my life for years. something that, as a normal, highly educated woman in her early forties, living an upper-middle-class life, i had never even imagined could be a reality.
+the year started with the most shocking news i had ever received. first, the non-consensual video, in early december (right before the never-seen-before washington flood); then, right after christmas, the realization that my macbook was being streamed to the world. my year began in malaysia, where i had just discovered the crime that had been taking place in my life for years. something that, as a normal, highly educated woman in her early forties, living an upper-middle-class life, i had never even imagined could be a reality.
 
 i was in shock for the entire month of january, processing the fact that people were thinking i was something other than an engineer and scientist, and that all my personal things, my brain, my habits, my day-to-day reading, choices, idiosyncrasies, it was all being publicly distributed (and the worst part was that there were people who thought this was all consensual).
 
@@ -173,7 +178,7 @@ i want my future notes to be very positive and inspiring, reflecting who i truly
 
 my most recent pocket friends, bruno and rodrigo, own a super cute coffee shop two blocks from my grandma's old house, and it's where i've been working for the last month. by the way, «a:https://matrix.nullstar.fun/?artwork=memories.jpg»the new artwork«/a» is from my workspace, and through the window, you can see the patio of one of the campuses of the university of parana, where my dad taught me how to ride a bike and roller skate when i was a child.
 
-rodrigo was the first one i met. on the first day, i asked if i could spend the day working there. i was focusing on my project, and i had fond memories of the place. he was absolutely kind from the very beginning. between delicious coffee, free «a:https://en.wikipedia.org/wiki/Brigadeiro»brigadeiros«/a» (a brazilian delicacy), and chats on the balcony, i learned that this guy is about to win the lottery big time. he told me about this girl he is about to marry, who lives in a very small town in the middle of the state. they own a huge piece of land by the river, and he is going to move there, build a business with her, and spend his days in the water. now, this is someone very young who already understands what true happiness is.
+rodrigo was the first one i met. on the first day, i asked if i could spend the day working there. i was focusing on my project, and i had fond memories of the place. he was absolutely kind from the very beginning. between delicious coffee, free «a:https://en.wikipedia.org/wiki/Brigadeiro»brigadeiros«/a» (a brazilian delicacy), and chats on the balcony, i learned that this guy is about to win the lottery big time. he told me about this girl he is about to marry, who lives in a very small town in the middle of the state. they own a huge piece of land by the river, and he is going to move there, build a business with her, and spend his days in the water. this is someone very young who already understands what true happiness is.
 
 i met bruno a few days later. he used to work in software, and now he spends his days chilling with good people. i tried his pepper coffee, and it was one of the best drinks i have ever had. my mornings became a little more exciting because i knew i'd get my pepper fix when i got there.
 
@@ -185,13 +190,13 @@ friday the 13th
 ----------------
 
 
-let's end today's ramblings with a new tradition, plus some of my usual metaphysical divagations.
+let's end today's ramblings with an uncanny new tradition, plus some of my usual metaphysical divagations.
 
-every november post will come with a special treat for you, my dear anon friends. it's called  «a:https://matrix.nullstar.fun/?folder=movies&list=zeitgeist-2026»the zeitgeist awards«/a», and it's my way of sharing my lifelong cultivated taste with you all. the tradition will involve the movies that told the story of the year and other shenanigans.
+every november post will come with a special treat for you, my dear anon friend. it's called  «a:https://matrix.nullstar.fun/?folder=movies&list=zeitgeist-2026»the zeitgeist awards«/a», and it's my way of sharing my lifelong cultivated taste with you all. the tradition will involve the movies that told the story of the year and other shenanigans.
 
 this year, since youtube had a huge influence on my life and on helping me figure out what was going on, we also have «a:https://matrix.nullstar.fun/?folder=podcasts/zeitgeist-awards-2026»the podcast version«/a». enjoy! and to the winners, thank you, from the bottom of my heart, for being who you are and for everything you have done for me.
 
-now, more interesting than a spooky friday, though, is the fact that today happens to be a rather extraordinary day astrologically, and it coincides quite nicely with the theme of this note.
+what's even more interesting than a spooky friday, though, is the fact that today happens to be a rather extraordinary day astrologically, and it coincides quite nicely with the theme of this note.
 
 first, we have both venus and mercury going direct, meaning yay! after some much-needed "cleaning" in those areas of life, things should start moving more smoothly and quickly again. 
 
@@ -330,7 +335,7 @@ lots of love, your wannabe lifelong friend
                 contentKey: 'notes.prelude.content',
                 title: 'prelude: this is d-day',
                 content: this.cleanContent(`
-hello there, all my dear anon friends
+hello there, my dear anon friend
 artists, philosophers, youtubers, scientists, engineers
 all of you who have entered my life when i needed angels
 all of you who stay my friends now that i've my own wings
@@ -422,7 +427,7 @@ and i promise you a ride for life
                 contentKey: 'notes.hi.content',
                 title: 'hello starlit world',
                 content: this.cleanContent(`
-hello my dear friend, if you are new here, welcome
+hello my anon friend, if you are new here, welcome
 i'm that cool scholar always creating the sublime
 
 in the years ahead, as i continue to grow

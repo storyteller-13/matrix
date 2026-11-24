@@ -85,7 +85,7 @@ const GAMES_YOUTH = {
             label: 'pc lan setup',
             ranked: false,
             games: [
-                { title: 'blizzard classics: warcrafts, starcrafts, diablos, overwatch (bonus: the legend of california)' },
+                { title: 'blizzard classics: warcrafts, starcrafts, diablos' },
                 { title: 'counter-strike' },
                 { title: 'age of empires series' },
                 { title: 'quake iii arena / quake ii' },
@@ -98,4 +98,25 @@ const GAMES_YOUTH = {
     ],
 };
 
+const GAMES_TRY_SOMEDAY = {
+    title: 'games i want to try someday',
+    shareId: 'games-try-someday',
+    centered: true,
+    narrowWindow: true,
+    categories: [
+        {
+            id: 'games-to-try',
+            label: 'my endless ever-changing backlog',
+            ranked: false,
+            games: [
+                { title: 'crusader kings iii' },
+                { title: 'the legend of california' },
+                { title: 'dark souls i, ii, iii, iv' },
+                { title: 'dune 2000' },
+            ],
+        },
+    ],
+};
+
 window.GAMES_YOUTH = GAMES_YOUTH;
+window.GAMES_TRY_SOMEDAY = GAMES_TRY_SOMEDAY;

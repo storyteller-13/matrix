@@ -7,8 +7,14 @@
 
 import './core/actions.js';
 import './core/env.js';
+import './core/storage.js';
 import './core/i18n.js';
 import './core/base-app.js';
+import './core/timed-cache.js';
+import './core/app-catalog.js';
+import './core/command-palette.js';
+import './core/deep-link.js';
+import './core/matrix-theme.js';
 import './core/wallpaper-stars.js';
 import './core/window-manager.js';
 import './core/panel.js';
@@ -33,6 +39,8 @@ import './applications/lists/adventures-data.js';
 import './applications/lists/games-data.js';
 import './applications/lists/books.js';
 import './applications/lists/podcast-player.js';
+import './applications/lists/lists-menu.js';
+import './applications/lists/lists-folder-data.js';
 import './applications/lists/lists-folder.js';
 
 // Quotes Panel (data first, then panel)
@@ -72,6 +80,9 @@ import './applications/artwork/artwork.js';
 
 // Terminal App
 import './applications/terminal/terminal-app.js';
+import './applications/terminal/terminal-text.js';
+import './applications/terminal/terminal-core.js';
+import './applications/terminal/terminal-picture.js';
 import './applications/terminal/terminal.js';
 
 // Cache the app shell so it can reopen without a network connection.

@@ -2,6 +2,7 @@
  * Import application data/entry modules so they are executed and included in coverage.
  */
 import { describe, it, expect, beforeAll, vi } from 'vitest';
+import '../core/timed-cache.js';
 
 function makeFakeStorage() {
     const store = {};
@@ -130,7 +131,7 @@ describe('Application modules (coverage)', () => {
         await import('../applications/lists/podcast-player.js');
         await import('../applications/lists/lists-folder.js');
         const dockBadge = document.getElementById('lists-folder-count-badge');
-        expect(dockBadge.textContent).toBe('13');
+        expect(dockBadge.textContent).toBe('20');
         expect(dockBadge.style.display).toBe('flex');
         expect(window.ListsFolderAppClass).toBeDefined();
         expect(window.ListsFolderApp).toBeDefined();
@@ -144,18 +145,18 @@ describe('Application modules (coverage)', () => {
         expect(list.textContent).toContain('adventures');
         expect(list.textContent).toContain('art');
         expect(list.textContent).toContain('science');
-        expect(list.textContent).toContain('food');
+        expect(list.textContent).toContain('nutrition');
         expect(list.textContent).toContain('podcasts');
 
         const badgeFor = (label) => [...list.querySelectorAll('.file-item')]
             .find((el) => el.querySelector('.file-name').textContent === label)
             .querySelector('.lists-folder-count-badge');
         expect(badgeFor('books').textContent).toBe('4');
-        expect(badgeFor('movies').textContent).toBe('3');
+        expect(badgeFor('movies').textContent).toBe('9');
         expect(badgeFor('podcasts').textContent).toBe('1');
-        expect(badgeFor('games').textContent).toBe('1');
+        expect(badgeFor('games').textContent).toBe('2');
         expect(badgeFor('adventures').textContent).toBe('4');
-        ['art', 'science', 'food'].forEach((label) => {
+        ['art', 'science', 'nutrition'].forEach((label) => {
             expect(badgeFor(label)).toBeNull();
         });
 
@@ -173,6 +174,12 @@ describe('Application modules (coverage)', () => {
         expect(window.openBooksWindow).toHaveBeenLastCalledWith('books-backlog');
         clickList('books our kids should read');
         expect(window.openBooksWindow).toHaveBeenLastCalledWith('kids-books');
+
+        app.open('games');
+        expect(list.textContent).toContain('the videogames of my youth');
+        expect(list.textContent).toContain('games i want to try someday');
+        clickList('games i want to try someday');
+        expect(window.openBooksWindow).toHaveBeenLastCalledWith('games-try-someday');
 
         app.open('movies');
         expect(app.window.querySelector('.window-title').textContent).toBe('MOVIES');

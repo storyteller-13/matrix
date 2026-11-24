@@ -17,6 +17,7 @@ describe('TerminalApp', () => {
     });
 
     beforeEach(() => {
+        window.history.replaceState(null, '', '/');
         document.body.innerHTML = terminalAppDom();
         window.WindowManager = undefined;
         window.bringToFront = undefined;
@@ -66,6 +67,29 @@ describe('TerminalApp', () => {
         const openSpy = vi.spyOn(window.TerminalApp, 'open');
         document.getElementById('terminal-dock-item').click();
         expect(openSpy).toHaveBeenCalled();
+    });
+
+    it('adds a shareable open=terminal URL when opened', () => {
+        window.history.replaceState(null, '', '/?folder=books');
+        window.TerminalApp.open();
+        const url = new URL(window.location.href);
+        expect(url.searchParams.get('open')).toBe('terminal');
+        expect(url.searchParams.get('folder')).toBe('books');
+    });
+
+    it('removes open=terminal when the window closes', () => {
+        window.history.replaceState(null, '', '/?open=terminal&folder=books');
+        document.getElementById('terminal-window').dispatchEvent(new Event('windowclose'));
+        const url = new URL(window.location.href);
+        expect(url.searchParams.has('open')).toBe(false);
+        expect(url.searchParams.get('folder')).toBe('books');
+    });
+
+    it('follows open=terminal changes on browser navigation', () => {
+        window.TerminalApp.open();
+        window.history.replaceState(null, '', '/');
+        window.dispatchEvent(new PopStateEvent('popstate'));
+        expect(document.getElementById('terminal-window').style.display).toBe('none');
     });
 
     it('openTerminalWindow opens TerminalApp when present', () => {

@@ -92,6 +92,12 @@
     font-family: inherit;
 }
 
+/* Reflections count sits above the "new" dot and uses a darker number so it reads over it */
+.notes-count-badge {
+    z-index: 1;
+    color: #5a1f45;
+}
+
 /* Scrollbar Styling */
 ::-webkit-scrollbar {
     width: 8px;
@@ -113,3 +119,8 @@
     box-shadow: var(--shadow-soft);
 }
 
+
+/* Count badges are positioned against their dock item */
+.dock-item {
+    position: relative;
+}

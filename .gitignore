@@ -24,10 +24,6 @@ vitest.results.json
 *.swo
 *~
 
-# OS
-.DS_Store
-Thumbs.db
-
 # Logs
 *.log
 npm-debug.log*
@@ -39,28 +35,5 @@ yarn-error.log*
 *.temp
 .cache/
 .vitest/
+test-results/
 
-# macOS
-.DS_Store
-
-# internal
-docs/*
-NOTES
-
-# Cursor
-.cursor/
-
-# OpenAI Codex
-.codex/
-.agents/
-
-# Claude Code
-.claude/
-CLAUDE.local.md
-
-# Gemini CLI
-.gemini/
-
-# Windsurf / Codeium
-.windsurf/
-.devin/

@@ -52,12 +52,10 @@ describe('TodoStorage', () => {
         expect(storage.load().length).toBeGreaterThan(0);
     });
 
-    it('normalizeTodo fills missing fields', () => {
+    it('omits an empty optional text key', () => {
         const storage = new window.TodoStorage();
-        const todo = storage.normalizeTodo({});
-        expect(todo.id).toBeTruthy();
-        expect(todo.completed).toBe(false);
-        expect(todo.createdAt).toBeTruthy();
+        expect(storage.createTodo(false, '').textKey).toBeUndefined();
     });
+
 
 });

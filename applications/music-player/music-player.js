@@ -24,7 +24,7 @@ const SOUNDTRACKS = [
         comingSoonText: 'come back in 2028',
     },
 ];
-const DEFAULT_SOUNDTRACK = '2026';
+const DEFAULT_SOUNDTRACK = '2027';
 
 
 class MusicPlayer {
@@ -93,7 +93,8 @@ class MusicPlayer {
         const soundtrack = this.findSoundtrack(id);
         if (!soundtrack) return;
 
-        if (soundtrack.id !== this.soundtrackId) {
+        const soundtrackChanged = soundtrack.id !== this.soundtrackId;
+        if (soundtrackChanged) {
             this.stopPlayback();
             this.soundtrackId = soundtrack.id;
             this.storage = this.storageFor(soundtrack.id);
@@ -102,6 +103,15 @@ class MusicPlayer {
             this.loadPlaylists();
             this.updateSongTitle();
             if (this.songs.length > 0 && this.player && this.isReady) this.loadSong();
+        }
+
+        // Reopening the 2026 soundtrack while idle should cue its first track
+        // in the visor, even when this soundtrack was already selected.
+        if (!soundtrackChanged && soundtrack.id === '2026' && this.songs.length > 0 &&
+            (!this.player || !this.isReady || this.player.getPlayerState() !== YT.PlayerState.PLAYING)) {
+            this.currentSongIndex = 0;
+            this.updateSongTitle();
+            if (this.player && this.isReady) this.loadSong();
         }
         this.updateSoundtrackTitle();
 
@@ -557,14 +567,17 @@ class MusicPlayer {
 
         const soundtrack = this.findSoundtrack(this.soundtrackId);
         if (soundtrack?.comingSoonText) {
-            songListElement.innerHTML = `<div class="music-song-soon">${soundtrack.comingSoonText}</div>`;
+            const comeBack = window.I18n?.t?.('music.comeBack2028');
+            const text = comeBack && comeBack !== 'music.comeBack2028' ? comeBack : soundtrack.comingSoonText;
+            songListElement.innerHTML = `<div class="music-song-soon">${text}</div>`;
             return;
         }
 
         const currentPlaylistId = this.playlistsData.currentPlaylistId;
-        
+        const underConstruction = window.I18n?.t?.('music.underConstruction') ?? 'this mixtape is under construction';
+
         if (this.playlistsData.playlists.length === 0) {
-            songListElement.innerHTML = '<div class="music-song-soon">this mixtape is under construction</div>';
+            songListElement.innerHTML = `<div class="music-song-soon">${underConstruction}</div>`;
             return;
         }
 
@@ -574,7 +587,7 @@ class MusicPlayer {
             const isExpanded = this.expandedPlaylists.has(playlist.id);
             const songs = playlist.songs || [];
             const songsHtml = songs.length === 0
-                ? `<div class="music-song-soon">this mixtape is under construction</div>`
+                ? `<div class="music-song-soon">${underConstruction}</div>`
                 : songs.map((song, songIndex) => {
                     const isActive = isCurrentPlaylist && songIndex === this.currentSongIndex;
                     return `

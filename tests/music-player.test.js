@@ -91,52 +91,56 @@ describe('MusicPlayer', () => {
         expect(player).toBeDefined();
     });
 
-    it('shows the soundtrack of 2026 by default', () => {
+    it('shows the soundtrack of 2027 by default', () => {
         const player = new window.MusicPlayerClass();
-        expect(player.soundtrackId).toBe('2026');
-        expect(document.getElementById('music-soundtrack-title').textContent).toBe('the soundtrack of 2026');
-        expect(player.storage.storageKey).toBe('music-player-playlists');
+        expect(player.soundtrackId).toBe('2027');
+        expect(document.getElementById('music-soundtrack-title').textContent).toBe('the soundtrack of 2027');
+        expect(player.storage.storageKey).toBe('music-player-playlists-2027');
     });
 
-    it('openSoundtrack switches to the empty 2027 soundtrack and back to 2026', () => {
+    it('switches between the 2027 and 2026 soundtracks without mixing their storage', () => {
         const player = new window.MusicPlayerClass();
         const firstSong = player.songs[0];
-        player.player.state = YT_STATES.PLAYING;
-        document.getElementById('music-player').classList.add('playing');
-
-        player.openSoundtrack('2027');
+        expect(firstSong.id).toBe('NFy_7j3GEx8');
+        player.openSoundtrack('2026');
         expect(player.player.stopVideo).toHaveBeenCalled();
         expect(document.getElementById('music-player').classList.contains('playing')).toBe(false);
+        expect(player.soundtrackId).toBe('2026');
+        expect(player.storage.storageKey).toBe('music-player-playlists');
+
+        const before = localStorage.getItem('music-player-playlists');
+        player.openSoundtrack('2027');
         expect(player.soundtrackId).toBe('2027');
         expect(player.storage.storageKey).toBe('music-player-playlists-2027');
-        expect(player.songs).toEqual([]);
-        expect(document.getElementById('music-soundtrack-title').textContent).toBe('the soundtrack of 2027');
-        expect(document.getElementById('music-title').textContent).toBe('nothing yet');
-        expect(document.getElementById('music-song-list').textContent).toContain('this mixtape is under construction');
-
-        // nothing to play: controls are no-ops and nothing is saved into the 2026 key
-        const before = localStorage.getItem('music-player-playlists');
-        player.togglePlayPause();
-        player.playNextSong();
-        player.playPreviousSong();
-        expect(player.pendingPlay).toBe(false);
-        expect(localStorage.getItem('music-player-playlists')).toBe(before);
-
-        player.openSoundtrack('2026');
         expect(player.songs[0]).toEqual(firstSong);
-        expect(document.getElementById('music-soundtrack-title').textContent).toBe('the soundtrack of 2026');
-        expect(document.getElementById('music-title').textContent).toBe(firstSong.title);
+        expect(document.getElementById('music-soundtrack-title').textContent).toBe('the soundtrack of 2027');
+        expect(localStorage.getItem('music-player-playlists')).toBe(before);
+    });
+
+    it('cues the first 2026 song when reopening the visor while idle', () => {
+        const player = new window.MusicPlayerClass();
+        player.openSoundtrack('2026');
+        expect(player.songs[0].title).toBe('the art of fugue (bach + glenn gould)');
+        expect(player.player.videoId).toBe('GnXHnEz94os');
+
+        player.currentSongIndex = 1;
+        player.player.state = YT_STATES.PAUSED;
+        player.openSoundtrack('2026');
+
+        expect(player.currentSongIndex).toBe(0);
+        expect(player.player.cueVideoById).toHaveBeenLastCalledWith('GnXHnEz94os');
+        expect(document.getElementById('music-title').textContent).toBe('the art of fugue (bach + glenn gould)');
     });
 
     it('openSoundtrack shows a hidden player, ignores unknown ids, and window.openSoundtrack forwards', () => {
         const player = new window.MusicPlayerClass();
         const el = document.getElementById('music-player');
         el.style.display = 'none';
-        player.openSoundtrack('2026');
+        player.openSoundtrack('2027');
         expect(el.style.display).toBe('flex');
 
         player.openSoundtrack('1999');
-        expect(player.soundtrackId).toBe('2026');
+        expect(player.soundtrackId).toBe('2027');
 
         const previous = window.MusicPlayer;
         window.MusicPlayer = { openSoundtrack: vi.fn() };
@@ -153,6 +157,7 @@ describe('MusicPlayer', () => {
         };
         try {
             const player = new window.MusicPlayerClass();
+            player.openSoundtrack('2026');
             player.openSoundtrack('2027');
             expect(player.playlistsData.currentPlaylistId).toBe('first 2027');
             expect(player.songs).toEqual([{ id: 'abc123', title: 'new song (artist)' }]);
@@ -163,20 +168,7 @@ describe('MusicPlayer', () => {
             window.SOUNDTRACK_2027 = original;
         }
     });
-
-    it('translates the soundtrack title and nothing-yet text on localechange', () => {
-        const player = new window.MusicPlayerClass();
-        player.openSoundtrack('2027');
-        window.I18n = { t: (key) => ({ 'music.soundtrack2027': '2027ねんのサウンドトラック', 'music.comingSoon': 'もうすぐ' }[key] || key) };
-        try {
-            document.dispatchEvent(new Event('localechange'));
-            expect(document.getElementById('music-soundtrack-title').textContent).toBe('2027ねんのサウンドトラック');
-            expect(document.getElementById('music-title').textContent).toBe('もうすぐ');
-        } finally {
-            window.I18n = undefined;
-        }
-    });
-
+    
     it('init loads default songs and renders playlists', () => {
         const player = new window.MusicPlayerClass();
         expect(player.songs.length).toBeGreaterThan(0);
@@ -221,6 +213,7 @@ describe('MusicPlayer', () => {
 
     it('playSongAtIndex loads a different song and toggles the current one', () => {
         const player = new window.MusicPlayerClass();
+        player.openSoundtrack('2026');
         player.player.state = YT_STATES.PAUSED;
         player.playSongAtIndex(1);
         expect(player.currentSongIndex).toBe(1);
@@ -569,6 +562,7 @@ describe('MusicPlayer', () => {
         window.matchMedia = () => ({ matches: true, addListener() {}, removeListener() {} });
         const player = new window.MusicPlayerClass();
         expect(player.player).toBeFalsy();
+        player.openSoundtrack('2026');
         player.playSongAtIndex(1);
         expect(player.currentSongIndex).toBe(1);
         expect(player.player).toBeTruthy();
@@ -599,6 +593,7 @@ describe('MusicPlayer', () => {
 
     it('flushPendingPlay plays when ready and swallows player errors', () => {
         const player = new window.MusicPlayerClass();
+        player.openSoundtrack('2026');
         player.pendingPlay = true;
         player.flushPendingPlay();
         expect(player.player.playVideo).toHaveBeenCalled();

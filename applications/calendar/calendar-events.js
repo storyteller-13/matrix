@@ -1003,7 +1003,8 @@ window.CALENDAR_EVENTS = [
         date: '2027-03-20',
         type: 'equinox',
         labelKey: 'calendar.event.newEvent',
-        label: 'spring equinox'
+        label: 'spring equinox',
+        icon: '🌸'
     },
     {
         date: '2027-04-22',
@@ -1015,19 +1016,21 @@ window.CALENDAR_EVENTS = [
         date: '2027-05-04',
         type: 'starWarsDay',
         labelKey: 'calendar.event.newEvent',
-        label: 'star wars day'
+        label: 'star wars day',
+        icon: '🚀'
     },
     {
         date: '2027-06-21',
         type: 'solstice',
         labelKey: 'calendar.event.newEvent',
-        label: 'summer solstice'
+        label: 'midsummer',
+        icon: '🌞'
     },
     {
         date: '2027-07-20',
         type: 'moonDay',
         labelKey: 'calendar.event.newEvent',
-        label: 'international moon day'
+        label: 'world moon day'
     },
     {
         date: '2027-08-12',
@@ -1057,13 +1060,15 @@ window.CALENDAR_EVENTS = [
         date: '2026-12-21',
         type: 'solstice',
         labelKey: 'calendar.event.newEvent',
-        label: 'winter solstice'
+        label: 'winter solstice',
+        icon: '🏂'
     },
     {
         date: '2027-12-21',
         type: 'solstice',
         labelKey: 'calendar.event.newEvent',
-        label: 'winter solstice'
+        label: 'winter solstice',
+        icon: '🏂'
     },
 
     // 2028
@@ -1083,7 +1088,8 @@ window.CALENDAR_EVENTS = [
         date: '2028-03-20',
         type: 'equinox',
         labelKey: 'calendar.event.newEvent',
-        label: 'spring equinox'
+        label: 'spring equinox',
+        icon: '🌸'
     },
     {
         date: '2028-04-22',
@@ -1095,19 +1101,21 @@ window.CALENDAR_EVENTS = [
         date: '2028-05-04',
         type: 'starWarsDay',
         labelKey: 'calendar.event.newEvent',
-        label: 'star wars day'
+        label: 'star wars day',
+        icon: '🚀'
     },
     {
         date: '2028-06-20',
         type: 'solstice',
         labelKey: 'calendar.event.newEvent',
-        label: 'summer solstice'
+        label: 'midsummer',
+        icon: '🌞'
     },
     {
         date: '2028-07-20',
         type: 'moonDay',
         labelKey: 'calendar.event.newEvent',
-        label: 'international moon day'
+        label: 'world moon day'
     },
     {
         date: '2028-08-12',
@@ -1137,7 +1145,8 @@ window.CALENDAR_EVENTS = [
         date: '2028-12-21',
         type: 'solstice',
         labelKey: 'calendar.event.newEvent',
-        label: 'winter solstice'
+        label: 'winter solstice',
+        icon: '🏂'
     },
 
     // 2029
@@ -1157,7 +1166,8 @@ window.CALENDAR_EVENTS = [
         date: '2029-03-20',
         type: 'equinox',
         labelKey: 'calendar.event.newEvent',
-        label: 'spring equinox'
+        label: 'spring equinox',
+        icon: '🌸'
     },
     {
         date: '2029-04-22',
@@ -1169,19 +1179,21 @@ window.CALENDAR_EVENTS = [
         date: '2029-05-04',
         type: 'starWarsDay',
         labelKey: 'calendar.event.newEvent',
-        label: 'star wars day'
+        label: 'star wars day',
+        icon: '🚀'
     },
     {
         date: '2029-06-21',
         type: 'solstice',
         labelKey: 'calendar.event.newEvent',
-        label: 'summer solstice'
+        label: 'midsummer',
+        icon: '🌞'
     },
     {
         date: '2029-07-20',
         type: 'moonDay',
         labelKey: 'calendar.event.newEvent',
-        label: 'international moon day'
+        label: 'world moon day'
     },
     {
         date: '2029-08-12',
@@ -1211,7 +1223,8 @@ window.CALENDAR_EVENTS = [
         date: '2029-12-21',
         type: 'solstice',
         labelKey: 'calendar.event.newEvent',
-        label: 'winter solstice'
+        label: 'winter solstice',
+        icon: '🏂'
     },
 
     // 2030
@@ -1231,7 +1244,8 @@ window.CALENDAR_EVENTS = [
         date: '2030-03-20',
         type: 'equinox',
         labelKey: 'calendar.event.newEvent',
-        label: 'spring equinox'
+        label: 'spring equinox',
+        icon: '🌸'
     },
     {
         date: '2030-04-22',
@@ -1243,19 +1257,21 @@ window.CALENDAR_EVENTS = [
         date: '2030-05-04',
         type: 'starWarsDay',
         labelKey: 'calendar.event.newEvent',
-        label: 'star wars day'
+        label: 'star wars day',
+        icon: '🚀'
     },
     {
         date: '2030-06-21',
         type: 'solstice',
         labelKey: 'calendar.event.newEvent',
-        label: 'summer solstice'
+        label: 'midsummer',
+        icon: '🌞'
     },
     {
         date: '2030-07-20',
         type: 'moonDay',
         labelKey: 'calendar.event.newEvent',
-        label: 'international moon day'
+        label: 'world moon day'
     },
     {
         date: '2030-08-12',
@@ -1285,6 +1301,7 @@ window.CALENDAR_EVENTS = [
         date: '2030-12-21',
         type: 'solstice',
         labelKey: 'calendar.event.newEvent',
-        label: 'winter solstice'
+        label: 'winter solstice',
+        icon: '🏂'
     },
 ];

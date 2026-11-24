@@ -1,0 +1,449 @@
+/* APOD Box */
+.apod-box {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: var(--panel-width);
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 133, 162, 0.6);
+    border-radius: 12px;
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.8),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    z-index: 1001;
+    padding: 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+}
+
+.apod-box::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 133, 162, 0.1) 0%, transparent 70%);
+    animation: rotate-glow 8s linear infinite;
+    pointer-events: none;
+}
+
+.apod-box-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 133, 162, 0.1) 0%, rgba(244, 114, 182, 0.1) 100%);
+    opacity: 0.5;
+    pointer-events: none;
+    border-radius: 12px;
+}
+
+.apod-box:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow:
+        0 12px 40px rgba(0, 0, 0, 0.9),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 133, 162, 0.8);
+}
+
+.apod-box-content {
+    position: relative;
+    z-index: 1;
+    padding: 8px;
+}
+
+.apod-box-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text);
+    font-size: 11px;
+    text-shadow: none;
+    margin-bottom: 8px;
+    min-height: 18px;
+}
+
+.apod-box-title {
+    flex: 1;
+    min-width: 0;
+    font-weight: 700;
+    font-size: 9px;
+    letter-spacing: 0.04em;
+    line-height: 18px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.apod-box-close {
+    background: linear-gradient(135deg, rgba(255, 133, 162, 0.4) 0%, rgba(244, 114, 182, 0.4) 100%);
+    border: 1px solid rgba(255, 133, 162, 0.6);
+    color: var(--text);
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-shadow: none;
+    padding: 0;
+    line-height: 0;
+    flex-shrink: 0;
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.apod-box-close::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.3s, height 0.3s;
+}
+
+.apod-box-close:hover::before {
+    width: 100%;
+    height: 100%;
+}
+
+.apod-box-close:hover {
+    background: linear-gradient(135deg, rgba(255, 133, 162, 0.6) 0%, rgba(244, 114, 182, 0.6) 100%);
+    box-shadow: var(--shadow-soft);
+    transform: scale(1.15) rotate(5deg);
+    border-color: rgba(255, 133, 162, 0.9);
+}
+
+.apod-box-close:active {
+    transform: scale(1.05) rotate(-5deg);
+}
+
+.apod-box-image-container {
+    width: 100%;
+    height: 148px;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    border: 1px solid rgba(255, 133, 162, 0.2);
+}
+
+.apod-box-image-container:hover {
+    border-color: rgba(255, 133, 162, 0.5);
+    box-shadow: var(--shadow-soft);
+}
+
+.apod-box-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.apod-loading,
+.apod-error {
+    font-size: 12px;
+    color: #FF85A2;
+    text-shadow: none;
+}
+
+/* Chess.com Daily Box (below quotes, left stack) */
+.chess-box {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: var(--panel-width);
+    max-width: calc(100vw - 40px);
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 133, 162, 0.6);
+    border-radius: 12px;
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.8),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    z-index: 1001;
+    padding: 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+}
+
+.chess-box::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 133, 162, 0.1) 0%, transparent 70%);
+    animation: rotate-glow 8s linear infinite;
+    pointer-events: none;
+}
+
+.chess-box-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 133, 162, 0.1) 0%, rgba(244, 114, 182, 0.1) 100%);
+    opacity: 0.5;
+    pointer-events: none;
+    border-radius: 12px;
+}
+
+.chess-box:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow:
+        0 12px 40px rgba(0, 0, 0, 0.9),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 133, 162, 0.8);
+}
+
+.chess-box-content {
+    position: relative;
+    z-index: 1;
+    padding: 8px;
+}
+
+.chess-box-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text);
+    font-size: 11px;
+    text-shadow: none;
+    margin-bottom: 8px;
+    min-height: 18px;
+}
+
+.chess-box-title {
+    flex: 1;
+    min-width: 0;
+    font-weight: 700;
+    font-size: 9px;
+    letter-spacing: 0.04em;
+    line-height: 18px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.chess-box-close {
+    background: linear-gradient(135deg, rgba(255, 133, 162, 0.4) 0%, rgba(244, 114, 182, 0.4) 100%);
+    border: 1px solid rgba(255, 133, 162, 0.6);
+    color: var(--text);
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-shadow: none;
+    padding: 0;
+    line-height: 0;
+    flex-shrink: 0;
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.chess-box-close::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.3s, height 0.3s;
+}
+
+.chess-box-close:hover::before {
+    width: 100%;
+    height: 100%;
+}
+
+.chess-box-close:hover {
+    background: linear-gradient(135deg, rgba(255, 133, 162, 0.6) 0%, rgba(244, 114, 182, 0.6) 100%);
+    box-shadow: var(--shadow-soft);
+    transform: scale(1.15) rotate(5deg);
+    border-color: rgba(255, 133, 162, 0.9);
+}
+
+.chess-box-close:active {
+    transform: scale(1.05) rotate(-5deg);
+}
+
+.chess-box-puzzle-container {
+    width: 100%;
+    min-height: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 133, 162, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+}
+
+.chess-loading,
+.chess-error {
+    color: #C084FC;
+    font-size: 14px;
+    text-shadow: none;
+}
+
+.chess-puzzle-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+}
+
+.chess-board-wrap {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    aspect-ratio: 1;
+    width: min(128px, 100%);
+    max-width: 128px;
+    border: 2px solid rgba(255, 133, 162, 0.5);
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.4);
+}
+
+.chess-board-wrap .cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    line-height: 1;
+}
+
+.chess-board-wrap .cell.light {
+    background: rgba(234, 233, 210, 0.95);
+    color: #1a1a1a;
+}
+
+.chess-board-wrap .cell.dark {
+    background: rgba(118, 150, 86, 0.95);
+    color: #1a1a1a;
+}
+
+@media (min-width: 769px) and (max-width: 1100px) {
+    :root {
+        --panel-width: 210px;
+    }
+}
+
+@media (min-width: 769px) and (max-height: 800px) {
+    :root {
+        --panel-width: 240px;
+        --desktop-gap: 8px;
+    }
+
+    .quotes-quote-container {
+        min-height: 96px;
+        max-height: 140px;
+        font-size: 11px;
+        padding: 12px;
+    }
+
+    .apod-box-image-container,
+    .bird-box-image-container {
+        height: 118px;
+    }
+
+    .chess-board-wrap {
+        width: min(112px, 100%);
+        max-width: 112px;
+    }
+
+    .chess-board-wrap .cell {
+        font-size: 10px;
+    }
+
+    .sky-planet {
+        padding: 1px 4px;
+    }
+
+    .sky-planet-name,
+    .sky-planet-sign,
+    .sky-planet-angle {
+        font-size: 9px;
+    }
+}
+
+@media (min-width: 769px) and (max-height: 680px) {
+    :root {
+        --panel-width: 200px;
+    }
+
+    .quotes-quote-container {
+        min-height: 72px;
+        max-height: 110px;
+        font-size: 10px;
+    }
+
+    .apod-box-image-container,
+    .bird-box-image-container {
+        height: 96px;
+    }
+
+    .chess-board-wrap {
+        width: min(100px, 100%);
+        max-width: 100px;
+    }
+
+    .chess-board-wrap .cell {
+        font-size: 9px;
+    }
+
+    .chess-play-link {
+        font-size: 9px;
+    }
+
+    .sky-planet-glyph {
+        width: 14px;
+        height: 14px;
+        font-size: 9px;
+    }
+}
+
+.chess-play-link {
+    color: #86efac;
+    font-size: 10px;
+    text-decoration: none;
+    text-shadow: none;
+    transition: opacity 0.2s;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+}
+
+.chess-play-link:hover {
+    opacity: 0.9;
+    text-decoration: underline;
+}
+

@@ -53,6 +53,7 @@ describe('service worker', () => {
         listeners.fetch({
             request,
             respondWith: (promise) => { response = promise; },
+            waitUntil: vi.fn(),
         });
 
         await expect(response).resolves.toBe(cachedPage);
@@ -71,16 +72,46 @@ describe('service worker', () => {
         expect(respondWith).not.toHaveBeenCalled();
     });
 
-    it('serves cached same-origin assets before trying the network', async () => {
+    it('tries the network first for same-origin assets so deploys reach visitors', async () => {
+        const freshAsset = { ok: true, clone: () => ({ copy: true }) };
+        const put = vi.fn();
+        const cachedAsset = { source: 'cached script' };
+        const { listeners, sandbox } = createWorker({
+            match: vi.fn().mockResolvedValue(cachedAsset),
+            open: vi.fn().mockResolvedValue({ put }),
+        });
+        sandbox.fetch.mockResolvedValue(freshAsset);
+        let response;
+        const waitUntil = vi.fn();
+        listeners.fetch({
+            request: { method: 'GET', mode: 'same-origin', url: 'https://matrix.test/main.js' },
+            respondWith: (promise) => { response = promise; },
+            waitUntil,
+        });
+
+        await expect(response).resolves.toBe(freshAsset);
+        expect(sandbox.fetch).toHaveBeenCalled();
+        expect(sandbox.caches.match).not.toHaveBeenCalled();
+        expect(waitUntil).toHaveBeenCalledTimes(1);
+        await waitUntil.mock.calls[0][0];
+        expect(put).toHaveBeenCalled();
+    });
+
+    it('falls back to the cached copy of an asset when offline', async () => {
         const cachedAsset = { source: 'cached script' };
         const { listeners, sandbox } = createWorker({ match: vi.fn().mockResolvedValue(cachedAsset) });
+        sandbox.fetch.mockRejectedValue(new Error('offline'));
         let response;
         listeners.fetch({
             request: { method: 'GET', mode: 'same-origin', url: 'https://matrix.test/main.js' },
             respondWith: (promise) => { response = promise; },
+            waitUntil: vi.fn(),
         });
 
         await expect(response).resolves.toBe(cachedAsset);
-        expect(sandbox.fetch).not.toHaveBeenCalled();
+    });
+
+    it('uses a new cache name so the stale v1 cache is removed on activate', () => {
+        expect(source).toMatch(/CACHE_NAME = 'matrix-shell-v2'/);
     });
 });

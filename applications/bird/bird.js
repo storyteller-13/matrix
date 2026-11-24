@@ -289,8 +289,11 @@ class BirdPanel {
     showError(message) {
         const imageContainer = document.getElementById('bird-box-image-container');
         if (imageContainer) {
-            const text = message || (window.I18n ? window.I18n.t('panel.loading') : 'loading....');
-            imageContainer.innerHTML = `<div class="bird-error">${text}</div>`;
+            const text = message || (window.I18n ? window.I18n.t('panel.loading') : 'loading...');
+            const errorNode = document.createElement('div');
+            errorNode.className = 'bird-error';
+            errorNode.textContent = text;
+            imageContainer.replaceChildren(errorNode);
         }
     }
 
@@ -338,22 +341,11 @@ class BirdPanel {
     }
 
     getCachedBird(allowExpired = false) {
-        try {
-            const raw = localStorage.getItem(this.cacheKey);
-            if (!raw) return null;
-            const { data, timestamp } = JSON.parse(raw);
-            const valid = Date.now() - timestamp < this.cacheExpiry;
-            if (valid || allowExpired) return data;
-            return null;
-        } catch (_) {
-            return null;
-        }
+        return window.TimedCache.read(this.cacheKey, this.cacheExpiry, { allowExpired });
     }
 
     cacheBird(data) {
-        try {
-            localStorage.setItem(this.cacheKey, JSON.stringify({ data, timestamp: Date.now() }));
-        } catch (_) {}
+        window.TimedCache.write(this.cacheKey, data);
     }
 }
 

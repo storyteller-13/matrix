@@ -155,6 +155,18 @@ describe('NotesApp', () => {
         expect(app.formatContent('---\nart\n---')).toBe('---<br>art<br>---');
     });
 
+    it('keeps the brand name in capitals, without touching URLs', () => {
+        const app = new window.NotesAppClass();
+        app.currentAsciiArt = false;
+        const box = document.createElement('div');
+        box.innerHTML = app.formatContent('built «a:https://www.nullstar.games/»nullstar«/a» and NullStar, see https://marina.nullstar.fun/');
+        expect(box.querySelectorAll('.brand-caps').length).toBe(2);
+        expect(box.querySelectorAll('.brand-caps')[0].closest('a').getAttribute('href')).toBe('https://www.nullstar.games/');
+        expect(box.querySelector('a').getAttribute('href')).toBe('https://www.nullstar.games/');
+        expect(box.innerHTML).toContain('https://marina.nullstar.fun/');
+        expect(box.textContent).toContain('NULLSTAR and NULLSTAR');
+    });
+
     it('links words with «a:url»…«/a» markers, http(s) only', () => {
         const app = new window.NotesAppClass();
         app.currentAsciiArt = false;

@@ -21,7 +21,7 @@ const BUCKET_LIST = {
                 { name: 'usa', places: ['grand canyon national park', 'hohokam, arizona', 'yellowstone national park', 'alexandria virginia', 'alaska', 'arches national park', 'moab', 'austin', 'portland', 'zion national park', 'maroon bells', 'cathedral rock', 'astrology library', 'buckland museum', 'voodoo museum', 'witch museum salem'] },
                 { name: 'canada', places: ['banff', 'montreal', 'vancouver', 'quebec', 'whistler'] },
                 { name: 'easter island', places: [] },
-                { name: 'brazil', places: ['fernando de noronha'] },
+                { name: 'brazil', places: ['fernando de noronha', 'lençóis maranhenses national park'] },
             ],
         },
         {

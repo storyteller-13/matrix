@@ -80,6 +80,8 @@ describe('ArtworkApp', () => {
         const app = new window.ArtworkAppClass();
         app.openImage('/pages/artwork/love.jpg');
         const modal = document.getElementById('artwork-image-modal');
+        document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }));
+        expect(modal.style.display).toBe('flex');
         modal.querySelector('img').dispatchEvent(new MouseEvent('click', { bubbles: true }));
         expect(modal.style.display).toBe('flex');
         document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
@@ -137,5 +139,63 @@ describe('ArtworkApp', () => {
         document.body.innerHTML = `<div id="artwork-window" class="window"></div>`;
         const app = new window.ArtworkAppClass();
         expect(() => app.updateBadge()).not.toThrow();
+    });
+
+    it('reads only known artwork names from the URL and removes the parameter when closed', () => {
+        const app = new window.ArtworkAppClass();
+        history.replaceState(null, '', '/?artwork=love.jpg');
+        expect(app.getArtworkFromUrl()).toBe('love.jpg');
+        history.replaceState(null, '', '/?artwork=unknown.jpg');
+        expect(app.getArtworkFromUrl()).toBeNull();
+        app.setArtworkInUrl('summer.jpg');
+        expect(location.search).toBe('?artwork=summer.jpg');
+        app.setArtworkInUrl(null);
+        expect(location.search).toBe('');
+    });
+
+    it('opens an artwork shared in the URL and ignores unknown names', () => {
+        const app = new window.ArtworkAppClass();
+        const openSpy = vi.spyOn(window.BaseApp.prototype, 'open').mockImplementation(() => {});
+        history.replaceState(null, '', '/?artwork=lion.jpg');
+        app.openImageFromUrl();
+        expect(openSpy).toHaveBeenCalled();
+        expect(app.currentImage).toBe('lion.jpg');
+        app.closeImage();
+        history.replaceState(null, '', '/?artwork=unknown.jpg');
+        openSpy.mockClear();
+        app.openImageFromUrl();
+        expect(openSpy).not.toHaveBeenCalled();
+    });
+
+    it('copies a share link through the clipboard and reports success', async () => {
+        const app = new window.ArtworkAppClass();
+        const writeText = vi.fn().mockResolvedValue();
+        vi.stubGlobal('navigator', { clipboard: { writeText } });
+        const button = document.createElement('button');
+        app.currentImage = 'summer.jpg';
+        await app.copyShareLink(button);
+        expect(writeText).toHaveBeenCalledWith(expect.stringContaining('artwork=summer.jpg'));
+        expect(button.textContent).toBe('copied!');
+        delete app.currentImage;
+        await app.copyShareLink(button);
+        expect(writeText).toHaveBeenCalledTimes(1);
+    });
+
+    it('falls back to execCommand when clipboard access is unavailable or rejected', async () => {
+        const app = new window.ArtworkAppClass();
+        const button = document.createElement('button');
+        app.currentImage = 'love.jpg';
+        vi.stubGlobal('navigator', {});
+        Object.defineProperty(document, 'execCommand', { configurable: true, value: vi.fn().mockReturnValue(true) });
+        const copy = vi.spyOn(document, 'execCommand');
+        await app.copyShareLink(button);
+        expect(copy).toHaveBeenCalledWith('copy');
+        expect(button.textContent).toBe('copied!');
+        vi.stubGlobal('navigator', { clipboard: { writeText: vi.fn().mockRejectedValue(new Error('denied')) } });
+        copy.mockImplementation(() => { throw new Error('unsupported'); });
+        button.textContent = 'copy link';
+        await app.copyShareLink(button);
+        expect(button.textContent).toBe('copy link');
+        expect(document.querySelector('textarea')).toBeNull();
     });
 });

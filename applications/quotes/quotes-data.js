@@ -44,6 +44,7 @@ window.QUOTES = [
     // nietzsche
     { text: 'to live is to suffer, to survive is to find some meaning in the suffering.', author: 'friedrich nietzsche' },
     { text: 'one must still have chaos in oneself to be able to give birth to a dancing star.', author: 'friedrich nietzsche' },
+    { text: 'in every real man a child is hidden that wants to play.', author: 'friedrich nietzsche' },
 
     // joseph campbell
     { text: 'the cave you fear to enter holds the treasure you seek.', author: 'joseph campbell' },
@@ -163,10 +164,13 @@ window.QUOTES = [
     { text: 'hope cherishes the soul of him who lives in justice and holiness, and is the nurse of his age and the companion of his journey;– hope which is mightiest to sway the restless soul of man.', author: 'socrates' },
     { text: 'i know not what justice is, and therefore i am not likely to know whether it is or is not a virtue, nor can i say whether the just man is happy or unhappy.', author: 'socrates' },
     { text: 'we divide the soul into three parts; and distinguished the several natures of justice, temperance, courage, and wisdom', author: 'socrates' },
-    { text: 'and they see only their own shadows, or the shadows of one another, which the fire throws on the opposite wall of the cave?', author: 'plato' },
     { text: 'freedom is the glory of the state', author: 'socrates' },
     { text: 'those then who know not wisdom and virtue, and are always busy with gluttony and sensuality, go down and up again as far as the mean; and in this region they move at random throughout life, but they never pass into the true upper world', author: 'socrates' },
     { text: 'the one who does injustice is more wretched than the one who suffers it.', author: 'socrates' },
+
+    // plato
+    { text: 'and they see only their own shadows, or the shadows of one another, which the fire throws on the opposite wall of the cave?', author: 'plato' },
+    { text: 'love is the desire for the perpetual possession of the good.', author: 'plato' },
 
     // seneca
     { text: 'we suffer more often in imagination than in reality.', author: 'seneca' },
@@ -211,9 +215,7 @@ window.QUOTES = [
     { text: 'the best answer to anger is silence.', author: 'marcus aurelius' },
     { text: 'confine yourself to the present.', author: 'marcus aurelius' },
     { text: 'remember that very little is needed to make a happy life.', author: 'marcus aurelius' },
-
-    // saint francis of assisi
-    { text: 'what you are looking for is who is looking.', author: 'saint francis of assisi' },
+    { text: 'the soul becomes dyed with the color of its thoughts.', author: 'marcus aurelius' },
 
     // st. paul
     { text: 'for i am convinced that neither death nor life, nor angels nor rulers, nor things present nor things to come, nor powers, nor height nor depth, nor anything else in all creation, will be able to separate us from the love of god.', author: 'st. paul' },
@@ -235,6 +237,7 @@ window.QUOTES = [
     { text: 'see the person, not the myth. imagine him or her as a child, as someone riddled with insecurities. cutting the other person down to size will help your keep your mental balance.', author: 'robert greene' },
     { text: 'a bold act requires a high degree of confidence. people who are the targets of an audacious act, or who witness it, cannot help but believe that such confidence is real and justified.', author: 'robert greene' },
     { text: 'a bold act can put people on their heels and eliminate obstacles. in this way, it creates its own favorable circumstances.', author: 'robert greene' },
+    { text: 'in the face of the sublime, we feel a shiver, a foretaste of death itself, something too large for our minds to encompass. and for a moment it shakes us out of our smugness and releases us from the deathlike grip of habit and banality.', author: 'robert greene' },
 
     // ryan holiday
     { text: 'humble. humble even if you have achieved an impressive amount, even if you have done many impressive things.', author: 'ryan holiday' },
@@ -293,6 +296,7 @@ window.QUOTES = [
 
     // oscar wilde
     { text: 'nothing that is worth knowing can be taught.', author: 'oscar wilde' },
+    { text: 'yes: i am a dreamer. for a dreamer is one who can only find his way by moonlight, and his punishment is that he sees the dawn before the rest of the world.', author: 'oscar wilde' },
 
     // arthur c clarke
     { text: 'if a scientist says that something is possible she is almost certainly right, but if she says that it is impossible, she is very probably wrong.', author: 'arthur c. clarke' },
@@ -309,6 +313,8 @@ window.QUOTES = [
     // epictetus
     { text: 'for a wise man, the wealth, the glory, and the rewards of this world are like sweets or empty shells on a road.', author: 'epictetus' },
     { text: 'put at least half of your energy into making yourself free of empty wishes, and very soon you will see that in so doing you will receive much greater fulfillment and happiness.', author: 'epictetus' },
+    { text: 'practice yourself, for heaven’s sake, in little things; and thence proceed to greater.', author: 'epictetus' },
+    { text: 'of all existing things, some are in our power, and others are not in our power. in our power are thought, impulse, will to get and will to avoid, and, in a word, everything which is our own doing. things not in our power include the body, property, reputation, office, and, in a word, everything which is not our own doing.', author: 'epictetus' },
 
     // dhammapada
     { text: 'your enemy will pay you back with rage, will make you suffer, but the biggest damage to you will be caused by the rage and hatred existing in your heart.', author: 'dhammapada' },
@@ -317,6 +323,10 @@ window.QUOTES = [
     // the talmud
     { text: 'water does not stay on a mountaintop, but flows into the valley. in the same manner, real virtue stays only with people who are humble.', author: 'the talmud' },
     { text: 'god tests everyone, one with wealth, another with poverty. a rich man is tested in whether he would extend an arm of support to those who need it; a poor man in whether he would bear all his sufferings without discontent and with obedience.', author: 'the talmud' },
+
+    // thomas aquinas
+    { text: 'evil is not a being, but a privation of being.', author: 'thomas aquinas' },
+    { text: 'wonder is a kind of desire for knowledge.', author: 'thomas aquinas' },
 
     // rainer maria rilke
     { text: 'it is good to be solitary, for solitude is difficult; that something is difficult must be a reason the more for us to do it.', author: 'rainer m. rilke' },
@@ -359,7 +369,6 @@ window.QUOTES = [
     { text: 'purity is something that cannot be attained except by piling effort upon effort.', author: 'yamamoto tsunetomo' },
     { text: 'he who sees from the side has eight eyes.', author: 'yamamoto tsunetomo' },
     { text: 'thought by thought we see our own mistakes.', author: 'yamamoto tsunetomo' },
-    { text: 'i do not know the way to defeat others, but the way to defeat myself.', author: 'yagyu munenori' },
     { text: 'throughout your life advance daily, becoming more skillful than yesterday, more skillful than today. this is never-ending.', author: 'yamamoto tsunetomo' },
     { text: 'the way of revenge lies in simply forcing one’s way into a place and being cut down. there is no shame in this.', author: 'yamamoto tsunetomo' },
     { text: 'above all, the way of the samurai should be in being aware that you do not know what is going to happen next.', author: 'yamamoto tsunetomo' },
@@ -394,6 +403,9 @@ window.QUOTES = [
     { text: 'rising slowly in the world, people will be your allies and your happiness will be assured.', author: 'yamamoto tsunetomo' },
     { text: 'one must edge forward like the inchworm, bit by bit.', author: 'yamamoto tsunetomo' },
     { text: 'the gods and buddhas, too, first started with a vow.', author: 'yamamoto tsunetomo' },
+
+    // yagyu munenori
+    { text: 'i do not know the way to defeat others, but the way to defeat myself.', author: 'yagyu munenori' },
 
     // t.s. eliot
     { text: 'home is where one starts from. as we grow older, the world becomes stranger, the pattern more complicated of dead and living.', author: 't.s. eliot' },
@@ -444,6 +456,7 @@ window.QUOTES = [
     // carl sagan
     { text: "i didn't make a decision to pursue astronomy. rather, it just grabbed me, and i had no thought of escaping.", author: 'carl sagan' },
     { text: "imagination will often carry us to worlds that never were. But without it we go nowhere.", author: 'carl sagan'},
+    { text: 'somewhere, something incredible is waiting to be known.', author: 'carl sagan' },
 
     // hannah arendt
     { text: 'the ideal subject of totalitarian rule is not the convinced nazi or the convinced communist, but people for whom the distinction between fact and fiction and the distinction between true and false', author: 'hannah arendt' },
@@ -556,59 +569,204 @@ window.QUOTES = [
     // winston churchill
     { text: 'short words are best and the old words when short are best of all.', author: 'winston churchill' },
     { text: 'the empires of the future are the empires of the mind.', author: 'winston churchill' },
+    { text: 'it is a riddle wrapped in a mystery inside an enigma; but perhaps there is a key.', author: 'winston churchill' },
 
     // napoleon
     { text: 'when the enemy is making a false movement we must take good care not to interrupt him.', author: 'napoleon' },
 
-    // other philosophers and thinkers
+    // toni morrison
     { text: 'the function of freedom is to free someone else.', author: 'toni morrison' },
+
+    // heraclitus
     { text: 'one cannot step twice in the same river.', author: 'heraclitus' },
+
+    // henry david thoreau
     { text: 'the price of anything is the amount of life you exchange for it.', author: 'henry david thoreau' },
-    { text: 'today is a good day to have a good day.', author: 'unknown' },
+
+    // thomas carlyle
     { text: 'silence is deep as eternity, speech is shallow as time.', author: 'thomas carlyle' },
-    { text: 'nothing is great and little otherwise than by comparison.', author: 'jonathan swift' },
-    { text: 'the real danger is not that computers will begin to think like men, but that men will begin to think like computers.', author: 'sydney j. harris' },
-    { text: 'the human race took centuries or millennia to see through the mist of difficulties and paradoxes which instructors now invite us to solve in a few minutes.', author: 'lancelot hogben' },
-    { text: 'kind people help each other even without noticing that they are doing so, and evil people act against each other on purpose.', author: 'chinese proverb' },
-    { text: 'a gunshot wound may be cured, but the wound made by a tongue never heals.', author: 'persian wisdom' },
-    { text: 'i think that the major obligation of parents and educators is to give children an understanding of the divine beginning that exists within them.', author: 'william ellery channing' },
-    { text: 'god is love. and he who lives in love, lives in god, and god lives in him. if we love one another, god lives in us.', author: '1 john, chapter 4' },
     { text: 'do not be embarrassed by your mistakes. nothing can teach us better than our understanding of them. this is one of the best ways of self-education.', author: 'thomas carlyle' },
+
+    // jonathan swift
+    { text: 'nothing is great and little otherwise than by comparison.', author: 'jonathan swift' },
+
+    // sydney j. harris
+    { text: 'the real danger is not that computers will begin to think like men, but that men will begin to think like computers.', author: 'sydney j. harris' },
+
+    // lancelot hogben
+    { text: 'the human race took centuries or millennia to see through the mist of difficulties and paradoxes which instructors now invite us to solve in a few minutes.', author: 'lancelot hogben' },
+
+    // chinese proverb
+    { text: 'kind people help each other even without noticing that they are doing so, and evil people act against each other on purpose.', author: 'chinese proverb' },
+
+    // persian wisdom
+    { text: 'a gunshot wound may be cured, but the wound made by a tongue never heals.', author: 'persian wisdom' },
     { text: 'do not regret the past. what is the use of regrets? the lie says that you should regret. the truth says you should be filled with love.', author: 'persian wisdom' },
+
+    // william ellery channing
+    { text: 'i think that the major obligation of parents and educators is to give children an understanding of the divine beginning that exists within them.', author: 'william ellery channing' },
+
+    // 1 john, chapter 4
+    { text: 'god is love. and he who lives in love, lives in god, and god lives in him. if we love one another, god lives in us.', author: '1 john, chapter 4' },
+
+    // gotthold ephraim lessing
     { text: 'the merit of a man is not in the knowledge he possesses, but in the effort he made to achieve it.', author: 'gotthold ephraim lessing' },
+
+    // friedrich von schiller
     { text: 'if you want to study yourself — look into the hearts of other people. if you want to study other people — look into your own heart.', author: 'friedrich von schiller' },
+
+    // manu
     { text: 'your soul is both your judge and your place of sanctuary. your own soul is your highest judge.', author: 'manu' },
+
+    // john ruskin
     { text: 'the will of god for us is to live in happiness and to take an interest in the lives of others.', author: 'john ruskin' },
+
+    // henri amiel
     { text: 'be as you are, as you have to be, and the rest is god\'s business.', author: 'henri amiel' },
+
+    // erasmus
     { text: 'if only god is among us, and eternity exists, then everything is different.', author: 'erasmus' },
+
+    // chinese wisdom
     { text: 'intellect can be enlightened only in a kind person. a person can be kind only when he has an enlightened intellect.', author: 'chinese wisdom' },
+
+    // jean d'alembert
     { text: 'simplicity is the consequence of refined emotions.', author: 'jean d\'alembert' },
+
+    // alexandr wang
     { text: 'i have never seen ordinary effort lead to extraordinary results.', author: 'alexandr wang' },
+
+    // n. p. calderwood
     { text: 'most interesting phenomena have multiple causes.', author: 'n. p. calderwood' },
+
+    // bob klein
     { text: "the best way to do something 'lean' is to gather a tight group of people, give them very little money, and very little time.", author: 'bob klein' },
+
+    // charlie munger
     { text: 'i think a life properly lived is just learn, learn, learn all the time.', author: 'charlie munger' },
+
+    // bret weinstein
     { text: 'the population is made up of 4 types of people: a small number hunt witches. a large number go along with the hunt. a larger number are silent. a tiny number oppose it. the final group — as if by magic — become witches.', author: 'bret weinstein' },
+
+    // teller
     { text: 'sometimes, magic is just someone spending more time on something than anyone else might reasonably expect.', author: 'teller' },
+
+    // horace walpole
     { text: 'i never understand anything until i have written about it.', author: 'horace walpole' },
+
+    // freddy vega
     { text: 'crime does not pay as much as code.', author: 'freddy vega' },
+
+    // paul kedrosky
     { text: 'the amount of energy necessary to refute bullshit is an order of magnitude bigger than to produce it.', author: 'paul kedrosky' },
+
+    // tara ploughman
     { text: 'the less confident you are, the more serious you have to act.', author: 'tara ploughman' },
+
+    // carl winfeld
     { text: 'we\'re even wrong about which mistakes we\'re making.', author: 'carl winfeld' },
+
+    // havelock
     { text: 'dreams are real while they last; can we say more of life?.', author: 'havelock' },
+
+    // tom morris
     { text: 'the meaning of life is creative love.', author: 'tom morris' },
-    { text: 'evil is not a being, but a privation of being.', author: 'thomas aquinas' },
+
+    // boethius
     { text: 'for evil is nothing, since it is not.', author: 'boethius' },
-    { text: 'evil is not the opposite of good; it is the corruption of good.', author: 'anonymous' },
-    { text: 'evil cannot create its own order. it can only parasitize an existing one.', author: 'anonymous' },
-    { text: 'evil is ultimately irrational because it destroys the very conditions that make rational action, flourishing, and meaning possible.', author: 'anonymous' },
+
+    // g.k. chesterton
     { text: 'evil is always absurd.', author: 'g.k. chesterton' },
+
+    // terry pratchett
     { text: 'evil is not the opposite of good, but the absence of it, and it makes no more sense than dark without light or a hole without the doughnut.', author: 'terry pratchett' },
+
+    // c.s. lewis
     { text: 'to do evil is to act against the order of things, to choose a smaller good at the expense of a greater, which is the very definition of unreason.', author: 'c.s. lewis' },
+
+    // reinhold niebuhr
     { text: 'evil brings with it its own destruction. it is an absurdity that consumes itself.', author: 'reinhold niebuhr' },
+
+    // h.r. mackintosh
     { text: 'evil is a surd.', author: 'h.r. mackintosh' },
+
+    // margaret atwood
     { text: 'stupidity is the same as evil if you judge by the results.', author: 'margaret atwood' },
+
+    // taroverse
     { text: 'looking for my next twin flame; have only one is delusional.', author: 'taroverse' },
+
+    // dagny taggart
     { text: 'john galt, you are my forever.', author: 'dagny taggart' },
+
+    // alan turing
+    { text: 'we can see only a short distance ahead, but we can see that much remains to be done.', author: 'alan turing' },
+
+    // alan watts
+    { text: 'the ego is nothing other than the focus of conscious attention.', author: 'alan watts' },
+
+    // albert camus
+    { text: 'in the midst of winter, i found there was, within me, an invincible summer.', author: 'albert camus' },
+    { text: 'man is the only creature who refuses to be what he is.', author: 'albert camus' },
+
+    // bruce lee
+    { text: 'the successful warrior is the average man, with laser-like focus.', author: 'bruce lee' },
+
+    // donald e. knuth
+    { text: 'the process of preparing programs for a digital computer is especially attractive, not only because it can be economically and scientifically rewarding, but also because it can be an aesthetic experience much like composing poetry or music.', author: 'donald e. knuth' },
+
+    // henri bergson
+    { text: 'for a conscious being, to exist is to change, to change is to mature, to mature is to go on creating oneself endlessly.', author: 'henri bergson' },
+
+    // henry ford
+    { text: 'whether you believe you can, or you believe you can’t, you’re right.', author: 'henry ford' },
+
+    // isaiah
+    { text: 'they that weave networks shall be confounded.', author: 'isaiah' },
+
+    // john von neumann
+    { text: 'any one who considers arithmetical methods of producing random digits is, of course, in a state of sin.', author: 'john von neumann' },
+
+    // niccolo machiavelli
+    { text: 'there is nothing more difficult to take in hand, more perilous to conduct, or more uncertain in its success, than to take the lead in the introduction of a new order of things.', author: 'niccolo machiavelli' },
+
+    // robert herrick
+    { text: 'attempt the end, and never stand to doubt; nothing’s so hard, but search will find it out.', author: 'robert herrick' },
+
+    // stephen king
+    { text: 'hope is a good thing, maybe the best of things, and no good thing ever dies.', author: 'stephen king' },
+
+    // t. s. eliot
+    { text: 'home is where one starts from. as we grow older, the world becomes stranger, the pattern more complicated of dead and living. not the intense moment, isolated, with no before and after, but a lifetime burning in every moment. and not the lifetime of one man only, but of old stones that cannot be deciphered.', author: 't. s. eliot' },
+
+    // ursula k. le guin
+    { text: 'fantasy is escapist, and that is its glory.', author: 'ursula k. le guin' },
+
+    // w. s. jevons
+    { text: 'the study both of formal logic and of the theory of probabilities has led me to adopt the opinion that there is no such thing as a distinct method of induction as contrasted with deduction, but that induction is simply an inverse employment of deduction.', author: 'w. s. jevons' },
+
+    // william shakespeare
+    { text: 'the rest is silence.', author: 'william shakespeare' },
+    { text: 'what is past is prologue.', author: 'william shakespeare' },
+
+    // boundaries
+    { text: 'daring to set boundaries is about having the courage to love ourselves, even when we risk disappointing others.', author: 'brené brown' },
+    { text: 'boundaries are the distance at which i can love you and me simultaneously.', author: 'prentis hemphill' },
+    { text: 'clear is kind. unclear is unkind.', author: 'brené brown' },
+    { text: 'your personal boundaries protect the inner core of your identity and your right to choices.', author: 'gerard manley hopkins' },
+    { text: "when you say 'yes' to others, make sure you are not saying 'no' to yourself.", author: 'paulo coelho' },
+    { text: "'no' is a complete sentence.", author: 'anne lamott' },
+    { text: 'love yourself enough to set boundaries. your time and energy are precious. you get to choose how you use it.', author: 'anna taylor' },
+    { text: 'you get what you tolerate.', author: 'henry cloud' },
+    { text: "setting boundaries is a way of caring for myself. it doesn't make me mean, selfish, or uncaring just because i don't do things your way.", author: 'christine morgan' },
+    { text: 'boundaries define us.', author: 'henry cloud' },
+    { text: 'boundaries teach others how to exist in a relationship with you.', author: 'nedra glover tawwab' },
+    { text: 'unhealthy friendships happen as a result of unhealthy boundaries.', author: 'nedra glover tawwab' },
+    { text: 'each time you set a healthy boundary, you say \'yes\' to more freedom.', author: 'nancy levin' },
+    { text: 'you best teach others about healthy boundaries by enforcing yours.', author: 'bryant mcgill' },
+    { text: 'good fences make good neighbors.', author: 'robert frost' },
+    { text: 'families living in dysfunction seldom have healthy boundaries.', author: 'david w. earle' },
+    { text: 'the more you value yourself, the healthier your boundaries are.', author: 'spirituality, evolution and awakened consciousness' },
 
     //////////////////////////
     // marina von steinkirch
@@ -742,6 +900,32 @@ window.QUOTES = [
     { text: 'love feels really good.', author: 'marina von steinkirch' },
     { text: 'it’s time to stop treating people like spoiled kids. there are very clear and explicit rules that govern adulthood, maturity, and integrity. we need to hold everyone to them, just as we would our own children.', author: 'marina von steinkirch' },
     { text: 'not until there is no longer this heartbroken disconnection between the divine feminine and the divine masculine will the world be at peace.', author: 'marina von steinkirch'},
+    { text: 'one measure of intelligence is the capacity to change and improve one’s ideas and ways after a learning experience. those who temporarily show progress but then return to their old behavior are simply demonstrating that they are unintelligent.', author: 'marina von steinkirch'},
+    { text: 'somedays you just hold tight until tomorrow.', author: 'marina von steinkirch'},
+    { text: 'one measure of progress on your journey is realizing that, one day, you will simply stop taking other people’s advice without first questioning whether their life goals are congruent with yours.', author: 'marina von steinkirch'},
+    { text: 'it\'s wonderful, now let\'s put a beautiful box on it.', author: 'marina von steinkirch'},
+    { text: 'i\'ve gone viral so many times that now i\'m starting to think i must be the virus.', author: 'marina von steinkirch'},
+    { text: 'stay absolutely away from anyone whose main business model is craving attention.', author: 'marina von steinkirch'},
+    { text: 'stay absolutely away from anyone who has an evident inferiority complex.', author: 'marina von steinkirch'},
+    { text: 'we will never run out of tomorrows.', author: 'marina von steinkirch'},
+    { text: 'the future is about friendship.', author: 'marina von steinkirch'},
+    { text: 'if you know me online but have never talked to me in person, it should be pretty evident that neither of us has absolutely any idea who the other one truly is.', author: 'marina von steinkirch'},
+    { text: 'until you talk to me in person, you have no idea who i really am.', author: 'marina von steinkirch'},
+    { text: 'i do science and i build things, nothing more and nothing less; therefore, politics is not my expertise, interest, or problem; therefore, it’s not my job to take a public stance on it.', author: 'marina von steinkirch'},
+    { text: 'a soulmate is that one person you end up calling the love of your life.', author: 'marina von steinkirch'},
+    { text: 'creativity and kindness are the only two edges that matter in the superintelligent future. cynicism and attacking an underdog from a position of power are not really fashionable anymore.', author: 'marina von steinkirch'},
+    { text: 'evil might be simply the compounded accumulation of pain, suffering, and injustice in the world. we stop evil by breaking the cycle.', author: 'marina von steinkirch'},
+    { text: 'the most important rule is: no matter what, do not break the flow.', author: 'marina von steinkirch'},
+    { text: 'the time you need to heal is the time you need to heal.', author: 'marina von steinkirch' },
+    { text: 'i am yet to find a greater pleasure than the pleasure of creating and bringing something new into the world.', author: 'marina von steinkirch' },
+    { text: 'that amusing moment when the bug is rebranded as a feature.', author: 'marina von steinkirch' },
+    { text: 'minimalist life; intentional choices; peaceful state of mind.', author: 'marina von steinkirch' },
+    { text: 'every day, when you wake up, remember everything you love about yourself, all the blessings you have in your life, all the beautiful things you still need to create, and all the wonderful moments still waiting to be lived in the fleeting existence that is yours.', author: 'marina von steinkirch' },
+    { text: 'the most underrated skill you cultivate as you grow older is patience.', author: 'marina von steinkirch' },
+    { text: 'if i had to describe myself in one sentence: i come from the future.', author: 'marina von steinkirch' },
+    { text: 'i have a binary rule for publishing writings: either you take your time to make sure it’s perfect, or you put it out fast and iterate publicly, like in open-source development. the first is perfectionism; the second is pragmatism.', author: 'marina von steinkirch' },
+    { text: 'if you consider yourself a serious researcher, it’s essential to read the original sources.', author: 'marina von steinkirch' },
+    // rules of fame series
     { text: 'rule #1 of fame: it\'s a never-ending mixture of excruciating pain and heavy dopamine hits to your ego.', author: 'marina von steinkirch'},
     { text: 'rule #2 of fame: there will never be any privacy anymore unless you find a way to become unfamous again.', author: 'marina von steinkirch'},
     { text: 'rule #3 of fame: forget normal dating; and if you want to be safe, forget dating altogether.', author: 'marina von steinkirch'},
@@ -760,27 +944,7 @@ window.QUOTES = [
     { text: 'rule #16 of fame: the good news is that there is a 100% probability that one day you will die, and then you will be able to rest in peace forever.', author: 'marina von steinkirch'},
     { text: 'rule #17 of fame: the days you want to disappear forever are exactly the days you must show up and give your best.', author: 'marina von steinkirch'},
     { text: 'rule #18 of fame: chin up and keep going with your dreams, one day at a time; you have everything you need to shine and be who you always meant to be.', author: 'marina von steinkirch'},
-    { text: 'one measure of intelligence is the capacity to change and improve one’s ideas and ways after a learning experience. those who temporarily show progress but then return to their old behavior are simply demonstrating that they are unintelligent.', author: 'marina von steinkirch'},
-    { text: 'somedays you just hold tight until tomorrow.', author: 'marina von steinkirch'},
-    { text: 'one measure of progress on your journey is realizing that, one day, you will simply stop taking other people’s advice without first questioning whether their life goals are congruent with yours.', author: 'marina von steinkirch'},
-    { text: 'it\'s wonderful, now let\'s put a beautiful box on it.', author: 'marina von steinkirch'},
-    { text: 'i\'ve gone viral so many times that now i\'m starting to think i must be the virus.', author: 'marina von steinkirch'},
-    { text: 'stay absolutely away from anyone whose main business model is craving attention.', author: 'marina von steinkirch'},
-    { text: 'stay absolutely away from anyone who has an evident inferiority complex.', author: 'marina von steinkirch'},
-    { text: 'we will never run out of tomorrows.', author: 'marina von steinkirch'},
-    { text: 'the future is about friendship.', author: 'marina von steinkirch'},
-    { text: 'if you know me online but have never talked to me in person, it should be pretty evident that neither of us has absolutely any idea who the other one truly is.', author: 'marina von steinkirch'},
-    { text: 'until you talk to me in person, you have no idea who i really am.', author: 'marina von steinkirch'},
-    { text: 'i do science and i build things, nothing more and nothing less; therefore, politics is not my expertise, interest, or problem; therefore, it’s not my job to take a public stance on it.', author: 'marina von steinkirch'},
-    { text: 'a soulmate is that one person you end up calling the love of your life.', author: 'marina von steinkirch'},
-    { text: 'even if astrology is not real #1: we are in the business of making the age of aquarius real.', author: 'marina von steinkirch'},
-    { text: 'even if astrology is not real #2: we love to talk about it because it triggers funny reactions from the squares.', author: 'marina von steinkirch'},
-    { text: 'even if astrology is not real #3: leos sun, moon, and rising are destined to become the collective superintelligent hearts leading humanity.', author: 'marina von steinkirch'},
-    { text: 'even if astrology is not real #4: we crazies are becoming the majority, and we are on a mission to really change the world for the better.', author: 'marina von steinkirch'},
-    { text: 'even if astrology is not real #5: the only way to live is to have a few clearly defined long-term goals and values, and to work obsessively toward them through every cycle of life.', author: 'marina von steinkirch'},
-    { text: 'creativity and kindness are the only two edges that matter in the superintelligent future. cynicism and attacking an underdog from a position of power are not really fashionable anymore.', author: 'marina von steinkirch'},
-    { text: 'evil might be simply the compounded accumulation of pain, suffering, and injustice in the world. we stop evil by breaking the cycle.', author: 'marina von steinkirch'},
-    { text: 'the most important rule is: no matter what, do not break the flow.', author: 'marina von steinkirch'},
+    // true love series
     { text: 'rule #1 of true love: you are the king of my world, and you deserve to be treated like a king at all times. likewise, i should be the queen of your world.', author: 'marina von steinkirch' },
     { text: 'rule #2 of true love: perfect love is infinite, and so should be forgiveness and kindness.', author: 'marina von steinkirch' },
     { text: 'rule #3 of true love: there should never be a third party, ever. the world is already very good at making you feel less than you are, so no one should ever have to feel paranoid about the one person they choose to love.', author: 'marina von steinkirch' },
@@ -794,11 +958,19 @@ window.QUOTES = [
     { text: 'rule #11 of true love: find that person who can see and appreciate every layer of you, with whom your soul never has to be ashamed of its nakedness.', author: 'marina von steinkirch' },
     { text: 'rule #12 of true love: protect what you cherish from prying eyes. the most precious things are often the ones best kept sacred, away from the world’s noise and interference.', author: 'marina von steinkirch' },
     { text: 'rule #13 of true love: everything before a perfect union is the journey that leads two souls to find each other. everything after it is where their real story begins, and where all the beautiful things they create together come to life.', author: 'marina von steinkirch' },
-    { text: 'the time you need to heal is the time you need to heal.', author: 'marina von steinkirch' },
-    { text: 'i am yet to find a greater pleasure than the pleasure of creating and bringing something new into the world.', author: 'marina von steinkirch' },
-    { text: 'that amusing moment when the bug is rebranded as a feature.', author: 'marina von steinkirch' },
-    { text: 'minimalist life; intentional choices; peaceful state of mind.', author: 'marina von steinkirch' },
-    { text: 'every day, when you wake up, remember everything you love about yourself, all the blessings you have in your life, all the beautiful things you still need to create, and all the wonderful moments still waiting to be lived in the fleeting existence that is yours.', author: 'marina von steinkirch' },
-    { text: 'the most underrated skill you cultivate as you grow older is patience.', author: 'marina von steinkirch' },
-    { text: 'if ihad to describe myself in one sentence: i come from the future.', author: 'marina von steinkirch' },
+    // even if astrology is not real series
+    { text: 'even if astrology is not real #1: we are in the business of making the age of aquarius real.', author: 'marina von steinkirch'},
+    { text: 'even if astrology is not real #2: we love to talk about it because it triggers funny reactions from the squares.', author: 'marina von steinkirch'},
+    { text: 'even if astrology is not real #3: leos sun, moon, and rising are destined to become the collective superintelligent hearts leading humanity.', author: 'marina von steinkirch'},
+    { text: 'even if astrology is not real #4: we crazies are becoming the majority, and we are on a mission to really change the world for the better.', author: 'marina von steinkirch'},
+    { text: 'even if astrology is not real #5: the only way to live is to have a few clearly defined long-term goals and values, and to work obsessively toward them through every cycle of life.', author: 'marina von steinkirch'},
+    // ceo series
+    { text: 'ceo daily #1: telescope in one eye; microscope in the other eye.', author: 'marina von steinkirch' },
+    { text: 'ceo daily #2: perform today; transform tomorrow.', author: 'marina von steinkirch' },
+    { text: 'ceo daily #3: the small eye, can you do what you do today cheaper, faster, better?', author: 'marina von steinkirch' },
+    { text: 'ceo daily #4: move fast and heal things.', author: 'marina von steinkirch' },
+    { text: 'ceo daily #5: competition means you have a market.', author: 'marina von steinkirch' },
+    { text: 'ceo daily #6: venture capital is not charity nor niceness. venture capital is a glorified bank, and if you choose wisely, it can also bring the know-how, structure, and network that can help you win. but it\'s still your labor and their capital.', author: 'marina von steinkirch' },
 ];
+
+

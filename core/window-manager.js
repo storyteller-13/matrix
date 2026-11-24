@@ -2,6 +2,18 @@
  * Window Manager
  * Handles window lifecycle, dragging, z-index management, and window controls
  */
+// Which dock item opens each window, so closing a window can release its dock state.
+const DOCK_ITEM_BY_WINDOW = {
+    'todo-window': 'todo-dock-item',
+    'home-window': 'home-dock-item',
+    'building-window': 'building-dock-item',
+    'terminal-window': 'terminal-dock-item',
+    'artwork-window': 'artwork-dock-item',
+    'lists-folder-window': 'lists-folder-dock-item',
+    'notes-window': 'notes-dock-item',
+    'about-window': 'about-dock-item'
+};
+
 class WindowManager {
     constructor() {
         this.highestZIndex = 100;
@@ -115,6 +127,7 @@ class WindowManager {
 
     close(windowElement, dockItem = null) {
         if (!windowElement) return;
+        windowElement.dispatchEvent(new CustomEvent('windowclose'));
 
         const isCentered = this.isCenteredWindow(windowElement);
 
@@ -232,22 +245,32 @@ class WindowManager {
             return;
         }
 
+        const { minX, maxX, minY, maxY } = this.freeWindowBounds(element, width, height);
+        const clampedX = this.clampValue(element._xOffset || 0, minX, maxX);
+        const clampedY = this.clampValue(element._yOffset || 0, minY, maxY);
+        this.setFreeOffset(element, clampedX, clampedY);
+    }
+
+    /**
+     * Offsets a free (top-left anchored) window may move to while staying inside the viewport
+     * and above the dock. Offsets are relative to the element's CSS left/top.
+     */
+    freeWindowBounds(element, width, height) {
         const left = parseFloat(getComputedStyle(element).left) || 0;
         const top = parseFloat(getComputedStyle(element).top) || 0;
-        const xOffset = element._xOffset || 0;
-        const yOffset = element._yOffset || 0;
+        return {
+            minX: this.viewportPadding - left,
+            maxX: window.innerWidth - this.viewportPadding - left - width,
+            minY: this.getSafeTopY() - top,
+            maxY: this.getSafeBottomY() - top - height,
+        };
+    }
 
-        const minX = this.viewportPadding - left;
-        const maxX = window.innerWidth - this.viewportPadding - left - width;
-        const minY = safeTopY - top;
-        const maxY = safeBottomY - top - height;
-
-        const clampedX = this.clampValue(xOffset, minX, maxX);
-        const clampedY = this.clampValue(yOffset, minY, maxY);
-
-        element._xOffset = clampedX;
-        element._yOffset = clampedY;
-        element.style.transform = `translate(${clampedX}px, ${clampedY}px)`;
+    /** Stores a free window's offset and applies it as the transform. */
+    setFreeOffset(element, x, y) {
+        element._xOffset = x;
+        element._yOffset = y;
+        element.style.transform = `translate(${x}px, ${y}px)`;
     }
 
     makeDraggable(element) {
@@ -341,25 +364,10 @@ class WindowManager {
                     currentX = e.clientX - initialX;
                     currentY = e.clientY - initialY;
 
-                    const left = parseFloat(getComputedStyle(element).left) || 0;
-                    const top = parseFloat(getComputedStyle(element).top) || 0;
-                    const width = element.offsetWidth;
-                    const height = element.offsetHeight;
-                    const safeTopY = this.getSafeTopY();
-                    const safeBottomY = this.getSafeBottomY();
-
-                    const minX = this.viewportPadding - left;
-                    const maxX = window.innerWidth - this.viewportPadding - left - width;
-                    const minY = safeTopY - top;
-                    const maxY = safeBottomY - top - height;
-
+                    const { minX, maxX, minY, maxY } = this.freeWindowBounds(element, element.offsetWidth, element.offsetHeight);
                     xOffset = this.clampValue(currentX, minX, maxX);
                     yOffset = this.clampValue(currentY, minY, maxY);
-
-                    element._xOffset = xOffset;
-                    element._yOffset = yOffset;
-
-                    element.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
+                    this.setFreeOffset(element, xOffset, yOffset);
                 }
             }
         };
@@ -381,58 +389,21 @@ class WindowManager {
     }
 
     setupWindowControls() {
-        // Close buttons
-        const closeButtons = document.querySelectorAll('.control.close');
-        closeButtons.forEach(btn => {
-            // Use capture phase to ensure this runs first
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                e.stopImmediatePropagation();
+        // Capture phase, so each control runs before the window's own click handlers.
+        const bindControl = (selector, action) => {
+            document.querySelectorAll(selector).forEach((btn) => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    e.stopImmediatePropagation();
 
-                const window = btn.closest('.window');
-                if (window) {
-                    // Find associated dock item
-                    const windowId = window.id;
-                    let dockItem = null;
-
-                    // Map window IDs to dock item IDs
-                    const dockItemMap = {
-                        'todo-window': 'todo-dock-item',
-                        'home-window': 'home-dock-item',
-                        'building-window': 'building-dock-item',
-                        'terminal-window': 'terminal-dock-item',
-                        'artwork-window': 'artwork-dock-item',
-                        'lists-folder-window': 'lists-folder-dock-item',
-                        'notes-window': 'notes-dock-item',
-                        'about-window': 'about-dock-item'
-                    };
-
-                    const dockItemId = dockItemMap[windowId];
-                    if (dockItemId) {
-                        dockItem = document.getElementById(dockItemId);
-                    }
-
-                    this.close(window, dockItem);
-                }
-            }, true); // Use capture phase
-        });
-
-        // Minimize buttons
-        const minimizeButtons = document.querySelectorAll('.control.minimize');
-        minimizeButtons.forEach(btn => {
-            // Use capture phase to ensure this runs first
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                e.stopImmediatePropagation();
-
-                const window = btn.closest('.window');
-                if (window) {
-                    this.minimize(window);
-                }
-            }, true); // Use capture phase
-        });
+                    const windowElement = btn.closest('.window');
+                    if (windowElement) action(windowElement);
+                }, true);
+            });
+        };
+        bindControl('.control.close', (windowElement) => this.close(windowElement, this.findDockItem(windowElement)));
+        bindControl('.control.minimize', (windowElement) => this.minimize(windowElement));
 
         // Bring window to front when clicking content
         const windows = document.querySelectorAll('.window');
@@ -445,6 +416,52 @@ class WindowManager {
                     }
                 });
             }
+        });
+
+        this.setupKeyboardAccess();
+    }
+
+    /** The dock item that opens this window, or null. */
+    findDockItem(windowElement) {
+        const dockItemId = DOCK_ITEM_BY_WINDOW[windowElement.id];
+        return dockItemId ? document.getElementById(dockItemId) : null;
+    }
+
+    /**
+     * Keyboard and screen reader access: labelled, focusable window controls,
+     * window names for assistive tech, and Escape to close the top-most open window.
+     */
+    setupKeyboardAccess() {
+        document.querySelectorAll('.window').forEach((windowElement) => {
+            const title = windowElement.querySelector('.window-title');
+            if (title && !windowElement.hasAttribute('aria-label')) {
+                windowElement.setAttribute('aria-label', title.textContent.trim());
+            }
+        });
+
+        document.querySelectorAll('.control.close, .control.minimize').forEach((control) => {
+            control.setAttribute('role', 'button');
+            control.setAttribute('tabindex', '0');
+            const label = control.classList.contains('close') ? 'window.closeAria' : 'window.minimizeAria';
+            control.setAttribute('aria-label', window.I18n?.t?.(label) ?? (control.classList.contains('close') ? 'close window' : 'minimize window'));
+            control.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    control.click();
+                }
+            });
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key !== 'Escape' || e.defaultPrevented) return;
+            // Typing keeps Escape for the field (e.g. the terminal or a note).
+            if (e.target instanceof Element && e.target.closest('input, textarea, select, [contenteditable="true"]')) return;
+            const openWindows = [...document.querySelectorAll('.window')]
+                .filter((w) => w.style.display !== 'none');
+            if (openWindows.length === 0) return;
+            const zIndexOf = (w) => parseInt(getComputedStyle(w).zIndex, 10) || 0;
+            const top = openWindows.reduce((a, b) => (zIndexOf(b) >= zIndexOf(a) ? b : a));
+            this.close(top, this.findDockItem(top));
         });
     }
 }

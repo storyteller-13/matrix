@@ -2,6 +2,7 @@
  * APOD panel – Eastern dates, video/unpublished fallback, stale cache.
  */
 import { describe, it, expect, beforeAll, beforeEach, afterEach, vi } from 'vitest';
+import '../core/timed-cache.js';
 
 function makeFakeStorage() {
     const store = {};
