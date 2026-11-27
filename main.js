@@ -32,11 +32,14 @@ import './applications/notes/notes-storage.js';
 import './applications/notes/notes.js';
 
 // Curated Lists (data first, then the windows)
-import './applications/lists/books-data.js';
-import './applications/lists/movies-data.js';
-import './applications/lists/guides-data.js';
-import './applications/lists/adventures-data.js';
-import './applications/lists/games-data.js';
+import './applications/lists/folders/list-entry.js';
+import './applications/lists/folders/books.js';
+import './applications/lists/folders/movies.js';
+import './applications/lists/folders/my-guides.js';
+import './applications/lists/folders/adventures.js';
+import './applications/lists/folders/games.js';
+import './applications/lists/folders/friendships.js';
+import './applications/lists/folders/sublime.js';
 import './applications/lists/books.js';
 import './applications/lists/podcast-player.js';
 import './applications/lists/lists-menu.js';

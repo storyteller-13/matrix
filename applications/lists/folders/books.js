@@ -1,4 +1,9 @@
 /**
+ * Books folder: the 2026 and 2027 reading logs, the backlog and the books our kids should read.
+ */
+import { listEntry } from './list-entry.js';
+
+/**
  * Curated book lists: books read in 2026, books read in 2027, the backlog,
  * and the books our kids should read.
  */
@@ -443,3 +448,12 @@ const KIDS_BOOKS = {
 };
 
 window.KIDS_BOOKS = KIDS_BOOKS;
+
+export function booksEntries(t) {
+    return [
+        listEntry('books-2026', t('menu.books2026', 'books i read in 2026')),
+        listEntry('books-2027', t('menu.books2027', 'books i read in 2027')),
+        listEntry('kids-books', t('menu.kidsBooks', 'books our kids should read')),
+        listEntry('books-backlog', t('menu.booksBacklog', 'my endless ever-changing backlog')),
+    ];
+}

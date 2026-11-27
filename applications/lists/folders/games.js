@@ -1,4 +1,9 @@
 /**
+ * Games folder: the videogames of my youth and the games I want to try someday.
+ */
+import { listEntry } from './list-entry.js';
+
+/**
  * Add a game with { title: 'name' } (optionally url: '') inside its category's `games`.
  */
 
@@ -120,3 +125,11 @@ const GAMES_TRY_SOMEDAY = {
 
 window.GAMES_YOUTH = GAMES_YOUTH;
 window.GAMES_TRY_SOMEDAY = GAMES_TRY_SOMEDAY;
+
+export function gamesEntries(t) {
+    const game = { icon: 'game' };
+    return [
+        listEntry('games-youth', t('menu.gamesYouth', 'the videogames of my youth'), game),
+        listEntry('games-try-someday', t('menu.gamesTrySomeday', 'games i want to try someday'), game),
+    ];
+}

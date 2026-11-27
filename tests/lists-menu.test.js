@@ -8,7 +8,10 @@ import { fileURLToPath } from 'node:url';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 // The folder tree lives in lists-folder-data.js; the window file only renders it.
-const folderSource = ['applications/lists/lists-folder-data.js', 'applications/lists/lists-folder.js']
+const folderSource = ['applications/lists/lists-folder-data.js', 'applications/lists/lists-folder.js',
+    'applications/lists/folders/books.js', 'applications/lists/folders/movies.js', 'applications/lists/folders/games.js',
+    'applications/lists/folders/adventures.js', 'applications/lists/folders/my-guides.js', 'applications/lists/folders/friendships.js',
+    'applications/lists/folders/sublime.js']
     .map((file) => readFileSync(join(root, file), 'utf8'))
     .join('\n');
 
@@ -27,18 +30,17 @@ describe('generated lists menu', () => {
     });
 
     it('links every list defined in the lists folder', () => {
-        const listIds = [...folderSource.matchAll(/\n\s*id: '([^']+)',/g)].map((m) => m[1]);
+        const listIds = [...folderSource.matchAll(/listEntry\(\s*'([^']+)'/g)].map((m) => m[1]);
         const linked = new Set([...document.querySelectorAll('#lists-menu-root [data-arg]')].map((el) => el.dataset.arg));
         const missing = listIds.filter((id) => !linked.has(id));
-        // The zeitgeist awards are reached through the podcasts submenu, which the podcast player fills with episodes.
-        expect(missing).toEqual(['zeitgeist-awards-2026']);
+        expect(missing).toEqual([]);
         expect(document.getElementById('podcast-menu-episodes')).not.toBeNull();
     });
 
     it('lists the top-level folders in the requested order, with art last', () => {
         const labels = [...document.querySelectorAll('#lists-menu-root > .menu-item, #lists-menu-root > button')]
             .map((el) => el.querySelector('.menu-item-text').textContent);
-        expect(labels).toEqual(['books', 'movies', 'podcasts', 'games', 'adventures', 'nutrition', 'science', 'art']);
+        expect(labels).toEqual(['books', 'movies', 'friendships', 'games', 'adventures', 'sublime', 'science', 'art']);
     });
 
     it('sorts movies by title length, with the longest titles at the bottom', () => {

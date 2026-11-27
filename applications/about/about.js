@@ -7,7 +7,7 @@ const ABOUT = {
     role: 'kind · delicate · hardworking · optimistic · autistic · philosopher ',
     text: `i am marina, and this is my handmade personal space, where, once a month, i share a few of my thoughts and stories.
 
-my real job is being an engineer and a scientist, which i've been doing full-time, without interruption, for almost three decades. this is my true purpose, and it's an honor and a pleasure to spend the coming years building the future of friendship networks at «a:https://nullstar.games/»NULLSTAR«/a».
+my real job is being an engineer and a scientist, which i've been doing full-time, without interruption, for almost three decades. this is my true purpose, and it's an honor and a pleasure to spend the coming years building the future of friendships networks at «a:https://nullstar.games/»NULLSTAR«/a».
 
 besides that, i'm a pretty happy human. i love my life, my routine, and all the projects and adventures i get to work on. i love studying and experiencing things like computer science, physics, mathematics, philosophy, astronomy, literature, history, languages, chess, movies, art, music, traveling, surfing, and snowboarding.
 

@@ -253,7 +253,7 @@
     white-space: nowrap;
 }
 
-/* The friendship movie list reads as two balanced cards on wide windows and stacks on phones. */
+/* The friendships movie list reads as two balanced cards on wide windows and stacks on phones. */
 .books-tables--two-up {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));

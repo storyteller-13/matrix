@@ -82,7 +82,7 @@ window.QUOTES = [
     { text: 'then, as in the case of an archer, there must be some end at which we aim, and we shall be more likely to hit the mark if we have a target.', author: 'aristotle' },
 	{ text: 'man is by nature a political animal.', author: 'aristotle' },
 	{ text: 'the whole is greater than the sum of its parts.', author: 'aristotle' },
-	{ text: 'wishing to be friends is quick work, but friendship is a slow-ripening fruit.', author: 'aristotle' },
+	{ text: 'wishing to be friends is quick work, but friendships is a slow-ripening fruit.', author: 'aristotle' },
 	{ text: 'it is the nature of desire not to be satisfied.', author: 'aristotle' },
 	{ text: 'the antidote for fifty enemies is one friend.', author: 'aristotle' },
 	{ text: 'in all things of nature there is something of the marvelous.', author: 'aristotle' },
@@ -766,7 +766,6 @@ window.QUOTES = [
     { text: 'you best teach others about healthy boundaries by enforcing yours.', author: 'bryant mcgill' },
     { text: 'good fences make good neighbors.', author: 'robert frost' },
     { text: 'families living in dysfunction seldom have healthy boundaries.', author: 'david w. earle' },
-    { text: 'the more you value yourself, the healthier your boundaries are.', author: 'spirituality, evolution and awakened consciousness' },
 
     //////////////////////////
     // marina von steinkirch
@@ -891,7 +890,7 @@ window.QUOTES = [
     { text: 'choosing kindness, integrity, and honest work is an active choice. it takes energy at first, but over time it has the potential to become the default habit.', author: 'marina von steinkirch' },
     { text: 'everybody might deny it, but everybody is searching to be seen and to be truly loved.', author: 'marina von steinkirch' },
     { text: 'i never really thought about fame. it was never a goal or even a remote interest of mine. then it inevitably happened because all i do in life is work. i realized that once someone knows you, they will never unknown you. and i still have no idea how to deal with the process at scale.', author: 'marina von steinkirch' },
-    { text: 'a respectful and truthful friendship is as honorable as the lifelong love held by two soulmates.', author: 'marina von steinkirch' },
+    { text: 'a respectful and truthful friendships is as honorable as the lifelong love held by two soulmates.', author: 'marina von steinkirch' },
     { text: 'there is still time for us all to work together for a future we never imagined before, and as good as any dream we had when we were young.', author: 'marina von steinkirch' },
     { text: 'all the journeys in my life sum up in a state of mind where i cannot distinguish the world as a separate place anymore. anywhere and everywhere is home. anyone and everyone is a beautiful human.', author: 'marina von steinkirch' },
     { text: 'we are not done until every single human in the world has access to food, home, privacy, and the liberty to chase any dream they want.', author: 'marina von steinkirch' },
@@ -908,7 +907,7 @@ window.QUOTES = [
     { text: 'stay absolutely away from anyone whose main business model is craving attention.', author: 'marina von steinkirch'},
     { text: 'stay absolutely away from anyone who has an evident inferiority complex.', author: 'marina von steinkirch'},
     { text: 'we will never run out of tomorrows.', author: 'marina von steinkirch'},
-    { text: 'the future is about friendship.', author: 'marina von steinkirch'},
+    { text: 'the future is about friendships.', author: 'marina von steinkirch'},
     { text: 'if you know me online but have never talked to me in person, it should be pretty evident that neither of us has absolutely any idea who the other one truly is.', author: 'marina von steinkirch'},
     { text: 'until you talk to me in person, you have no idea who i really am.', author: 'marina von steinkirch'},
     { text: 'i do science and i build things, nothing more and nothing less; therefore, politics is not my expertise, interest, or problem; therefore, it’s not my job to take a public stance on it.', author: 'marina von steinkirch'},
@@ -964,6 +963,8 @@ window.QUOTES = [
     { text: 'even if astrology is not real #3: leos sun, moon, and rising are destined to become the collective superintelligent hearts leading humanity.', author: 'marina von steinkirch'},
     { text: 'even if astrology is not real #4: we crazies are becoming the majority, and we are on a mission to really change the world for the better.', author: 'marina von steinkirch'},
     { text: 'even if astrology is not real #5: the only way to live is to have a few clearly defined long-term goals and values, and to work obsessively toward them through every cycle of life.', author: 'marina von steinkirch'},
+    // on my dad series
+    { text: 'on my father #1: later in life, i learned to feel his presence protecting me. i started seeing his spirit as my own superpower.', author: 'marina von steinkirch' },
     // ceo series
     { text: 'ceo daily #1: telescope in one eye; microscope in the other eye.', author: 'marina von steinkirch' },
     { text: 'ceo daily #2: perform today; transform tomorrow.', author: 'marina von steinkirch' },

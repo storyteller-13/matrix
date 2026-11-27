@@ -315,8 +315,10 @@ a.file-item {
     text-shadow: none;
 }
 
-.lists-folder-window {
-    /* reuse artwork-window sizing; keep a distinct id for dock mapping */
+/* Folder windows open at about the terminal's size, so their icon grid has room to breathe. */
+.window.lists-folder-window {
+    width: min(820px, calc(100vw - 32px));
+    height: min(540px, calc(100dvh - var(--top-panel-height) - var(--dock-clearance)));
 }
 
 .lists-folder-window .file-list {

@@ -1,4 +1,10 @@
 /**
+ * Adventures folder: the bucket list, cities lived and countries explored.
+ */
+import { listEntry } from './list-entry.js';
+import { myGuidesEntries } from './my-guides.js';
+
+/**
  * Adventures: my bucket list (continents → countries → places), the cities i have lived and the countries i have explored.
  */
 
@@ -201,3 +207,12 @@ const COUNTRIES_EXPLORED = {
 };
 
 window.COUNTRIES_EXPLORED = COUNTRIES_EXPLORED;
+
+export function adventuresEntries(t) {
+    return [
+        { id: 'my-guides', label: t('menu.myGuides', 'my guides'), kind: 'folder', getEntries: myGuidesEntries },
+        listEntry('bucket-list', t('menu.bucketList', 'my bucket list'), { icon: 'pin' }),
+        listEntry('cities-lived', t('menu.citiesLived', 'cities i have lived'), { icon: 'home' }),
+        listEntry('countries-explored', t('menu.countriesExplored', 'countries i have explored'), { icon: 'globe' }),
+    ];
+}

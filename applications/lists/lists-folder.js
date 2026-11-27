@@ -1,10 +1,10 @@
 /**
- * Curated lists folder browser – nested folders for books / movies / adventures / art / science / nutrition / podcasts / games.
- * Every folder is linkable: ?folder=movies, ?folder=podcasts/zeitgeist-awards-2026 (a bare nested id also works).
+ * Curated lists folder browser – nested folders for books / movies / adventures / art / science / sublime / friendships / games.
+ * Every folder is linkable: ?folder=movies, ?folder=friendships/zeitgeist-awards-2026 (a bare nested id also works).
  */
 
 import { renderListsMenu } from './lists-menu.js';
-import { rootFolderEntries, folderEntries } from './lists-folder-data.js';
+import { rootFolderEntries, folderEntries, folderEntry } from './lists-folder-data.js';
 
 const FOLDER_PARAM = 'folder';
 
@@ -47,6 +47,14 @@ const LIST_ICONS = {
     globe: [
         '<circle cx="12" cy="12" r="8.4" fill="rgba(216, 70, 166, 0.15)" stroke="#E879A9" stroke-width="1.55"/>',
         '<path d="M3.6 12 H20.4 M12 3.6 C9.2 6.4 9.2 17.6 12 20.4 M12 3.6 C14.8 6.4 14.8 17.6 12 20.4" fill="none" stroke="#E879A9" stroke-width="1.25" opacity="0.85"/>',
+    ].join(''),
+    smile: [
+        '<circle cx="12" cy="12" r="8.4" fill="rgba(216, 70, 166, 0.18)" stroke="#E879A9" stroke-width="1.55"/>',
+        '<circle cx="9.2" cy="10.3" r="1.15" fill="#E879A9"/>',
+        '<circle cx="14.8" cy="10.3" r="1.15" fill="#E879A9"/>',
+        '<path d="M8.4 13.4 C9.5 15.9 14.5 15.9 15.6 13.4" fill="none" stroke="#E879A9" stroke-width="1.5" stroke-linecap="round"/>',
+        '<circle cx="6.9" cy="13.4" r="1" fill="#E879A9" opacity="0.55"/>',
+        '<circle cx="17.1" cy="13.4" r="1" fill="#E879A9" opacity="0.55"/>',
     ].join(''),
     podcast: [
         '<rect x="8.6" y="3.2" width="6.8" height="11" rx="3.4" fill="rgba(216, 70, 166, 0.18)" stroke="#E879A9" stroke-width="1.55"/>',
@@ -112,7 +120,7 @@ class ListsFolderApp extends BaseApp {
             if (url.searchParams.get(FOLDER_PARAM) === value) return;
             if (value) url.searchParams.set(FOLDER_PARAM, value);
             else url.searchParams.delete(FOLDER_PARAM);
-            // Keep nested paths readable: ?folder=podcasts/zeitgeist-awards-2026
+            // Keep nested paths readable: ?folder=friendships/zeitgeist-awards-2026
             url.search = url.search.replace(/%2F/gi, '/');
             history.replaceState(null, '', url);
         } catch {
@@ -136,7 +144,7 @@ class ListsFolderApp extends BaseApp {
         return null;
     }
 
-    /** Accepts "movies", "podcasts/zeitgeist-awards-2026" or a bare nested id like "zeitgeist-awards-2026". */
+    /** Accepts "movies", "friendships/zeitgeist-awards-2026" or a bare nested id like "zeitgeist-awards-2026". */
     resolveFolderPath(value) {
         const parts = String(value || '').toLowerCase().split('/').map((p) => p.trim()).filter(Boolean);
         if (!parts.length) return null;
@@ -231,11 +239,9 @@ class ListsFolderApp extends BaseApp {
 
     /** Optional note shown above a folder's items; folders with a note get the larger window. */
     descriptionFor(folderId) {
-        if (folderId === 'zeitgeist-awards-2026') {
-            return this.t('lists.podcastsZeitgeistNote',
-                '(the top conversations i kept carrying with me long after they ended)');
-        }
-        return '';
+        if (!folderId) return '';
+        const description = folderEntry(folderId, (key, fallback) => this.t(key, fallback))?.description;
+        return description ? this.t(description.key, description.fallback) : '';
     }
 
     entriesForPath() {

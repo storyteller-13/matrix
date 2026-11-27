@@ -50,11 +50,11 @@ describe('buildItems and listItems', () => {
         const app = {
             rootEntries: () => [
                 { id: 'books', label: 'books', kind: 'folder' },
-                { id: 'podcasts', label: 'podcasts', kind: 'folder' },
+                { id: 'friendships', label: 'friendships', kind: 'folder' },
             ],
             entriesForFolder: (id) => ({
                 books: [{ id: 'books-2026', label: 'books i read in 2026', kind: 'list' }],
-                podcasts: [{ id: 'ep-1', label: 'episode one', kind: 'podcast' }],
+                friendships: [{ id: 'ep-1', label: 'episode one', kind: 'podcast' }],
             })[id] || [],
         };
         const items = listItems(app);

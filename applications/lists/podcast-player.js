@@ -65,7 +65,7 @@ const PODCAST_EPISODES = [
     { id: 'julia-turc-caleb-writes-code', title: 'julia turc on caleb writes code', videoId: 'UYVObn1HUeU' },
     { id: 'maggie-miller-quanta-magazine', title: 'maggie miller on quanta magazine', videoId: 'kCh0ynBTyCg' },
     { id: '3blue1brown-log-escher', title: '3blue1brown on log(escher)', videoId: 'ldxFjLJ3rVY' },
-    { id: 'jonny-thomson-big-thing', title: 'jonny thomson on big thing', videoId: 'HbQ-t8GXYTA' },
+    { id: 'jonny-thomson-big-thing', title: 'jonny thomson on big think', videoId: 'HbQ-t8GXYTA' },
     { id: 'nyc-mayor-antisemitism-instance', title: 'nyc mayor\'s antisemitism stance', videoId: 'Joo3PoSwAFM' },
     { id: 'lisa-kudrow-mayim-bialik', title: 'lisa kudrow on dr. mayim bialik', videoId: 'oix6y4IpSCA' },
     { id: 'grieg-essential-classics', title: 'grieg on essential classics', videoId: 'GjUBwBrCnTw' },

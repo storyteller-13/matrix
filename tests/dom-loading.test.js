@@ -85,7 +85,7 @@ describe('DOMContentLoaded initialization', () => {
         await import('../applications/todo/todo.js');
         await import('../applications/notes/notes-storage.js');
         await import('../applications/notes/notes.js');
-        await import('../applications/lists/books-data.js');
+        await import('../applications/lists/folders/books.js');
         await import('../applications/lists/books.js');
         await import('../applications/lists/lists-folder.js');
         await import('../applications/terminal/terminal-app.js');

@@ -28,11 +28,11 @@ describe('BooksApp', () => {
     beforeAll(async () => {
         document.body.innerHTML = booksDom();
         await import('../core/base-app.js');
-        await import('../applications/lists/books-data.js');
-        await import('../applications/lists/movies-data.js');
-        await import('../applications/lists/guides-data.js');
-        await import('../applications/lists/adventures-data.js');
-        await import('../applications/lists/games-data.js');
+        await import('../applications/lists/folders/books.js');
+        await import('../applications/lists/folders/movies.js');
+        await import('../applications/lists/folders/my-guides.js');
+        await import('../applications/lists/folders/adventures.js');
+        await import('../applications/lists/folders/games.js');
         await import('../applications/lists/books.js');
     });
 
@@ -272,7 +272,7 @@ describe('BooksApp', () => {
         expect(document.getElementById('books-letter-title').textContent).toBe('classic american movies for the winter holiday');
         const content = document.getElementById('books-letter-content');
         expect(content.querySelector('.books-backlog-title')).toBeNull();
-        expect(content.querySelectorAll('tbody tr').length).toBe(11);
+        expect(content.querySelectorAll('tbody tr').length).toBe(9);
         expect(content.textContent).toContain('it\'s a wonderful life (frank capra, 1946)');
     });
 

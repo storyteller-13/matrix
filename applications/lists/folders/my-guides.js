@@ -1,4 +1,9 @@
 /**
+ * My guides folder (inside adventures): city and region guides.
+ */
+import { listEntry } from './list-entry.js';
+
+/**
  * My travel guides – one list per place: short guides as region columns, long ones as sections.
  * Entry format: { title, note? }; a category can carry a `note` (above its table) and a `footnote` (below it).
  */
@@ -254,3 +259,12 @@ const GUIDE_BERLIN = {
 };
 
 window.GUIDE_BERLIN = GUIDE_BERLIN;
+
+export function myGuidesEntries(t) {
+    const map = { icon: 'map' };
+    return [
+        listEntry('guide-alagoas', t('menu.guideAlagoas', 'alagoas, brazil'), map),
+        listEntry('guide-iceland', t('menu.guideIceland', 'reykjavík, iceland'), map),
+        listEntry('guide-berlin', t('menu.guideBerlin', 'berlin, germany'), map),
+    ];
+}

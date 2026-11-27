@@ -174,7 +174,7 @@ all these months, when i poured my heart out to my anon readers, it was my way o
 
 i want my future notes to be about the good things in life, the beautiful stories i live, the lessons i learn, the people i meet, and all the things that happen when i finally get to eat the cake, while experiencing what life is like when you're working hard towards your dreams.
 
-i want my future notes to be very positive and inspiring, reflecting who i truly am. i also want them to sometimes be just pure storytelling. in the coming months, expect these types of stories: philosophy, learnings, wisdom, life, and the future. and since friendship and «a:https://matrix.nullstar.fun/?note=friendship»human connection«/a» are main themes of «a:https://www.nullstar.games/»NULLSTAR«/a»'s mission, let me tell you a quick one.
+i want my future notes to be very positive and inspiring, reflecting who i truly am. i also want them to sometimes be just pure storytelling. in the coming months, expect these types of stories: philosophy, learnings, wisdom, life, and the future. and since friendships and «a:https://matrix.nullstar.fun/?note=friendships»human connection«/a» are main themes of «a:https://www.nullstar.games/»NULLSTAR«/a»'s mission, let me tell you a quick one.
 
 my most recent pocket friends, bruno and rodrigo, own a super cute coffee shop two blocks from my grandma's old house, and it's where i've been working for the last month. by the way, «a:https://matrix.nullstar.fun/?artwork=memories.jpg»the new artwork«/a» is from my workspace, and through the window, you can see the patio of one of the campuses of the university of parana, where my dad taught me how to ride a bike and roller skate when i was a child.
 
@@ -194,7 +194,7 @@ let's end today's ramblings with an uncanny new tradition, plus some of my usual
 
 every november post will come with a special treat for you, my dear anon friend. it's called  «a:https://matrix.nullstar.fun/?folder=movies&list=zeitgeist-2026»the zeitgeist awards«/a», and it's my way of sharing my lifelong cultivated taste with you all. the tradition will involve the movies that told the story of the year and other shenanigans.
 
-this year, since youtube had a huge influence on my life and on helping me figure out what was going on, we also have «a:https://matrix.nullstar.fun/?folder=podcasts/zeitgeist-awards-2026»the podcast version«/a». enjoy! and to the winners, thank you, from the bottom of my heart, for being who you are and for everything you have done for me.
+this year, since youtube had a huge influence on my life and on helping me figure out what was going on, we also have «a:https://matrix.nullstar.fun/?folder=friendships/zeitgeist-awards-2026»the podcast version«/a». enjoy! and to the winners, thank you, from the bottom of my heart, for being who you are and for everything you have done for me.
 
 what's even more interesting than a spooky friday, though, is the fact that today happens to be a rather extraordinary day astrologically, and it coincides quite nicely with the theme of this note.
 
@@ -207,22 +207,22 @@ so, whether you believe in astrology or not, here's to a great release, a little
             },
 
             {
-                id: 'friendship',
+                id: 'friendships',
                 date: '2026-10-16T12:00:00-07:00',
-                titleKey: 'notes.friendship.title',
-                contentKey: 'notes.friendship.content',
-                title: 'the future is about friendship',
+                titleKey: 'notes.friendships.title',
+                contentKey: 'notes.friendships.content',
+                title: 'the future is about friendships',
                 content: this.cleanContent(`
 -------------------------------------------------------------
 "a friend may well be reckoned the masterpiece of nature."
-— ralph waldo emerson, on friendship
+— ralph waldo emerson, on friendships
 -------------------------------------------------------------
 
 hello there, my dear old anon friend
 
 today i want to talk a bit about something i have been thinking about quite a lot lately, perhaps as a result of all my experience traveling the world and meeting people of all sorts, cultures, backgrounds, and of my meditations on the meaning of existence and the human condition.
 
-today i want to talk about why i believe friendship is one of the most important features of the abundant future we should be building. 
+today i want to talk about why i believe friendships is one of the most important features of the abundant future we should be building. 
 
 but, what exactly is a friend?
 
@@ -267,7 +267,7 @@ but what is a real friend?
 
 it's not trivial to define what love or agape is, but every single human has felt this state of mind at some point. some feel it all the time, for everything and everyone; others felt it once or twice. if we are all being honest, we will admit that nothing in the world compares to the feeling of reciprocal care, of mutual understanding, of feeling understood by someone, of feeling "in love".
 
-it's such a good feeling that perhaps one of the biggest human fears in the world is to lose it, or to never find it again. it might be a platonic stretch, but i do believe that every single problem in the world could be fixed if we fixed human connection and friendship. and i do believe it's a serious and hard problem. and i do believe it's fixable.
+it's such a good feeling that perhaps one of the biggest human fears in the world is to lose it, or to never find it again. it might be a platonic stretch, but i do believe that every single problem in the world could be fixed if we fixed human connection and friendships. and i do believe it's a serious and hard problem. and i do believe it's fixable.
 
 but what exactly is a real friend?
 a real friend is a non-transactional, positive-sum relationship. that's it.
@@ -320,7 +320,7 @@ if there is any truth in this whole idea that we are entering the age of aquariu
 outro
 ------
 
-i hope i have given you a few breadcrumbs as to why the subject of friendship is perhaps one of the most important of our age, and one of the ingredients in creating a world we are proud of.
+i hope i have given you a few breadcrumbs as to why the subject of friendships is perhaps one of the most important of our age, and one of the ingredients in creating a world we are proud of.
 
 and because of that realization, my dear anon friend, it is what i will be working toward in the many years to come. perhaps you will be there with me, so that many of my stories become some of your many histories, and our memories interconnect into good records, and we, together, help to build a beautiful future of collective human superintelligence.
   

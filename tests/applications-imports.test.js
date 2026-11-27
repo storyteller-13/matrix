@@ -98,7 +98,7 @@ describe('Application modules (coverage)', () => {
             </div>
         `;
         await import('../core/base-app.js');
-        await import('../applications/lists/books-data.js');
+        await import('../applications/lists/folders/books.js');
         await import('../applications/lists/books.js');
         expect(window.BOOKS_2026).toBeDefined();
         expect(window.BOOKS_2026.shareId).toBe('books-2026');
@@ -131,7 +131,7 @@ describe('Application modules (coverage)', () => {
         await import('../applications/lists/podcast-player.js');
         await import('../applications/lists/lists-folder.js');
         const dockBadge = document.getElementById('lists-folder-count-badge');
-        expect(dockBadge.textContent).toBe('20');
+        expect(dockBadge.textContent).toBe('21');
         expect(dockBadge.style.display).toBe('flex');
         expect(window.ListsFolderAppClass).toBeDefined();
         expect(window.ListsFolderApp).toBeDefined();
@@ -145,18 +145,19 @@ describe('Application modules (coverage)', () => {
         expect(list.textContent).toContain('adventures');
         expect(list.textContent).toContain('art');
         expect(list.textContent).toContain('science');
-        expect(list.textContent).toContain('nutrition');
-        expect(list.textContent).toContain('podcasts');
+        expect(list.textContent).toContain('sublime');
+        expect(list.textContent).toContain('friendships');
 
         const badgeFor = (label) => [...list.querySelectorAll('.file-item')]
             .find((el) => el.querySelector('.file-name').textContent === label)
             .querySelector('.lists-folder-count-badge');
         expect(badgeFor('books').textContent).toBe('4');
         expect(badgeFor('movies').textContent).toBe('9');
-        expect(badgeFor('podcasts').textContent).toBe('1');
+        expect(badgeFor('friendships').textContent).toBe('1');
         expect(badgeFor('games').textContent).toBe('2');
         expect(badgeFor('adventures').textContent).toBe('4');
-        ['art', 'science', 'nutrition'].forEach((label) => {
+        expect(badgeFor('sublime').textContent).toBe('1');
+        ['art', 'science'].forEach((label) => {
             expect(badgeFor(label)).toBeNull();
         });
 
@@ -222,18 +223,18 @@ describe('Application modules (coverage)', () => {
         expect(app.window.querySelector('.window-title').textContent).toBe('SCIENCE');
         expect(list.textContent).toContain('this folder is empty');
 
-        app.open('podcasts');
+        app.open('friendships');
         expect(list.textContent).not.toContain('this folder is empty');
         expect(list.textContent).toContain('zeitgeist awards 2026');
-        expect(window.location.search).toBe('?folder=podcasts');
+        expect(window.location.search).toBe('?folder=friendships');
         expect(list.querySelector('.lists-folder-description')).toBeNull();
         expect(app.window.classList.contains('lists-folder-window--wide')).toBe(false);
 
         window.openPodcastWindow = vi.fn();
         clickList('zeitgeist awards 2026');
-        expect(app.path).toEqual(['podcasts', 'zeitgeist-awards-2026']);
+        expect(app.path).toEqual(['friendships', 'zeitgeist-awards-2026']);
         expect(app.window.querySelector('.window-title').textContent).toBe('ZEITGEIST AWARDS 2026');
-        expect(window.location.search).toBe('?folder=podcasts/zeitgeist-awards-2026');
+        expect(window.location.search).toBe('?folder=friendships/zeitgeist-awards-2026');
         clickList('father chad ripperger on shawn ryan');
         expect(window.openPodcastWindow).toHaveBeenLastCalledWith({ title: 'father chad ripperger on shawn ryan', videoId: 'XKNMThu3jQI' });
         clickList('dr. fei-fei li on andrew huberman');
@@ -244,19 +245,19 @@ describe('Application modules (coverage)', () => {
         clickList('pastor greg laurie on tetragrammaton');
         expect(window.openPodcastWindow).toHaveBeenLastCalledWith({ title: 'pastor greg laurie on tetragrammaton', videoId: 'KGR27hIf8Ow' });
         clickList('back');
-        expect(app.path).toEqual(['podcasts']);
-        expect(window.location.search).toBe('?folder=podcasts');
+        expect(app.path).toEqual(['friendships']);
+        expect(window.location.search).toBe('?folder=friendships');
 
         // Links: ?folder=<name>, nested paths, bare nested ids, and unknown folders are ignored.
         expect(app.resolveFolderPath('movies')).toEqual(['movies']);
-        expect(app.resolveFolderPath('Podcasts/Zeitgeist-Awards-2026')).toEqual(['podcasts', 'zeitgeist-awards-2026']);
-        expect(app.resolveFolderPath('zeitgeist-awards-2026')).toEqual(['podcasts', 'zeitgeist-awards-2026']);
+        expect(app.resolveFolderPath('Friendships/Zeitgeist-Awards-2026')).toEqual(['friendships', 'zeitgeist-awards-2026']);
+        expect(app.resolveFolderPath('zeitgeist-awards-2026')).toEqual(['friendships', 'zeitgeist-awards-2026']);
         expect(app.resolveFolderPath('nope')).toBeNull();
         expect(app.resolveFolderPath('movies/nope')).toBeNull();
         history.replaceState(null, '', '/?folder=zeitgeist-awards-2026');
         app.openFromUrl();
-        expect(app.path).toEqual(['podcasts', 'zeitgeist-awards-2026']);
-        expect(window.location.search).toBe('?folder=podcasts/zeitgeist-awards-2026');
+        expect(app.path).toEqual(['friendships', 'zeitgeist-awards-2026']);
+        expect(window.location.search).toBe('?folder=friendships/zeitgeist-awards-2026');
         history.replaceState(null, '', '/?folder=nope');
         app.open('books');
         history.replaceState(null, '', '/?folder=nope');

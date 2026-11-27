@@ -1,4 +1,9 @@
 /**
+ * Movies folder: zeitgeist, kids, friendships, winter and the seventh-art and horror lists.
+ */
+import { listEntry } from './list-entry.js';
+
+/**
  * Zeitgeist Awards 2026 – movie award categories.
  *
  * To reveal winners, fill each category's `movies` in rank order, e.g.
@@ -19,7 +24,7 @@ const ZEITGEIST_2026 = {
                 size: 10,
                 movies: [
                     { title: 'the shawshank redemption (frank darabont, 1994)', url: '', comment: 'hope is a good thing, maybe the best of things.' },
-                    { title: 'project hail mary (phil lord & christopher miller, 2026)', url: '', comment: 'a rocky friendship across the stars.' },
+                    { title: 'project hail mary (phil lord & christopher miller, 2026)', url: '', comment: 'a rocky friendships across the stars.' },
                     { title: 'the odyssey (christopher nolan, 2026)', url: '', comment: 'the long, long, long way home...' },
                     { title: 'alice in borderland (shinsuke sato, 2020)', url: '', comment: 'felt like a mirror of my year.' },
                     { title: 'exit 8 (genki kawamura, 2026)', url: '', comment: 'felt like the story of my life.' },
@@ -51,7 +56,7 @@ const ZEITGEIST_2026 = {
                 label: 'the most "brave new world" tales',
                 size: 5,
                 movies: [
-                    { title: 'the dog stars (ridley scott, 2026)', url: '', comment: 'a beautiful friendship at the end of the world' },
+                    { title: 'the dog stars (ridley scott, 2026)', url: '', comment: 'a beautiful friendships at the end of the world' },
                     { title: 'dark matter (various directors, 2026)', url: '', comment: 'every door is a life you didn\'t live.' },
                     { title: 'silo (various directors, 2026)', url: '', comment: 'never trust anyone who tells you not to go outside.' },
                     { title: 'gattaca (andrew niccol, 1997)', url: '', comment: 'ethan hawke is meritocracy.' },
@@ -168,10 +173,10 @@ const KIDS_MOVIES = {
 
 window.KIDS_MOVIES = KIDS_MOVIES;
 
-/** Movies about friendship among strangers, split into favorites and a watch backlog. */
-const STRANGERS_FRIENDSHIP_MOVIES = {
-    title: 'movies about friendship among strangers',
-    shareId: 'strangers-friendship-movies',
+/** Movies about friendships among strangers, split into favorites and a watch backlog. */
+const STRANGERS_FRIENDSHIPS_MOVIES = {
+    title: 'movies about friendships among strangers',
+    shareId: 'strangers-friendships-movies',
     tableLayout: 'two-up',
     categories: [
         {
@@ -211,7 +216,7 @@ const STRANGERS_FRIENDSHIP_MOVIES = {
         },
     ],
 };
-window.STRANGERS_FRIENDSHIP_MOVIES = STRANGERS_FRIENDSHIP_MOVIES;
+window.STRANGERS_FRIENDSHIPS_MOVIES = STRANGERS_FRIENDSHIPS_MOVIES;
 
 /**
  * Classic american movies for the winter holiday – a simple unranked list.
@@ -224,8 +229,6 @@ const WINTER_MOVIES = {
         { title: 'miracle on 34th street (george seaton, 1947)' },
         { title: 'a charlie brown thanksgiving (bill melendez, 1973)' },
         { title: 'little women (greta gerwig, 2019)' },
-        { title: 'scent of a woman (martin brest, 1992)' },
-        { title: 'home for the holidays (jodie foster, 1995)' },
         { title: 'home alone (chris columbus, 1990)' },
         { title: 'the muppet christmas carol (brian henson, 1992)' },
         { title: 'a christmas story (bob clark, 1983)' },
@@ -592,3 +595,18 @@ const VAMPIRE_FAVORITES_2025 = {
     }],
 };
 window.VAMPIRE_FAVORITES_2025 = VAMPIRE_FAVORITES_2025;
+
+export function moviesEntries(t) {
+    const movie = { icon: 'movie' };
+    return [
+        listEntry('zeitgeist-2026', t('menu.zeitgeist2026', 'zeitgeist awards 2026'), { ...movie, gold: true }),
+        listEntry('kids-movies', t('menu.kidsMovies', 'movies to watch with our kids'), movie),
+        listEntry('strangers-friendships-movies', t('menu.strangersFriendshipsMovies', 'movies about friendships among strangers'), movie),
+        listEntry('winter-movies', t('menu.winterMovies', 'classic american movies for the winter holiday'), movie),
+        listEntry('seventh-art-top-10', t('menu.seventhArtTop10', "2025's top 10 movies"), movie),
+        listEntry('seventh-art-supplementary', t('menu.seventhArtSupplementary', "2025's must watch list"), movie),
+        listEntry('zombie-favorites-2025', t('menu.zombieFavorites2025', "2025's zombie favorites"), movie),
+        listEntry('vampire-favorites-2025', t('menu.vampireFavorites2025', "2025's vampire favorites"), movie),
+        listEntry('seventh-art-canonical', t('menu.seventhArtCanonical', "2025's favorite movies of all time"), movie),
+    ].sort((a, b) => a.label.length - b.label.length);
+}

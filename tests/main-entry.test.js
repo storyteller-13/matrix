@@ -37,9 +37,9 @@ describe('main.js', () => {
         before('applications/todo/todo-storage.js', 'applications/todo/todo.js');
         before('applications/notes/notes-storage.js', 'applications/notes/notes.js');
         before('applications/music-player/music-player-storage.js', 'applications/music-player/music-player.js');
-        before('applications/lists/books-data.js', 'applications/lists/books.js');
-        before('applications/lists/guides-data.js', 'applications/lists/books.js');
-        before('applications/lists/adventures-data.js', 'applications/lists/books.js');
+        before('applications/lists/folders/books.js', 'applications/lists/books.js');
+        before('applications/lists/folders/my-guides.js', 'applications/lists/books.js');
+        before('applications/lists/folders/adventures.js', 'applications/lists/books.js');
         before('applications/quotes/quotes-data.js', 'applications/quotes/quotes.js');
     });
 });

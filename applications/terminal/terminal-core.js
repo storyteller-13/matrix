@@ -44,7 +44,7 @@ const LISTS_ROOT = { type: 'listdir', folderId: null };
 
 // The secret note. In matrix mode it says something else; the shell asks the theme on each read.
 const PINK_SECRET = "let's be in love with life";
-const MATRIX_SECRET = 'the future is about friendship.';
+const MATRIX_SECRET = 'the future is about friendships.';
 let inMatrix = () => false;
 const secretsFile = {
     type: 'file',

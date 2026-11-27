@@ -225,7 +225,7 @@ describe('fun commands', () => {
         expect(shell.execute('ls').output).toBe('.secrets');
         expect(shell.execute('ls -l').output).toMatch(/ \.secrets$/);
         expect(shell.execute('ls ~').output).toBe('.secrets');
-        expect(shell.execute('grep friend ~').output).toBe('~/.secrets:the future is about friendship.');
+        expect(shell.execute('grep friendships ~').output).toBe('~/.secrets:the future is about friendships.');
         expect(shell.execute('grep love ~').output).toBeNull();
         expect(shell.execute('ls /artwork').output).toContain('love.jpg');
     });

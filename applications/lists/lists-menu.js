@@ -4,10 +4,7 @@
  */
 
 /** Top-level order of the menu. Folders not named here are left out of the menu. */
-export const MENU_ORDER = ['books', 'movies', 'podcasts', 'games', 'adventures', 'nutrition', 'science', 'art'];
-
-/** The podcast player fills this folder's submenu with episodes itself. */
-const EPISODES_FOLDER = 'zeitgeist-awards-2026';
+export const MENU_ORDER = ['books', 'movies', 'friendships', 'games', 'adventures', 'sublime', 'science', 'art'];
 
 const separator = () => {
     const node = document.createElement('div');
@@ -52,7 +49,7 @@ function submenuItem(label, svg) {
 /** One folder as a menu entry: a submenu when it has lists, a plain button when it is empty. */
 function folderNode(entry, app) {
     const svg = app.folderSvg({ gold: entry.gold });
-    if (entry.id === EPISODES_FOLDER) {
+    if (entry.menu === 'podcast-episodes') {
         const item = submenuItem(entry.label, svg);
         const episodes = document.createElement('div');
         episodes.className = 'menu-submenu menu-submenu--scroll';
